@@ -1,0 +1,11 @@
+{
+  "notes":"标签-分类列表表头json",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"分类名称",
+      "name":"label"
+    }
+  ]
+}

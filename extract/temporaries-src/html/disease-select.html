@@ -1,0 +1,40 @@
+<div ng-if="!diag_res" class="alert alert-danger">数据请求错误!</div>
+<div ng-if="diag_result.length == 0" class="alert alert-danger">无数据返回</div>
+<ul class="form-group">
+  <li ng-repeat="input in diag_result" style="display: inline-block;margin:15px 20px 0 20px;">
+    <span style="color:#000;">{{input.label}}：</span>
+    <span ng-repeat="opt in input.value">
+      <label ng-if="input.choice == 1" style="font-weight:500;cursor: pointer;">
+        <input type="radio" value="{{ opt.value }}" ng-checked="opt.value == tagDiagnosis[input.label][0]" ng-click="checkVal(input, opt)"
+        /> {{ opt.label }}
+      </label>
+
+      <label ng-if="input.choice == 2" style="font-weight:500;cursor: pointer;">
+        <input type="checkbox" ng-click="checkVal(input, opt)" /> {{opt.label}}
+      </label>
+    </span>
+  </li>
+</ul>
+<div class="infi-box">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width:300px;">疾病名称</th>
+        <th>发生概率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-show = 'tag_back.length > 0' ng-repeat="(key, value) in tag_back">
+        <td>{{value.label}}</td>
+        <td>
+          <span class="tagDia-span">{{value.value}}</span>
+        </td>
+      </tr>
+
+      <tr ng-show = 'tag_back.length == 0'>
+        <td colspan="2">没有相应数据</td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-if="showTip ==true" class="alert alert-danger">请选择症状！</div>
+</div>

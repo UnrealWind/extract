@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="infi-box" style="margin-top:50px;">
+    <div style="width:200px;    position: absolute;
+    top: -42px;
+    left: 0;">
+        <!--<select class="form-control" ng-model="zhubie.value" ng-change="zhubieClick()">-->
+            <!--<option ng-repeat="val in zhubieValue" value="{{val.value}}" ng-bind="val.name"></option>-->
+        <!--</select>-->
+        <select class="selectpicker " style="width: 100%;height:34px;"  ng-model="zhu.value" ng-options="select.value as select.name for select in zhu.data" ng-change="dataSelect()"></select>
+    </div>
+    <div class=" paddingten" style="text-align: right;    position: absolute;top: -42px;right: 0;padding: 0;">
+        <button type="button" class="btn btn-default" ng-click="tanCha()">描述统计</button>
+    </div>
+    <div style="overflow: auto">
+        <table class="table infi-table">
+            <thead>
+            <tr>
+                <th style="width:150px;" class='not-wrap'>序号</th>
+                <th ng-repeat="th in tableTheader" ng-bind="th.name" style="width:150px;" class='not-wrap'></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="tbodys in tableTbodys track by $index">
+                <td class='not-wrap'>{{$index + 1}}</td>
+                <td ng-repeat="tbody in tbodys " class='not-wrap'>{{tbody.value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="infi-page">
+        <uib-pagination total-items="detailContent.page.totalElements" ng-model="detailContent.page.number" max-size="10"
+            boundary-link-numbers="true" ng-change="updatePage(detailContent.page.number)" items-per-page="detailContent.page.size"
+            num-pages="detailContent.page.totalPages">
+        </uib-pagination>
+    </div>
+    <div class=" paddingten" style="text-align: right">
+        <button type="button" class="btn btn-default" ng-click="previous()">上一步(筛选设置)</button>
+        <button type="button" class="btn btn-primary" ng-click="next()">下一步(建模)</button>
+    </div>
+</div>
+
+</body>
+</html>

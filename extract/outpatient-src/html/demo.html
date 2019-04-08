@@ -1,0 +1,725 @@
+<!--打印设置列表-->
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>公卫指标分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间"  /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间"  />
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="rAnaKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 卫生系统
+    </div>
+    <!--kpi-->
+    <div  class="ng-isolate-scope">
+        <!--带有图片的kpi-->
+        <div class="infi-box-kpi row">
+            <div class="col-md-3 row infi-kpi-img">
+                <div class="col-md-3">
+                    <img src="img/visit-total.png">
+                </div>
+                <dl class="infi-column-kpi col-md-9" style="margin-top:15px;">
+                    <dt  class="infi-title ng-binding">总诊疗人次:<span class="ng-binding">350832</span></dt>
+                </dl>
+            </div>
+            <div class="col-md-3 row infi-kpi-img">
+                <div class="col-md-3">
+                    <img src="img/visit-outpatient.png">
+                </div>
+                <dl class="infi-column-kpi col-md-9" style="margin-top:15px;">
+                    <dt  class="infi-title ng-binding">门急诊人次:<span  class="ng-binding">40832</span></dt>
+                </dl>
+            </div>
+            <div class="col-md-3 row infi-kpi-img">
+                <div class="col-md-3">
+                    <img src="img/visit-emergency.png">
+                </div>
+                <dl class="infi-column-kpi col-md-9" style="margin-top:15px;">
+                    <dt  class="infi-title ng-binding">入院人次:<span class="ng-binding">35832</span></dt>
+                </dl>
+            </div>
+            <div class="col-md-3 row infi-kpi-img">
+                <div class="col-md-3">
+                    <img src="img/back-number.png">
+                </div>
+                <dl class="infi-column-kpi col-md-9" style="margin-top:15px;">
+                    <dt  class="infi-title ng-binding">出院人次:<span class="ng-binding">25083</span></dt>
+                </dl>
+            </div>
+    </div>
+</div>
+
+<div class="infi-opt-self-box">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 健康状况
+        <div class="infi-opt-search">
+            <label  class="ng-scope ng-isolate-scope">科室选择：
+                <select class="form-control infi-opt-search-time ng-pristine ng-untouched ng-valid ng-empty" >
+                    <option value="">全院</option>
+                </select>
+            </label>
+            <div class="infi-inline-block ng-scope ng-isolate-scope">
+                <input type="button" class="btn btn-default btn-sm btn-success" value="按天统计" >
+                <input type="button" class="btn btn-default btn-sm" value="按周统计" >
+                <input type="button" class="btn btn-default btn-sm" value="按月统计">
+            </div>
+        </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row noprint">
+            <div class="col-md-5 infi-table-cell"  title="'门诊类型'" col-cell="'col-md-5'">
+                <h5 class="infi-cell-child ng-binding">医疗机构:</h5>
+                <div class="infi-cell-child" >
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        全部
+                     </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input checked type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        青海省人民医院
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        青海省中医院
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        青海大学附属医院
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-7 infi-table-cell"  title="'指标'" col-cell="'col-md-7'">
+                <h5 class="infi-cell-child ng-binding">指标:</h5>
+                <div class="infi-cell-child" >
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        传染病发病率
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        高血压患病率
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        糖尿病患病率
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        HIV阳性率
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        肿瘤发病率
+                    </label>
+                    <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                        <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                        脑卒中发病率
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="infi-inline-block" style="padding-left:15px;">已选:</h5>
+                <div class="infi-selected-tag ng-binding ng-scope">青海省人民医院</div>
+            </div>
+            <div class="col-md-2 noprint" >
+                <input type="button" class="btn btn-default btn-sm" value="重置" />
+            </div>
+        </div>
+        <div>
+            <div id="lineRegisterType" class="infi-whole-chart text-danger"></div>
+            <img class='infi-created-img' />
+        </div>
+    </div>
+</div>
+
+<div class="infi-opt-self-box row">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 指标趋势
+    </div>
+    <div class="col-md-7">
+        <div>
+            <h5 class="infi-inline-block" style="margin-top: 9px;">指标趋势</h5>
+            <div class="infi-opt-search">
+                <label analysis-dept="" dept-list="deptList" original="typeTrends"  class="ng-scope ng-isolate-scope">科室选择：
+                    <select class="form-control infi-opt-search-time ng-pristine ng-untouched ng-valid ng-empty" >
+                        <option value="">全院</option>
+                    </select>
+                </label>
+                <div class="infi-inline-block ng-scope ng-isolate-scope">
+                    <input type="button" class="btn btn-default btn-sm btn-success" value="按天统计" >
+                    <input type="button" class="btn btn-default btn-sm" value="按周统计" >
+                    <input type="button" class="btn btn-default btn-sm" value="按月统计">
+                </div>
+            </div>
+        </div>
+        <div class="infi-draw-chart">
+            <div class="row noprint">
+                <div class="col-md-12 infi-table-cell"  title="'门诊类型'" col-cell="'col-md-12'">
+                    <h5 class="infi-cell-child ng-binding">指标:</h5>
+                    <div class="infi-cell-child" >
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            治愈率
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input checked type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            好转率
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            死亡率
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            抢救成功率
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            感染率
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            病床使用率
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <h5 class="infi-inline-block" style="padding-left:15px;">已选:</h5>
+                    <div class="infi-selected-tag ng-binding ng-scope">好转率</div>
+                </div>
+                <div class="col-md-2 noprint" >
+                    <input type="button" class="btn btn-default btn-sm" value="重置" />
+                </div>
+            </div>
+            <div>
+                <div id="lineBackNumber" class="infi-whole-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div>
+            <h5 class="infi-inline-block"  style="margin-top: 9px;">门诊科室排行</h5>
+            <div class="infi-opt-search" style="line-height: 1.4;position: relative;top:5px;">
+                <input type="button" class="btn btn-default btn-sm btn-success" value="住院" >
+                <input type="button" class="btn btn-default btn-sm" value="门诊" >
+            </div>
+            <div class="infi-opt-search" style="line-height: 1.4;position: relative;top:5px;">
+                <input type="button" class="btn btn-default btn-sm btn-success" value="按例数排行" >
+                <input type="button" class="btn btn-default btn-sm" value="按人均医疗费用排行" >
+            </div>
+        </div>
+        <div id="barDeptRanking" class="text=danger" style="height:410px;">
+
+        </div>
+    </div>
+</div>
+
+<div class="infi-opt-self-box row">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 职工构成
+    </div>
+    <div class="col-md-7">
+        <div class="infi-draw-chart">
+            <div class="row noprint">
+                <div class="col-md-12 infi-table-cell"  title="'门诊类型'" col-cell="'col-md-12'">
+                    <h5 class="infi-cell-child ng-binding">医疗机构:</h5>
+                    <div class="infi-cell-child" >
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            全部
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input checked type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            青海省人民医院
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            青海省中医院
+                        </label>
+                        <label  style="margin-right: 5px;" class="ng-binding ng-scope">
+                            <input type="checkbox" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                            青海大学附属医院
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <h5 class="infi-inline-block" style="padding-left:15px;">已选:</h5>
+                    <div class="infi-selected-tag ng-binding ng-scope">青海省人民医院</div>
+                </div>
+                <div class="col-md-2 noprint" >
+                    <input type="button" class="btn btn-default btn-sm" value="重置" />
+                </div>
+            </div>
+            <div>
+                <div id="zhigong" class="infi-whole-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div>
+            <h5 class="infi-inline-block"  style="margin-top: 9px;">医疗机构床位比</h5>
+        </div>
+        <div  class="text=danger" style="height:410px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>医疗机构</th>
+                        <th>床位数</th>
+                        <th>医生与床位比</th>
+                        <th>护士与床位比</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>青海省人民医院</td>
+                        <td>1000</td>
+                        <td>1:0.7</td>
+                        <td>1:0.8</td>
+                    </tr>
+                    <tr>
+                        <td>青海省中医院</td>
+                        <td>900</td>
+                        <td>1:0.9</td>
+                        <td>1:0.8</td>
+                    </tr>
+                    <tr>
+                        <td>青海大学附属医院</td>
+                        <td>950</td>
+                        <td>1:0.6</td>
+                        <td>1:0.7</td>
+                    </tr>
+                    <tr>
+                        <td>青海省妇女儿童医院</td>
+                        <td>960</td>
+                        <td>1:0.5</td>
+                        <td>1:0.6</td>
+                    </tr>
+                    <tr>
+                        <td>青海省藏医院</td>
+                        <td>800</td>
+                        <td>1:0.9</td>
+                        <td>1:1</td>
+                    </tr>
+                    <tr>
+                        <td>青海省第三人民医院</td>
+                        <td>960</td>
+                        <td>1:0.5</td>
+                        <td>1:0.6</td>
+                    </tr>
+                    <tr>
+                        <td>青海省第五人民医院</td>
+                        <td>800</td>
+                        <td>1:0.9</td>
+                        <td>1:1</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box row" id="">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 总体收费情况
+    </div>
+    <!--kpi-->
+    <div  class="ng-isolate-scope">
+        <!--带有图片的kpi-->
+        <div class="infi-box-kpi row">
+            <div class=" row infi-kpi-img" style="width:19%;display: inline-block;">
+                <dl class="infi-column-kpi col-md-12" style="margin-top:15px;width: 100%;
+    text-align: center;">
+                    <dt  class="infi-title ng-binding">总收费:<span class="ng-binding">1743.11万元</span></dt>
+                </dl>
+            </div>
+            <div class=" row infi-kpi-img" style="width:19%;display: inline-block;">
+                <dl class="infi-column-kpi col-md-12" style="margin-top:15px;    width: 100%;
+    text-align: center;">
+                    <dt  class="infi-title ng-binding">医事服务费:<span  class="ng-binding">130.72万元</span></dt>
+                </dl>
+            </div>
+            <div class=" row infi-kpi-img" style="width:19%;display: inline-block;">
+                <dl class="infi-column-kpi col-md-12" style="margin-top:15px;    width: 100%;
+    text-align: center;">
+                    <dt  class="infi-title ng-binding">药品收费:<span class="ng-binding">299.79万元</span></dt>
+                </dl>
+            </div>
+            <div class=" row infi-kpi-img" style="width:19%;display: inline-block;">
+                <dl class="infi-column-kpi col-md-12" style="margin-top:15px;    width: 100%;
+    text-align: center;">
+                    <dt  class="infi-title ng-binding">检查收费:<span class="ng-binding">171.5万元</span></dt>
+                </dl>
+            </div>
+            <div class=" row infi-kpi-img" style="width:19%;display: inline-block;">
+                <dl class="infi-column-kpi col-md-12" style="margin-top:15px;    width: 100%;
+    text-align: center;">
+                    <dt  class="infi-title ng-binding">检验收费:<span class="ng-binding">338.71万元</span></dt>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="infi-opt-self-box row" id="">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 收费构成监控
+    </div>
+    <div class="col-md-6" id="fufeirenci" style="height:500px;">
+
+    </div>
+    <div class="col-md-6" id="fufeiwanyuan" style="height:500px;">
+
+    </div>
+</div>
+
+<div class="infi-opt-self-box row" id="">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 医疗机构费用监控
+    </div>
+    <div class="col-md-6" id="fufeiyiyuan" style="height:500px;">
+
+    </div>
+    <div class="col-md-6" id="fufeiwanyuan1" style="height:500px;">
+
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="rMonRetreatOverall">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 医生收费监控
+        <div class="infi-opt-search">
+            <label>医院：
+                <select class="form-control infi-opt-search-time">
+                    <option value="" ng-selected="retreatOverall.channel == ''">全部</option>
+                </select>
+            </label>
+            <label>科室：
+                <select class="form-control infi-opt-search-time">
+                    <option value="" ng-selected="retreatOverall.channel == ''">全部</option>
+                </select>
+            </label>
+            <label>医生类型：
+                <select class="form-control infi-opt-search-time">
+                    <option value="" ng-selected="retreatOverall.channel == ''">全部</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <div id="doctorCharge" class="infi-half-chart text-danger"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div>
+                <h5 class="infi-chart-title">冯*明患者人均次均费用</h5>
+            </div>
+            <div>
+                <div id="averageCost" class="infi-half-chart text-danger"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table infi-nopage-table infi-table-striped">
+                <thead>
+                <tr>
+                    <td>患者姓名</td>
+                    <td>地域</td>
+                    <td>总费用</td>
+                    <td>次均费用</td>
+                    <td>次均占比</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        张*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        1442.8
+                    </td>
+                    <td>
+                        1206.7
+                    </td>
+                    <td>
+                        83.64%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        周*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        680.3
+                    </td>
+                    <td>
+                        503.2
+                    </td>
+                    <td>
+                        73.97%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        李*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        884.3
+                    </td>
+                    <td>
+                        600.8
+                    </td>
+                    <td>
+                        67.94%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        李*名
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        1024.4
+                    </td>
+                    <td>
+                        940.2
+                    </td>
+                    <td>
+                        91.78%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        赵*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        1330.6
+                    </td>
+                    <td>
+                        1104.9
+                    </td>
+                    <td>
+                        83.04%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        张*维
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        2245.56
+                    </td>
+                    <td>
+                        1983.4
+                    </td>
+                    <td>
+                        88.33%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        司*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        783.1
+                    </td>
+                    <td>
+                        700.1
+                    </td>
+                    <td>
+                        89.40%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        余*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        940.8
+                    </td>
+                    <td>
+                        810.3
+                    </td>
+                    <td>
+                        86.13%
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        张*
+                    </td>
+                    <td>
+                        北京
+                    </td>
+                    <td>
+                        2234.6
+                    </td>
+                    <td>
+                        1678.9
+                    </td>
+                    <td>
+                        75.13%
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 患者费用
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">患者费用排行</h5></div>
+            <div>
+                <div id="patientCost" class="infi-half-chart text-danger"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">花费详情</h5>&nbsp;&nbsp;>><span>张*</span></div>
+            <div>
+                <p class="infi-inline-block">门诊次数：<span></span>20&nbsp;</p>
+                <p class="infi-inline-block">费用：<span></span>20000&nbsp;</p>
+                <p class="infi-inline-block">住院次数：<span></span>0&nbsp;</p>
+                <p class="infi-inline-block">费用：<span></span>0&nbsp;</p>
+            </div>
+            <div>
+                <div id="costDetails" class="infi-half-chart text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 医疗消耗品费用
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">消耗品收支排行</h5></div>
+            <div>
+                <div id="consumables" class="infi-half-chart text-danger"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">消耗品详情</h5>&nbsp;&nbsp;>><span>药品</span></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h">
+                    <table class="table infi-nopage-table infi-table-striped">
+                        <thead>
+                        <tr>
+                            <td>名称</td>
+                            <td>
+                                <div class="infi-up-down noprint">
+                                    支出(万元)
+                                    <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cz_desc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_desc']"></i>
+                                    <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cz_asc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_asc']"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="infi-up-down noprint">
+                                    收入(万元)
+                                    <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('jz_desc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_desc']"></i>
+                                    <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('jz_asc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_asc']"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="infi-up-down noprint">
+                                    利润(万元)
+                                    <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cjjz_desc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_desc']"></i>
+                                    <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cjjz_asc')"
+                                       ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_asc']"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td style="cursor: pointer;">氯化钠注射液</td>
+                            <td class="text-right">38</td>
+                            <td class="text-right">60</td>
+                            <td class="text-right">13</td>
+                        </tr>
+                        <tr>
+                            <td>注射用头孢西丁钠</td>
+                            <td class="text-right">40</td>
+                            <td class="text-right">65</td>
+                            <td class="text-right">20</td>
+                        </tr>
+                        <tr>
+                            <td>注射用磷酸肌酸钠</td>
+                            <td class="text-right">41</td>
+                            <td class="text-right">67</td>
+                            <td class="text-right">18</td>
+                        </tr>
+                        <tr>
+                            <td>注射用奥美拉唑</td>
+                            <td class="text-right">35</td>
+                            <td class="text-right">66</td>
+                            <td class="text-right">18</td>
+                        </tr>
+                        <tr>
+                            <td>注射用盐酸头孢替安</td>
+                            <td class="text-right">45</td>
+                            <td class="text-right">57</td>
+                            <td class="text-right">20</td>
+                        </tr>
+                        <tr>
+                            <td>注射用血栓通</td>
+                            <td class="text-right">41</td>
+                            <td class="text-right">61</td>
+                            <td class="text-right">13</td>
+                        </tr>
+                        <tr>
+                            <td>丹红注射液</td>
+                            <td class="text-right">35</td>
+                            <td class="text-right">60</td>
+                            <td class="text-right">13</td>
+                        </tr>
+                    </table>
+                    <div ng-show="doctorAdmissions.searchedData.data.result.length == 0" class="text-danger">未查询到数据</div>
+                </div>
+        </div>
+    </div>
+</div>

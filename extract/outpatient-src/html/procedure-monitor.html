@@ -1,0 +1,179 @@
+<div time-show class="infi-inline-block infi-title-time noprint"></div>
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>流程监控</h4>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>流程监控</h4>
+    <div class="infi-today-time">
+        <span ng-bind="now|date:'yyyy-MM-dd HH:mm:ss'"></span>
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="pMonWait">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i> 候诊情况监控
+        <div print-add print-list="ids" unique="'pMonWait'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="waitSituation"
+                 record-list="dimension.deptList" select="'department'" change-data="getWaitSituation()"></div>
+            <label>医生类型：
+                <select class="form-control infi-opt-search-time" ng-model="waitSituation.number" ng-change="getWaitSituation()">
+                    <option value="" ng-selected="waitSituation.number ==''">全部</option>
+                    <option value="专家" ng-selected="waitSituation.number =='专家'">专家</option>
+                    <option value="普通" ng-selected="waitSituation.number =='普通'">普通</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="infi-box-kpi row infi-kpi-circle-middle" ng-show="waitSituation.kpi.status == SYS.STATUS_SUCCESS">
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="waitSituation.kpi.data.result[0].yzrc_size|nullFilter"></div>
+                <div class="infi-title">应诊人次</div>
+            </div>
+        </div>
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="waitSituation.kpi.data.result[0].jrrc_size|nullFilter"></div>
+                <div class="infi-title">军人人次</div>
+            </div>
+        </div>
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="waitSituation.kpi.data.result[0].ratio|nullFilter"></div>
+                <div class="infi-title">军人占比</div>
+            </div>
+        </div>
+    </div>
+    <!--错误提示-->
+    <div ng-show="waitSituation.kpi.status != SYS.STATUS_SUCCESS" ng-bind="waitSituation.kpi.description" class="alert alert-danger"></div>
+    <!--table-->
+    <div class="infi-draw-chart">
+        <div table-list-title original="waitSituation.tableColumn" record-list="waitSituation.recordData"></div>
+        <div class="infi-table-scoll-y infi-table-scoll-y-noh" table-list original="waitSituation.tableColumn" record-list="waitSituation.recordData" scroll="'scrollH'"></div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="pMonInspect">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i> 检查情况监控
+        <div print-add print-list="ids" unique="'pMonInspect'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <label>检查类别：
+                <select class="form-control infi-opt-search-time" ng-model="inspectSituation.examType" ng-change="getInspectSituation()"
+                        ng-show="dimension.checkTypeList.status == SYS.STATUS_SUCCESS&&dimension.checkTypeList.data.status == SYS.STATUS_SUCCESS">
+                    <option ng-repeat="dept in dimension.checkTypeList.data.result" ng-selected="inspectSituation.examType == dept.value"
+                            ng-bind="dept.label" value="{{dept.value}}"></option>
+                </select>
+                <span ng-show="dimension.checkTypeList.status != SYS.STATUS_SUCCESS||dimension.checkTypeList.data.status != SYS.STATUS_SUCCESS"
+                      class="text-danger">未查询到数据</span>
+            </label>
+        </div>
+    </div>
+    <div class="infi-box-kpi row infi-kpi-circle-middle" ng-show="inspectSituation.kpi.status == SYS.STATUS_SUCCESS">
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="inspectSituation.kpi.data.result[0].yjrc_size|nullFilter"></div>
+                <div class="infi-title">应检人次</div>
+            </div>
+        </div>
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="inspectSituation.kpi.data.result[0].jrrc_size|nullFilter"></div>
+                <div class="infi-title">军人人次</div>
+            </div>
+        </div>
+        <div class="col-md-4 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="inspectSituation.kpi.data.result[0].ratio|nullFilter"></div>
+                <div class="infi-title">军人占比</div>
+            </div>
+        </div>
+    </div>
+    <!--错误提示-->
+    <div ng-show="inspectSituation.kpi.status != SYS.STATUS_SUCCESS" ng-bind="inspectSituation.kpi.description"
+        class="alert alert-danger"></div>
+    <!--table-->
+    <div class="infi-draw-chart">
+        <div table-list-title original="inspectSituation.tableColumn" record-list="inspectSituation.recordData"></div>
+        <div class="infi-table-scoll-y infi-table-scoll-y-noh" table-list original="inspectSituation.tableColumn" record-list="inspectSituation.recordData" scroll="'scrollH'"></div>
+    </div>
+</div>
+<!--gqm_debug 301需要隐掉-->
+<!--<div class="infi-opt-self-box infi-chart-hide" id="pMonBlood">-->
+    <!--<div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i>采血情况监控-->
+        <!--<div print-add print-list="ids" unique="'pMonBlood'" print-all-list="printAllList"></div>-->
+    <!--</div>-->
+    <!--<div class="infi-box-kpi row infi-kpi-circle-middle" ng-show="bloodSituation.kpi.status == SYS.STATUS_SUCCESS">-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="bloodSituation.kpi.data.result[0].cxrc_size|nullFilter"></div>-->
+                <!--<div class="infi-title">应采血人次</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="bloodSituation.kpi.data.result[0].cxjr_size|nullFilter"></div>-->
+                <!--<div class="infi-title">其中军人人次</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="bloodSituation.kpi.data.result[0].ratio|nullFilter"></div>-->
+                <!--<div class="infi-title">军人占比</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;错误提示&ndash;&gt;-->
+    <!--<div ng-show="bloodSituation.kpi.status != SYS.STATUS_SUCCESS" ng-bind="bloodSituation.kpi.description"-->
+        <!--class="alert alert-danger"></div>-->
+    <!--&lt;!&ndash;table&ndash;&gt;-->
+    <!--<div class="infi-draw-chart">-->
+        <!--<div table-list-title original="bloodSituation.tableColumn" record-list="bloodSituation.recordData"></div>-->
+        <!--<div class="infi-table-scoll-y infi-table-scoll-y-noh" table-list original="bloodSituation.tableColumn" record-list="bloodSituation.recordData" scroll="'scrollH'"></div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--gqm_debug 301需要隐掉-->
+<!--<div class="infi-opt-self-box infi-chart-hide" id="pMonCheck">-->
+    <!--<div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i>取药情况监控-->
+        <!--<div print-add print-list="ids" unique="'pMonCheck'" print-all-list="printAllList"></div>-->
+        <!--<div class="infi-opt-search">-->
+            <!--<label>药房类别：-->
+                <!--<select class="form-control infi-opt-search-time" ng-model="medicineSituation.drugType" ng-change="getMedicineSituation()">-->
+                    <!--<option value="中药房" ng-selected="medicineSituation.drugType == '中药房'">中药房</option>-->
+                    <!--<option value="西药房" ng-selected="medicineSituation.drugType == '西药房'">西药房</option>-->
+                <!--</select>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="infi-box-kpi row infi-kpi-circle-middle" ng-show="medicineSituation.kpi.status == SYS.STATUS_SUCCESS">-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="medicineSituation.kpi.data.result[0].cyrc_size|nullFilter"></div>-->
+                <!--<div class="infi-title">应取药人次</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="medicineSituation.kpi.data.result[0].qyjr_size|nullFilter"></div>-->
+                <!--<div class="infi-title">军人人次</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 infi-column-kpi">-->
+            <!--<div class="infi-kpi-circle">-->
+                <!--<div ng-bind="medicineSituation.kpi.data.result[0].ratio|nullFilter"></div>-->
+                <!--<div class="infi-title">军人占比</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;错误提示&ndash;&gt;-->
+    <!--<div ng-show="medicineSituation.kpi.status != SYS.STATUS_SUCCESS" ng-bind="medicineSituation.kpi.description"-->
+        <!--class="alert alert-danger"></div>-->
+    <!--&lt;!&ndash;table&ndash;&gt;-->
+    <!--<div class="infi-draw-chart">-->
+        <!--<div table-list-title original="medicineSituation.tableColumn" record-list="medicineSituation.recordData"></div>-->
+        <!--<div class="infi-table-scoll-y infi-table-scoll-y-noh" table-list original="medicineSituation.tableColumn" record-list="medicineSituation.recordData" scroll="'scrollH'"></div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

@@ -1,0 +1,234 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>入院录入</h4>
+<div style="background: #fff;" ng-if="generateType == 'entering'">
+    <div class="infi-box-containter infi-record-left-nav">
+        <nav class="infi-lefttab col-xs-2" style="width: 100%;">
+            <ul class="infi-lefttab-ul">
+                <li ng-class="{true:'infi-lefttab-active'}[tab.active]" style="cursor: pointer;" ng-repeat="tab in tabList"  ng-click="leftTabChoice(tab)">
+                    <a href="" ng-bind="tab.label"></a>
+                    <span></span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="infi-third-content">
+        <!--自然信息-->
+        <div ng-show="leftDataType=='nature'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 基本信息
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('nature')">预览</button></div>
+                    <!--<button class="btn infi-btn-linear-green-l" ng-click="showOutput()">预览</button></div>-->
+                    <!--<button class="btn infi-btn-linear-green-l" ng-click="showOutput1('基本信息')">预览</button></div>-->
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <link rel="import" href="../html_hand/jbxx.html?__inline">
+                <!--<link rel="import" href="basic.output.html?__inline">-->
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/jbxx.html?__inline">
+            </div>
+        </div>
+
+        <!--主诉-->
+        <div ng-show="leftDataType=='main'" class="infi-wj-self-box infi-record-content">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 主诉
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('main')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <link rel="import" href="../html_gen/zs.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/zs.html?__inline">
+            </div>
+        </div>
+
+        <!--现病史-->
+        <div ng-show="leftDataType == 'nowDisease'" class="infi-wj-self-box infi-record-content">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 现病史
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('nowDisease')">预览</button>
+                    <!--<button class="btn infi-btn-linear-green-l" ng-click="genxbs()">预览</button>-->
+                    <!--<button class="btn infi-btn-linear-green-l" ng-click="showOutput1('现病史')">预览</button>-->
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/xbs.html?__inline">-->
+                <link rel="import" href="../html_hand/xbs.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/xbs.html?__inline">
+            </div>
+        </div>
+
+        <!--既往史-->
+        <div ng-show="leftDataType == 'always'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 既往史
+                <div style="display:inline-block;float:right;">
+                    <!--<button class="btn infi-btn-linear-default" ng-click="showJwsOutput()">预览</button>-->
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('always')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/jws.html?__inline">-->
+                <link rel="import" href="../html_hand/jws.html?__inline">
+                <!--<link rel="import" href="../html/jws.output.html?__inline">-->
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/jws.html?__inline">
+            </div>
+        </div>
+
+        <!--个人史-->
+        <div ng-show="leftDataType=='personal'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 个人史
+                <div style="display:inline-block;float:right;">
+                    <!--<button class="btn infi-btn-linear-green-l" ng-click="gengrs()">预览</button>-->
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('personal')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/grs.html?__inline">-->
+                <link rel="import" href="../html_hand/grs.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/grs.html?__inline">
+            </div>
+        </div>
+
+        <!--婚育史-->
+        <div ng-show="leftDataType=='Marital'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 婚育史
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('Marital')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/hys.html?__inline">-->
+                <link rel="import" href="../html_hand/hys.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/hys.html?__inline">
+            </div>
+        </div>
+        <!--月经妊娠史-->
+        <div ng-show="leftDataType=='menstruation'" class="infi-wj-self-box infi-record-content">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 月经妊娠史
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('menstruation')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/yjrss.html?__inline">-->
+                <link rel="import" href="../html_hand/yjrss.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/yjrrs.html?__inline">
+            </div>
+        </div>
+        <!--家族史-->
+        <div ng-show="leftDataType=='family'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 家族史
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('family')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <link rel="import" href="../html_hand/jzs.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/jzs.html?__inline">
+            </div>
+        </div>
+
+        <!--体格检查-->
+        <div ng-show="leftDataType=='bodyExam'" class="infi-wj-self-box infi-record-content">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 体格检查
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('bodyExam')">预览</button>
+                </div>
+            </div>
+
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <link rel="import" href="../html_hand/tgjc.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/tgjc.html?__inline">
+            </div>
+        </div>
+
+        <!--专科检查-->
+        <div ng-show="leftDataType=='specialized'" class="infi-wj-self-box infi-record-content">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 专科检查
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="checkOutput()">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-controller="specialityController" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../test/zkjc.html?__inline">-->
+                <!--<link rel="import" href="../html_gen/zkjc.html?__inline">-->
+                <link rel="import" href="../html_hand/zkjc.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/zkjc.html?__inline">
+            </div>
+        </div>
+
+        <!--化验及特殊检查-->
+        <div ng-show="leftDataType=='test'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 化验及特殊检查
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('test')">预览</button>
+                </div>
+            </div>
+            <div  class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <link rel="import" href="../test/hyjtsjc.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/hyjtsjc.html?__inline">
+            </div>
+        </div>
+
+        <!--诊断-->
+        <div ng-show="leftDataType=='diagnosis'" class="infi-wj-self-box infi-record-content ">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 诊断
+                <div style="display:inline-block;float:right;">
+                    <button class="btn infi-btn-linear-green-l" ng-click="preview('diagnosis')">预览</button>
+                </div>
+            </div>
+            <div class="infi-record-content-box" ng-show="!outputText[leftDataType].show">
+                <!--<link rel="import" href="../html_gen/zd.html?__inline">-->
+                <link rel="import" href="../html_hand/zd.html?__inline">
+            </div>
+            <div class="infi-record-content-box" ng-show="outputText[leftDataType].show">
+                <link rel="import" href="../output/zd.html?__inline">
+            </div>
+        </div>
+    </div>
+    <div class='infi-record-input-save'>
+        <button class="btn infi-btn-linear-green-l" ng-click="generateTab('generate')">生成文本</button>
+    </div>
+</div>
+<div style="background: #fff;" ng-if="generateType == 'generate'">
+    <div class="infi-wj-self-box infi-record-content ">
+        <link rel="import" href="../output/generate.text.html?__inline">
+    </div>
+    <div class='infi-record-input-save'>
+        <button class="btn infi-btn-linear-green-l" ng-click="print()">打印</button>
+        <button class="btn infi-btn-linear-green" ng-click="saveRecord()">保存</button>
+        <button class="btn infi-btn-linear-default" ng-click="generateTab('entering')">返回</button>
+    </div>
+    <div sys-tip></div>
+</div>

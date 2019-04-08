@@ -1,0 +1,107 @@
+<style>
+    .dir-nav-container .aaaaaaaaaaaaaaaaaaaaaaaaa tr td{
+        border:1px solid transparent;
+
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa{
+        width:100%;
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa input,.selects{
+        min-width:300px;
+        max-width:400px;
+        display: inline-block;
+    }
+    td > textarea.form-control{
+        width:80%;
+        height:100px;
+        resize:none;
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa tr td:nth-child(1){
+        text-align: right;
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa tr td:nth-child(3){
+        text-align: right;
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa tr:nth-child(1) td:nth-child(1){
+        width:200px;
+    }
+    .aaaaaaaaaaaaaaaaaaaaaaaaa tr:nth-child(1) td:nth-child(3){
+        width:200px;
+    }
+
+</style>
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究 > 课题创建 > 课题基本信息设置</h4>
+<header class="infi-section">
+    <ul class="infi-header-ul">
+        <li class="infi-header-active"><span>1. 课题基本信息设置</span></li>
+        <li><span>2. 课题成员邀请</span></li>
+        <li><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+        <div class="dir-nav-container">
+          <link rel="import" href="topics.basic.form.html?__inline" />
+            <div >
+                <table class=" aaaaaaaaaaaaaaaaaaaaaaaaa table table-bordered">
+                    <tr ng-repeat="form in information">
+                        <td>{{form.name}}</td>
+                        <td colspan="{{form.col}}">
+
+                            <!--不带有时间插件的input-->
+                            <input ng-model="form.value" ng-if="form.name == '课题中文名' || form.name == '课题代码' || form.name == '研究病种' || form.name == '课题负责人' || form.name == '邮箱'" type="text" name="{{form.inputName}}" value="{{form.value}}" class="form-control">
+
+                            <!--带有时间插件的input-->
+                            <input ng-model="form.value" ng-if="form.name == '计划开始时间'" type="text" name="{{form.inputName}}" value="{{form.value}}" class="form-control" ng-click="time(form.inputName)">
+
+                            <!--下拉框-->
+                            <select ng-model="form.value" ng-if="form.name == '课题可见性' || form.name == '课题类型'" name="{{form.inputName}}" class="form-control selects">
+                                <option ng-repeat=" val in form.val" value="{{val.value}}">{{val.name}}</option>
+                            </select>
+                            <select ng-model="form.value1" ng-if="form.name == '课题类型'" class="form-control selects">
+                                <option ng-repeat=" val in form.val1"  value="{{val.value}}">{{val.name}}</option>
+                            </select>
+
+                            <!--文本-->
+                            <textarea ng-model="form.value" ng-if="form.name == '立项依据' || form.name == '科研意义与创新点' || form.name == '研究方案' || form.name == '备注' " name="{{form.inputName}}" value="{{form.value}}" class="form-control"></textarea>
+
+                            <!--文件上传-->
+                            <input multiple="true" ng-if="form.name == '上传附件'" type="file" style="border:1px solid #ccc;width:100px;" ngf-select="onFileSelect($files,input)">
+                            <!--<button ng-if="form.name == '上传附件'" class="btn btn-sm">上传</button>-->
+
+                        </td>
+                        <td ng-if="form.col !== 3 ">{{form.name1}}:</td>
+                        <td ng-if="form.col !== 3 ">
+
+                            <!--不带有时间插件的input-->
+                            <input ng-if="form.name1 == '课题英文名' || form.name1 == '课题编号' || form.name1 == '联系电话'" type="text" name="{{form.inputName1}}" ng-model="form.value1" value="{{form.value1}}" class="form-control">
+
+                            <!--带有时间插件的input-->
+                            <input ng-if="form.name1 == '计划结束时间'" type="text" name="{{form.inputName1}}" ng-model="form.value1" value="{{form.value1}}" class="form-control" ng-click="time(form.inputName1)">
+
+                            <!--ng-click="time('time')" 时间控件-->
+                            <select ng-model="form.value1" ng-if="form.name1 == '中心设置'" name="{{form.inputName1}}" class="form-control selects">
+                                <option value="{{val.value}}" ng-repeat=" val in form.val1">{{val.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <button class="btn infi-btn-linear-green-l" ng-click="topicsNext()">下一步</button>
+</div>
+
+<div class="modal fade"  id="infi-collection">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">筛选名称</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

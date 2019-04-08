@@ -1,0 +1,26 @@
+<div>
+    <crf-input-text input="input" ng-if="input.valueType=='input'"></crf-input-text>
+    <crf-input-radio input="input" parent="parent"  ng-if="input.valueType=='radio'"></crf-input-radio>
+    <crf-input-checkbox input="input" parent="parent"  ng-if="input.valueType=='checkbox'"></crf-input-checkbox>
+    <crf-input-radio-extend input="input" parent="parent"  ng-if="input.valueType=='radio_input'"></crf-input-radio-extend>
+    <crf-input-checkbox-extend input="input" parent="parent" ng-if="input.valueType=='checkbox_input'"></crf-input-checkbox-extend>
+    <crf-input-textarea input="input" ng-if="input.valueType=='textarea'"></crf-input-textarea>
+    <crf-input-date input="input" ng-if="input.valueType == 'datetime'"></crf-input-date>
+    <crf-input-number input="input" ng-if="input.valueType=='数值输入-单值'"></crf-input-number>
+    <crf-input-text-double input="input" ng-if="input.valueType=='文本输入-双值'"></crf-input-text-double>
+    <crf-input-switch input="input" parent="parent"  ng-if="input.valueType=='开关'"></crf-input-switch>
+    <crf-input-half-textarea input="input" ng-if="input.valueType=='中文本输入'"></crf-input-half-textarea>
+    <crf-input-file-template input="input" ng-if="input.valueType.indexOf('文件')>-1"></crf-input-file-template>
+    <crf-input-select input="input" ng-if="input.valueType.indexOf('下拉菜单')>-1"></crf-input-select>
+    <crf-input-scale input="input" ng-if="input.valueType=='量表'" parent="parent"></crf-input-scale>
+
+    <ul ng-if="input.valueType=='虚拟菜单'" class="infi-form-group">
+        <li ng-repeat="groupInput in input.children">
+            <crf-input-template input="groupInput" parent="parent"></crf-input-template>
+        </li>
+        <li ng-if="input.group && input.group!== null">
+            <div add-group input="input" parent="parent"></div>
+        </li>
+    </ul>
+
+</div>

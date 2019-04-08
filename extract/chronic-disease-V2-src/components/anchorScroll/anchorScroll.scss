@@ -1,0 +1,32 @@
+$main-opt-color: #007fff;
+
+.anchorScroll-component {
+  .nav-list-wrapper {
+    background-color: #fff;
+    .nav-item-wrapper {
+      padding: 10px 0 5px 0;
+      padding-left: 25px;
+      border-left: 2px solid transparent;
+      list-style: none;
+      font-size: 16px;
+      -webkit-transition: border .3s ease-in-out;
+      -o-transition: border .3s ease-in-out;
+      transition: border .3s ease-in-out;
+      &.active {
+        border-left-color: $main-opt-color;
+      }
+
+      .nav-item-txt {
+        -webkit-transition: color .3s ease-in-out;
+        -o-transition: color .3s ease-in-out;
+        transition: color .3s ease-in-out;
+        &.active {
+          font-weight: 600;
+          color: $main-opt-color;
+        }
+      }
+    }
+  }
+
+  
+}

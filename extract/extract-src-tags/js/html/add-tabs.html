@@ -1,0 +1,23 @@
+<div class="infi-choser-tab">
+    <!--取数多标签显示-->
+    <!--点击可以出自己的tab标签-->
+    <ul class="nav nav-pills infi-second-level" >
+        <li style="line-height: 0px;" ng-repeat="entity in tabs" ng-class="{true:'selected text-danger'}[entity.$active]"
+            ng-show="($index<=20||contents.showAll)">
+            <label class="pointer" style="line-height: 10px;">
+                <span ng-bind="entity.tagClassName"  ng-class="{true:'text-danger'}[entity.$submit]" ng-click="showTabDetail(entity,tabs)"></span>
+            </label>
+        </li>
+        <!--展开收起按钮-->
+        <li style="margin-top: 4px;cursor: pointer;line-height: 0px;" ng-show="tabs.length > 20">
+            <i title="展开" class="glyphicon glyphicon-circle-arrow-down" ng-show="!contents.showAll" ng-click="showTabsAll('down')"></i>
+            <i title="收起" class="glyphicon glyphicon-circle-arrow-up" ng-show="contents.showAll" ng-click="showTabsAll('up')"></i>
+        </li>
+    </ul>
+    <!--多层级的递归调用-->
+    <div>
+        <div class="infi-second-level" ng-repeat="child in tabs" ng-if="child.children&&child.$active&&child.children.length > 0">
+            <div extract-tab tabs="child.children" contents="child" caterage="caterage" update-opt="updateOpt(caterage,parent)"></div>
+        </div>
+    </div>
+</div>

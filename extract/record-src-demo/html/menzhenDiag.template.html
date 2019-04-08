@@ -1,0 +1,60 @@
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe62f;</i>诊断信息
+    </div>
+    <div class="infi-wj-part">
+        <table class="infi-wj-table">
+            <thead>
+            <tr>
+                <th style="width:13%">
+                    <p>诊断类型</p>
+                </th>
+                <th style="width: 11%;">
+                    <p>诊断子类型</p>
+                </th>
+                <th style="width:8%">
+                    <p>诊断序号</p>
+                </th>
+                <th style="width:38%">
+                    <p>诊断描述</p>
+                </th>
+                <th style="width:16%">
+                    <p>确诊日期</p>
+                </th>
+                <th style="width:6%">
+                    <p>天数</p>
+                </th>
+                <th style="width:6%">
+                    <p>结果</p>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="opt in outpatientDiag">
+                    <td>
+                        <p>{{opt.diag_type|changeNULL}}</p>
+                    </td>
+                    <td>
+                        <p>-</p>
+                    </td>
+                    <td>
+                        <p>-</p>
+                    </td>
+                    <td>
+                        <p>{{opt.diagnosis_desc|changeNULL}}</p>
+                    </td>
+                    <td>
+                        <p>{{opt.diagnosis_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                    </td>
+                    <td>
+                        <p>-</p>
+                    </td>
+                    <td>
+                        <p>-</p>
+                    </td>
+                </tr>
+                <tr ng-if="outpatientDiag.length == 0"><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

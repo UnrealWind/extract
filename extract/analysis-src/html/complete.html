@@ -1,0 +1,44 @@
+<div class="infi-box" style="margin-top: 20px;">
+    <h4 class="infi-title">已有数据</h4>
+    <div class="infi-box-containter">
+        <div>
+            <table class="table infi-table">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>保存时间</th>
+                    <th>数据源</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody ng-if="hasData">
+                <tr ng-repeat="entitys in filterData"  style="height: 40px">
+                    <td>
+                        <span style="display: inline-block;overflow: hidden;word-break: keep-all;white-space: nowrap;text-overflow: ellipsis;width: 200px;" title="{{entitys.name}}" ng-bind="entitys.name"></span>
+                    </td>
+                    <td><span>{{entitys.saveTime}}</span></td>
+                    <td><span>{{entitys.analyzeName}}</span></td>
+                    <td>
+                        <span class="cursorPointer" ng-click="toView(entitys.id)">查看 </span>|
+                        <span class="cursorPointer" ng-click="delectData(entitys.id)">删除</span>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody ng-if="!hasData">
+                <tr>
+                    <td colspan="6">
+                        <p  class="bg-danger" style="line-height: 50px;">请添加新增筛选数据</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--列表分页-->
+        <div class="infi-page">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+            </uib-pagination>
+        </div>
+    </div>
+</div>

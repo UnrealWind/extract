@@ -1,0 +1,27 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>新建规则</h4>
+<div navi-header header-data="headerData" col="col" step="step" ng-if="headerData"></div>
+<!--保存的规则的详情-->
+<div task-rule data-ng-if="ruleDetail" detail="ruleDetail"></div>
+
+<div class="infi-box">
+    <div record-extracts summary-data="summaryData" ng-if="summaryData"></div>
+    <div class="row">
+        <div>
+            <!--左侧tab筛选LP-->
+            <div class="col-xs-2" choser-left-tab ng-if="summaryData"></div>
+            <!--<div left-tab></div>-->
+            <div class=" col-xs-10" extract-choser data-ng-if="summaryData&&allData&&(!isBack||mappingData)"
+                 mapping-data="mappingData" summary-data="summaryData" all-data="allData" used="'screen'"></div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <a href="#/select-rule"><button ng-show="detailData.type" class="btn infi-btn-linear-green-l">上一步，规则选择</button></a>
+    <button class="btn infi-btn-linear-green-l" ng-click="getTransmitData()">下一步，设置筛选逻辑</button>
+</div>
+
+<!--错误提示-->
+<div sys-tip></div>
+
+<!--显示数据加载中提示-->
+<div show-load-tip ng-show="!summaryData.showLoad"></div>

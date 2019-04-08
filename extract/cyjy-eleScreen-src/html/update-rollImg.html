@@ -1,0 +1,25 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>新增轮播图</h4>
+<div class="infi-box disease-box">
+    <div class="form-group form-inline">
+        <label for="smoke">发布位置：</label>
+        <select name="smoke" ng-model="rollImg.location">
+            <option value = '1'>轮播图</option>
+        </select>
+        <label for="level">权重：</label>
+        <input name="level" class="form-control" type="text" ng-model="rollImg.weight">
+    </div>
+    <div class="form-group">
+        <label for="title" class="">请输入图片标题：</label>
+        <input name="title" class="form-control fix-input" style="width:75%;" type="text" ng-model="rollImg.title">
+    </div>
+    <div class="form-group form-inline">
+        <label>上传图片：</label>
+        <input class="updateImg fix-input" type="file" class="fix-input" onchange="angular.element(this).scope().upadateImg(this)">
+    </div>
+
+    <div class="infi-btn-box">
+        <a class="btn btn-success" href="javascript:;" ng-click="update()">确定</a>
+        <a class="btn btn-default" href="#/management-index">取消</a>
+    </div>
+
+</div>

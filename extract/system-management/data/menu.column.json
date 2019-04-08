@@ -1,0 +1,16 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"菜单名称",
+      "name":"name"
+    },{
+      "label":"链接",
+      "name":"href"
+    },{
+      "label":"图标",
+      "name":"icon"
+    }
+  ]
+}

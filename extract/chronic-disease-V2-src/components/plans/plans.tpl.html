@@ -1,0 +1,144 @@
+<div class="plans-component">
+  <link rel="stylesheet" type="text/css" href="./plans.scss">
+  <div class="panel panel-default single-component"
+       ng-repeat="planItem in $ctrl.planCollect track by $index">
+    <div class="panel-heading">
+      <toggle-collapse>
+        <h4 class="panel-title cursor J-collpase-title"
+            id="{{planItem.type + 'head'}}"
+            data-toggle="collapse" 
+            data-target="#{{planItem.type + planItem.templateId}}" 
+            aria-expanded="true" 
+            aria-controls="{{planItem.type + planItem.templateId}}">
+            <span><i class="toggle-icon glyphicon {{classes[defaultStatus]}}"></i><span ng-bind="planItem.name"></span></span>
+        </h4>
+      </toggle-collapse>
+    </div>
+    <div id="{{planItem.type + planItem.templateId}}" 
+         class="panel-collapse collapse in J-collpase">
+      <div class="panel-body">
+        <!-- 方案内容 -->
+        <div class="plan-sec">
+          <h5 class="sec-title"
+              ng-class="{true: 'followUp-title'}[planItem.type == 'interview']">
+            <div class="title-txt">
+              <i class="glyphicon glyphicon-book title-txt-icon"></i> 方案内容
+            </div>
+
+            <div class="title-opt">
+              <!-- 随访方案个性化操作 -->
+              <button class="btn btn-primary btn-sm"
+                      ng-if="planItem.type == 'interview'"
+                      ng-init="$ctrl.interviewInd = $index"
+                      title="新建随访"
+                      data-toggle="modal" 
+                      data-target="#create-followUp-Modal">新建</button>
+            </div>
+          </h5>
+          <!-- 单行 -->
+          <single-line class="sec-item"
+                       ng-if="planItem.schemeTemplate.schemeMaterials.length > 0"
+                       ng-repeat="singleItem in planItem.schemeTemplate.schemeMaterials track by $index" 
+                       whole-item="singleItem"
+                       single-item="singleItem"
+                       pre-map-level="{{$ctrl.currGroup.type}}.{{planItem.type}}.content"></single-line>
+          <!-- 暂无数据 -->
+          <p class="bg-warning text-center plan-null-warning"
+             ng-if="planItem.schemeTemplate.schemeMaterials.length == 0">暂无数据</p>
+        </div>
+
+        <!-- 方案执行 -->
+        <div class="plan-sec">
+          <h5 class="sec-title"> 
+            <div class="title-txt">
+              <i class="glyphicon glyphicon-retweet title-txt-icon"></i> 方案执行
+            </div>
+          </h5>
+
+          <!-- 缓存当前的 healthPlans，为保存新建随访接口用 -->
+          <div cachehealthplan
+               ng-if="planItem.type == 'interview'"
+               health-plan="planItem.healthPlans"></div>
+
+          <!-- 分页数据 -->
+          <plan-exe-split-page curr-plan="planItem"></plan-exe-split-page>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="{{planItem.type + 'bottom'}}"></div>
+
+  </div>
+  
+  <!-- 新建随访模态框 -->
+  <div id="create-followUp-Modal" class="modal fade" role="dialog" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">新建随访</h4>
+        </div>
+        <div class="modal-body container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <form novalidate
+                    name="createFollowUpForm" 
+                    id="create-followUp-form" 
+                    class="form-horizontal createFollowUpForm">
+                <!-- 随访名称 -->
+                <div class="form-group">
+                  <label for="new-followUp-name" class="col-sm-3 control-label">随访名称：</label>
+                  <div class="col-sm-9 form-group"
+                       ng-class="{'has-error' : createFollowUpForm.followUpName.$dirty && createFollowUpForm.followUpName.$error.required}">
+                    <input type="text"
+                           ng-model="$ctrl.createFollowUpAbt.formDataBind.name"
+                           ng-model-options="{debounce: 250}"
+                           class="form-control" 
+                           id="new-followUp-name" 
+                           name="followUpName"
+                           placeholder="请输入随访名称"
+                           required>
+                    <span class="help-block"
+                          ng-show="createFollowUpForm.followUpName.$dirty && createFollowUpForm.followUpName.$error.required">此项为必填</span>
+                  </div>
+                </div>
+                <!-- 随访时间 -->
+                <div class="form-group">
+                  <label for="new-followUp-createTime" class="col-sm-3 control-label">随访时间：</label>
+                  <div class="col-sm-9 form-group"
+                       ng-class="{'has-error' : createFollowUpForm.followUpCreateTime.$dirty && createFollowUpForm.followUpCreateTime.$error.required}">
+                    <input type="text"
+                           ipt-date-range
+                           opts="$ctrl.dateRangeAbt.config"
+                           range-bind="$ctrl.createFollowUpAbt.formDataBind.createTime"
+                           ng-model-options="{debounce: 250}"
+                           class="form-control cursor" 
+                           id="new-followUp-createTime"
+                           name="followUpCreateTime"
+                           readonly
+                           required>
+                    <span class="help-block"
+                          ng-show="createFollowUpForm.followUpCreateTime.$dirty && createFollowUpForm.followUpCreateTime.$error.required">此项为必填</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <input type="submit" 
+                 class="btn btn-primary"
+                 value="新建"
+                 ng-disabled="createFollowUpForm.$invalid"
+                 ng-click="$ctrl.createFollowUpAbt.createNewFollowUp()"></input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- toast 通知 -->
+<toast-pop totast="$ctrl.totast.mainBody" ng-if="$ctrl.totast.mainBody"></toast-pop>

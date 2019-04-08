@@ -1,0 +1,120 @@
+<h4 class="infi-title" ng-if="management"><i class="glyphicon glyphicon-globe"></i>课题研究 > {{navTopicName}} > 课题成员邀请</h4>
+<h4 class="infi-title" ng-if="!management"><i class="glyphicon glyphicon-globe"></i>课题研究 > {{navTopicName}} > 课题成员邀请</h4>
+<header class="infi-section"  ng-if="management" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li><span>1. 课题基本信息设置</span></li>
+        <li class="infi-header-active"><span>2. 课题成员邀请</span></li>
+        <li><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <h4>已邀请成员列表
+        <span ng-if="!noAuthority" class="CRF-details-button" style="position: absolute;top: 15px;right: 20px;">
+            <button type="button" class="btn btn-default" ng-click="inviteDelete()">删除</button>
+            <button type="button" class="btn btn-primary" ng-click="inviteModals()">新增邀请</button>
+        </span>
+    </h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <!--table-->
+            <div infi-table columns="listColumn" select-main="selectMain" content="listData" table-check-box='tableCheckBox' update-page="getList(page)" opts="tableOpt" btn-callback="pageFn(entity,type)" manager="manager"></div>
+        </div>
+    </div>
+</div>
+<div class="topics-button" ng-if="management">
+    
+    <button class="btn infi-btn-linear-green-l" ng-click="invitePrevious()">上一步</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="inviteNext()">下一步</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="inviteNext(undefined,'save')">保存</button>
+</div>
+
+<div class="modal fade"  id="invite-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>邀请成功</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade"  id="invites-modal" >
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择用户</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="floatright">
+                    <li class="input-group floatright" style="width:500px;">
+                        <input type="text" class="form-control input-lg" value="inviteKeyword" ng-model="inviteKeyword" style="height:34px;"><span class="input-group-addon btn btn-primary" ng-click="inviteSearch()">搜索</span>
+                    </li>
+                </ul>
+                <div infi-table columns="listColumns" select-main="selectMain" content="listDatas" table-check-box='tableCheckBox' opts="tableOpts" update-page="getLists(page)" btn-callback="pageFns(entity,type)"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="inviteModal()">邀请</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--权限模态框-->
+<div class="modal fade"  id="invites-management" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">中心成员管理</h4>
+            </div>
+            <div class="modal-body">
+                <div class="infi-box">
+                    <h4>成员基本信息</h4>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <table >
+                                <tr ng-repeat="form in information" class="row" >
+                                    <td class="col-xs-2" title="{{form.name}}" style="text-align: right"><span>{{form.name}}</span></td>
+                                    <td class="col-xs-4" title="{{form.value}}" style="width: 172px;display: block;overflow: hidden;word-break: keep-all;white-space: nowrap;text-overflow: ellipsis;">{{form.value}}</td>
+                                    <td class="col-xs-3" title="{{form.names}}">{{form.names}}</td>
+                                    <td class="col-xs-4" title="{{form.values}}">{{form.values}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="infi-box">
+                    <h4>权限设置</h4>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input id="topicsAdmin" type="radio" name="Identity" value="admin"  ng-model="study">
+                                    <label for="topicsAdmin">管理员</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input id="topicsStudy" type="radio" name="Identity"  value="study" ng-checked="study" ng-model="study">
+                                    <label for="topicsStudy">科研人员</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="selectIdentity()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div general-prompt></div>

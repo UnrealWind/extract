@@ -1,0 +1,14 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {"name":"PATIENT_ID","label":"患者ID"},
+    {"name":"NAME","label":"姓名"},
+    {"name":"SEX","label":"性别"},
+    {"name":"IDENTITY","label":"病人来源"},
+    {"name":"CLINIC_TYPE","label":"挂号类型"},
+    {"name":"VISIT_SPECIAL_CLINIC","label":"挂号科室"},
+    {"name":"VISIT_DATE","label":"来院时间"},
+    {"name":"DIAG_DESC","label":"疾病"}
+  ]
+}

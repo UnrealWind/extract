@@ -1,0 +1,26 @@
+{
+  "notes":"取数-审核列表和列表表头json",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"任务名称",
+      "name":"taskName"
+    },{
+      "label":"创建人",
+      "name":"createUser"
+    },{
+      "label":"来源",
+      "name":"resource"
+    },{
+      "label":"病例数量",
+      "name":"caseNumber"
+    },{
+      "label":"申请日期",
+      "name":"createTime"
+    },{
+      "label":"任务状态",
+      "name":"taskStatusLabel"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<div class="scale-content">
+  <div class="modal fade" id="{{input.name}}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- 内容头 -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{{modelData.name}}</h4>
+        </div>
+        <!-- 内容体 -->
+        <div class="modal-body ques-modal">
+          <div class="modal-bd-left">
+            <div class="panel-group">
+              <div class="panel panel-default"
+                   ng-repeat="sec in modelData.questionList">
+                <!-- sec title -->
+                <div class="panel-heading" role="tab" id="{{sec.value}}">
+                  <h4 class="panel-title">
+                    <button type="button"
+                       class="reset-btn panel-collapse-btn"
+                       data-toggle="collapse" 
+                       data-target="{{'#' + sec.value + '_' + sec.id}}" 
+                       aria-controls="{{sec.value + '_' + sec.id}}">
+                      {{sec.name}}
+                    </button>
+  
+                    <span class="caret"></span>
+                  </h4>
+                </div>
+                <!-- sec body -->
+                <div id="{{sec.value + '_' + sec.id}}" 
+                     class="panel-collapse collapse in"
+                     ng-class="{true: 'in'}[$first]">
+                  <!-- sec content -->
+                  <div class="panel-body">
+                    <!-- 量表选项具体内容递归模板 -->
+                    <recur-scale-content ng-if="sec.childs && 0 < sec.childs.length" sec-data="sec.childs"></recur-scale-content>
+                    <recur-scale-content ng-if="!sec.childs" sec-data="[sec]"></recur-scale-content>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 内容脚 -->
+        <div class="modal-footer ques-modal-footer">
+          <!-- 计算成功 -->
+          <blockquote class="blockquote-reverse"
+                      ng-if="['showRst'].indexOf(calcRst.currState) >= 0">
+            <span class="rst-item" ng-if="calcRst.rst.score !== null"><i class="rst-label score">分数：</i><i ng-bind="calcRst.rst.score"></i></span>
+            <span class="rst-item"><i class="rst-label rst-txt">结果：</i><i ng-bind="calcRst.rst.resultLevel"></i></span>
+          </blockquote>
+
+          <!-- 计算失败 -->
+          <blockquote class="blockquote-reverse"
+                      ng-if="['showErr'].indexOf(calcRst.currState) >= 0">
+            <span class="text-danger">抱歉, 计算失败, 请重新尝试!</span>
+          </blockquote>          
+
+          <button type="button" class="btn btn-default" 
+                  data-dismiss="modal"
+                  ng-if="['init'].indexOf(calcRst.currState) >= 0">取消</button>
+
+          <button type="button" 
+                  class="btn btn-success"
+                  ng-if="['calclating'].indexOf(calcRst.currState) >= 0">计算中...</button>
+
+          <button type="button" 
+                  class="btn btn-danger"
+                  ng-if="['showRst'].indexOf(calcRst.currState) >= 0"
+                  ng-click="retest()">清空当前</button>
+
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-if="['showRst'].indexOf(calcRst.currState) >= 0"
+                  ng-click="saveScale()">保存结果</button>
+
+          <button type="button" 
+                  class="btn btn-success"
+                  ng-if="['init', 'showRst', 'showErr'].indexOf(calcRst.currState) >= 0"
+                  ng-click="calcScale()">计算结果</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

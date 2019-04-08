@@ -1,0 +1,62 @@
+<div style="overflow: hidden">
+    <div style="width: 80%;display: inline-block; margin: 10px 1%;">
+        <ul class="list-unstyled infi-wj-exam-ul">
+            <li ng-repeat="(key,time) in examInfoByTimes">
+              <span ng-click="showExamInfo(time,$index)"
+                    ng-class="{true:'infi-btn-linear-green-l'}[$index==currentExamInfoByTimeIndex]">第{{$index+1}}次{{key|date: 'yyyy-MM-dd HH:mm:ss'|formatDates}}</span>
+            </li>
+        </ul>
+        <!--<span ng-repeat="data in currentExamInfoByTime" ng-click="showExamInfoTrend(data.report_item_name)">{{data.report_item_name}}</span><div>-->
+        <table class="table table-bordered" ng-show="currentExamInfoByTime.length>0">
+            <thead>
+            <tr>
+                <td>项目名称</td>
+                <td>结果</td>
+                <td>是否正常</td>
+                <td>单位</td>
+                <td>正常参考值</td>
+                <td>申请日期</td>
+                <td>报告日期</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="examInfo in currentExamInfoByTime"
+                ng-class="{true:'infi-exam-info'}[examInfo.active]" style="cursor: pointer;" ng-click="showExamInfoTrend(examInfo,examInfo.report_item_name)">
+                <td>
+                    <span ng-bind="examInfo.report_item_name"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.result"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.abnormal_indicator"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.units"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.prin_cont"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.requested_date_time|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                </td>
+                <td>
+                    <span ng-bind="examInfo.results_rpt_date_time|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <div ng-show="examInfoByTimes" id="testChart" style="height: 300px;"></div>
+        </div>
+    </div>
+    <div style="display: inline-block; width: 18%;float: right; margin-top: 20px;">
+        <ul>
+            <li ng-repeat="oblist in oblist" style="padding: 10px;">
+                <a ng-class="{true:'infi-wj-rt-nav'}[oblist.active]">
+                    <span style="cursor: pointer" ng-click="selectType(oblist,hospitalDate)" ng-bind="oblist.test_class"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

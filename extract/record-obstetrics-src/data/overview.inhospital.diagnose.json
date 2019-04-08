@@ -1,0 +1,30 @@
+[
+  [
+    {
+      "label":"诊断类型",
+      "name":"diagnosis.diag_type",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"诊断子类型",
+      "name":"diagnosis.diag_type_sub",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"诊断描述",
+      "name":"diagnosis.diagnosis_desc",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"诊断日期",
+      "name":"diagnosis.diagnosis_date",
+      "type":"view"
+    }
+  ]
+]

@@ -1,0 +1,228 @@
+{
+  "data": [
+    {
+      "label": "2018-01-01 门诊 心血管科室",
+      "type":"menzhen",
+      "template": "检查",
+      "children":[
+        {
+          "label": "基本信息",
+          "template":null,
+          "id":"basic"
+        },{
+          "label": "诊断信息",
+          "template":null,
+          "id":"diag"
+        },{
+          "label": "药品信息",
+          "template":null,
+          "id":"drug"
+        },{
+          "label": "检查",
+          "template":"检查",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 心电图",
+              "template":"检查"
+            }
+          ]
+        },
+        {
+          "label": "检验",
+          "template":"检验",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 血常规",
+              "template":"检验"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "2018-01-01 住院 心血管科室",
+      "template":"诊疗记录",
+      "children": [
+        {
+          "label": "基本信息",
+          "template":null,
+          "id":"basic"
+        },
+        {
+          "label": "诊疗记录",
+          "template":"诊疗记录",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01",
+              "template":"诊疗记录"
+            }
+          ]
+        },
+        {
+          "label": "医嘱",
+          "template":"医嘱",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01",
+              "template":"医嘱"
+            }
+          ]
+        },
+        {
+          "label": "检查",
+          "template":"检查",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 心电图",
+              "template":"检查"
+            }
+          ]
+        },
+        {
+          "label": "检验",
+          "template":"检验",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 血常规",
+              "template":"检验"
+            }
+          ]
+        },
+        {
+          "label": "手术",
+          "template":"手术",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01",
+              "template":"手术"
+            }
+          ]
+        },
+        {
+          "label": "电子病历",
+          "template":"首次病程",
+          "id":"template",
+          "children": [
+            {
+              "label": "01-01 首次病程",
+              "template":"首次病程"
+            },
+            {
+              "label": "01-01 入院记录",
+              "template":"入院记录"
+            },
+            {
+              "label": "01-01 查房记录1",
+              "template":"查房记录1"
+            },
+            {
+              "label": "01-01 查房记录2",
+              "template":"查房记录2"
+            },
+            {
+              "label": "01-01 查房记录3",
+              "template":"查房记录3"
+            },
+            {
+              "label": "01-01 术前小结",
+              "template":"术前小结"
+            },
+            {
+              "label": "01-01 手术记录",
+              "template":"手术"
+            },
+            {
+              "label": "01-01 术后首次病程",
+              "template":"术后首次病程"
+            },
+            {
+              "label": "01-01 出院记录",
+              "template":"出院记录"
+            }
+          ]
+        }
+      ],
+      "type":"zhuyuan"
+    },
+    {
+      "label": "2018-01-01 体检 慈宁机构",
+      "template": "检查",
+      "type":"tijian",
+      "children":[
+        {
+          "label": "整体报告",
+          "template":null,
+          "id":"basic"
+        },{
+          "label": "分科结果",
+          "template":null,
+          "children": [
+            {
+              "label": "一般情况",
+              "template":null,
+              "id":"generalSituation"
+            },
+            {
+              "label": "普通外科",
+              "template":null,
+              "id":"generalSurgery"
+            },
+            {
+              "label": "泌尿外科",
+              "template":null,
+              "id":"urologySurgery"
+            },
+            {
+              "label": "骨科",
+              "template":null,
+              "id":"orthopaedics"
+            },
+            {
+              "label": "眼科",
+              "template":null,
+              "id":"ophthalmology"
+            },
+            {
+              "label": "耳鼻喉科",
+              "template":null,
+              "id":"ent"
+            },
+            {
+              "label": "主诉（心内）",
+              "template":null,
+              "id":"mainComplaint"
+            }
+          ]
+        },{
+          "label": "检查",
+          "template":"检查",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 心电图",
+              "template":"检查"
+            }
+          ]
+        },{
+          "label": "检验",
+          "template":"检验",
+          "id":"template",
+          "children": [
+            {
+              "label": "2018-01-01 血常规",
+              "template":"手术"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "ok"
+}

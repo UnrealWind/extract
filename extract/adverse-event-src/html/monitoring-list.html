@@ -1,0 +1,83 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>患者列表</h4>
+<div class="infi-box">
+    <div>
+        <ul class="ul-float-left ul-li-4">
+            <li class="infi-adverse-screen">
+                <label>患者:</label>
+                <input class="form-control" ng-model="screenConditions.search"/>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>临床:</label>
+                <select class="form-control">
+                    <option value="全院">全院</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>科室:</label>
+                <select ng-model="screenConditions.deptId.value" class="form-control" ng-change="changeDept(screenConditions.deptId.value)">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.deptId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>病区:</label>
+                <select ng-model="screenConditions.wardId.value" class="form-control">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.wardId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+        </ul>
+        <ul class="ul-float-left ul-li-4">
+            <li class="infi-adverse-screen">
+                <label>时间:</label>
+                <input class="form-control" name="daterange" ng-model="screenConditions.time"/>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>事件级别:</label>
+                <select ng-model="screenConditions.eventType.value" class="form-control" ng-change="changeEvent(screenConditions.eventType.value,'event')">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.eventType.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>一级事件:</label>
+                <select ng-model="screenConditions.firstEvent.value" class="form-control" ng-change="changeEvent(screenConditions.firstEvent.value,'first')">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.firstEvent.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>二级事件:</label>
+                <select ng-model="screenConditions.secondEvent.value" class="form-control">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.secondEvent.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+        </ul>
+        <ul class="ul-float-left ul-li-4">
+            <li class="infi-adverse-screen">
+                <label>患者年龄:</label>
+                <input class="form-control infi-screen-section" ng-model="screenConditions.startAge"/>～
+                <input class="form-control infi-screen-section" ng-model="screenConditions.endAge"/>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>性别:</label>
+                <select ng-model="screenConditions.sex.value" class="form-control">
+                    <option value=""></option>
+                    <option ng-repeat="option in screenConditions.sex.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <button class="btn infi-btn-linear-green-l" ng-click="updatePage(SYS.DEFAULT_PAGE_NUMBER)">查询</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="infi-box">
+    <div class="infi-adverse-title-box">
+        <h4>患者列表</h4>
+        <hr />
+    </div>
+    <div infi-table columns="columns" content="content" opts="opts" data-ng-if="content"
+         btn-callback="btnBack(entity,type)" update-page="updatePage(page)"></div>
+</div>

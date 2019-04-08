@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人智能画像</title>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<link rel="stylesheet" type="text/css" href="../plugin/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../styles/usual.css">
+	<link rel="stylesheet" type="text/css" href="../styles/util.css">
+	<link rel="stylesheet" type="text/css" href="../styles/global.css">
+	<script type="text/javascript" src="../plugin/esl.js"></script>
+	<script type="text/javascript" src="../plugin/jquery/jquery-2.2.3.min.js"></script>
+
+	<script type="text/javascript">
+		require.config({
+			paths: {
+
+		    },
+			packages : [ {
+					name: 'echarts',
+					location:'../plugin/echarts-2.2.7/src',
+					//location:'../plugin/echarts-2.2.7/src',
+					main: 'echarts'
+				},{
+					name: 'zrender',
+					location:'../plugin/zrender-2.1.1/src',
+					//location:'../plugin/zrender-master/src',
+					main: 'zrender'
+				}
+			]
+		});
+
+		$(document).ready(function(){
+			var Init = function (){
+				
+			}
+
+			Init.prototype = {
+				bindInitEvent: function(){
+					this.controlPage();
+					this.hideTr();
+					this.showTr();
+					this.drawChart();
+					this.changeTab();
+				},
+				controlPage:function(){
+
+					/*list 页面控制动作*/
+					$('.content-detail').hide();
+					$('.details').click(function(){
+						$(this).parents('.infi-content-right').hide();
+						$(this).parents('.infi-content-right').siblings('.infi-content-right').show();
+					})
+				},
+				hideTr:function(){
+
+					/*详情页动作*/
+					$('.content-detail .table-box').each(function(i,n){
+						if($(n).attr('mark')){
+							$(n).find('tbody tr').each(function(iy,ny){
+								iy>$(n).attr('mark')-1?$(ny).hide():undefined;
+							})
+						}
+					})
+				},
+				showTr:function(){
+					var that = this;
+					$('.more a').click(function(){
+						if($(this).text() === '更多'){
+							$(this).text('收起');
+							$(this).parents('.table-box').find('tr').each(function(i,n){
+								$(n).show();
+							})
+						}else {
+							$(this).text('更多');
+							that.hideTr();
+						}
+						
+					})
+				},
+
+				changeTab: function(){
+					var that = this;
+					$('.nav-tabs li').click(function(){
+						var opt = null;
+						$('.red').removeClass('red');
+					    $('.orange').removeClass('orange');
+
+						$('.nav-tabs li').removeClass('active');
+						$(this).addClass('active');
+						var mark = $(this).attr('mark');
+
+						$('.tab').hide();
+						$('.tab'+mark).show();
+						
+						if(mark == 1){
+							opt = {
+							    title : {
+							        text : '分析图',
+							        subtext: '王**',
+							        x:'center'
+							    },
+							    tooltip : {
+							        trigger: 'item',
+      								formatter: function(data){
+							        	return data.data.discribe;
+							        }
+
+							    },
+							    /*toolbox: {
+							        show : true,
+							        orient : 'vertical',
+							        x: 'right',
+							        y: 'center',
+							        feature : {
+							            mark : {show: true},
+							            dataView : {show: true, readOnly: false},
+							            restore : {show: true},
+							            saveAsImage : {show: true}
+							        }
+							    },*/
+							    dataRange: {
+							    	show:false,
+							        min: 0,
+							        max: 100,
+							        x: 'center',
+							        y: 'center',
+							        tdext:['High','Low'],
+							        calculable : true,
+							        itemHeight:30,
+							        color: ['#F33','orange','#0f0']
+							    },
+							    series : [
+							        {
+							            name: '',
+							            type: 'map',
+							            mapType: 'bodyMale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'left'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90,discribe:'桥脑脑梗死'},
+							                {name: '颈部', value: 90,discribe:'双侧颈动脉内膜增厚……'},
+							                {name: '胸部', value: 90,discribe:'陈旧性前壁心肌梗死'},
+							                {name: '腹部', value: 80,discribe:'肝左叶囊肿5.5MM……'},
+							                {name: '生殖', value: 25,discribe:'无'},
+							                {name: '上肢', value: 25,discribe:'无'},
+							                {name: '下肢', value: 25,discribe:'无'}
+							            ],
+							            textFixed : {
+							                '上肢' : [-60, 0]
+							            },
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[138, 126]}
+							                ]
+							            }/*,这个是那个不冷不冷闪瞎眼的线，
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'男',geoCoord:[138, 126]}, 
+							                        {name:'女',value:90,geoCoord:[268, 56]}
+							                    ]
+							                ]
+							            }*/
+							        }/*,
+							        {
+							            name: '人体密码-女',
+							            type: 'map',
+							            mapType: 'bodyFemale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'right'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90},
+							                {name: '颈部', value: 80},
+							                {name: '胸部', value: 70},
+							                {name: '腹部', value: 60},
+							                {name: '生殖', value: 50},
+							                {name: '上肢', value: 40},
+							                {name: '下肢', value: 30}
+							            ],
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[118, 126]}
+							                ]
+							            }, 
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'女',geoCoord:[118, 126]}, 
+							                        {name:'男',value:90,geoCoord:[-22, 56]}
+							                    ]
+							                ]
+							            }
+							        }*/
+							    ]
+							}
+						}else if(mark == 2){
+							opt = {
+							    title : {
+							        text : '分析图',
+							        subtext: '张**',
+							        x:'center'
+							    },
+							    tooltip : {
+							        trigger: 'item',
+      								formatter: function(data){
+							        	return data.data.discribe;
+							        }
+							    },
+							    /*toolbox: {
+							        show : true,
+							        orient : 'vertical',
+							        x: 'right',
+							        y: 'center',
+							        feature : {
+							            mark : {show: true},
+							            dataView : {show: true, readOnly: false},
+							            restore : {show: true},
+							            saveAsImage : {show: true}
+							        }
+							    },*/
+							    dataRange: {
+							    	show:false,
+							        min: 0,
+							        max: 100,
+							        x: 'center',
+							        y: 'center',
+							        tdext:['High','Low'],
+							        calculable : true,
+							        itemHeight:30,
+							        color: ['#F33','orange','#0f0']
+							    },
+							    series : [
+							        {
+							            name: '',
+							            type: 'map',
+							            mapType: 'bodyMale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'left'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 25,discribe:'无'},
+							                {name: '颈部', value: 90,discribe:'双侧颈动脉内膜增厚……'},
+							                {name: '胸部', value: 80,discribe:'ST段改变'},
+							                {name: '腹部', value: 25,discribe:'无'},
+							                {name: '生殖', value: 25,discribe:'无'},
+							                {name: '上肢', value: 25,discribe:'无'},
+							                {name: '下肢', value: 90,discribe:'左小腿肌间深静脉血栓形成'}
+							            ],
+							            textFixed : {
+							                '上肢' : [-60, 0]
+							            },
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[138, 126]}
+							                ]
+							            }/*,这个是那个不冷不冷闪瞎眼的线，
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'男',geoCoord:[138, 126]}, 
+							                        {name:'女',value:90,geoCoord:[268, 56]}
+							                    ]
+							                ]
+							            }*/
+							        }/*,
+							        {
+							            name: '人体密码-女',
+							            type: 'map',
+							            mapType: 'bodyFemale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'right'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90},
+							                {name: '颈部', value: 80},
+							                {name: '胸部', value: 70},
+							                {name: '腹部', value: 60},
+							                {name: '生殖', value: 50},
+							                {name: '上肢', value: 40},
+							                {name: '下肢', value: 30}
+							            ],
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[118, 126]}
+							                ]
+							            }, 
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'女',geoCoord:[118, 126]}, 
+							                        {name:'男',value:90,geoCoord:[-22, 56]}
+							                    ]
+							                ]
+							            }
+							        }*/
+							    ]
+							}
+						}else if(mark == 3){
+							opt = {
+							    title : {
+							        text : '分析图',
+							        subtext: '李**',
+							        x:'center'
+							    },
+							    tooltip : {
+							        trigger: 'item',
+      								formatter: function(data){
+							        	return data.data.discribe;
+							        }
+							    },
+							    /*toolbox: {
+							        show : true,
+							        orient : 'vertical',
+							        x: 'right',
+							        y: 'center',
+							        feature : {
+							            mark : {show: true},
+							            dataView : {show: true, readOnly: false},
+							            restore : {show: true},
+							            saveAsImage : {show: true}
+							        }
+							    },*/
+							    dataRange: {
+							    	show:false,
+							        min: 0,
+							        max: 100,
+							        x: 'center',
+							        y: 'center',
+							        tdext:['High','Low'],
+							        calculable : true,
+							        itemHeight:30,
+							        color: ['#F33','orange','#0f0']
+							    },
+							    series : [
+							        /*{
+							            name: '',
+							            type: 'map',
+							            mapType: 'bodyMale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'left'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90},
+							                {name: '颈部', value: 80},
+							                {name: '胸部', value: 60},
+							                {name: '腹部', value: 60},
+							                {name: '生殖', value: 50},
+							                {name: '上肢', value: 40},
+							                {name: '下肢', value: 30}
+							            ],
+							            textFixed : {
+							                '上肢' : [-60, 0]
+							            },
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[138, 126]}
+							                ]
+							            },
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'男',geoCoord:[138, 126]}, 
+							                        {name:'女',value:90,geoCoord:[268, 56]}
+							                    ]
+							                ]
+							            }
+							        },*/
+							        {
+							            name: '人体密码-女',
+							            type: 'map',
+							            mapType: 'bodyFemale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'right'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 25,discribe:'无'},
+							                {name: '颈部', value: 25,discribe:'无'},
+							                {name: '胸部', value: 80,discribe:'ST段改变'},
+							                {name: '腹部', value: 90,discribe:'脂肪肝（轻度），肝实性占……'},
+							                {name: '生殖', value: 90,discribe:'子宫颈异常回声（Ca可能）'},
+							                {name: '上肢', value: 25,discribe:'无'},
+							                {name: '下肢', value: 25,discribe:'无'}
+							            ],
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[118, 126]}
+							                ]
+							            }/*, 这个是那个不冷不冷闪瞎眼的线，
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'女',geoCoord:[118, 126]}, 
+							                        {name:'男',value:90,geoCoord:[-22, 56]}
+							                    ]
+							                ]
+							            }*/
+							        }
+							    ]
+							}
+						}
+
+						that.drawChart(opt);
+					})
+
+				},
+
+				drawChart:function(opt){
+					var that = this;
+
+					//这个方法用于将获取到的数据与列表字段做匹配，目前使用jq进行强行匹配
+					function getOpt(param) { 
+
+					    $('.red').removeClass('red');
+					    $('.orange').removeClass('orange');
+
+					    var tagclass = '';
+
+					    if(param.value == 90){
+					    	tagclass = 'red';
+					    }else if(param.value == 80){
+					    	tagclass = 'orange';
+					    }
+
+					    if(param.name === '头部'){
+					    	$('.head').addClass(tagclass);
+					    }else if(param.name === '颈部'){
+					    	$('.neck').addClass(tagclass);
+					    }else if(param.name === '胸部'){
+					    	$('.chest').addClass(tagclass);
+					    }else if(param.name === '腹部'){
+					    	$('.stomach').addClass(tagclass);
+					    }else if(param.name === '生殖'){
+					    	$('.reproduction').addClass(tagclass);
+					    }else if(param.name === '上肢'){
+					    	$('.arm').addClass(tagclass);
+					    }else if(param.name === '下肢'){
+					    	$('.leg').addClass(tagclass);
+					    }
+					}
+
+					require(['echarts','echarts/util/mapData/params','echarts/chart/map'],function(echarts , params,map){
+						console.log(params);
+						console.log(echarts)
+						params.params.bodyMale = {
+						    getGeoJson: function (callback) {
+						        $.ajax({
+						            url: "../plugin/svg/body-male.svg",
+						            dataType: 'xml',
+						            success: function(xml) {
+						                callback(xml)
+						            }
+						        });
+						    }
+						}
+
+						params.params.bodyFemale = {
+						    getGeoJson: function (callback) {
+						        $.ajax({
+						            url: "../plugin/svg/body-female.svg",
+						            dataType: 'xml',
+						            success: function(xml) {
+						                callback(xml)
+						            }
+						        });
+						    }
+						}
+
+						var myChart = echarts.init(document.getElementById('bodyChart'));
+						var ecConfig = require('echarts/config');  
+						var option = null;
+
+						//这个东西 ，以及上面加载ecconfig决定了点击事件
+        				myChart.on(ecConfig.EVENT.HOVER, getOpt); 
+						opt?option = opt:option = {
+							    title : {
+							        text : '分析图',
+							        subtext: '王**',
+							        x:'center'
+							    },
+							    tooltip : {
+							        trigger: 'item',
+      								formatter: function(data){
+							        	return data.data.discribe;
+							        }
+							    },
+							    /*toolbox: {
+							        show : true,
+							        orient : 'vertical',
+							        x: 'right',
+							        y: 'center',
+							        feature : {
+							            mark : {show: true},
+							            dataView : {show: true, readOnly: false},
+							            restore : {show: true},
+							            saveAsImage : {show: true}
+							        }
+							    },*/
+							    dataRange: {
+							    	show:false,
+							        min: 0,
+							        max: 100,
+							        x: 'center',
+							        y: 'center',
+							        tdext:['High','Low'],
+							        calculable : true,
+							        itemHeight:30,
+							        color: ['#F33','yellow','lightskyblue']
+							    },
+							    series : [
+							        {
+							            name: '',
+							            type: 'map',
+							            mapType: 'bodyMale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'left'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90,discribe:'桥脑脑梗死'},
+							                {name: '颈部', value: 90,discribe:'双侧颈动脉内膜增厚……'},
+							                {name: '胸部', value: 90,discribe:'陈旧性前壁心肌梗死'},
+							                {name: '腹部', value: 80,discribe:'肝左叶囊肿5.5MM……'},
+							                {name: '生殖', value: 25,discribe:'无'},
+							                {name: '上肢', value: 25,discribe:'无'},
+							                {name: '下肢', value: 25,discribe:'无'}
+							            ],
+							            textFixed : {
+							                '上肢' : [-60, 0]
+							            },
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[138, 126]}
+							                ]
+							            }/*,这个是那个不冷不冷闪瞎眼的线，
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'男',geoCoord:[138, 126]}, 
+							                        {name:'女',value:90,geoCoord:[268, 56]}
+							                    ]
+							                ]
+							            }*/
+							        }/*,
+							        {
+							            name: '人体密码-女',
+							            type: 'map',
+							            mapType: 'bodyFemale', // 自定义扩展图表类型
+							            mapLocation: {
+							                x:'right'
+							            },
+							            roam:true,
+							            itemStyle:{
+							                normal:{label:{show:true}},
+							                emphasis:{label:{show:true}}
+							            },
+							            data:[
+							                {name: '头部', value: 90},
+							                {name: '颈部', value: 80},
+							                {name: '胸部', value: 70},
+							                {name: '腹部', value: 60},
+							                {name: '生殖', value: 50},
+							                {name: '上肢', value: 40},
+							                {name: '下肢', value: 30}
+							            ],
+							            markPoint : {
+							                symbol:'emptyCircle',
+							                symbolSize : 10,
+							                effect : {
+							                    show: true
+							                },
+							                data : [
+							                    {name: '心脏', value: 100, geoCoord:[118, 126]}
+							                ]
+							            }, 
+							            markLine : {
+							                smooth:true,
+							                effect : {
+							                    show: true,
+							                    scaleSize: 1,
+							                    period: 30,
+							                    color: '#fff',
+							                    shadowBlur: 5
+							                },
+							                itemStyle : {
+							                    normal: {
+							                        borderWidth:1,
+							                        lineStyle: {
+							                            type: 'solid'
+							                        }
+							                    }
+							                },
+							                data : [
+							                    [
+							                        {name:'女',geoCoord:[118, 126]}, 
+							                        {name:'男',value:90,geoCoord:[-22, 56]}
+							                    ]
+							                ]
+							            }
+							        }*/
+							    ]
+							}
+				       
+				        myChart.setOption(option);
+
+					})
+					
+				}
+			}
+
+			var init = new Init();
+			init.bindInitEvent();
+
+		})
+	</script>
+</head>
+<body>
+	<div class="navbar navbar-default self-header clearfix">
+        <div class="navbar-header web-logo">
+            <a href="/platform" class="logo"></a>
+        </div>
+
+        <div class="web-title pull-left">
+    		   
+        </div>
+
+        <div class="box-user pull-right">
+            <img src="../images/user-logo.png">
+            	<p class="infi-headerName" href="/platform/profile">
+            		无极慧通
+            	</p>
+
+            	<span>|</span>
+                <p class="infi-headerName" ng-click="changePassword()">
+                    <a href="#" id="changePassword">修改密码</a>
+                </p>
+                <span>|</span>
+            	<p class="infi-headerName">
+            		<a href="#">退出</a>
+            	</p>
+
+            <span class="pull-right glyphicon glyphicon-menu-down"></span>
+        </div>
+    </div>
+    <!-- <div class="self-left-nav ng-scope" id="navController" ng-controller="navController">
+			<div class="list-group">
+				<ul style="padding:0;">
+					<li class="list-group-item btn-href">
+						<a href="javascript:;" class="ng-binding">患者既往医疗信息统一视图</a>
+					</li>
+				</ul>
+				<h3 class="warn ng-binding ng-hide" ng-show="warnShow" ng-bind="warn"></h3><h3 class="warn"></h3>
+			</div>
+		</div> -->
+    <div class="infi-content-right content-list row" style="display: block;padding-left: 0;">
+    	<ul class="nav nav-tabs" style="margin-top: 75px;">
+	        <li class="cursorPointer ng-scope active" mark='1'>
+	            <a>王**</a>
+	        </li>
+	        <li class="cursorPointer ng-scope" mark='2'>
+	            <a>张**</a>
+	        </li>
+	        <li class="cursorPointer ng-scope" mark='3'>
+	            <a>李**</a>
+	        </li>
+	    </ul>
+
+    	<div class="self-content self-caseinfo col-md-4" style="margin-left: 0px;height: 900px;padding-top:30px;" id="bodyChart">
+
+    	</div>
+
+    	<div class="self-content self-caseinfo ng-scope col-md-8 tab tab1" style="margin-left: 0px;padding-top:0;">
+			<div class="">
+				<div class="self-box">
+					<div class="title">
+						<span class="">姓名：王**</span>
+						<span class="details">详情>></span>
+					</div>
+
+					<table class="table self-table-list valign-middle">
+						<thead>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td>曾就诊科室</td>
+								<td>
+									<ul class="nomargin">
+										<li>心内科</li>
+										<li>神内科</li>
+										<li>心理科</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检验史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明检验</span>
+									<!-- <ul class="nomargin">
+										<li>乙肝：</li>
+										<li>乙肝表明抗原阳性</li>
+										<li>乙肝e抗原阳性</li>
+										<li>乙肝核心抗体阳性</li>
+									</ul> -->
+									<ul class="nomargin"><li>无</li></ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul class="nomargin">
+										<li>血常规：</li>
+										<li><span>白细胞（10.02x109/L）</span></li>
+										<li><span>血小板数值（255x109/L）</span></li>
+										<li><span>中性粒细胞比率（73%）</span></li>
+										<li><span >血红蛋白数值（100g/L）</span></li>
+									</ul>
+									<br/>
+									<ul>
+										<li>肝功能：</li>
+										<li>谷丙转氨酶（35U/L）</li>
+									</ul>
+									<br/>
+									<ul>
+										<li>心肌酶：</li>
+										<li>肌酸激酶同工酶（30U/L）</li>
+									</ul>
+									<br/>
+									<ul>
+										<li>肌钙蛋白：</li>
+										<li>数值（1.05ng/ml）</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检查史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特殊表明检查</span>
+									<ul class="nomargin">
+										<li class="head">头颅CT示：桥脑脑梗死</li>
+										<li class="neck">颈部血管超声：双侧颈动脉内膜增厚伴斑块（多发），左侧颈动脉狭窄（远段：小于50%），右侧椎动脉远段闭塞，右侧锁骨下动脉斑块。</li>
+										<li class="chest">心电图示：陈旧性前壁心肌梗死</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul class="nomargin">
+										<li class="stomach">肝胆胰脾彩超：肝左叶囊肿5.5MM ，胰腺回声增强，胆夹璧稍毛糙，轻度脂肪肝，脾未见异常。</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往用药史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明用药</span>
+									<ul class="nomargin">
+										<li>阿普唑仑</li>
+										<li>多虑平</li>
+										<li>舒必利</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次用药</span>
+									<ul class="nomargin">
+										<li>阿司匹林</li>
+										<li>阿托伐他汀</li>
+										<li>氯吡格雷</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>药物过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>青霉素</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往手术史</td>
+								<td>
+									<ul class="nomargin">
+										<li><span >冠脉造影术</span></li>
+										<li><span >支架植入术</span></li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往疾病史</td>
+								<td>
+									<ul class="nomargin">
+										<li>心肌梗死</li>
+										<li>高血压三级，极高危</li>
+										<li>抑郁症</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>个人史</td>
+								<td>
+									<ul class="nomargin">
+										<li>吸烟史：</li>
+										<li>吸烟20年</li>
+										<li>每日20支</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>饮酒史：</li>
+										<li>饮酒20年</li>
+										<li>每日3两</li>
+										<li>已戒酒2年</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>居住史：</li>
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>食物过敏史：</li>
+										<li>海鲜</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>其他过敏史：</li>
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+    	</div>
+
+    	<div class="self-content self-caseinfo ng-scope col-md-8 tab tab2" style="margin-left: 0px;padding-top:0;display: none;">
+			<div class="">
+				<div class="self-box">
+					<div class="title">
+						<span class="">姓名：张**</span>
+						<span class="details">详情>></span>
+					</div>
+
+					<table class="table self-table-list valign-middle">
+						<thead>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td>曾就诊科室</td>
+								<td>
+									<ul class="nomargin">
+										<li>肾内</li>
+										<li>内分泌</li>
+										<li>消化科</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检验史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明检验</span>
+									<ul class="nomargin">
+										<li class="stomach">肌酐：600umol/L。</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul class="nomargin">
+										<li>血常规：</li>
+										<li><span>白细胞（9.0x109/L）</span></li>
+										<li><span>血小板数值（288x109/L）</span></li>
+										<li><span>中性粒细胞比率（75%）</span></li>
+										<li><span >血红蛋白数值（105g/L）</span></li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检查史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特殊表明检查</span>
+									<ul class="nomargin">
+										<li class="neck">颈部血管超声：右侧颈动脉闭塞。</li>
+										<li class="leg">双下肢血管超声：左小腿肌间深静脉血栓形成。</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul class="nomargin">
+										<li class="chest">心电图示：ST段改变。</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往用药史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明用药</span>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次用药</span>
+									<ul class="nomargin">
+										<li>门冬胰岛素</li>
+										<li>甘精胰岛素</li>
+										<li>胰激肽原酶</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>药物过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往手术史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往疾病史</td>
+								<td>
+									<ul class="nomargin">
+										<li>肾功能衰竭</li>
+										<li>糖尿病肾病</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>个人史</td>
+								<td>
+									<ul class="nomargin">
+										<li>吸烟史：</li>
+										<li>吸烟10年</li>
+										<li>每日10支</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>饮酒史：</li>
+										<li>饮酒5年</li>
+										<li>每日2两</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>居住史：</li>
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>食物过敏史：</li>
+										<li>海鲜</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>其他过敏史：</li>
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+    	</div>
+
+    	<div class="self-content self-caseinfo ng-scope col-md-8 tab tab3" style="margin-left: 0px;padding-top:0;display: none;">
+			<div class="">
+				<div class="self-box">
+					<div class="title">
+						<span class="">姓名：李**</span>
+						<span class="details">详情>></span>
+					</div>
+
+					<table class="table self-table-list valign-middle">
+						<thead>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td>曾就诊科室</td>
+								<td>
+									<ul class="nomargin">
+										<li>肿瘤科</li>
+										<li>妇产科</li>
+										<li>放疗科</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检验史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明检验</span>
+									<!-- <ul class="nomargin">
+										<li>乙肝：</li>
+										<li>乙肝表明抗原阳性</li>
+										<li>乙肝e抗原阳性</li>
+										<li>乙肝核心抗体阳性</li>
+									</ul> -->
+									<ul class="nomargin"><li>无</li></ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul>
+										<li>肝功能：</li>
+										<li>谷丙转氨酶（200U/L）</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往检查史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特殊表明检查</span>
+									<ul class="nomargin">
+										<li class="stomach">肝胆胰拍彩超：脂肪肝（轻度），肝实性占位性病变，建议医院进一步检查：胆脾胰未发现明显异常。AFP：500ug/L。</li>
+										<li class="reproduction">妇科超声：子宫颈异常回声（Ca可能）</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次检验</span>
+									<ul class="nomargin">
+										<li class="chest">心电图示：ST段改变</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往用药史</td>
+								<td>
+									<span class="infi-tag-red" rowspan="2">特别标明用药</span>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="rowspanTd"></td>
+								<td class="rowspanTd">
+									<span class="infi-tag-red">最近一次用药</span>
+									<ul class="nomargin">
+										<li>顺铂</li>
+										<li>甲氨蝶呤</li>
+										<li>护肝片</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>药物过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+									
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往手术史</td>
+								<td>
+									<ul class="nomargin">
+										<li><span >无</span></li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>既往疾病史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>个人史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+							<tr>
+								<td>过敏史</td>
+								<td>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+									<br/>
+									<ul class="nomargin">
+										<li>无</li>
+									</ul>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+    	</div>
+
+    </div>
+    
+
+    <div class="infi-content-right content-detail" style="padding-left: 0;">
+    	<div class="self-content self-caseinfo ng-scope" style="margin-left: 0px;"> 
+
+			<div class="">
+				<div class="self-box">
+					<div class="title">
+						<!-- <span class="">姓名：王**</span> -->
+						<span class="details">返回>></span>
+					</div>
+					<div class="specialBox">
+						<div class="table-title"><p style="">历次就诊科室信息</p></div>
+						<div mark="3" class="table-box">
+							<h3 class="sm-table-title">曾就诊科室</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>就诊时间</th>
+										<th>就诊科室</th>
+										<th>所属医院</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心内科</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>神内科</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2013-7-15</td>
+										<td>心理科</td>
+										<td>天津市第一中心医院</td>
+									</tr>
+									<tr>
+										<td>2011-5-17</td>
+										<td>普外科</td>
+										<td>河北省人民医院</td>
+									</tr>
+									<tr>
+										<td>2010-9-13</td>
+										<td>普外科</td>
+										<td>解放军人民总医院</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div mark="41" class="table-box">
+							<h3 class="sm-table-title">既往检验史</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>时间</th>
+										<th>检验名称</th>
+										<th>检验项目</th>
+										<th>检验结果</th>
+										<th>参考范围</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>白细胞计数数值</td>
+										<td>10.37</td>
+										<td>4-10x109/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>中性粒细胞数值</td>
+										<td>7.92</td>
+										<td>2-7x109/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>中性粒细胞比例数值</td>
+										<td>76</td>
+										<td>46%-76%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>单核细胞比例</td>
+										<td>5.7</td>
+										<td>2%-10%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>单核细胞计数</td>
+										<td>0.59</td>
+										<td>0-0.45</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>淋巴细胞比例</td>
+										<td>17.6</td>
+										<td>18%-47%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>淋巴细胞计数</td>
+										<td>1.82</td>
+										<td>1.5-4x109/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>嗜碱性粒细胞比例</td>
+										<td>0.00</td>
+										<td>0%-2%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>嗜碱性粒细胞计数</td>
+										<td>0.00</td>
+										<td>0-0.2</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>嗜酸性粒细胞比例</td>
+										<td>0.4</td>
+										<td>0%-5%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>嗜酸性粒细胞计数</td>
+										<td>0.04</td>
+										<td>0-0.45</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>红细胞计数（RBC）</td>
+										<td>3.63</td>
+										<td>3.5-5.5</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>平均红细胞体积</td>
+										<td>34.2</td>
+										<td>33%-45%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>血红蛋白测定（Hb）</td>
+										<td>110</td>
+										<td>110-150g/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>平均红细胞血红蛋白量</td>
+										<td>33.3</td>
+										<td>26-34</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>红细胞比积测定（HCT）</td>
+										<td>34.2</td>
+										<td>33-35%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>平均红细胞血红蛋白浓度</td>
+										<td>354</td>
+										<td>320-360g/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>红细胞体积分布宽度测定CV</td>
+										<td>14.1</td>
+										<td>9%-17%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>红细胞体积分布宽度测定SD</td>
+										<td>48.6</td>
+										<td>39%-46%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>血小板计数</td>
+										<td>200</td>
+										<td>100-300x109/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>血小板比积测定</td>
+										<td>0.21</td>
+										<td>0.1-0.28%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>平均血小板体积测定</td>
+										<td>7.0</td>
+										<td>6.8-13.5fl</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血常规</td>
+										<td>血小板体积分布宽度</td>
+										<td>12</td>
+										<td>10-18.5%</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>丙氨酸氨基转移酶</td>
+										<td>25</td>
+										<td>0—42U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>天门冬氨酸氨基转移酶</td>
+										<td>12.0</td>
+										<td>0—40U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>碱性磷酸酶</td>
+										<td>59.7</td>
+										<td>0—130U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>γ-谷氨酰基转移酶</td>
+										<td>23.5</td>
+										<td>0—50U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>总胆红素</td>
+										<td>15.5</td>
+										<td>0—21umol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>直接胆红素</td>
+										<td>3.9</td>
+										<td>0—8.6umol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>总胆汁酸</td>
+										<td>1.1</td>
+										<td>0—10umol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>总蛋白</td>
+										<td>62.2</td>
+										<td>55—80g/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肝功能</td>
+										<td>白蛋白</td>
+										<td>40.6</td>
+										<td>35—50g/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肾功能</td>
+										<td>尿素</td>
+										<td>3.65</td>
+										<td>1.8—7.5mmol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肾功能</td>
+										<td>尿酸</td>
+										<td>259.2</td>
+										<td>104—444umol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肾功能</td>
+										<td>肌酐</td>
+										<td>82.7</td>
+										<td>30—110umol/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肾功能</td>
+										<td>胱抑素</td>
+										<td>1.20</td>
+										<td>0.51—1.09mg/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心肌酶</td>
+										<td>乳酸脱氢酶</td>
+										<td>251</td>
+										<td>0-40U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心肌酶</td>
+										<td>肌酸激酶同工酶测</td>
+										<td>21</td>
+										<td>0——24U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心肌酶</td>
+										<td>肌酸激酶</td>
+										<td>74</td>
+										<td>25-200U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心肌酶</td>
+										<td>α羟基丁酸脱氢酶</td>
+										<td>214</td>
+										<td>71-182U/L</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>肌钙蛋白</td>
+										<td>肌钙蛋白I</td>
+										<td>1.05</td>
+										<td>0-1.7ng/mL</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血糖</td>
+										<td>血糖</td>
+										<td>5.2</td>
+										<td>3.9-6.1mmol</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>血糖</td>
+										<td>糖化血红蛋白</td>
+										<td>5</td>
+										<td>4-6%</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div mark="2" class="table-box">
+							<h3 class="sm-table-title">既往检查史</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>时间</th>
+										<th>检查名称</th>
+										<th>检查结果</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016.12.03</td>
+										<td>冠脉造影</td>
+										<td>前降支粥样硬化、回旋支近中段病理性扩张，分出第2钝缘支处次全鼻塞，狭窄99%，第2钝缘支开口狭窄90%；右冠发育细小。</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心电图</td>
+										<td>陈旧性心肌梗死，ST段改变</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>胸片</td>
+										<td>双肺未见明显实性病变</td>
+									</tr>
+									<tr>
+										<td>2016-12-03</td>
+										<td>心脏彩超</td>
+										<td>左室后壁运动幅度减低，主动脉弹性减低，左室舒张功能减低</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div mark="4" class="table-box">
+							<h3 class="sm-table-title">既往用药史</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>时间</th>
+										<th style="width:20%;">药物名称</th>
+										<th>剂量</th>
+										<th>服用方式</th>
+										<th>服用频率</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016.12.03</td>
+										<td>阿司匹林</td>
+										<td>0.1</td>
+										<td>口服</td>
+										<td>1/日</td>
+									</tr>
+									<tr>
+										<td>2016.12.03</td>
+										<td>氯吡格雷</td>
+										<td>75mg</td>
+										<td>口服</td>
+										<td>1/日</td>
+									</tr>
+									<tr>
+										<td>2016.12.03</td>
+										<td>阿托伐他汀</td>
+										<td>20mg</td>
+										<td>口服</td>
+										<td>1/日</td>
+									</tr>
+									<tr>
+										<td>2016.11.27</td>
+										<td>美托洛尔</td>
+										<td>25mg</td>
+										<td>口服</td>
+										<td>3/日</td>
+									</tr>
+									<tr>
+										<td>2016.11.27</td>
+										<td>单硝酸异山梨酯</td>
+										<td>20mg</td>
+										<td>口服</td>
+										<td>3/日</td>
+									</tr>
+									<tr>
+										<td>2016.11.27</td>
+										<td>丹参滴丸</td>
+										<td>10丸</td>
+										<td>口服</td>
+										<td>2/日</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div class="table-box">
+							<h3 class="sm-table-title">药物过敏史</h3>
+							<table class="table self-table-list valign-middle">
+								<tbody>
+									<tr>
+										<td>药物过敏史</td>
+										<td>青霉素</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div mark="2" class="table-box">
+							<h3 class="sm-table-title">既往手术史</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>时间</th>
+										<th>手术名称</th>
+										<th>科室</th>
+										<th>医院</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016.12.03</td>
+										<td>冠脉造影术</td>
+										<td>心内科</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2016.12.03</td>
+										<td>冠脉支架术</td>
+										<td>心内科</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2011-5-17</td>
+										<td>阑尾切除术</td>
+										<td>普外科</td>
+										<td>河北省人民医院</td>
+									</tr>
+									<tr>
+										<td>2011-5-17</td>
+										<td>胆囊切除术</td>
+										<td>普外科</td>
+										<td>河北省人民医院</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div mark="2" class="table-box">
+							<h3 class="sm-table-title">既往疾病史</h3>
+							<table class="table self-table-list valign-middle">
+								<thead>
+									<tr>
+										<th>时间</th>
+										<th>疾病名称</th>
+										<th>诊断方式</th>
+										<th>医院</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2016.12.03</td>
+										<td>心肌梗死</td>
+										<td>住院</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2016.12.03</td>
+										<td>高血压三级，极高危</td>
+										<td>门诊</td>
+										<td>解放军人民总医院</td>
+									</tr>
+									<tr>
+										<td>2011-5-17</td>
+										<td>阑尾炎</td>
+										<td>住院</td>
+										<td>河北省人民医院</td>
+									</tr>
+									<tr>
+										<td>2011-5-17</td>
+										<td>胆囊炎</td>
+										<td>住院</td>
+										<td>河北省人民医院</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<p class="more"><a href="javascript:;">更多</a></p>
+						</div>
+
+						<div class="table-box">
+							<h3 class="sm-table-title">家族史</h3>
+							<table class="table self-table-list valign-middle">
+								<tbody>
+									<tr>
+										<td>家族史</td>
+										<td>无</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="table-box">
+							<h3 class="sm-table-title">个人史</h3>
+							<table class="table self-table-list valign-middle">
+								<tbody>
+									<tr>
+										<td>吸烟史</td>
+										<td>吸烟X年</td>
+										<td>每日XX支</td>
+										<td>已戒烟X年</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>10</td>
+										<td>20</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>吸烟史</td>
+										<td>吸烟X年</td>
+										<td>每日XX支</td>
+										<td>已戒烟X年</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>20</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table class="table self-table-list valign-middle">
+								<tbody>
+									<tr>
+										<td>居住史</td>
+										<td>无化学及放射性毒物接触史</td>
+									</tr>
+									<tr>
+										<td>食物过敏史</td>
+										<td>海鲜</td>
+									</tr>
+									<tr>
+										<td>其他过敏史</td>
+										<td>花粉</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>
+			</div>
+    	</div>
+    </div>
+</body>
+</html>

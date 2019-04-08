@@ -1,0 +1,84 @@
+<div class="infi-record-output" id="menstruation">
+    <div ng-if="outputText.menstruation.tplStatus == 'view'" class="infi-view">
+        <div ng-if="!outputText.menstruation.text">
+            <span>
+                <i ng-if="entity.name_169ccnl">{{entity.name_169ccnl}}</i>
+                <i ng-if="!entity.name_169ccnl">0</i>
+                <i>*</i>
+            </span>
+            <span>
+                <i ng-if="entity.name_169jq">{{entity.name_169jq}}</i>
+                <i ng-if="!entity.name_169jq">0</i>
+                <i>/</i>
+            </span>
+            <span>
+                <i ng-if="entity.name_169zq">{{entity.name_169zq}}</i>
+                <i ng-if="!entity.name_169zq">0</i>
+                <i>*</i>
+            </span>
+            <span>
+                <i ng-if="entity.name_169mcyjrq">{{entity.name_169mcyjrq}}</i>
+                <i ng-if="!entity.name_169mcyjrq">0</i>
+                <i>*</i>
+            </span>
+            <span>
+                <i>,</i>
+                <i ng-if="entity.name_170 == 'value_0'">月经经量正常</i>
+                <i ng-if="entity.name_170 == 'value_1'">月经经量不正常</i>
+            </span>
+            <span>
+                <i>,</i>
+                <i ng-if="entity.name_171 == 'value_0'">月经颜色正常</i>
+                <i ng-if="entity.name_171 == 'value_1'">月经颜色不正常</i>
+            </span>
+            <span>
+                <i>,</i>
+                <i ng-if="entity.name_172 == 'value_0'">有痛经</i>
+                <i ng-if="entity.name_172 == 'value_1'">无痛经</i>
+            </span>
+            <span>
+                <i>,</i>
+                <i ng-if="entity.name_173 == 'value_0'">经期规则</i>
+                <i ng-if="entity.name_173 == 'value_1'">经期不规则</i>
+            </span>
+            <span data-ng-if="entity.name_174">
+                <i>,</i>
+                <i>妊娠</i>
+                <i>{{entity.name_174}}</i>
+                <i>次</i>
+            </span>
+            <span data-ng-if="entity.name_175">
+                <i>,</i>
+                <i>足月产</i>
+                <i>{{entity.name_175}}</i>
+                <i>次</i>
+            </span>
+            <span data-ng-if="entity.name_176">
+                <i>,</i>
+                <i>流产</i>
+                <i>{{entity.name_176}}</i>
+                <i>次</i>
+            </span>
+            <span data-ng-if="entity.name_177">
+                <i>,</i>
+                <i>早产</i>
+                <i>{{entity.name_177}}</i>
+                <i>次</i>
+            </span>
+        </div>
+        <div ng-if="outputText.menstruation.text" class="infi-view-text">
+            <span ng-bind="outputText.menstruation.text"></span>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('menstruation')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('menstruation')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.menstruation.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.menstruation.text">{{outputText.menstruation.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('menstruation')">完成</button>
+        </div>
+    </div>
+
+</div>

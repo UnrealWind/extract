@@ -1,0 +1,57 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_ecochg == true">
+    <div class="infi-record-title">
+        <h4>ECochG(耳蜗电图)</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_ecochg_time"
+                   ng-model="entity.table_ecochg_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <thead>
+        <tr>
+            <th>
+                刺激信号
+            </th>
+            <th></th>
+            <th>刺激声强度（dBnHL）</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>侧别</td>
+            <td>—SP/AP</td>
+            <td>—SP(ms)</td>
+            <td>AP(ms)</td>
+        </tr>
+        <tr>
+            <td>
+                左
+            </td>
+            <td><input name="entity.table_ecochg_ze_spap" ng-model="entity.table_ecochg_ze_spap" class="form-control"/></td>
+            <td><input name="entity.table_ecochg_ze_sp" ng-model="entity.table_ecochg_ze_sp" class="form-control"/></td>
+            <td><input name="entity.table_ecochg_ze_ap" ng-model="entity.table_ecochg_ze_ap" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                右
+            </td>
+            <td><input name="entity.table_ecochg_ye_spap" ng-model="entity.table_ecochg_ye_spap" class="form-control"/></td>
+            <td><input name="entity.table_ecochg_ye_sp" ng-model="entity.table_ecochg_ye_sp" class="form-control"/></td>
+            <td><input name="entity.table_ecochg_ye_ap" ng-model="entity.table_ecochg_ye_ap" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                备注
+            </td>
+            <td colspan="3"><input name="entity.table_ecochg_note" ng-model="entity.table_ecochg_note" class="form-control"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>ECochG(耳蜗电图)诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_ecochg"><input
+                name="entity.name_ecochg" type="text" ng-model="entity.name_ecochg" class="form-control"/></div>
+    </div>
+</section>

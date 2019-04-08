@@ -1,0 +1,23 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":[
+    {
+      "label":"全身检查",
+      "value":"whole",
+      "children":["heart","lung","liver","spleen","urineRoutines","routineBlood","liverfunc"]
+    },
+    {
+      "label":"早孕检查",
+      "value":"pregnancy",
+      "children":["vulva","vagina","cervical","corpus","adnexa"]
+    },
+    {
+      "label":"42天",
+      "value":"basic",
+      "children":["routineUrine","breast","milk","abdominalIncision","perineumWound","basinLiftForce","vagina",
+       "lochia","cervical","corpus","adnexa","fontanelle","abdominal","cardiopulmonary","umbilicalcord","genital","skin","limbs","urine"]
+    }
+  ]
+
+}

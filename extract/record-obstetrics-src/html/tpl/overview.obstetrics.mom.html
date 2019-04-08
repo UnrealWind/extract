@@ -1,0 +1,105 @@
+<div style="padding: 10px;">
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">血压: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text">
+                <p style="display: inline-block;" ng-bind="momInfo.blood_pres| unescape "></p>
+                <p style="display: inline-block;" ng-if="momInfo.blood_pres">mmHg</p>
+            </div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">腹部切口: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.abdominal_incision| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">体重: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text">
+                <p style="display: inline-block;" ng-bind="momInfo.weight "></p>
+                <p style="display: inline-block;" ng-if="momInfo.weight">kg</p>
+            </div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">会阴伤口: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.perineum_wound| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">尿常规: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.routine_urine| unescape "></div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">盆底托力: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.basin_lift_force| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">乳房: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.breast| unescape "></div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">阴道: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.vagina| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">乳汁: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.milk| unescape "></div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">宫颈: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.cervical| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">血色素: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text">
+                <p style="display: inline-block;" ng-bind="momInfo.hemoglobin| unescape"></p>
+                <p style="display: inline-block;" ng-if="momInfo.hemoglobin">g/L</p>
+            </div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">宫体: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.corpus|unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">转经: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.turn_menstruation|unescape "></div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">附件: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.adnexa| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">恶露: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.lochia| unescape "></div>
+        </div>
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">签名: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.maternal_signature| unescape "></div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">计划生育: </label></div>
+        <div class="col-md-20 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="momInfo.family_plan| unescape "></div>
+        </div>
+    </div>
+</div>

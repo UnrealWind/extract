@@ -1,0 +1,115 @@
+<div class="infi-page-content self-content" ng-controller="fetchData">
+    <div class="title" style="margin-bottom: 15px;">
+        <span class="glyphicon glyphicon-list"></span>新建取数
+    </div>
+    <div class="infi-form">
+        <div class="infi-m-nav">
+            <infi-nav></infi-nav>
+        </div>
+        <div class="infi-wrap infi-list-filter" ng-show = "basic.showChoseOpt === true">
+            <chose-opt></chose-opt>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="infi-content-wrapper" ng-if= "errorTip">
+        <div class="infi-box">
+            <div class="alert alert-danger ng-binding ng-scope">系统没有查询到数据,请修改查询条件</div>
+        </div>
+    </div>
+
+    <!-- 这个是第一页基本信息 -->
+    <div class="infi-content-wrapper" ng-if= "showStep === 'basic' && !errorTip">
+        <div class="infi-box">
+            <h2 class="infi-title">属性筛选</h2>
+            <div class="infi-box-containter">
+                <div class="dir-nav-container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <attr-nav></attr-nav>
+                        </div>
+                        <div class="col-md-10">
+                            <attr-opt></attr-opt>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infi-m-btn">
+            <button class="btn btn-success self-btn-sm self-btn-w-auto self-radius btn-href" ng-click="changeShowStep('detaile',true)">下一步，设置详细信息关系筛选</button>
+            <!--<a class="btn self-btn-sm self-btn-o self-radius" type="button" href="#/list">取消</a>-->
+        </div>
+    </div> <!-- end of page1 -->
+
+    <!-- 这个是第二页详细信息 -->
+    <div class="infi-m-bd infi-content-wrapper" ng-show= "showStep === 'detaile' && !errorTip">
+        <div class="infi-box-containter infi-m-ct">
+            <div class="infi-u-relation">
+                <input-relation></input-relation>
+            </div>
+            <div class="infi-ms-tag">
+                <div class="infi-g-wrap">
+
+						<span ng-repeat = "opt in detaile.detaileOpt">
+							<input-checkbox ng-if="opt.tagType==='enums' && opt.checkedAttr ===true"></input-checkbox>
+							<input-num ng-if="opt.tagType==='number' && opt.checkedAttr ===true"></input-num>
+							<input-date ng-if="opt.tagType==='date' && opt.checkedAttr ===true"></input-date>
+							<input-search ng-if="opt.tagType==='huge' && opt.checkedAttr ===true"></input-search>
+						</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="infi-m-btn">
+            <a class="btn self-btn-o self-btn-sm self-btn-w-auto self-radius btn-href" href="javascript:;"  ng-click="changeShowStep('basic')">上一步，基本信息筛选</a>
+            <a class="btn btn-success self-btn-sm self-btn-w-auto self-radius btn-href {{detaile.getEchartsOver}}" href="javascript:;" type="submit"  ng-click="changeShowStep('export')">下一步，设置需要提取的数据</a>
+            <!-- <button class="btn btn-success self-btn-sm self-btn-w-auto self-radius" href="javascript:;" data-target="#myModal" data-toggle="modal" type="button">直接导出病历清单</button> -->
+            <!-- 这个按钮跳回list页面 -->
+            <!--<a class="btn self-btn-sm self-btn-o self-radius" type="button" href="#/list">取消</a>-->
+        </div>
+    </div>
+    <div class="infi-m-bd infi-content-wrapper" ng-show= "showStep === 'detaile' && !errorTip">
+        <div class="infi-box">
+            <div class="row">
+                <div class="col-md-7">
+                    <echarts-box></echarts-box>
+                </div>
+                <div id="" class="col-md-5">
+                    <history-box></history-box>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end of page2 -->
+
+    <!-- 这个是第三页详细信息 -->
+    <div class="infi-m-bd infi-content-wrapper" ng-show= "showStep === 'export' && !errorTip">
+        <div class="infi-box">
+            <h2 class="infi-title">属性筛选</h2>
+            <div class="infi-box-containter">
+                <div class="dir-nav-container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <export-nav></export-nav>
+                        </div>
+                        <div class="col-md-10">
+                            <export-opt></export-opt>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infi-m-btn">
+            <a class="btn self-btn-o self-btn-sm self-btn-w-auto self-radius btn-href" href="javascript:;"  ng-click="changeShowStep('detaile')">上一步，详细信息筛选</a>
+            <button class="btn btn-success self-btn-sm self-btn-w-auto self-radius" ng-click="showModal()">确认导出</button>
+
+            <!-- 这个按钮跳回list页面 -->
+            <!--<a class="btn self-btn-sm self-btn-o self-radius" type="button" href="#/list">取消</a>-->
+        </div>
+    </div> <!-- end of page3 -->
+
+    <!-- 模态框用于填写整个数据的病历名称 -->
+    <modal-name></modal-name>
+
+    <!-- 模态框用于显示第三步提交后的内容，页面跳转 -->
+    <modal-tip></modal-tip>
+</div>

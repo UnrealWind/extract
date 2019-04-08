@@ -1,0 +1,40 @@
+<div class="infi-wj-part" ng-repeat="surgery in surgery">
+    <table class="infi-wj-table" style="table-layout: fixed">
+        <tbody>
+        <tr>
+            <td class="self-wj-label">
+                <p>手术名称{{$index+1}}：</p>
+            </td>
+            <td>
+                <p ng-bind="surgery.operation_name"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>手术时间：</p>
+            </td>
+            <td>
+                <p ng-bind="surgery.operating_date|date:'yyyy-MM-dd HH:mm:ss'"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>手术医师：</p>
+            </td>
+            <td>
+                <p ng-bind="surgery.operator"></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="self-wj-label">
+                <p>麻醉方式：</p>
+            </td>
+            <td>
+                <p ng-bind="surgery.anesthesia_method_name"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>麻醉医师：</p>
+            </td>
+            <td>
+                <p ng-bind="surgery.anes_doct"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

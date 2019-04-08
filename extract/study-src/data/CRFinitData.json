@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": 40,
+      "label": "脑出血诊疗质控监测",
+      "value": "",
+      "children": [
+        {
+          "id": 43,
+          "label": "脑出血诊疗",
+          "value": "",
+          "children": [
+            {
+              "id": 43,
+              "label": "脑出血诊疗质控监测",
+              "value": "XW0001",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "label": "急性缺血性卒中溶栓质控监测",
+      "value": "",
+      "children": [
+        {
+          "id": 44,
+          "label": "急性缺血性卒中溶栓质控监测",
+          "value": "XW0002",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "label": "脑梗死诊疗质控监测",
+      "value": "",
+      "children": [
+        {
+          "id": 45,
+          "label": "脑梗死诊疗质控监测",
+          "value": "XW0003",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "status": "ok",
+  "description": "数据请求成功"
+}

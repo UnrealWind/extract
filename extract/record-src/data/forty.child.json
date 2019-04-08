@@ -1,0 +1,224 @@
+[
+  [
+    {
+      "label": "头部：囟门",
+      "name": "basic.fontanelle",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+        "name": "basic.fontanelleAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "心肺",
+      "name": "basic.cardiopulmonary",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.cardiopulmonaryAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "腹",
+      "name": "basic.abdominal",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.abdominalAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "脐带",
+      "name": "basic.umbilicalcord",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.umbilicalcordAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "生殖器",
+      "name": "basic.genital",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.genitalAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "皮肤",
+      "name": "skin",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.skinAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "四肢",
+      "name": "basic.limbs",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.limbsAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "喂养",
+      "name": "basic.feed",
+      "type": "radio",
+      "options": [
+        {
+          "label": "母乳喂养",
+          "value": "母乳喂养"
+        },
+        {
+          "label": "人工喂养",
+          "value": "人工喂养"
+        },
+        {
+          "label": "混合喂养",
+          "value": "混合喂养"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "大小便",
+      "name": "basic.urine",
+      "type": "select",
+      "options": [
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.urineAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "其它",
+      "name": "basic.other",
+      "type": "textarea"
+    }
+  ],
+  [
+    {
+      "label": "预防接种",
+      "name": "basic.vaccination",
+      "type": "checkboxOther",
+      "options": [
+        {
+          "label": "卡介苗",
+          "value": "ghg"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "建议",
+      "name": "basic.advice",
+      "type": "textarea"
+    }
+  ],
+  [
+    {
+      "label": "签名",
+      "name": "basic.babySignature"
+    }
+  ]
+]

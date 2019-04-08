@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>数据提取</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../src/scss/frame.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-modal.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-color.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-listing.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-category.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-drug.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-filter.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-retrieva-record.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-from-header.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-confirm-export.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-collection-screening.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-lefttab.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-screen-name.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-screen-details1.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-time-control.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-button.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-choser.scss" rel="stylesheet">
+    <link href="../src/scss/infi-view.scss" rel="stylesheet">
+    <link href="../src/scss/infi-manage.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-retrieval.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-task-choser.scss" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/scss/infi-forty-two.scss">
+    <link rel="stylesheet" type="text/css" href="../src/scss/infi-navi.scss"/>
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+<!-- 头部导航 -->
+<header class="navbar navbar-default infi-header clearfix">
+    <div class="navbar-header infi-header-logo">
+        <span class="logo">
+            <a href="#/view"></a>
+        </span>
+    </div>
+
+    <div class="infi-header-title pull-left">数据提取</div>
+
+    <div class="box-user pull-right" ng-controller="LoginController">
+        <img class="user-logo" src="../src/image/doctor.png">
+        <p class="infi-header-name" ng-bind="name"></p>
+        <span>|</span>
+        <p class="infi-header-name">
+            <a ng-click="logout()" class="glyphicon">退出</a>
+        </p>
+    </div>
+</header>
+<!-- 头部导航 END -->
+
+<!-- 左部导航 -->
+<infi-navi></infi-navi>
+<!--<nav class="infi-main-nav">-->
+    <!--<ul class="list-group">-->
+        <!--<li class="list-group-item {{nav.active}}" ng-mouseenter="liHover()" ng-repeat="nav in extract_navigation">-->
+            <!--<i class="icon glyphicon glyphicon{{nav.cls}}"></i>-->
+            <!--<a href<script type="text/javascript" src="../env/env.js"></script>
+<script type="text/javascript" src="all.js"></script>"#/{{nav.href}}" ng-click="extract_nav(nav,$index)">{{nav.name}}</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+<!-- 左部导航 END -->
+
+<!-- 右部内容-->
+<article class="infi-main">
+    <div ng-view></div>
+</article>
+<!-- 右部内容 END-->
+
+<footer class="infi-footer">
+    <p class="infi-footer-detail">
+        北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+    </p>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../src/widget/system/sys/login.check.js"></script>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.js"></script>
+<script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+<script type="text/javascript" src="../src/china.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+<script type="text/javascript" src="../bower_components/ng-file-upload-shim/ng-file-upload.js"></script>
+<script type="text/javascript" src="../bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+<script type="text/javascript" src="../env/env.js"></script>
+<script type="text/javascript" src="all.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/basic.directive.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/basic.constant.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/adapter.convert.service.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/data.adapter.service.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/task.interactive.service.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/task.popup.convert.service.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/basic.filter.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/task.mapping.js"></script>
+<script type="text/javascript" src="../src/widget/extract-choser/js/data.filter.service.js"></script>
+<script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<script type="text/javascript" src="../src/widget/system/sys/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/http.interceptor.factory.js" ></script>
+
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+<script type="text/javascript" src="../src/widget/logic/form.logic.js"></script>
+<script type="text/javascript" src="../src/widget/table/table.js"></script>
+<!-- 导航 -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>
+
+
+
+

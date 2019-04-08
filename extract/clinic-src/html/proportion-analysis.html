@@ -1,0 +1,25 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>科室排行分析</h4>
+<div class="infi-box">
+    <div class="infi-group">
+        <label>选择查找时间段：</label>
+        <input infi-date="yyyy-mm-dd" ng-model="recordData.startTime" placeholder="开始时间" value="{{recordData.startTime}}"
+               class="form-control infi-group-input datepicker" ng-change="changeData()" /> -
+        <input infi-date="yyyy-mm-dd" placeholder="结束时间" ng-model="recordData.endTime"
+               class="form-control infi-group-input datepicker" value="{{recordData.endTime}}" ng-change="changeData()" />
+        <div style="display: inline-block;">
+            <label>请选择科室名称：</label>
+            <select ng-model="recordData.deptName" ng-change="changeData()">
+                <option ng-bind="dep.dept_name" ng-repeat="dep in recordData.departments.data.result"
+                        ng-selected="recordData.deptName == dep.dept_name" value="{{dep.dept_name}}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="infi-box-containter">
+        <div ng-show="recordData.pageResult.status == SYS.STATUS_SUCCESS">
+            <div ng-show="recordData.pageResult.data.result.length == 0" class="alert alert-danger">没有查询到数据，请修改查询条件</div>
+            <div id="departmentChart" style="width: 1004px; height: 580px;" ng-show="recordData.pageResult.data.result.length > 0"></div>
+        </div>
+        <div ng-show="recordData.pageResult.status != SYS.STATUS_SUCCESS" ng-bind="recordData.pageResult.description"
+             class="alert alert-danger"></div>
+    </div>
+</div>

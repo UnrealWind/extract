@@ -1,0 +1,11 @@
+<div class="infi-box">
+    <div class="row">
+        <div>
+            <!--左侧tab筛选LP-->
+            <div class="col-xs-2" choser-left-tab ng-if="summaryData"></div>
+            <!--<div left-tab></div>-->
+            <div class=" col-xs-10" extract-choser data-ng-if="summaryData&&allData&&(!detailData.id||mappingData)"
+                 mapping-data="mappingData" summary-data="summaryData" all-data="allData" used="'screen'"></div>
+        </div>
+    </div>
+</div>

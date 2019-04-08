@@ -1,0 +1,43 @@
+<div style="float:right;">
+    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="extract_collection()">已收藏的筛选条件</button>
+    <a href=""><button class="btn infi-btn-linear-green-l btn-sm" ng-click="excelImport()">excel导入方式新建取数任务</button></a>
+</div>
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户筛选 -> 属性提取</h4>
+<link rel="import" href="../../src/template/infi-from-header.html?__inline">
+<div class="infi-box">
+    <div record-extracts summary-data="summaryData" ng-if="summaryData"></div>
+    <div class="row">
+        <div>
+            <!--左侧tab筛选LP-->
+            <div class="col-xs-2" choser-left-tab ng-if="summaryData"></div>
+
+            <div class=" col-xs-10" extract-choser data-ng-if="summaryData&&allData&&(!detailData.id||mappingData)"
+                 mapping-data="mappingData" summary-data="summaryData" all-data="allData" used="'screen'"></div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <a href="">
+        <button class="btn infi-btn-linear-green-l" ng-click="getTransmitData('task')">下一步，设置筛选逻辑</button>
+    </a>
+</div>
+
+<!--收藏的筛选条件列表-->
+<div collection-record></div>
+
+<!--收藏的筛选条件详情-->
+<div collection-detail></div>
+
+<!--错误提示-->
+<div sys-tip></div>
+
+<div show-load-tip ng-show="!summaryData.showLoad"></div>
+
+<script>
+    //为筛选条件列表的详情服务，显示筛选条件详情
+    //先解绑再绑定，否则事件重复
+    $(document).unbind('doCollect').bind('doCollect',function(){
+        var scope = $(".infi-box").scope();
+        formLogic = FormLogic(scope.colletionDetail.screenJson,scope.colletionDetail.logicJson,$(".node-outside"),"disabled");
+    });
+</script>

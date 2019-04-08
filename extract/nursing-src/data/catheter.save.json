@@ -1,0 +1,26 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":{
+    "tubeTime":"",
+    "tubeStructure":"",
+    "otherTubeType":"",
+    "tubeBrand":"",
+    "otherTubeBrand":"",
+    "tubeSpecifications":"",
+    "tubePosition":"",
+    "patientPosition":"",
+    "indwellingVein":"",
+    "tubeInLength":"",
+    "tubeExternalLength":"",
+    "tubeTotalLength":"",
+    "leftArmCircumference":"",
+    "rightArmCircumference":"",
+    "tubeEndPosition":"",
+    "tubeNurse":"",
+    "assistantNurse":"",
+    "punctureWay":"",
+    "punctureNum":"",
+    "tubeSituation":""
+  }
+}

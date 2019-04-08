@@ -1,0 +1,41 @@
+// mixin
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin justify-content-space-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@mixin align-item-center {
+  -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+@mixin align-item-flex-start {
+  -webkit-box-align:start;
+    -webkit-align-items:flex-start;
+        -ms-flex-align:start;
+            align-items:flex-start
+}
+
+@mixin align-self-center {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+          -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+}
+

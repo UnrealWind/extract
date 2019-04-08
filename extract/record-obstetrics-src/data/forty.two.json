@@ -1,0 +1,296 @@
+[
+
+
+  [
+    {
+      "label": "血压",
+      "name": "basic.highPressure",
+      "secondName": "basic.lowPressure",
+      "type": "twoValue",
+      "unit": "mmHg"
+    },
+    {
+      "label": "体重",
+      "name": "basic.weight",
+      "unit": "斤"
+    }
+  ],
+  [
+    {
+      "label": "尿常规",
+      "name": "basic.routineUrine",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.routineUrineAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "乳房",
+      "name": "basic.breast",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.breastAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "乳汁",
+      "name": "basic.milk",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.milkAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "血色素",
+      "name": "basic.hemoglobin",
+      "unit": "mg/L"
+    }
+  ],
+  [
+    {
+      "label": "转经",
+      "name": "basic.turnMenstruation",
+      "type": "radio",
+      "options": [
+        {
+          "label": "已",
+          "value": "已"
+        },
+        {
+          "label": "未",
+          "value": "未"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "恶露",
+      "name": "basic.lochia",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.lochiaAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "腹部切口",
+      "name": "basic.abdominalIncision",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.abdominalIncisionAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "会阴伤口",
+      "name": "basic.perineumWound",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.perineumWoundAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "盆底拖力",
+      "name": "basic.basinLiftForce",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.basinLiftForceAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "阴道",
+      "name": "basic.vagina",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "正常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.vaginaAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "宫颈",
+      "name": "basic.cervical",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.cervicalAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "宫体",
+      "name": "basic.corpus",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.corpusAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "附件",
+      "name": "basic.adnexa",
+      "type":"select",
+      "options":[
+        {
+          "label": "正常",
+          "value": "正常"
+        },
+        {
+          "label": "异常",
+          "value": "异常"
+        }
+      ]
+    },
+    {
+      "label": "异常情况说明",
+      "name": "basic.adnexaAbnormalInst"
+    }
+  ],
+  [
+    {
+      "label": "计划生育",
+      "name": "basic.familyPlan",
+      "type": "radio",
+      "options": [
+        {
+          "label": "有",
+          "value": "有"
+        },
+        {
+          "label": "无",
+          "value": "无"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "签名",
+      "name": "basic.maternalSignature"
+    }
+  ]
+]

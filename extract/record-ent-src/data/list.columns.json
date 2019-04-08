@@ -1,0 +1,19 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"姓名",
+      "name":"patientName"
+    },{
+      "label":"门诊号",
+      "name":"patientId"
+    },{
+      "label":"创建时间",
+      "name":"createTime"
+    },{
+      "label":"最近修改时间",
+      "name":"updateTime"
+    }
+  ]
+}

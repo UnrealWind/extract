@@ -1,0 +1,102 @@
+<div class="recursive-scale">
+  <div ng-repeat="secChild in secData">
+    <div ng-if="secChild.type == 'question'">
+      <!-- 单选类型 -->
+      <div ng-if="secChild.checkBox == '单选'">
+        <dl>
+          <dt ng-bind="secChild.name"></dt>
+          <dd ng-repeat="opt in secChild.optionList">
+            <conver-ansobj-to-optobj sec-data="secChild" opt-obj="opt"></conver-ansobj-to-optobj>
+            <input type="radio" 
+                  class="radio-self" 
+                  name="{{secChild.name}}" 
+                  id="{{opt.id+ '_' +secChild.value}}" 
+                  value="{{opt}}"
+                  ng-checked="findObjectByKey(secChild.choicedOptionList, 'id', opt.id).isIn"
+                  ng-click="setRadio(secChild, opt)">
+            
+            <label class="radio-label" 
+                  for="{{opt.id+ '_' +secChild.value}}">
+                  {{opt.name}}
+            </label>
+              
+          </dd>
+        </dl>
+      </div>
+
+      <!-- 单选范围 -->
+      <div ng-if="secChild.checkBox == '单选-范围'">
+        <dl class="clearfix range-wrapper">
+          <dt ng-bind="secChild.name"></dt>
+          <dd ng-bind="secChild.head" class="adjust-label-lh pull-left range-label-left" title="{{secChild.head}}"></dd>
+          <dd ng-repeat="opt in secChild.optionList" class="range-item pull-left">
+            <conver-ansobj-to-optobj sec-data="secChild" opt-obj="opt"></conver-ansobj-to-optobj>
+            <input type="radio" 
+                class="radio-self" 
+                name="{{secChild.name}}" 
+                id="{{opt.id+ '_' +secChild.value}}" 
+                value="{{opt}}"
+                ng-checked="findObjectByKey(secChild.choicedOptionList, 'id', opt.id).isIn"
+                ng-click="setRadio(secChild, opt)">
+          
+            <label class="radio-label" 
+                  for="{{opt.id+ '_' +secChild.value}}">
+                  {{opt.name}}
+            </label>
+          </dd>
+          <dd ng-bind="secChild.end" class="adjust-label-lh pull-left range-label-right" title="{{secChild.end}}"></dd>
+        </dl>
+      </div>
+
+      <!-- 多选类型 -->
+      <div ng-if="secChild.checkBox == '多选'">
+        <dl>
+          <dt ng-bind="secChild.name"></dt>
+          <dd ng-repeat="check in secChild.optionList">
+              <conver-ansobj-to-optobj sec-data="secChild" opt-obj="check"></conver-ansobj-to-optobj>
+              <input type="checkbox"
+                     name="{{secChild.name}}"
+                     id="{{check.id+ '_' +secChild.value}}" 
+                     value="{{check}}"
+                     ng-checked="findObjectByKey(secChild.choicedOptionList, 'id', check.id).isIn"
+                     ng-click="setCheckbox(secChild, check)">
+
+              <label class="radio-label" 
+                      for="{{check.id+ '_' +secChild.value}}">
+                  {{check.name}}
+              </label>
+
+              
+          </dd>
+        </dl>
+
+
+
+      </div>
+
+      <!-- 文本类型 -->
+      <div ng-if="secChild.checkBox == '文本输入'">
+        <dl>
+          <dt ng-bind="secChild.name"></dt>
+          <dd ng-repeat="txt in secChild.optionList">
+            <textarea name="{{secChild.name}}" 
+                      class="form-control"
+                      cols="50"
+                      rows="8"></textarea>
+          </dd>
+        </dl>
+
+
+      </div>
+
+
+      
+
+    </div>
+
+    <div ng-if="secChild.type != 'question'">
+      <h5 ng-bind="secChild.name"></h5>
+      <recur-scale-content sec-data="secChild.childs"></recur-scale-content>
+    </div>
+  </div>
+</div>

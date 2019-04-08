@@ -1,0 +1,18 @@
+<div>
+    <!--取数-条件选取页面已收藏的筛选条件列表弹窗-->
+    <div class="modal fade" id="infi-collection">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">筛选条件列表</h4>
+                    </div>
+                </div>
+                <div infi-table columns="columns" content="content" opts="opts" update-page="updatePage(page)"
+                     btn-callback="optCollectList(entity,type)"></div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div sys-tip></div>
+</div>

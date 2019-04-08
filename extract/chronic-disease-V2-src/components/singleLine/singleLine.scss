@@ -1,0 +1,19 @@
+@import '../../scss/mixin.scss';
+
+.singLine-component {
+  width: 100%;
+  .content-list {
+    @include display-flex;
+    @include align-item-flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+
+    .list-item {
+      width: 100%;
+      .field-wrapper {
+        display: inline-block;
+        font-size: 16px;
+      }
+    }
+  }
+}

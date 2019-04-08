@@ -1,0 +1,92 @@
+<div ng-controller="genDetail" class="self-content self-caseinfo self-detail">
+    <div class="title">
+        <span class="glyphicon glyphicon-list"></span>取数详情
+    </div>
+    <div class="self-box-module self-box-module-3">
+        <div ng-repeat = "opt in detailData.info" class="module clearfix">
+            <span class="icon-md icon-kpi-{{$index+1}} self-circle pull-left"></span>
+            <p class="self-font-big">{{opt.label}}</p>
+            <p class="font-b self-font-green self-font-big ng-binding">{{opt.value}}</p>
+            <div class="info-box">
+                <span>{{opt.children.label}}：</span>
+                <span>{{opt.children.value}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="self-box" ng-if="detailData.auditInfo.status !== 'AUDIT_PRE'">
+        <div class="title">
+            <span class="glyphicon glyphicon-list"></span>审核信息
+        </div>
+        <table class="table self-table-list valign-middle">
+            <tbody>
+            <tr>
+                <td>审核人：</td>
+                <td>{{detailData.auditInfo.updator}}</td>
+            </tr>
+            <tr>
+                <td>审核理由：</td>
+                <td>{{detailData.auditInfo.description}}</td>
+            </tr>
+            <tr>
+                <td>审核时间：</td>
+                <td>{{detailData.auditInfo.updateTime}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="self-box">
+        <div class="title">
+            <span class="glyphicon glyphicon-list"></span>筛选条件
+        </div>
+        <table class="table self-table-list valign-middle">
+            <tbody>
+            <tr>
+                <td>条件关系：</td>
+                <td>{{detailData.filterTag.relationLabel}}</td>
+            </tr>
+            <tr ng-repeat = "opt in detailData.filterTag.filterTags">{{opt}}
+                <td>{{opt.label}}：</td>
+                <td>{{opt.value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="self-box">
+        <div class="title">
+            <span class="glyphicon glyphicon-list"></span>导出属性
+        </div>
+        <table class="table self-table-list valign-middle">
+            <tbody>
+            <tr ng-repeat = "opt in detailData.attr" ng-if="opt.label !== null">
+                <td>{{opt.label}}：</td>
+                <td>{{opt.value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="self-box special-box">
+        <div class="title">
+            <span class="glyphicon glyphicon-list"></span>筛选记录
+        </div>
+        <table class="table self-table-list valign-middle">
+            <tbody ng-repeat = "opt in detailData.filterHistory">
+            <tr>
+                <td>{{$index+1}}、病例数（{{opt.size}}）份 — {{opt.relationLabel}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+							<span ng-repeat = "option in opt.filterTags">
+								&nbsp;<span ng-if="$index!==0">{{opt.relation}}</span>&nbsp;【{{option.label}}_{{option.value}}】
+							</span>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="infi-box infi-m-btn"  style="text-align:right;">
+        <a class="btn btn-default" href="javascript:" onclick="history.back()">返回</a>
+    </div>
+</div>

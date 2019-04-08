@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题中文名称 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.name| empty " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题英文名称 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.ename| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题类型 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.type| unescape " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题编号 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.serialNumber| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题代码 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.code| empty " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>负责人 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.master| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>研究病种 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.projectName| empty " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>预期耗时 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.expectDays| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题创建单位 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.hospitalName| empty " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>创建时间 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.beginTime| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>邮箱 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.email| empty " style="line-height:34px"></div>
+    </div>
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>联系电话 :</label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.phone| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>课题合作单位 :</label></div>
+    <div class="col-md-9 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.attendUsers.hospitalName| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>立项依据 :</label></div>
+    <div class="col-md-9 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.basePoint| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>科研意义与创新点 :</label></div>
+    <div class="col-md-9 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.significance| empty " style="line-height:34px"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+        <label>研究方案 :</label></div>
+    <div class="col-md-9 form-group input-group" style="width: ;float: left;">
+        <div ng-bind="entity.researchWay| empty " style="line-height:34px"></div>
+    </div>
+</div>

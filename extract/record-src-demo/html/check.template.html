@@ -1,0 +1,74 @@
+<div class="infi-word-template" ng-if="checkList && checkList.length>0">
+    <div class="infi-template-topNav">
+        <ul>
+            <li ng-repeat="opt in checkList" ng-class="{true:'active'}[opt.active]"
+            ng-click="check(opt,checkList,$index)"><a>第{{opt.num}}次 &nbsp; {{opt.label}}</a></li>
+        </ul>
+    </div>
+    <div class="infi-word-title">
+        <p class="infi-name">
+            <span>检查号：{{tagData.exam_no|changeNULL}}</span>
+        </p>
+        <p class="infi-patiId">
+            <span>ID号：{{tagData.pati_id|changeNULL}}</span>
+        </p>
+    </div>
+    <div class="infi-info-box">
+        <table class="infi-wj-table">
+            <tr>
+                <td><p>姓名：{{tagData.name|changeNULL}}</p></td>
+                <td><p>性别：{{tagData.sex_name|changeNULL}}</p></td>
+                <td><p>年龄：{{tagData.age|changeNULL}}岁</p></td>
+            </tr>
+            <tr>
+                <td><p>申请科室：{{tagData.dept_icu_name|changeNULL}}</p></td>
+                <td><p class="hideLongP">检查项目：{{tagData.exam_item|changeNULL}}</p></td>
+                <td><p>检查设备：{{tagData.device|changeNULL}}</p></td>
+            </tr>
+            <tr ng-if="tagData.hospital_id">
+                <td><p>住院号：{{tagData.hospital_id|changeNULL}}</p></td>
+                <td><p>床号：{{tagData.bed_no|changeNULL}}</p></td>
+            </tr>
+        </table>
+    </div>
+    <div class="infi-content">
+        <h3>
+            <span class="align-left">检查参数</span>
+        </h3>
+        <p>
+            {{tagData.exam_para|changeNULL}}
+        </p>
+        <h3>
+            <span class="align-left">检查所见</span>
+        </h3>
+        <p>
+            {{tagData.describe|changeNULL}}
+        </p>
+        <!--<h3>
+            <span class="align-left">影像所见</span>
+        </h3>
+        <p>
+            {{tagData.image_describe|changeNULL}}
+        </p>-->
+        <h3>
+            <span class="align-left">印象</span>
+        </h3>
+        <p>
+            {{tagData.impression|changeNULL}}
+        </p>
+        <h3>
+            <span class="align-left">建议</span>
+        </h3>
+        <p>
+            {{tagData.recommendation|changeNULL}}
+        </p>
+        <p class="infi-doctorName-box">
+            <span>报告医师：{{tagData.technician|changeNULL}}</span>
+            <span>审核医师：{{tagData.verified_by|changeNULL}}</span>
+            <span>报告日期：{{tagData.report_date_time|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </p>
+    </div>
+</div>
+<div class="infi-word-template" ng-if="!checkList || checkList.length == 0">
+    <p>-</p>
+</div>

@@ -1,0 +1,90 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_txngfyqfq == true">
+    <div class="infi-record-title">
+        <h4>听性脑干反应潜伏期</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_txngfyqfq_time"
+                   ng-model="entity.table_txngfyqfq_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th>刺激信号</th>
+                <th colspan="3"><input name="entity.table_txngfyqfq_cjxh" ng-model="entity.table_txngfyqfq_cjxh" /></th>
+                <th>刺激速率</th>
+                <th colspan="3"><input name="entity.table_txngfyqfq_cjsl" ng-model="entity.table_txngfyqfq_cjsl" /></th>
+            </tr>
+            <tr>
+                <th>刺激声</th>
+                <th colspan="2">刺激声强度dBnHL</th>
+                <th>Ⅰ（ms）</th>
+                <th>Ⅲ（ms）</th>
+                <th>Ⅴ（ms）</th>
+                <th>Ⅰ-Ⅲ（ms）</th>
+                <th>Ⅰ-Ⅴ（ms）</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td colspan="2">
+                    <input name="entity.table_txngfyqfq_ze_dbnhl" ng-model="entity.table_txngfyqfq_ze_dbnhl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_1" ng-model="entity.table_txngfyqfq_ze_1" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_3" ng-model="entity.table_txngfyqfq_ze_3" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_4" ng-model="entity.table_txngfyqfq_ze_4" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_13" ng-model="entity.table_txngfyqfq_ze_13" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_14" ng-model="entity.table_txngfyqfq_ze_14" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td colspan="2">
+                    <input name="entity.table_txngfyqfq_ye_dbnhl" ng-model="entity.table_txngfyqfq_ye_dbnhl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_1" ng-model="entity.table_txngfyqfq_ye_1" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_3" ng-model="entity.table_txngfyqfq_ye_3" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_4" ng-model="entity.table_txngfyqfq_ye_4" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_13" ng-model="entity.table_txngfyqfq_ye_13" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_14" ng-model="entity.table_txngfyqfq_ye_14" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="7">
+                    <input name="entity.table_txngfyqfq_note" ng-model="entity.table_txngfyqfq_note" class="form-control"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>听性脑干反应潜伏期诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_txngfyqfq"><input
+                name="entity.name_txngfyqfq" type="text" ng-model="entity.name_txngfyqfq" class="form-control"/></div>
+    </div>
+</section>

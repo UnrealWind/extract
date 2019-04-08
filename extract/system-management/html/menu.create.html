@@ -1,0 +1,86 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    用户管理 -> 菜单 ->
+    <span ng-show="viewDetail.type == 'create'&&viewDetail.id">新建子菜单</span>
+    <span ng-show="viewDetail.type == 'create'&&!viewDetail.id">新建菜单</span>
+    <span ng-show="viewDetail.type == 'view'">查看菜单</span>
+    <span ng-show="viewDetail.type == 'change'">修改菜单</span>
+</h4>
+<div class="infi-box">
+    <form name="form">
+        <div class="infi-form-row row">
+
+            <div class="col-lg-2"><label>菜单名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.menuDetail.name" required/>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>链&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.menuDetail.href"
+                       ng-if="viewDetail.menuDetail.linkFunction == '2'" required />
+                <span ng-show="viewDetail.menuDetail.linkFunction == '1'" class="text-danger">链接不可用</span>
+                <i class="text-danger" ng-show="viewDetail.menuDetail.linkFunction == '2'">*</i>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.menuDetail.icon"/>
+            </div>
+            <div class="col-lg-2"><label>排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.menuDetail.order"
+                       ng-change="checkSort()"/>
+                <span ng-show="!sortIsNumber" class="infi-error-tip">排序为数字</span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>打开方式:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.menuDetail.target" class="infi-drug-input" ng-show="viewDetail.menuDetail.linkFunction == '2'">
+                    <option value="" ng-show="viewDetail.menuDetail.linkType == 'rel'">当前窗口打开</option>
+                    <option value="true">新窗口打开</option>
+                </select>
+                <span ng-show="viewDetail.menuDetail.linkFunction == '1'" class="text-danger">打开方式不可用</span>
+            </div>
+            <div class="col-lg-2"><label>链接类型:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.menuDetail.linkType" ng-change="selectHrefType()"
+                        ng-show="viewDetail.menuDetail.linkFunction == '2'" class="infi-drug-input">
+                    <option value="rel">相对路径</option>
+                    <option value="ads">绝对路径</option>
+                </select>
+                <span ng-show="viewDetail.menuDetail.linkFunction == '1'" class="text-danger">链接类型不可用</span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>链接功能:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.menuDetail.linkFunction" class="infi-drug-input" ng-change="changeType()">
+                    <option value="2">跳转</option>
+                    <option value="1">展开</option>
+                </select>
+            </div>
+            <div class="col-lg-2"><label>层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.menuDetail.hierarchy"
+                       ng-change="checkSort()"/>
+                <span ng-show="!sortIsNumber" class="infi-error-tip">层级为数字</span>
+            </div>
+        </div>
+
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>选择节点:</label></div>
+            <div class="col-lg-8" id="treeSelect">
+                <tree-view date-resource="menuList" checked-id="viewDetail.id"></tree-view>
+                <span ng-show="menuList.status == SYS.STATUS_SUCCESS&&menuList.data.length == 0" class="text-danger">暂无菜单</span>
+                <span ng-show="menuList.status != SYS.STATUS_SUCCESS" ng-bind="menuList.description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="infi-submit-container">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存" ng-disabled="!form.$valid||!sortIsNumber" ng-click="saveMenu()"/>
+        </div>
+    </form>
+</div>
+<div sys-tip></div>

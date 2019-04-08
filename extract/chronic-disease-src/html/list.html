@@ -1,0 +1,221 @@
+<div class="container-fluid list-page">
+  <!-- page content title -->
+  <header class="row">
+    <div class="col-md-12">
+      <h3 class="clearfix">
+        <span class="pull-left"><i class="glyphicon glyphicon-th-list"></i> 患者列表</span>
+        <button class="btn btn-primary pull-right" ng-click="addNewPatiAct()"><i class="glyphicon glyphicon-plus"></i> 新建患者</button>
+      </h3>
+      <hr>
+    </div>
+  </header>
+
+
+  <!-- main content -->
+  <div class="row">
+    <div class="col-md-12">
+      <!-- filter condition -->
+      <form class="form-inline filter-wrapper">
+        <!-- patient name -->
+        <div class="form-group filter-conditions">
+          <label for="patiName">姓名:</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="patiName" 
+                 placeholder="请输入姓名"
+                 ng-model="filterAbout.patiName"
+                 ng-change="filterChange()">
+        </div>
+        <!-- department id -->
+        <div class="form-group filter-conditions">
+          <label for="depID">门诊 ID:</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="depID" 
+                 placeholder="请输入门诊 ID"
+                 ng-model="filterAbout.deptID"
+                 ng-change="filterChange()">
+        </div>
+        <!-- nursing group -->
+        <div class="form-group filter-conditions">
+          <label for="nurseGP">护理组:</label>
+          <select class="form-control" 
+                  id="nurseGP"
+                  ng-options="group as group.name for group in filterAbout.groupOrgData track by group.id"
+                  ng-model="filterAbout.patiGroup"
+                  ng-change="filterChange()">
+          </select>
+        </div>
+      </form>
+
+
+  
+      <!-- Table -->
+      <table class="table table-hover" width="100%">
+        <thead>
+          <tr>
+            <th class="text-center" width="8%">门诊 ID</th>
+            <th class="text-center" width="8%">姓名</th>
+            <th class="text-center" width="5%">性别</th>
+            <th class="text-center" width="8%">护理组</th>
+            <th class="text-center" width="60%">提示</th>
+            <th class="text-center" width="11%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in tableAbout.page.content"
+              ng-if="tableAbout.page.content && tableAbout.page.content.length > 0">
+            <td ng-repeat="(ind, val) in tableAbout.contentMap"
+                class="txt-elipse text-center">
+
+                <span ng-if= "val == 'tips'">
+                  <span ng-repeat="(subInd, subVal) in row[val]"
+                        ng-bind="subVal"
+                        class="label label-info prompt-label">
+                  </span>
+                </span>
+
+                <span ng-if="val == 'sex'">
+                  <span ng-bind="row[val]"></span>
+                </span>
+
+
+                <span ng-if="val != 'prompt' && val != 'sex'"
+                      ng-bind="row[val]" 
+                      title="{{row[val]}}"
+                      class="cell-plain-txt">
+                </span>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-default" ng-click="patiManage(row)">管理</button>
+            </td>
+          </tr>
+
+          <!-- 表格状态提示 -->
+          <tr ng-if="!tableAbout.page.content">
+              <td colspan="{{tableAbout.columns.length}}" 
+                  ng-if="tableAbout.loading == 'pending'">
+                <p class="bg-warning text-center" style="line-height: 50px;">数据加载中...</p>
+              </td>
+
+              <td colspan="{{tableAbout.columns.length}}"
+                  ng-if="tableAbout.loading == 'resolved'">
+                <p class="bg-success text-center" style="line-height: 50px;">加载成功!</p>
+              </td>
+
+              <td colspan="{{tableAbout.columns.length}}"
+                  ng-if="tableAbout.loading == 'nondata'">
+                <p class="bg-warning text-center" style="line-height: 50px;">暂无数据!</p>
+              </td>
+
+              <td colspan="{{tableAbout.columns.length}}"
+                  ng-if="tableAbout.loading == 'rejected'">
+                <p class="bg-danger text-center" style="line-height: 50px;">加载失败! 错误代码: {{tableAbout.page.error.status }}</p>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+      <!-- table page -->
+      <div class="infi-page">
+        <div class="form-inline">
+          <div class="form-group">
+            <uib-pagination total-items="tableAbout.page.totalElements" 
+                            ng-model="tableAbout.page.number" 
+                            boundary-link-numbers="true" 
+                            ng-change="updatePage(tableAbout.page.number)"
+                            items-per-page="tableAbout.page.size" 
+                            num-pages="tableAbout.page.totalPages" 
+                            max-size="6">
+            </uib-pagination>
+          </div>
+
+          <!-- 跳转页码 -->
+          <div class="form-group jumpPage-wrap">
+            <div class="input-group">
+              <input type="number" 
+                      class="form-control numberInput" 
+                      ng-model="jumpPage" 
+                      min="1">
+            </div>
+            <button class="btn btn-default" 
+                    ng-click="updatePage(jumpPage)">跳转</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- pop & hide -->
+
+  <!-- add new pati modal -->
+  <div class="modal fade" id="addNewPatiModal" 
+       modal-init 
+       modal-id="'addNewPatiModal'"
+       add-new="addNewPati">
+    <div class="modal-dialog">
+      <div class="modal-content container-fluid">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addNewPatiModalLabel">新建患者</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline text-center">
+            <div class="form-group">
+              <label for="newPatiDepID">门诊 ID:</label>  
+              <div class="input-group">
+                <input type="text" 
+                        class="form-control" 
+                        id="newPatiDepID"
+                        placeholder="请输入门诊 ID"
+                        ng-model="addNewPati.deptID"
+                        ng-change="createPati()">
+                <div class="input-group-addon">
+                  <i class="glyphicon glyphicon-search"></i>
+                </div>
+              </div>
+
+
+            </div>
+          </form>
+
+          <div ng-if="addNewPati.canSave == 'loading'" class="text-center">
+            查找用户中...
+          </div>
+
+          <div ng-if="addNewPati.canSave">
+            <!-- 已有患者 -->
+            <existed-pati ng-if="addNewPati.isNewPati == false"
+                          group="filterAbout"
+                          create-info="addNewPati.createInfo"></existed-pati>
+            <!-- 新患者 -->
+            <brand-new-pati ng-if="addNewPati.isNewPati == true"
+                            group="filterAbout"
+                            create-info="addNewPati.createInfo"></brand-new-pati>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" 
+                  class="btn btn-default" 
+                  data-dismiss="modal"
+                  ng-if="addNewPati.canSave && addNewPati.isNewPati">取消</button>
+          
+          <button type="button" 
+                  class="btn btn-primary" 
+                  ng-click="savePati()"
+                  ng-if="addNewPati.canSave && addNewPati.isNewPati">保存</button>
+          
+          <button type="button" 
+                  class="btn btn-primary" 
+                  ng-click="savePati()"
+                  ng-if="addNewPati.canSave && !addNewPati.isNewPati">前往管理</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast.mainBody" ng-if="totast.mainBody" style="z-index: 1051;"></toast-pop>
+
+</div>

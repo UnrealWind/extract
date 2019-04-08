@@ -1,0 +1,63 @@
+<div id="interviewTimeList" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>访视时间</h4>
+            </div>
+            <div class="modal-body">
+                <h5>说明：访视时间按照基线访视日期开始计算</h5>
+                <label>选择访视时间：</label>
+                <ul>
+                    <li ng-repeat="opt in dateGroup" class="input-group">
+                        <span ng-click="choseInterviewTime(opt)" class="btn " ng-class="{true:'btn-success',false:'btn-default'}[opt.checked]">{{opt.label}}{{opt.unit}}</span>
+                    </li>
+                </ul>
+                <label>自定义访视时间：</label>
+                <ul class="infi-custom-time">
+                    <li class="f-l" ng-repeat="item in customeTime">
+                        <input min="1" class="form-control" type="number" ng-model="item.label" ng-change="addCustomTime(item,$index)">
+                        <select class="form-control" ng-model="item.unit" ng-change="addCustomTime(item,$index)">
+                            <option value="个月">月</option>
+                            <option value="年">年</option>
+                        </select>
+                    </li>
+                    <span class="fl" ng-click="addCustomTimeList()">添加</span>
+                </ul>
+                <label>连续访视时间：</label>
+                <ul class="">
+                    <li class="f-l" >
+                        <label>访视周期：</label>
+                        <input ng-change="addTime('startDate')" style="width: 60px;display: inline-block" class="form-control" type="text" ng-model="date.startDate" >
+                        <select ng-change="addTime('startDate')" style="width: 40px;display: inline-block;padding:0" class="form-control" ng-model="date.startDateUnit" >
+                            <option value="日">日</option>
+                            <option value="月">月</option>
+                            <option value="年">年</option>
+                        </select>
+                        <span>-</span>
+                        <input ng-change="addTime('endDate')" style="width: 60px;display: inline-block" class="form-control" type="text" ng-model="date.endDate" >
+                        <select ng-change="addTime('endDate')" style="width: 40px;display: inline-block;padding:0" class="form-control" ng-model="date.endDateUnit" >
+                            <option value="日">日</option>
+                            <option value="月">月</option>
+                            <option value="年">年</option>
+                        </select>
+                    </li>
+                    <li class="f-l" style="margin-left: 20px;">
+                        <label>访视间隔时间：</label>
+                        <input ng-change="addTime('loopValue')" style="width: 60px;display: inline-block" class="form-control" type="text" ng-model="date.loopValue" >
+                        <select ng-change="addTime('loopValue')" style="width: 40px;display: inline-block;padding:0" class="form-control" ng-model="date.loopValueUnit">
+                            <option value="日">日</option>
+                            <option value="月">月</option>
+                            <option value="年">年</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="setInterviewTime()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+

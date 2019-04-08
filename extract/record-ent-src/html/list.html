@@ -1,0 +1,50 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>入院列表</h4>
+<div class="infi-box">
+    <div style="float:right;" >
+        <button class="btn infi-btn-linear-green-l btn-sm" ng-click=" admission()">创建新入院记录</button>
+    </div>
+    <h4>入院记录列表</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container infi-fixed">
+            <div infi-table columns="listColumns" data-ng-if="listColumns && listData" opts="opts"
+                 content="listData" update-page="updateList(page)" btn-callback="operation(entity,type)">
+             </div>
+        </div>
+    </div>
+
+    <div sys-tip></div>
+
+    <div class="modal fade"  id="infi-listcreate">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">创建新入院记录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="infi-inputmodal">
+                        <label for="infi-name" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
+                        <input id="infi-name" type="text" class="form-control" ng-model="record.patientName" placeholder="">
+                    </div>
+                    <div class="infi-inputmodal">
+                        <label for="infi-number">门&nbsp;&nbsp;诊&nbsp;&nbsp;号:</label>
+                        <input id="infi-number" type="text" class="form-control" ng-model="record.patientId" placeholder="">
+                    </div>
+                    <div class="infi-inputmodal">
+                        <label for="infi-name" >第几次入院:</label>
+                        <input id="infi-name" type="text" class="form-control" ng-model="record.patientVisitId" placeholder="">
+                    </div>
+                    <div class="infi-inputmodal">
+                        <label for="infi-number">科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室:</label>
+                        <input id="infi-number" type="text" class="form-control" ng-model="record.sectName" placeholder="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn infi-btn-linear-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="createRecord()">确认创建</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+

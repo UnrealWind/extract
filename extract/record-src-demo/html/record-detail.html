@@ -1,0 +1,105 @@
+<div>
+    <style>
+        body article.infi-main {
+            background-color: #f1f1f1 !important;
+        }
+    </style>
+    <div class="row infi-set-width">
+        <div class="infi-left-nav ">
+            <ul class="">
+                <li ng-repeat="opt in naviData">
+                    <record-navi target="opt" parent = "naviData" target-template = "targetTemplate"></record-navi>
+                </li>
+            </ul>
+        </div>
+        <div class="infi-main-content-box" ng-if="apiInfo.currentType == 'menzhen'">
+            <h4 ng-repeat="opt in naviData" ng-if="opt.active" class="infi-title ng-scope" style="overflow: hidden;">
+                <i class="glyphicon glyphicon-info-sign"></i>{{opt.label}}
+                <button ng-click="goBack()" class="btn btn-primary btn-sm" style="float: right;">返回</button>
+            </h4>
+            <menzhen-basic  outpatient-base-info="outpatientBaseInfo" ></menzhen-basic>
+            <menzhen-diag  outpatient-diag="outpatientDiag"></menzhen-diag>
+            <zhuyuan-complaint all-results="allResults" hospital-complaint="hospitalComplaint"></zhuyuan-complaint>
+
+            <past-checks all-results="allResults"  past-check="pastCheck"></past-checks>
+            <past-exams all-results="allResults"  past-exam="pastExam"></past-exams>
+
+            <present-historys all-results="allResults" present-history="presentHistory"></present-historys>
+
+            <zhuyuan-history all-results="allResults" hospital-personal="hospitalPersonal" hospital-family="hospitalFamily" hospital-past = "hospitalPast"></zhuyuan-history>
+            <zhuyuan-body all-results="allResults" hospital-body="menzhenCheckBody" ></zhuyuan-body>
+
+            <menzhen-drug  outpatient-drug="outpatientDrug"></menzhen-drug>
+            <div class="infi-top-nav" id="template">
+                <ul class="nav nav-tabs"  ng-repeat="options in naviData" ng-if="options.active == true && doRefresh">
+                    <li ng-if="$index>2" ng-repeat="opt in options.children" role="presentation" ng-class="{true:'active'}[opt.template==targetTemplate || opt.active]">
+                        <a href="javascript:;" ng-click="changeTab(opt,options.children)">{{opt.label}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="doRefresh" class="infi-content-box" ng-class="{false:'no-border-top'}[targetTemplate==null]">
+                <check-template ng-if="targetTemplate == '检查信息' && apiInfo.classId!==''"  api-info="apiInfo"></check-template>
+                <checkout-template ng-if="targetTemplate == '检验信息'&& apiInfo.classId!==''" api-info="apiInfo"></checkout-template>
+                <div class="infi-word-template" ng-if="(targetTemplate == '检验信息' ||targetTemplate == '检查信息')&& apiInfo.classId==''||(targetTemplate == '电子病历')">
+                    <p>-</p>
+                </div>
+            </div>
+        </div>
+        <div class="infi-main-content-box" ng-if="apiInfo.currentType == 'hosp'">
+            <h4 ng-repeat="opt in naviData" ng-if="opt.active" class="infi-title ng-scope" style="overflow: hidden;">
+                <i class="glyphicon glyphicon-info-sign"></i>{{opt.label}}
+                <button ng-click="goBack()" class="btn infi-btn-linear-green-l btn-sm" style="float: right;">返回</button>
+            </h4>
+            <zhuyuan-basic hospitalized-base-info="hospitalizedBaseInfo"></zhuyuan-basic>
+            <zhuyuan-diag hospitalized-diag="hospitalizedDiag" ></zhuyuan-diag>
+            <zhuyuan-complaint hospital-complaint="hospitalComplaint"></zhuyuan-complaint>
+            <zhuyuan-history hospital-personal="hospitalPersonal" hospital-family="hospitalFamily" hospital-past = "hospitalPast"></zhuyuan-history>
+            <zhuyuan-body hospital-body="hospitalBody" ></zhuyuan-body>
+
+            <div class="infi-top-nav" id="template">
+                <ul class="nav nav-tabs"  ng-repeat=" options in naviData" ng-if="options.active == true && doRefresh">
+                    <li ng-if="$index>0" ng-repeat="opt in options.children" role="presentation" ng-class="{true:'active'}[opt.template==targetTemplate || opt.active]">
+                        <a href="javascript:;" ng-click="changeTab(opt,options.children)">{{opt.label}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div mark="{{targetTemplate}}" ng-if="doRefresh" class="infi-content-box" ng-class="{false:'no-border-top'}[targetTemplate==null]">
+                <diagnosis-record ng-if="targetTemplate == '诊疗记录' " api-info="apiInfo" ></diagnosis-record>
+                <doctor-advice ng-if="targetTemplate == '医嘱'" api-info="apiInfo"></doctor-advice>
+                <check-template ng-if="targetTemplate == '检查信息' && apiInfo.classId!==''"  api-info="apiInfo"></check-template>
+                <checkout-template ng-if="targetTemplate == '检验信息' && apiInfo.classId!==''" api-info="apiInfo"></checkout-template>
+                <operation ng-if="targetTemplate == '手术信息'" api-info="apiInfo"></operation>
+                <course-disease ng-if="apiInfo.medicalRecordTypeId!='' && apiInfo.medicalRecordTypeId!=null" target-data="false" api-info="apiInfo" medical-record-type-id = "medicalRecordTypeId"></course-disease>
+                <div class="infi-word-template" ng-if="(targetTemplate == '检验信息' ||targetTemplate == '检查信息')&& apiInfo.classId==''||(targetTemplate == '电子病历')">
+                    <p>-</p>
+                </div>
+            </div>
+        </div>
+        <div class="infi-main-content-box" ng-if="apiInfo.currentType == 'checkup'">
+            <h4 ng-repeat="opt in naviData" ng-if="opt.active" class="infi-title ng-scope" style="overflow: hidden;">
+                <i class="glyphicon glyphicon-info-sign"></i>{{opt.label}}
+                <button ng-click="goBack()" class="btn infi-btn-linear-green-l btn-sm" style="float: right;">返回</button>
+            </h4>
+            <check-basic check-base-info="checkBaseInfo"></check-basic>
+
+            <div class="infi-top-nav" id="template">
+                <ul class="nav nav-tabs"  ng-repeat="options in naviData" ng-if="options.active == true && doRefresh">
+                    <li ng-if="$index>0" ng-repeat="opt in options.children" role="presentation" ng-class="{true:'active'}[opt.template==targetTemplate || opt.active]">
+                        <a href="javascript:;" ng-click="changeTab(opt,options.children)">{{opt.label}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="doRefresh" class="infi-content-box" ng-class="{false:'no-border-top'}[targetTemplate==null]">
+                <check-template ng-if="targetTemplate == '检查信息'&& apiInfo.classId!==''"  api-info="apiInfo"></check-template>
+                <checkout-template ng-if="targetTemplate == '检验信息'&& apiInfo.classId!==''" api-info="apiInfo"></checkout-template>
+                <speciality-check ng-if="targetTemplate == '专科检查'"  api-info="apiInfo"></speciality-check>
+
+                <div class="infi-word-template" ng-if="(targetTemplate == '检验信息' ||targetTemplate == '检查信息')&& apiInfo.classId==''">
+                    <p>-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

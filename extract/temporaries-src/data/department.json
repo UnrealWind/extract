@@ -1,0 +1,354 @@
+[
+
+  {
+    "dept_id": 3,
+    "dept_name": "北京PET中心",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 4,
+    "dept_name": "病理科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 5,
+    "dept_name": "产科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 6,
+    "dept_name": "超声诊断科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 7,
+    "dept_name": "儿科急诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 8,
+    "dept_name": "儿科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 9,
+    "dept_name": "耳鼻咽喉-头颈外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 10,
+    "dept_name": "放射科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 11,
+    "dept_name": "风湿免疫、变态反应科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 12,
+    "dept_name": "妇科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 13,
+    "dept_name": "感染科肠道门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 14,
+    "dept_name": "感染科初检门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 15,
+    "dept_name": "感染科肝炎门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 16,
+    "dept_name": "感染性疾病科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 17,
+    "dept_name": "感染性疾病科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 18,
+    "dept_name": "干部保健门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 19,
+    "dept_name": "功能神经外科",
+    "type": "REP"
+  },
+  {
+    "dept_id": 20,
+    "dept_name": "功能神经外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 21,
+    "dept_name": "骨科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 22,
+    "dept_name": "核磁共振室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 23,
+    "dept_name": "核医学科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 24,
+    "dept_name": "呼吸科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 25,
+    "dept_name": "计划生育",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 26,
+    "dept_name": "计划生育门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 27,
+    "dept_name": "介入放射科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 28,
+    "dept_name": "康复科按摩门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 29,
+    "dept_name": "康复科理疗门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 30,
+    "dept_name": "康复科针灸门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 31,
+    "dept_name": "康复医学门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 32,
+    "dept_name": "口腔二部门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 33,
+    "dept_name": "口腔科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 34,
+    "dept_name": "口腔修复",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 35,
+    "dept_name": "老年医学（综合）科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 36,
+    "dept_name": "慢病门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 37,
+    "dept_name": "泌尿外科",
+    "type": "REP"
+  },
+  {
+    "dept_id": 38,
+    "dept_name": "泌尿外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 39,
+    "dept_name": "内分泌科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 40,
+    "dept_name": "内科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 41,
+    "dept_name": "内科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 42,
+    "dept_name": "尿动力学室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 43,
+    "dept_name": "膀胱镜室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 44,
+    "dept_name": "皮肤性病科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 45,
+    "dept_name": "普通放射",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 46,
+    "dept_name": "普通外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 47,
+    "dept_name": "神经内科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 48,
+    "dept_name": "神经内科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 49,
+    "dept_name": "神经外科",
+    "type": "REP"
+  },
+  {
+    "dept_id": 50,
+    "dept_name": "神经外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 51,
+    "dept_name": "肾科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 52,
+    "dept_name": "特需门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 53,
+    "dept_name": "疼痛科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 54,
+    "dept_name": "体检中心",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 55,
+    "dept_name": "体外碎石室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 56,
+    "dept_name": "消化科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 57,
+    "dept_name": "消化内镜中心",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 58,
+    "dept_name": "心脏科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 59,
+    "dept_name": "信息中心",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 60,
+    "dept_name": "胸科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 61,
+    "dept_name": "血管超声诊断科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 62,
+    "dept_name": "血管外科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 63,
+    "dept_name": "血液科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 64,
+    "dept_name": "血液透析室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 65,
+    "dept_name": "牙周病专科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 66,
+    "dept_name": "眼科门诊",
+    "type": "REP"
+  },
+  {
+    "dept_id": 67,
+    "dept_name": "营养科",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 68,
+    "dept_name": "支气管镜检查",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 69,
+    "dept_name": "职工保健门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 70,
+    "dept_name": "中心手术室",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 71,
+    "dept_name": "中医科门诊",
+    "type": "DEM"
+  },
+  {
+    "dept_id": 72,
+    "dept_name": "注射室",
+    "type": "DEM"
+  }
+
+]

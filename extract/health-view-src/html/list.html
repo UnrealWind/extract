@@ -1,0 +1,41 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据列表</h4>
+<div class="infi-box">
+    <section class="infi-section">
+        <!--<div infi-table opts="opts" columns="columns" content="content" data-ng-if="content"-->
+             <!--update-page="updatePage(page)" btn-callback="btnCallback(entity)"></div>-->
+        <table class="table infi-table">
+            <thead>
+                <tr>
+                    <th ng-repeat="column in columns">{{column.label}}
+                    </th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody ng-if="content.status == SYS.STATUS_SUCCESS">
+                <tr ng-repeat="entity in content.page.content">
+                    <td>{{entity.patientName}}</td>
+                    <td>{{entity.sexName}}</td>
+                    <td>{{entity.age}}</td>
+                    <td>{{entity.createdTime}}</td>
+                    <td class="infi-operation-btn" ng-repeat="btn in opts.btns">
+                        <span ng-click="btnCallback(entity,btn.type)"
+                        ng-bind="btn.label"></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-if="content.status != SYS.STATUS_SUCCESS">
+                <tr>
+                    <td class="bg-danger" colspan="{{columns.length+1}}">暂无数据</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="infi-page">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="7"
+                            boundary-link-numbers="true" ng-change="updatePage(content.page.number)"
+                            items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+
+            </uib-pagination>
+        </div>
+    </section>
+</div>

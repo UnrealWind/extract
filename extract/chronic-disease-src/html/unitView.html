@@ -1,0 +1,174 @@
+<div class="unitView-page container-fluid">
+  <!-- page content title -->
+  <header class="row pager-header">
+      <div class="col-md-12 clearpadding">
+         <a href="#/timeline"
+            class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> 患者视图</a>
+      </div>
+  </header>
+
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="nav-wrapper text-center">
+        <uniview-nav></uniview-nav>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <!-- 基本信息 -->
+      <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="基本信息">基本信息</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-{{val.colspan}}" ng-repeat="(ind, val) in info">
+            <span ng-bind="val.label + ':'"></span>
+            <span ng-bind="val.value"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 发作情况 -->
+      <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="发作情况">发作情况</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-9">
+            <dl>
+              <dt>急性加重</dt>
+              <dd>１. 过去一年中因慢阻肺急性加重住院次数：　５次</dd>
+              <dd>１. 过去一年中因慢阻肺急性加重急诊或门诊就诊次数：　５次</dd>
+            </dl>
+
+            <dl>
+              <dt>治疗方面</dt>
+              <dd>戒烟治疗：　ｘｘｘｘｘｘｘ</dd>
+              <dd>药物治疗：　ｘｘｘｘｘｘｘ</dd>
+            </dl>
+          </div>
+          <div class="col-md-3">
+            <unit-view-sec-right></unit-view-sec-right>
+          </div>  
+        </div>
+      </div>
+
+      <!-- 肺功能检查 -->
+      <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="肺功能检查">肺功能检查</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-9">
+            <dl>
+              <dt>检查内容</dt>
+              <dd>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>检查项目</th>
+                      <th>正常预计值(L)</th>
+                      <th>实测值(L)</th>
+                      <th>%pred</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>FEV1</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+        
+                    <tr>
+                      <td>FVC</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+        
+                    <tr>
+                      <td>FEV1/FVC</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+        
+                    <tr>
+                      <td>PEF</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+            </dl>
+
+
+            <div id="lungs-check" class="leftChart-wrapper">
+              <unit-view-sec-left-chart opts="lungCheck" ele="'lungs-check'"></unit-view-sec-left-chart>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <unit-view-sec-right></unit-view-sec-right>
+          </div> 
+        </div>
+      </div>
+
+      <!-- 呼吸困难指数 -->
+      <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="呼吸困难指数">呼吸困难指数</h3>
+        </div>
+        <div class="panel-body">
+
+          <div id="breathhard" class="leftChart-wrapper">
+            <unit-view-sec-left-chart opts="breathOpts" ele="'breathhard'"></unit-view-sec-left-chart>
+          </div>
+        </div>
+      </div>
+
+      <!-- 生活质量自我评估 -->
+      <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="生活质量自我评估">生活质量自我评估</h3>
+        </div>
+        <div class="panel-body">
+          <div id="life-qua" class="leftChart-wrapper">
+            <unit-view-sec-left-chart opts="lifeqa" ele="'life-qua'"></unit-view-sec-left-chart>
+          </div>
+        </div>
+      </div>
+
+      <!-- 六分钟步行实验 -->
+      <!-- <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="六分钟步行实验">六分钟步行实验</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div> -->
+
+      <!-- 焦虑抑郁量表 -->
+      <!-- <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="焦虑抑郁量表">焦虑抑郁量表</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div> -->
+
+      <!-- 圣乔治 -->
+      <!-- <div class="panel panel-default row">
+        <div class="panel-heading">
+          <h3 class="panel-title" id="圣乔治">圣乔治</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

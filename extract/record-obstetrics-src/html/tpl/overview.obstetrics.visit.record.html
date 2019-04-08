@@ -1,0 +1,90 @@
+<div class="infi-wj-self-box infi-visit-box" style="width: 100%; border:none;" ng-repeat="diagnose in diagnose">
+    <div class="infi-wj-list-box-title infi-wj-visit-title">
+        <div class="infi-visit-week">
+            <a href="#/output/pregnancy/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}/{{diagnose.id}}">孕{{diagnose.pregnancy_week}}周</a>
+        </div>
+        <div class="infi-visit-time">
+            <span>[
+                {{diagnose.date}}
+                <span ng-hide="diagnose.date">未知</span>
+            ]</span>
+
+        </div>
+    </div>
+    <div class="infi-wj-table-box">
+        <table class="table table-bordered infi-wj-visit-tab">
+            <thead>
+                <tr>
+                    <th>血压</th>
+                    <th>体重</th>
+                    <th>胎动</th>
+                    <th>胎位</th>
+                    <th>胎心</th>
+                    <th>头盆关系</th>
+                    <th>水肿</th>
+                    <th>尿蛋白</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <span ng-bind="diagnose.blood_pres"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.weight"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.quickening"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.position|unescape"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.cardiac"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.head_basin_rela|unescape"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="diagnose.edema|unescape"></span>
+                    </th>
+                    <th>
+                        <span ng-if="diagnose.urinary_protein">（{{diagnose.urinary_protein}}）</span>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right;">
+            <span style="color:#6c91b7;">主诉:</span>
+        </div>
+        <div class="col-md-9">
+            <p ng-bind="diagnose.complained_symptoms"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right">
+            <span style="color:#6c91b7;">处理:</span>
+        </div>
+        <div class="col-md-9">
+            <p ng-bind="diagnose.handle"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right">
+            <span style="color:#6c91b7;">备注:</span>
+        </div>
+        <div class="col-md-9">
+            <p ng-bind="diagnose.note"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right">
+            <span style="color:#6c91b7;">签名:</span>
+        </div>
+        <div class="col-md-9">
+            <p ng-bind="diagnose.signature"></p>
+        </div>
+    </div>
+</div>

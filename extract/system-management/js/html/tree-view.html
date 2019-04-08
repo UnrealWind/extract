@@ -1,0 +1,10 @@
+<ul>
+    <li ng-repeat="opt in dateResource" >
+        <label>
+            <span>-</span>
+            <input ng-checked="checkedId == opt.id" type="radio" name="mechanism" value="{{opt.code}}" ng-click="check(opt)">
+            {{opt.name}}
+        </label>
+        <tree-view date-resource="opt.children" checked-id="checkedId" parent="parent"></tree-view>
+    </li>
+</ul>

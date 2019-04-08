@@ -1,0 +1,91 @@
+<div class="info-tab">
+        <div class="form-inline">
+            <!-- 检验 -->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label>检验：</label>
+                    <input type="text" class="form-control" ng-model="searchData.keyword" ng-change="search('symptom')" placeholder="搜索患者检验"
+                        style="width: 90%;">
+                </div>
+            </div>
+    
+            <!-- 搜索结果 -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="list-content-wrapper">
+                        <div class="data-loading" ng-if="getRst && searchData.keyword">
+                            <get-data-loading></get-data-loading>
+                        </div>
+    
+                        <span class="list-content-item btn btn-default" ng-repeat="model in searchData.searchRst" ng-class="{true: 'btn-selected'}[selectedClass.indexOf(model.id) >= 0]"
+                            ng-click="choserPop(model)">
+                            <span ng-bind="model.label">
+                            </span>
+    
+                            <i class="red-point" ng-if="model.tag"></i>
+                        </span>
+    
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 左侧列表 -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="data-loading" ng-if="!normalModel" ng-init="normalModel = []">
+                        <get-data-loading></get-data-loading>
+                    </div>
+                    <div class="list-group">
+                        <button type="button" 
+                                class="list-group-item" 
+                                ng-class="{true: 'active'}[showIndex == $index]"
+                                ng-repeat="classify in normalModel.classifyNodes" 
+                                ng-if="normalModel.classifyNodes.length > 0" 
+                                ng-bind="classify.label"
+                            ng-click="changeModel($index)">
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- 右侧列表 -->
+                <div class="col-md-8">
+                    <div class="data-loading" ng-if="!normalModel" ng-init="normalModel = []">
+                        <get-data-loading></get-data-loading>
+                    </div>
+    
+                    <div class="list-content-wrapper list-content" 
+                         ng-repeat="classify in normalModel.classifyNodes" 
+                         ng-if="$index == showIndex">
+                        
+                         <span class="list-content-item btn btn-default" 
+                               ng-repeat="value in classify.valueNodes" 
+                               ng-class="{true: 'btn-selected'}[$root.selectedClass.indexOf(value.id + '_' +value.label) >= 0]"
+                               ng-click="choserPop(value, classify)">
+                            <span ng-bind="value.label"></span>
+                            <i class="red-point" ng-if="value.tag"></i>
+                        </span>
+                    </div>
+                    <div selection-pop part="$root.hasCheckedTag"></div>
+    
+                    <hr class="divider" ng-if="hideLink" />
+    
+                    <!-- 推荐 -->
+                    <div class="recommendLinks-wrapper" 
+                         ng-if="hideLink">
+                        
+                        <h5>推荐</h5>
+    
+                        <span class="list-content-item btn btn-default btn-sm" 
+                              ng-if="recommendLink" 
+                              ng-repeat="link in recommendLink"
+                              ng-class="{true: 'btn-selected'}[$root.selectedClass.indexOf(link.id + '_' +link.label) >= 0]" 
+                              ng-click="choserPop(link)">
+    
+                            <span ng-bind="link.label"></span>
+    
+                            <i class="red-point" ng-if="link.tag"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>

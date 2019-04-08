@@ -1,0 +1,1104 @@
+<!-- 本页面的模板暂时为写死的，以慢阻肺的类型为准，共八个。现在之所以没问题是因为哮喘的第一个模板类型和慢阻肺的第一个类型相同。一旦两者不同，这里就会出现问题 -->
+<div class="compareBlankPlan-component">
+  <link rel="stylesheet" type="text/css" href="./compareBlankPlan.scss">
+  <div class="table-responsive visible">
+    <table class="table" width="100%">
+      <thead>
+        <tr>
+          <th width="50%" class="locate-th"></th>
+          <th width="50%" class="locate-th"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 评估方案 -->
+        <tr>
+          <!-- 现行方案 -->
+          <td ng-if="!$ctrl.orgData.currPlanCollect">
+            <p class="text-center bg-warning prompt">未匹配到分组</p>
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[0]">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <span ng-bind="$ctrl.renderData.curr[0].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[0].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[0]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[0].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[0].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="ipt-sele-ipt-plain">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dateValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dateId" bind-name="material.dateName" opt-range="$ctrl.optRange.date"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.timeValue"></plain-ipt></span>
+                              <span class="item plain response-ipt">
+                                <input class="form-control reset-input response-ipt"
+                                        type="text"
+                                        readonly
+                                        value="{{material.timeName}}"></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[0].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[0].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[0]">暂无方案</p>
+          </td>
+
+          <!-- 推荐方案 -->
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect">
+            <p class="text-center bg-warning prompt">未匹配到分组</p>
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect" >
+            <div class="panel panel-default single-component" 
+                 ng-if="$ctrl.renderData.new[0]">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <span ng-bind="$ctrl.renderData.new[0].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.new[0].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[0]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[0].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[0].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="ipt-sele-ipt-plain">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dateValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dateId" bind-name="material.dateName" opt-range="$ctrl.optRange.date"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.timeValue"></plain-ipt></span>
+                              <span class="item plain response-ipt">
+                                <input class="form-control reset-input response-ipt"
+                                        type="text"
+                                        readonly
+                                        value="{{material.timeName}}"></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[0].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[0].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <p class="text-center bg-warning prompt"
+              ng-if="!$ctrl.renderData.new[0]">暂无方案</p>
+          </td>
+        </tr>
+
+        <!-- 随访方案 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[1]]">
+
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[1]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="interviewhead">
+                    <span ng-bind="$ctrl.renderData.curr[1].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[1].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[1]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[1].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[1].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="ipt-sele-ipt-plain">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dateValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dateId" bind-name="material.dateName" opt-range="$ctrl.optRange.date"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.timeValue"></plain-ipt></span>
+                              <span class="item plain response-ipt">
+                                <input class="form-control reset-input response-ipt"
+                                        type="text"
+                                        readonly
+                                        value="{{material.timeName}}"></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[1].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[1].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[1]">暂无方案</p> -->
+          </td>
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[1]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[1]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="interviewhead">
+                  <span ng-bind="$ctrl.renderData.new[1].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.new[1].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[1]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[1].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[1].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="ipt-sele-ipt-plain">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dateValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dateId" bind-name="material.dateName" opt-range="$ctrl.optRange.date"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.timeValue"></plain-ipt></span>
+                              <span class="item plain response-ipt">
+                                <input class="form-control reset-input response-ipt"
+                                        type="text"
+                                        readonly
+                                        value="{{material.timeName}}"></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[1].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[1].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.new[1]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 药品 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[2]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[2]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="drughead">
+                  <span ng-bind="$ctrl.renderData.curr[2].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-5">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[2].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[2]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[2].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[2].schemeTemplate.schemeMaterials track by $index">
+                          <td width="23%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="23%">
+                            <div class="singleSele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.operationId" bind-name="material.operationName" opt-range="$ctrl.optRange.operation"></plain-sele></span>
+                            </div>
+                          </td>
+          
+                          <td width="20%">
+                            <div class="ipt-sele">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dosageValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dosageId" bind-name="material.dosageName" opt-range="$ctrl.optRange.dosage"></plain-sele></span>
+                            </div>
+                          </td>
+          
+                          <td width="23%">
+                            <div class="singleSele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.frepId" bind-name="material.frepName" opt-range="$ctrl.optRange.frep"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[2].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[2].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="5" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+          
+                      </table>
+                    </div>
+          
+                    
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+                ng-if="!$ctrl.renderData.curr[2]">暂无方案</p> -->
+          </td>
+
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+          
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[2]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[2]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="drughead">
+                  <span ng-bind="$ctrl.renderData.new[2].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-5">
+                    <plan-item-search plan-type="$ctrl.renderData.new[2].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[2]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[2].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[2].schemeTemplate.schemeMaterials track by $index">
+                          <td width="23%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="23%">
+                            <div class="singleSele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.operationId" bind-name="material.operationName" opt-range="$ctrl.optRange.operation"></plain-sele></span>
+                            </div>
+                          </td>
+          
+                          <td width="20%">
+                            <div class="ipt-sele">
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.dosageValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.dosageId" bind-name="material.dosageName" opt-range="$ctrl.optRange.dosage"></plain-sele></span>
+                            </div>
+                          </td>
+          
+                          <td width="23%">
+                            <div class="singleSele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.frepId" bind-name="material.frepName" opt-range="$ctrl.optRange.frep"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[2].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[2].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="5" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+          
+                      </table>
+                    </div>
+          
+                    
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.new[2]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 呼吸康复 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[3]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[3]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="exercisehead">
+                  <span ng-bind="$ctrl.renderData.curr[3].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <!-- 第一层级 -->
+                  <div class="first-level col-2">
+                    <div class="table-responsive">
+                      <table class="table table-hover zero-marginB">
+                        <tr>
+                          <td width="50%">
+                            <div class="plain-ipt-plain">
+                              <span class="item plain response-ipt"><span>目标心率：</span></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="$ctrl.bindModelTst"></plain-ipt></span>
+                              <span class="item plain response-ipt"><span>次 / 分</span></span>
+                            </div>
+                          </td>
+                          <td width="50%">
+                            <div class="plain-ipt-plain">
+                              <span class="item plain response-ipt"><span>恢复运动心率：</span></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="$ctrl.bindModelTst"></plain-ipt></span>
+                              <span class="item plain response-ipt"><span>次 / 分</span></span>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+          
+          
+                  <!-- 第二层级 -->
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[3].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[3]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[3].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[3].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="sele-ipt-sele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.periodId" bind-name="material.periodName" opt-range="$ctrl.optRange.period"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.unitValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.unitId" bind-name="material.unitName" opt-range="$ctrl.optRange.unit"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[3].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[3].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+          
+                      </table>
+                    </div>
+          
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[3]">暂无方案</p> -->
+          </td>
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[3]]">
+            <div class="panel panel-default single-component" 
+                 ng-if="$ctrl.renderData.new[3]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="exercisehead">
+                  <span ng-bind="$ctrl.renderData.new[3].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <!-- 第一层级 -->
+                  <div class="first-level col-2">
+                    <div class="table-responsive">
+                      <table class="table table-hover zero-marginB">
+                        <tr>
+                          <td width="50%">
+                            <div class="plain-ipt-plain">
+                              <span class="item plain response-ipt"><span>目标心率：</span></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="$ctrl.bindModelTst"></plain-ipt></span>
+                              <span class="item plain response-ipt"><span>次 / 分</span></span>
+                            </div>
+                          </td>
+                          <td width="50%">
+                            <div class="plain-ipt-plain">
+                              <span class="item plain response-ipt"><span>恢复运动心率：</span></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="$ctrl.bindModelTst"></plain-ipt></span>
+                              <span class="item plain response-ipt"><span>次 / 分</span></span>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+          
+          
+                  <!-- 第二层级 -->
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.new[3].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[3]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[3].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[3].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="sele-ipt-sele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.periodId" bind-name="material.periodName" opt-range="$ctrl.optRange.period"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.unitValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.unitId" bind-name="material.unitName" opt-range="$ctrl.optRange.unit"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[3].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[3].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+          
+                      </table>
+                    </div>
+          
+                  </div>
+
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.new[3]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 氧疗 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[4]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[4]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="oxyhead">
+                  <span ng-bind="$ctrl.renderData.curr[4].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[4].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[4]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[4].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[4].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="sele-ipt-sele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.periodId" bind-name="material.periodName" opt-range="$ctrl.optRange.period"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.unitValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.unitId" bind-name="material.unitName" opt-range="$ctrl.optRange.unit"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[4].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[4].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+          
+                    
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[4]">暂无方案</p> -->
+          </td>
+
+
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[4]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[4]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="oxyhead">
+                  <span ng-bind="$ctrl.renderData.new[4].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-3">
+                    <plan-item-search plan-type="$ctrl.renderData.new[4].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[4]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[4].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[4].schemeTemplate.schemeMaterials track by $index">
+                          <td width="40%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="54%">
+                            <div class="sele-ipt-sele">
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.periodId" bind-name="material.periodName" opt-range="$ctrl.optRange.period"></plain-sele></span>
+                              <span class="item ipt response-ipt"><plain-ipt bind-model="material.unitValue"></plain-ipt></span>
+                              <span class="item sele response-ipt"><plain-sele bind-model="material.unitId" bind-name="material.unitName" opt-range="$ctrl.optRange.unit"></plain-sele></span>
+                            </div>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[4].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[4].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="3" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </t>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.new[4]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 营养 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[5]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[5]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="nutritionhead">
+                  <span ng-bind="$ctrl.renderData.curr[5].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[5].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[5]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[5].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[5].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[5].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[5].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+          
+                      </table>
+                    </div>
+          
+                    
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[5]">暂无方案</p> -->
+          </td>
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[5]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[5]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="nutritionhead">
+                  <span ng-bind="$ctrl.renderData.new[5].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.new[5].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[5]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[5].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[5].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[5].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[5].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+          
+                    
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+		           ng-if="!$ctrl.renderData.new[5]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 戒烟 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+        
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[6]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[6]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="smokehead">
+                  <span ng-bind="$ctrl.renderData.curr[6].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[6].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[6]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[6].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[6].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[6].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[6].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[6]">暂无方案</p> -->
+          </td>
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[6]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[6]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="smokehead">
+                  <span ng-bind="$ctrl.renderData.new[6].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.new[6].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[6]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[6].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[6].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <input class="form-control reset-input response-ipt"
+                                    type="text"
+                                    readonly
+                                    value="{{material.materialName}}"
+                                    title="{{material.materialName}}">
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[6].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[6].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.new[6]">暂无方案</p> -->
+          </td>
+        </tr>
+
+        <!-- 健康教育 -->
+        <tr>
+          <td ng-if="!$ctrl.orgData.currPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.currPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.curr[7]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.curr[7]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="healthhead">
+                  <span ng-bind="$ctrl.renderData.curr[7].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.curr[7].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[7]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.curr[7].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.curr[7].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <span class="plain">
+                              <span title="{{material.materialName}}"
+                                    ng-bind="material.materialName"></span>
+                            </span>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.curr[7].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.curr[7].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+               ng-if="!$ctrl.renderData.curr[7]">暂无方案</p> -->
+          </td>
+
+          <td ng-if="!$ctrl.orgData.recommandPlanCollect"
+              class="clear-bd-t">
+            <!-- <p class="text-center bg-warning prompt">未匹配到分组</p> -->
+          </td>
+
+          <td ng-if="$ctrl.orgData.recommandPlanCollect"
+              ng-class="{true: 'clear-bd-t'}[!$ctrl.renderData.new[7]]">
+            <div class="panel panel-default single-component"
+                 ng-if="$ctrl.renderData.new[7]">
+              <div class="panel-heading">
+                <h4 class="panel-title"
+                    id="healthhead">
+                  <span ng-bind="$ctrl.renderData.new[7].name"></span>
+                </h4>
+              </div>
+              <div class="panel-body">
+                  <div class="plan-sec col-2">
+                    <plan-item-search plan-type="$ctrl.renderData.new[7].type"
+                                      init-search="true"
+                                      render-field="$ctrl.renderField[7]"
+                                      single-item-click="$ctrl.singleItemClick(item, event)"></plan-item-search>
+                    <div class="table-responsive second-level">
+                      <table class="table table-hover zero-marginB"
+                              add-result-field
+                              scheme-template="$ctrl.renderData.new[7].schemeTemplate">
+                        <tr ng-repeat="material in $ctrl.renderData.new[7].schemeTemplate.schemeMaterials track by $index">
+                          <td width="95%">
+                            <span class="plain">
+                              <span title="{{material.materialName}}"
+                                    ng-bind="material.materialName"></span>
+                            </span>
+                          </td>
+                          <td width="5%">
+                            <span title="删除" 
+                                  class="form-control reset-input opt-btn"
+                                  ng-click="$ctrl.deleteItem($ctrl.renderData.new[7].schemeTemplate.schemeMaterials, $index)"><i class="glyphicon glyphicon-trash text-danger cursor"></i></span>
+                          </td>
+                        </tr>
+        
+                        <tr ng-if="$ctrl.renderData.new[7].schemeTemplate.schemeMaterials.length == 0">
+                          <td colspan="2" >
+                            <p class="text-center bg-warning prompt">暂无数据</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <!-- <p class="text-center bg-warning prompt"
+		           ng-if="!$ctrl.renderData.new[7]">暂无方案</p> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

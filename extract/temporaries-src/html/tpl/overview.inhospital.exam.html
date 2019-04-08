@@ -1,0 +1,59 @@
+<div  class="infi-wj-self-box infi-visit-box" style="border: none;padding: 20px;">
+    <div ng-repeat="exam in exam">
+        <div class="infi-wj-list-box-title infi-wj-visit-title">
+            <div class="infi-visit-week">
+                <span>[{{exam.exam_class}}—{{exam.exam_item}}]</span>
+            </div>
+            <div style="margin-left: 10px;" class="infi-visit-time">
+                <label>
+                    检查时间：
+                    <span>[
+                        {{exam.exam_date_time|date:'yyyy-MM-dd HH:mm:ss'}}
+                        <span ng-hide="exam.exam_date_time">未知</span>
+                    ]</span>
+                </label>
+            </div>
+            <div  class="infi-visit-time">
+                <label>
+                    报告时间：
+                    <span>[
+                        {{exam.report_date_time|date:'yyyy-MM-dd HH:mm:ss'}}
+                        <span ng-hide="exam.report_date_time">未知</span>
+                    ]</span>
+                </label>
+            </div>
+        </div>
+        <div class="infi-wj-exam row">
+            <div style="text-align: center" class="infi-exam-sp-title col-md-2">
+                <span>参数:</span>
+            </div>
+            <div class="col-md-8">
+                <p ng-bind="exam.exam_para"></p>
+            </div>
+        </div>
+        <div class="infi-wj-exam row">
+            <div style="text-align: center" class="infi-exam-sp-title col-md-2">
+                <span>印象:</span>
+            </div>
+            <div class="col-md-8">
+                <p ng-bind="exam.impression"></p>
+            </div>
+        </div>
+        <div class="infi-wj-exam row">
+            <div style="text-align: center" class="infi-exam-sp-title col-md-2">
+                <span>描述:</span>
+            </div>
+            <div class="col-md-8">
+                <p ng-bind="exam.describe"></p>
+            </div>
+        </div>
+        <div class="infi-wj-exam row">
+            <div style="text-align: center" class="infi-exam-sp-title col-md-2">
+                <span>建议:</span>
+            </div>
+            <div class="col-md-8">
+                <p ng-bind="exam.recommendation"></p>
+            </div>
+        </div>
+    </div>
+</div>

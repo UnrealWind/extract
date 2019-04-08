@@ -1,0 +1,162 @@
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-header-active"><a href="#/data.select">数据选择</a></li>
+        <li><a href="#/variable.set">变量设置</a></li>
+        <li><a href="#/data.pretreatment">数据预处理</a></li>
+        <li><a href="#/filter.set">筛选设置</a></li>
+        <li><a href="#/model">建模</a></li>
+        <li><a href="#/complete">已建模型</a></li>
+    </ul>
+</header>
+
+<!--<header class="infi-section" style="padding-right:20px;">-->
+<!--<ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">-->
+<!--<li class="infi-header-active"><a href="#/data.select">数据管理</a></li>-->
+<!--<li><a href="#/data.select1">描述统计</a></li>-->
+<!--<li><a href="#/data.select2">建立模型</a></li>-->
+<!--</ul>-->
+<!--</header>-->
+<!--<header class="infi-section marginten" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul" style="margin-left:20px;">-->
+        <!--<li class="infi-header-active" style="width:25%;line-height: 50px;height: 50px;"><a href="#/data.select">数据选择</a></li>-->
+        <!--<li style="width:25%;line-height: 50px;height: 50px;"><a href="#/variable.set">变量设置</a></li>-->
+        <!--<li style="width:25%;line-height: 50px;height: 50px;"><a href="#/data.pretreatment">数据处理</a></li>-->
+        <!--<li style="width:25%;line-height: 50px;height: 50px;"><a href="#/filter.set">数据分组</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<div class="dropdown " style="float: right;margin:10px 20px 10px 0;"  ng-if="selectData">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        数据选择
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="    left: -70px;padding:10px;">
+        <li role="presentation">数据选择方式：</li>
+        <li role="presentation"><label for="filePath">1、本地上传</label></li>
+        <li role="presentation"><label ng-click="extract()">2、自助取数列表</label></li>
+    </ul>
+</div>
+<div class="infi-box" style="margin-top:50px;" ng-repeat="content in contents" ng-if="selectData">
+    <div class="CRF-details-button" style="overflow: auto;margin:5px; padding-bottom:5px;   border-bottom: #3f8ecb solid 1px;">
+        <h4 style="color: #006abb;display: inline-block">{{content.name}}</h4>
+        <span style="margin-left:50px;">上传时间：{{time}} &nbsp;&nbsp;&nbsp;&nbsp;  最后修改时间：{{time}}</span>
+        <button type="button" class="btn btn-default" ng-click="inviteDelete(content.name)">删除</button>
+        <div class="dropdown " style="position: absolute;top:17px;right:71px; margin:10px 20px 10px 0;">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                选择
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" style="    left: -92px;padding:10px;">
+                <li role="presentation"><a class="cursorPointer" ng-click="rawDataModal()">原始数据</a></li>
+                <li role="presentation"><a class="cursorPointer" ng-click="rawDataModal()">修改后数据</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="overflow: auto">
+        <table class="table infi-table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th ng-repeat="th in content.header" ng-bind="th.name" style="
+width:31em;
+word-break:keep-all;           /* 不换行 */
+white-space:nowrap;          /* 不换行 */
+overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;        "></th>
+                    <!--<th>......</th>-->
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entitys in content.data">
+                <td>{{$index + 1}}</td>
+                <td ng-repeat="entity in entitys">{{entity.value}}</td>
+                <!--<td>......</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="infi-box" style="margin-top:50px;" ng-if="!selectData">
+    <div class=" paddingten" style="text-align: right">
+        <a href="{{exploration1}}" target="_blank"><button type="button" class="btn btn-default">描述统计</button></a>
+    </div>
+    <div style="overflow: auto">
+        <table class="table infi-table">
+            <thead>
+                <tr>
+                    <th style="width:150px;">序号</th>
+                    <th ng-repeat="th in tableTheader" ng-bind="th.name" style="width:150px;
+width:31em;
+word-break:keep-all;           /* 不换行 */
+white-space:nowrap;          /* 不换行 */
+overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;        "></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tbodys in tableTbodys">
+                    <td>{{$index + 1}}</td>
+                    <td ng-repeat="tbody in tbodys">{{tbody.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="infi-page">
+        <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="5"
+                        boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                        num-pages="content.page.totalPages">
+        </uib-pagination>
+    </div>
+    <div class=" paddingten" style="text-align: right">
+        <button type="button" class="btn btn-default" ng-click="previous()">上一步(数据选择)</button>
+        <button type="button" class="btn btn-primary" ng-click="next()">下一步(变量设置)</button>
+    </div>
+</div>
+
+<div class="modal fade" id='execl-data'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定上传么?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="execlSave()">上传</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id='extract-modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <table class="table infi-table">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+
+                        <!--<tr ng-repeat="entitys in content.data">-->
+                            <!--<td>{{$index + 1}}</td>-->
+                            <!--<td ng-repeat="entity in entitys">{{entity.value}}</td>-->
+                            <!--<td>......</td>-->
+                        <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--文件上传-->
+<input type="file" ngf-select="onFileSelect($files,input)" name="filePath" id="filePath" style="display: none">

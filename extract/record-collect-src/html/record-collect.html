@@ -1,0 +1,125 @@
+<div class="main">
+    <div class="left-area">
+        <chose-template ng-if="workSpaceInfo.mark == 'template'" work-space-info="workSpaceInfo"></chose-template>
+        <chose-attr ng-if="workSpaceInfo.mark == 'attr'" work-space-info="workSpaceInfo"></chose-attr>
+        <chose-spe-attr ng-if="workSpaceInfo.mark == 'spe-attr'" work-space-info="workSpaceInfo"></chose-spe-attr>
+        <chose-question ng-if="workSpaceInfo.mark == 'question'" work-space-info="workSpaceInfo"></chose-question>
+        <!-- 左侧既往史，过敏史模板 -->
+        <chose-past-history ng-if="workSpaceInfo.mark == 'drugState' || workSpaceInfo.mark == 'pastHistory' || workSpaceInfo.mark == 'anaphylaxis'" work-space-info="workSpaceInfo"></chose-past-history>
+
+        <div ng-if="workSpaceInfo.mark!='template' && workSpaceInfo.mark!='attr' && workSpaceInfo.mark!='spe-attr'&& workSpaceInfo.mark!='question'
+            && workSpaceInfo.mark!='pastHistory'&& workSpaceInfo.mark!='anaphylaxis' && workSpaceInfo.mark !== 'drugState'" class="alert alert-info">加载中……</div>
+
+    </div>
+    <div class="main-area"  ng-class="{true:'animate-right',false:'animate-left'}[workSpaceInfo.showRight]">
+        <basic-info whole-info="wholeInfo"></basic-info>
+        <div class="bg-white">
+            <div class="template-tab" >
+                <div class="infi-title cursorAuto">
+                    <h3 class="font-strong no-border">
+                        <span class="border-bottom-2"><i class="fas fa-file-medical"></i>门诊病历</span>
+                        <ul style="display: none;" class="CNMedicalList ">
+                            <li class="no-margin-bottom" ng-repeat="template in wholeInfo.templateList" ng-class="{true:'active'}[template.active]">
+                                <a ng-if="routeParams.right == 'view'" class="btn btn-default" ng-disabled="routeParams.right == 'view'">{{template.name}}</a>
+                                <a ng-click="changeTemplate(template)" ng-if="routeParams.right == 'treatment'" class="btn btn-default" >{{template.name}}</a>
+                            </li>
+                        </ul>
+                    </h3>
+                </div>
+
+            </div>
+
+            <div ng-if="opt.rightType<3" ng-class="{true:'module-open',false:'module-close'}[opt.status == 'open']" ng-repeat="opt in wholeInfo.templateData">
+                <!--主诉-->
+                <main-complaint ng-if="opt.rightType == '1'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></main-complaint>
+                <!--现病史-->
+                <present-history ng-if="opt.rightType == '2'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></present-history>
+            </div>
+
+            <div>
+                <div class="infi-title ctrl-btn" ng-if="!showMainModuleNum">
+                    <h3 class="no-border" ng-click="showMainModule()">展开更多选项 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>
+                </div>
+                <div class="infi-title ctrl-btn" ng-if="showMainModuleNum">
+                    <h3 class="no-border" ng-click="showMainModule()">收起所有选项  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h3>
+                </div>
+            </div>
+
+            <div class="compact" ng-if="showMainModuleNum && opt.rightType>2 && opt.rightType<8" ng-class="{true:'module-open',false:'module-close'}[opt.status == 'open']" ng-repeat="opt in wholeInfo.templateData">
+                <!--既往史-->
+                <past-history ng-if="opt.rightType == '3'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></past-history>
+                <!--过敏史-->
+                <anaphylaxis ng-if="opt.rightType == '4'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></anaphylaxis>
+                <!--体格检查-->
+                <check-body ng-if="opt.rightType == '5'" whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></check-body>
+                <!--检查结果-->
+                <check-result ng-if="opt.rightType == '7'" whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></check-result>
+                <!--检验结果-->
+                <exam-result ng-if="opt.rightType == '6'" whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></exam-result>
+            </div>
+
+            <div ng-if="opt.rightType == '8'" ng-class="{true:'module-open',false:'module-close'}[opt.status == 'open']" ng-repeat="opt in wholeInfo.templateData">
+                <!--诊断结果-->
+                <dig-result ng-if="opt.rightType == '8'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></dig-result>
+            </div>
+        </div>
+
+        <div class="bg-white">
+            <div ng-if="opt.rightType == '9'" ng-class="{true:'module-open',false:'module-close'}[opt.status == 'open']" ng-repeat="opt in wholeInfo.templateData">
+                <!-- 门诊处方 -->
+                <prescription ng-if="opt.rightType == '9'"  whole-info="wholeInfo" main-complaint-data="opt" work-space-info="workSpaceInfo"></prescription>
+            </div>
+        </div>
+
+        <div class="btn-box fixed-btn">
+            <div class="btn btn-primary " ng-click="saveAll(null,'保存中……')">保存</div>
+            <!--<div class="btn btn-primary " ng-click="print('basic')">打印</div>-->
+            <a class="btn btn-primary " target="_blank" href="/record-src-demo/#/record-detail/{{routeParams.xlPatientId}}/{{routeParams.xlVisitId}}">统一视图</a>
+            <!--<div class="btn btn-default " ng-click="jump('list','保存并返回列表中……')">返回列表</div>-->
+
+            <a ng-if="!routeParams.hideR && routeParams.right" class="btn btn-default "  href="/record-collect-src/#/record-list">返回列表</a>
+            <a ng-if="routeParams.hideR || !routeParams.right" class="btn btn-default "  href="/record-collect-src/#/record-list/1">返回列表</a>
+        </div>
+    </div>
+
+
+    <div class="modal fade saveTip" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span ng-class="{true: 'text-danger', false: 'text-success'}[hasFailed]">{{description}}</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-disabled="!couldClose" class="btn btn-default" ng-click="clear()">关闭</button>
+                    <button type="button" ng-disabled="!couldClose" class="btn btn-primary" ng-click="clear()">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade tips" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span class="text-success">{{tipDescription}}</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="tipCancel()">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="tipCallback()">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <right-info-area ng-if="!routeParams.hideR && routeParams.right" work-space-info="workSpaceInfo" whole-info="wholeInfo"></right-info-area>
+
+    <ill-modal whole-info="wholeInfo" work-space-info="workSpaceInfo"></ill-modal>
+    <plan-introduct whole-info="wholeInfo" work-space-info="workSpaceInfo"></plan-introduct>
+
+    <a ng-if="!routeParams.hideR &&routeParams.right " class="btn-fixed-ctrl btn btn-default" ng-click="changeRight()">
+        <span class="glyphicon" ng-class="{true:'glyphicon-chevron-right',false:'glyphicon-chevron-left'}[workSpaceInfo.showRight]"></span>
+    </a>
+
+    <print-area  whole-info="wholeInfo" work-space-info="workSpaceInfo"></print-area>
+
+</div>

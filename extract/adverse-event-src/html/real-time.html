@@ -1,0 +1,107 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>预测分析</h4>
+<div class="infi-box infi-adverse-box" style="padding:10px;">
+    <div>
+        <ul class="ul-float-left ul-li-4">
+            <li class="infi-adverse-screen">
+                <label>时间:</label>
+                <input infi-date name="startTime" ng-change="refresh(screenConditions)"
+                       class="form-control infi-screen-section" ng-model="screenConditions.startTime"/>~
+                <input infi-date name="endTime" ng-change="refresh(screenConditions)"
+                       class="form-control infi-screen-section" ng-model="screenConditions.endTime"/>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>临床部:</label>
+                <select class="form-control">
+                    <option>全院</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>科室:</label>
+                <select class="form-control" ng-model="screenConditions.deptId.value" ng-change="changeDept(screenConditions.deptId.value)">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.deptId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>病区:</label>
+                <select class="form-control" ng-model="screenConditions.wardId.value" ng-change="refresh(screenConditions)">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.wardId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+        </ul>
+        <!--<ul class="ul-float-left ul-li-4">-->
+            <!--<li class="infi-adverse-screen">-->
+                <!--<label>病种:</label>-->
+                <!--<select class="form-control" ng-model="screenConditions.diseaseSeed.value" ng-change="refresh(screenConditions)">-->
+                    <!--<option value=""></option>-->
+                    <!--<option ng-repeat="option in screenConditions.diseaseSeed.options" value="{{option.label}}">{{option.label}}</option>-->
+                <!--</select>-->
+            <!--</li>-->
+        <!--</ul>-->
+    </div>
+</div>
+<div class="infi-box">
+    <div class="infi-adverse-kpi-four">
+        <div class="infi-part-kpi">
+            <h5>在院病例数</h5>
+            <hr />
+            <div><span>{{kpiList.inHospNum | nullDefault}}</span>份</div>
+        </div>
+        <div class="infi-part-kpi">
+            <h5>高概率事件发生人数</h5>
+            <hr />
+            <div><span>{{kpiList.highEventNum | nullDefault}}</span>份</div>
+        </div>
+        <div class="infi-part-kpi">
+            <h5>标记发生人数</h5>
+            <hr />
+            <div><span>{{kpiList.tagHappenNum | nullDefault}}</span>份</div>
+        </div>
+        <div class="infi-part-kpi">
+            <h5>标记未发生人数</h5>
+            <hr />
+            <div><span>{{kpiList.noTagHappenNum | nullDefault}}</span>份</div>
+        </div>
+    </div>
+    <!--<div class="infi-adverse-title-box">-->
+        <!--<h4>概率分析</h4>-->
+        <!--<hr />-->
+    <!--</div>-->
+    <!--<div class="infi-adverse-probability">-->
+        <!--<ul class="nav nav-tabs" role="tablist">-->
+            <!--<li ng-repeat="tab in tabs" ng-class="{true: 'active' , false:''}[tab.active]" role="presentation">-->
+                <!--<a class="cursorPointer" ng-click="switchTab(tab)">{{tab.label}}</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
+    <div class="row infi-adverse-probability-box">
+        <div class="col-md-5 infi-adverse-level-table">
+            <link rel="import" href="tpl/event.level.details.html?__inline">
+        </div>
+        <div id="ringGraph" class="col-md-7 infi-adverse-level">
+
+        </div>
+    </div>
+    <div class="infi-adverse-title-box">
+        <h4>科室分析</h4>
+        <hr />
+    </div>
+    <div>
+        <div class="infi-adverse-over-report">
+            <div>
+                <a class="btn infi-btn-linear-green-l" ng-click="showReport()">查看报表</a>
+            </div>
+            <div>
+                <span>不良事件选择:</span>
+                <select class="form-control" ng-model="adverseSelection.value" style="display: inline-block;width:50%;" ng-change="choseEvent(adverseSelection.value)">
+                    <option ng-repeat="option in adverseSelection.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <link rel="import" href="tpl/event.table.html?__inline">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "data":{
+        "appointmentTime": "2017-03-09",
+        "originatorName": "赵日天",
+        "sex": "男",
+        "age": "18",
+        "profession": "123",
+        "purpose": "123",
+        "clinicDiagnosis": "123",
+        "diagnosisTimes": "初诊 ",
+        "hpi": "123",
+        "pastHistory": "123",
+        "famliyHistory": "123",
+        "drugHistory": "123",
+        "examDigest": "123",
+        "testDigest": "123",
+        "treat": "123",
+        "picIds": "1,2",
+        "fileIds": "18",
+        "nakedEyesightLeft":"123",
+        "nakedEyesightRight":"123",
+        "correctEyesightLeft":"123",
+        "correctEyesightRight":"123",
+        "eyePressureLeft":"123",
+        "eyePressureRight":"123"
+    }
+}

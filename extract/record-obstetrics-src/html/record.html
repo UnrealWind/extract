@@ -1,0 +1,118 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据列表</h4>
+<div class="infi-box">
+    <!--<div class="floatright">-->
+    <!--<a href="#/first-record"><button class="btn infi-btn-linear-green-l btn-sm" ng-click="record_wj_create()">创建产科档案</button></a>-->
+    <!--</div>-->
+    <div>
+        <ul class="ul-float-left">
+            <li>
+                <label>姓名:</label>
+                <input ng-change="searchList()" type="text" id="infi-wj-search-name" class="form-control " placeholder="请输入患姓名"
+                       ng-model="IdEntity.name">
+            </li>
+            <li>
+                <label>ID号:</label>
+                <input ng-change="searchList()" type="text" id="infi-wj-search-id" class="form-control" placeholder="请输入ID号"
+                       ng-model="IdEntity.patiId">
+            </li>
+            <li>
+                <label>创建时间：</label>
+                <input ng-change="searchList()" type="text" class="form-control infi-wj-serch-time" infi-date
+                       ng-model="IdEntity.startDate">
+            </li>
+            <li style="padding: 6px 0 0 5px;">
+                <span>~</span>
+            </li>
+            <li>
+                <label></label>
+                <input ng-change="searchList()" type="text" class="form-control infi-wj-serch-time" infi-date
+                       ng-model="IdEntity.endDate">
+            </li>
+            <li style="padding-left:10px;">
+                <a class="btn infi-btn-linear-green-l btn-sm" ng-click="emptyConditions()">清空搜索条件</a>
+            </li>
+        </ul>
+    </div>
+    <section class="infi-section">
+        <div>
+            <table class="table infi-table">
+                <thead>
+                <tr>
+                    <!--<th ng-repeat="column in listColumns" ng-bind="column.label"></th>-->
+                    <!--<th ng-if="opts" ng-bind="opts.label"></th>-->
+
+                    <th style="width:10%;">序号</th>
+                    <th style="width:10%;">ID号</th>
+                    <th style="width:10%;">姓名</th>
+                    <th style="width:10%;">性别</th>
+                    <th style="width:15%;">出生日期</th>
+                    <th style="width:15%;">产科档案状态</th>
+                    <th style="width:30%;">操作</th>
+                </tr>
+                </thead>
+                <tbody ng-if="listData.success">
+                <tr ng-repeat="entity in listData.result" ng-click="selectCase(entity)"
+                    ng-class="{true:'active'}[entity.active]">
+                    <td>
+                        <span>{{$index+1}}</span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.pati_id"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.name"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.sex_name"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.date_of_birth|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.status"></span>
+                    </td>
+                    <td>
+                        <!--查看详情跳转到统一视图页面-->
+                        <!--根据该分病人的标识进行操作--><!-- 这个跳转到record-src的统一视图页面,注意不带产科档案要在路径中加上301 -->
+                        <a href="../record-src/#/overview/{{entity.xl_patient_id}}/{{entity.pati_id}}" target="_blank">查看详情</a><span>&nbsp;|</span>
+                        <a ng-href="{{entity.btnUrl}}" target="_blank">{{entity.btnLabel}}</a><span ng-if="entity.btnLabel2">&nbsp;|</span>
+                        <a ng-href="{{entity.btnUrl2}}" target="_blank">{{entity.btnLabel2}}</a>
+                        <!--跳转到创建档案页面-->
+                        <!--<a href="#/record/input/{{entity.xl_patient_id}}/{{entity.pati_id}}/first" target="_blank">创建产科档案</a>-->
+                        <!--<a href="javascript:;" ng-click="modalIframe(entity.pati_id)">查看概况</a>-->
+                    </td>
+                </tr>
+                </tbody>
+                <tbody ng-if="!listData.success">
+                <tr>
+                    <td colspan="7">
+                        <p class="bg-danger" style="line-height: 50px;" ng-bind="listData.desc"></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="infi-page">
+                <uib-pagination total-items="listData.totalCount" ng-model="listData.pageNo" max-size="7"
+                                boundary-link-numbers="true" ng-change="updatePage({page:listData.pageNo})"
+                                items-per-page="listData.pageSize"
+                                num-pages="listData.totalPages"></uib-pagination>
+            </div>
+        </div>
+    </section>
+    <!--这个是301统一视图用-->
+    <div class="modal fade modalChinaEle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document" style="width: 1100px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="display:inline-block;">概况</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    　 <iframe ng-src="{{ChinaEleUrl}}" id="iframe" style="width: 1075px;height:800px;">
+
+                </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

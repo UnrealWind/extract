@@ -1,0 +1,51 @@
+<section class="infi-section">
+    <!--取数-所有任务列表-->
+    <table class="table infi-table">
+        <thead>
+        <tr>
+            <th ng-repeat="column in $columns" ng-bind="column.label" ></th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-if="$hasData">
+        <tr ng-repeat="entity in $content">
+            <td ng-repeat="data in entity.plain"><span ng-bind="data.label"></span></td>
+            <td class="infi-operation-btn">
+                <span ng-click="btnCallback({entity: entity.original,type: 'config'})"
+                      ng-if="entity.original.status == 0">配置</span>
+
+                <span ng-click="btnCallback({entity: entity.original,type: 'delete'})"
+                      ng-if="entity.original.status == 0">删除</span>
+
+                <span ng-click="btnCallback({entity: entity.original,type: 'active'})"
+                      ng-if="entity.original.status == 0">激活</span>
+
+                <span ng-click="btnCallback({entity: entity.original,type: 'offline'})"
+                      ng-if="entity.original.status == 1">下线</span>
+
+                <span ng-click="btnCallback({entity: entity.original,type: 'apply'})"
+                      ng-if="whichPage == 'display'">应用</span>
+                
+                <span ng-click="btnCallback({entity: entity.original,type: 'delete'})"
+                      ng-if="whichPage == 'display'">删除</span>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="!$hasData">
+        <tr>
+            <td colspan="{{$columnSize+2}}">
+                <p ng-bind="$description" class="bg-danger" style="line-height: 50px;"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="infi-page">
+        <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number"
+                        boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                        num-pages="content.page.totalPages">
+
+        </uib-pagination>
+    </div>
+</section>
+
+

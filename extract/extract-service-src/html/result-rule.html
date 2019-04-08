@@ -1,0 +1,71 @@
+<div>
+    <h4 class="infi-title" ng-show="optType=='input'"><i class="glyphicon glyphicon-globe"></i>推送结果选择</h4>
+    <h4 class="infi-title infi-inline-block" ng-show="optType=='view'"><i class="glyphicon glyphicon-globe"></i>推送结果</h4>
+    <div class="infi-m-btn infi-rule-back" ng-show="optType=='view'">
+        <a class="btn btn-default" onclick="history.back()">返回</a>
+    </div>
+</div>
+<div navi-header header-data="headerData" col="col" step="step" ng-if="headerData" ng-show="type=='recommend'&&optType=='input'"></div>
+
+<!--执行任务查看推荐详情显示kpi-->
+<div class="infi-box infi-rule-kpi row" ng-show="type=='implement'">
+    <div class="infi-kpi-lg infi-child-kpi">
+        <span class="title">执行开始时间:</span><span title="{{kpi.data.data.startTime}}" ng-bind="kpi.data.data.startTime"></span>
+    </div>
+    <div class="infi-kpi-lg infi-child-kpi">
+        <span class="title">执行结束时间:</span><span title="{{kpi.data.data.finalTime}}" ng-bind="kpi.data.data.finalTime"></span>
+    </div>
+    <div class="infi-kpi-md infi-child-kpi">
+        <span class="title">创建人:</span><span title="{{kpi.data.data.createUser}}" ng-bind="kpi.data.data.createUser"></span>
+    </div>
+    <div class="infi-kpi-md infi-child-kpi">
+        <span class="title">命中人总数:</span><span ng-bind="kpi.data.total"></span>
+    </div>
+</div>
+<!--保存的规则的详情-->
+<div task-rule data-ng-if="ruleDetail" detail="ruleDetail"></div>
+<div class="infi-box">
+    <h4>推送结果</h4>
+    <div class="infi-rule-box">
+        <div>
+            作用数据范围:<span ng-bind="target"></span>
+        </div>
+    </div>
+    <div class="infi-rule-box">
+        <div>
+            任务执行时机:
+            <span ng-show="optType=='input'">12点,20点</span>
+            <span ng-bind="recordData.time" ng-show="optType=='view'"></span>
+        </div>
+    </div>
+    <div class="infi-rule-box">
+        <div class="title">推送医生对象:</div>
+        <div class="infi-service-boxchild">推送对象:
+            <span ng-show="optType=='input'">本系统</span>
+            <span ng-bind="recordData.users[0].user" ng-show="optType=='view'"></span>
+        </div>
+        <div class="infi-service-boxchild">推送内容:
+            <span ng-show="optType=='input'" ng-bind="recordData.users[0].content"></span>
+            <span ng-bind="recordData.users[0].content" ng-show="optType=='view'"></span>
+        </div>
+    </div>
+    <!--<div class="infi-rule-box">-->
+        <!--<div class="title">推送患者对象:</div>-->
+        <!--<div class="infi-service-boxchild">推送渠道:-->
+            <!--<span ng-show="optType=='input'">微信公众号</span>-->
+            <!--<span ng-bind="recordData.users[1].way" ng-show="optType=='view'"></span>-->
+        <!--</div>-->
+        <!--<div class="infi-service-boxchild">推送内容:-->
+            <!--<span ng-show="optType=='input'">您好，根据您的检验检查结果，通过智能分析，推荐您还可以到以下几个科室进行挂号就诊：心内科、肾内科、内分泌科等</span>-->
+            <!--<span ng-bind="recordData.users[1].content" ng-show="optType=='view'"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<div style="text-align: right ;margin:10px;" ng-show="optType=='input'">
+    <a href='#/task-configuration/select/{{groupId}}'>
+        <button class="btn infi-btn-linear-green-l saveLogic">上一步，筛选逻辑配置</button>
+    </a>
+    <button class="btn infi-btn-linear-green-l" ng-click="saveResult()">保存</button>
+</div>
+<div sys-tip></div>

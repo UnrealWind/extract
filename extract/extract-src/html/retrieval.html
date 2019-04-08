@@ -1,0 +1,42 @@
+<!--数据检索-关键词搜索-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>数据检索 -> 关键词搜索</h4>
+<div style="margin-bottom: 10px;">
+    <input type="text" class="form-control infi-inline-block" style="width:500px;" ng-model="keyword" placeholder="请输入搜索字段" />
+    <input type="button" class="btn btn-primary" value="搜索" ng-click="searchData(keyword)" />
+</div>
+<div class="infi-border-div">
+    <h5 class="infi-inline-block">热门关键词 :</h5>
+    <ul class="infi-url infi-inline-block" ng-show="keywordData.status == SYS.STATUS_SUCCESS">
+        <li ng-repeat="entity in keywordData.data"><a ng-bind="entity.label" ng-click="searchData(entity.label)"></a></li>
+    </ul>
+    <span ng-show="keywordData.status != SYS.STATUS_SUCCESS" class="text-danger" ng-bind="keywordData.description"></span>
+</div>
+<div class="infi-box">
+    <h4>病历目录导航</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row">
+                    <!--左侧tab筛选LP-->
+                <div class="col-xs-2" choser-left-tab></div>
+                <div class="col-xs-10" style="padding-top: 10px;">
+                    <ul class="list-unstyled" ng-show="summaryData.status == SYS.STATUS_SUCCESS">
+                        <li ng-repeat="infoList in summaryData.data">
+                            <ul ng-show="infoList.$active">
+                                <li class="infi-first-li" ng-repeat="infos in infoList.childs" >
+                                    <a ng-bind="infos.label" class="text-primary" ng-click="searchData(infos.label)"
+                                       style="font-weight: bold;cursor: pointer;"></a>
+                                    <ul class="infi-url">
+                                        <li ng-repeat="info in infos.childs" ng-click="searchData(info.label,infos)">
+                                            <a ng-bind="info.label"></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div ng-show="summaryData.status != SYS.STATUS_SUCCESS" class="text-danger">暂无数据</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

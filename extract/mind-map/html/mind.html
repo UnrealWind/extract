@@ -1,0 +1,25 @@
+<!--取数-标签思维导图-->
+<!--<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>标签导图</h4>-->
+<div class="mind-chart mind-chart-box">
+    <div>
+        <label>选择标签类型</label>
+        <select ng-model="mindType" ng-change="getMindData()" class="form-control" style="width: 100px;display: inline-block;">
+            <option value="inPatient">住院</option>
+            <option value="outPatient">门诊</option>
+        </select>
+    </div>
+    <div class="chart-container">
+        <div id="chartDemo" class="chart-demo colorAuto"></div>
+        <div class="color-demo">
+            <div class="noValue"></div>无类型
+            <div class="term"></div>文本
+            <div class="enum"></div>枚举
+            <div class="date"></div>日期
+            <div class="numberic"></div>数值
+        </div>
+    </div>
+    <div id="mindChart" class="text-danger" style="margin-top: 100px;"></div>
+    <div class="tool-tip" id="toolTipContainer">
+        <div id="toolTip"></div>
+    </div>
+</div>

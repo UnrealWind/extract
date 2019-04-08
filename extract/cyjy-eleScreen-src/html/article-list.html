@@ -1,0 +1,216 @@
+<div time-weather></div>
+<div class="infi-tab">
+    <ul>
+        <li ng-click="switchTab(tab.name)"
+            ng-repeat="tab in tabList" ng-class="{true:'active'}[tab.active]">
+            <a class="cursorPointer">{{tab.label}}</a>
+        </li>
+    </ul>
+    <a class="glyphicon glyphicon-home" ng-click="backFirst()">返回首页</a>
+</div>
+<div ng-if="params.moduleType == 'commonSense'">
+    <div class="artical-list" ng-if="currentTab == 'tab1'">
+        <ul>
+            <li ng-click="enterDetails(params.moduleType,'article9','吸烟危害','tab1')">
+                <div>
+                    <p>吸烟成瘾是种病</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article10','吸烟危害','tab1')">
+                <div>
+                    <p>吸烟的危害</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article11','吸烟危害','tab1')">
+                <div>
+                    <p>吸烟很伤“心”</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article12','吸烟危害','tab1')">
+                <div>
+                    <p>烟霾比雾霾更可怕</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article7','吸烟危害','tab1')">
+                <div>
+                    <p>误区解读：能吸烟代表身体还行</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+        </ul>
+    </div>
+    <div class="artical-list" ng-if="currentTab == 'tab2'">
+        <ul>
+            <li ng-click="enterDetails(params.moduleType,'article1','戒烟的益处','tab2')">
+                <div>
+                    <p>戒烟的益处</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article2','戒烟的益处','tab2')">
+                <div>
+                    <p>戒烟是治疗牙周病的重要“处方”</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article3','戒烟的益处','tab2')">
+                <div>
+                    <p>戒烟越久癌症风险越低</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article4','戒烟的益处','tab2')">
+                <div>
+                    <p>关于戒烟的误区</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article5','戒烟的益处','tab2')">
+                <div>
+                    <p>警惕新型电子烟——所谓的“安全戒烟”并不安全</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article8','戒烟的益处','tab2')">
+                <div>
+                    <p>误区戒烟后反倒得了肺癌 是巧合还是打破了平衡？</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+        </ul>
+    </div>
+    <div class="artical-list" ng-if="currentTab == 'relatedVideo'">
+        <link rel="import" href="./tpl/video.template.html?__inline"/>
+    </div>
+</div>
+<div ng-if="params.moduleType == 'helpYou'">
+    <div class="artical-list" ng-if="currentTab == 'tab3'">
+        <ul>
+            <li ng-click="enterDetails(params.moduleType,'article15','成功案例','tab3')">
+                <div>
+                    <p>戒烟感言</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article16','成功案例','tab3')">
+                <div>
+                    <p>戒烟记-张生昊</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article17','成功案例','tab3')">
+                <div>
+                    <p>我的戒烟感想-张云峰</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article18','成功案例','tab3')">
+                <div>
+                    <p>以戒为师-杜一夫</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+        </ul>
+    </div>
+    <div class="artical-list" ng-if="currentTab == 'tab4'">
+        <ul>
+            <li ng-click="enterDetails(params.moduleType,'article19','科学戒烟','tab4')">
+                <div>
+                    <p>戒烟药物</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article20','科学戒烟','tab4')">
+                <div>
+                    <p>戒烟反复失败该怎么办？</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article21','科学戒烟','tab4')">
+                <div>
+                    <p>戒烟，你得get靠谱的戒烟方法！</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article22','科学戒烟','tab4')">
+                <div>
+                    <p>你可以这样戒烟——使用药物，先戒后律</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+            <li ng-click="enterDetails(params.moduleType,'article23','科学戒烟','tab4')">
+                <div>
+                    <p>如何科学戒烟</p>
+                    <p>
+                        怎么杨才可以戒烟，怎就是福克斯电话费送的回复第三方第三方结算大方的广泛的
+                    </p>
+                </div>
+                <img src="../img/artical.jpeg"/>
+            </li>
+        </ul>
+    </div>
+    <div class="artical-list" ng-if="currentTab == 'relatedVideo'">
+        <link rel="import" href="./tpl/video.template.html?__inline"/>
+    </div>
+</div>

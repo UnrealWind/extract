@@ -1,0 +1,120 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>检查录入</h4>
+<div class="infi-box">
+    <a class="btn btn-default margin-bottom" href="#/record-check-list">返回</a>
+    <div  class="infi-box-containter input-lists">
+        <div class="dir-nav-container">
+            <div class="infi-box-containter ">
+                <div>
+                    <ul class="row">
+                        <li class="col-xs-3">
+                            <label>病案号：</label>
+                            <span>{{listData.patientId|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>姓名：</label>
+                            <span>{{listData.name|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>性别：</label>
+                            <span>{{listData.sex|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>年龄：</label>
+                            <span>{{listData.age|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>报告日期：</label>
+                            <span>{{listData.reportDate|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>检查项目：</label>
+                            <span>{{listData.examName|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>检查部位：</label>
+                            <span>{{listData.examPosition|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>申请科室：</label>
+                            <span>{{listData.requestDept|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>申请医生：</label>
+                            <span>{{listData.requestDoctor|changeNULL}}</span>
+                        </li>
+                        <li class="col-xs-3">
+                            <label>报告医生：</label>
+                            <span>{{listData.reportDoctor|changeNULL}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary margin-bottom " ng-click="getPreData(listData)">填充上一次结果</a>
+    <div  class="infi-box-containter input-lists">
+        <div class="dir-nav-container">
+            <div class="infi-box-containter ">
+                <div class="row input-box" ng-if="listData.results.length == 5">
+                    <div class="col-xs-4 form-inline">
+                        <div class="form-group">
+                            <label>身高：</label>
+                            <input  ng-change="doBMI()" type="text" class="form-control" ng-model="value.height" placeholder="">&nbsp;&nbsp;cm
+                        </div>
+                    </div>
+                    <div class="col-xs-4 form-inline">
+                        <div class="form-group">
+                            <label>体重：</label>
+                            <input  ng-change="doBMI()" type="text" class="form-control" ng-model="value.weight" placeholder="">&nbsp;&nbsp;kg
+                        </div>
+                    </div>
+                    <div class="col-xs-4 form-inline">
+                        <div class="form-group">
+                            <label>BMI</label>
+                            <input  ng-model="value.BMI" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-inline">
+                        <div class="form-group">
+                            <label>肝脏硬度（KPA）-中位数：</label>
+                            <input  ng-model="value.KPA" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 form-inline">
+                        <div class="form-group">
+                            <label>脂肪衰减（db/m)-中位数：</label>
+                            <input  ng-model="value.DBM" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div  class="row input-box" ng-if="listData.results.length == 3">
+                    <div ng-repeat="opt in listData.results" class="row ">
+                        <label class="col-xs-1" style="width: 110px;">{{opt.name}}：</label>
+                        <div class="col-xs-10">
+                            <textarea  class="form-control" ng-model="opt.value" rows="{{opt.line}}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary  " ng-click="save()">保存并返回</a>
+
+    <div class="modal fade tip" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span class="text-success">您是第一次做该检查，请手动填写检查信息！</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

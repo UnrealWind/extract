@@ -1,0 +1,26 @@
+<div class="modal fade"  id="admissionRecord" >
+    <div class="modal-dialog infi-modal-half-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                入院记录
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>入院时间:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="enterHospitalTime" type="text" ng-model="basicInfo.enterHospitalTime" ng-click="timePlugin('enterHospitalTime')"
+                               class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer infi-confirm-export-footer">
+                <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal'>取消</button>
+                <button type="button" class="btn infi-btn-linear-green-l" ng-click="saveEnterHospital()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

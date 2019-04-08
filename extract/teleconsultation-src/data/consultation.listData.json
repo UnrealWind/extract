@@ -1,0 +1,26 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":[
+    {
+      "label":"待会诊",
+      "name":"await",
+      "filterUrl":"condition/wait"
+    },
+    {
+      "label":"我发起的会诊",
+      "name":"origin",
+      "filterUrl":"condition/origin"
+    },
+    {
+      "label":"邀请我的会诊",
+      "name":"invite",
+      "filterUrl":"condition/invite"
+    },
+    {
+      "label":"已完成的会诊",
+      "name":"finish",
+      "filterUrl":"condition/finish"
+    }
+  ]
+}

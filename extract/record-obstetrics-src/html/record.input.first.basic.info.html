@@ -1,0 +1,164 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">年龄: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.age" type="text"
+                                                                                     ng-model="basic.age"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 岁</div>
+    </div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">职业: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.professional"
+                                                                                     type="text"
+                                                                                     ng-model="basic.professional"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">工作单位: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.workUnits" type="text"
+                                                                                     ng-model="basic.workUnits"
+                                                                                     class="form-control"/></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">电话: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.phone" type="text"
+                                                                                     ng-model="basic.phone"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">结婚年龄: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.marryAge" type="text"
+                                                                                     ng-model="basic.marryAge"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 岁</div>
+    </div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">初孕年龄: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.firstGestational"
+                                                                                     type="text"
+                                                                                     ng-model="basic.firstGestational"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 岁</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">月经初潮: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.menarche" type="text"
+                                                                                     ng-model="basic.menarche"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 岁</div>
+    </div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">月经周期: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.menstrualCycle"
+                                                                                     type="text"
+                                                                                     ng-model="basic.menstrualCycle"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 天</div>
+    </div>
+</div>
+<div class="row">
+    <!--新增的字段月经期,绑定的字段需要更改-->
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">月经期: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.menstrualContinuous" type="text"
+                                                                                     ng-model="basic.menstrualContinuous"
+                                                                                     class="form-control"/>
+    <div class="input-group-addon" style=""> 天</div>
+    </div>
+
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">末次月经: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+        <input name="basic.lastGestationalDate" infi-date type="text" style="display: inline-block;width:96%;" readonly="readonly"
+                                  ng-model="basic.lastGestationalDate" class="form-control"/>
+        <span style="color:red;line-height:34px;margin-left:2px">*</span></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">避孕法: </label></div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px; float: left;">
+        <label class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox" ng-model="basic.contraception.name___u65e0"/>无</label>
+        <label class="checkbox-inline" style="margin-right: 10px;"><input
+            type="checkbox" ng-model="basic.contraception.name___u5BAB__u5185__u8282__u80B2__u5668"/>宫内节育器</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.contraception.name___u53E3__u670D__u753E__u4F53__u907F__u5B55__u836F"/>口服甾体避孕药</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.contraception.name___u7EDD__u80B2__u672F"/>绝育术</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.contraception.name___u5916__u7528__u907F__u5B55"/>外用避孕</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.contraception.name___u53E3__u670D__u7D27__u6025__u907F__u5B55__u836F"/>口服紧急避孕药</label><label
+            ng-repeat="(key,value) in basic.contraceptionOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="basic.contraceptionOTHER[key]"/>{{key|unescape}}</label><button
+            infi-other-value checked="basic.contraception" style="cursor: pointer;display:inline-block;"
+            data-type="checkboxOther" data-name="basic.contraception" class="btn infi-btn-linear-default btn-xs">添加其他</button></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">本次妊娠疾病: </label></div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;">
+        <label class="checkbox-inline" style="margin-right: 10px;"><input
+                type="checkbox" ng-model="basic.pregnancyDisease.name___u65e0"/>无</label>
+        <label class="checkbox-inline" style="margin-right: 10px;"><input
+            type="checkbox" ng-model="basic.pregnancyDisease.name___u598A__u5A20__u671F__u9AD8__u8840__u538B__u75C5"/>妊娠期高血压病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u5B50__u75EB__u524D__u671F__u8F7B__u5EA6"/>子痫前期轻度</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u5B50__u75EB__u524D__u671F__u91CD__u5EA6"/>子痫前期重度</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u5B50__u75EB"/>子痫</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u598A__u5A20__u671F__u809D__u5185__u80C6__u6C41__u6DE4__u79EF__u75C7"/>妊娠期肝内胆汁淤积症</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u598A__u5A20__u671F__u7CD6__u5C3F__u75C5"/>妊娠期糖尿病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u80BA__u7ED3__u6838"/>肺结核</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u4E19__u578B__u809D__u708E"/>丙型肝炎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u4E59__u578B__u809D__u708E"/>乙型肝炎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u6885__u6BD2"/>梅毒</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u827E__u6ECB"/>艾滋</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u7CD6__u5C3F__u75C5"/>糖尿病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u598A__u5A20__u5408__u5E76__u6162__u6027__u9AD8__u8840__u538B"/>妊娠合并慢性高血压</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u8D2B__u8840"/>贫血</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u5FC3__u529B__u8870__u7AED"/>心力衰竭</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u6162__u6027__u80BE__u708E"/>慢性肾炎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u7532__u72B6__u817A__u529F__u80FD__u4EA2__u8FDB"/>甲状腺功能亢进</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u7532__u72B6__u817A__u529F__u80FD__u51CF__u9000"/>甲状腺功能减退</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u9611__u5C3E__u708E"/>阑尾炎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u80C6__u56CA__u708E"/>胆囊炎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u80C6__u56CA__u7ED3__u77F3"/>胆囊结石</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u80A0__u6897__u963B"/>肠梗阻</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="basic.pregnancyDisease.name___u80C3__u7A7F__u5B54"/>胃穿孔</label><label
+            ng-repeat="(key,value) in basic.pregnancyDiseaseOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="basic.pregnancyDiseaseOTHER[key]"/>{{key|unescape}}</label><button class="btn infi-btn-linear-default btn-xs"
+            infi-other-value checked="basic.pregnancyDisease" style="cursor: pointer;display:inline-block;"
+            data-type="checkboxOther" data-name="basic.pregnancyDisease">添加其他</button></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">本次妊娠用药史: </label>
+    </div>
+    <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+        <!--<input name="basic.pregnancyDrug" ng-model="basic.pregnancyDrug" class="form-control">-->
+        <label class="checkbox-inline" style="margin-right: 10px;"><input
+                type="checkbox" ng-model="basic.pregnancyDrug.name___u65e0"/>无</label>
+        <label class="checkbox-inline"
+               style="margin-right: 10px;"><input
+                type="checkbox" ng-model="basic.pregnancyDrug.name___u53F6__u9178"/>叶酸</label>
+        <label class="checkbox-inline"
+               style="margin-right: 10px;"><input
+                type="checkbox" ng-model="basic.pregnancyDrug.name___u53f6__u9178__u5236__u5242"/>叶酸制剂</label>
+        <label
+                ng-repeat="(key,value) in basic.pregnancyDrugOTHER" class="checkbox-inline"
+                style="margin-right: 10px;"><input type="checkbox" ng-model="basic.pregnancyDrugOTHER[key]"/>{{key|unescape}}</label>
+        <button class="btn infi-btn-linear-default btn-xs"  infi-other-value checked="basic.pregnancyDrug" style="cursor: pointer;display:inline-block;"
+                         data-type="checkboxOther" data-name="basic.pregnancyDrug">添加其他</button>
+    </div>
+</div>

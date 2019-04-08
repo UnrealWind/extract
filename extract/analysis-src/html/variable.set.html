@@ -1,0 +1,56 @@
+<div class="infi-box" style="margin-top: 20px;">
+    <h4 class="infi-title">变量修改</h4>
+    <div class="infi-box-containter">
+        <div class="row">
+            <div class="col-xs-4 input-group floatright marginten">
+                <input type="text" class="form-control input-lg" ng-focus="keywordBlur()" style="height:34px;" ng-value="keyword" ng-model="keyword"><span class="input-group-addon btn btn-primary" ng-click="search()">搜索</span>
+            </div>
+        </div>
+        <div class="row marginten">
+            <div class="col-xs-2 infi-variable-list">
+                <div class="backgroud-ddd paddingten infi-variable-header">变量名称</div>
+                <div class="paddingten infi-variable-content" ng-repeat="variable in variableName">
+                    <input type="text" class="form-control" ng-value="variable.name" ng-model="variable.name">
+                </div>
+            </div>
+            <div class="col-xs-2" style="text-align: center;padding:0;border:1px solid #9d9d9d;" ng-if="false">
+                <div class="backgroud-ddd paddingten" style="border-radius: 0px">字符串</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+                <div class="paddingten" style="height:54px;">数值</div>
+            </div>
+            <div class="col-xs-4 infi-variable-list">
+                <div class="backgroud-ddd paddingten infi-variable-header">变量类型</div>
+                <div class="paddingten" ng-repeat="variables in variableValue">
+                    <select class="selectpicker " style="width: 100%;height:34px" ng-model='variables.value' ng-options="select.value as select.name for select in variables.select"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row paddingten"  style="text-align: right">
+            <button type="button" class="btn btn-default" ng-click="reset()">重置</button>
+            <button type="button" class="btn btn-primary" ng-click="save()">保存(数据预处理)</button>
+        </div>
+
+    </div>
+</div>

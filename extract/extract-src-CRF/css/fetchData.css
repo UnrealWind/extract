@@ -1,0 +1,225 @@
+
+@CHARSET "UTF-8";
+
+.infi-content-wrapper {clear:both;}
+/* 修改一下设置条件的dom结构，方便reload功能重读 */
+.infi-inline {display:inline-block;}
+.infi-inline label {margin-left:10px;}
+
+/*筛选步骤头部样式*/
+.infi-form .infi-m-nav ol {overflow:hidden;}
+.infi-form .infi-m-nav li {float:left;text-align:center;padding:20px 0 20px 0;}
+
+/*属性提取页面*/
+/*<div id="list_Cate_3" class="children-list checkbox" style="display: block;">这个div调用了bootstrap的   .radio + .radio, .checkbox + .checkbox {margin-top: -5px;}  这个类所以造成显示问题，修正如下*/
+.tab-content .radio + .radio, .checkbox + .checkbox {margin-top:10px;}
+.dir-nav-container {min-height: 500px;}
+.dir-nav-container .tab-content li h3 {line-height: 2.1;}
+.dir-nav-container .tab-content li h3 a {color: #006abb;font-size: 14px;font-weight: 700;}
+.dir-nav-container .tab-content li p {float:left;}
+.dir-nav-container .tab-content li p a {color: #898989;font-size: 12px;padding: 3px 10px 0 0;}
+.dir-nav-container .col-md-2 li.active span {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;border-color: #fff #fff #fff #d9edf7;border-image: none;border-style: solid;border-width: 22px;font-size: 0;height: 0;position: absolute;right: 0;top: 0;width: 0;}
+.infi-list-filter .selected{margin:0 0 10px 0;}
+.dir-nav-container .tab-content .children-list .list-inline>li {display: inline-block;padding-left: 5px;padding-right: 5px;border-bottom: 1px solid #e3e3e3;margin: 0 30px 20px 0;padding-bottom: 5px;width: 375px;}
+.dir-nav-container .tab-content .children-list .list-inline .infi-m-lst {position: relative;float: left;background-color:#fcfcfc;width: 175%;border: 1px solid #e9e7e7;margin:-40px 0 20px 0;-moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius:15px;padding: 15px 15px 20px 20px;margin:23px 0 20px -65px;z-index: 9998;box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main {clear:both;overflow:hidden;margin-bottom:20px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main h2 {font-size:15px;color:#000;display:inline-block;}
+.infi-u-relation h2 {font-size:15px;color:#000;display:inline-block;}
+.dir-nav-container .tab-content .infi-m-lst .btn{float:right;display:block;text-align:right;font-size:12px;padding:6px 10px 6px 10px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main form input {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background: #fff none repeat scroll 0 0;border-color: #ccc -moz-use-text-color #ccc #ccc;border-image: none;border-radius: 6px 0 0 6px;border-style: solid none solid solid;border-width: 1px medium 1px 1px;color: #a0a0a0;float: left;font-weight: normal;height: 27px;line-height: 27px;outline: medium none;padding-left: 5px;width: 200px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main form a{-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;border-color: #ccc #ccc #ccc -moz-use-text-color;border-image: none;border-radius: 0 6px 6px 0;border-style: solid solid solid none;border-width: 1px 1px 1px medium;color: #a0a0a0;display: block;float: left;height: 27px;text-align: center;width: 30px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main .infi-m-sch {margin:15px 0 15px 5px ;overflow:hidden;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main .infi-m-sch p {font-size:14px;display:inline-block;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main .infi-m-sch .btn {float:left;margin-left:20px;display:inline-block;padding:4px 10px 4px 10px; }
+.dir-nav-container .tab-content .infi-m-lst .infi-u-main .infi-u-word p {margin:10px 10px 0px 10px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-line {border-bottom: 1px solid #e9e7e7;margin-bottom:10px;}
+.dir-nav-container .tab-content li .infi-m-lst .infi-u-relation {clear:both;overflow:hidden;padding:20px 0 0px 0;}
+.dir-nav-container .tab-content li .infi-m-lst .infi-u-relation h2 {clear:both;font-size:16px;color:#000;display:block;}
+.dir-nav-container .tab-content li .infi-m-lst .infi-u-relation .btn{float:right;display:block;text-align:right;font-size:12px;padding:6px 10px 6px 10px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation form input {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background: #fff none repeat scroll 0 0;border-color: #ccc -moz-use-text-color #ccc #ccc;border-image: none;border-radius: 6px 0 0 6px;border-style: solid none solid solid;border-width: 1px medium 1px 1px;color: #a0a0a0;float: left;font-weight: normal;height: 27px;line-height: 27px;outline: medium none;padding-left: 5px;width: 200px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation form a{-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;border-color: #ccc #ccc #ccc -moz-use-text-color;border-image: none;border-radius: 0 6px 6px 0;border-style: solid solid solid none;border-width: 1px 1px 1px medium;color: #a0a0a0;display: block;float: left;height: 27px;text-align: center;width: 30px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .infi-m-sch {margin:10px 0 0 5px ;overflow:hidden;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .infi-m-sch p {font-size:14px;display:inline-block;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .infi-m-sch .btn {float:left;margin-left:20px;display:inline-block;padding:4px 10px 4px 10px; }
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .infi-u-word p {margin:20px 10px 0px 10px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .form-control {width:200px;float:left;height:28px;margin:0px 5px 0 5px;} /* padding的设置不需要，bootstrap有默认的 */
+.infi-box-containter .infi-m-tb {margin:10px 0 10px 0;}
+.infi-box-containter .infi-u-tb {margin:10px 0 0 0 ;}
+.infi-box-containter .infi-u-tb td {padding-left:30px;}
+.infi-m-btn {text-align:right;}
+.infi-m-btn > button,.infi-m-btn >a {margin: 20px 20px 0 20px;}
+.infi-u-main .form-control {height:29px;margin:0 0 0 15px;width:auto;display:inline-block;}
+.infi-m-sch>table>tbody>tr:first-child {line-height:3.4;}
+.infi-content-right .dir-nav-container .tab-content .infi-m-lst .infi-u-relation .event select{height:28px;padding:3px 12px;}
+.infi-content-right .dir-nav-container .tab-content .infi-m-lst .infi-u-relation .event{line-height:5.4;}
+
+
+/*状态样式*/
+.z-sel {-webkit-box-shadow:#666 0px 0px 20px;-moz-box-shadow:#666 0px 0px 20px;box-shadow:#666 0px 0px 20px;}
+.z-btn-position-top {position:relative;top:25px;float:right;}
+.z-btn-position-bottom {position:relative;bottom:30px;float:right;}
+.glyphicon {margin:0 0 0 5px;}
+.z-lst-corner {transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);border-top:1px solid #e9e7e7;border-left:1px solid #e9e7e7;width:30px;height:30px;display:block;background-color:#fcfcfc;text-align:center;margin:0 auto;}
+.checkbox label{margin-right: 10px;}
+.list-inline .chosed-filter-tagName .close {margin:0 0 0 5px;color:#c40000;opacity: 0.7;}
+.content .list-inline>.close {padding: 10px 0 0;}
+
+.tab-content .infi-m-lst .infi-u-relation .infi-m-sch table tr td {height:30px;}
+.tab-content .infi-m-lst .infi-u-relation .infi-m-sch table tr td .infi-u-range .form-control{float:left;margin-left:0px;padding-left: 5px;}
+.infi-m-tag-num .infi-u-range {float:right;margin: 4px 10px 0 0;}/*num类型input显示问题，另外num类型的max height已删除用以显示完全*/
+.tab-content .infi-m-lst .infi-u-relation .infi-m-sch table tr td .form-control{float:left;margin-left:0px;}
+.tab-content .infi-m-lst .infi-u-relation .infi-m-sch .table{border:0px;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .infi-m-sch table tr td p{float:right;}
+
+/*标签筛选部分*/
+.infi-m-bd fieldset {border: none;}
+.infi-m-bd .infi-box input { line-height: 25px;border: 1px solid #ccc;text-indent: 5px;}
+.infi-m-bd .infi-box input[type=text]{width: 60px;}
+.infi-m-bd legend { display: none;}
+.infi-m-bd .infi-u-tt {margin-left: auto;margin-right: auto; width: 97%;padding: 10px;border-bottom: 1px solid #3071a9;font-size: 16px;}
+.infi-m-ct .infi-u-tt {padding: 10px 0px 3px 0px;border: none;font-size: 12px;}
+.infi-m-ct label {font-size: 12px;font-weight: normal;cursor: pointer;}
+.infi-m-ct .infi-u-tt .infi-f-cond {margin-left: 30px;}
+.infi-m-ct label input[type="radio"], .infi-m-ct label input[type="checkbox"] {margin-top: -1px;margin-right: 5px;}
+.infi-m-ct .infi-u-tt .infi-f-cond-all {margin-left: 50px;}
+.infi-ms-tag {margin-left: auto;margin-right: auto; width: 98%;border: 1px solid #fafafa;}
+.infi-ms-tag .infi-u-extra {height: 6px; border-top: 1px solid #d1ccc7;background: #efebea none repeat scroll 0 0;}
+.infi-g-wrap {background: #f7f5f5;}
+.infi-g-wrap span:first-child .infi-m-tag { border-top: 2px solid #ccc;}
+.infi-m-tag {border: 2px solid #ccc;border-top: none;background: #f7f5f5;overflow: hidden;}
+.infi-m-tag .infi-u-tt {margin-top: 5px;float: left;width: 10%;padding: 0px;text-indent: 13px;}
+.infi-m-tag button {width: 40px;height: 20px;line-height: 20px;border: 1px solid #ccc;border-radius: 3px;background: #efebea none repeat scroll 0 0;vertical-align: middle;}
+.infi-m-tag .infi-u-tag {position: relative;float: left;width: 90%;background: #fff;z-index: 0;}
+/*数值型*/
+.infi-m-tag-num .infi-u-tag .infi-u-lst {margin-left: 0px;}
+.infi-m-tag-num .infi-u-tag .infi-u-lst {float: left;max-width: 770px; max-height: 30px;text-indent: 5px;overflow: hidden;}
+/*枚举型*/
+.infi-m-tag-more .infi-u-tag {padding-bottom: 5px;}
+.infi-m-tag-more .infi-u-tag .infi-u-btn, .infi-m-tag-more .infi-u-tag .infi-u-sch {display: block;}
+.infi-m-tag-more .infi-u-tag .infi-u-sch {margin-left: 10px;margin-top: 5px;}
+.infi-m-tag-more .infi-u-tag .infi-u-sch .infi-f-sch {position: relative;}
+.infi-m-tag-more .infi-u-tag .infi-u-sch input {width: 180px;}
+.infi-m-tag-more .infi-u-sch .infi-u-i {position: absolute;height: 20px;margin-top: 7px;margin-left: -22px;padding: 5px 4px 0;border-left: 1px solid #ccc;cursor: pointer;}
+.glyphicon {margin: 0 0 0 5px;}
+.infi-m-tag .infi-u-tag .infi-u-lst {margin: 15px 20px 10px 10px;min-height: 30px;display: block;padding: 0px;overflow: hidden;}
+.infi-m-tag .infi-u-tag .infi-u-lst li {float: left;margin-right: 20px;}
+
+/*提示内容模块*/
+.infi-content-wrapper .infi-m-tips{padding:15px;}
+.infi-content-wrapper .s-bgi{margin: 60px 60px 60px 20px;height: 300px;background: url(extract/tips.png) no-repeat;display: block;position: relative;}
+.infi-m-tips .infi-u-tips{margin-left: 280px;padding-left: 110px;padding-top: 30px;line-height: 35px;font-size: 35px;font-weight: 900;color:#255ab0;}
+.infi-m-tips .infi-u-tips-ok{background-position: -15px -5px;overflow: hidden;background: url(extract/right.png) no-repeat;}
+.infi-m-tips .infi-u-tips-error{background-position: -15px -5px; overflow: hidden;background: url(extract/wrong.png) no-repeat;}
+.infi-m-tips .infi-u-tips .infi-tips-content{ margin-left: 250px;padding-top: 12px; font-size: 14px;font-weight: normal;color:#797979}
+.infi-m-tips .infi-u-link{position: absolute;right: 100px;bottom: 0 ;font-size: 16px;}
+.infi-m-tips .infi-u-link a{margin: 5px;text-decoration: underline;color: #006abb;}
+
+/*任务详情表格样式*/
+.infi-box-containter .infi-m-ct h3.infi-u-tt{border-bottom: #3f8ecb solid 1px;font-size:14px;color: #006abb;}
+.infi-box-containter .infi-m-ct span{margin-left:40px;}
+.infi-box-containter .infi-m-ct ul>li {border-bottom: 1px solid #ddd;margin-bottom: 5px;line-height: 36px;}
+.infi-box-containter .infi-m-ct ul>li{display: block;padding-left: 30px;background: url(images/01.png) no-repeat left center;}
+
+/*审核部分表单样式*/
+.infi-box-containter .infi-m-fm { color:#000;}
+.infi-box-containter .infi-m-fm  label{font-weight: inherit;}
+.infi-box-containter .infi-m-fm .radio-inline{margin-left: 40px;}
+.infi-box-containter .infi-m-fm .infi-m-ipt label{ position: absolute;}
+.infi-box-containter .infi-m-fm .infi-m-ipt .infi-u-ipt {padding: 13px;margin-top: 5px;margin-left: 90px;	width: 500px;min-height: 100px;	border: #e9e7e7 solid 1px;border-radius: 6px;}
+.infi-box-containter .infi-m-fm .infi-m-btn{float: left;margin-left: 350px;}
+.infi-box-containter .infi-m-fm .infi-m-btn .infi-u-btn{float: right;margin: 20px 20px 0 20px;padding: 6px 12px;width: 90px;background-image: none;border: 1px solid transparent;border-radius: 4px;}
+.infi-box-containter .infi-m-fm .infi-m-btn .btn-primary{color: #fff;background-color: #428bca;border-color: #357ebd;}
+.infi-box-containter .infi-m-fm .infi-m-btn .btn-default{color: #333;background-color: #fff;border-color: #ccc;} 
+.textarea-fix {width:420px;	}
+.modal-footer button {margin:0 10px 0 15px;}
+.modal-body .form-group .col-sm-6 {padding-left:0px;}
+#input-excel .form-group {margin:8px 0 0 0;}
+#input-excel p {margin:8px 0 0 0;}
+.font-filter {display:none;}
+.dir-nav-container .tab-content .infi-m-lst .infi-u-relation .font-filter .form-control {padding-left:8px;}
+.infi-form-pop {display:none;}
+.infi-font-label {width:172px;} /* 强制设置数据提取页面弹出层td盒子的宽度为172px，fydebug 因为有某个字段过长，暂时先稍微增大其宽度以解决样式问题*/
+.modal-body .form-group{overflow:hidden;}
+.modal-content .modal-body>p{font-size:12px;color:#006abb;margin-bottom:10px;} /*弹出层病历数量提示语明显化*/
+
+/* 日期控件样式 */
+.infi-content-right .infi-m-bd .infi-box .infi-u-inputDate {width:160px;} 
+
+/* 2015年11月10号新增分类功能取数模块 样式*/
+.infi-m-tag-more .massiveEnumeration span {float:left;margin-right:10px;margin-left:-5px;}
+.infi-m-tag-more .massiveEnumeration table {clear:both;}
+.infi-m-tag-more .massiveEnumeration th label {width:80px;}
+.infi-m-tag-more .massiveEnumeration th,.massiveEnumeration td {vertical-align:top;}
+.infi-u-searchPrompt p {display:inline-block;color:#285ea8;margin-right:5px;}
+
+/*第三步取数新增样式 @ 2015.11.18*/
+.infi-m-sch .massiveEnumeration li{display:inline-block;padding:3px 0;margin-right:5px;}
+.infi-m-sch .massiveEnumeration span {display:inline-block;margin-left:-5px;margin-right:5px;}
+.infi-m-sch .massiveEnumeration th label {width:80px;}
+.infi-m-sch .massiveEnumeration th,.infi-m-sch .massiveEnumeration td {vertical-align:top;}
+.infi-m-sch .massiveEnumeration input{margin-top:6px;}
+
+/* 新增不良事件类型的筛选条件 */
+.infi-m-nav {margin-top: 10px;}
+.infi-tabs .infi-tabs-containter > li > label {cursor: pointer;font-weight: 500;}
+
+/* 历史查看记录 */
+.infi-detailsView {cursor:pointer;font-size:12px;margin-left:10px;}
+#detailsView table thead .detailsView-minLength{min-width:70px;}
+#detailsView table .detailsView-textRight {text-align:right;padding-right:30px;}
+.col-md-5 .infi-box-containter {max-height:918px;overflow:auto;}
+
+/* 数据范围 */
+.dataRange {display:inline-block;margin-top:20px;margin-left:15px;font-size:13px;color:	#333;}
+
+/* 第三步新增展开收缩按钮样式 */
+.glyphicon {cursor:pointer;}
+
+/* 新增不良事件类型select样式 */
+.infi-m-info {;min-width:180px;display:inline-block;}
+.infi-m-info select {padding:3px 12px;}
+.infi-wrap {margin-bottom:10px;}
+.infi-wrap label{font-weight:300;font-size:13px;}
+
+/*因为表格内容过多所以进行宽度设定*/
+.time-showAll {width:85px;}
+.area-showAll {width:136px;}
+.adverseName-showAll {width:124px;}
+.infi-min-widthForTh {width:123px;} 
+.infi-tb-idx {width:40px;}
+
+.infi-box-containter .table { table-layout: fixed ;}
+.infi-box-containter .table-striped td {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+.col-md-5 .infi-box-containter .table { table-layout: auto ;}
+.col-md-5 .infi-box-containter .table-striped td {white-space:normal;overflow:hidden;text-overflow:clip;}
+
+.infi-u-details,.infi-u-delete,.infi-u-submit,.infi-u-modify {cursor:pointer;color:#000;}
+
+/*缩小th的padding*/
+.table > thead > tr > th, .table > tbody > tr > th,
+ .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {padding:8px 0 8px 7px;}
+ 
+ .infi-checkNum {position:absolute;}
+ .infi-checkNum p{padding-left:130px;position:relative;top:2px;left:5px;}
+ 
+  .infi-unit {position:absolute;}
+ .infi-unit p{position:relative;left:-25px;top:5px;color:#000;}
+
+.list-group-item a {cursor: pointer;}
+.infi-wrap.infi-list-filter .content > ul li {border: 1px dotted #c40000;color: #c40000;margin: 15px 3px 3px;
+    padding: 1px 6px;display: inline-block;}
+.infi-form .infi-wrap.infi-list-filter .close {margin:0 0 0 5px;}
+
+.infi-u-tag .infi-u-lst .infi-u-date input {width: 160px;}
+.detailsView-minLength {min-width: 70px;}
+.cornerFix {position: absolute;z-index: 9999;top:34px;}
+.children-list .list-inline .infi-u-relation .infi-f-sch>input {width: 160px;border-radius: 3px;}
+.infi-u-relation .infi-u-sch {margin:5px 0 5px 0px; }
+.infi-u-sch ul {display: inline-block;}
+.infi-u-sch ul li{display: inline-block;}
+.infi-u-relation>.infi-u-sch {margin: 15px 0 ;}
+.modal {z-index: 999999;}
+
+.multi-wrap {top:130px;left:924px;}
+.z-sel h1 {color: #000;}

@@ -1,0 +1,54 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据管理 > 数据取数 > 审核取数</h4>
+<div class="infi-box">
+    <h4 class="infi-title">审核取数</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="marginten">
+                <ul class="ul-float-left ul-li-3">
+                    <li style="width:40%;">
+                        <label >申请时间:</label>
+                        <input type="text" class="form-control" style="width:40%;">
+                        ~
+                        <input type="text" class="form-control" style="width:40%;">
+                    </li>
+                    <li style="width:26%;">
+                        <label>审核状态:</label>
+                        <select name="" class="form-control">
+                            <option value="">全部</option>
+                            <option value="">待审核</option>
+                            <option value="">审核通过</option>
+                            <option value="">审核驳回</option>
+                        </select>
+                    </li>
+                    <li class="input-group">
+                        <input type="text" class="form-control input-lg" style="height:34px;" placeholder="请输入任务名称进行搜索"><span class="input-group-addon btn btn-primary" ng-click="searchList()">搜索</span>
+                    </li>
+                </ul>
+            </div>
+            <h4><span style="border-bottom: 1px solid black">取数列表</span></h4>
+            <!--列表插件-->
+            <div infi-table columns="listColumns" data-ng-if="listColumns" content="listData" update-page="getList(page)"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="auditBy">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">审核结果</h4>
+            </div>
+            <div class="modal-body">
+                <p>审核理由</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<button class="btn infi-btn-linear-green-l btn-sm" ><a href="#/audit-details">详情</a></button>
+<button class="btn infi-btn-linear-green-l btn-sm" ng-click="auditBy()">审核</button>

@@ -1,0 +1,55 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_assr == true">
+    <div class="infi-record-title">
+        <h4>ASSR（听觉稳态诱发电位)</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_assr_time"
+                   ng-model="entity.table_assr_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <caption>单位： HLcg=Correction General Values：Default</caption>
+        <thead>
+            <tr>
+                <th>
+                    阈值
+                </th>
+                <th>500HZ</th>
+                <th>1000HZ</th>
+                <th>2000HZ</th>
+                <th>4000HZ</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                左
+            </td>
+            <td><input name="entity.table_assr_ze_500hz" ng-model="entity.table_assr_ze_500hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ze_1000hz" ng-model="entity.table_assr_ze_1000hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ze_2000hz" ng-model="entity.table_assr_ze_2000hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ze_4000hz" ng-model="entity.table_assr_ze_4000hz" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                右
+            </td>
+            <td><input name="entity.table_assr_ye_500hz" ng-model="entity.table_assr_ye_500hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ye_1000hz" ng-model="entity.table_assr_ye_1000hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ye_2000hz" ng-model="entity.table_assr_ye_2000hz" class="form-control"/></td>
+            <td><input name="entity.table_assr_ye_4000hz" ng-model="entity.table_assr_ye_4000hz" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                备注
+            </td>
+            <td colspan="4"><input name="entity.table_assr_note" ng-model="entity.table_assr_note" class="form-control"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>ASSR（听觉稳态诱发电位）诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_assr"><input
+                name="entity.name_assr" type="text" ng-model="entity.name_assr" class="form-control"/></div>
+    </div>
+</section>

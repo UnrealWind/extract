@@ -1,0 +1,173 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题管理 > {{subjectInfo}} > 病历列表</h4>
+<div class="infi-box">
+    <h4 class="infi-title">
+        病历列表
+    </h4>
+    <div class="alert alert-info" ng-if="!recordGroup">请填写分组信息！！！</div>
+    <div ng-if="recordGroup" class="infi-box-containter input-lists">
+        <div class="dir-nav-container">
+            <div class="marginten">
+                <ul class="nav nav-tabs " role="tablist">
+                    <li ng-repeat="opt in recordGroup" role="presentation" class="cursorPointer" ng-class="{true:'active'}[opt.active]" ng-click="choseActive(recordGroup,opt)"><a>{{opt.name}}</a></li>
+                </ul>
+                <!-- 待入组患者不显示此按钮 -->
+                <button class="infi-fr btn btn-primary" ng-if="currTabCheckedType != 'auto'" ng-click="modalRecord()">新增病历</button>
+            </div>
+            <div class="infi-box-containter ">
+                <div class="dir-nav-container">
+                    <div class="marginten">
+                        <ul class="timearea">
+                            <li ng-repeat="opt in timeArea">
+                                <span ng-class="{true:'active'}[opt.active]" ng-click="choseActive(timeArea,opt)">{{opt.label}}</span>
+                            </li>
+                        </ul>
+                        <ul class="row form-inline " style="margin-top: 0;">
+                            <li class=" form-group">
+                                <input type="text" ng-model="params.search" class="form-control" style="height:28px;float:left;">
+                                <span ng-click="searchInputList(params.search)" class="input-group-addon btn-primary f-l" style="cursor: pointer">搜索</span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class=" form-group">
+                               <a class="btn btn-primary mini-btn" ng-click="importData()">导入</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <table class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th class="mini-th">
+                                <label class="cursor">
+                                    <input type="checkbox" ng-model="checkedId['checked-all']" ng-click="checkAll()" />全选
+                                </label>
+                            </th>
+                            <th>序号</th>
+                            <th>病历号</th>
+                            <th>姓名</th>
+                            <th>下次随访时间</th>
+                            <th class="choseTimeArea">操作 &nbsp;
+                                <span ng-mouseover="showTooltip()" ng-mouseleave="hideTooltip()" class="glyphicon glyphicon-question-sign"></span>
+                                <span  data-toggle="tooltip" data-original-title="绿色代表已完成的访视；红色代表已过期的访视；黄色代表未开始的访视。" ></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="opt in recordList.content">
+                            <td>
+                                <label class="cursor">
+                                    &nbsp;&nbsp;<input ng-model="checkedId.data[opt.id]" type="checkbox"/>&nbsp;&nbsp;&nbsp;
+                                </label>
+                            </td>
+                            <td>{{$index+1}}</td>
+                            <td>{{opt.caseId}}</td>
+                            <td>{{opt.name}}</td>
+                            <td>{{opt.nextTime}}</td>
+                            <td ng-if="$index ==0 " class="tdwidth"  rowspan="{{recordList.totalElements}}">
+                                <ul>
+                                    <li ng-repeat="opt in recordList.content">
+                                        <ul>
+                                            <li ng-click="modalFlup(opt)">
+                                                <span class="plus"> +非计划随访</span>
+                                            </li>
+                                            <li  ng-click="gotoInputPage(interview,opt.id)" class="{{interview.status}} tdwidth-item" ng-repeat="interview in opt.interviews">
+                                                <span>{{interview.schedule}}</span>
+                                                <span>{{interview.name}}</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-if="!recordList" class="alert alert-danger">暂无数据！！！</div>
+                <div class="infi-page" >
+                    <uib-pagination total-items="recordList.totalElements" ng-model="recordList.number"
+                    max-size="7" boundary-link-numbers="true"
+                    ng-change="getRecordList(recordList.number)"
+                    items-per-page="recordList.size"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="newCRF" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>新建病历</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="row form-inline ">
+                    <li ng-repeat="opt in newCRFData" class="col-md-6 form-group">
+                        <label >{{opt.label}}:</label>
+                        <input type="text" class="form-control" ng-model="opt.value">
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="newRecord()">新建</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-groups" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>请选择要导入的分组</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="row form-inline ">
+                    <li class="col-md-6 form-group">
+                        <label >请选择分组:</label>
+                        <select class="form-control" ng-model="checkedId.tagGroup">
+                            <option value="">请选择</option>
+                            <option ng-if="params.groupId != opt.id" ng-repeat="opt in recordGroup" value="{{opt.id}}">{{opt.name}}</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="importGroup()">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newFlup" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>添加非计划随访</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="row form-inline ">
+                    <li ng-if="opt.name == 'time'" ng-repeat="opt in flupData" class="col-md-6 form-group">
+                        <label >{{opt.label}}:</label>
+                        <input name="{{opt.name}}" ng-click="timePlugin(opt.name,'yyyy-mm-dd')" type="text" class="form-control" ng-model="opt.value" readonly="readonly">
+                    </li>
+                    <li ng-if="opt.name == 'name'" ng-repeat="opt in flupData" class="col-md-6 form-group">
+                        <label >{{opt.label}}:</label>
+                        <input  type="text" class="form-control" ng-model="opt.value" >
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="addFlup()">新建</button>
+            </div>
+        </div>
+    </div>
+</div>

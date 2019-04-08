@@ -1,0 +1,47 @@
+<div class="infi-word-template">
+    <h2>医嘱</h2>
+    <div ng-if="tableData.result && tableData.result.length>0" class="infi-content" style="">
+        <table class="infi-wj-table" >
+            <thead>
+                <tr>
+                    <th><p>长/临</p></th>
+                    <th><p>类别</p></th>
+                    <th><p>下达时间</p></th>
+                    <th style="width:200px;"><p>医嘱内容</p></th>
+                    <th><p>剂量</p></th>
+                    <th><p>单位</p></th>
+                    <th><p>途径</p></th>
+                    <th><p>频次</p></th>
+                    <th><p>开始时间</p></th>
+                    <th><p>结束时间</p></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="opt in tableData.result">
+                    <td><p>{{opt.order_name|changeNULL}}</p></td>
+                    <td><p>{{opt.order_class_name|changeNULL}}</p></td>
+                    <td><p>{{opt.enter_date_time|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p></td>
+                    <td><p>{{opt.order_text|changeNULL}}</p></td>
+                    <td><p>{{opt.dosage|changeNULL}}</p></td>
+                    <td><p>{{opt.dosage_units|changeNULL}}</p></td>
+                    <td><p>{{opt.administration_id|changeNULL}}</p></td>
+                    <td><p>{{opt.frequency|changeNULL}}</p></td>
+                    <td><p>{{opt.start_date_time|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p></td>
+                    <td><p>{{opt.stop_date_time|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="infi-page">
+            <uib-pagination total-items="tableData.totalCount" ng-model="tableData.pageNo"
+                boundary-link-numbers="true" ng-change="reFreshPage(targetInfo,tableData.pageNo)"
+                items-per-page="tableData.pageSize" max-size="7"
+                num-pages="tableData.totalPages">
+            </uib-pagination>
+        </div>
+
+    </div>
+    <div  id="doctorAdvice" style="height:600px;">
+
+    </div>
+</div>

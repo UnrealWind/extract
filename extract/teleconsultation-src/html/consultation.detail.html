@@ -1,0 +1,110 @@
+<div class="infi-form-inputs col-md-12 infi-consultation">
+	<form ng-repeat="modal in detailsData.version" class="infi-modal-box current form-inline">
+		
+		<h2 id="" class="infi-title">
+			<span>{{modal.label}}</span> 
+			<a ng-if="$index === 0 && !plugin.consultationStatus && role.role === 'creator'" class="btn infi-btn-linear-green-l btn-sm ng-scope" style="text-decoration: none; border-radius: 5px; padding: 6px;float: right;margin-top: 5px;" href="javascript:;" ng-click="changeStatus('input')">编辑会诊申请</a>
+		</h2>
+
+		<ul class="infi-modal-inputs form-inline row">
+			<li ng-repeat = "theme in modal.children" ng-class="{'true':'col-md-6','false':'col-md-12'}[theme.type!=='图片上传-多张' && theme.type!=='图片上传-单张' && theme.type!=='大文本输入'&& theme.type!=='中文本输入'&& theme.type!=='文件上传']">
+
+				<input-detail-template input="theme" parent="modal.children"></input-detail-template>
+				<input-upload-ex-detail  ng-if="theme.type=='图片上传-多张' ||theme.type=='图片上传-单张'"></input-upload-ex-detail>
+				
+			</li>
+		</ul>
+
+	</form><!-- end of infi-modal-box -->
+	<form ng-if="plugin.expert">
+		<h2 id="" class="infi-title">
+			<span>会诊专家</span>
+			<a ng-if = "role.role === 'creator' && requestBtn" class="btn infi-btn-linear-green-l btn-sm ng-scope" style="text-decoration: none; border-radius: 5px; padding: 6px;float: right;" href="#/consultation-experts/{{routeParams.recordId}}/detail">会诊邀请</a>
+		</h2>
+		<div class="infi-box">
+
+			<div ng-if="!tableData" class="alert alert-danger" role="alert">您没有邀请任何专家！！！</div>
+			<form class="infi-modal-box current form-inline">
+				<div infi-table ng-if="tableData" columns="headerData.columns" content="tableData" update-page="changePage(page)"></div>
+			</form>
+		</div>
+	</form>
+
+	<form ng-if="plugin.report">
+		<h2 id="" class="infi-title">
+			<span>会诊报告</span>
+		</h2>
+		<div class="infi-box">
+			<div ng-if="report.length == 0" class="alert alert-danger" role="alert">您没有填写意见反馈！！！</div>
+
+			<ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" ng-repeat="opt in report" ng-class="{'true':'active'}[opt.show]"><a class="cursorPointer ng-binding" ng-click="changeReport(opt.docId,showReport)">{{opt.docName}}</a></li>
+            </ul>
+
+            <div class="infi-consultation-input">
+        		<label>会诊专家：</label>
+        		<p>{{showReport.docName}}  {{showReport.docDept}}</p>
+        		<div ng-if="showReport.report && showReport.report !=='' && showReport.report !== null">
+        		<p><label>会诊报告：</label>{{showReport.report}}</p></div>
+
+        		<div ng-if="(!showReport.report || showReport.report =='' || showReport.report == null ) && role.role == 'attending'&& user.id === showReport.docId && showReport.status === 'pass'">
+	            	<label>会诊报告</label>
+	            	<textarea class="form-control" ng-model="data.tagReport">
+	            		
+	            	</textarea>
+	            	<div class="infi-m-btn">
+						<a class="btn infi-btn-linear-green-l" ng-click="saveReport(showReport.docId)"> 发送会诊报告 </a>
+					</div>
+	            </div>
+
+
+	            <div ng-if="showReport.report && showReport.report !=='' && showReport.report !== null">
+
+	            	<div ng-repeat = "opt in reportSupplement">
+	            		<p>
+	            			<label>补充说明：</label>{{opt.supplement}}
+	            		</p>
+	            	</div>
+	            </div>
+				<div ng-if="showReport.report && showReport.report !=='' && showReport.report !== null && routeParams.role !== 'participation' && user.id === showReport.docId && showReport.status === 'pass'">
+					<textarea class="form-control" ng-model="data.tagReportSupplement">
+
+	            	</textarea>
+					<div class="infi-m-btn">
+						<a class="btn infi-btn-linear-green-l" ng-click="saveReportSupplement(showReport.docId)"> 发送补充说明 </a>
+					</div>
+				</div>
+            	
+            </div>
+		</div>
+	</form>
+	<form ng-if="plugin.opinion">
+		<h2 id="" class="infi-title">
+			<span>意见反馈</span>
+		</h2>
+		<div class="infi-box">
+			<div ng-if="opinion.length == 0" class="alert alert-danger" role="alert">您没有填写意见反馈！！！</div>
+            <div class="infi-consultation-input">
+            	<div ng-repeat = "opt in opinion">
+					<div class="infi-feekback-title"><span>{{opt.docName}}</span>&nbsp;&nbsp;<span>{{opt.createTime}}</span></div>
+					<div><p>{{opt.suggest}}</p></div>
+            	</div>
+            	
+            	<textarea ng-if="role.role != 'creator'" class="form-control" ng-model="data.tagOptions">
+            		
+            	</textarea>
+            	<div class="infi-m-btn">
+					<a ng-if="role.role != 'creator'" class="btn infi-btn-linear-green-l" ng-click="saveOpinion()"> 提交意见反馈 </a>
+				</div>
+            </div>
+		</div>
+	</form>
+
+	<div class="infi-m-btn">
+		<a class="btn btn-default" href="#/consultation-list"> 返回 </a>
+	</div>
+
+	<div img-load datas="datas" stopload="stopload" upls="upls"></div>
+	<img-modal-detail></img-modal-detail>
+	<download-img-model-detail></download-img-model-detail>
+</div>	

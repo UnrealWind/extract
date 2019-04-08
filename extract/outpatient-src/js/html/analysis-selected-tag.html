@@ -1,0 +1,5 @@
+<div>
+    <div ng-repeat="left in leftData.$datas" ng-show="left.$checked" style="display: inline;">
+        <div ng-repeat="right in rightData.$datas" ng-show="right.$checked" class="infi-selected-tag">{{left.label}}-{{right.label}}</div>
+    </div>
+</div>

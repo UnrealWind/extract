@@ -1,0 +1,46 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="addModule">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ basic.way }}{{ basic.type }}</h4>
+            </div>
+            <div class="modal-body" >
+                <div class="row">
+                    <label class="col-md-3 col-sm-3 text-right"><span class="star-red">*&nbsp;</span>{{ basic.type }}名称：</label>
+                    <input class="form-control" type="text" style="width: 66%;" ng-model="basic.name" ng-change="change()">
+                </div>
+                <div class="row" ng-if="basic.way != '修改'">
+                    <label class="col-md-3 col-sm-3 text-right"><span class="star-red">*&nbsp;</span>{{ basic.type }}编号：</label>
+                    <div style="width: 66%; float: left;" >
+                        <input class="form-control" type="text"ng-model="basic.value" ng-change="change()">
+                        <p ng-if="valueWarm" class="warming">编号不能含有汉字</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 col-sm-3 text-right">{{ basic.type }}排序：</label>
+                    <div style="width: 66%; float: left;" >
+                        <input class="form-control" type="text" ng-model="basic.order" ng-change="changeOrder(basic.order)">
+                        <p ng-if="orderWarm" class="warming">排序只能包含数字</p>
+                    </div>
+                </div>
+                <div class="row" ng-if="method == 'addTheme' || method == 'addSubTheme'">
+                    <label class="col-md-3 col-sm-3 text-right"><span class="star-red">*</span>&nbsp;模块：</label>
+                    <select ng-model="basic.moduleDataList" ng-options="item.id as item.name for item in moduleDataList" class="form-control" style="width: 66%;" ng-change="selectModule(basic.moduleDataList);"></select>
+                </div>
+                <div class="row" ng-if="method == 'addSubTheme'">
+                    <label class="col-md-3 col-sm-3 text-right"><span class="star-red"></span>主题：</label>
+                    <select ng-model="basic.themeDataList" ng-options="item.id as item.name for item in themeDataList" class="form-control" style="width: 66%;"  ng-change="selectTheme(basic.themeDataList)"></select>
+                </div>
+                <div class="row">
+                    <label class="col-md-3 col-sm-3 text-right"><span class="star-red"></span>组合：</label>
+                    <select ng-model="basic.combineId" ng-options="item.id as item.name for item in combineData" class="form-control" style="width: 66%;" ng-change="selectCombineId()"></select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-class="{true: 'disabled' ,false: ''}[disabled]" ng-click="save(modulePage)">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

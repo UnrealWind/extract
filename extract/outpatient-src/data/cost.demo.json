@@ -1,0 +1,44 @@
+{
+  "data": {
+    "id": 29,
+    "name": null,
+    "label": "挂号监控_取号方式",
+    "type": null,
+    "limits": null,
+    "result": [
+      {
+        "value": 6000,
+        "channel": "95169预约",
+        "name": "沙格列汀片"
+      },
+      {
+        "value": 5000,
+        "channel": "95169预约",
+        "name": "阿卡糖片"
+      },
+      {
+        "value": 4000,
+        "channel": "95169预约",
+        "name": "盐酸二甲双胍"
+      },
+      {
+        "value": 3000,
+        "channel": "95169预约",
+        "name": "吲达帕胺"
+      },
+      {
+        "value": 1000,
+        "channel": "95169预约",
+        "name": "盐酸米诺环素"
+      },
+      {
+        "value": 1000,
+        "channel": "95169预约",
+        "name": "其他"
+      }
+    ],
+    "status": "ok"
+  },
+  "status": "ok",
+  "description": "数据请求成功"
+}

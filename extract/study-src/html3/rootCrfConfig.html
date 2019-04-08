@@ -1,0 +1,81 @@
+<div>{{showMark}}
+    <span style="margin:10px 0 0 10px;" ng-click="modal(data,'child')" class="btn btn-default btn-sm">添加节点</span>
+    <crf-config crf-data="crfData" show-mark="showMark"></crf-config>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="child">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加属性</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 form-inline">
+                            <label class="">名称：</label>
+                            <input class="form-control" type="text" ng-model="submit.label">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="crf">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加属性</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 form-inline">
+                            <label class="">名称：</label>
+                            <input class="form-control" type="text" ng-model="submit.label">
+                        </div>
+
+                        <div class="col-md-6 form-inline">
+                            <label class="">值：</label>
+                            <input class="form-control" type="text" ng-model="submit.value">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="update">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加属性</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-if="!showTip" class="row">
+                        <div class="col-md-6 form-inline">
+                            <label class="">上传文件：</label>
+                            <input multiple="true" id="{{input.name}}" type="file"  name="file" ngf-select="onFileSelect($files,input)">
+                        </div>
+                    </div>
+                    <div ng-if="showTip == 'blue'" class="alert alert-info">上传中…………</div>
+                    <div ng-if="showTip == 'red'" class="alert alert-danger">上传失败！<a style="cursor:pointer" ng-click="changeTip()">点击重试！</a></div>
+                    <div ng-if="showTip == 'green'" class="alert alert-success">上传成功！<a style="cursor:pointer" ng-click="changeTip()">重新上传！</a></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

@@ -1,0 +1,142 @@
+<div>
+  <div class="row">
+    <!-- 返回 -->
+    <div class="col-md-3">
+        <div class="btn-group pull-left" role="group">
+          <button ng-click="backToList()" class="btn btn-default"><i class="glyphicon glyphicon-home"></i> 回首页</button>
+          <button ng-click="backToReport()" class="btn btn-default"><i class="glyphicon glyphicon-th-list"></i> 回详情页</button>
+        </div>
+    </div>
+  
+    <!-- 打印/导出 -->
+    <!-- <div class="col-md-2">
+        <button type="button" class="btn btn-default" ng-click="printPage()" title="打印"><i class="glyphicon glyphicon-print"></i></button>
+        <button type="button" class="btn btn-default  " ng-click="savePageAsImg()" title="导出图片"><i class="glyphicon glyphicon-save"></i></button>
+    </div> -->
+  
+    <!-- 占位符 -->
+    <div class="col-md-4 text-center"></div>
+  
+    <!-- 生成 -->
+    <div class="col-md-5 clearfix">
+      <div class="btn-group pull-right" role="group">
+        <button type="button" class="btn btn-primary" ng-click="saveReportData()" ng-if="varstatus.genStatus == 'init'" title="生成报告"><i class="glyphicon glyphicon-export"></i>确认生成</button>
+        <button type="button" class="btn btn-primary" disabled ng-if="varstatus.genStatus != 'init'" title="生成报告"><i class="glyphicon glyphicon-export"></i>生成中...</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <div id="domtoimg-wrapper">
+    <!-- page title -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h5>中国人民解放军总医院</h5>
+        <h3>肾活检病理报告单</h3>
+      </div>
+    </div>
+    
+    <!-- 基本信息 -->
+    <div class="basic-info row">
+      <dl class="dl-horizontal basicInfo-dl col-md-2" ng-repeat="(val, ind) in basicInfo.lineTwo">
+        <dt class="basicInfo-dt" ng-bind="orgPageData[0].children[ind].label + ':'" 
+            title="{{orgPageData[0].children[ind].label}}"></dt>
+        <dd class="basicInfo-dd" ng-bind="orgPageData[0].children[ind].value"></dd>
+      </dl>
+
+      <ul class="basicInfo-ul col-md-2">
+        <li ng-repeat="(val, ind) in basicInfo.lineOne">
+          <dl class="dl-horizontal basicInfo-ul-dl">
+            <dt class="basicInfo-ul-dt" ng-bind="orgPageData[0].children[ind].label + ':'"
+                title="{{orgPageData[0].children[ind].label}}"></dt>
+            <dd class="basicInfo-ul-dd" 
+                title="{{orgPageData[0].children[ind].value}}">
+              <input type="text"
+                     readonly
+                     class="reset-input"
+                     value="{{orgPageData[0].children[ind].value}}" />  
+            </dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider title-divider">
+    
+    
+    <!-- 表单正文 -->
+    <div class="row sec-wrapper no-print">
+      
+      <!-- 块 光镜所见, 棉衣荧光 ...  -->
+      <div class="panel panel-default" ng-repeat="sec in orgPageData" ng-if="$index != 0">
+        <div class="panel-heading" ng-if="sec.showParentLabelFlag">
+          <h3 class="panel-title" ng-bind="sec.label + ':'"></h3>
+        </div>
+        <div class="panel-body row">
+
+          <!-- children PAS染色 ...  -->
+          <dl class="dl-horizontal col-md-4 basicInfo-dl" 
+              ng-repeat="single in sec.children"
+              ng-if="inputType.text.indexOf(single.labelId) >= 0 || inputType.dateTime.indexOf(single.labelId) >= 0 || inputType.singleImg.indexOf(single.labelId) >= 0">
+            <dt ng-bind="single.label + ':'"></dt>
+            <dd>
+              <!-- 文本框 -->
+              <input type="text"
+                     class="form-control"
+                     ng-if="inputType.text.indexOf(single.labelId) >= 0"
+                     ng-model="single.value"
+                     set-init single-data="single">
+
+              <!-- 时间选择 -->
+              <input readonly
+                    class="form-control"
+                    type="text"
+                    name= "single.name"
+                    ng-if="inputType.dateTime.indexOf(single.labelId) >= 0"
+                    ng-model="single.value"
+                    placeholder="请选择{{item.label}}"
+                    title="{{item.value}}"
+                    set-init single-data="single"
+                    ipt-date>
+
+              <!-- 单一图片 -->
+              <img ng-if="inputType.singleImg.indexOf(single.labelId) >= 0"
+                   class="single-img"
+                   ng-src="{{single.value}}"
+                   name="single.name"
+                   set-init single-data="single">
+            </dd>
+          </dl>
+
+
+          <dl class="dl-horizontal" 
+              ng-repeat="single in sec.children"
+              ng-if="inputType.textArea.indexOf(single.labelId) >= 0 || inputType.imgList.indexOf(single.labelId) >= 0">
+
+            <dt ng-bind="single.label + ':'"></dt>
+            <dd>
+              <!-- 文本域 -->
+              <textarea class="form-control single-textarea" rows="8"
+                        ng-if="inputType.textArea.indexOf(single.labelId) >= 0"
+                        ng-model="single.value"
+                        set-init single-data="single"></textarea>
+
+              <!-- 图片 -->
+              <div class="row"
+                   ng-if="inputType.imgList.indexOf(single.labelId) >= 0">
+                  <div set-init single-data="single"></div>
+                  <pre-img class="col-md-6" show-btn="optType == 'edit' ? true : false" item="single" record-id="orgPageData[0].recordId" edit-able="true"></pre-img>
+
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+</div>

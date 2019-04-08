@@ -1,0 +1,43 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>会诊专家管理</h4>
+<div class="infi-box">
+    <div class="infi-clt-button-rt">
+        <a ng-click="addInitiate()" class="btn infi-btn-linear-green-l btn-sm ng-scope">新增邀请</a>
+    </div>
+    <div infi-table columns="tableColumns.columns" ng-if="tableData && tableColumns.columns" content="tableData" update-page="getChange(page)"></div>
+    <div class="infi-clt-button-rt">
+        <a class="btn infi-btn-linear-default btn-sm ng-scope" ng-click="pageJump()">
+            <span ng-if="quaryParams.detail == 'list'">完成</span>
+            <span ng-if="quaryParams.detail == 'detail'">返回</span>
+        </a>
+    </div>
+    <div sys-tip></div>
+</div>
+
+<!--邀请的模态框-->
+<div class="modal fade"  id="clt-invites-modal" >
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择用户</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="">
+                    <li class="input-group" style="width:500px;">
+                        <input type="text" class="form-control input-md" value="inviteKeyword" ng-model="inviteKeyword" style="height:34px;" placeholder="请输入姓名进行搜索">
+                        <span class="input-group-addon btn btn-primary" ng-click="inviteSearch()">搜索</span>
+                    </li>
+                </ul>
+                <div ng-if="!initiateData" class="alert alert-danger" role="alert" >没有查询相关医生，请重新输入！！！</div>
+
+                <div infi-table consultation-role="consultationRole" columns="tableColumn.columns" select-main="selectMain" ng-if="initiateData" content="initiateData" table-check-box='tableCheckBox'  update-page="getLists(page)" btn-callback="pageFns(entity,type)"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelInitiate()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="confirmInitiate()">邀请</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div general-prompt></div>

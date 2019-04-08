@@ -1,0 +1,35 @@
+<div>
+    <h4 class="infi-title infi-inline-block"><i class="glyphicon glyphicon-globe"></i>规则详情</h4>
+    <div class="infi-m-btn infi-rule-back">
+        <a class="btn btn-default" onclick="history.back()">返回</a>
+    </div>
+</div>
+<div class="infi-content-wrapper">
+    <!--规则详情-->
+    <div class="infi-box" ng-show="viewType == 'check'">
+        <h4 class="infi-title">审核任务</h4>
+        <div class="infi-box-containter">
+            <div id="formTip"></div>
+            <div class="infi-m-fm">
+                <p class="infi-m-tab">
+                    <label>审批结果 :</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="bool" value="true" ng-model="taskCheck.checkResult" />通过
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="bool" value="false" ng-model="taskCheck.checkResult" />驳回
+                    </label>
+                </p>
+                <p class="infi-m-ipt">
+                    <label>审批理由 :</label>
+                    <textarea class="infi-u-ipt" type="text" name="remark" ng-model="taskCheck.checkReason"></textarea>
+                </p>
+                <p class="infi-m-btn">
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="checkTask()">提交</button>
+                    <a class="btn btn-default" onclick="history.back()">返回</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div rule-detail id="ruleId" ng-if="ruleId" view-type="viewType"></div>
+</div>

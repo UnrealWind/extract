@@ -1,0 +1,121 @@
+<div class="timeline-page container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="clearfix">
+        <a href="#/patiManage" class="btn btn-primary pull-right" role="button"><i class="glyphicon glyphicon-user"></i> 回患者管理</a>
+      </h4>
+    </div>
+  </div>
+  <!-- 基本信息 -->
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">基本信息</div>
+      <div class="panel-body">
+        <div class="col-md-{{val.colspan}}" ng-repeat="(ind, val) in info">
+          <span ng-bind="val.label + ':'"></span>
+          <span ng-bind="val.value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 历次就诊信息 -->
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">历次就诊信息</div>
+      <div class="panel-body">
+        <!-- 时间线 -->
+        <div class="infi-timeline">
+          <div class="timeline_nav" style="display: block; top: 524px; right: 193.684px;">
+            <ul>
+              <li style="cursor: pointer;" class="ng-scope">
+                <a class="detail-year ng-binding">2018年</a>
+                <ol>
+                  <li class="ng-scope">
+                    <a class="action-month ng-binding"></a>
+                  </li>
+                </ol>
+              </li>
+
+              <li style="cursor: pointer;" class="ng-scope">
+                <a class="detail-year ng-binding">2017年</a>
+                <ol>
+                  <li class="ng-scope">
+                    <a class="action-month ng-binding"></a>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+          <div class="timeline_wrapper clearfix">
+            <div class="drupName ng-scope">
+              <div class="timeline_year" id="timeline-2018">
+                <span class="ng-binding">2018年</span>
+              </div>
+              <section id="uuid_1">
+                <div id="uuid_2" class="timeline_feed ng-scope">
+                  <section class="tl-feed">
+                    <div class="share-feed" style="cursor: pointer;" ng-click="checkDetail()">
+                      <div class="main-count timeline-tijain">
+                        <h3 class="ng-binding">慢阻肺护理</h3>
+                        <dl>
+                          <dd class="ng-binding ng-scope">睡眠呼吸暂停低通气综合征</dd>
+                        </dl>
+
+                      </div>
+                      <div class="tl-time ng-binding">2018年9月19日 </div>
+                    </div>
+                  </section>
+                  <i></i>
+                </div>
+              </section>
+            </div>
+
+            <div class="drupName ng-scope">
+              <div class="timeline_year" id="timeline-2017">
+                <span class="ng-binding">2017年</span>
+              </div>
+              <section id="uuid_1">
+                <div id="uuid_2" class="timeline_feed ng-scope">
+                  <section class="tl-feed">
+                    <div class="share-feed" style="cursor: pointer;" ng-click="checkDetail()">
+                      <div class="main-count timeline-tijain">
+                        <h3 class="ng-binding">住院</h3>
+                        <dl>
+                          <dd class="ng-binding ng-scope">睡眠呼吸暂停低通气综合征</dd>
+                        </dl>
+
+                      </div>
+                      <div class="tl-time ng-binding">2017年6月29日 </div>
+                    </div>
+                  </section>
+                  <i></i>
+                </div>
+                <div id="uuid_3" class="timeline_feed ng-scope">
+                  <section class="tl-feed">
+                    <div class="share-feed" style="cursor: pointer;">
+                      <div class="main-count timeline-menzhen">
+                        <h3 class="ng-binding">门诊</h3>
+                        <dl>
+                          <dd class="ng-binding ng-scope">睡眠呼吸暂停综合征</dd>
+                        </dl>
+
+                      </div>
+                      <div class="tl-time ng-binding">2017年6月29日 </div>
+                    </div>
+                  </section>
+                  <i></i>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>

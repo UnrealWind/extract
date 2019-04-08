@@ -1,0 +1,25 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC置管记录
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="save('catheter')" ng-disabled="btnDisable">保存</button>
+</h4>
+<div class="infi-box">
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content">
+			<div ng-repeat="list in formList">
+				<div class="row" form-catheter form-one="list" length-blur="lengthBlur(form)"></div>
+				<!-- 有交互的情况 -->
+				<div class="row" ng-if="list.action && list.value==list.actionValue || (list.type=='checkbox' && list.action && list.value[list.actionValue])" ng-repeat="action in list.action">
+					<div class="cell" ng-repeat="child in action.children" part-form-two form-two="child">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="infi-nursing-bottom-btn">
+		<button class="btn infi-btn-linear-green-l btn-sm " ng-click="save('catheter')" ng-disabled="btnDisable">保存</button>
+		<button class="btn infi-btn-linear-green btn-sm" ng-click="goBack()">返回</button>
+	</div>
+	<div sys-tip></div>
+</div>		

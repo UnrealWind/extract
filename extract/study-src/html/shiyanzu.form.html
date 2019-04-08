@@ -1,0 +1,71 @@
+<div>
+    <h4 style="text-align: center">
+        <span>实验组</span>
+        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setAdd(0)">添加实验组</button>
+    </h4>
+    <div class="infi-box marginten" ng-repeat="exp in experiment">
+        <h4>{{exp.name}}</h4>
+        <button class="btn infi-btn-linear-green-l btn-sm btnDel" ng-click="btnDel(exp.name,0)">删除</button>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div class="row">
+                    <div class="col-xs-4" ng-repeat="exps in exp.one">
+                        <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                            <label >{{exps.name}}:</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" value="{{exps.value}}" ng-model="exps.value">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="col-xs-3" style="text-align: right;padding:0;line-height:60px;">
+                            <label >{{exp.casesNumber}}:</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" style="height:60px;resize: none;width:500px;" value="{{exp.casesValue}}" ng-model="exp.casesValue"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                            <label >{{exp.CRF}}:</label>
+                        </div>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control"  value="{{exp.CRFValue}}" ng-model="exp.CRFValue" disabled>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setCrf('own',exp.name)">选择模板</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                            <label >{{exp.distribution}}:</label>
+                        </div>
+                        <div class="col-xs-7 table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td>医院</td>
+                                    <td>科室</td>
+                                    <td>人数</td>
+                                </tr>
+                                <tr ng-repeat="table in exp.distributionTable">
+                                    <td>{{table.hospital}}</td>
+                                    <td>{{table.departments}}</td>
+                                    <td>{{table.number}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setDist(exp.name)">分配人数</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

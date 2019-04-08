@@ -1,0 +1,76 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    用户管理 -> 角色 -> <span ng-show="viewDetail.type == 'create'">新建角色</span>
+    <span ng-show="viewDetail.type == 'view'">查看角色</span>
+    <span ng-show="viewDetail.type == 'change'">修改角色</span>
+</h4>
+<div class="infi-box">
+    <form name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>角色名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.roleDetail.name" required/>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构:</label></div>
+            <div class="col-lg-4">
+                <!--<select ng-model="viewDetail.roleDetail.companyId" class="infi-drug-input" ng-change="checkRoleName()"-->
+                        <!--ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length > 0" required>-->
+                    <!--<option ng-repeat="mechansim in mechansimList.data" ng-selected="mechansim.id == viewDetail.roleDetail.companyId"-->
+                            <!--ng-bind="mechansim.name" value="{{mechansim.id}}"></option>-->
+                <!--</select>-->
+                <div ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length > 0" class="infi-inline-block infi-drug-input">
+                    <span ng-bind="viewDetail.roleDetail.$companyName"></span>
+                    <a class="pull-right pointer" data-toggle="modal" data-target="#treeSelect">更改机构</a>
+                </div>
+                <span ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length == 0" class="text-danger">暂无机构,请先添加机构</span>
+                <span ng-show="mechansimList.status != SYS.STATUS_SUCCESS" ng-bind="mechansimList.description" class="text-danger"></span>
+                <i class="text-danger">*</i>
+            </div>
+        </div>
+        <div class="infi-form-row infi-group row">
+            <div class="col-lg-2"><label>英文名称:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.roleDetail.enname" ng-change="checkRoleName()" required/>
+                <span class="infi-error-tip" ng-show="enNameChecked.type == 'invalid'||enNameChecked.type == 'error'"
+                      ng-bind="enNameChecked.checked.data.desc"></span>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>数据范围:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.roleDetail.dataScope" class="infi-drug-input">
+                    <option value="8">仅本人数据</option>
+                    <option value="1">所有数据</option>
+                    <option value="2">所在医院及以下数据</option>
+                    <option value="3">所在医院数据</option>
+                    <option value="4">所在科室及以下数据</option>
+                    <option value="5">所在科室数据</option>
+                </select>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>菜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单:</label></div>
+            <div class="col-lg-8">
+                <!-- <ul class="infi-choser-first-li" ng-show="menuList.status == SYS.STATUS_SUCCESS">
+                     <li ng-repeat="menu in menuList.data">
+                         <label>
+                             <input type="checkbox" ng-model="menu.$checked" />
+                             <span ng-bind="menu.name"></span>
+                         </label>
+                     </li>
+                 </ul>-->
+
+                <div ng-if="menuList.length>0" ivh-treeview="menuList" ></div>
+
+                <span ng-show="menuList.status == SYS.STATUS_SUCCESS&&menuList.data.length == 0" class="text-danger">暂无菜单</span>
+                <span ng-show="menuList.status != SYS.STATUS_SUCCESS" ng-bind="menuList.description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="infi-submit-container">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存"
+                   ng-disabled="!form.$valid || enNameChecked.type == 'invalid' || enNameChecked.type == 'error'" ng-click="saveRole()"/>
+        </div>
+    </form>
+</div>
+<div tree-select></div>
+<div sys-tip></div>
+

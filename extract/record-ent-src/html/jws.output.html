@@ -1,0 +1,25 @@
+<div class="modal fade" id="infi-jws-output">
+    <div class="modal-dialog modal-lg" style="margin-top: 150px;">
+        <div class="modal-content">
+            <div class="infi-modal-header">
+                既往史
+            </div>
+            <div class="modal-body" style="min-height: 200px;">
+                <div ng-if="tplStatus=='view'" >{{tpl.jwsTpl}}</div>
+                <div ng-if="tplStatus=='modify'" >
+                    <textarea ng-model="tpl.jwsTpl" rows="8" cols="100"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default self-btn-sm self-btn-w-sm self-radius pull-right" data-dismiss="modal"
+                        style="margin: 0 10px;">返回</button>
+
+                <button class="btn btn-success self-btn-sm self-btn-w-sm self-radius pull-right"
+                        ng-click="modifyTpl()" ng-if="tplStatus=='view'">修改</button>
+                <button class="btn btn-success self-btn-sm self-btn-w-sm self-radius pull-right"
+                        ng-click="viewTpl()"  ng-if="tplStatus=='modify'">完成</button>
+
+            </div>
+        </div>
+    </div>
+</div>

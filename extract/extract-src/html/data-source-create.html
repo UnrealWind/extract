@@ -1,0 +1,98 @@
+<!--标签-新建源始标签列表-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    配置 -> 源标签 -> <span ng-show="viewDetail.type == 'create'">新建</span>
+    <span ng-show="viewDetail.type == 'view'">查看</span>
+    <span ng-show="viewDetail.type == 'change'">修改</span>
+</h4>
+<div class="infi-box">
+    <form name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>源标签名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.name"
+                       ng-show="viewDetail.type != 'view'"/>
+                <span ng-bind="viewDetail.detail.name" ng-show="viewDetail.type == 'view'"></span>
+            </div>
+            <div class="col-lg-2"><label>ES源字段:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.esField"
+                       ng-show="viewDetail.type != 'view'"/>
+                <span ng-bind="viewDetail.detail.esField" ng-show="viewDetail.type == 'view'"></span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>维表资源:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.resourceId" class="infi-drug-input"
+                        ng-show="resource.status == SYS.STATUS_SUCCESS && viewDetail.type != 'view'">
+                    <option ng-repeat="res in resource.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-show="resource.status != SYS.STATUS_SUCCESS&&viewDetail.type != 'view'" ng-bind="resource.description"></span>
+                <span ng-if="resource.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{resource.data|viewSelect:viewDetail.detail.resourceId}}</span>
+            </div>
+            <div class="col-lg-2"><label>维表资源标签值分类:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.tabResourceId" class="infi-drug-input"
+                        ng-show="tabResource.status == SYS.STATUS_SUCCESS && viewDetail.type != 'view'">
+                    <option ng-repeat="res in tabResource.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-show="tabResource.status != SYS.STATUS_SUCCESS&&viewDetail.type != 'view'" ng-bind="tabResource.description"></span>
+                <span ng-if="tabResource.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{tabResource.data|viewSelect:viewDetail.detail.tabResourceId}}</span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>搜索资源:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.moreResourceId" class="infi-drug-input"
+                        ng-show="moreResource.status == SYS.STATUS_SUCCESS && viewDetail.type != 'view'">
+                    <option ng-repeat="res in moreResource.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-show="moreResource.status != SYS.STATUS_SUCCESS&&viewDetail.type != 'view'" ng-bind="moreResource.description"></span>
+                <span ng-if="moreResource.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{moreResource.data|viewSelect:viewDetail.detail.moreResourceId}}</span>
+            </div>
+            <div class="col-lg-2"><label>数据核实资源:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.valiResourceId" class="infi-drug-input"
+                        ng-show="valiResource.status == SYS.STATUS_SUCCESS && viewDetail.type != 'view'">
+                    <option ng-repeat="res in valiResource.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-show="valiResource.status != SYS.STATUS_SUCCESS" ng-bind="valiResource.description"></span>
+                <span ng-if="valiResource.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{valiResource.data|viewSelect:viewDetail.detail.valiResourceId}}</span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>是否行转列:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.transfer" class="infi-drug-input" ng-show="viewDetail.type != 'view'">
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                </select>
+                <span ng-if="viewDetail.type == 'view'">{{viewDetail.detail.transfer|viewSelect}}</span>
+            </div>
+            <div class="col-lg-2"><label>是否多值:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.multiValue" class="infi-drug-input" ng-show="viewDetail.type != 'view'">
+                    <option value='false'>否</option>
+                    <option value='true'>是</option>
+                </select>
+                <span ng-if="viewDetail.type == 'view'">{{viewDetail.detail.multiValue|viewSelect}}</span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>ES源标签值字段:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.tagResultField"
+                       ng-show="viewDetail.type != 'view'"/>
+                <span ng-bind="viewDetail.detail.tagResultField" ng-show="viewDetail.type == 'view'"></span>
+            </div>
+        </div>
+        <div class="infi-submit-container" ng-show="viewDetail.type != 'view'">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存" ng-click="saveDatas()"/>
+        </div>
+    </form>
+</div>
+<div sys-tip></div>

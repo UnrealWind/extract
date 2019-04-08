@@ -1,0 +1,105 @@
+<h4 class="infi-title">
+    <i class="glyphicon glyphicon-globe"></i>课题管理
+    <a href="javascript:;" ng-if="showNewsButton" ng-click="subjectNews()" class="btn btn-primary f-r">待处理申请</a>
+
+</h4>
+<div class="infi-box">
+    <h4>
+        <span style="float: left;">我的课题:</span>
+        <div class="select-status">
+            <span class="title">课题状态:</span>
+            <select class="form-control" ng-model="subjectStatus" ng-options="item.id as item.label for item in subjectStatusData" ng-change="changeStatus()">
+            </select>
+        </div>
+        <a href="javascript:;" ng-click="subjectCreate()" class="btn btn-primary infi-btn-l">新建课题</a>
+    </h4>
+    <div class="infi-box-containter">
+        <div ng-if="invited" class="alert alert-danger">您暂时还没有课题！！！</div>
+        <div class="dir-nav-container">
+            <div class="row">
+                <div ng-repeat="data in mySubjectData" ng-click="studyOverview(data)" >
+                    <div class="box-sick-item active">
+                        <div class="box-title">
+                            <em class="name">{{data.name}}</em>
+                        </div>
+                        <table class="table">
+                            <tbody><tr>
+                                <td class="self-label">课题类型:</td>
+                                <td>{{data.type}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">收录患者:</td>
+                                <td>{{data.realSize}} ({{data.recordRate}})</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">课题周期:</td>
+                                <td>{{data.startTime | date:'yyyy-MM-dd'}}至{{data.endTime | date:'yyyy-MM-dd'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">负责人:</td>
+                                <td>{{data.own}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="tag-sick-item" ng-if="data.status == 'ended'">
+                            <img src="../images/already-done.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <uib-pagination class="f-r"  total-items="mySubjectPage.totalElements" ng-model="mySubjectPage.number" max-size="5"
+                                boundary-link-numbers="true" ng-change="updatePageAttend(mySubjectPage.number)" items-per-page="mySubjectPage.size"
+                                num-pages="mySubjectPage.totalPages">
+                </uib-pagination>
+
+            </div>
+        </div>
+    </div>
+    <h4>邀请我的课题:</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div ng-if="notInvited" class="alert alert-danger">您暂时还未接到邀请！！！</div>
+
+            <div class="row">
+                <div ng-repeat="data in myInvitetData">
+                    <div class="box-sick-item active">
+                        <div>
+                            <span class="name">{{data.name}}</span>
+                        </div>
+                        <table class="table">
+                            <tbody><tr>
+                                <td class="self-label">课题类型:</td>
+                                <td>{{data.type}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">收录患者:</td>
+                                <td>{{data.realSize}} ({{data.recordRate}})</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">课题周期:</td>
+                                <td>{{data.startTime}}至{{data.endTime}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">负责人:</td>
+                                <td>{{data.own}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn btn-primary infi-btn-s" ng-click="modal(data)">接受邀请</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <uib-pagination class="f-r"  total-items="myInvitetPage.totalElements" ng-model="myInvitetPage.number" max-size="5"
+                                boundary-link-numbers="true" ng-change="updatePageAttendInvite(myInvitetPage.number)" items-per-page="myInvitetPage.size"
+                                num-pages="myInvitetPage.totalPages">
+                </uib-pagination>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div accept-invite></div>

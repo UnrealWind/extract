@@ -1,0 +1,1 @@
+window.location.href = "http://"+location.hostname+":"+location.port+"/iDiagnosis-src/index";

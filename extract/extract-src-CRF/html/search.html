@@ -1,0 +1,61 @@
+<div ng-controller = "SearchController" class="self-content">
+    <div class="title">
+        <span class="glyphicon glyphicon-list"></span>数据检索
+        <div style="display: inline-block;margin-left: 20px;">
+            <label>分组名称：</label>
+            <span ng-show="groupList.status != 'ok'" ng-bind="groupList.description"></span>
+            <select ng-model="subjectGroupId" ng-show="groupList.status == 'ok'">
+                <option ng-repeat="group in groupList.data" value="{{group.id}}" ng-bind="group.name"></option>
+            </select>
+        </div>
+    </div>
+    <div align="center" class="row">
+        <div class="input-group self-radius col-md-6" style="max-width:600px;">
+            <input type="text" class="form-control" placeholder='请输入关键词' ng-model = "model.tagWord">
+					<span class="input-group-btn">
+						<button class="btn btn-default self-radius" type="button" ng-click = "searchWords(model.tagWord)"
+                                ng-disabled="groupList.status != 'ok'||groupList.data.length == 0">
+							&nbsp;搜&nbsp;索&nbsp;
+						</button>
+					</span>
+        </div>
+    </div>
+
+    <!-- 去掉热门关键词这块，以防万一注掉，
+    <div class="search-infi-form" ng-if = "model.showMark === 'searchOpt'">
+        <hot-word></hot-word>
+    </div> -->
+
+    <!--<div class="self-box self-shrink-wrap">-->
+        <!--<div class="title">-->
+            <!--病例目录导航-->
+            <!--&lt;!&ndash; 确认按钮，暂时不需要-->
+            <!--<span class="self-box-fr">-->
+                <!--<button class="btn btn-xs self-btn-w-sm self-radius btn-success">-->
+                    <!--确定-->
+                <!--</button>-->
+            <!--</span> &ndash;&gt;-->
+        <!--</div>-->
+        <!--<disease-opt></disease-opt>-->
+        <!--<symptom-opt></symptom-opt>-->
+    <!--</div>-->
+
+    <div class="self-box">
+        <div class="title">
+            <span class="glyphicon glyphicon-list"></span>
+            搜索结果
+            <span ng-if = "model.showMark === 'searchList'" class='self-font-info'>&nbsp;&nbsp;共<span class='self-font-red-l'>{{model.searchList.page.totalElements}}</span>条记录</span>
+        </div>
+        <div ng-if = "model.showMark != 'searchList'" class="alert alert-danger">请输入搜索内容</div>
+        <div ng-if = "model.showMark === 'searchList'">
+            <div class="alert alert-danger" role="alert" ng-if = "model.searchList.status!=='ok' ">{{model.searchList.description}}</div>
+            <div>
+                <div class="box-search-item" ng-repeat = "opt in model.searchList.page.content">
+                    <record-list></record-list>
+                </div>
+                <page-list></page-list>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,92 @@
+<div>
+  <div class="panel panel-default newApp-collapase">
+    <div class="panel-heading">
+      <h3 class="panel-title">填写申请单信息</h3>
+    </div>
+
+    <div class="row" ng-if="canSubmit == 'forbid'">
+      <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            <p><i class="glyphicon glyphicon-asterisk text-danger"></i> 标记项必须填写!</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel-body row">
+      <form class="form-inline">
+        <div class="form-group form-item-margin col-md-6">
+          <label for="patiId" class="col-sm-4 text-right"><i class="glyphicon glyphicon-asterisk text-danger"></i> 患者 ID:</label>
+          <input type="text" 
+                class="form-control" 
+                id="patiId" 
+                placeholder="请输入患者 ID"
+                ng-model="newApplyFormData.formData.patiId">
+        </div>
+
+        <div class="form-group form-item-margin col-md-6">
+          <label for="patiWard" class="col-sm-4 text-right"><i class="glyphicon glyphicon-asterisk text-danger"></i> 病区:</label>
+          <select class="form-control" 
+                  id="patiWard"
+                  ng-options="opt.label for opt in newApplyFormData.wards"
+                  ng-model="wardSelected"
+                  ng-change="wardSelect()">
+          </select>
+          
+        </div>
+
+        <div class="form-group form-item-margin col-md-6">
+          <label for="visitId" class="col-sm-4 text-right"><i class="glyphicon glyphicon-asterisk text-danger"></i> 入院次数:</label>
+          <input type="number" 
+                class="form-control" 
+                id="visitId" 
+                placeholder="请输入入院次数" 
+                min="0"
+                ng-model="newApplyFormData.formData.visitId">
+        </div>
+
+        <div class="form-group form-item-margin col-md-6">
+          <label for="patiName" class="col-sm-4 text-right"><i class="glyphicon glyphicon-asterisk text-danger"></i> 患者姓名:</label>
+          <input type="text" 
+                class="form-control" 
+                id="patiName" 
+                placeholder="请输入患者姓名"
+                ng-model="newApplyFormData.formData.patiName">
+        </div>
+
+        <div class="form-group form-item-margin col-md-6">
+          <label for="visitId" class="col-sm-4 text-right"><i class="glyphicon glyphicon-asterisk text-danger"></i> 患者性别:</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio" 
+                    name="patGender" 
+                    value="男"
+                    ng-model="newApplyFormData.formData.patGender"> 男
+            </label>
+
+            <label class="radio-inline">
+              <input type="radio" 
+                    name="patGender" 
+                    value="女"
+                    ng-model="newApplyFormData.formData.patGender"> 女
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group form-item-margin col-md-12 text-center clearfix">
+        <button type="button" class="btn btn-default" ng-click="cancelNew()">取消</button>
+        <button type="button" class="btn btn-primary" ng-click="confirmNew()" ng-if="submitStatus != 'submitting'">新建</button>
+        <button type="button" disabled class="btn btn-primary" ng-click="confirmNew()" ng-if="submitStatus == 'submitting'">新建中...</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast" ng-if="totast"></toast-pop>
+</div>
+
+

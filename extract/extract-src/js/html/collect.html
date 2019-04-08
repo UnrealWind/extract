@@ -1,0 +1,44 @@
+<div>
+    <!--取数-收藏逻辑配置弹窗-->
+    <div class="modal fade" id="collectBox">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="clear();"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">请确认您收藏的信息</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="infi-confirm-export-body">
+                        <!--<div>-->
+                        <!--<span class="alert-info">(导出病例数量约为1000000份)</span>-->
+                        <!--</div>-->
+                        <div class="infi-export-body-name">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-name" >请输入筛选名称:</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input id="infi-export-body-name" ng-model="collectName" name="" value="" type="text" class="form-control" placeholder="请输入筛选名称" />
+                            </div>
+                        </div>
+                        <div class="infi-export-body-remarks">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-remarks">请输入筛选备注:</label>
+                            </div>
+                            <div class=" col-xs-8">
+                                <textarea id="infi-export-body-remarks" ng-model="collectRemark" type="text" class="form-control col-xs-8"
+                                          name="" value="" placeholder="请输入筛选备注"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer infi-confirm-export-footer">
+                    <button type="button" class="btn infi-btn-linear-default" ng-click="clear();" data-dismiss='modal'>取消</button>
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="confirmCollect()">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div sys-tip></div>
+</div>

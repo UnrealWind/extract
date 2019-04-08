@@ -1,0 +1,42 @@
+[
+  {
+    "search": "shousuoqizayin|SHOUSUOQIZAYIN|shousuoqizayin|ssqzy",
+    "label": "收缩期杂音"
+  },
+  {
+    "search": "disanxinyin|DISANXINYIN|disanxinyin|dsxy",
+    "label": "第三心音"
+  },
+  {
+    "search": "feibushiluoyinxiaoyu50%feiye|FEIBUSHILUOYINXIAOYU50%FEIYE|feibushiluoyinxiaoyu50%feiye|fbslyxy50%fy",
+    "label": "肺部湿罗音小于50%肺野"
+  },
+  {
+    "search": "benmalu:|BENMALU:|benmalu:|bml",
+    "label": "奔马律"
+  },
+  {
+    "search": "pifushileng|PIFUSHILENG|pifushileng|pfsl",
+    "label": "皮肤湿冷"
+  },
+  {
+    "search": "miansecangbai|MIANSECANGBAI|miansecangbai|mscb",
+    "label": "面色苍白"
+  },
+  {
+    "search": "fanzaobuan|FANZAOBUAN|fanzaobuan|fzba",
+    "label": "烦躁不安"
+  },
+  {
+    "search": "jingjingmainuzhang|JINGJINGMAINUZHANG|jingjingmainuzhang|jjmnz",
+    "label": "颈静脉怒张"
+  },
+  {
+    "search": "xinlu:105ci/fen|XINLU:105CI/FEN|xinlu:105ci/fen|xl105c/f",
+    "label": "心率105次/分"
+  },
+  {
+    "search": "xueya150/90mmHg|XUEYA150/90MMHG|xueya150/90mmhg|xy150/90mmHg",
+    "label": "血压150/90mmHg"
+  }
+]

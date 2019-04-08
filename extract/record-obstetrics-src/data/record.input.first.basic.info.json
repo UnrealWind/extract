@@ -1,0 +1,194 @@
+[
+  [
+    {
+      "label": "年龄",
+      "name": "basic.age",
+      "unit": "岁"
+    },
+    {
+      "label": "职业",
+      "name": "basic.professional"
+    },
+    {
+      "label": "工作单位",
+      "name": "basic.workUnits"
+    },
+    {
+      "label": "电话",
+      "name": "basic.phone"
+    }
+  ],
+  [
+    {
+      "label": "结婚年龄",
+      "name": "basic.marryAge",
+      "unit": "岁"
+    },
+    {
+      "label": "初孕年龄",
+      "name": "basic.firstGestational",
+      "unit": "岁"
+    },
+    {
+      "label": "月经周期",
+      "name": "basic.menstrualCycle",
+      "unit": "天"
+    },
+    {
+      "label": "末次月经",
+      "name": "basic.lastGestationalDate",
+      "type": "time"
+    },
+    {
+      "label": "初潮年龄",
+      "name": "basic.menarche",
+      "unit": "岁"
+    }
+  ],
+  [
+    {
+      "label": "避孕法",
+      "name": "basic.contraception",
+      "type": "checkboxOther",
+      "options": [
+        {
+          "label": "宫内节育器",
+          "value": ""
+        },
+        {
+          "label": "口服甾体避孕药",
+          "value": ""
+        },
+        {
+          "label": "绝育术",
+          "value": ""
+        },
+        {
+          "label": "外用避孕",
+          "value": ""
+        },
+        {
+          "label": "口服紧急避孕药",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "本次妊娠疾病",
+      "name": "basic.pregnancyDisease",
+      "type": "checkboxOther",
+      "options": [
+        {
+          "label": "妊娠期高血压病",
+          "value": ""
+        },
+        {
+          "label": "子痫前期轻度",
+          "value": ""
+        },
+        {
+          "label": "子痫前期重度",
+          "value": ""
+        },
+        {
+          "label": "子痫",
+          "value": ""
+        },
+        {
+          "label": "妊娠期肝内胆汁淤积症",
+          "value": ""
+        },
+        {
+          "label": "妊娠期糖尿病",
+          "value": ""
+        },
+        {
+          "label": "肺结核",
+          "value": ""
+        },
+        {
+          "label": "丙型肝炎",
+          "value": ""
+        },
+        {
+          "label": "乙型肝炎",
+          "value": ""
+        },
+        {
+          "label": "梅毒",
+          "value": ""
+        },
+        {
+          "label": "艾滋",
+          "value": ""
+        },
+        {
+          "label": "糖尿病",
+          "value": ""
+        },
+        {
+          "label": "妊娠合并慢性高血压",
+          "value": ""
+        },
+        {
+          "label": "贫血",
+          "value": ""
+        },
+        {
+          "label": "心力衰竭",
+          "value": ""
+        },
+        {
+          "label": "慢性肾炎",
+          "value": ""
+        },
+        {
+          "label": "甲状腺功能亢进",
+          "value": ""
+        },
+        {
+          "label": "甲状腺功能减退",
+          "value": ""
+        },
+        {
+          "label": "阑尾炎",
+          "value": ""
+        },
+        {
+          "label": "胆囊炎",
+          "value": ""
+        },
+        {
+          "label": "胆囊结石",
+          "value": ""
+        },
+        {
+          "label": "肠梗阻",
+          "value": ""
+        },
+        {
+          "label": "胃穿孔",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "本次妊娠用药史",
+      "name": "basic.pregnancyDrug",
+      "type": "checkboxOther",
+      "options":[
+        {
+          "label": "叶酸",
+          "value": ""
+        },{
+          "label": "叶酸制剂",
+          "value": ""
+        }
+      ]
+    }
+  ]
+]

@@ -1,0 +1,38 @@
+<div>
+    <!--列表操作功能的删除确认框-->
+    <div class="modal fade" id="addChild" role="dialog">
+        <div class="modal-dialog" style="width:600px;">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">添加子集信息</h4>
+                    </div>
+                </div>
+                <div class="modal-body" style="max-height:500px;overflow: auto;">
+                    <div class="infi-confirm-export-body">
+                        <label>选择需要添加的标签:</label>
+                        <div ng-if="otherTags.status == SYS.STATUS_SUCCESS">
+                            <!--不同的类型显示不同的子级标签列表-->
+                            <div ng-if="otherTags.$type == 'leaf'" add-tabs tabs="otherTags.data" contents="optData.entity"></div>
+                            <div ng-if="otherTags.$type != 'leaf'">
+                                <label ng-repeat="tag in otherTags.data" style="margin-right:10px;">
+                                    <input type="checkbox" ng-model="tag.$checked" ng-click="changeAllSelcet(tag)" />{{tag.tagClassName}}
+                                </label>
+                            </div>
+                        </div>
+                        <div ng-if="otherTags.status != SYS.STATUS_SUCCESS" ng-bind="otherTags.description" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="modal-footer infi-confirm-export-footer">
+                    <div ng-if="otherTags.$type != 'leaf'&&otherTags.status == SYS.STATUS_SUCCESS" style="float:left;">
+                        <input type="checkbox" id="allSelct" ng-checked="allSelected == 'yes'" ng-click="selectAllBox()" />
+                        <label for="allSelct">全选</label>
+                    </div>
+                    <button type="button" class="btn infi-btn-linear-default" ng-click="closeModal()" data-dismiss='modal'>关闭</button>
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="confirmAdd()">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

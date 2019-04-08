@@ -1,0 +1,179 @@
+<div class="container-fluid">
+  <!-- 标题 -->
+  <div class="row">
+    <div class="col-md-12">
+      <h3><i class="glyphicon glyphicon-eye-open"></i> 概览
+        <!-- 回首页 -->
+        <a ng-if="['bingli', 'linchuang'].indexOf(currUsr.enname) < 0"
+           href="#/dataExport" 
+           class="btn btn-default pull-right"><i class="glyphicon glyphicon-export"></i> 进入数据导出</a>
+      </h3>
+      <hr>
+    </div>
+  </div>
+  <!-- 1. 搜索 / 导出 -->
+  <div class="row">
+    <!-- 搜索 -->
+    <div class="col-md-12">
+      <form class="form-inline">
+        <!-- 患者姓名 -->
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-name" placeholder="请输入患者姓名" ng-model="tableSearch.filter_patiName">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 患者 ID -->
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-id" placeholder="请输入患者 ID" ng-model="tableSearch.filter_patiId">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 病理诊断 -->
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" id="pathological" placeholder="请输入病理诊断信息" ng-model="tableSearch.filter_pathological">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 临床诊断 -->
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" id="clinical" placeholder="请输入临床诊断信息" ng-model="tableSearch.filter_clinical">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 重置筛选 -->
+        <button class="btn btn-default"
+              ng-click="resetFilter()">重置筛选</button>
+
+        <!-- 新建肾穿申请单 临床医生专属 -->
+        <button class="btn btn-primary" 
+                type="button"
+                ng-click="addNewApplyForm()"
+                ng-if="currUsrRole == 30">
+
+            <i class="glyphicon glyphicon-plus ease-trans"
+               ng-class="{true: 'rotate90'}[newApplyFormData.showForm]"></i> 新建肾穿申请单
+        </button>
+      </form>
+    </div>
+
+    <div class="col-md-3">
+      <!-- <button class="btn btn-default pull-right"
+              ng-click="resetFilter()">重置筛选</button> -->
+    </div>
+  </div>
+
+  <!-- 新建肾穿申请单 表单内容 默认隐藏 -->
+  <div class="collapse row" id="newApplyFormWrapper">
+    <div class="col-md-10 col-md-offset-1">
+      <new-apply-form new-apply-form-data="newApplyFormData"
+                      ng-if="newApplyFormData.showForm && newApplyFormData.wards">
+      </new-apply-form>
+    </div>
+  </div>
+
+  <!-- 2. table -->
+  <div class="row profile-list">
+    <div class="col-md-12">
+        <section class="infi-section">
+            <table class="table infi-table">
+              <thead>
+                <tr>
+                  <th width="8%">ID 号</th>
+                  <th width="5%">入院次数</th>
+                  <th width="5%">患者姓名</th>
+                  <th width="5%">性别</th>
+                  <th width="10%">病区</th>
+                  <th width="8%">送检医师</th>
+                  <th>申请时间</th>
+                  <th>申请单</th>
+                  <th>送检单</th>
+                  <th>病理报告</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="row in tableAbout.page.content"
+                    ng-if="tableAbout.page.content && tableAbout.page.content.length > 0">
+                  
+                  <td ng-repeat="(ind, val) in tableAbout.contentMap"
+                      class="txt-elipse">
+                      <span ng-bind="row[val]" 
+                            ng-if="tableAbout.optsCellInd.indexOf($index) < 0"
+                            title="{{row[val]}}"
+                            class="cell-plain-txt">
+                      </span>
+                      <!-- 状态和操作 -->
+                      <dl ng-if="[7,8,9].indexOf($index) >=0" class="opt-dl">
+                        <state-manger row-val="row" cell-val="row[val]" cell-ind="$index"></state-manger>
+                      </dl>
+                  </td>
+                </tr>
+
+                <!-- 表格状态提示 -->
+                <tr ng-if="!tableAbout.page.content">
+                  <td colspan="{{tableAbout.columns.length}}" 
+                      ng-if="tableAbout.loading == 'pending'">
+                    <p class="bg-warning" style="line-height: 50px;">数据加载中...</p>
+                  </td>
+
+                  <td colspan="{{tableAbout.columns.length}}"
+                      ng-if="tableAbout.loading == 'resolved'">
+                    <p class="bg-success" style="line-height: 50px;">加载成功!</p>
+                  </td>
+
+                  <td colspan="{{tableAbout.columns.length}}"
+                      ng-if="tableAbout.loading == 'nondata'">
+                    <p class="bg-warning" style="line-height: 50px;">暂无数据!</p>
+                  </td>
+
+                  <td colspan="{{tableAbout.columns.length}}"
+                      ng-if="tableAbout.loading == 'rejected'">
+                    <p class="bg-danger" style="line-height: 50px;">加载失败! 错误代码: {{tableAbout.page.error.status}}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="infi-page">
+              <div class="form-inline">
+                <div class="form-group">
+                  <uib-pagination total-items="tableAbout.page.totalElements" 
+                                  ng-model="tableAbout.page.number" 
+                                  boundary-link-numbers="true" 
+                                  ng-change="updatePage(tableAbout.page.number)"
+                                  items-per-page="tableAbout.page.size" 
+                                  num-pages="tableAbout.page.totalPages" 
+                                  max-size="8">
+                  </uib-pagination>
+                </div>
+
+                <!-- 跳转页码 -->
+                <div class="form-group jumpPage-wrap">
+                  <div class="input-group">
+                    <input type="number" 
+                           class="form-control numberInput" 
+                           ng-model="jumpPage" 
+                           min="1">
+                  </div>
+                  <button class="btn btn-default" 
+                          ng-click="updatePage(jumpPage)">跳转</button>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </div>
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+</div>

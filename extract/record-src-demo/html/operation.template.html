@@ -1,0 +1,43 @@
+<div class="infi-word-template" ng-repeat = "operationData in operationDatas">
+    <h2 scrollMark="{{operationData.operation_no}}">手术记录 &nbsp;&nbsp; {{operationData.operation_name|changeNULL}}</h2>
+    <div class="infi-word-title">
+        <p class="infi-name">
+            <span>姓名：{{operationData.name|changeNULL}}</span>
+        </p>
+        <p class="infi-patiId">
+            <span>住院号：{{operationData.in_hosp_no|changeNULL}}</span>
+        </p>
+    </div>
+    <div class="infi-content">
+        <h3>
+            <span class="align-left">手术日期：{{operationData.operating_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </h3>
+        <p>
+            手术前诊断：{{operationData.diag_before_operation|changeNULL}}
+        </p>
+        <p>
+            手术后诊断：{{operationData.diag_after_operation|changeNULL}}
+        </p>
+        <p>
+            手术名称：{{operationData.operation_name|changeNULL}}
+        </p>
+        <p>
+            术者：{{operationData.diag_before_operation|changeNULL}}
+        </p>
+        <p>
+            麻醉方法：{{operationData.anesthesia_method_name|changeNULL}}
+        </p>
+        <p>
+            麻醉医师：{{operationData.anes_doct|changeNULL}}
+        </p>
+        <p>
+            手术经过：{{operationData.operation_process|changeNULL}}
+        </p>
+
+        <p class="infi-name">医生：{{operationData.operator|changeNULL}}</p>
+    </div>
+</div>
+
+<div class="infi-word-template" ng-if="!operationDatas || operationDatas ==null || operationDatas.length == 0">
+    <p>-</p>
+</div>

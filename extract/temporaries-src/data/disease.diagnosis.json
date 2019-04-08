@@ -1,0 +1,69 @@
+{
+  "result": [
+    {
+      "choice": "1",
+      "value": [
+        {
+          "label": "有",
+          "value": "糖尿病家族史" 
+        }
+      ],
+      "label": "糖尿病家族史"
+    },
+    {
+      "choice": "1",
+      "value": [
+        {
+          "label": "空腹血糖＞6.1",
+          "value": "空腹血糖＞6.1"
+        },
+        {
+          "label": "血糖＞7.0",
+          "value": "血糖＞7.0"
+        }
+      ],
+      "label": "血糖"
+    },
+    {
+      "choice": "2",
+      "value": [
+        {
+          "label": "心脏病史",
+          "value": "糖尿病家族史"
+        },
+        {
+          "label": "脑血管病史",
+          "value": "脑血管病史"
+        },
+        {
+          "label": "冠心病史",
+          "value": "冠心病史"
+        },
+        {
+          "label": "心血管病史",
+          "value": "心血管病史"
+        },
+        {
+          "label": "糖尿病史",
+          "value": "糖尿病史"
+        }
+      ],
+      "label": "疾病史"
+    },
+    {
+      "choice": "1",
+      "value": [
+        {
+          "label": "≥6.22mmol／L",
+          "value": "TC≥6.22mmol／L"
+        },
+        {
+          "label": "≥5.7mmol／L",
+          "value": "TC≥5.7mmol／L"
+        }
+      ],
+      "label": "TC"
+    }
+  ],
+  "success": true
+}

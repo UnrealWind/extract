@@ -1,0 +1,50 @@
+
+
+<h4 class="infi-title" style="margin-bottom: 20px;">
+    <i class="glyphicon glyphicon-globe"></i>
+    CRF列表
+    <button class="btn infi-btn-linear-green-l f-r" ng-click="modal(data, 'addCrf','add')">新建CRF</button>
+</h4>
+
+<div class="infi-box">
+    <table class="table infi-table crf-list crf-page-list">
+        <thead>
+        <tr>
+            <th class="text-center">序号</th>
+            <th class="text-center">CRF名称</th>
+            <th class="text-center">编号</th>
+            <th class="text-center">状态</th>
+            <th class="text-center">创建时间</th>
+            <th class="text-center">可执行的操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in data">
+            <th class="text-center"> {{ $index+1 }}</th>
+            <th class="text-center project-name">{{ item.name }}</th>
+            <th class="text-center">{{ item.value }}</th>
+            <th class="text-center">
+                {{ item.status.label }}
+            </th>
+            <th class="text-center">{{ item.updateTime }}</th>
+            <th class="text-center">
+                <a href="javascript:;" ng-click="jumpToView(item.id)">预览</a>
+                <a href="javascript:;" ng-click="jumpToCustomize(item)">查看</a>
+                <a href="javascript:;" ng-click="modal(item,'addCrf','modify')">修改</a>
+                <a href="javascript:;" ng-if="item.status.name == 'DRAFT'" ng-click="modifyStatus(item)">发布</a>
+                <a href="javascript:;" ng-click="delete(item)">删除</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <uib-pagination class="f-r"  total-items="page.totalElements" ng-model="page.number" max-size="5"
+                        boundary-link-numbers="true" ng-change="updatePageAttend(page.number)" items-per-page="page.size"
+                        num-pages="page.totalPages">
+        </uib-pagination>
+
+    </div>
+</div>
+<div add-crf></div>
+<div crf-prompt></div>
+<div modify-success></div>

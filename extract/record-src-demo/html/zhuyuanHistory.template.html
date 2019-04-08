@@ -1,0 +1,130 @@
+<div class="infi-row">
+    <div class="infi-wj-self-box">
+        <div class="infi-wj-title">
+            <i class="infi-icon">&#xe603;</i>既往史
+        </div>
+
+        <div class="infi-wj-part infi-menzhen-basic" >
+            <table class="infi-wj-table" style="table-layout: fixed">
+                <tbody>
+                    <tr ng-repeat="opt in hospitalPast">
+                        <td class="self-wj-label">
+                            <p title="">{{opt.label}}：</p>
+                        </td>
+                        <td>
+                            <p class="long-p" title="{{opt.value|changeNULL}}">
+                                {{opt.value|changeNULL}}</p>
+                        </td>
+                    </tr>
+                    <tr  ng-if="opt.handler_id == 6 && allResults.length >0 && opt.remark" ng-repeat="opt in allResults">
+                        <td class="self-wj-label">
+                            <p title="">备注：</p>
+                        </td>
+                        <td>
+                            <p class="long-p" title="{{opt.remark|changeNULL}}">
+                                {{opt.remark|changeNULL}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="infi-wj-self-box">
+        <div class="infi-wj-title">
+            <i class="infi-icon">&#xe706;</i>个人史
+        </div>
+
+        <div class="infi-wj-part infi-menzhen-basic" >
+            <table class="infi-wj-table" style="table-layout: fixed">
+                <tbody>
+                    <tr ng-repeat="opt in hospitalPersonal">
+                        <td class="self-wj-label">
+                            <p>{{opt.label}}：</p>
+                        </td>
+                        <td>
+                            <p class="long-p" title="{{opt.value|changeNULL}}">{{opt.value|changeNULL}}</p>
+                        </td>
+                    </tr>
+                    <tr  ng-if="opt.handler_id == 9 && allResults.length >0 && opt.remark" ng-repeat="opt in allResults">
+                        <td class="self-wj-label">
+                            <p title="">备注：</p>
+                        </td>
+                        <td>
+                            <p class="long-p" title="{{opt.remark|changeNULL}}">
+                                {{opt.remark|changeNULL}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="infi-wj-self-box">
+        <div class="infi-wj-title">
+            <i class="infi-icon">&#xe618;</i>婚育史
+        </div>
+
+
+        <div class="infi-wj-part infi-menzhen-basic"  ng-if="true" style="text-align: left;">
+           -
+        </div>
+
+        <div class="infi-wj-part infi-menzhen-basic"  ng-if="false">
+            <table class="infi-wj-table" style="table-layout: fixed">
+                <tbody>
+                <tr>
+                    <td class="self-wj-label">
+                        <p>婚姻状态：</p>
+                    </td>
+                    <td>
+                        <p>未婚</p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="self-wj-label">
+                        <p>结婚时间：</p>
+                    </td>
+                    <td>
+                        <p>无</p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="self-wj-label">
+                        <p>子女情况：</p>
+                    </td>
+                    <td>
+                        <p>无</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="infi-wj-self-box">
+        <div class="infi-wj-title">
+            <i class="infi-icon">&#xe619;</i>家族史
+        </div>
+
+        <div class="infi-wj-part infi-menzhen-basic"  >
+            <table class="infi-wj-table" style="table-layout: fixed">
+                <tbody>
+                    <tr ng-repeat="opt in hospitalFamily">
+                        <!--<td class="self-wj-label">
+                            <p>{{opt.family|changeNULL}}：</p>
+                        </td>-->
+                        <td>
+                            <p><!--{{opt.family_status|changeNULL}}&nbsp;-->{{opt.illnName|changeNULL}}</p>
+                        </td>
+                    </tr>
+                    <tr ng-if="hospitalFamily.length==0">
+                        <td class="self-wj-label">
+                            <p style="text-align: left">-</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="infi-record-output" id="Marital">
+    <div ng-if="outputText.Marital.tplStatus == 'view'" class="infi-view">
+        <div ng-show="!outputText.Marital.text">
+            <div ng-if="entity.name_158 == 'value_1'" style="display:inline-block;">
+                <span><i>未婚</i></span>
+            </div>
+            <div ng-if="entity.name_158 == 'value_0'" style="display:inline-block;">
+                <span data-ng-if="entity.name_159">
+                    <i>{{entity.name_159}}</i><span><i>岁</i></span>
+                </span>
+                <span><i>已婚,</i></span>
+            </div>
+            <div ng-if="entity.name_160 == 'value_0'" style="display:inline-block;">
+                <span><i>育</i></span>
+                <span ng-if="entity.name_161 && entity.name_161!=0">
+                    <span><i>儿子</i></span>
+                    <span><i>{{entity.name_161}}</i></span><span><i>个</i></span>
+                    <span ng-if="entity.name_162 == 'value_0'">
+                        <span><i>,健康。</i></span>
+                    </span>
+                    <span ng-if="entity.name_162 == 'value_1'">
+                        <span><i>,</i></span><span><i>{{entity.name_163}}</i></span><span><i>。</i></span>
+                    </span>
+                </span>
+                <span data-ng-if="entity.name_164 && entity.name_164!=0">
+                    <span><i>女儿</i></span>
+                    <span><i>{{entity.name_164}}</i></span><span><i>个</i></span>
+                    <span ng-if="entity.name_165 == 'value_0'">
+                        <span><i>,健康。</i></span>
+                    </span>
+                    <span ng-if="entity.name_165 == 'value_1'">
+                        <span><i>,</i></span><span><i>{{entity.name_166}}</i></span><span><i>。</i></span>
+                    </span>
+                </span>
+            </div>
+            <div>
+                <span ng-if="entity.name_167 == 'value_0'" style="display:inline-block;">
+                    <span><i>配偶健康。</i></span>
+                </span>
+                <span ng-if="entity.name_167 == 'value_1'" style="display:inline-block;">
+                    <span><i>配偶</i></span><span><i>{{entity.name_168}}</i><i>。</i></span>
+                </span>
+            </div>
+        </div>
+        <div ng-if="outputText.Marital.text" class="infi-view-text">
+            <span ng-bind="outputText.Marital.text"></span>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('Marital')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('Marital')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.Marital.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.Marital.text">{{outputText.Marital.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('Marital')">完成</button>
+        </div>
+    </div>
+
+</div>

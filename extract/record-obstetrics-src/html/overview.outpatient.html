@@ -1,0 +1,190 @@
+<!--门诊信息-->
+<div class="infi-wj-top-nav">
+    <div class="infi-wj-top-nav-url">
+        <a href="#/overview/{{queryParams.xlPatientId}}/{{queryParams.patientId}}">
+            <button class="btn infi-btn-linear-green-l btn-sm">返回上一级页面</button>
+        </a>
+    </div>
+    <div class="infi-wj-top-nav-title">
+        <h3><span style="padding-right: 10px;" ng-bind="hospitalInfo.visit_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+            <span ng-if="navListDoorTitle" ng-bind="navListDoorTitle.label"></span>
+        </h3>
+    </div>
+</div>
+<div class="infi-wj-self-box">
+    <div class="infi-wj-self-box">
+        <div class="infi-wj-title">
+            <i class="glyphicon glyphicon-info-sign"></i> 基本信息
+        </div>
+    </div>
+    <div prompt data="hospitalInfoWrap"></div>
+    <div class="infi-wj-part" ng-if="hospitalInfoWrap.status == 'ok'&&hospitalInfoWrap.data.result.length>0">
+        <table class="infi-wj-table" style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td class="self-wj-label">
+                    <p>ID号：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.pati_id"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>患者姓名：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.name"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>性别：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.sex_name"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>出生日期：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.date_of_birth|date:'yyyy-MM-dd HH:mm:ss'"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>创建时间：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.create_date|date:'yyyy-MM-dd HH:mm:ss'"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>最近访问时间：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.last_visit_date|date:'yyyy-MM-dd HH:mm:ss'"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>婚姻状态：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.marr_status_name"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>通信地址：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.mailing_address"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>联系方式：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.phone_number_home"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>联系人：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.next_of_kin"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>联系方式：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.next_of_kin_phone"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>与患者关系：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.relationship"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>就诊科室：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.visit_dept"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>就诊日期：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.visit_date|date:'yyyy-MM-dd HH:mm:ss'"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>号别：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.clinic_label"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>号类：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospitalInfo.clinic_type"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <div class="infi-wj-obstetrics-content" style="margin-top: 20px;">
+        <div>
+            <div>
+                <div class="infi-wj-self-box">
+                    <div class="infi-wj-title">
+                        <i class="glyphicon glyphicon-info-sign"></i>诊断信息
+                    </div>
+                </div>
+                <div prompt data="diagnoseWrap"></div>
+                <div ng-if="diagnoseWrap.status == 'ok'&&diagnoseWrap.data.result.length>0" style="background:#fff;">
+                    <link rel="import" href="tpl/overview.outpatient.diagnose.html?__inline">
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <div class="infi-wj-self-box">
+                    <div class="infi-wj-title">
+                        <i class="glyphicon glyphicon-info-sign"></i>药品信息
+                    </div>
+                </div>
+                <div prompt data="drugInfiWrap"></div>
+                <div ng-if="drugInfiWrap.status == 'ok'&&drugInfiWrap.data.result.length>0" style="background: #fff">
+                    <link rel="import" href="tpl/overview.obstetrics.prescription.record.html?__inline">
+                </div>
+            </div>
+            <div style="margin-top: 20px;background:#fff;">
+                <div class="infi-wj-self-box">
+                    <div class="infi-wj-title">
+                        <i class="glyphicon glyphicon-info-sign"></i>检查信息
+                    </div>
+                </div>
+                <div prompt data="examWrap"></div>
+                <div ng-if="examWrap.status == 'ok'&&examWrap.data.result.length>0" style="background: #fff">
+                    <link rel="import" href="tpl/exam.html?__inline">
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <div class="infi-wj-self-box">
+                    <div class="infi-wj-title">
+                        <i class="glyphicon glyphicon-info-sign"></i>检验信息
+                    </div>
+                </div>
+                <div prompt data="oblistWrap"></div>
+                <div ng-if="oblistWrap.status == 'ok'&&oblistWrap.data.result.length>0" style="background: #fff">
+                    <link rel="import" href="tpl/overview.exam.html?__inline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-wj-obstetrics-right-nav" style="vertical-align: top;margin-top: 20px;;">
+        <div nav-list="navList" nav-list-door="navListDoor" timeline-datas="timelineDatas" show-archives="true"
+             archives-wrap="archivesWrap" archives="archives" query-params="queryParams" right-nav></div>
+    </div>
+</div>

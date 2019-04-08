@@ -1,0 +1,1255 @@
+[
+  {
+    "children": [
+      {
+        "search": "xiongtong|XIONGTONG|xiongtong|xt",
+        "label": "胸痛",
+        "subLabel": "胸痛详情",
+        "type": "plain",
+        "links": [
+          {
+            "type": "plain",
+            "label": "胸闷",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "气促",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "心慌",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "头晕",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "多汗",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "呕吐",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "心悸",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "气短",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "过度肥胖",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "下肢水肿",
+            "islink": true
+          }
+        ],
+        "children": [
+          {
+            "children": [
+              {
+                "search": "xiongguhou|XIONGGUHOU|xiongguhou|xgh",
+                "label": "胸骨后"
+              },
+              {
+                "search": "zuoqianxiong|ZUOQIANXIONG|zuoqianxiong|zqx",
+                "label": "左前胸"
+              }
+            ],
+            "label": "部位"
+          },
+          {
+            "children": [
+              {
+                "search": "xiahebu|XIAHEBU|xiahebu|xhb",
+                "label": "下颌部"
+              },
+              {
+                "search": "jingbu|JINGBU|jingbu|jb",
+                "label": "颈部"
+              },
+              {
+                "search": "yanbu|YANBU|yanbu|yb",
+                "label": "咽部"
+              },
+              {
+                "search": "shangfubu|SHANGFUBU|shangfubu|sfb",
+                "label": "上腹部"
+              },
+              {
+                "search": "jianbeibu|JIANBEIBU|jianbeibu|jbb",
+                "label": "肩背部"
+              },
+              {
+                "search": "zuobei|ZUOBEI|zuobei|zb",
+                "label": "左臂"
+              },
+              {
+                "search": "zuoshouzhineice|ZUOSHOUZHINEICE|zuoshouzhineice|zsznc",
+                "label": "左手指内侧"
+              }
+            ],
+            "label": "牵扯部位"
+          },
+          {
+            "children": [
+              {
+                "search": "xiahebutengtong|XIAHEBUTENGTONG|xiahebutengtong|xhbtt",
+                "label": "下颌部疼痛"
+              },
+              {
+                "search": "jingbutengtong|JINGBUTENGTONG|jingbutengtong|jbtt",
+                "label": "颈部疼痛"
+              },
+              {
+                "search": "yanbutengtong|YANBUTENGTONG|yanbutengtong|ybtt",
+                "label": "咽部疼痛"
+              },
+              {
+                "search": "shangfubutengtong|SHANGFUBUTENGTONG|shangfubutengtong|sfbtt",
+                "label": "上腹部疼痛"
+              },
+              {
+                "search": "jianbeibutengtong|JIANBEIBUTENGTONG|jianbeibutengtong|jbbtt",
+                "label": "肩背部疼痛"
+              },
+              {
+                "search": "zuobeitengtongzuoshouzhineicetengtong|ZUOBEITENGTONGZUOSHOUZHINEICETENGTONG|zuobeitengtongzuoshouzhineicetengtong|zbttzsznctt",
+                "label": "左臂疼痛左手指内侧疼痛"
+              }
+            ],
+            "label": "症状"
+          },
+          {
+            "children": [
+              {
+                "search": "jinsuogan|JINSUOGAN|jinsuogan|jsg",
+                "label": "紧缩感"
+              },
+              {
+                "search": "jiaozhagan|JIAOZHAGAN|jiaozhagan|jzg",
+                "label": "绞榨感"
+              },
+              {
+                "search": "yapogan|YAPOGAN|yapogan|ypg",
+                "label": "压迫感"
+              },
+              {
+                "search": "shaozhuogan|SHAOZHUOGAN|shaozhuogan|szg",
+                "label": "烧灼感"
+              },
+              {
+                "search": "biemengan|BIEMENGAN|biemengan|bmg",
+                "label": "憋闷感"
+              },
+              {
+                "search": "zhixigan|ZHIXIGAN|zhixigan|zxg",
+                "label": "窒息感"
+              },
+              {
+                "search": "chenzhonggan|CHENZHONGGAN|chenzhonggan|czg",
+                "label": "沉重感"
+              }
+            ],
+            "label": "性质"
+          },
+          {
+            "children": [
+              {
+                "search": "qingxujidong|QINGXUJIDONG|qingxujidong|qxjd",
+                "label": "情绪激动"
+              },
+              {
+                "search": "baocan|BAOCAN|baocan|bc",
+                "label": "饱餐"
+              },
+              {
+                "search": "laoli|LAOLI|laoli|ll",
+                "label": "劳力"
+              },
+              {
+                "search": "yundong|YUNDONG|yundong|yd",
+                "label": "运动"
+              },
+              {
+                "search": "hanleng|HANLENG|hanleng|hl",
+                "label": "寒冷"
+              }
+            ],
+            "label": "诱发因素"
+          },
+          {
+            "children": [
+              {
+                "search": "xiaoyudengyu15fenzhong|XIAOYUDENGYU15FENZHONG|xiaoyudengyu15fenzhong|xydy15fz",
+                "label": "小于等于15分钟"
+              },
+              {
+                "search": "dayu15fenzhong|DAYU15FENZHONG|dayu15fenzhong|dy15fz",
+                "label": "大于15分钟"
+              }
+            ],
+            "label": "持续时间"
+          },
+          {
+            "children": [
+              {
+                "search": "xiuxi|XIUXI|xiuxi|xx",
+                "label": "休息"
+              },
+              {
+                "search": "fuyongxiaosuanganyou|FUYONGXIAOSUANGANYOU|fuyongxiaosuanganyou|fyxsgy",
+                "label": "服用硝酸甘油"
+              }
+            ],
+            "label": " 缓解方式"
+          }
+        ]
+      },
+      {
+        "search": "futong|FUTONG|futong|ft",
+        "label": "腹痛",
+        "type": "plain",
+        "subLabel": "腹痛详情",
+        "children": [
+          {
+            "children": [
+              {
+                "search": "xiongguhou|XIONGGUHOU|xiongguhou|xgh",
+                "label": "胸骨后"
+              },
+              {
+                "search": "zuoqianxiong|ZUOQIANXIONG|zuoqianxiong|zqx",
+                "label": "左前胸"
+              }
+            ],
+            "label": "部位"
+          },
+          {
+            "children": [
+              {
+                "search": "xiahebu|XIAHEBU|xiahebu|xhb",
+                "label": "下颌部"
+              },
+              {
+                "search": "jingbu|JINGBU|jingbu|jb",
+                "label": "颈部"
+              },
+              {
+                "search": "yanbu|YANBU|yanbu|yb",
+                "label": "咽部"
+              },
+              {
+                "search": "shangfubu|SHANGFUBU|shangfubu|sfb",
+                "label": "上腹部"
+              },
+              {
+                "search": "jianbeibu|JIANBEIBU|jianbeibu|jbb",
+                "label": "肩背部"
+              },
+              {
+                "search": "zuobei|ZUOBEI|zuobei|zb",
+                "label": "左臂"
+              },
+              {
+                "search": "zuoshouzhineice|ZUOSHOUZHINEICE|zuoshouzhineice|zsznc",
+                "label": "左手指内侧"
+              }
+            ],
+            "label": "牵扯部位"
+          },
+          {
+            "children": [
+              {
+                "search": "xiahebutengtong|XIAHEBUTENGTONG|xiahebutengtong|xhbtt",
+                "label": "下颌部疼痛"
+              },
+              {
+                "search": "jingbutengtong|JINGBUTENGTONG|jingbutengtong|jbtt",
+                "label": "颈部疼痛"
+              },
+              {
+                "search": "yanbutengtong|YANBUTENGTONG|yanbutengtong|ybtt",
+                "label": "咽部疼痛"
+              },
+              {
+                "search": "shangfubutengtong|SHANGFUBUTENGTONG|shangfubutengtong|sfbtt",
+                "label": "上腹部疼痛"
+              },
+              {
+                "search": "jianbeibutengtong|JIANBEIBUTENGTONG|jianbeibutengtong|jbbtt",
+                "label": "肩背部疼痛"
+              },
+              {
+                "search": "zuobeitengtongzuoshouzhineicetengtong|ZUOBEITENGTONGZUOSHOUZHINEICETENGTONG|zuobeitengtongzuoshouzhineicetengtong|zbttzsznctt",
+                "label": "左臂疼痛左手指内侧疼痛"
+              }
+            ],
+            "label": "症状"
+          },
+          {
+            "children": [
+              {
+                "search": "jinsuogan|JINSUOGAN|jinsuogan|jsg",
+                "label": "紧缩感"
+              },
+              {
+                "search": "jiaozhagan|JIAOZHAGAN|jiaozhagan|jzg",
+                "label": "绞榨感"
+              },
+              {
+                "search": "yapogan|YAPOGAN|yapogan|ypg",
+                "label": "压迫感"
+              },
+              {
+                "search": "shaozhuogan|SHAOZHUOGAN|shaozhuogan|szg",
+                "label": "烧灼感"
+              },
+              {
+                "search": "biemengan|BIEMENGAN|biemengan|bmg",
+                "label": "憋闷感"
+              },
+              {
+                "search": "zhixigan|ZHIXIGAN|zhixigan|zxg",
+                "label": "窒息感"
+              },
+              {
+                "search": "chenzhonggan|CHENZHONGGAN|chenzhonggan|czg",
+                "label": "沉重感"
+              }
+            ],
+            "label": "性质"
+          },
+          {
+            "children": [
+              {
+                "search": "qingxujidong|QINGXUJIDONG|qingxujidong|qxjd",
+                "label": "情绪激动"
+              },
+              {
+                "search": "baocan|BAOCAN|baocan|bc",
+                "label": "饱餐"
+              },
+              {
+                "search": "laoli|LAOLI|laoli|ll",
+                "label": "劳力"
+              },
+              {
+                "search": "yundong|YUNDONG|yundong|yd",
+                "label": "运动"
+              },
+              {
+                "search": "hanleng|HANLENG|hanleng|hl",
+                "label": "寒冷"
+              }
+            ],
+            "label": "诱发因素"
+          },
+          {
+            "children": [
+              {
+                "search": "xiaoyudengyu15fenzhong|XIAOYUDENGYU15FENZHONG|xiaoyudengyu15fenzhong|xydy15fz",
+                "label": "小于等于15分钟"
+              },
+              {
+                "search": "dayu15fenzhong|DAYU15FENZHONG|dayu15fenzhong|dy15fz",
+                "label": "大于15分钟"
+              }
+            ],
+            "label": "持续时间"
+          },
+          {
+            "children": [
+              {
+                "search": "xiuxi|XIUXI|xiuxi|xx",
+                "label": "休息"
+              },
+              {
+                "search": "fuyongxiaosuanganyou|FUYONGXIAOSUANGANYOU|fuyongxiaosuanganyou|fyxsgy",
+                "label": "服用硝酸甘油"
+              }
+            ],
+            "label": " 缓解方式"
+          }
+        ],
+        "links": [
+          {
+            "type": "plain",
+            "label": "呕吐",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "恶心",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "发热",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "打饱嗝",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "反酸",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "食欲减退",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "腹胀",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "畏寒",
+            "islink": true
+          },
+          {
+            "type": "plain",
+            "label": "腹泻",
+            "islink": true
+          }
+        ]
+      },
+      {
+        "search": "kesou|KESOU|kesou|ks",
+        "label": "咳嗽",
+        "type": "plain"
+      },
+      {
+        "search": "fare|FARE|fare|fr",
+        "label": "发热",
+        "type": "plain"
+      },
+      {
+        "search": "outu|OUTU|outu|ot",
+        "label": "呕吐",
+        "type": "plain"
+      },
+      {
+        "search": "touyun|TOUYUN|touyun|ty",
+        "label": "头晕",
+        "type": "plain"
+      },
+      {
+        "search": "yaobeitong|YAOBEITONG|yaobeitong|ybt",
+        "label": "腰背痛",
+        "type": "plain"
+      },
+      {
+        "search": "toutong|TOUTONG|toutong|tt",
+        "label": "头痛",
+        "type": "plain"
+      },
+      {
+        "search": "liuti|LIUTI|liuti|lt",
+        "label": "流涕",
+        "type": "plain"
+      },
+      {
+        "search": "fuxie|FUXIE|fuxie|fx",
+        "label": "腹泻",
+        "type": "plain"
+      },
+      {
+        "search": "exin|EXIN|exin|ex",
+        "label": "恶心",
+        "type": "plain"
+      },
+      {
+        "search": "fuzhang|FUZHANG|fuzhang|fz",
+        "label": "腹胀",
+        "type": "plain"
+      },
+      {
+        "search": "ketan|KETAN|ketan|kt",
+        "label": "咳痰",
+        "type": "plain"
+      },
+      {
+        "search": "yantong|YANTONG|yantong|yt",
+        "label": "咽痛",
+        "type": "plain"
+      },
+      {
+        "search": "xiongmen|XIONGMEN|xiongmen|xm",
+        "label": "胸闷",
+        "type": "plain"
+      },
+      {
+        "search": "pizhen|PIZHEN|pizhen|pz",
+        "label": "皮疹",
+        "type": "plain"
+      },
+      {
+        "search": "bisai|BISAI|bisai|bs",
+        "label": "鼻塞",
+        "type": "plain"
+      },
+      {
+        "search": "guanjietong|GUANJIETONG|guanjietong|gjt",
+        "label": "关节痛",
+        "type": "plain"
+      },
+      {
+        "search": "qicu|QICU|qicu|qc",
+        "label": "气促",
+        "type": "plain"
+      },
+      {
+        "search": "xinji|XINJI|xinji|xj",
+        "label": "心悸",
+        "type": "plain"
+      },
+      {
+        "search": "bianxue|BIANXUE|bianxue|bx",
+        "label": "便血",
+        "type": "plain"
+      },
+      {
+        "search": "fansuan|FANSUAN|fansuan|fs",
+        "label": "反酸",
+        "type": "plain"
+      },
+      {
+        "search": "niaopin|NIAOPIN|niaopin|np",
+        "label": "尿频",
+        "type": "plain"
+      },
+      {
+        "search": "erming|ERMING|erming|em",
+        "label": "耳鸣",
+        "type": "plain"
+      },
+      {
+        "search": "niaotong|NIAOTONG|niaotong|nt",
+        "label": "尿痛",
+        "type": "plain"
+      },
+      {
+        "search": "bianmi|BIANMI|bianmi|bm",
+        "label": "便秘",
+        "type": "plain"
+      },
+      {
+        "search": "shouzumamu|SHOUZUMAMU|shouzumamu|szmm",
+        "label": "手足麻木",
+        "type": "plain"
+      },
+      {
+        "search": "bichuxue|BICHUXUE|bichuxue|bcx",
+        "label": "鼻出血",
+        "type": "plain"
+      },
+      {
+        "search": "kouchou|KOUCHOU|kouchou|kc",
+        "label": "口臭",
+        "type": "plain"
+      }
+    ],
+    "label": "常见症状"
+  },
+  {
+    "children": [
+      {
+        "search": "liuti|LIUTI|liuti|lt",
+        "label": "流涕",
+        "type": "plain"
+      },
+      {
+        "search": "bisai|BISAI|bisai|bs",
+        "label": "鼻塞",
+        "type": "plain"
+      },
+      {
+        "search": "toutong|TOUTONG|toutong|tt",
+        "label": "头痛",
+        "type": "plain"
+      },
+      {
+        "search": "touyun|TOUYUN|touyun|ty",
+        "label": "头晕",
+        "type": "plain"
+      },
+      {
+        "search": "penti|PENTI|penti|pt",
+        "label": "喷嚏",
+        "type": "plain"
+      },
+      {
+        "search": "biyang|BIYANG|biyang|by",
+        "label": "鼻痒",
+        "type": "plain"
+      },
+      {
+        "search": "kougan|KOUGAN|kougan|kg",
+        "label": "口干",
+        "type": "plain"
+      },
+      {
+        "search": "shilimohu|SHILIMOHU|shilimohu|slmh",
+        "label": "视力模糊",
+        "type": "plain"
+      },
+      {
+        "search": "hunmi|HUNMI|hunmi|hm",
+        "label": "昏迷",
+        "type": "plain"
+      },
+      {
+        "search": "dahan|DAHAN|dahan|dh",
+        "label": "打鼾",
+        "type": "plain"
+      },
+      {
+        "search": "yanmianshuizhong|YANMIANSHUIZHONG|yanmianshuizhong|ymsz",
+        "label": "颜面水肿",
+        "type": "plain"
+      },
+      {
+        "search": "erming|ERMING|erming|em",
+        "label": "耳鸣",
+        "type": "plain"
+      },
+      {
+        "search": "ertong|ERTONG|ertong|et",
+        "label": "耳痛",
+        "type": "plain"
+      },
+      {
+        "search": "erbufenmiwu|ERBUFENMIWU|erbufenmiwu|ebfmw",
+        "label": "耳部分泌物",
+        "type": "plain"
+      },
+      {
+        "search": "yanyubuqing|YANYUBUQING|yanyubuqing|yybq",
+        "label": "言语不清",
+        "type": "plain"
+      },
+      {
+        "search": "mianbuhongban|MIANBUHONGBAN|mianbuhongban|mbhb",
+        "label": "面部红斑",
+        "type": "plain"
+      },
+      {
+        "search": "tuofa|TUOFA|tuofa|tf",
+        "label": "脱发",
+        "type": "plain"
+      },
+      {
+        "search": "koutubaimo|KOUTUBAIMO|koutubaimo|ktbm",
+        "label": "口吐白沫",
+        "type": "plain"
+      },
+      {
+        "search": "yanyang|YANYANG|yanyang|yy",
+        "label": "眼痒",
+        "type": "plain"
+      },
+      {
+        "search": "jiemochongxue|JIEMOCHONGXUE|jiemochongxue|jmcx",
+        "label": "结膜充血",
+        "type": "plain"
+      },
+      {
+        "search": "shimian|SHIMIAN|shimian|sm",
+        "label": "失眠",
+        "type": "plain"
+      },
+      {
+        "search": "liulei|LIULEI|liulei|ll",
+        "label": "流泪",
+        "type": "plain"
+      },
+      {
+        "search": "kouqiangkuiyang|KOUQIANGKUIYANG|kouqiangkuiyang|kqky",
+        "label": "口腔溃疡",
+        "type": "plain"
+      },
+      {
+        "search": "yanbufenmiwu|YANBUFENMIWU|yanbufenmiwu|ybfmw",
+        "label": "眼部分泌物",
+        "type": "plain"
+      },
+      {
+        "search": "bichuxue|BICHUXUE|bichuxue|bcx",
+        "label": "鼻出血",
+        "type": "plain"
+      },
+      {
+        "search": "ermen|ERMEN|ermen|em",
+        "label": "耳闷",
+        "type": "plain"
+      },
+      {
+        "search": "tinglijiantui|TINGLIJIANTUI|tinglijiantui|tljt",
+        "label": "听力减退",
+        "type": "plain"
+      },
+      {
+        "search": "weiguang|WEIGUANG|weiguang|wg",
+        "label": "畏光",
+        "type": "plain"
+      },
+      {
+        "search": "touzhang|TOUZHANG|touzhang|tz",
+        "label": "头胀",
+        "type": "plain"
+      },
+      {
+        "search": "koujiaowaixie|KOUJIAOWAIXIE|koujiaowaixie|kjwx",
+        "label": "口角歪斜",
+        "type": "plain"
+      },
+      {
+        "search": "yanbuyiwugan|YANBUYIWUGAN|yanbuyiwugan|ybywg",
+        "label": "眼部异物感",
+        "type": "plain"
+      },
+      {
+        "search": "mianbumamu|MIANBUMAMU|mianbumamu|mbmm",
+        "label": "面部麻木",
+        "type": "plain"
+      },
+      {
+        "search": "jiyilijiantui|JIYILIJIANTUI|jiyilijiantui|jyljt",
+        "label": "记忆力减退",
+        "type": "plain"
+      },
+      {
+        "search": "shiming|SHIMING|shiming|sm",
+        "label": "失明",
+        "type": "plain"
+      },
+      {
+        "search": "duomeng|DUOMENG|duomeng|dm",
+        "label": "多梦",
+        "type": "plain"
+      },
+      {
+        "search": "erbuhongzhong|ERBUHONGZHONG|erbuhongzhong|ebhz",
+        "label": "耳部红肿",
+        "type": "plain"
+      },
+      {
+        "search": "heimeng|HEIMENG|heimeng|hm",
+        "label": "黑朦",
+        "type": "plain"
+      },
+      {
+        "search": "liuxian|LIUXIAN|liuxian|lx",
+        "label": "流涎",
+        "type": "plain"
+      },
+      {
+        "search": "yayinchuxue|YAYINCHUXUE|yayinchuxue|yycx",
+        "label": "牙龈出血",
+        "type": "plain"
+      },
+      {
+        "search": "kouzhoumamu|KOUZHOUMAMU|kouzhoumamu|kzmm",
+        "label": "口周麻木",
+        "type": "plain"
+      },
+      {
+        "search": "xiujuezhangai|XIUJUEZHANGAI|xiujuezhangai|xjza",
+        "label": "嗅觉障碍",
+        "type": "plain"
+      },
+      {
+        "search": "kouchou|KOUCHOU|kouchou|kc",
+        "label": "口臭",
+        "type": "plain"
+      },
+      {
+        "search": "yanshanguanggan|YANSHANGUANGGAN|yanshanguanggan|ysgg",
+        "label": "眼闪光感",
+        "type": "plain"
+      },
+      {
+        "search": "gongmohuangran|GONGMOHUANGRAN|gongmohuangran|gmhr",
+        "label": "巩膜黄染",
+        "type": "plain"
+      },
+      {
+        "search": "kouchunfazi|KOUCHUNFAZI|kouchunfazi|kcfz",
+        "label": "口唇发紫",
+        "type": "plain"
+      }
+    ],
+    "label": "头部"
+  },
+  {
+    "children": [
+      {
+        "search": "yantong|YANTONG|yantong|yt",
+        "label": "咽痛",
+        "type": "plain"
+      },
+      {
+        "search": "biantaotizhongda|BIANTAOTIZHONGDA|biantaotizhongda|bttzd",
+        "label": "扁桃体肿大",
+        "type": "plain"
+      },
+      {
+        "search": "yanyang|YANYANG|yanyang|yy",
+        "label": "咽痒",
+        "type": "plain"
+      },
+      {
+        "search": "shengyinsiya|SHENGYINSIYA|shengyinsiya|sysy",
+        "label": "声音嘶哑",
+        "type": "plain"
+      },
+      {
+        "search": "yanbuyiwugan|YANBUYIWUGAN|yanbuyiwugan|ybywg",
+        "label": "咽部异物感",
+        "type": "plain"
+      },
+      {
+        "search": "yangan|YANGAN|yangan|yg",
+        "label": "咽干",
+        "type": "plain"
+      },
+      {
+        "search": "linbajiezhongda|LINBAJIEZHONGDA|linbajiezhongda|lbjzd",
+        "label": "淋巴结肿大",
+        "type": "plain"
+      },
+      {
+        "search": "jingbuzhongwu|JINGBUZHONGWU|jingbuzhongwu|jbzw",
+        "label": "颈部肿物",
+        "type": "plain"
+      },
+      {
+        "search": "tunyankunnan|TUNYANKUNNAN|tunyankunnan|tykn",
+        "label": "吞咽困难",
+        "type": "plain"
+      },
+      {
+        "search": "tunyantong|TUNYANTONG|tunyantong|tyt",
+        "label": "吞咽痛",
+        "type": "plain"
+      },
+      {
+        "search": "jingbuzhongda|JINGBUZHONGDA|jingbuzhongda|jbzd",
+        "label": "颈部肿大",
+        "type": "plain"
+      }
+    ],
+    "label": "咽喉和颈部"
+  },
+  {
+    "children": [
+      {
+        "search": "guanjietong|GUANJIETONG|guanjietong|gjt",
+        "label": "关节痛",
+        "type": "plain"
+      },
+      {
+        "search": "xiazhishuizhong|XIAZHISHUIZHONG|xiazhishuizhong|xzsz",
+        "label": "下肢水肿",
+        "type": "plain"
+      },
+      {
+        "search": "zhitimamu|ZHITIMAMU|zhitimamu|ztmm",
+        "label": "肢体麻木",
+        "type": "plain"
+      },
+      {
+        "search": "shouzumamu|SHOUZUMAMU|shouzumamu|szmm",
+        "label": "手足麻木",
+        "type": "plain"
+      },
+      {
+        "search": "guanjiezhongzhang|GUANJIEZHONGZHANG|guanjiezhongzhang|gjzz",
+        "label": "关节肿胀",
+        "type": "plain"
+      },
+      {
+        "search": "xingzoubuwen|XINGZOUBUWEN|xingzoubuwen|xzbw",
+        "label": "行走不稳",
+        "type": "plain"
+      },
+      {
+        "search": "zhitiwuli|ZHITIWULI|zhitiwuli|ztwl",
+        "label": "肢体无力",
+        "type": "plain"
+      },
+      {
+        "search": "xingzoukunnan|XINGZOUKUNNAN|xingzoukunnan|xzkn",
+        "label": "行走困难",
+        "type": "plain"
+      },
+      {
+        "search": "jiroujiangying|JIROUJIANGYING|jiroujiangying|jrjy",
+        "label": "肌肉僵硬",
+        "type": "plain"
+      },
+      {
+        "search": "jiachuangfazi|JIACHUANGFAZI|jiachuangfazi|jcfz",
+        "label": "甲床发紫",
+        "type": "plain"
+      }
+    ],
+    "label": "四肢症状"
+  },
+  {
+    "children": [
+      {
+        "search": "kesou|KESOU|kesou|ks",
+        "label": "咳嗽",
+        "type": "plain"
+      },
+      {
+        "search": "ketan|KETAN|ketan|kt",
+        "label": "咳痰",
+        "type": "plain"
+      },
+      {
+        "search": "qicu|QICU|qicu|qc",
+        "label": "气促",
+        "type": "plain"
+      },
+      {
+        "search": "xinji|XINJI|xinji|xj",
+        "label": "心悸",
+        "type": "plain"
+      },
+      {
+        "search": "xiongmen|XIONGMEN|xiongmen|xm",
+        "label": "胸闷",
+        "type": "plain"
+      },
+      {
+        "search": "rufangzhongwu|RUFANGZHONGWU|rufangzhongwu|rfzw",
+        "label": "乳房肿物",
+        "type": "plain"
+      },
+      {
+        "search": "rufangtong|RUFANGTONG|rufangtong|rft",
+        "label": "乳房痛",
+        "type": "plain"
+      },
+      {
+        "search": "huxikunnan|HUXIKUNNAN|huxikunnan|hxkn",
+        "label": "呼吸困难",
+        "type": "plain"
+      },
+      {
+        "search": "chuanxi|CHUANXI|chuanxi|cx",
+        "label": "喘息",
+        "type": "plain"
+      },
+      {
+        "search": "gexue|GEXUE|gexue|gx",
+        "label": "咯血",
+        "type": "plain"
+      },
+      {
+        "search": "biexing|BIEXING|biexing|bx",
+        "label": "憋醒",
+        "type": "plain"
+      },
+      {
+        "search": "yexiazhongwu|YEXIAZHONGWU|yexiazhongwu|yxzw",
+        "label": "腋下肿物",
+        "type": "plain"
+      },
+      {
+        "search": "rutoufenmiwu|RUTOUFENMIWU|rutoufenmiwu|rtfmw",
+        "label": "乳头分泌物",
+        "type": "plain"
+      }
+    ],
+    "label": "胸部"
+  },
+  {
+    "children": [
+      {
+        "search": "outu|OUTU|outu|ot",
+        "label": "呕吐",
+        "type": "plain"
+      },
+      {
+        "search": "exin|EXIN|exin|ex",
+        "label": "恶心",
+        "type": "plain"
+      },
+      {
+        "search": "fuzhang|FUZHANG|fuzhang|fz",
+        "label": "腹胀",
+        "type": "plain"
+      },
+      {
+        "search": "fuxie|FUXIE|fuxie|fx",
+        "label": "腹泻",
+        "type": "plain"
+      },
+      {
+        "search": "fansuan|FANSUAN|fansuan|fs",
+        "label": "反酸",
+        "type": "plain"
+      },
+      {
+        "search": "nacha|NACHA|nacha|nc",
+        "label": "纳差",
+        "type": "plain"
+      },
+      {
+        "search": "aiqi|AIQI|aiqi|aq",
+        "label": "嗳气",
+        "type": "plain"
+      },
+      {
+        "search": "duoyin|DUOYIN|duoyin|dy",
+        "label": "多饮",
+        "type": "plain"
+      },
+      {
+        "search": "fugugouzhongwu|FUGUGOUZHONGWU|fugugouzhongwu|fggzw",
+        "label": "腹股沟肿物",
+        "type": "plain"
+      },
+      {
+        "search": "duoshi|DUOSHI|duoshi|ds",
+        "label": "多食",
+        "type": "plain"
+      },
+      {
+        "search": "ouxue|OUXUE|ouxue|ox",
+        "label": "呕血",
+        "type": "plain"
+      },
+      {
+        "search": "yiji|YIJI|yiji|yj",
+        "label": "易饥",
+        "type": "plain"
+      },
+      {
+        "search": "fubuzhongwu|FUBUZHONGWU|fubuzhongwu|fbzw",
+        "label": "腹部肿物",
+        "type": "plain"
+      },
+      {
+        "search": "yanyou|YANYOU|yanyou|yy",
+        "label": "厌油",
+        "type": "plain"
+      },
+      {
+        "search": "eni|ENI|eni|en",
+        "label": "呃逆",
+        "type": "plain"
+      }
+    ],
+    "label": "腹部"
+  },
+  {
+    "children": [
+      {
+        "search": "yaobeitong|YAOBEITONG|yaobeitong|ybt",
+        "label": "腰背痛",
+        "type": "plain"
+      }
+    ],
+    "label": "腰背部"
+  },
+  {
+    "children": [
+      {
+        "search": "niaopin|NIAOPIN|niaopin|np",
+        "label": "尿频",
+        "type": "plain"
+      },
+      {
+        "search": "niaoji|NIAOJI|niaoji|nj",
+        "label": "尿急",
+        "type": "plain"
+      },
+      {
+        "search": "duoniao|DUONIAO|duoniao|dn",
+        "label": "多尿",
+        "type": "plain"
+      },
+      {
+        "search": "niaotong|NIAOTONG|niaotong|nt",
+        "label": "尿痛",
+        "type": "plain"
+      },
+      {
+        "search": "xueniao|XUENIAO|xueniao|xn",
+        "label": "血尿",
+        "type": "plain"
+      },
+      {
+        "search": "painiaokunnan|PAINIAOKUNNAN|painiaokunnan|pnkn",
+        "label": "排尿困难",
+        "type": "plain"
+      },
+      {
+        "search": "niaobujin|NIAOBUJIN|niaobujin|nbj",
+        "label": "尿不尽",
+        "type": "plain"
+      },
+      {
+        "search": "wuniao|WUNIAO|wuniao|wn",
+        "label": "无尿",
+        "type": "plain"
+      },
+      {
+        "search": "yeniaoduo|YENIAODUO|yeniaoduo|ynd",
+        "label": "夜尿多",
+        "type": "plain"
+      },
+      {
+        "search": "niaoshao|NIAOSHAO|niaoshao|ns",
+        "label": "尿少",
+        "type": "plain"
+      },
+      {
+        "search": "niaodaofenmiwu|NIAODAOFENMIWU|niaodaofenmiwu|ndfmw",
+        "label": "尿道分泌物",
+        "type": "plain"
+      },
+      {
+        "search": "xingjiaokunnan|XINGJIAOKUNNAN|xingjiaokunnan|xjkn",
+        "label": "性交困难",
+        "type": "plain"
+      },
+      {
+        "search": "boqibujian|BOQIBUJIAN|boqibujian|bqbj",
+        "label": "勃起不坚",
+        "type": "plain"
+      },
+      {
+        "search": "boqibuneng|BOQIBUNENG|boqibuneng|bqbn",
+        "label": "勃起不能",
+        "type": "plain"
+      }
+    ],
+    "label": "泌尿生殖"
+  },
+  {
+    "children": [
+      {
+        "search": "bianxue|BIANXUE|bianxue|bx",
+        "label": "便血",
+        "type": "plain"
+      },
+      {
+        "search": "heibian|HEIBIAN|heibian|hb",
+        "label": "黑便",
+        "type": "plain"
+      },
+      {
+        "search": "bianmi|BIANMI|bianmi|bm",
+        "label": "便秘",
+        "type": "plain"
+      },
+      {
+        "search": "fenbianganjie|FENBIANGANJIE|fenbianganjie|fbgj",
+        "label": "粪便干结",
+        "type": "plain"
+      },
+      {
+        "search": "dabianxingzhuanggaibian|DABIANXINGZHUANGGAIBIAN|dabianxingzhuanggaibian|dbxzgb",
+        "label": "大便性状改变",
+        "type": "plain"
+      },
+      {
+        "search": "lijihouzhong|LIJIHOUZHONG|lijihouzhong|ljhz",
+        "label": "里急后重",
+        "type": "plain"
+      },
+      {
+        "search": "paibiankunnan|PAIBIANKUNNAN|paibiankunnan|pbkn",
+        "label": "排便困难",
+        "type": "plain"
+      },
+      {
+        "search": "gangmenzhongwu|GANGMENZHONGWU|gangmenzhongwu|gmzw",
+        "label": "肛门肿物",
+        "type": "plain"
+      },
+      {
+        "search": "fuxiebianmijiaoti|FUXIEBIANMIJIAOTI|fuxiebianmijiaoti|fxbmjt",
+        "label": "腹泻便秘交替",
+        "type": "plain"
+      },
+      {
+        "search": "paibiancishuzengduo|PAIBIANCISHUZENGDUO|paibiancishuzengduo|pbcszd",
+        "label": "排便次数增多",
+        "type": "plain"
+      }
+    ],
+    "label": "臀部及肛门"
+  },
+  {
+    "children": [
+      {
+        "search": "saoyang|SAOYANG|saoyang|sy",
+        "label": "瘙痒",
+        "type": "plain"
+      },
+      {
+        "search": "hongban|HONGBAN|hongban|hb",
+        "label": "红斑",
+        "type": "plain"
+      },
+      {
+        "search": "pizhen|PIZHEN|pizhen|pz",
+        "label": "皮疹",
+        "type": "plain"
+      },
+      {
+        "search": "shuipao|SHUIPAO|shuipao|sp",
+        "label": "水疱",
+        "type": "plain"
+      },
+      {
+        "search": "baiban|BAIBAN|baiban|bb",
+        "label": "白斑",
+        "type": "plain"
+      },
+      {
+        "search": "fengtuan|FENGTUAN|fengtuan|ft",
+        "label": "风团",
+        "type": "plain"
+      },
+      {
+        "search": "yuban|YUBAN|yuban|yb",
+        "label": "瘀斑",
+        "type": "plain"
+      },
+      {
+        "search": "pifuhuangran|PIFUHUANGRAN|pifuhuangran|pfhr",
+        "label": "皮肤黄染",
+        "type": "plain"
+      }
+    ],
+    "label": "皮肤"
+  }
+]

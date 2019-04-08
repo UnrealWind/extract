@@ -1,0 +1,16 @@
+<div class="infi-word-template" ng-repeat = "specialityCheckData in specialityCheckDatas">
+    <div class="infi-content">
+        <h3 scrollMark = "{{specialityCheckData.deptName}}">
+            <span class="align-left">{{specialityCheckData.deptName|changeNULL}}</span>
+        </h3>
+        <div class="row" >
+            <div ng-repeat="opt in specialityCheckData.children" class="col-md-6">
+                <p class="ellipsis" title="{{opt.label|changeNULL}}：{{opt.value|changeNULL}}">{{opt.label|changeNULL}}：{{opt.value|changeNULL}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="infi-word-template" ng-if="!specialityCheckDatas || specialityCheckDatas ==null || specialityCheckDatas.length == 0">
+    <p>-</p>
+</div>

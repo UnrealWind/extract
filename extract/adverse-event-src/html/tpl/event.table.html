@@ -1,0 +1,70 @@
+<div class="marginten">
+    <table class="table infi-table infi-event-table">
+        <thead>
+        <tr>
+            <th rowspan="3">科室名称</th>
+            <th rowspan="3">在院人数</th>
+            <th colspan="4" rowspan="1">{{adverseSelection.value}}</th>
+        </tr>
+        <tr>
+            <th rowspan="2">
+                <div>
+                    <div>75-100%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>50-75%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-50%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-0%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-if="badTable.length>0">
+            <tr ng-repeat="entity in badTable" ng-if="entity.eventName == adverseSelection.value">
+                <td>{{entity.dept}}</td>
+                <td>{{entity.inhsopNum}}</td>
+                <td>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event7Num}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event7Ratio}}</div>
+                </td>
+                <td>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event5Num}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event5Ratio}}</div>
+                </td>
+                <td>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event2Num}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event2Ratio}}</div>
+                </td>
+                <td>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event0Num}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">{{entity.event0Ratio}}</div>
+                </td>
+            </tr>
+        </tbody>
+        <tbody ng-if="(badTable.length==0) || (badTable.length==null)">
+            <tr>
+                <td colspan="6" class="bg-danger" style="line-height: 50px;">
+                    暂无数据
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

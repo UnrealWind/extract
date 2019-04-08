@@ -1,0 +1,35 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>新增视频</h4>
+<div class="infi-box disease-box">
+    <div class="form-group form-inline">
+        <label for="smoke">发布位置：</label>
+        <select name="smoke">
+            <option value = '1'>相关视频</option>
+        </select>
+        <label for="level">权重：</label>
+        <input name="level" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label for="title" class="">请输入视频标题：</label>
+        <input name="title" class="form-control fix-input" style="width:75%;" type="text">
+    </div>
+    <div class="form-group form-inline">
+        <label>上传视频缩略图：</label>
+        <input class="updateImg fix-input" type="file" class="fix-input" onchange="angular.element(this).scope().upadateImg(this)" >
+    </div>
+
+    <div class="form-group form-inline">
+        <label>上传视频封面：</label>
+        <input class="updateImg fix-input" type="file" class="fix-input" onchange="angular.element(this).scope().upadateImg(this)" >
+    </div>
+
+    <div class="form-group form-inline">
+        <label>上传视频：</label>
+        <input type="file" class="fix-input" onchange="angular.element(this).scope().upadateVideo('')" >
+    </div>
+
+    <div class="infi-btn-box">
+        <a class="btn btn-success" href="javascript:;" ng-click="update()">确定</a>
+        <a class="btn btn-default" href="#/management-index">取消</a>
+    </div>
+
+</div>

@@ -1,0 +1,130 @@
+<div class="modal fade"  id="add-patient" >
+    <div class="modal-dialog infi-modal-half-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span ng-if="status == SYS.ADD">新增用户</span>
+                <span ng-if="status == SYS.EDIT">修改用户</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body infi-nursing-form">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>病案号:</span>
+                    </div>
+                    <div class="col-md-10 infi-nursing-checkid">
+                        <input name="patientId" type="text" ng-model="newPatient.patientId"
+                               ng-blur="checkId(newPatient.patientId,newPatient.id)" class="form-control" />
+                        <!-- 校验病案号是否重复 --><!-- 病案号重复 -->
+                        <span ng-if="checkList.status!='' && checkList.status!=SYS.STATUS_SUCCESS">
+                            <span class="glyphicon glyphicon-remove" style="color:red;"></span>
+                            该病案号已被"
+                            <label>{{checkList.patientName}}</label>
+                            "使用,<a ng-click="showCheckPatient(newPatient)">点击查看</a>该患者
+                        </span>
+                        <!-- 病案号没有重复 -->
+                        <span ng-if="checkList.status!='' && checkList.status==SYS.STATUS_SUCCESS" class="glyphicon glyphicon-ok" style="color:green"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>姓名:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="name" type="text" ng-model="newPatient.patientName" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>性别:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="self-num-radio">
+                            <input name="sex" type="radio" ng-model="newPatient.sex" value="男"/>男
+                        </label>
+                        <label class="self-num-radio">
+                            <input name="sex" type="radio" ng-model="newPatient.sex" value="女"/>女
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>年龄:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="age" type="number" ng-model="newPatient.age" class="form-control infi-text-unit"/><span>岁</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>科室:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" ng-model="newPatient.dept" ng-change="changeDepart(newPatient.dept)">
+                            <option ng-repeat="option in departList.options" value="{{option.label}}">{{option.label}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>病区:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" ng-model="newPatient.ward">
+                            <option ng-repeat="option in areaList.options" value="{{option.label}}">{{option.label}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>住院状态:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="self-num-radio">
+                            <input name="hospitalization" type="radio" ng-model="newPatient.isHospitalization" value="院内"/>院内
+                        </label>
+                        <label class="self-num-radio">
+                            <input name="hospitalization" type="radio" ng-model="newPatient.isHospitalization" value="院后"/>院后
+                        </label>
+                    </div>
+                </div>
+                <div class="row" ng-if="newPatient.isHospitalization == '院内'">
+                    <div class="col-md-2">
+                        <span>住院时间:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" infi-date ng-model="newPatient.enterHospitalTime">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>联系方式:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="area" type="text" ng-model="newPatient.telephone" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>入院次数:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="area" type="text" ng-model="newPatient.visitId" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span style="color:red;">*</span><span>诊断:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea name="diagnosis" ng-model="newPatient.diagnosis" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer infi-confirm-export-footer">
+                <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal'>取消</button>
+                <button type="button" class="btn infi-btn-linear-green-l" ng-click="addPatient(newPatient)">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

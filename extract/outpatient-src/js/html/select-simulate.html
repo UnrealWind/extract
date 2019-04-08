@@ -1,0 +1,17 @@
+<div class="infi-inline-block infi-select-simulate">
+    <label>{{title}}：</label>
+    <div class="infi-inline-block" style="position: relative;z-index:4;">
+        <!--infi-simulate-input 标示输入框-->
+        <input type="text" title="{{$selectedData[showName]}}" readonly class="form-control infi-simulate-input infi-opt-search-time"
+               ng-model="$selectedData[showName]" />
+        <!--<i class="glyphicon glyphicon-triangle-bottom"></i>-->
+        <!--infi-select-list 标识点击下拉框-->
+        <div class="hide infi-select-list">
+            <ul ng-show="deptList.status == SYS.STATUS_SUCCESS">
+                <li ng-repeat="list in deptList.data.result" ng-bind="list[showName]" title="{{list[showName]}}"
+                    ng-click="selectItem(list)" ng-class="{true:'selected'}[list.selected]"></li>
+            </ul>
+            <div ng-show="deptList.status != SYS.STATUS_SUCCESS" ng-bind="deptList.description"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div style="padding: 10px;">
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">肝功： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="testInfo.liverfunc| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">血型： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="testInfo.blood| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">尿常规： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="testInfo.urine_routines| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">澳抗： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-if="testInfo.australia_antigen">（{{testInfo.australia_antigen| unescape}}）  </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">血常规： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="testInfo.routine_blood| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">尿糖： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-if="testInfo.urine_sugar">（{{testInfo.urine_sugar|unescape}}）</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,588 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据列表</h4>
+<style>
+    body article.infi-main {
+        background-color: #f1f1f1 !important;
+    }
+</style>
+<div class="infi-box">
+    <!--<div class="floatright">-->
+    <!--<a href="#/first-record"><button class="btn infi-btn-linear-green-l btn-sm" ng-click="record_wj_create()">创建产科档案</button></a>-->
+    <!--</div>-->
+    <div>
+        <ul class="ul-float-left">
+            <li>
+                <label>姓名:</label>
+                <input ng-change="searchList()" type="text" id="infi-wj-search-name" class="form-control " placeholder="请输入患姓名"
+                    ng-model="IdEntity.name">
+            </li>
+            <li>
+                <label>ID号:</label>
+                <input ng-change="searchList()" type="text" id="infi-wj-search-id" class="form-control" placeholder="请输入ID号"
+                    ng-model="IdEntity.patiId">
+            </li>
+            <li>
+                <label>创建时间：</label>
+                <input ng-change="searchList()" type="text" class="form-control infi-wj-serch-time" infi-date ng-model="IdEntity.startDate">
+            </li>
+            <li style="padding: 6px 0 0 5px;">
+                <span>~</span>
+            </li>
+            <li>
+                <label></label>
+                <input ng-change="searchList()" type="text" class="form-control infi-wj-serch-time" infi-date ng-model="IdEntity.endDate">
+            </li>
+            <li style="padding-left:10px;">
+                <a class="btn infi-btn-linear-green-l btn-sm" ng-click="emptyConditions()">清空搜索条件</a>
+            </li>
+        </ul>
+    </div>
+    <section class="infi-section">
+        <div>
+            <table class="table infi-table">
+                <thead>
+                    <tr>
+                        <th ng-repeat="column in listColumns" ng-bind="column.label"></th>
+                        <!--<th ng-if="opts" ng-bind="opts.label"></th>-->
+                    </tr>
+                </thead>
+                <tbody ng-if="listData.success">
+                    <tr ng-repeat="entity in listData.result" ng-click="selectCase(entity)" ng-class="{true:'active'}[entity.active]">
+                        <td>
+                            <span ng-bind="entity.pati_id"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="entity.name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="entity.sex_name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="entity.date_of_birth|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="entity.create_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                        </td>
+                        <td>
+                            <!--查看详情跳转到统一视图页面-->
+                            <!--根据该分病人的标识进行操作-->
+                            <!-- zyz_debug 两个id是什么 -->
+                            <a href="#/record/{{entity.xl_patient_id}}" target="_blank">查看详情</a>
+                            <!--跳转到创建档案页面-->
+                            <!--<a href="#/record/input/{{entity.xl_patient_id}}/{{entity.pati_id}}/first" target="_blank">创建产科档案</a>-->
+                            <!-- <a href="javascript:;" ng-click="modalIframe(entity.pati_id)">查看概况</a> -->
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="!listData.success">
+                    <tr>
+                        <td colspan="6">
+                            <p class="bg-danger" style="line-height: 50px;" ng-bind="listData.desc"></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="infi-page">
+                <uib-pagination total-items="listData.totalCount" ng-model="listData.pageNo" max-size="7"
+                    boundary-link-numbers="true" ng-change="updatePage({page:listData.pageNo})" items-per-page="listData.pageSize"
+                    num-pages="listData.totalPages"></uib-pagination>
+            </div>
+        </div>
+    </section>
+    <!--这个是301统一视图用-->
+    <div class="modal fade modalChinaEle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document" style="width: 780px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="display:inline-block;">概况</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body profile-list-wrapper">
+                    <!-- 原 iframe 嵌套内容 -->
+                    <!-- 　  <iframe ng-src="{{ChinaEleUrl}}" id="iframe" style="width: 1075px;height:800px;"></iframe> -->
+
+                    <!-- 新 -->
+
+                    <!-- 曾就诊科室 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">曾就诊科室</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 特殊标明科室 -->
+                            <div class="">
+                                <h4 class=""><span class="label label-warning">特殊标明科室</span></h4>
+                    
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.dept_special_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-warning-cus pull-left "
+                                        ng-repeat="item in flatOrgData.dept_special_data"
+                                        ng-bind="item.dept_name + '、'"></dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.dept_special_data.length == 0">
+                                    <dt class=""></dt>
+                                    <dd class="normal-dd text-warning-cus">无</dd>
+                                </dl>
+                            </div>
+
+                            
+                            <div class="">
+                                <dl class="indent2em reset-dl clearfix">
+                                    <dt></dt>
+                                    <dd class="normal-dd text-muted pull-left"
+                                        ng-if="flatOrgData.dept_data.length > 0"
+                                        ng-repeat="dept in flatOrgData.dept_data"
+                                        ng-bind="dept.dept_name + '、'"></dd>
+                            
+                                    <dd class="normal-dd text-muted"
+                                        ng-if="flatOrgData.dept_data.length == 0"><span>无</span></dd>
+                                </dl>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- 既往检验史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">既往检验史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 特殊标明检验 -->
+                            <div class="">
+                                <h4 class=""><span class="label label-warning">特殊标明检验</span></h4>
+
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_special_data.length > 0"
+                                    ng-repeat="item in flatOrgData.test_special_data">
+                                <dt class="text-warning-cus"
+                                    ng-bind="'【' + item.test_class + '】'"></dt>
+
+                                <dd class="normal-dd text-warning-cus"
+                                    ng-repeat="subItem in item.test_item">
+                                    <span ng-if="subItem.value == 2"
+                                            title="{{subItem.name + ' 偏高 ' + subItem.resu}}">
+                                        <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                        <span class="arrow-item-arrow glyphicon glyphicon-arrow-up text-danger text-center"></span>
+                                    </span>
+
+
+                                    <span ng-if="subItem.value == 1"
+                                            title="{{subItem.name + ' 偏低   ' + subItem.resu}}">
+                                        <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                        <span class="arrow-item-arrow glyphicon glyphicon-arrow-down text-muted text-center"></span>
+                                    </span>  
+                                </dd>
+                                </dl>
+
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_special_data.length == 0">
+                                <dt class="text-warning-cus"></dt>
+                                <dd class="normal-dd text-warning-cus">无</dd>
+                                </dl>
+                            </div>
+                            
+                            <!-- 最近一次检验 -->
+                            <div class="">
+                                <h4><span class="label label-success">最近一次检验</span></h4>
+                
+                                <!-- 数据多的只截取前三条 -->
+                                <reduce-len ng-if="flatOrgData.test_last_data.length > 0" arr="flatOrgData.test_last_data" len="3"></reduce-len>
+                
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_last_data.length > 0"
+                                    ng-repeat="item in flatOrgData.test_last_data">
+                                <dt class=" "
+                                    ng-bind="'【' + item.test_class + '】'"></dt>
+                
+                                    
+                
+                                <dd class="normal-dd text-muted"
+                                    ng-repeat="subItem in item.test_item">
+                
+                                    <span ng-if="subItem.value == 2"
+                                        title="{{subItem.name + ' 偏高 ' + subItem.resu}}">
+                                    <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                    <span class="arrow-item-arrow glyphicon glyphicon-arrow-up  text-danger text-center"></span>
+                                    <span class="arrow-item-num" ng-bind="subItem.resu"></span>
+                                    </span>
+                
+                
+                                    <span ng-if="subItem.value == 1"
+                                        title="{{subItem.name + ' 偏低   ' + subItem.resu}}">
+                                    <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                    <span class="arrow-item-arrow glyphicon glyphicon-arrow-down  text-muted text-center"></span>
+                                    <span class="arrow-item-num" ng-bind="subItem.resu"></span>
+                                    </span>
+                                    
+                                </dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_last_data.length == 0">
+                                <dt class=" "></dt>
+                                <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+
+                            <!-- 一般检验 -->
+                            <div class="">
+                                <h4><span class="label label-primary">一般检验</span></h4>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_data.length > 0"
+                                    ng-repeat="item in flatOrgData.test_data">
+                                <dt class=""
+                                    ng-bind="'【' + item.test_class + '】'"></dt>
+                
+                                <dd class="normal-dd text-muted"
+                                    ng-repeat="subItem in item.test_item">
+                                    
+                                    <span ng-if="subItem.value == 2"
+                                        title="{{subItem.name + ' 偏高 ' + subItem.resu}}">
+                                    <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                    <span class="arrow-item-arrow glyphicon glyphicon-arrow-up text-danger text-center"></span>
+                                    </span>
+                
+                                    <span ng-if="subItem.value == 1"
+                                        title="{{subItem.name + ' 偏低   ' + subItem.resu}}">
+                                    <span class="arrow-item-label" ng-bind="subItem.name"></span>
+                                    <span class="arrow-item-arrow glyphicon glyphicon-arrow-down text-muted text-center"></span>
+                                    </span>
+                                </dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.test_data.length == 0">
+                                    <dt class=""></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 既往检查史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">既往检查史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 特殊标明检查 -->
+                            <div class="">
+                                <h4 class=""><span class="label label-warning">特殊标明检查</span></h4>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_special_data.length > 0"
+                                    ng-repeat="item in flatOrgData.exam_special_data">
+                                    <dt class="text-warning-cus"
+                                        ng-bind="'【' + item.exam_item_name + '】'"></dt>
+                        
+                                    <dd class="normal-dd text-warning-cus"
+                                        ng-repeat="subItem in item.exam_result"
+                                        ng-bind="subItem.key_name + '(' + (subItem.part) + ')'"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_special_data.length == 0">
+                                    <dt class="text-warning-cus"></dt>
+                                    <dd class="normal-dd text-warning-cus">无</dd>
+                                </dl>
+                    
+                            </div>
+                    
+                    
+                            <!-- 最近一次检查 -->
+                            <div class="">
+                                <h4><span class="label label-success">最近一次检查</span></h4>
+                
+                                <!-- 数据多的只截取前三条 -->
+                                <reduce-len ng-if="flatOrgData.exam_last_data.length > 0" arr="flatOrgData.exam_last_data" len="3"></reduce-len>
+                
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_last_data.length > 0">
+                                    <dt></dt>
+                                    <dd class="normal-dd text-muted"
+                                        ng-repeat="item in flatOrgData.exam_last_data"
+                                        ng-bind="item.exam_item_name + ':' + item.desc"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_last_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                    
+                            <!-- 一般检查 -->
+                            <div class="">
+                                <h4><span class="label label-primary">一般检查</span></h4>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_data.length > 0"
+                                    ng-repeat="item in flatOrgData.exam_data">
+                                    <dt class=" "
+                                        ng-bind="'【' + item.exam_item_name + '】'"></dt>
+                        
+                                    <dd class="normal-dd text-muted"
+                                        ng-repeat="subItem in item.exam_result"
+                                        ng-bind="subItem.key_name + '(' + (subItem.part) + ')'"></dd>
+                                </dl>
+                        
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.exam_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 既往用药史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">既往用药史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 特殊标明用药 -->
+                            <div class="">
+                                <h4 class=""><span class="label label-warning">特殊标明用药</span></h4>
+                    
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.drug_special_data.length > 0">
+                                <dt class="text-warning-cus"></dt>
+                    
+                                <dd class="normal-dd text-warning-cus  pull-left "
+                                    ng-repeat="item in flatOrgData.drug_special_data"
+                                    ng-bind="item.drug_name + '、'"></dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.drug_special_data.length == 0">
+                                <dt class="text-warning-cus"></dt>
+                                <dd class="normal-dd text-warning-cus">无</dd>
+                                </dl>
+                            </div>
+                    
+                            <!-- 最近一次用药 -->
+                            <div class="">
+                                <h4><span class="label label-success">最近一次用药</span></h4>
+                    
+                                <div class="">
+                                
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.drug_data.length > 0">
+                                    <dt></dt>
+                                    
+                                    <!-- 数据多的只截取前三条 -->
+                                    <reduce-len ng-if="flatOrgData.drug_data.length > 0" arr="flatOrgData.drug_data" len="3"></reduce-len>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.drug_data"
+                                        ng-bind="item.drug_name + '、'"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.drug_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                                </div>
+                    
+                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 既往手术史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">既往手术史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <div class="">
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.operation_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.operation_data"
+                                        ng-bind="item.operation_name + '(' + item.operation_num + '次)' + '、'"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.operation_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 既往疾病史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title">既往疾病史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <div class="">
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.illn_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.illn_data"
+                                        ng-bind="item.illn_name"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.illn_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 个人史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title"iv>个人史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 吸烟史 -->
+                            <div class="">
+                                <h5 class=" ">吸烟史:</h5>
+                    
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.smoke_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.smoke_data"
+                                        ng-bind="(item.smoke_drink_time | BlankData) + '  ' + (item.smoke_drink_ammount | BlankData) + '  ' + (item.quit_info | BlankData)"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.smoke_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                    
+                            <!-- 饮酒史 -->
+                            <div class="">
+                                <h5 class=" ">饮酒史:</h5>
+                                
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.drink_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.drink_data"
+                                        ng-bind="(item.smoke_drink_time | BlankData) + '  ' + (item.smoke_drink_ammount | BlankData) + '  ' + (item.quit_info | BlankData)"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.drink_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 过敏史 -->
+                    <div class="row profile-row">
+                        <div class="col-md-3 profile-left-wrapper">
+                            <div class="left-item-title"iv>过敏史</div>
+                        </div>
+
+                        <div class="col-md-9 profile-right-wrapper">
+                            <!-- 药物过敏史 -->
+                            <div class="">
+                                <h5 class=" ">药物:</h5>
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.allergy_drug_data.length > 0">
+                                <dt></dt>
+                    
+                                <dd class="normal-dd text-muted  pull-left "
+                                    ng-repeat="item in flatOrgData.allergy_drug_data"
+                                    ng-bind="item.allergy_cause + '、'"></dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.allergy_drug_data.length == 0">
+                                <dt class=" "></dt>
+                                <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                    
+                            <!-- 食物过敏史 -->
+                            <div class="">
+                                <h5 class=" ">食物:</h5>
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.allergy_food_data.length > 0">
+                                <dt></dt>
+                    
+                                <dd class="normal-dd text-muted  pull-left "
+                                    ng-repeat="item in flatOrgData.allergy_food_data"
+                                    ng-bind="item.allergy_cause + '、'"></dd>
+                                </dl>
+                    
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.allergy_food_data.length == 0">
+                                <dt class=" "></dt>
+                                <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                            
+                    
+                            <!-- 其他过敏史 -->
+                            <div class="">
+                                <h5 class=" ">其他过敏史:</h5>
+                    
+                                <dl class="indent2em reset-dl clearfix"
+                                    ng-if="flatOrgData.allergy_data.length > 0">
+                                    <dt></dt>
+                        
+                                    <dd class="normal-dd text-muted  pull-left "
+                                        ng-repeat="item in flatOrgData.allergy_data"
+                                        ng-bind="item.allergy_cause + '、'"></dd>
+                                </dl>
+                        
+                                <dl class="indent2em reset-dl"
+                                    ng-if="flatOrgData.allergy_data.length == 0">
+                                    <dt class=" "></dt>
+                                    <dd class="normal-dd text-muted">无</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 任意一个请求失败 -->
+                    <div ng-if="hasData == false" style="margin-top: 15px;">
+                        <p class="bg-danger text-center text-danger danger-prompt">查询失败，请刷新重试！</p>
+                    </div>
+            
+                    <!-- 数据查询中 -->
+                    <div ng-if="hasData == 'init'" style="margin-top: 15px;">
+                        <p class="bg-warning text-center text-warning danger-prompt">数据查询中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

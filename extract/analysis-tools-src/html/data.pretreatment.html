@@ -1,0 +1,195 @@
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-analysis-modifyed"><a href="#/data.select">数据选择</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/variable.set">变量设置</a></li>
+        <li class="infi-header-active"><a href="#/data.pretreatment">数据预处理</a></li>
+        <li><a href="#/filter.set">筛选设置</a></li>
+        <li><a href="#/model">建模</a></li>
+        <li><a href="#/complete">已建模型</a></li>
+    </ul>
+</header>
+<!--<header class="infi-section" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">-->
+        <!--<li class="infi-header-active"><a href="#/data.select">数据管理</a></li>-->
+        <!--<li><a href="#/data.select1">描述统计</a></li>-->
+        <!--<li><a href="#/data.select2">建立模型</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<!--<header class="infi-section marginten" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed" style="width:25%;line-height: 50px;height: 50px;"><a href="#/data.select">数据选择</a></li>-->
+        <!--<li class="infi-analysis-modifyed" style="width:25%;line-height: 50px;height: 50px;"><a href="#/variable.set">变量设置</a></li>-->
+        <!--<li class="infi-header-active" style="width:25%;line-height: 50px;height: 50px;"><a href="#/data.pretreatment">数据处理</a></li>-->
+        <!--<li style="width:25%;line-height: 50px;height: 50px;"><a href="#/filter.set">数据分组</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+
+<div class="infi-box" style="margin-top: 20px;">
+    <!--<h4 class="infi-title">空值处理</h4>-->
+    <div class="marginten">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" ng-class="{true: 'active' , false:''}[step == task.name]" ng-click="descriptionTab(task.name)" ng-repeat="task in taskGroup"><a class="cursorPointer">{{task.name}}</a></li>
+        </ul>
+    </div>
+    <!--<div class="infi-box-containter">-->
+        <div class="row marginten" style="">
+            <div class="col-xs-3">
+                <div class="input-group floatright marginten">
+                    <input type="text" class="form-control input-lg"  style="height:34px;"><span class="input-group-addon btn btn-primary">搜索</span>
+                </div>
+                <div class="marginten">
+                    <select class="form-control" value='selectLeftData' ng-model="selectLeftData" ng-click="selectLeft()">
+                        <option value="">全部</option>
+                        <option value="1">分类变量</option>
+                        <option value="2">连续变量</option>
+                    </select>
+                </div>
+                <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+                    <span>{{status.name}}</span>
+                </div>
+                <div class="marginten cursorPointer {{status.active}}" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in conditionDatas">
+                    <span>{{status.name}}</span>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+
+                    <div class="backgroud-ddd paddingten marginten col-xs-2" style="text-align: center" ng-if="step == '异常值处理'">
+                        <span class="font-bold">识别策略选择</span>
+                    </div>
+                    <div class="col-xs-2" style="padding:15px 0 0 0;width: 120px;    margin-right: 160px;" ng-if="step == '异常值处理'">
+                        <select class="form-control" ng-if='!fenleilianxu' ng-click="identifications()" style="margin:0;">
+                            <option value="">请选择</option>
+                            <option value="">自定义内容</option>
+                        </select>
+                        <select class="form-control" value="{{fenleilianxuValue.a}}" ng-model="fenleilianxuValue.a" ng-if='fenleilianxu' ng-click="identification(fenleilianxuValue)" style="margin:0;">
+                            <option value="">请选择</option>
+                            <option value="1">自定义区间</option>
+                            <option value="2">四分位数法</option>
+                        </select>
+                        <div ng-if="leach" style="z-index: 10;width:160px;border:1px solid #ddd;padding:5px;position: absolute;top:15px;left:120px;border-radius: 5px;background-color: #fff">
+                            <div class="col-xs-6" style="padding:0;">
+                                <input type="text" class="form-control"  style="height:34px;">
+                                <input type="text" class="form-control"  style="height:34px;margin-top: 5px" ng-if="input2">
+                            </div>
+                            <div class="col-xs-6" style="padding:0 0 0 6px;">
+                                <button type="button" class="btn btn-default" ng-click="addClick()">添加</button>
+                                <button type="button" ng-if="!input2" class="btn btn-default" ng-click="saveClick()">确定</button>
+                                <button type="button" ng-if="input2" class="btn btn-default" style="margin-top: 35px" ng-click="saveClick()">确定</button>
+                            </div>
+                        </div>
+                        <div ng-if="leachs" style="z-index: 10;width:160px;border:1px solid #ddd;padding:5px;position: absolute;top:15px;left:120px;border-radius: 5px;background-color: #fff">
+                            <div class="col-xs-6" style="padding:0;">
+                                <input type="text" class="form-control"  style="height:34px;width: 40%;display: inline-block;padding: 1px">~
+                                <input type="text" class="form-control"  style="height:34px;width: 40%;display: inline-block;padding: 1px">
+                                <input type="text" class="form-control"  style="height:34px;" ng-if="input2">
+                            </div>
+                            <div class="col-xs-6" style="padding:0 0 0 6px;">
+                                <!--<button type="button" class="btn btn-default" ng-click="addClick()">添a加</button>-->
+                                <button type="button" class="btn btn-default" ng-click="saveClick()">确定</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="backgroud-ddd paddingten marginten col-xs-2" style="text-align: center">
+                        <span class="font-bold">处理策略选择</span>
+                    </div>
+                    <div class="col-xs-2" style="padding:15px 0 0 0;">
+                        <select class="form-control" style="width: 120px;" ng-if="selectss">
+                            <option value="">请选择</option>
+                            <option value="">删除</option>
+                            <option value="">中位数插值</option>
+                            <option value="">众数插值</option>
+                            <option value="">回归插值</option>
+                            <option value="">拉格朗日</option>
+                        </select>
+                        <select class="form-control" style="width: 120px;" ng-if="!selectss">
+                            <option value="">请选择</option>
+                            <option value="">删除</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-2"  style="width: 12%;padding:15px 0 0 0;float: right;">
+                        <button type="button" class="btn btn-primary" ng-click="process
+()">确认处理</button>
+                    </div>
+                </div>
+
+                <div class="backgroud-ddd paddingten">
+                    <span class="font-bold">已选变量 |</span>
+                    <span>{{selectedData}}</span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" >
+                        <div class="row" ng-if="before">
+                            <div class="col-xs-3">
+                                <span class="font-bold">处理前:</span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span>样本量:{{}}</span>
+                                <table class="table infi-table">
+                                    <thead>
+                                    <tr>
+                                        <th>---</th>
+                                        <th>频数</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="val in content">
+                                            <td ng-bind="val.name"></td>
+                                            <td ng-bind="val.value"></td>
+                                        </tr>
+                                        <tr ng-if="miss && selectedData !== 'sex'">
+                                            <td>缺失</td>
+                                            <td>{{missData}}</td>
+                                        </tr>
+                                        <tr ng-if="misssss && selectedData !== '年龄'">
+                                            <td>异常</td>
+                                            <td>{{missData}}</td>
+                                        </tr>
+                                        <tr ng-if="selectedData == 'sex'">
+                                            <td>-99</td>
+                                            <td>{{missData}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div style="height:450px;" id="main"></div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row" style="margin-bottom: 37px;" ng-if="after">
+                            <div class="col-xs-3">
+                                <span class="font-bold">处理后:</span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span>样本量:{{}}</span>
+                                <table class="table infi-table">
+                                    <thead>
+                                    <tr>
+                                        <th>---</th>
+                                        <th>频数</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="val in content">
+                                            <td ng-bind="val.name"></td>
+                                            <td ng-bind="val.value"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="height:450px;" id="mains"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>
+
+
+<div class=" paddingten" style="text-align: right">
+    <a href="#/filter.set"><button type="button" class="btn btn-primary" >下一步(筛选设置)</button></a>
+</div>

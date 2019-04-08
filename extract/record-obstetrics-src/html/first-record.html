@@ -1,0 +1,43 @@
+
+<div basic-info case-list="caseList"></div>
+<div class="infi-wj-self-box" style="margin-top: 40px;">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-edit"></i> 首次信息录入
+    </div>
+    <ul class="nav nav-tabs infi-wj-tabs infi-wj-first" >
+        <li ng-repeat="entity in dataTypes" ng-class="{true:'active'}[entity.active]">
+            <a ng-click="activeType(entity)">{{entity.label}}</a>
+        </li>
+    </ul>
+    <div class="table-content" >
+        <!--基本信息-->
+        <div class="infi-wj-content-list" ng-show="'jiben' == currentDataType">
+            <link rel="import" href="record.input.first.basic.info.html?__inline">
+        </div>
+        <!--孕产史-->
+        <div class="infi-wj-content-list" ng-show="'yunchan'== currentDataType">
+            <link rel="import" href="record.input.first.maternal.html?__inline">
+        </div>
+        <!--既往家族史-->
+        <div class="infi-wj-content-list"  ng-show="'jiwnag' == currentDataType">
+            <link rel="import" href=record.input.first.family.history.html?__inline">
+        </div>
+        <!--全身检查-->
+        <div class="infi-wj-content-list" ng-show="'quanshen' == currentDataType">
+            <link rel="import" href="record.input.first.whole.body.html?__inline">
+        </div>
+        <!--早孕检查-->
+        <div class="infi-wj-content-list" ng-show="'zaoyun'==currentDataType">
+            <link rel="import" href="record.input.first.early.pregnancy.html?__inline">
+        </div>
+        <!--高危评分-->
+        <div class="infi-wj-content-list" ng-show="'dangerous'==currentDataType">
+            <link rel="import" href="record.input.first.dangerous.html?__inline">
+        </div>
+    </div>
+    <div sys-tip></div>
+</div>
+<div class="infi-wj-save" style="text-align: center;width: 100%;">
+    <a><button class="btn infi-btn-linear-green-l btn-sm" ng-click="saveAll()">保存并返回</button></a>
+    <a href="#/daily-record"><button class="btn infi-btn-linear-green-l btn-sm infi-wj-big-ipt">下一步编辑孕检档案信息</button></a>
+</div>

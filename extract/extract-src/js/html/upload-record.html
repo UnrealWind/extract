@@ -1,0 +1,53 @@
+<div>
+    <div class="modal fade" id="uploadBox">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header ">
+                <div class="infi-confirm-export-header">
+                    <h4 class="modal-title">成果备案</h4>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="infi-export-body-remarks">
+                    <div class=" col-xs-4">
+                        <label for="infi-result-des"><span class="text-danger">*</span> 成果说明:</label>
+                    </div>
+                    <div class=" col-xs-8">
+                        <textarea id="infi-result-des" ng-model="resultRecord.descriptionOfResults" type="text" class="form-control col-xs-8"
+                                  name="" value="" placeholder="简要说明研究成果，如在某期刊发表文章、完成会议ppt、毕业论文等"></textarea>
+                    </div>
+                </div>
+
+                <div class="infi-export-body-remarks">
+                    <div class=" col-xs-4">
+                        <label for="infi-result-upload">成果上传:</label>
+                    </div>
+                    <div class=" col-xs-8">
+                        <!-- <div ng-show="resultRecord.allFileName.length > 0">
+                          <ul>
+                            <li ng-repeat="file in resultRecord.allFileName">
+                              <span>{{file}}</span>
+                              <button type="button" class="btn btn-primary" ng-click='downloadFile(file)'>下载</button>
+                            </li>
+                          </ul>
+                        </div> -->
+
+                          <label for="filePath" class="btn btn-default">浏览</label>
+                          <input type="file" ngf-select="onFileSelect($files)" name="filePath" id="filePath" style="display: none">
+                          <p>
+                            <a href="javascript:;" ng-bind="resultRecord.allFileName" ng-click="downloadFile(resultRecord.allFileName,resultRecord.achievementId)"></a>
+                            <i class="glyphicon glyphicon-remove text-danger" ng-click="resultRecord.achievementId = null; resultRecord.allFileName = ''; fileName = resultRecord.allFileName " ng-show="resultRecord.allFileName"></i>
+                          </p>
+
+                    </div>
+                </div>
+
+              </div>
+              <div class="modal-footer infi-confirm-export-footer">
+                  <button type="button" class="btn infi-btn-linear-default" ng-click="clear()" data-dismiss='modal'>取消</button>
+                  <button type="button" class="btn infi-btn-linear-green-l" ng-click="saveRecord(entity.id, resultRecord)">确定</button>
+              </div>
+          </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>

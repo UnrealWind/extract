@@ -1,0 +1,17 @@
+<div class="infi-box" style="display: table-cell;width:35%;">
+    <h4>筛选记录</h4>
+    <div class="infi-box-containter infi-logic-history">
+        <table>
+            <thead>
+                <tr>
+                    <td>筛选条件</td>
+                    <td>病例数</td>
+                </tr>
+            </thead>
+            <tr ng-repeat="entity in groupData.historyData track by $index">
+                <td ng-bind="entity.historyLogic"></td>
+                <td ng-bind="entity.num"></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<h4 class="infi-title" style="margin-bottom: 20px;">
+    <i class="glyphicon glyphicon-globe"></i>
+    CRF模板
+    <a href="#/crfList" class="btn infi-btn-linear-green-l f-r">返回</a>
+</h4>
+
+<div class="infi-box">
+    <h4 class="infi-title">查看详情</h4>
+    <div class="infi-box-containter" style="overflow: hidden">
+        <div class="infi-form-inputs col-md-12 row">
+            <div ng-if="!currentData" class="alert alert-info" role="alert">数据加载中……</div>
+            <form  ng-repeat="modal in currentData" ng-if="currentData" class="infi-modal-box col-md-12 current form-inline ">
+                <h2 class="infi-title">
+                    <span>{{modal.name}}</span>
+                </h2>
+                <ul class="infi-modal-inputs form-inline">
+                    <li ng-repeat="theme in modal.children">
+                        <CRF-input-template ng-if="theme.type.name == 'PROPERTY' && theme.valueType != ''" input="theme" parent="modal.children"></CRF-input-template>
+                        <div ng-if="theme.type.name == 'THEME'">
+                            <h3 class="infi-theme-name">
+                                <p ng-bind="theme.name"></p>
+                            </h3>
+                            <ul class="form-inline">
+                                <li ng-repeat="sub_theme in theme.children"  style="border-bottom: 1px solid #eee;padding: 10px 0;">
+                                    <CRF-input-template ng-if="sub_theme.type.name == 'PROPERTY'" input="sub_theme" parent="theme.children"></CRF-input-template>
+                                    <div class="infi-sub-theme-name"  ng-if="sub_theme.type.name == 'SUB_THEME'">
+                                        <h3 class="infi-theme-name">
+                                            <p ng-bind="sub_theme.name"></p>
+                                        </h3>
+                                        <ul class="infi-form-inputs">
+                                            <li ng-repeat="property in sub_theme.children" style="border-bottom: 1px solid #eee;padding: 10px 0;">
+                                                <CRF-input-template ng-if="property.type.name == 'PROPERTY'" input="property" parent="sub_theme.children"></CRF-input-template>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-if="theme.type.name == 'SUB_THEME'">
+                            <h3 class="infi-sub-theme-name">
+                                <p ng-bind="theme.name"></p>
+                            </h3>
+                            <ul class="form-inline">
+                                <li ng-repeat="sub_theme in theme.children" style="border-bottom: 1px solid #eee;padding: 10px 0;">
+                                    <CRF-input-template ng-if="sub_theme.type.name == 'PROPERTY'" input="sub_theme" parent="theme.children"></CRF-input-template>
+                                    <div class="infi-sub-theme-name"  ng-if="sub_theme.type.name == 'SUB_THEME'">
+                                        <h3 class="infi-theme-name">
+                                            <p ng-bind="sub_theme.name"></p>
+                                        </h3>
+                                        <ul class="infi-form-inputs">
+                                            <li ng-repeat="property in sub_theme.children" style="border-bottom: 1px solid #eee;padding: 10px 0;">
+                                                <CRF-input-template ng-if="property.type.name == 'PROPERTY'" input="property" parent="sub_theme.children"></CRF-input-template>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </form>
+        </div>
+    </div>
+</div>

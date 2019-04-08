@@ -1,0 +1,47 @@
+.planExeSplitPage-directive {
+  .data-display-wrapper {
+    min-height: 180px;
+  }
+
+
+  .page-split-wrapper {
+    text-align: right;
+
+    .jump-num-wrapper,
+    .spliter-wrapper {
+      display: inline-block;
+    }
+
+    .jump-num-wrapper {
+      .jumpNum-ipt {
+        width: 55px;
+      }
+
+      .jumpNum-ipt,
+      .jumpNum-btn {
+        height: 28px;
+        padding: 3px 9px;
+        font-size: 14px;
+      }
+    }
+
+    .spliter-wrapper {
+      .pagination {
+        margin: 0 10px 0 0;
+      }
+
+      .pagination>li>a, .pagination>li>span {
+        padding: 3px 9px;
+        color: #407cff;
+      }
+
+      .pagination>li.active {
+        > a {
+          background-color: #007fff;
+          border-color: #007fff;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

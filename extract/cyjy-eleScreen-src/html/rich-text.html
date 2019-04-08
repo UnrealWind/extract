@@ -1,0 +1,92 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>新增文章</h4>
+<div class="infi-box disease-box">
+    <div class="form-group form-inline">
+        <label for="smoke">发布位置：</label>
+        <select name="smoke" ng-model="article.location">
+            <option value = '1'>吸烟危害</option>
+            <option value = '2'>戒烟益处</option>
+        </select>
+        <select name="smoke" ng-model="article.location">
+            <option value = '1'>吸烟危害</option>
+            <option value = '2'>戒烟益处</option>
+        </select>
+        <label for="level">权重：</label>
+        <input name="level" class="form-control" type="text" ng-model="article.weight">
+    </div>
+    <div class="form-group">
+        <label for="title" class="">请输入文章标题：</label>
+        <input name="title" class="form-control fix-input" style="width:75%;" type="text" ng-model="article.title">
+    </div>
+    <div class="form-group form-inline">
+        <label>上传文章缩略图：</label>
+        <input id="updateImg" type="file" class="fix-input" onchange="angular.element(this).scope().upadateImg(this)" >
+    </div>
+
+    <div>
+        <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+                    <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+                    <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+                <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+                <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
+                <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
+                <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
+                <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
+                <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a>
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+                <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+                <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+                <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+            </div>
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
+                <div class="dropdown-menu input-append">
+                    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+                    <button class="btn" type="button">Add</button>
+                </div>
+                <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+
+            </div>
+
+            <div class="btn-group">
+                <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+            </div>
+            <div class="btn-group">
+                <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+                <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+            </div>
+            <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
+        </div>
+
+        <div id="editor">
+
+        </div>
+
+        <!--<video src = "../data/neko.mp4" controls="controls" autoplay="autoplay" loop="loop"></video>-->
+    </div>
+
+    <div class="infi-btn-box">
+        <a class="btn btn-success" href="javascript:;" ng-click="updateArticle()">确定</a>
+        <a class="btn btn-default" href="#/management-index">取消</a>
+    </div>
+
+</div>
+<div sys-tip></div>

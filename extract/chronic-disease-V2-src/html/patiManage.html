@@ -1,0 +1,231 @@
+<div class="pati-manage-page">
+  <style>
+    .main-content-wrapper,
+    article.infi-main {
+      background-color: #f0f3ef;
+    }
+  </style>
+  <div class="container-fluid main-wrapper">
+    <div class="row">
+      <!-- 关键指标 -->
+      <div class="col-md-12">
+        <div class="key-indicators clearfix">
+          <!-- 关键指标 -->
+          <div class="col-md-6 left-wrapper">
+            <div class="sec-wrapper">
+              <h4 class="title"><i class="glyphicon glyphicon-star"></i> <span>关键指标</span></h4>
+
+              <!--下拉框数据和默认第一项数据加载成功  整体加载成功 -->
+              <div class="range-select-wrapper clearfix"
+                   ng-if="getKeyIndicatorState.currState == 'successful'">
+                <!-- 关键指标种类下拉框 -->
+                <div class="col-md-6 clear-pdl">
+                  <select class="form-control cursor"
+                          ng-options="option.webName for option in keyIndicatorSelect.data track by option.testType"
+                          ng-model="keyIndicatorSelect.currSelected"
+                          ng-change="keyIndicatorSelect.change(keyIndicatorSelect.currSelected)">
+                  </select>
+                </div>
+
+                <!-- 时间范围选择控件 -->
+                <div class="col-md-6 clear-pdl">
+                  <input type="text"
+                        id="J-indicatorTimeRange"
+                        ipt-date-range
+                        ipt-date-range-apply
+                        range-bind="keyIndicatorRange.timeRange"
+                        class="form-control cursor" 
+                        readonly>
+                </div>
+              </div>
+
+
+              <!-- 加载中 -->
+              <p class="bg-warning text-center promp-wrapper"
+                 ng-if="getIndicatorGraphState.currState === 'init'">数据加载中...</p>
+
+              <!-- 失败 -->
+              <p class="bg-danger text-center promp-wrapper"
+                 ng-if="getKeyIndicatorState.currState === 'failed' || getIndicatorGraphState.currState === 'failed'">数据加载失败，请刷新重试！</p>
+
+              <!-- 暂无数据 -->
+              <p class="bg-warning text-center promp-wrapper"
+                 ng-if="getIndicatorGraphState.currState === 'successful' && keyIndicatorSelectedDetail.orgData.length == 0">暂无数据</p>
+
+
+              <!-- 绘图数据获取成功 -->
+              <div class="indicator-graph-wrapper"
+                   ng-if="getIndicatorGraphState.currState === 'successful' && keyIndicatorSelectedDetail.orgData.length > 0">
+                <!-- 折线图 -->
+                <div class="graph-wrapper" 
+                     id="curve-line-wrapper"
+                     ng-if="keyIndicatorGraph.graphData"
+                     curve-line
+                     config="keyIndicatorGraph.graphData">
+                </div>
+              </div>
+          </div>
+        </div>
+          <!-- 已加入的护理组、诊断、最近评估 -->
+          <div class="col-md-6 right-wrapper">
+            <div class="sec-wrapper">
+              <h4 class="title"><i class="glyphicon glyphicon-bookmark"></i> <span>已加入的护理组</span></h4>
+
+              <ul class="group-list">
+                <li ng-repeat="label in groupListAbout.groupsPatiIn"
+                    class="group-item-label"
+                    ng-bind="label.name"></li>
+              </ul>
+            </div>
+
+            <!-- <div class="sec-wrapper">
+              <h4 class="title"><i class="glyphicon glyphicon-leaf"></i> <span>诊断</span></h4>
+              
+              <ul class="group-list">
+                <li ng-repeat="label in groupListAbout.groupsPatiIn"
+                    class="group-item-label"
+                    ng-bind="label.name"></li>
+              </ul>
+            </div> -->
+
+            <div class="sec-wrapper">
+              <h4 class="title"><i class="glyphicon glyphicon-time"></i> <span>最近评估</span></h4>
+              
+              <ul class="group-list" ng-if="recentEvaluate">
+                <li class="group-item-label"
+                    ng-bind="recentEvaluate"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- 护理分组集合 tab -->
+    <div class="row component-collect"
+         ng-if="currGroup">
+      <!-- 获取到护理分组集合数据再显示 -->
+      <div class="col-md-9" ng-if="groupListAbout.groupsPatiIn.length > 0">
+        <!-- tab 切换 -->
+        <div class="group-tab-container">
+          <ul class="group-tab-wrapper">
+            <li class="tab-item cursor"
+                ng-repeat="tabItem in groupListAbout.groupsPatiIn"
+                ng-bind="tabItem.name"
+                ng-class="{true: 'active'}[groupListAbout.currActive == $index]"
+                ng-click="groupListAbout.changeActive($index)"></li>
+          </ul>
+        </div>
+
+      <!-- 各个计划展示 -->
+      <!-- 当完全获取到方案数据后再显示 -->
+      <!-- 基本资料 -->
+      <basic-info curr-group="currGroup"></basic-info>
+      <!-- 方案集合 -->
+      <!-- 加载中 -->
+      <div ng-if="getPlanState.currState == 'fetching'">
+        <div class="panel panel-default none-plan-wrapper">
+          <div class="panel-body none-plan-body">
+            <div class="content-wrapper">
+              <h4 class="text-warning">数据加载中，请稍候...</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 请求成功 -->
+      <div ng-if="getPlanState.currState == 'successful'">
+        <plans ng-if="planCollect.length > 0"
+                plan-collect="planCollect"
+                curr-group="currGroup"></plans>
+
+        <!-- 没有方案 -->
+        <div ng-if="planCollect.length == 0 || !planCollect">
+          <div class="panel panel-default none-plan-wrapper">
+            <div class="panel-body none-plan-body">
+              <div class="content-wrapper">
+                <h4>
+                  <p>您还未完成首次评估</p> 
+                  <p><strong>完成评估后可为患者配置护理方案</strong></p>
+                </h4>
+                <p>
+                  <a class="go-evaluate-link" 
+                      href="javascript:;"
+                      ng-click="firstEval()">去评估 >> </a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 请求失败 -->
+      <div ng-if="getPlanState.currState == 'failed'">
+        <div class="panel panel-default none-plan-wrapper">
+          <div class="panel-body none-plan-body">
+            <div class="content-wrapper">
+              <h4 class="text-danger">请求数据出错，请刷新重试！</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3 fixed-side-wrapper"
+         keep-fixed>
+      <div class="fixed-side">
+        <div class="pati-profile-wrapper">
+          <p class="pati-profile">
+            <!-- 头像 -->
+            <i class="avatar glyphicon glyphicon-user"></i>
+            <!-- 资料 -->
+            <span ng-bind="currPati.name"
+                  title="{{currPati.name}}"
+                  class="pati-name"></span>
+          </p>
+  
+          <!-- 所在组 -->
+          <ul class="group-list">
+            <li ng-repeat="label in groupListAbout.groupsPatiIn"
+                class="group-item-label"
+                ng-bind="label.name"></li>
+          </ul>
+        </div>
+
+        <!-- 操作按钮区 -->
+        <div class="opts-wrapper">
+          <ul class="opts-list">
+            <!-- 统一视图 -->
+            <li class="opt-item">
+              <a ng-href="{{unitHref}}", target="_blank">
+                <i class="glyphicon glyphicon-sort opt-icon"></i>
+                <span class="opt-txt">统一视图</span>
+              </a>
+            </li>
+            <!-- 调整方案 -->
+            <li class="opt-item"
+                ng-if="planCollect.length > 0"
+                ng-click="toEditPlan()">
+              <i class="glyphicon glyphicon-pencil opt-icon"></i>
+              <span class="opt-txt">调整方案</span>
+            </li>
+            <!-- 患者列表 -->
+            <li class="opt-item"
+                ng-click="backToList()">
+              <i class="glyphicon glyphicon-list opt-icon"></i>
+              <span class="opt-txt">患者列表</span>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- anchorScroll component -->
+        <div class="anchor-wrapper">
+          <anchor-scroll nav-data="planCollect" ng-if="planCollect && planCollect.length > 0"></anchor-scroll>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  </div>
+</div>

@@ -1,0 +1,374 @@
+<div class="row">
+    <button class="btn btn-sm btn-primary-white f-l" ng-click="goBack()">返回</button>
+    <img src="../images/print.png" class="f-r" ng-click="print()" title="打印"  style="margin-right: 100px;margin-left: 20px;cursor: pointer;">
+    <button class="btn btn-sm btn-primary-white f-r" ng-if="permission != 'doctor'" ng-click="saveModel()">保存修改</button>
+</div>
+
+<div class="row m-t-l">
+    <div class="col-md-10 col-sm-10" style="margin: 0 auto;float: none;">
+        <!--输入表单-->
+        <div class="row main-from daily-report">
+            <div class="form-data" id="model">
+                <div class="col-md-6 model-length f-l" ng-repeat="item in modleList" ng-if="item.fieldName != '录入人'" >
+                    <div class="row item-row">
+                        <p class="f-l col-md-6">{{item.fieldName}}</p>
+                        <input ng-if="item.fieldName == '日期'" readonly type="text"  class="form-control col-md-6 f-r" value="{{item.value}}">
+                        <input ng-if="item.fieldName != '日期'" type="text" class="form-control col-md-6 f-r" value="{{item.value}}">
+                        <em class="fieldId hide">{{item.fieldId}}</em>
+                        <em class="date hide">{{item.date}}</em>
+                        <em class="wardId hide">{{item.wardId}}</em>
+                        <em class="id hide">{{item.id}}</em>
+                        <em class="creator hide">{{item.creator}}</em>
+                        <em class="createTime hide">{{item.createTime}}</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-box">
+                <span class="table-title">急会诊情况</span>
+                <table class="table" border="1">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="item in overall">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="overall">
+                    <tr ng-repeat="item in overallData track by $index">
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.deptName}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.bed}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.name}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.sex}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.age}}"></th>
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.isCrri}}"></th>
+                        <th style="width: 13%;"><input type="text" class="form-control" value="{{item.diagDisposal}}"></th>
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.operItem}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.opertor}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.id}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.createTime}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.creator}}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-operate" ng-if="permission != 'doctor'" >
+                    <button class="btn btn-sm btn-primary-white f-r m-l-s" ng-click="deleteData(4)">—</button>
+                    <button class="btn btn-sm btn-primary-white f-r" ng-click="addData(4)">＋</button>
+                </div>
+            </div>
+
+            <div class="table-box">
+                <span class="table-title">危重病人</span>
+                <table class="table" border="1">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="item in patient">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="patient">
+                    <tr ng-repeat="item in patientData track by $index" repeat-history-finish>
+                        <th style="width: 12%;" class="dieaseLevel">
+                            <select class="form-control">
+                                <option value="1">病危</option>
+                                <option value="2">病重</option>
+                                <option value="3">新增病重</option>
+                            </select>
+                        </th>
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.deptName}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.bed}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.name}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.sex}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.age}}"></th>
+                        <th style="width: 10%;" class="identity">
+                            <select class="form-control">
+                                <option value="1">地方</option>
+                                <option value="2">军人</option>
+                                <option value="3">特殊病人</option>
+                            </select>
+                        </th>
+                        <th style="width: 10%;"><input type="text" class="form-control" value="{{item.diagDisposal}}"></th>
+                        <th style="width: 10%;"><input type="text" class="form-control" value="{{item.operItem}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.opertor}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.id}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.createTime}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.creator}}"></th>
+                        <th style="width: 13%;"><input type="text" class="form-control" value="{{item.orderDate}}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-operate" ng-if="permission != 'doctor'" >
+                    <button class="btn btn-sm btn-primary-white f-r m-l-s" ng-click="deleteData(1)">—</button>
+                    <button class="btn btn-sm btn-primary-white f-r" ng-click="addData(1)">＋</button>
+                </div>
+            </div>
+            <div class="table-box">
+                <span class="table-title">新增军人</span>
+                <table class="table" border="1">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="item in solider track by $index">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="solider">
+                    <tr ng-repeat="item in soliderData track by $index">
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.deptName}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.bed}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.name}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.sex}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.age}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.identity}}"></th>
+                        <th style="width: 13%;"><input type="text" class="form-control" value="{{item.diagDisposal}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.specialDisposal}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.operItem}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.opertor}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.id}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.createTime}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.creator}}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-operate"  ng-if="permission != 'doctor'" >
+                    <button class="btn btn-sm btn-primary-white f-r m-l-s" ng-click="deleteData(2)">—</button>
+                    <button class="btn btn-sm btn-primary-white f-r" ng-click="addData(2)">＋</button>
+                </div>
+            </div>
+            <div class="table-box">
+                <span class="table-title">特殊病人</span>
+                <table class="table" border="1">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="item in special">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="special">
+                    <tr ng-repeat="item in specialData track by $index">
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.deptName}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.bed}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.name}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.sex}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.age}}"></th>
+                        <th style="width: 13%;"><input type="text" class="form-control" value="{{item.diagDisposal}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.operItem}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.opertor}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.id}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.createTime}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.creator}}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-operate" ng-if="permission != 'doctor'" >
+                    <button class="btn btn-sm btn-primary-white f-r m-l-s" ng-click="deleteData(3)">—</button>
+                    <button class="btn btn-sm btn-primary-white f-r" ng-click="addData(3)">＋</button>
+                </div>
+            </div>
+            <div class="table-box">
+                <span class="table-title">联合会诊患者</span>
+                <table class="table" border="1">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="item in consultation">{{item}}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="consultation">
+                    <tr ng-repeat="item in consultationData track by $index" repeat-history-finish>
+                        <th style="display: none;" ></th>
+                        <th style="width: 15%;"><input type="text" class="form-control" value="{{item.deptName}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.bed}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.name}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.sex}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.age}}"></th>
+                        <th style="width: 13%;" class="identity">
+                            <select class="form-control">
+                                <option value="1">地方</option>
+                                <option value="2">军人</option>
+                                <option value="3">特殊病人</option>
+                            </select>
+                        </th>
+                        <th style="width: 10%;"><input type="text" class="form-control" value="{{item.diagDisposal}}"></th>
+                        <th style="width: 10%;"><input type="text" class="form-control" value="{{item.operItem}}"></th>
+                        <th><input type="text" class="form-control" value="{{item.opertor}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.id}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.createTime}}"></th>
+                        <th class="hide"><input type="text" class="form-control" value="{{item.creator}}"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-operate" ng-if="permission != 'doctor'" >
+                    <button class="btn btn-sm btn-primary-white f-r m-l-s" ng-click="deleteData(5)">—</button>
+                    <button class="btn btn-sm btn-primary-white f-r" ng-click="addData(5)">＋</button>
+                </div>
+            </div>
+            <div class="enter-person">
+                <span >录入人：</span>
+                <input type="text" class="form-control" ng-model="enterPerson.value">
+            </div>
+        </div>
+    </div>
+</div>
+<!--打印专用-->
+<div style="display: none;">
+    <div class="row m-t-l" id="print">
+        <div class="col-md-10 col-sm-10" style="margin: 0 auto;float: none;">
+            <!--输入表单-->
+            <div class="row main-from daily-report">
+                <div class="form-data">
+                    <div class="col-md-6 model-length f-l" ng-repeat="item in modleList" ng-if="item.fieldName != '录入人'" >
+                        <div class="row item-row">
+                            <p class="f-l col-md-6">{{item.fieldName}}</p>
+                            <input ng-if="item.fieldName == '日期'" readonly type="text"  class="form-control col-md-6 f-r" value="{{item.value}}">
+                            <input ng-if="item.fieldName != '日期'" type="text" class="form-control col-md-6 f-r" value="{{item.value}}">
+                            <em class="fieldId hide">{{item.fieldId}}</em>
+                            <em class="date hide">{{item.date}}</em>
+                            <em class="wardId hide">{{item.wardId}}</em>
+                            <em class="id hide">{{item.id}}</em>
+                            <em class="creator hide">{{item.creator}}</em>
+                            <em class="createTime hide">{{item.createTime}}</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-box">
+                    <span class="table-title">急会诊情况</span>
+                    <table class="table" border="1">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in overall">{{item}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in overallData track by $index">
+                            <th>{{item.deptName}}</th>
+                            <th>{{item.bed}}</th>
+                            <th>{{item.name}}</th>
+                            <th>{{item.sex}}</th>
+                            <th>{{item.age}}</th>
+                            <th style="width: 13%;">{{item.isCrri}}</th>
+                            <th style="width: 13%;">{{item.diagDisposal}}</th>
+                            <th>{{item.operItem}}</th>
+                            <th>{{item.opertor}}</th>
+                            <th class="hide">{{item.id}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-box">
+                    <span class="table-title">危重病人</span>
+                    <table class="table" border="1">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in patient">{{item}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in patientData track by $index" repeat-history-finish>
+                            <th>
+                                <span ng-if="item.dieaseLevel == 1">病危</span>
+                                <span ng-if="item.dieaseLevel == 2">病重</span>
+                                <span ng-if="item.dieaseLevel == 3">新增病重</span>
+                            </th>
+                            <th>{{item.deptName}}</th>
+                            <th>{{item.bed}}</th>
+                            <th>{{item.name}}</th>
+                            <th>{{item.sex}}</th>
+                            <th>{{item.age}}</th>
+                            <th>
+                                <span ng-if="item.identity == 1">地方</span>
+                                <span ng-if="item.identity == 2">军人</span>
+                                <span ng-if="item.identity == 3">特殊病人</span>
+                            </th>
+                            <th style="width: 13%;">{{item.diagDisposal}}</th>
+                            <th>{{item.operItem}}</th>
+                            <th>{{item.opertor}}</th>
+                            <th>{{item.orderDate}}</th>
+                            <th class="hide">{{item.id}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-box">
+                    <span class="table-title">新增军人</span>
+                    <table class="table" border="1">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in solider track by $index">{{item}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in soliderData track by $index">
+                            <th>{{item.deptName}}</th>
+                            <th>{{item.bed}}</th>
+                            <th>{{item.name}}</th>
+                            <th>{{item.sex}}</th>
+                            <th>{{item.age}}</th>
+                            <th>{{item.identity}}</th>
+                            <th style="width: 13%;">{{item.diagDisposal}}</th>
+                            <th>{{item.specialDisposal}}</th>
+                            <th>{{item.operItem}}</th>
+                            <th>{{item.opertor}}</th>
+                            <th class="hide">{{item.id}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-box">
+                    <span class="table-title">特殊病人</span>
+                    <table class="table" border="1">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in special">{{item}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in specialData track by $index">
+                            <th>{{item.deptName}}</th>
+                            <th>{{item.bed}}</th>
+                            <th>{{item.name}}</th>
+                            <th>{{item.sex}}</th>
+                            <th>{{item.age}}</th>
+                            <th style="width: 13%;">{{item.diagDisposal}}</th>
+                            <th>{{item.operItem}}</th>
+                            <th>{{item.opertor}}</th>
+                            <th class="hide">{{item.id}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-box">
+                    <span class="table-title">联合会诊患者</span>
+                    <table class="table" border="1">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in consultation">{{item}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in consultationData track by $index" repeat-history-finish>
+                            <th style="display: none;"></th>
+                            <th>{{item.deptName}}</th>
+                            <th>{{item.bed}}</th>
+                            <th>{{item.name}}</th>
+                            <th>{{item.sex}}</th>
+                            <th>{{item.age}}</th>
+                            <th>
+                                <span ng-if="item.identity == 1">地方</span>
+                                <span ng-if="item.identity == 2">军人</span>
+                                <span ng-if="item.identity == 3">特殊病人</span>
+                            </th>
+                            <th style="width: 13%;">{{item.diagDisposal}}</th>
+                            <th>{{item.operItem}}</th>
+                            <th>{{item.opertor}}</th>
+                            <th class=" hide">{{item.id}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="enter-person">
+                    <span >录入人：</span>
+                    <input type="text" class="form-control" ng-model="enterPerson.value">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div general-prompt></div>

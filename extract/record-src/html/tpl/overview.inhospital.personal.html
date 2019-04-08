@@ -1,0 +1,57 @@
+
+<!--住院个人史-->
+<div class="row infi-inhospital-info-pd" ng-if="smokeWrap.status=='ok'">
+    <div class="col-md-2">
+        <span style="font-size: 15px;font-weight: bold">吸烟史</span>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-2">
+                <span class="infi-wj-titles">吸烟状态：</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="smoke.smokeStatus"></span>
+            </div>
+            <div class="col-md-2">
+                <span class="infi-wj-titles">吸烟时长：</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="smoke.smokeTime|date:'yyyy-MM-dd HH:mm:ss'"></span>
+            </div>
+            <div class="col-md-2">
+                <span class="infi-wj-titles">吸烟量:</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="smoke.somkeAmmount"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row infi-inhospital-info-pd" ng-if="wineWrap.status=='ok'">
+    <div class="col-md-2">
+        <span style="font-size: 15px;font-weight: bold">饮酒史</span>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-2">
+                <span class="infi-wj-titles">饮酒状态：</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="wine.drinkStatus"></span>
+            </div>
+            <div class="col-md-2">
+                <span class="infi-wj-titles">饮酒时长：</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="wine.drinkTime"></span>
+            </div>
+            <div class="col-md-2">
+                <span class="infi-wj-titles">饮酒量:</span>
+            </div>
+            <div class="col-md-2">
+                <span ng-bind="wine.drinkAmmount"></span>
+            </div>
+        </div>
+    </div>
+</div>

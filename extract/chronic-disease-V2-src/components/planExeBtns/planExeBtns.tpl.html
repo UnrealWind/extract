@@ -1,0 +1,14 @@
+<div class="planExeBtns-component">
+        <div ng-if="$ctrl.currStatus">
+                <div ng-switch="$ctrl.specVal" class="text-right">
+                        <!-- 未完成 -->
+                        <button class="btn btn-{{$ctrl.currStatus.className}} btn-sm" ng-switch-when="waiting" ng-bind="$ctrl.currStatus.text"
+                                ng-click="$ctrl.changePlanItemStatus($ctrl.singleItem)"></button>
+                        <!-- 需要显示按钮的 已完成 状态 -->
+                        <button ng-if="$ctrl.exceptPlanType.indexOf($ctrl.planType) < 0"
+                                class="btn btn-{{$ctrl.currStatus.className}} btn-sm" ng-switch-when="finish" ng-bind="$ctrl.currStatus.text"
+                                ng-click="$ctrl.changePlanItemStatus($ctrl.singleItem)"></button>
+                </div>
+        </div>
+
+</div>

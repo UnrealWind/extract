@@ -1,0 +1,103 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究</h4>
+<div class="infi-box">
+    <h4>我的课题:</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row">
+                <div ng-click="studyOverview(data.id)" ng-repeat="data in myData">
+                    <div class="box-sick-item active" >
+                        <div title="{{data.label}}">
+                            <span class="name">{{data.label}}</span>
+                        </div>
+                        <hr class="self-hr-sm">
+                        <table class="table">
+                            <tbody><tr>
+                                <td class="self-label">{{data.typeName}}:</td>
+                                <td>{{data.type|unescape}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.centerName}}:</td>
+                                <td>{{data.center|unescape}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.timeName}}:</td>
+                                <td>{{data.time}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.statusName}}:</td>
+                                <td>{{data.status}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="tag-sick-item">
+                            <img src="../../src/image/tag-red.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info" role="alert" ng-if="displayCreate">
+            系统暂无数据
+        </div>
+
+        <!--分页-->
+        <div class="infi-page">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="1"
+                            boundary-link-numbers="true" ng-change="updatePageCreate({page:content.page.number})" items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+            </uib-pagination>
+        </div>
+
+    </div>
+    <h4>合作的课题:</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row">
+                <div ng-click="studyOverview(data.id)" ng-repeat="data in coopData">
+                    <div class="box-sick-item active">
+                        <div>
+                            <span class="name">{{data.label}}</span>
+                        </div>
+                        <hr class="self-hr-sm">
+                        <table class="table">
+                            <tbody><tr>
+                                <td class="self-label">{{data.typeName}}:</td>
+                                <td>{{data.type|unescape}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.centerName}}:</td>
+                                <td>{{data.center|unescape}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.timeName}}:</td>
+                                <td>{{data.time}}</td>
+                            </tr>
+                            <tr>
+                                <td class="self-label">{{data.statusName}}:</td>
+                                <td>{{data.status}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="tag-sick-item">
+                            <img src="../../src/image/tag-red.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info" role="alert" ng-if="displayAttend">
+            系统暂无数据
+        </div>
+
+        <!--分页-->
+        <div class="infi-page">
+            <uib-pagination total-items="contents.page.totalElements" ng-model="contents.page.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttend({page:contents.page.number})" items-per-page="contents.page.size"
+                            num-pages="contents.page.totalPages">
+            </uib-pagination>
+        </div>
+
+    </div>
+</div>

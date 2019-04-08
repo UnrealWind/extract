@@ -1,0 +1,34 @@
+<div class="weather">
+    <div class="row">
+        <div class="col-md-5 left">
+        <p>
+            {{now | date:'HH:mm'}}
+        </p>
+        <p>
+            {{now | date:'M'}}月{{now | date:'d'}}日{{week}}
+        </p>
+         <!--<p>-->
+            <!--戊戌年三月十六-->
+        <!--</p>-->
+        </div>
+        <div class="col-md-2 center">
+            <p ng-if="weather.wendu">
+                {{weather.wendu}}°
+            </p>
+            <p class="weather-img">
+                <!--<img src="../../img/sun.png"/>-->
+            </p>
+        </div>
+        <div class="col-md-5 right">
+            <p ng-if="weather.aqiStatus">
+                空气质量：{{weather.aqi}}<span>{{weather.aqiStatus}}</span>
+            </p>
+            <p ng-if="weather.todayStatus">
+                今日：{{weather.todayRange}} <span>{{weather.todayStatus}}</span>
+            </p>
+            <p ng-if="weather.tomorrowStatus">
+                明日：{{weather.tomorrowRange}} <span>{{weather.tomorrowStatus}}</span>
+            </p>
+        </div>
+    </div>
+</div>

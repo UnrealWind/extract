@@ -1,0 +1,190 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>检查列表</h4>
+<div class="infi-box">
+    <div class="btn-tab">
+        <ul>
+            <li>
+                <a class="btn" ng-class="{'today':'btn-primary','all':'btn-default'}[type]" ng-click="changeTab('today')">今日检查患者</a>
+            </li>
+            <li>
+                <a class="btn" ng-class="{'all':'btn-primary','today':'btn-default'}[type]" ng-click="changeTab('all')">全部检查患者</a>
+            </li>
+        </ul>
+
+        <span ng-if="type == 'today'" >今日待接诊：{{kpi.today.ready|changeNULL}}人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已接诊:{{kpi.today.finish|changeNULL}}人</span>
+        <span ng-if="type == 'all'" >共检查{{kpi.all.totalPatient|changeNULL}}位患者&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;累计{{kpi.all.totalExam|changeNULL}}人次</span>
+    </div>
+    <div  class="infi-box-containter input-lists">
+        <div class="dir-nav-container">
+            <div class="infi-box-containter ">
+                <div class="dir-nav-container">
+                    <div class="marginten">
+                        <ul class="row form-inline " style="margin-top: 0;">
+                            <li class="col-xs-3 form-group">
+                                <label>病案号：</label>
+                                <input ng-change="getRecordList(1,10)" type="text" ng-model="params.filter_patientId" class="form-control" >
+                            </li>
+                            <li class="col-xs-3 form-group">
+                                <label>姓名：</label>
+                                <input ng-change="getRecordList(1,10)" type="text" ng-model="params.filter_name" class="form-control" >
+                            </li>
+                            <!--<li  class="col-xs-3 form-group">
+                                <label>检查状态：</label>
+                                <select ng-change="getRecordList(1,10)" ng-model="params.filter_flag" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="created">待检查</option>
+                                    <option value="finish">已检查</option>
+                                </select>
+                            </li>-->
+                            <li ng-if="type == 'all'" class="col-xs-3 form-group">
+                                <label>报告医生：</label>
+                                <select ng-change="getRecordList(1,10)" ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_reportDoctorId">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat = "opt in doctorList" value = "{{opt.id}}">{{opt.name}}</option>
+                                </select>
+                            </li>
+
+                            <li ng-if="type == 'all'" class="col-xs-3 form-group">
+                                <label>申请科室：</label>
+                                <select ng-change="getRecordList(1,10)" ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_requestDeptId">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat = "opt in deptList" value = "{{opt.id}}">{{opt.name}}</option>
+                                </select>
+                            </li>
+                            <li ng-if="type == 'all'" class="col-xs-3 form-group">
+                                <label>申请医生：</label>
+                                <select ng-change="getRecordList(1,10)" ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_requestDoctorId">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat = "opt in doctorList" value = "{{opt.id}}">{{opt.name}}</option>
+                                </select>
+                            </li>
+
+                            <li ng-if="type == 'all'" class="col-xs-4 form-group">
+                                <label>报告时间：</label>
+                                <input ng-change="getRecordList(1,10)" class="form-control" type="text" name="start" readonly="readonly"
+                                       ng-model="params.filter_reportDateMin"  ng-click="timePlugin('start','yyyy-mm-dd')">
+                                <span>-</span>
+                                <input ng-change="getRecordList(1,10)" class="form-control" type="text" name="end" readonly="readonly"
+                                       ng-model="params.filter_reportDateMax"  ng-click="timePlugin('end','yyyy-mm-dd')">
+                            </li>
+
+                            <li class="col-xs-5 form-group exam-search">
+                                <label>检查项目：</label>
+                                <!-- <input ng-change="getRecordList(1,10)" type="text" ng-model="params.filter_examKid" class="form-control" > -->
+                                <input type="text"
+                                       ng-model="searchAbout.kw"
+                                       class="form-control sticky"
+                                       ng-click="clickToSearch($event)"
+                                       ng-change="searchAbout.search(searchAbout.kw)">
+
+                                <div class="exam-search-list J-exam-search-list"
+                                     ng-if="['searching', 'showRst', 'showErr'].indexOf(searchAbout.currState) >= 0"
+                                     bind-ng-if>
+
+                                    <p class="text-center text-muted"
+                                       ng-if="searchAbout.currState == 'searching'">搜索中...</p>
+
+                                    <p class="text-center text-muted"
+                                       ng-if="searchAbout.currState == 'showRst' && searchAbout.rst.length == 0">暂无结果</p>
+
+                                    <p class="text-center text-muted"
+                                       ng-if="searchAbout.currState == 'showErr'">请求出错, 请检查网络后重新尝试</p>
+
+
+                                    <div ng-if="searchAbout.rst.length > 0">
+                                        <p class="text-center"><strong>名称</strong></p>
+                                        <ul class="rstList">
+                                            <li ng-repeat="rstItem in searchAbout.rst"
+                                                class="rstList-item cursor"
+                                                ng-click="selectData(rstItem)">
+                                                <span ng-bind="rstItem.name"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        <!--<ul class="row form-inline" >
+
+                        </ul>-->
+                    </div>
+                </div>
+
+                <table ng-if="type == 'today'" class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>病案号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>检查项目</th>
+                        <th>检查部位</th>
+                        <th>检查状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="opt in recordList.content">
+                        <td>{{opt.patientId}}</td>
+                        <td>{{opt.name}}</td>
+                        <td>{{opt.sex}}</td>
+                        <td>{{opt.age}}</td>
+                        <td>{{opt.examName}}</td>
+                        <td>{{opt.examPosition}}</td>
+                        <td>{{opt.flag|statusCheck}}</td>
+                        <td>
+                            <a target="_blank" ng-if="opt.flag == 'created'" ng-click="jump('/record-collect-src/#/record-check-collect/'+opt.examNo)" class="cursor">接诊</a>
+                            <a target="_blank" ng-if="opt.flag == 'finish'" ng-click="jump('/record-collect-src/#/record-check-collect/'+opt.examNo+'/view')" class="cursor">查看</a>
+                            <a target="_blank" href="{{hostPort}}/record-src-demo/#/record/{{opt.xlPatientId}}" class="cursor">统一视图</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table ng-if="type=='all'" class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th>病案号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>检查项目</th>
+                            <th>检查部位</th>
+                            <th>报告时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="opt in recordList.content">
+                            <td>{{opt.patientId}}</td>
+                            <td>{{opt.name}}</td>
+                            <td>{{opt.sex}}</td>
+                            <td>{{opt.age}}</td>
+                            <td>{{opt.examName}}</td>
+                            <td>{{opt.examPosition}}</td>
+                            <td>{{opt.reportDate}}</td>
+                            <td>
+                                <a target="_blank" ng-if="opt.flag == 'created'" ng-click="jump('/record-collect-src/#/record-check-collect/'+opt.examNo)" class="cursor">接诊</a>
+                                <a target="_blank" ng-if="opt.flag == 'finish'" ng-click="jump('/record-collect-src/#/record-check-collect/'+opt.examNo+'/view')" class="cursor">查看</a>
+                                <a target="_blank" href="{{hostPort}}/record-src-demo/#/record/{{opt.xlPatientId}}" class="cursor">统一视图</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div ng-if="!recordList" class="alert alert-danger">暂无数据！！！</div>
+                <div class="infi-page" >
+                    <uib-pagination total-items="recordList.totalElements" ng-model="recordList.number"
+                                    max-size="7" boundary-link-numbers="true"
+                                    ng-change="getRecordList(recordList.number,10)"
+                                    items-per-page="recordList.size"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

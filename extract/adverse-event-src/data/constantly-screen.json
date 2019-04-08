@@ -1,0 +1,20 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": {
+    "startTime":"",
+    "endTime":"",
+    "deptId":{
+      "value":"",
+      "options":[]
+    },
+    "wardId":{
+      "value":"",
+      "options":[]
+    },
+    "diseaseSeed":{
+      "value":"",
+      "options":[]
+    }
+  }
+}

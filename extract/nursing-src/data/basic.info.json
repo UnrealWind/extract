@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "description": "数据请求成功",
+  "data": {
+    "name":"张三",
+    "number":"213442",
+    "sex":"男",
+    "age":"36",
+    "area":"肿瘤内科",
+    "tel":"13654625431",
+    "outTime":"2017-02-03",
+    "outTube":"是",
+    "diagnose":"xxxxx"
+  }
+}

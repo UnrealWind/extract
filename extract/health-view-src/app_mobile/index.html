@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><!-- 手机端 -->
+    <title>健康画像</title>
+    <link rel="shortcut icon" href="../../src/image/favicon.ico" type="image/x-icon" />
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="../../src/scss/infi-ele.scss" rel="stylesheet" />-->
+    <link href="../../src/scss/infi-ele-phone.scss" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../src/plugin/esl.js"></script>
+    <script src="../../src/plugin/echarts-2.2.7/build/dist/echarts.js"></script>
+    <script type="text/javascript" src="../../src/plugin/jquery/jquery-2.2.3.min.js"></script>
+    <!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>-->
+    <script type="text/javascript" src="../js/require.js" ></script>
+
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+<!-- 头部导航 -->
+<!--<header class="navbar navbar-default infi-header clearfix">-->
+    <!--<div class="navbar-header infi-header-logo">-->
+        <!--<span class="logo"></span>-->
+    <!--</div>-->
+
+    <!--<div class="infi-header-title pull-left">-->
+        <!--健康画像-->
+    <!--</div>-->
+
+    <!--<div class="box-user pull-right" ng-controller="LoginController">-->
+        <!--<span class="infi-user-box" ng-click="userInfo()">-->
+            <!--<img src="../../src/image/doctor.png" class="user-logo cursorPointer"/>-->
+            <!--<span ng-bind="name"></span>-->
+        <!--</span>-->
+        <!--&lt;!&ndash; <span ng-mouseover="showDrop()" ng-mouseleave="closeDrop()" class="cursorPointer">-->
+            <!--<span class="infi-header-dropdown">-->
+                <!--<a href='javascript:;' class='changePassword' ng-click = 'changePassword()'>修改密码</a>-->
+                <!--<span class="caret">-->
+                <!--</span>-->
+            <!--</span>-->
+        <!--</span>    &ndash;&gt;-->
+        <!--<span ng-click="logout()" class="cursorPointer"> | 退出</span>-->
+    <!--</div>-->
+
+<!--</header>-->
+<!-- 头部导航 END -->
+
+<!-- 左部导航 -->
+
+<!--<infi-navi navi-data="naviData" ng-if="naviData"></infi-navi>-->
+
+<!-- 右部内容 -->
+<article class="infi-main {{articleSwitch}}">
+
+    <div ng-view></div>
+
+</article>
+<!-- 右部内容 END-->
+
+<div class="modal fade"  id="user-info" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">用户信息</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tr ng-repeat="data in loginDetails">
+                        <td ng-bind="data.name"></td>
+                        <td ng-bind="data.value"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <!--<button type="button" class="btn btn-primary" ng-click="inviteModal()">邀请</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</body>
+</html>
+
+<script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../../src/angular-ui-bootstrap.js"></script>
+<!--<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>-->
+
+
+<script type="text/javascript" src="../all.js"></script>
+<script type="text/javascript" src="js/route.js"></script>
+
+
+<script type="text/javascript" src="../../src/widget/system/system.directive.js" ></script>
+<script type="text/javascript" src="../../src/widget/system/http.interceptor.factory.js" ></script>
+<script type="text/javascript" src="../../src/widget/system/auth.service.js" ></script>
+<script type="text/javascript" src="../../src/widget/system/login.controller.js" ></script>
+<script type="text/javascript" src="../../src/widget/system/session.service.js" ></script>
+<!--<script type="text/javascript" src="../../src/widget/system/system.filter.js" ></script>-->
+<!--<script type="text/javascript" src="../../src/widget/table/table.js"></script>-->
+
+
+<!--<script type="text/javascript" src="../../src/widget/form/navi.services.js"></script>-->
+<!--<script type="text/javascript" src="../../src/widget/form/group.services.js"></script>-->
+<!--<script type="text/javascript" src="../../src/widget/form/form.services.js"></script>-->
+<!--<script type="text/javascript" src="../../src/widget/form/form.directive.js"></script>-->
+<!--<script type="text/javascript" src="../../src/widget/form/navi.directive.js"></script>-->
+<!--<script type="text/javascript" src="../../src/widget/form/details.directive.js"></script>-->
+
+<!-- 导航 -->
+<script type="text/javascript" src="../../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../../src/widget/navi/navi.services.js"></script>

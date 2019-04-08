@@ -1,0 +1,169 @@
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-analysis-modifyed"><a href="#/data.select">数据选择</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/variable.set">变量设置</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/data.pretreatment">数据预处理</a></li>
+        <li class="infi-header-active"><a href="#/filter.set">筛选设置</a></li>
+        <li><a href="#/model">建模</a></li>
+        <li><a href="#/complete">已建模型</a></li>
+    </ul>
+</header>
+<!--<header class="infi-section" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed"><a href="#/data.select">数据管理</a></li>-->
+        <!--<li class="infi-header-active"><a href="#/data.select1">描述统计</a></li>-->
+        <!--<li><a href="#/model">建立模型</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<!--<header class="infi-section marginten" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed" style="width:50%;line-height: 50px;height: 50px;"><a href="#/exploration1">一组数据</a></li>-->
+        <!--<li class="infi-header-active" style="width:50%;line-height: 50px;height: 50px;"><a href="#/exploration2">两组数据</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<div class="row marginten" style="">
+    <div class="col-xs-3">
+        <div class="input-group floatright marginten">
+            <input type="text" class="form-control input-lg"  style="height:34px;"><span class="input-group-addon btn btn-primary">搜索</span>
+        </div>
+        <div class="marginten">
+            <select class="form-control" value='selectLeftData' ng-model="selectLeftData" ng-click="selectLeft()">
+                <option value="">全部</option>
+                <option value="1">分类变量</option>
+                <option value="2">连续变量</option>
+            </select>
+        </div>
+        <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+            <span>{{status.name}}</span>
+        </div>
+        <div class="marginten" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px">...</div>
+
+    </div>
+    <div class="col-xs-9">
+        <div class="backgroud-ddd paddingten">
+            <span class="font-bold">已选变量 |</span>
+            <span>{{selectedData}}</span>
+        </div>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">无序分类变量统计</span>
+        </div>
+        <div style="width: 60%;">
+            <table ng-repeat="table in tablesWuxu" class="table infi-table">
+                <caption style="font-weight: bold;font-size: 18px;text-align:center">{{table.label}}</caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">实验组</th>
+                    <th colspan="2">对照组</th>
+                    <th colspan="3">统计量</th>
+                </tr>
+                <tr>
+                    <th>因素</th>
+                    <th>特征</th>
+                    <th>频数</th>
+                    <th>构成比</th>
+                    <th>频数</th>
+                    <th>构成比</th>
+                    <th>卡方</th>
+                    <th>P值</th>
+                    <th>OR</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key,row) in table.datas">
+                    <td style="vertical-align: middle;" rowspan="{{table.datas.length}}" ng-if="$index == 0">{{table.label}}</td>
+                    <td ng-repeat="col in row track by $index" ng-bind="col"></td>
+                    <td ng-repeat="cow in table.data3" ng-bind="cow" ng-if="key==0" rowspan="{{table.datas.length}}" style="vertical-align: middle"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">连续变量统计</span>
+        </div>
+        <div style="overflow: auto">
+            <div style="width:1800px;">
+            <table class="table infi-table">
+                <caption></caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="9">实验组</th>
+                    <th colspan="9">对照组</th>
+                    <th colspan="2">统计量</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">95%置信区间</th>
+                    <th></th>
+                    <th colspan="2">四分位数</th>
+                    <th colspan="2">范围</th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">95%置信区间</th>
+                    <th></th>
+                    <th colspan="2">四分位数</th>
+                    <th colspan="2">范围</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td ng-repeat="three in trThree" ng-bind="three.name"></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in tablesLianxu">
+                    <!--如果存在重复数据会报错-->
+                    <td ng-repeat="col in row.datas track by $index" ng-bind="col"></td>
+                    <td ng-repeat="cw in row.data3" ng-bind="cw"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <hr>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">无序分类变量统计图</span>
+        </div>
+        <div ng-repeat="table in tablesWuxu">
+            <div style="width: 49%;display: inline-block">
+                <button type="button" class="btn btn-default" ng-click="switch(table,'bar','left')">柱状图</button>
+                <button type="button" class="btn btn-default" ng-click="switch(table,'pie','left')">饼图</button>
+                <div id="wuxu_left_{{table.label}}" style="height:400px; width: 100%;display: inline-block;"></div>
+            </div>
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="switch(table,'bar','right')">柱状图</button>
+                <button type="button" class="btn btn-default" ng-click="switch(table,'pie','right')">饼图</button>
+                <div id="wuxu_right_{{table.label}}" style="height:400px; width: 100%; display: inline-block;">
+            </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">连续变量统计图</span>
+        </div>
+        <div ng-repeat="table in tablesLianxu">
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'shadow','left')">箱线图</button>
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'solid','left')">QQ图</button>
+                <!--<div id="continuous-main" style="height:400px;"></div>-->
+                <div id="lianxu_left_{{table.label}}" style="height: 400px;"></div>
+            </div>
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'shadow','right')">箱线图</button>
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'solid','right')">QQ图</button>
+                <!--<div id="continuous-main" style="height:400px;"></div>-->
+                <div id="lianxu_right_{{table.label}}" style="height: 400px;"></div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

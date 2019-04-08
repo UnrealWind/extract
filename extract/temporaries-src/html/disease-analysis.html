@@ -1,0 +1,32 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>共病分析</h4>
+<div class="infi-box">
+    <div>
+        <ul class="ul-float-left">
+            <li style="width:250px;margin:10px 0 0 20px;">
+                <label>高血压分级:</label>
+                <select class="form-control" ng-change="selectHyLv()" ng-model="select.tagVal.hy">
+                    <option ng-repeat="opt in select.data" value ="{{opt.value}}">{{opt.label}}</option>
+                </select>
+            </li>
+            <li style="width:250px;margin:10px 0 0 20px;" ng-show="levels.select" ng-repeat="levels in select.data">
+                <label>危险程度:</label>
+                <select class="form-control" ng-model="select.tagVal.lv">
+                    <option  ng-repeat="level in levels.children" value ="{{level.value}}">{{level.label}}</option>
+                </select>
+            </li>
+            <li style="padding-left:10px;margin:10px 0 0 20px;">
+                <a class="btn infi-btn-linear-green-l btn-sm" ng-click="serach()">搜索</a>
+            </li>
+        </ul>
+
+        <ul style="width:100%;">
+            <li class="infi-box" ng-repeat="opt in diseases.result" style="margin:10px;border-radius: 4px;width: 17%;padding:22px 0;display: inline-block;">
+                <p style="width:100%;text-align: center;">{{opt.class_name}} （{{opt.ratio}}）</p>
+            </li>
+        </ul>
+    </div>
+    <div class="infi-box-containter">
+        <disease-select></disease-select>
+    </div>
+</div>
+

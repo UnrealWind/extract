@@ -1,0 +1,93 @@
+<!--数据选择按钮-->
+<div class="dropdown " style="float: right;margin:-40px 20px 10px 0;">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        数据源选择
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="left: -52px;padding:10px;">
+        <li role="presentation">数据选择方式：</li>
+        <li role="presentation"><label for="filePath">1、本地上传</label></li>
+        <li role="presentation"><label ng-click="extract()">2、自助取数列表</label></li>
+    </ul>
+</div>
+
+<!--列表-->
+<div style="margin-top:50px;padding:0 20px;">
+    <div class="infi-box" style="margin-top:10px;" ng-repeat="content in contents">
+        <div class="CRF-details-button" style="overflow: auto;margin:5px; padding-bottom:5px;   border-bottom: #3f8ecb solid 1px;">
+            <h4 title="{{content.name}}" ng-bind="content.name" style="width:300px;margin:10px 0 0 0;color: #006abb;display: inline-block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"></h4>
+            <span style="margin-left:50px;">上传时间：{{content.start | sortName}} &nbsp;&nbsp;&nbsp;&nbsp;  最后修改时间：{{content.end | sortName}}</span>
+            <button type="button" class="btn btn-default" ng-click="inviteDelete(content)">删除</button>
+            <div class="dropdown " style="position: absolute;top:17px;right:71px; margin:10px 20px 10px 0;">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    选择
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" style="left: -92px;padding:10px;">
+                    <li role="presentation"><a class="cursorPointer" ng-click="rawDataModal(content)">原始数据</a></li>
+                    <li role="presentation" class="{{content.end | modificationData}}"><a class="cursorPointer " ng-click="rawDataModals(content)">修改后数据</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="overflow: auto">
+            <table class="table infi-table">
+                <thead>
+                    <tr>
+                        <th class='not-wrap'>序号</th>
+                        <th ng-repeat="th in content.header" ng-bind="th.name" class='not-wrap'></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entitys in content.data">
+                        <td>{{$index + 1}}</td>
+                        <td class='not-wrap' ng-repeat="entity in entitys ">{{entity.value | sortName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="alert alert-danger marginten" role="alert" ng-if="contents.length == 0">请添加新增数据......</div>
+
+</div>
+
+
+<!--列表分页-->
+<div class="infi-page" ng-if="contents.length !== 0">
+    <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="5"
+                    boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                    num-pages="content.page.totalPages">
+    </uib-pagination>
+</div>
+
+<div class="modal fade" id='execl-data'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="marginten" ng-style="saveTSS">正在为您上传......</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id='execl-datas'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>上传成功</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                <!--<button type="button" class="btn btn-primary" ng-click="execlSave()">上传</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--文件上传-->
+<input type="file" ngf-select="onFileSelect($files,input)" name="filePath" id="filePath" style="display: none">

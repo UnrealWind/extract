@@ -1,0 +1,137 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题管理 > {{navTopicName}} > 病例审核</h4>
+<div class="infi-box">
+    <h4 class="infi-title">病例审核</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="marginten">
+                
+                <ul class="ul-float-left ul-li-3">
+                    <li style="width:400px;margin:10px 0 0 0;">
+                        <label >提交时间:</label>
+                        <input type="text" class="form-control" name="startTime" value="{{startTime}}" ng-model="startTime" style="width:33%;" ng-change="filterValue()" ng-click="timePlugin('startTime')">
+                        ~
+                        <input type="text" class="form-control" name="endTime" value="{{endTime}}" ng-model="endTime"  style="width:33%;" ng-change="filterValue()" ng-click="timePlugin('endTime')">
+                    </li>
+                    <li style="width:400px;margin:10px 0 0 0;">
+                        <label>录入中心:</label>
+                        <select ng-model="center" ng-change="filterValue()" class="form-control" style="width:33%;">
+                            <option value="">全部</option>
+                            <option ng-repeat="subset in centerData" value="{{subset.value}}" ng-bind="subset.name"></option>
+                        </select>
+                        <select ng-model="centers" class="form-control" style="width:33%;margin:0 0 0 13px;" ng-change="filterValue()">
+                            <option value="">全部科室</option>
+                            <option ng-repeat="subset in centersData" value="{{subset.value}}" ng-bind="subset.name"></option>
+                        </select>
+                    </li>
+                    <li style="width:300px;margin:10px 0 0 0;">
+                        <label>数据来源:</label>
+                        <select ng-model="sourceValue" ng-change="filterValue()" class="form-control">
+                            <option ng-repeat="subset in sourceValueData" value="{{subset.value}}" ng-bind="subset.name"></option>
+                        </select>
+                    </li>
+                    <li style="width:300px;margin:10px 0 0 0;">
+                        <label >审核状态:</label>
+                        <select ng-model="auditStatus" ng-change="filterValue()" class="form-control">
+                            <option ng-repeat="subset in auditStatusData" value="{{subset.value}}" ng-bind="subset.name"></option>
+                        </select>
+                    </li>
+                    <li style="width:300px;margin:10px 0 0 0;">
+                        <label>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组:</label>
+                        <select ng-model="group" ng-change="filterValue()" class="form-control">
+                            <option value="">全部</option>
+                            <option ng-repeat="subset in groupData" value="{{subset.value}}" ng-bind="subset.name"></option>
+                        </select>
+                    </li>
+                    <li style="width:300px;margin:10px 0 0 0;">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-lg" style="height:34px;"  ng-change="filterValue()" ng-model="setKeyword">
+                            <span class="input-group-addon btn btn-primary" ng-click="filterValue()">搜索</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="infi-box" style="border:transparent;padding:0;box-shadow: none">
+                <h4><span >病历审核列表</span></h4>
+                <!--列表-->
+                <table class="table infi-table">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="column in columns" ng-bind="column.label" ></th>
+                            <th ng-if="opts" ng-bind="opts.label"> </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="hasData">
+                        <tr ng-repeat="entity in content" id="{{entity.colour}}">
+                            <td>{{$index + 1}}</td>
+                            <td><span ng-bind="entity.recordNumber"></span></td>
+                            <td><span ng-bind="entity.patientName"></span></td>
+                            <td><span ng-bind="entity.groupName"></span></td>
+                            <td><span ng-bind="entity.reportHospital"></span></td>
+                            <td><span ng-bind="entity.sectName"></span></td>
+                            <td><span ng-bind="entity.creator"></span></td>
+                            <td><span ng-bind="entity.sourceType"></span></td>
+                            <td><span ng-bind="entity.upTime"></span></td>
+                            <td><span ng-bind="entity.statusName" ng-class="{'cases-green':entity.statusName == '审核通过','cases-red':entity.statusName == '审核驳回','cases-blue':entity.statusName == '待审核' || entity.statusName =='待批准修改'}"></span></td>
+                            <td>
+                                <!--<span ng-if=" entity.status !== 'audit_modify_reject' && entity.statusName == '已保存' || entity.statusName == '同意修改' || entity.statusName == '审核驳回'" ng-click="casesModify('修改')"><a>修改</a></span>-->
+                                <!--<span ng-if="entity.statusName == '已保存' ||entity.statusName == '同意修改' && entity.status !== 'audit_modify_reject' " ng-click="casesSubmit(entity.id,'提交')"><a>提交</a></span>-->
+                                <!--<span ng-if="entity.statusName == '审核通过'|| entity.status == 'audit_modify_reject'" ng-click="casesModification(entity.id,'申请修改')"><a>申请修改</a></span>-->
+                                <!--<span ng-if="entity.statusName == '待审核' || entity.statusName == '待批准修改'">-&#45;&#45;</span>-->
+
+                                <span> <a href="#/input-details/{{entity.subjectId}}/{{entity.projectName}}/{{entity.id}}">查看详情</a>&nbsp;&nbsp;</span>
+                                <span ng-if="entity.statusName == '待审核' || entity.statusName == '待批准修改'" ng-click="auditBy(entity.id)" class="cursorPointer">审核</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="!hasData">
+                        <tr>
+                            <td colspan="11">
+                                <p class="bg-danger" style="line-height: 50px;">系统没有查询到数据,请修改查询条件</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="infi-page">
+                    <uib-pagination total-items="contents.page.totalElements" ng-model="contents.page.number" max-size="5"
+                                    boundary-link-numbers="true" ng-change="updatePageAttend({page:contents.page.number})" items-per-page="contents.page.size"
+                                    num-pages="contents.page.totalPages">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="auditBy">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <label class="modal-title" style="font-size:25px">审核</label>
+            </div>
+            <div class="modal-body">
+                <div>
+                <label class="modal-title">审核结果 : </label>
+                <label class="radio-inline">
+                    <input type="radio" name="pass" value="yes" ng-model="isJudge" class="ng-valid ng-dirty ng-touched ng-valid-parse">
+                    通过
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="pass" value="no" ng-model="isJudge" class="ng-valid ng-dirty ng-touched">
+                    驳回
+                </label>
+                <p ng-if="reason" class="bg-danger" style="line-height: 50px;text-align: center">请填写驳回理由</p>
+                </div>
+                <hr>
+                <div>
+                    <label style="vertical-align:top;">审核理由 : </label>
+                    <textarea  rows="10" cols="50" style="resize:none;border-radius: 3px" ng-model="judgeReason"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="judgeData()" >确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,239 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": [
+    {
+      "children": {
+        "serviceTime": {
+          "label": "维护时间",
+          "type": "text",
+          "value": ""
+        },
+        "dressingChange": {
+          "label": "更换敷料",
+          "type": "text",
+          "value": "",
+          "name":"dressingChange"
+        }
+      }
+    },
+    {
+      "children": {
+        "measuringArmCircumference": {
+          "label": "测量臂围",
+          "type": "text",
+          "value": "",
+          "name":"measuringArmCircumference"
+        },
+        "armCircumferenceNum": {
+          "label": "臂围",
+          "type": "text",
+          "value": "",
+          "name":"armCircumferenceNum"
+        }
+      }
+    },
+    {
+      "children": {
+        "replaceConnector": {
+          "label": "更换接头",
+          "type": "text",
+          "value": "",
+          "name":"replaceConnector"
+        },
+        "brineFlush": {
+          "label": "盐水冲管",
+          "type": "text",
+          "value": "",
+          "name":"brineFlush"
+        }
+      }
+    },
+    {
+      "children": {
+        "sealedTube": {
+          "label": "封管",
+          "type": "text",
+          "value": "",
+          "name":"sealedTube"
+        },
+        "liquidVelocity": {
+          "label": "液体流速",
+          "type": "text",
+          "value": "",
+          "name":"liquidVelocity"
+        }
+      }
+    },
+    {
+      "children": {
+        "tubeMove": {
+          "label": "导管有无脱出",
+          "type": "text",
+          "value": "",
+          "name":"tubeMove"
+        },
+        "punctureSiteAbnormal": {
+          "label": "穿刺点有无异常",
+          "type": "text",
+          "value": "",
+          "name":"punctureSiteAbnormal"
+        }
+      }
+    },
+    {
+      "children": {
+        "abnormalDescription": {
+          "label": "穿刺点异常表现及部位",
+          "type": "text",
+          "value": "",
+          "name":"abnormalDescription"
+        },
+        "abnormalResult": {
+          "label": "穿刺点异常处理结果",
+          "type": "text",
+          "value": "",
+          "name":"abnormalResult"
+        }
+      }
+    },
+    {
+      "children": {
+        "abnormalCondition": {
+          "label": "穿刺点异常情况",
+          "type": "text",
+          "value": "",
+          "name":"abnormalCondition"
+        },
+        "skinProblem": {
+          "label": "皮肤有无异常",
+          "type": "text",
+          "value": "",
+          "name":"skinProblem"
+        }
+      }
+    },
+    {
+      "children": {
+        "problemCondition": {
+          "label": "皮肤异常情况",
+          "type": "text",
+          "value": "",
+          "name":"problemCondition"
+        },
+        "tubeBreak": {
+          "label": "导管破损",
+          "type": "text",
+          "value": "",
+          "name":"tubeBreak"
+        }
+      }
+    },
+    {
+      "children": {
+        "breakDescription": {
+          "label": "导管破损表现及部位",
+          "type": "text",
+          "value": "",
+          "name":"breakDescription"
+        },
+        "breakResult": {
+          "label": "导管破损处理结果",
+          "type": "text",
+          "value": "",
+          "name":"breakResult"
+        }
+      }
+    },
+    {
+      "children": {
+        "hasPhlebitis": {
+          "label": "静脉炎",
+          "type": "text",
+          "value": "",
+          "name":"hasPhlebitis"
+        },
+        "phlebitisDescription": {
+          "label": "静脉炎表现及部位",
+          "type": "text",
+          "value": "",
+          "name":"phlebitisDescription"
+        }
+      }
+    },
+    {
+      "children": {
+        "phlebitisResult": {
+          "label": "静脉炎表处理结果",
+          "type": "text",
+          "value": "",
+          "name":"phlebitisResult"
+        },
+        "nurseSign": {
+          "label": "护士签字",
+          "type": "text",
+          "value": "",
+          "name":"nurseSign"
+        }
+      }
+    },
+    {
+      "children": {
+        "plugTube": {
+          "label": "堵管",
+          "type": "text",
+          "value": "",
+          "name":"plugTube"
+        },
+        "tubeMove": {
+          "label": "导管异位",
+          "type": "text",
+          "value": "",
+          "name":"tubeMove"
+        }
+      }
+    },
+    {
+      "children": {
+        "moveDescription": {
+          "label": "导管异位表现及部位",
+          "type": "text",
+          "value": "",
+          "name":"moveDescription"
+        },
+        "moveResult": {
+          "label": "导管异位处理结果",
+          "type": "text",
+          "value": "",
+          "name":"moveResult"
+        }
+      }
+    },
+    {
+      "children": {
+        "tubeInfect": {
+          "label": "导管感染",
+          "type": "text",
+          "value": "",
+          "name":"tubeInfect"
+        },
+        "infectDescription": {
+          "label": "导管感染表现及部位",
+          "type": "text",
+          "value": "",
+          "name":"infectDescription"
+        }
+      }
+    },
+    {
+      "children": {
+        "infectResult": {
+          "label": "导管感染处理结果",
+          "type": "text",
+          "value": "",
+          "name":"infectResult"
+        }
+      }
+    }
+  ]
+}

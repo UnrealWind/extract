@@ -1,0 +1,956 @@
+<section class="infi-check">
+    <p>化验及特殊检查</p>
+    <section class="infi-record-box" ng-if="entity.name_zjxm_cyct == true">
+        <div class="infi-record-title">
+            <h4>纯音测听</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_cyct_time">
+                <span>检查时间：</span>
+                <label>{{entity.table_cyct_time}}</label>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>气导：</caption>
+            <thead>
+            <tr>
+                <th style="width:100px;">
+                    <div class="out">
+                        <b>频率Hz</b>
+                        <em>侧别</em>
+                    </div>
+                </th>
+                <th>
+                    125
+                </th>
+                <th>
+                    250
+                </th>
+                <th>
+                    500
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    8k
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_125}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_250}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_500}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ze_8k}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_125}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_250}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_500}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_qd_ye_8k}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>左耳PTA:</span>
+            <span>{{entity.name_ze_pta}}</span>
+            <span style="margin-right:20px;">dbhl</span>
+            <span>左耳受损频率:</span>
+            <span>{{entity.name_ze_sspl}}</span>
+            <span style="margin-right:20px;">dbhl</span>
+        </div>
+        <div style="margin:5px 20px;">
+            <span>右耳PTA:</span>
+            <span>{{entity.name_ye_pta}}</span>
+            <span style="margin-right:20px;">dbhl</span>
+            <span>右耳受损频率:</span>
+            <span>{{entity.name_ye_sspl}}</span>
+            <span style="margin-right:20px;">dbhl</span>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>骨导：</caption>
+            <thead>
+            <tr>
+                <th style="width:100px;">
+                    <div class="out">
+                        <b>频率Hz</b>
+                        <em>侧别</em>
+                    </div>
+                </th>
+                <th>
+                    125
+                </th>
+                <th>
+                    250
+                </th>
+                <th>
+                    500
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    8k
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_125}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_250}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_500}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ze_8k}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_125}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_250}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_500}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_gd_ye_8k}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div style="margin:5px 20px;">
+            <span>纯音测听诊断:</span>
+            <span>{{entity.name_cyct}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_sdkcs == true">
+        <div class="infi-record-title">
+            <h4>声导抗测试</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_sdkcs_time">
+                <span>检查时间：</span>
+                <label>{{entity.table_sdkcs_time}}</label>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th rowspan="2" style="vertical-align: middle;">
+                    指示耳
+                </th>
+                <th rowspan="2" style="vertical-align: middle;width:108px;">
+                    1000Hz鼓室曲线
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    226Hz鼓室曲线
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    鼓室压力daPa
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    声顺值（ml)
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    刺激耳
+                </th>
+                <th colspan="5">
+                    声反射阈
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    0.5k
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    WN
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    左耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ze_1000hz}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ze_226hz}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ze_dapa}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ze_ssz}}</label>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zy_05k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zy_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zy_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zy_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zy_WN}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zz_05k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zz_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zz_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zz_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_zz_WN}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    右耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ye_1000hz}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ye_226hz}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ye_dapa}}</label>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <label>{{entity.table_sdkcs_ye_ssz}}</label>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yy_05k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yy_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yy_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yy_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yy_WN}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yz_05k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yz_1k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yz_2k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yz_4k}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_sdkcs_yz_WN}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>声导抗检查: </span>
+            <span>{{entity.name_sdkjc}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_yysbl == true">
+        <div class="infi-record-title">
+            <h4>言语识别率</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_yysbl_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_yysbl_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    侧别
+                </th>
+                <th>
+                    平均听阈（dBHL）
+                </th>
+                <th>
+                    刺激声强度（掩蔽强度）dBHL
+                </th>
+                <th>
+                    最大言语识别率（%）
+                </th>
+                <th>
+                    最大言语接受域（dBHL）
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ze_pjtf}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ze_cjsqd}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ze_zdyysbl}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ze_zdyyjsl}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ye_pjtf}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ye_cjsqd}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ye_zdyysbl}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_yysbl_ye_zdyyjsl}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_yysbl_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>言语识别率诊断:</span>
+            <span>{{entity.name_yysbl}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_txngfyqfq == true">
+        <div class="infi-record-title">
+            <h4>听性脑干反应潜伏期</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_txngfyqfq_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_txngfyqfq_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>刺激信号</th>
+                <th colspan="3">
+                    <label>{{entity.table_txngfyqfq_cjxh}}</label>
+                </th>
+                <th>刺激速率</th>
+                <th colspan="3">
+                    <label>{{entity.table_txngfyqfq_cjsl}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th>刺激声</th>
+                <th colspan="2">刺激声强度dBnHL</th>
+                <th>Ⅰ（ms）</th>
+                <th>Ⅲ（ms）</th>
+                <th>Ⅴ（ms）</th>
+                <th>Ⅰ-Ⅲ（ms）</th>
+                <th>Ⅰ-Ⅴ（ms）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td colspan="2">
+                    <label>{{entity.table_txngfyqfq_ze_dbnhl}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ze_1}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ze_3}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ze_4}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ze_13}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ze_14}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td colspan="2">
+                    <label>{{entity.table_txngfyqfq_ye_dbnhl}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ye_1}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ye_3}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ye_4}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ye_13}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyqfq_ye_14}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="7">
+                    <label>{{entity.table_txngfyqfq_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>听性脑干反应潜伏期诊断: </span>
+            <span>{{entity.name_txngfyqfq}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_abr == true">
+        <div class="infi-record-title">
+            <h4>高低刺激率ABR</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_abr_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_abr_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>侧别</th>
+                <th>低刺激速率（11.1次/秒）Vt（ms）</th>
+                <th>低刺激速率（11.1次/秒）I-V（ms）</th>
+                <th>高刺激速率（51.1次/秒）Vt（ms）</th>
+                <th>高刺激速率（51.1次/秒）I-V（ms）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ze_lowvt}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ze_lowms}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ze_highvt}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ze_highms}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ye_lowvt}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ye_lowms}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ye_highvt}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_abr_ye_highms}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    左侧不同刺激速率下I-V波间期差值△I-V（ms）
+                </td>
+                <td colspan="3">
+                    <label>{{entity.table_abr_ze_diff}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    右侧不同刺激速率下I-V波间期差值△I-V（ms）
+                </td>
+                <td colspan="3">
+                    <label>{{entity.table_abr_ye_diff}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_abr_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>高低刺激率ABR诊断:</span>
+            <span>{{entity.name_abr}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_dpoae == true">
+        <div class="infi-record-title">
+            <h4>DPOAE(畸变产物耳声发射)</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_dpoae_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_dpoae_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    两纯音频率比f2/f1=1.22
+                </th>
+                <th>
+                    L1= 65 dBSPL
+                </th>
+                <th>
+                    L2= 55 dBSPL
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>侧别</td>
+                <td>引出DPOAE频率（kHz）</td>
+                <td>对侧白噪声抑制</td>
+            </tr>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <label>{{entity.table_dpoae_ze_khz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_dpoae_ze_dcbzsyz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <label>{{entity.table_dpoae_ye_khz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_dpoae_ye_dcbzsyz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="2">
+                    <label>{{entity.table_dpoae_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>DPOAE(畸变产物耳声发射)诊断:</span>
+            <span>{{entity.name_dpoae}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_ecochg == true">
+        <div class="infi-record-title">
+            <h4>ECochG(耳蜗电图)</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_ecochg_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_ecochg_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    刺激信号
+                </th>
+                <th></th>
+                <th>刺激声强度（dBnHL）</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>侧别</td>
+                <td>—SP/AP</td>
+                <td>—SP(ms)</td>
+                <td>AP(ms)</td>
+            </tr>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ze_spap}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ze_sp}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ze_ap}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ye_spap}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ye_sp}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_ecochg_ye_ap}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="3">
+                    <label>{{entity.table_ecochg_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>ECochG(耳蜗电图)诊断:</span>
+            <span>{{entity.name_ecochg}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_assr == true">
+        <div class="infi-record-title">
+            <h4>ASSR（听觉稳态诱发电位)</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_assr_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_assr_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>单位： HLcg=Correction General Values：Default</caption>
+            <thead>
+            <tr>
+                <th>
+                    阈值
+                </th>
+                <th>500HZ</th>
+                <th>1000HZ</th>
+                <th>2000HZ</th>
+                <th>4000HZ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <label>{{entity.table_assr_ze_500hz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_assr_ze_1000hz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_assr_ze_2000hz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_assr_ze_4000hz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <label>{{entity.table_assr_ye_500hz}}</label>
+                </td>
+                <td><label>{{entity.table_assr_ye_1000hz}}</label>
+                </td>
+                <td><label>{{entity.table_assr_ye_2000hz}}</label>
+                </td>
+                <td><label>{{entity.table_assr_ye_4000hz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_assr_note}}</label></td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>ASSR（听觉稳态诱发电位）诊断:</span>
+            <span>{{entity.name_assr}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_txngfyyz == true">
+        <div class="infi-record-title">
+            <h4>听性脑干反应阈值</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_txngfyyz_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_txngfyyz_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    侧别
+                </th>
+                <th>气导阈值（dBnHL）</th>
+                <th>骨导阈值（dBnHL）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyyz_ze_qdyz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyyz_ze_gdyz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyyz_ye_qdyz}}</label>
+                </td>
+                <td>
+                    <label>{{entity.table_txngfyyz_ye_gdyz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="2">
+                    <label>{{entity.table_txngfyyz_note}}</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>听性脑干反应阈值诊断:</span>
+            <span>{{entity.name_txngfyyz}}</span>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_hzaerp == true">
+        <div class="infi-record-title">
+            <h4>40HzAERP(40Hz听觉相关电位)</h4>
+            <div style="display:inline-block;float:right;" data-ng-if="entity.table_hzaerp_time">
+                <span>检查时间：</span>
+                <span>{{entity.table_hzaerp_time}}</span>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <tbody>
+            <tr>
+                <td>刺激声</td>
+                <td>
+                    <label>{{entity.table_hzaerp_cjs}}</label>
+                <td>状态</td>
+                <td>
+                    <label>{{entity.table_hzaerp_zt}}</label></td>
+                <td>频率(Hz)</td>
+                <td>
+                    <label>{{entity.table_hzaerp_pl}}</label></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    侧别
+                </td>
+                <td colspan="4">阈值</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    左
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_hzaerp_ze_yz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    右
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_hzaerp_ye_yz}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    备注
+                </td>
+                <td colspan="4">
+                    <label>{{entity.table_hzaerp_note}}</label>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:5px 20px;">
+            <span>40HzAERP(40Hz听觉相关电位)诊断:</span>
+            <span>{{entity.name_hzaerp}}</span>
+        </div>
+    </section>
+
+</section>

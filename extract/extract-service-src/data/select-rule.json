@@ -1,0 +1,23 @@
+{
+  "nodes":"选择规则列表",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"规则名称",
+      "name":"name"
+    },{
+      "label":"创建人",
+      "name":"createrUser"
+    },{
+      "label":"推荐科室",
+      "name":"recommendSector"
+    },{
+      "label":"创建时间",
+      "name":"createTime"
+    },{
+      "label":"状态",
+      "name":"statusLabel"
+    }
+  ]
+}

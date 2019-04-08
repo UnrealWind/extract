@@ -1,0 +1,46 @@
+<style>
+
+    td > textarea.form-control{
+        width:80%;
+        height:100px;
+        resize:none;
+    }
+
+</style>
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究 > {{navTopicName}} > 课题基本信息设置</h4>
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-header-active"><span>1. 课题基本信息设置</span></li>
+        <li><span>2. 课题成员邀请</span></li>
+        <li><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <div class="dir-nav-container">
+        <link rel="import" href="../html2/topics.basic.form.html?__inline" />
+        <div class="row infi-attachment-upload-new">
+            <label class="col-md-1">上传附件：</label>
+            <input class="col-md-10" multiple="true" type="file"  name="file" input-file-upload input="input" basic="basic">
+        </div>
+    </div>
+</div>
+<div class="topics-button">
+    <button class="btn infi-btn-linear-green-l" ng-click="topicsNext()">下一步</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="topicsNext('save')">保存</button>
+</div>
+
+<div class="modal fade"  id="infi-collection">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">筛选名称</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div general-prompt></div>

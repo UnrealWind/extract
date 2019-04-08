@@ -1,0 +1,9 @@
+<div class="sec-timeline">
+  <dl ng-repeat="(ind, val) in data">
+    <dt ng-bind="val.label"
+        class="sec-timeline-dt"></dt>
+    <dd ng-repeat="(subInd, subVal) in val.children"
+        ng-bind="subVal.label"
+        class="sec-timeline-dd"></dd>
+  </dl>
+</div>

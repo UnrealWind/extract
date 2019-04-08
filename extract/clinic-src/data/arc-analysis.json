@@ -1,0 +1,124 @@
+[
+
+  {
+    "CMTE_NM": "心脏科门诊",
+    "Amount": 8703,
+    "CMTE_ID": 58,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "神经内科门诊",
+    "Amount": 7539,
+    "CMTE_ID": 48,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "内分泌科门诊",
+    "Amount": 5140,
+    "CMTE_ID": 39,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "骨科门诊",
+    "Amount": 3626,
+    "CMTE_ID": 21,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "消化科门诊",
+    "Amount": 3402,
+    "CMTE_ID": 56,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "呼吸科门诊",
+    "Amount": 3350,
+    "CMTE_ID": 24,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "中医科门诊",
+    "Amount": 3040,
+    "CMTE_ID": 71,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "普通外科门诊",
+    "Amount": 2648,
+    "CMTE_ID": 46,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "内科门诊",
+    "Amount": 2582,
+    "CMTE_ID": 41,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "眼科门诊",
+    "Amount": 2278,
+    "CMTE_ID": 66,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "耳鼻咽喉-头颈外科门诊",
+    "Amount": 2177,
+    "CMTE_ID": 9,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "皮肤性病科门诊",
+    "Amount": 2176,
+    "CMTE_ID": 44,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "泌尿外科门诊",
+    "Amount": 1870,
+    "CMTE_ID": 38,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "妇科门诊",
+    "Amount": 1348,
+    "CMTE_ID": 12,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "肾科门诊",
+    "Amount": 1129,
+    "CMTE_ID": 51,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "风湿免疫、变态反应科门诊",
+    "Amount": 922,
+    "CMTE_ID": 11,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "神经外科门诊",
+    "Amount": 680,
+    "CMTE_ID": 50,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "消化内镜中心",
+    "Amount": 665,
+    "CMTE_ID": 57,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "超声诊断科门诊",
+    "Amount": 649,
+    "CMTE_ID": 6,
+    "total": 59482
+  },
+  {
+    "CMTE_NM": "血管外科门诊",
+    "Amount": 614,
+    "CMTE_ID": 62,
+    "total": 59482
+  }
+
+]

@@ -1,0 +1,44 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "description": "Default template for fis scaffold",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fis-scaffold/default.git"
+  },
+  "keywords": [
+    "fis",
+    "scaffold"
+  ],
+  "author": "fex",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/fis-scaffold/default/issues"
+  },
+  "homepage": "https://github.com/fis-scaffold/default",
+  "dependencies": {
+    "cytoscape": "^3.2.15",
+    "fis-postpackager-map": "0.0.2",
+    "flow-chart-editor": "^0.1.3",
+    "paper-css": "^0.4.1",
+    "pinyin-engine": "^1.1.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "express": "^4.16.3",
+    "fis-parser-babel-5.x": "^1.4.0",
+    "mockjs": "^1.0.1-beta3",
+    "nodemon": "^1.18.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./extract/node_modules/cz-conventional-changelog"
+    }
+  }
+}

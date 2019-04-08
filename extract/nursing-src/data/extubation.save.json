@@ -1,0 +1,17 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":{
+    "extubationReason":"",
+    "unscheduledInstruction":"",
+    "useDays":"",
+    "bresult":"",
+    "disappear":"",
+    "extubationTime":"",
+    "extubationNurse":"",
+    "complication":"",
+    "tubeSpecifications":"",
+    "tubePosition":"",
+    "otherTubePosition":""
+  }
+}

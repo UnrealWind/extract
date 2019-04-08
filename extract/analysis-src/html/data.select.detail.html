@@ -1,0 +1,33 @@
+<div class="infi-box" style="margin-top:50px;">
+    <div class=" paddingten" style="text-align: right; position: absolute;
+    right: -9px;
+    top: -51px;">
+        <button type="button" class="btn btn-default" ng-click="tanCha()">描述统计</button>
+    </div>
+    <div style="overflow: auto">
+        <table class="table infi-table">
+            <thead>
+            <tr>
+                <th style="width:150px;" class='not-wrap'>序号</th>
+                <th ng-repeat="th in tableTheader" ng-bind="th.name" style="width:150px;" class='not-wrap'></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="tbodys in tableTbodys track by $index">
+                <td class='not-wrap'>{{$index + 1}}</td>
+                <td ng-repeat="tbody in tbodys" class='not-wrap'>{{tbody.value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="infi-page" ng-if="content">
+        <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="10"
+            boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+            num-pages="content.page.totalPages">
+        </uib-pagination>
+    </div>
+    <div class=" paddingten" style="text-align: right">
+        <button type="button" class="btn btn-default" ng-click="previous()">上一步(数据选择)</button>
+        <button type="button" class="btn btn-primary" ng-click="next()">下一步(变量设置)</button>
+    </div>
+</div>

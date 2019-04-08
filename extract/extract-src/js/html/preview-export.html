@@ -1,0 +1,21 @@
+<div>
+  <!--取数-条件选取页面已收藏的筛选条件列表弹窗-->
+  <div style="overflow-x: auto">
+    <table class="table-bordered table-hover table-responsive preview-table" ng-if="hasPreview">
+      <thead>
+        <tr>
+          <th ng-repeat="headCell in preview[0]" ng-bind="headCell" style="text-align: center;"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="bodyRow in preview track by $index" ng-if="$index > 0">
+          <td ng-repeat="bodyCell in bodyRow track by $index" ng-bind="bodyCell" style="text-align: center;"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p ng-if="!hasPreview" ng-bind="preview"></p>
+  </div>
+  <div sys-tip></div>
+</div>

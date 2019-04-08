@@ -1,0 +1,24 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"医院",
+      "name":"hospitalName"
+    },{
+      "label":"科室",
+      "name":"sectName"
+    },
+    {
+      "label":"帐号",
+      "name":"name"
+    },{
+      "label":"姓名",
+      "name":"name"
+    },
+    {
+      "label":"角色",
+      "name":"type"
+    }
+  ]
+}

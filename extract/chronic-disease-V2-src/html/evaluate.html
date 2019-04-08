@@ -1,0 +1,72 @@
+<div class="container-fluid evaluate-page">
+  <div class="nav-opts">
+    <p>
+      <button class="btn btn-default"
+               ng-click="navToFunc.backToPatiManage()"><i class="glyphicon glyphicon-chevron-left"></i> 患者管理</button></p>
+  </div>
+
+  <!-- 评估内容区 -->
+  <div class="row evaluate-content-wrapper">
+    <!-- 左侧导航 -->
+    <div class="col-md-2">
+      <ul class="list-group nav-list" 
+          ng-if="formAbout.leftNavi.length > 0">
+        <li class="list-group-item cursor"
+            ng-repeat="item in formAbout.leftNavi"
+            ng-click="formAbout.switchFrom($index)"
+            ng-class="{true: 'active'}[$index == formAbout.currActiveInd]">
+            <span ng-bind="item.name"
+                  class="list-group-item-txt">
+            </span>
+        </li>
+      </ul>
+    </div>
+    <!-- 右侧内容区 -->
+    <div class="col-md-7">
+      <div class="panel panel-default rightTemplate-container">
+        <div class="panel-body rightTemplate-wrapper">
+          <!-- 量表具体内容展示 -->
+          <form-display ng-if="formAbout.leftNavi.length > 0"
+                        template-data="formAbout.templateData"></form-display>
+        </div>
+      </div>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="col-md-3">
+      <evaluate-sidebar evaluate-rst="evaluateRst"
+                        last-year-in-time="lastYearInTime"></evaluate-sidebar>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button type="button" 
+              class="btn btn-success"
+              ng-disabled="stepAbout.currStep === 0" 
+              ng-click="stepAbout.change(process, -1)">上一步{{stepAbout.currStep - 1 >= 0 ? ('，' + process[stepAbout.currStep - 1].name) : ''}}</button>
+      <button type="button" 
+              class="btn btn-success" 
+              ng-disabled="stepAbout.currStep === process.length - 1"
+              ng-click="stepAbout.change(process, 1)">下一步{{stepAbout.currStep + 1 >= process.length ? '' : ('，' + process[stepAbout.currStep + 1].name)}}</button>
+      
+      <span ng-if="status == 0">
+        <button type="button" 
+                class="btn btn-primary"
+                ng-if="stepAbout.currStep === process.length - 1"
+                ng-click="stepAbout.change(process, 0)">完成评估</button>
+        
+        <button type="button" 
+                class="btn btn-default"
+                ng-if="stepAbout.currStep === process.length - 1"
+                ng-click="navToFunc.toViewEvaluateRst()">分配方案</button>
+      </span>
+  
+      <!-- 已评估 -->
+      <button ng-if="status == 1"
+              type="button" 
+              class="btn btn-primary" 
+              ng-click="evaluateAbout.backToPatiManage()">返回</button>
+    </div>
+  </div>
+</div>

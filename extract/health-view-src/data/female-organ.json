@@ -1,0 +1,64 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":{
+    "type":"female",
+    "children":[
+      {
+        "name":"肝脏",
+        "icon":"liver",
+        "position":[
+          [86, 155],[25, 165]
+        ]
+      },{
+        "name":"胆囊",
+        "icon":"gall",
+        "position":[
+          [92, 165],[25, 270]
+        ]
+      },{
+        "name":"肾脏",
+        "icon":"kidney",
+        "position":[
+          [110, 170],[180, 215]
+        ]
+      },{
+        "name":"甲状腺",
+        "icon":"thyroid",
+        "position":[
+          [96, 95],[25, 55]
+        ]
+      },{
+        "name":"心脏",
+        "icon":"heart",
+        "position":[
+          [98, 125],[180, 115]
+        ]
+      },{
+        "name":"乳房",
+        "icon":"breast",
+        "position":[
+          [112, 140],[180, 165]
+        ]
+      },{
+        "name":"颈部",
+        "icon":"neck",
+        "position":[
+          [100, 90],[180, 55]
+        ]
+      },{
+        "name":"肺部",
+        "icon":"lung",
+        "position":[
+          [87, 125],[25, 115]
+        ]
+      },{
+        "name":"胃",
+        "icon":"stomach",
+        "position":[
+          [108, 180],[180, 270]
+        ]
+      }
+    ]
+  }
+}

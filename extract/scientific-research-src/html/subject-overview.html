@@ -1,0 +1,241 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题管理 > {{subjectInfo}} > 课题概况</h4>
+<div class="infi-box">
+    <h4>
+        <span class="f-l">课题情况概览</span>
+        <ul class="tab-time">
+            <li ng-class="{true: 'active',false: ''}[item.active]" class="selectTab" ng-repeat="item in tabData" ng-click="switchTab(item)">{{item.label}}</li>
+            <li ng-class="{true:'active',false:''}[selectTime]" class="selectTime">
+                <span>选择时间</span>
+                <input ng-change="selectTimes(dataRange)" type="text" ng-model="dataRange" infi-date-month readonly name="daterange">
+            </li>
+        </ul>
+        <a ng-if="showModifyButton" href="javascript:;" ng-click="subjectCreate()" class="f-r btn btn-primary">修改课题</a>
+    </h4>
+    <ul class="row subject-overview">
+        <li class="overview-item">
+           <div class="word">
+               <p class="count">{{total}}</p>
+               <p class="name">覆盖总人数</p>
+           </div>
+           <div class="icon"></div>
+        </li>
+        <li class="overview-item">
+            <div class="word">
+                <p class="count">{{addNum}}</p>
+                <p class="name">本月新增人数</p>
+            </div>
+            <div class="icon"></div>
+        </li>
+        <li class="overview-item">
+            <div class="word">
+                <p class="count">{{finish}}</p>
+                <p class="name">本月完成访视</p>
+            </div>
+            <div class="icon"></div>
+        </li>
+        <li class="overview-item">
+            <div class="word">
+                <p class="count">{{ready}}</p>
+                <p class="name">本月还需访视</p>
+            </div>
+            <div class="icon"></div>
+        </li>
+    </ul>
+    <h4>
+        <span class="f-l">数据采集情况概览</span>
+    </h4>
+    <div class="row">
+        <div class="col-md-5" style=" margin-right: 8%;">
+            <h4 class="row chart-title" style="margin-bottom: -15px;">各组采集情况</h4>
+
+            <div id="columnGraph" class="infi-adverse-normal-chart" style="height: 310px;"></div>
+        </div>
+        <div class="col-md-5">
+            <h4 class="row chart-title" style="margin-bottom: -15px;">近半年数据采集情况</h4>
+            <div id="lineGraph" class="infi-adverse-normal-chart" style="height: 310px;"></div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-5" style=" margin-right: 8%;">
+            <h4 class="row chart-title" style="margin-bottom: -15px;">各中心完成率（数据截止到上月）</h4>
+            <div id="rateGraph" class="infi-adverse-normal-chart" style="height: 310px;"></div>
+        </div>
+        <div class="col-md-5">
+            <h4 class="row chart-title" style="margin-bottom: -15px;">近半年访视完成情况</h4>
+            <div id="barGraph" class="infi-adverse-normal-chart" style="height: 310px;"></div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li ng-repeat="tab in centerTabs" role="presentation" ng-class="{true: 'active' , false:''}[tab.active]">
+            <a class="cursorPointer" ng-click="switchTabs(tab)">{{tab.label}}</a>
+        </li>
+    </ul>
+    <div ng-repeat="item in centerData" ng-class="{true: 'show' , false:'hide'}[item.active]" class="infi-box" style="box-shadow:none;border: none;">
+        <p>描述： {{item.describes}}</p>
+        <h4>各中心数据采集情况</h4>
+        <div>
+            <table class="table infi-table">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in title">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-comm" ng-repeat="item in item.task">
+                    <th>{{$index+1}}</th>
+                    <th>{{item.hospital}}</th>
+                    <th>{{item.dept}}</th>
+                    <th>{{item.recordSize}}</th>
+                    <th>{{item.finishNum}}</th>
+                    <th>{{item.rate}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+<div class="infi-box">
+    <h4>附件下载</h4>
+    <div class="infi-box-containter">
+        <ul class="file-list">
+            <li ng-repeat="item in fileData">
+                <em>{{item.originName}}</em>
+                <span ng-click="downLoad(item)" class="btn btn-default">下载</span>
+            </li>
+        </ul>
+        <div ng-if="!fileData" class="alert alert-danger">您还没有上传任何附件！！！</div>
+        <div ng-if="fileData" class="clearfix">
+            <uib-pagination class="f-r"  total-items="filePage.totalElements" ng-model="filePage.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttend(filePage.number)" items-per-page="filePage.size"
+                            num-pages="filePage.totalPages">
+            </uib-pagination>
+
+        </div>
+    </div>
+</div>
+
+<div class="infi-box">
+    <h4>课题基本信息</h4>
+    <div class="infi-box-containter">
+        <div class="row infi-form-list subject-detail">
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题中文名称:</label>
+                <em class="col-md-9">{{basic.name}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题英文名称:</label>
+                <em class="col-md-9">{{basic.ename}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题类型:</label>
+                <em class="col-md-9">{{basic.type}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题编号:</label>
+                <em class="col-md-9">{{basic.no}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题代码:</label>
+                <em class="col-md-9">{{basic.ecode}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题负责人:</label>
+                <em class="col-md-9">{{basic.own}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题可见性:</label>
+                <em class="col-md-9">{{basic.visible}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">中心设置:</label>
+                <em class="col-md-9">{{basic.center}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题类型:</label>
+                <em class="col-md-9">{{basic.type}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题级别:</label>
+                <em class="col-md-9">{{basic.level}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题来源:</label>
+                <em class="col-md-9">{{basic.source}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">研究病种:</label>
+                <em class="col-md-9">{{basic.objectives}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">联系电话:</label>
+                <em class="col-md-9">{{basic.phone}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题发起单位:</label>
+                <em class="col-md-9">{{basic.company}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题开始时间:</label>
+                <em class="col-md-9">{{basic.startTime}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">课题结束时间:</label>
+                <em class="col-md-9">{{basic.endTime}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">邮箱:</label>
+                <em class="col-md-9">{{basic.email}}</em>
+            </div>
+            <div class="col-md-6 form-label">
+                <label class="col-md-3 ">涉及科室:</label>
+                <em class="col-md-9">{{basic.subjectOffices}}</em>
+            </div>
+        </div>
+        <div class="row infi-form-list subject-detail">
+            <div class="col-md-12 form-label full-width">
+                <label class="col-md-3 ">课题描述:</label>
+                <em class="col-md-9">{{basic.describes}}</em>
+            </div>
+        </div>
+        <div class="row infi-form-list subject-detail">
+            <div class="col-md-12 form-label full-width">
+                <label class="col-md-3 ">立项依据:</label>
+                <em class="col-md-9">{{basic.reason}}</em>
+            </div>
+        </div>
+        <div class="row infi-form-list subject-detail">
+            <div class="col-md-12 form-label full-width">
+                <label class="col-md-3 ">科研意义与创新点:</label>
+                <em class="col-md-9">{{basic.meaning}}</em>
+            </div>
+        </div>
+       <!-- <div class="row infi-form-list subject-detail">
+            <div class="col-md-12 form-label full-width">
+                <label class="col-md-3 ">研究方案:</label>
+                <em class="col-md-9">{{basic.name}}</em>
+            </div>
+        </div>-->
+        <div class="row infi-form-list subject-detail">
+            <div class="col-md-12 form-label full-width">
+                <label class="col-md-3 ">各中心情况:</label>
+                <div class="col-md-9" style="width: 60%;margin-left: 5%;">
+                   <table class="table infi-table">
+                       <thead>
+                       <tr>
+                           <th>医院</th>
+                           <th>科室</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr class="table-comm" ng-repeat="item in hosDeptData">
+                           <th>{{item.hosp}}</th>
+                           <th>{{item.dept}}</th>
+                       </tr>
+                       </tbody>
+                   </table>
+                    <div ng-if="showHospital" class="alert alert-danger" style="text-align: center;padding: 5px;">暂无数据！！！</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

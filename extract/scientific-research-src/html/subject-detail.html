@@ -1,0 +1,130 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe">
+</i>课题研究 > {{subjectName}} > 课题任务计划</h4>
+<header class="infi-section">
+    <ul class="infi-header-ul">
+        <li><span>1. 课题基本信息设置</span></li>
+        <li><span>2. 课题成员邀请</span></li>
+        <li class="infi-header-active"><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box crfDetail">
+    <div class="infi-box-containter" style="border: 1px solid #fff;padding: 0;">
+        <div class="dir-nav-container">
+            <div>
+                <div class="infi-box marginten" ng-if="group.type !='auto'" ng-repeat="group in groups">
+                    <h4>{{group.name}}</h4>
+                    <button class="btn infi-btn-linear-green-l btn-sm btnDel" ng-click="deleteGroup($index)">删除</button>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="row">
+                                <div class="">
+                                    <div class="col-md-2" >
+                                        <label ><span style="color:red;">*</span>分组名称:</label>
+                                    </div>
+                                    <div class="col-md-4" >
+                                        <input  type="text" class="form-control" ng-model="group.name">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="col-md-2" >
+                                        <label ><span style="color:red;">*</span>病例数量:</label>
+                                    </div>
+                                    <div class="col-md-4" >
+                                        <input  type="text" class="form-control" ng-model="group.recordSize">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="">
+                                    <div class="col-md-2" >
+                                        <label ><span style="color:red;">*</span>描述:</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" rows="3"  ng-model="group.describes"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="">
+                                    <div class="col-md-2" >
+                                        <label ><span style="color:red;">*</span>选择CRF:</label>
+                                    </div>
+                                    <div class="col-md-8 form-inline form-group " >
+                                        <div ng-repeat="subjectPlan in group._subjectPlans" class="row">
+                                            <div class="col-md-4">
+                                                <label><span ng-if="$index==0" style="color:red;">*</span>{{subjectPlan.label}}</label>
+                                            </div>
+                                            <div class="col-md-8 subjectPlans"  ng-repeat="opt in subjectPlan.opts">
+                                                <button class="btn infi-btn-linear-green-l btn-sm" ng-click="choseCRF(opt)" ng-disabled="">选择模板</button>
+                                                <input  type="text" class="form-control"  value="{{opt.crfTemplateName}}"  disabled>
+                                                <span ng-if="(opt.type=='questionInterview'||opt.type=='scoreInterview')&& $last" class="glyphicon glyphicon-plus cursor"ng-click="addNewCRF(subjectPlan.opts,opt.type,opt.typeId)">添加更多问卷</span>
+                                                <div class="choseInterviewTime" ng-if="opt.type == 'interview'">
+                                                    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="choseTemplateShow(group,'interviewTimeShow')" ng-disabled="">选择时间</button>
+                                                    <input type="text" class="form-control" title="{{opt|bindTime}}" value="{{opt|bindTime}}" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="">
+                                    <div class="col-md-2">
+                                        <label ><span style="color:red;">*</span>任务分配:</label>
+                                    </div>
+
+                                    <div class="col-md-10 splitRecord">
+                                        <div class="btn-sm-splitRecord">
+                                            <button ng-disabled="!group.recordSize" class="btn infi-btn-linear-green-l btn-sm" ng-click="choseTemplateShow(group,'missionShow')">病例分配</button>
+                                        </div>
+                                        <div ng-if="group.subjectTasks && group.subjectTasks.length > 0" class="tabel-splitRecord">
+                                            <table class="table table-striped" >
+                                                <tr>
+                                                    <td>序号</td>
+                                                    <td>医院</td>
+                                                    <td>科室</td>
+                                                    <td>人数</td>
+                                                </tr>
+                                                <tr ng-repeat="table in group.subjectTasks">
+                                                    <td>{{$index+1}}</td>
+                                                    <td>{{table.hospital}}</td>
+                                                    <td>{{table.dept}}</td>
+                                                    <td>{{table.recordSize}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 style="text-align: center">
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="addNewGroup()">添加分组</button>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="topics-button">
+    <button class="btn infi-btn-linear-green-l" ng-click="prev()">上一步</button>
+    <button class="btn infi-btn-linear-green-l" ng-if="saveBtn.currState == 'init'" ng-click="saveGroup()">保存</button>
+    <button class="btn infi-btn-linear-green-l" ng-if="saveBtn.currState == 'saving'">保存中...</button>
+</div>
+
+<crf-template-list ng-if="targetTemplateList" target="targetTemplateList" ></crf-template-list>
+<mission-list ng-if="missionShow && targetGroup" target="targetGroup" ></mission-list>
+<interview-time ng-if="interviewTimeShow && targetGroup" target="targetGroup"></interview-time>
+
+<div class="modal fade saveTip" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="text-success">带<span style="color:red;" class="red">*</span>的选项为必填项，填写后进行保存操作！</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

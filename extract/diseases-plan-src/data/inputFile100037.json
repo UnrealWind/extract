@@ -1,0 +1,1359 @@
+[
+    {
+        "label": "基本信息",
+        "data": [
+            {
+                "label": "性别",
+                "value": "0",
+                "type": "单选",
+                "switchChecked": "",
+                "children": [],
+                "name": "sex_id",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "男",
+                            "value": "0"
+                        },
+                        {
+                            "label": "女",
+                            "value": "1"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "年龄",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "age",
+                "prompt": ""
+            },
+            {
+                "label": "身高",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "body_heig",
+                "unit": "cm",
+                "prompt": ""
+            },
+            {
+                "label": "体重",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "body_weig",
+                "unit": "kg",
+                "prompt": ""
+            },
+            {
+                "label": "心律",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "hr",
+                "unit": "次/分",
+                "prompt": ""
+            },
+            {
+                "label": "入院收缩压",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "sbp",
+                "unit": "mmHg",
+                "prompt": ""
+            },
+            {
+                "label": "入院舒张压",
+                "value": "0",
+                "type": "小文本输入",
+                "name": "dbp",
+                "unit": "mmHg",
+                "prompt": ""
+            }
+        ]
+    },
+    {
+        "label": "心血管危险因素",
+        "data": [
+            {
+                "label": "血压水平分类",
+                "value": "0",
+                "type": "下拉菜单",
+                "name": "gxy_class",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "高血压1级",
+                            "value": "1"
+                        },
+                        {
+                            "label": "高血压2级",
+                            "value": "2"
+                        },
+                        {
+                            "label": "高血压3级",
+                            "value": "3"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心血管风险水平分层",
+                "value": "0",
+                "type": "下拉菜单",
+                "name": "gxy_risk",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "低危",
+                            "value": "1"
+                        },
+                        {
+                            "label": "中危",
+                            "value": "2"
+                        },
+                        {
+                            "label": "高危",
+                            "value": "3"
+                        },
+                        {
+                            "label": "极高危",
+                            "value": "4"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "高血钾",
+                "value": "0",
+                "type": "下拉菜单",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_jxh",
+                "bizName": "if_jxh",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },{
+                            "label": "血钾>5.5，<6.0",
+                            "value": "1"
+                        },{
+                            "label": "血钾>6.0",
+                            "value": "1"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "糖耐量受损",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_tnb_02",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "高血脂",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_gzxz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+
+            {
+                "label": "低血钾",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_jxl",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            }
+
+        ]
+    },
+    {
+        "label": "靶器官损害",
+        "data": [
+
+            {
+                "label": "左室肥厚",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_zsfh",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "左室功能不全",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_zsgnbq",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "颈动脉粥样硬化",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_jdmzyyh",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "颈动脉增厚",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_jdmzh",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "冠状动脉粥样硬化",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_gmzyyh",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+
+            {
+                "label": "尿蛋白",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_dbn",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "尿白蛋白大于等于30mg/24小时",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_nbdb_over",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            }
+        ]
+    },
+    {
+        "label": "伴临床疾患",
+        "data": [
+            {
+                "label": "心肌梗死",
+                "value": "0",
+                "type": "下拉菜单",
+                "name": "xjgs_type",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "陈旧性心肌梗死",
+                            "value": "1"
+                        },
+                        {
+                            "label": "急性非ST段抬高型",
+                            "value": "2"
+                        },
+                        {
+                            "label": "急性ST段抬高型",
+                            "value": "3"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心力衰竭",
+                "value": "0",
+                "type": "下拉菜单",
+                "name": "xlsj_type",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "心力衰竭I级",
+                            "value": "1"
+                        },
+                        {
+                            "label": "心力衰竭II级",
+                            "value": "2"
+                        },
+                        {
+                            "label": "心力衰竭III级",
+                            "value": "3"
+                        },
+                        {
+                            "label": "心力衰竭IV级",
+                            "value": "4"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "肾动脉狭窄",
+                "value": "0",
+                "type": "下拉菜单",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_sdmxz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "单侧",
+                            "value": "1"
+                        },
+                        {
+                            "label": "双侧",
+                            "value": "2"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "颈动脉狭窄大于70%",
+                "value": "0",
+                "type": "下拉菜单",
+                "name": "if_jdmxz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "否",
+                            "value": "0"
+                        },
+                        {
+                            "label": "单侧颈动脉狭窄大于70%",
+                            "value": "1"
+                        },
+                        {
+                            "label": "双侧颈动脉狭窄大于70%",
+                            "value": "2"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心绞痛",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "name": "xjt_type",
+                "children": [],
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            
+            {
+                "label": "心脏射频消融术后",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_oper_sp",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心脏支架植入术后",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_oper_zj",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心肌病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_xjb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "脑血管病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "name": "brain_type",
+                "children": [],
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "周围血管病变",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_zwxgb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "糖尿病肾病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_tnbsb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            
+            {
+                "label": "糖尿病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_tnb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "代谢综合征",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_dxzhz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "痛风",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_tf",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "前列腺增生",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_qlxzs",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "体位性低血压",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_twxdxy",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "哮喘",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_xc",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "慢性阻塞性肺病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_maf",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "妊娠",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_rs",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "间歇性跛行",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_jxxbx",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "胃炎",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_wy",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "胃溃疡",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_kyb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+
+            {
+                "label": "血管神经性水肿",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_sjxsz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "主动脉瓣狭窄",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_zdmbxz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "肥厚梗阻性心肌病",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_gzxxjb",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "高尿酸血症",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [],
+                "name": "if_gnsxz",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+            {
+                "label": "心律失常",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [
+                    {
+                        "name": "if_xlsc_a_1",
+                        "label": "是",
+                        "type": "虚拟菜单",
+                        "parent": "if_xlsc",
+                        "value": "1",
+                        "bizName": null,
+                        "children": [
+                            {
+                                "label": "快速心律失常",
+                                "value": "0",
+                                "type": "开关",
+                                "switchChecked": "",
+                                "children": [
+                                    {
+                                        "name": "xlsc_type_a_1",
+                                        "label": "是",
+                                        "type": "虚拟菜单",
+                                        "parent": "xlsc_type",
+                                        "value": "1",
+                                        "bizName": null,
+                                        "children": [
+                                            {
+                                                "name": "if_fc",
+                                                "label": "房颤",
+                                                "type": "开关",
+                                                "parent": "xlsc_type",
+                                                "bizName": "if_fc",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[],
+                                                "prompt": ""
+                                            },
+                                            {
+                                                "name": "if_fxzb",
+                                                "label": "频发房性早搏",
+                                                "type": "开关",
+                                                "parent": "xlsc_type",
+                                                "bizName": "if_fxzb",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[],
+                                                "prompt": ""
+                                            },
+                                            {
+                                                "name": "if_sxzb",
+                                                "label": "频发室性早搏",
+                                                "type": "开关",
+                                                "parent": "xlsc_type",
+                                                "bizName": "if_sxzb",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[],
+                                                "prompt": ""
+                                            },
+                                            {
+                                                "name": "if_zfxxdgs",
+                                                "label": "阵发性室性心动过速",
+                                                "type": "开关",
+                                                "parent": "xlsc_type",
+                                                "bizName": "if_zfxxdgs",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[],
+                                                "prompt": ""
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "name": "xlsc_type",
+                                "bizName": "xlsc_type",
+                                "dimension": {
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                "prompt": ""
+                            },
+
+                            {
+                                "label": "缓慢性心律失常",
+                                "value": "0",
+                                "type": "开关",
+                                "switchChecked": "",
+                                "children": [
+                                    {
+                                        "name": "if_hmxxlsc_a_1",
+                                        "label": "是",
+                                        "type": "虚拟菜单",
+                                        "parent": "if_hmxxlsc",
+                                        "value": "1",
+                                        "bizName": null,
+                                        "children": [
+                                            {
+                                                "name": "if_dfjzhz",
+                                                "label": "病态窦房结综合征",
+                                                "type": "开关",
+                                                "parent": "if_hmxxlsc",
+                                                "bizName": "if_dfjzhz",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[],
+                                                "prompt": ""
+                                            },
+                                            {
+                                                "label": "2-3度房室阻滞",
+                                                "value": "0",
+                                                "type": "开关",
+                                                "parent": "if_hmxxlsc",
+                                                "switchChecked": "",
+                                                "children": [],
+                                                "name": "if_fszz",
+                                                "bizName": "if_fszz",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "prompt": ""
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "name": "if_hmxxlsc",
+                                "bizName": "if_hmxxlsc",
+                                "dimension": {
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                "prompt": ""
+                            }
+                        ]
+                    }
+                ],
+                "name": "if_xlsc",
+                "bizName": "if_xlsc",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            },
+
+            {
+                "label": "肾功能不全",
+                "value": "0",
+                "type": "开关",
+                "switchChecked": "",
+                "children": [
+                    {
+                        "name": "if_sgnbq_a_1",
+                        "label": "是",
+                        "type": "虚拟菜单",
+                        "parent": "if_sgnbq",
+                        "value": "1",
+                        "bizName": null,
+                        "children": [
+                            {
+                                "name": "if_sgnbq_over",
+                                "label": "肌酐大于265umol/L",
+                                "type": "开关",
+                                "parent": "if_sgnbq",
+                                "bizName": "if_sgnbq_over",
+                                "value": "0",
+                                "dimension": {
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                "children":[
+                                    {
+                                        "name": "if_sgnbq_over_a_1",
+                                        "label": "是",
+                                        "type": "虚拟菜单",
+                                        "parent": "if_sgnbq_over",
+                                        "value": "1",
+                                        "bizName": null,
+                                        "children": [
+                                            {
+                                                "name": "if_sfjxtx",
+                                                "label": "是否进行透析",
+                                                "type": "开关",
+                                                "parent": "if_sgnbq_over",
+                                                "bizName": "if_sfjxtx",
+                                                "value": "0",
+                                                "dimension": {
+                                                    "options": [
+                                                        {
+                                                            "label": "是",
+                                                            "value": "1"
+                                                        },
+                                                        {
+                                                            "label": "否",
+                                                            "value": "0"
+                                                        }
+                                                    ]
+                                                },
+                                                "children":[
+                                                    {
+                                                        "name": "if_sfjxtx_a_if_xytx",
+                                                        "label": "是",
+                                                        "type": "虚拟菜单",
+                                                        "parent": "if_sfjxtx",
+                                                        "value": "1",
+                                                        "bizName": null,
+                                                        "children": [
+                                                            {
+                                                                "name": "if_xytx",
+                                                                "label": "血液透析",
+                                                                "type": "开关",
+                                                                "parent": "if_sfjxtx",
+                                                                "bizName": "if_xytx",
+                                                                "value": "0",
+                                                                "dimension": {
+                                                                    "options": [
+                                                                        {
+                                                                            "label": "是",
+                                                                            "value": "1"
+                                                                        },
+                                                                        {
+                                                                            "label": "否",
+                                                                            "value": "0"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "children":[],
+                                                                "prompt": ""
+                                                            },
+                                                            {
+                                                                "name": "if_fmtx",
+                                                                "label": "腹膜透析",
+                                                                "type": "开关",
+                                                                "parent": "if_sfjxtx",
+                                                                "bizName": "if_fmtx",
+                                                                "value": "0",
+                                                                "dimension": {
+                                                                    "options": [
+                                                                        {
+                                                                            "label": "是",
+                                                                            "value": "1"
+                                                                        },
+                                                                        {
+                                                                            "label": "否",
+                                                                            "value": "0"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "children":[],
+                                                                "prompt": ""
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "prompt": ""
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "prompt": ""
+                            },
+                            {
+                                "name": "if_sgnbq_under",
+                                "label": "肌酐小于266ummol/L",
+                                "type": "开关",
+                                "parent": "if_sgnbq",
+                                "bizName": "if_sgnbq_under",
+                                "value": "0",
+                                "dimension": {
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                "children":[],
+                                "prompt": ""
+                            }
+                        ]
+                    }
+                ],
+                "name": "if_sgnbq",
+                "bizName": "if_sgnbq",
+                "dimension": {
+                    "options": [
+                        {
+                            "label": "是",
+                            "value": "1"
+                        },
+                        {
+                            "label": "否",
+                            "value": "0"
+                        }
+                    ]
+                },
+                "prompt": ""
+            }
+
+        ]
+    }
+
+
+]

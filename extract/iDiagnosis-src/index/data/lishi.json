@@ -1,0 +1,143 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "search": "gaoxueya|GAOXUEYA|gaoxueya|gxy",
+            "label": "高血压"
+          },
+          {
+            "search": "tangniaobing|TANGNIAOBING|tangniaobing|tnb",
+            "label": "糖尿病"
+          },
+          {
+            "search": "gaozhixuezheng|GAOZHIXUEZHENG|gaozhixuezheng|gzxz",
+            "label": "高脂血症"
+          },
+          {
+            "search": "fangzhan|FANGZHAN|fangzhan|fz",
+            "label": "房颤"
+          },
+          {
+            "search": "xinjigengsi|XINJIGENGSI|xinjigengsi|xjgs",
+            "label": "心肌梗死"
+          },
+          {
+            "search": "naogengsi|NAOGENGSI|naogengsi|ngs",
+            "label": "脑梗死"
+          }
+        ],
+        "label": "常见既往史"
+      },
+      {
+        "children": [
+          {
+            "search": "gaoxueya|GAOXUEYA|gaoxueya|gxy",
+            "label": "高血压"
+          },
+          {
+            "search": "tangniaobing|TANGNIAOBING|tangniaobing|tnb",
+            "label": "糖尿病"
+          },
+          {
+            "search": "guanxinbing|GUANXINBING|guanxinbing|gxb",
+            "label": "冠心病"
+          },
+          {
+            "search": "naogengsi|NAOGENGSI|naogengsi|ngs",
+            "label": "脑梗死"
+          },
+          {
+            "search": "gaozhixuezheng|GAOZHIXUEZHENG|gaozhixuezheng|gzxz",
+            "label": "高脂血症"
+          }
+        ],
+        "label": "既往家族史"
+      },
+      {
+        "children": [
+          {
+            "search": "asipilin|ASIPILIN|asipilin|aspl",
+            "label": "阿司匹林"
+          },
+          {
+            "search": "huafalin|HUAFALIN|huafalin|hfl",
+            "label": "华法林"
+          },
+          {
+            "search": "atuofatating|ATUOFATATING|atuofatating|atftt",
+            "label": "阿托伐他汀"
+          },
+          {
+            "search": "lu:bigelei|LU:BIGELEI|lu:bigelei|lbgl",
+            "label": "氯吡格雷"
+          },
+          {
+            "search": "meituoluoer|MEITUOLUOER|meituoluoer|mtle",
+            "label": "美托洛尔"
+          }
+        ],
+        "label": "常见用药史"
+      },
+      {
+        "children": [
+          {
+            "search": "jingpiguanzhuangdongmaiqiangneixueguanchengxingshu|JINGPIGUANZHUANGDONGMAIQIANGNEIXUEGUANCHENGXINGSHU|jingpiguanzhuangdongmaiqiangneixueguanchengxingshu|jpgzdmqnxgcxs",
+            "label": "经皮冠状动脉腔内血管成形术"
+          },
+          {
+            "search": "guanzhuangdongmaizhijiazhirushu|GUANZHUANGDONGMAIZHIJIAZHIRUSHU|guanzhuangdongmaizhijiazhirushu|gzdmzjzrs",
+            "label": "冠状动脉支架植入术"
+          },
+          {
+            "search": "guanzhuangdongmaibankuaixuanmoshu|GUANZHUANGDONGMAIBANKUAIXUANMOSHU|guanzhuangdongmaibankuaixuanmoshu|gzdmbkxms",
+            "label": "冠状动脉斑块旋磨术"
+          },
+          {
+            "search": "guanzhuangdongmaineixueshuanchouxishu|GUANZHUANGDONGMAINEIXUESHUANCHOUXISHU|guanzhuangdongmaineixueshuanchouxishu|gzdmnxscxs",
+            "label": "冠状动脉内血栓抽吸术"
+          },
+          {
+            "search": "guanzhuangdongmaidaqiaoshu|GUANZHUANGDONGMAIDAQIAOSHU|guanzhuangdongmaidaqiaoshu|gzdmdqs",
+            "label": "冠状动脉搭桥术"
+          },
+          {
+            "search": "guanzhuangdongmaizaoyingshu|GUANZHUANGDONGMAIZAOYINGSHU|guanzhuangdongmaizaoyingshu|gzdmzys",
+            "label": "冠状动脉造影术"
+          }
+        ],
+        "label": "常见手术史"
+      }
+    ],
+    "label": "既往史"
+  },
+  {
+    "children": [
+      {
+        "search": "you|YOU|you|y",
+        "label": "有"
+      },
+      {
+        "search": "wu|WU|wu|w",
+        "label": "无"
+      }
+    ],
+    "label": "吸烟史",
+    "selectType": "radio"
+  },
+  {
+    "children": [
+      {
+        "search": "you|YOU|you|y",
+        "label": "有"
+      },
+      {
+        "search": "wu|WU|wu|w",
+        "label": "无"
+      }
+    ],
+    "label": "饮酒史",
+    "selectType": "radio"
+  }
+]

@@ -1,0 +1,10 @@
+<div class="{{colCell}} infi-table-cell">
+    <h5 class="infi-cell-child">{{title}}:</h5>
+    <div class="infi-cell-child" ng-show="list.status == SYS.STATUS_SUCCESS">
+        <label ng-repeat="entity in list.$datas" style="margin-right: 5px;">
+            <input type="checkbox" ng-model="entity.$checked" ng-change="changeStatisticsType(entity)" />
+            {{entity.label}}
+        </label>
+    </div>
+    <span ng-show="list.status != SYS.STATUS_SUCCESS" class="text-danger">暂无数据</span>
+</div>

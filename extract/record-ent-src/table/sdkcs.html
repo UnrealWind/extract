@@ -1,0 +1,187 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_sdkcs == true">
+    <div class="infi-record-title">
+        <h4>声导抗测试</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_sdkcs_time"
+                   ng-model="entity.table_sdkcs_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <thead>
+        <tr>
+            <th rowspan="2" style="vertical-align: middle;">
+                指示耳
+            </th>
+            <th rowspan="2" style="vertical-align: middle;width:108px;">
+                1000Hz鼓室曲线
+            </th>
+            <th rowspan="2" style="vertical-align: middle;">
+                226Hz鼓室曲线
+            </th>
+            <th rowspan="2" style="vertical-align: middle;">
+                鼓室压力daPa
+            </th>
+            <th rowspan="2" style="vertical-align: middle;">
+                声顺值（ml)
+            </th>
+            <th rowspan="2" style="vertical-align: middle;">
+                刺激耳
+            </th>
+            <th colspan="5">
+                声反射阈
+            </th>
+        </tr>
+        <tr>
+            <th>
+                0.5k
+            </th>
+            <th>
+                1k
+            </th>
+            <th>
+                2k
+            </th>
+            <th>
+                4k
+            </th>
+            <th>
+                WN
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    左耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <select ng-model="entity.table_sdkcs_ze_1000hz" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="A" name="entity.table_sdkcs_ze_1000hz">A型图</option>
+                        <option value="As" name="entity.table_sdkcs_ze_1000hz">As型图</option>
+                        <option value="Ad" name="entity.table_sdkcs_ze_1000hz">Ad型图</option>
+                        <option value="B" name="entity.table_sdkcs_ze_1000hz">B型图</option>
+                        <option value="C" name="entity.table_sdkcs_ze_1000hz">C型图</option>
+                        <option value="Cs" name="entity.table_sdkcs_ze_1000hz">Cs型图</option>
+                    </select>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_226hz" ng-model="entity.table_sdkcs_ze_226hz" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_dapa" ng-model="entity.table_sdkcs_ze_dapa" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_ssz" ng-model="entity.table_sdkcs_ze_ssz" class="form-control"/>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_05k" ng-model="entity.table_sdkcs_zy_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_1k" ng-model="entity.table_sdkcs_zy_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_2k" ng-model="entity.table_sdkcs_zy_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_4k" ng-model="entity.table_sdkcs_zy_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_WN" ng-model="entity.table_sdkcs_zy_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_05k" ng-model="entity.table_sdkcs_zz_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_1k" ng-model="entity.table_sdkcs_zz_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_2k" ng-model="entity.table_sdkcs_zz_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_4k" ng-model="entity.table_sdkcs_zz_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_WN" ng-model="entity.table_sdkcs_zz_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    右耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <select ng-model="entity.table_sdkcs_ye_1000hz" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="A" name="entity.table_sdkcs_ye_1000hz">A型图</option>
+                        <option value="As" name="entity.table_sdkcs_ye_1000hz">As型图</option>
+                        <option value="Ad" name="entity.table_sdkcs_ye_1000hz">Ad型图</option>
+                        <option value="B" name="entity.table_sdkcs_ye_1000hz">B型图</option>
+                        <option value="C" name="entity.table_sdkcs_ye_1000hz">C型图</option>
+                        <option value="Cs" name="entity.table_sdkcs_ye_1000hz">Cs型图</option>
+                    </select>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_226hz" ng-model="entity.table_sdkcs_ye_226hz" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_dapa" ng-model="entity.table_sdkcs_ye_dapa" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_ssz" ng-model="entity.table_sdkcs_ye_ssz" class="form-control"/>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_05k" ng-model="entity.table_sdkcs_yy_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_1k" ng-model="entity.table_sdkcs_yy_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_2k" ng-model="entity.table_sdkcs_yy_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_4k" ng-model="entity.table_sdkcs_yy_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_WN" ng-model="entity.table_sdkcs_yy_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_05k" ng-model="entity.table_sdkcs_yz_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_1k" ng-model="entity.table_sdkcs_yz_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_2k" ng-model="entity.table_sdkcs_yz_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_4k" ng-model="entity.table_sdkcs_yz_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_WN" ng-model="entity.table_sdkcs_yz_WN" class="form-control"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>声导抗检查: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_sdkjc"><input
+                name="entity.name_sdkjc" type="text" ng-model="entity.name_sdkjc" class="form-control"/></div>
+    </div>
+</section>

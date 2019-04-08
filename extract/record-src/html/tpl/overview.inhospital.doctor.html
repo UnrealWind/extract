@@ -1,0 +1,54 @@
+<div class="infi-wj-self-box infi-visit-box" style="width: 100%;border: 1px solid #ccc;">
+    <div class="infi-wj-table-box" style="width: 100%; margin:0;padding: 20px;;">
+        <table class="table table-bordered infi-wj-visit-tab">
+            <thead>
+            <tr>
+                <th>下达时间</th>
+                <th>医嘱内容</th>
+                <th>医嘱长期短期</th>
+                <th>医嘱类型</th>
+                <th>剂量</th>
+                <th>单位</th>
+                <th>频次</th>
+                <th>途径</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entity in doctor">
+                <th>
+                    <span ng-bind="entity.enter_date_time|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.order_text"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.repeat_indicator"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.order_class_id"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.dosage"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.dosage_units"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.frequency"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.administration_id"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.start_date_time|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                </th>
+                <th>
+                    <span ng-bind="entity.stop_date_time|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

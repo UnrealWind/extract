@@ -1,0 +1,67 @@
+<section>
+    <div class="infi-generate" id="printArea">
+        <div>
+            <h4 style="text-align: center;">301耳鼻喉入院记录</h4>
+        </div>
+        <div style="text-align: right;margin-right:20px;">
+            门诊：<span ng-bind="entity.name_2"></span>
+        </div>
+        <div style="position: relative;height:24px;">
+        <span style="position: absolute;left:20px;">
+            姓名：<span ng-bind="entity.name_4"></span>
+        </span>
+        <span style="position: absolute;right:20px;">
+            第几次入院：<span ng-bind="entity.name_3"></span>
+        </span>
+        </div>
+        <hr style="margin: 10px 0;"/>
+        <div style="margin:0 10px;">
+            <span>{{outputText.nature.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.main.text!=''">
+            <b>主诉：</b>
+            <span>{{outputText.main.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.nowDisease.text!=''">
+            <b>现病史：</b>
+            <span>{{outputText.nowDisease.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.always.text!=''">
+            <b>既往史：</b>
+            <span>{{outputText.always.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.personal.text!=''">
+            <b>个人史：</b>
+            <span>{{outputText.personal.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.Marital.text!=''">
+            <b>婚育史：</b>
+            <span>{{outputText.Marital.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.menstruation.text!=''">
+            <b>月经妊娠史：</b>
+            <span>{{outputText.menstruation.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.family.text!=''">
+            <b>家族史：</b>
+            <span>{{outputText.family.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.bodyExam.text!=''">
+            <b>体格检查：</b>
+            <span>{{outputText.bodyExam.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="outputText.specialized.text!=''">
+            <b>专科检查：</b>
+            <span>{{outputText.specialized.text}}</span>
+        </div>
+        <div class="infi-paragraph" ng-if="checkHyjtsjc()">
+            <link rel="import" href="../output/hyjtsjc.generate.html?__inline">
+        </div>
+        <div class="infi-paragraph" ng-if="checkZd()">
+            <link rel="import" href="../output/zd.generate.html?__inline">
+        </div>
+        <div style="margin:10px;text-align: right;">
+            <span>病历完成时间：</span><span ng-bind="entity.name_1070 | date:'yyyy-MM-dd'"></span>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<div>
+    <table id="{{original.id}}" class="table infi-nopage-table infi-table-striped" ng-show="recordList.data.result.length > 0">
+        <thead>
+            <tr>
+                <td ng-repeat="column in original.child" ng-bind="column.name" title="{{column.name}}"></td>
+            </tr>
+        </thead>
+        <!--repeat-finish-table="{{tablesId}}"-->
+        <tbody>
+
+            <tr ng-repeat="list in recordList.data.result" table-title-scroll="scroll">
+                <td ng-repeat="column in original.child" ng-class="{'text-right':column.isRight}" class="pointer"
+                    ng-bind="list[column.key]" ng-click="getChildTable({type:list[column.isClick]})" ng-if="column.isClick"></td>
+                <td ng-repeat="column in original.child" ng-class="{'text-right':column.isRight,'pointer':column.isClick}"
+                    ng-bind="list[column.key]" ng-if="!column.isClick"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-show="recordList.data.result.length == 0" style="margin-top: 35px;" class="text-danger">未查询到数据</div>
+    <div ng-show="recordList.status != SYS.STATUS_SUCCESS" style="margin-top: 35px;"  class="text-danger">服务器忙,请稍后再试</div>
+</div>

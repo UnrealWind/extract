@@ -1,0 +1,156 @@
+<div style="padding: 10px;">
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">日期： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.date| empty "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">生产情况： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.production_situation| empty "></div>
+        </div>
+    </div>
+    <div ng-if="mater.production_situation=='流产'">
+        <div class="row">
+            <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">流产方式： </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+                <div class="infi-wj-obstetrics-text" ng-bind="mater.pro_abortion_way| empty "></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">流产原因： </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+                <div class="infi-wj-obstetrics-text" ng-bind="mater.pro_abortion_cause| empty "></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='早产' ">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿性别： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.early_baby_sex| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='早产' ">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿存亡情况： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.early_baby_sur_situation| empty "></div>
+        </div>
+    </div>
+    <div ng-if="mater.production_situation=='早产' && mater.early_baby_sur_situation=='存'">
+        <div class="row">
+            <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿体重： </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+                <div class="infi-wj-obstetrics-text" style="display: inline-block;" ng-bind="mater.early_baby_weight| empty "></div>
+                <div class="infi-wj-obstetrics-text" style="display: inline-block;" ng-if="mater.early_baby_weight">kg</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">早产原因： </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+                <div class="infi-wj-obstetrics-text" ng-bind="mater.early_baby_cause| empty "></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='早产' && mater.early_baby_sur_situation=='亡'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿死亡原因： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.early_newborn_death_cause| empty "></div>
+        </div>
+    </div>
+    <!--ljy_debug 新增的前端页面显示字段死胎-->
+    <div class="row" ng-if="mater.production_situation=='死胎'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿性别： </label>
+        </div>
+        <div class="col-md-5 form-group input-group">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.dead_fetus_baby_sex|empty"></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='死胎'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿死亡原因： </label>
+        </div>
+        <div class="col-md-5 form-group input-group">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.dead_fetus_death_cause|empty"></div>
+        </div>
+    </div>
+    <!--ljy_debug 前端页面增加的字段显示死产-->
+    <div class="row" ng-if="mater.production_situation == '死产'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿性别： </label>
+        </div>
+        <div class="col-md-5 form-group input-group">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.stillbirth_baby_sex|empty"></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation == '死产'">
+        <div  class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿死亡原因： </label>
+        </div>
+        <div class="col-ms-5 from-input input-group">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.stillbirth_death_cause | empty"></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿性别： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_baby_sex| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">生产方式： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_situation| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产' && mater.fmp_situation=='手术'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">手术原因： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_operation_cause| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿存亡情况： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_baby_sur_situation| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产' && mater.fmp_baby_sur_situation=='存'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">新生儿体重： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" style="display: inline-block;" ng-bind="mater.fmp_baby_weight| empty ">
+            </div>
+            <div class="infi-wj-obstetrics-text" style="display: inline-block;" ng-if="mater.fmp_baby_weight">kg</div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产' && mater.fmp_baby_sur_situation=='亡'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-titles">新生儿死亡原因： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_newborn_death_cause| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">是否畸形： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_deformity| empty "></div>
+        </div>
+    </div>
+    <div class="row" ng-if="mater.production_situation=='足月产' && mater.fmp_deformity=='是'">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">畸形原因： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.fmp_deformity_cause| empty "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">孕产期合并症： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="mater.maternal_complication|unescape "></div>
+        </div>
+    </div>
+
+</div>

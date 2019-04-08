@@ -1,0 +1,65 @@
+<h4 class="infi-title ng-scope" style="overflow: hidden;">
+    <style>
+        body article.infi-main {
+            background-color: #f1f1f1 !important;
+        }
+    </style>
+    <i class="glyphicon glyphicon-globe"></i>病历简介
+
+    <!-- 因为病史采集所以去掉了这个返回
+    <button ng-click="goBack()" class="btn infi-btn-linear-green-l btn-sm" style="float: right;">返回</button>-->
+</h4>
+<time-basic  time-base-info="baseInfo"></time-basic>
+
+<div class="infi-wj-self-box" style="margin-top:20px;">
+    <div class="infi-wj-title title-heigh spe-title">
+        <i class="glyphicon glyphicon-info-sign"></i>
+        <span>历次就诊信息</span>
+        <!--<form class="form-inline" style="display: inline-block;">
+            <div class="form-group">
+                <label>请选择排序方法：</label>
+                <select ng-change="changeTimeLine()" class="form-control" ng-model="param.type">
+                    <option value="time">按时间排序</option>
+                    <option value="disease">按疾病排序</option>
+                </select>
+            </div>
+            <div class="form-group" ng-if="param.type == 'disease'">
+                <label>请选择疾病：</label>
+                <select ng-change="changeTimeLine()" class="form-control " ng-model="param.disease">
+                    <option ng-repeat="opt in diseaseList" value="{{opt.disease_id}}">{{opt.disease_name}}</option>
+                </select>
+            </div>
+        </form>-->
+
+        <div class="btn-tab">
+            <ul class="">
+                <li>
+                    <a class="btn" ng-class="{true:'btn-primary',false:'btn-default'}[param.type == 'time']" ng-click="chose('time')">按时间排序</a>
+                </li>
+                <li>
+                    <a class="btn" ng-class="{true:'btn-primary',false:'btn-default'}[param.type == 'disease']" ng-click="chose('disease')">按疾病排序</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div ng-if="param.type == 'disease'" class="btn-tab tiny-mark btn-tab-in">
+            <ul class="">
+                <li ng-repeat="opt in diseaseList">
+                    <a class="btn btn-sm" ng-class="{true:'btn-primary',false:'btn-default'}[param.disease == opt.disease_id]" ng-click="choseDisease(opt.disease_id)">{{opt.disease_name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!--存放时间轴插件-->
+        <div style="margin-top: 45px;" infi-timeline type="" events="timelineDatas" ng-if="timelineDatas.status=='ok'&&timelineDatas.data.length>0"></div>
+    </div>
+    <div class="infi-wj-part" ng-if="timelineDatas.status!='ok'||timelineDatas.data.length<=0">-</div>
+</div>
+
+<style>
+    .tiny-mark .btn {
+        margin:0 5px;
+        border-radius:3px !important;
+        padding: 2px 6px;
+    }
+</style>

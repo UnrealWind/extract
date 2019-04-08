@@ -1,0 +1,179 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 10px;"><label
+            class="infi-wj-label-title">检查日期: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;margin-left: -10px;"><input readonly="readonly"
+            name="pregnancy.date" infi-wj-date pregnancy = 'pregnancy.date' ng-click = 'setDafaultTime()'
+            type="text"
+            ng-model="pregnancy.date"
+            class="form-control infi-default"/></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+            class="infi-wj-label-title">妊娠期: </label></div>
+    <div class="col-md-2 form-group input-group" style="width: ;float: left;"><input name="pregnancy.pregnancyWeek" type="text"
+                                                                                     ng-model="pregnancy.pregnancyWeek"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> 周</div>
+    </div>
+    <div class="col-md-2 form-group input-group" style="width: ;float: left;"><input name="pregnancy.pregnancyDay" type="text"
+         ng-model="pregnancy.pregnancyDay" class="form-control"/>
+        <div class="input-group-addon" style=""> 天</div>
+    </div>
+</div>
+<div class="row" style="position: relative;">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 10px;"><label
+            class="infi-wj-label-title">血压: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;margin-left: -10px;"><input
+            name="pregnancy.highPressure" infi-input-other pregnancy = 'pregnancy.highPressure'
+            type="text"
+            ng-model="pregnancy.highPressure"
+            class="form-control"/>
+        <div class="input-group-addon">/</div>
+
+        <input name="pregnancy.lowPressure" infi-input-other type="text" ng-model="pregnancy.lowPressure" class="form-control"/>
+        <div class="input-group-addon" style=""> mmHg</div>
+    </div>
+    <div  class="infi-wj-highPressure">
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="90">90</label>
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="100">100</label>
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="110">110</label>
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="120">120</label>
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="130">130</label>
+        <label><input ng-model="pregnancy.highPressure" type="radio" value="140">140</label>
+    </div>
+    <div  class="infi-wj-lowPressure">
+        <label><input ng-model="pregnancy.lowPressure" type="radio" value="60">60</label>
+        <label><input ng-model="pregnancy.lowPressure" type="radio" value="70">70</label>
+        <label><input ng-model="pregnancy.lowPressure" type="radio" value="80">80</label>
+        <label><input ng-model="pregnancy.lowPressure" type="radio" value="90">90</label>
+    </div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+            class="infi-wj-label-title">体重: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="pregnancy.weight" type="number"
+                                                                                     ng-model="pregnancy.weight"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style="">kg</div>
+    </div>
+    <div class="row"></div>
+    <div class="row" style="position: relative;">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+                class="infi-wj-label-title">胎心: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="pregnancy.cardiac" infi-input-other
+                                                                                         type="text"
+                                                                                         ng-model="pregnancy.cardiac"
+                                                                                         class="form-control"/>
+            <div class="input-group-addon" style=""> 次/分</div>
+        </div>
+        <div  class="infi-wj-cardiac">
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="140">140</label>
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="145">145</label>
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="150">150</label>
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="155">155</label>
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="160">160</label>
+            <label><input ng-model="pregnancy.cardiac" type="radio" value="未查">未查</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-label-title">胎动: </label>
+        </div>
+        <div class="col-md-10 radio input-group" style="width: ;float: left;">
+            <label class="radio-inline" style="margin-left: 10px;">
+                <input type="radio" ng-model="pregnancy.quickening" value="正常"/>正常
+            </label>
+            <label class="radio-inline" style="margin-left: 10px;">
+                <input type="radio" ng-model="pregnancy.quickening" value="减少"/>减少
+            </label>
+            <label class="radio-inline" style="margin-left: 10px;">
+                <input type="radio" ng-model="pregnancy.quickening" value="频繁"/>频繁
+            </label>
+            <label class="radio-inline" style="margin-left: 10px;">
+                <input type="radio" ng-model="pregnancy.quickening" value="未查"/>未查
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+                class="infi-wj-label-title">胎位: </label></div>
+        <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;"><label
+                class="checkbox-inline"
+                style="margin-left: 10px;">
+            <input
+                    type="checkbox"
+                    ng-model="pregnancy.position.name___u5934__u4F4D"/>头位</label>
+            <label
+                    class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                               ng-model="pregnancy.position.name___u81C0__u4F4D"/>臀位</label>
+            <label
+                    class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                               ng-model="pregnancy.position.name___u6A2A__u4F4D"/>横位</label>
+            <label
+                    class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                               ng-model="pregnancy.position.name___u672A__u67E5"/>未查</label>
+            <label ng-repeat="(key,value) in pregnancy.positionOTHER" class="checkbox-inline"
+                   style="margin-left: 10px;">
+                <input type="checkbox" ng-model="pregnancy.positionOTHER[key]"/>{{key|unescape}}</label>
+            <button id="pregnancy-other" infi-other-value checked="pregnancy.position"
+                    style="cursor: pointer;margin-left: 10px;" data-type="checkboxOther"
+                    class="btn infi-btn-linear-default btn-xs"
+                    data-name="pregnancy.position" data-value="{{pregnancy.position}}">添加其他
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+                class="infi-wj-label-title">头盆关系: </label></div>
+        <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inline"
+                                                                                     style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u5934__u76C6__u76F8__u79F0"/>头盆相称</label><label class="radio-inlinue"
+                                                                              style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u4E34__u754C__u4E0D__u79F0"/>临界不称</label><label class="radio-inlinue"
+                                                                              style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u8F7B__u5EA6__u4E0D__u79F0"/>轻度不称</label><label class="radio-inlinue"
+                                                                              style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u4E2D__u5EA6__u4E0D__u79F0"/>中度不称</label><label class="radio-inlinue"
+                                                                              style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u91CD__u5EA6__u4E0D__u79F0"/>重度不称</label><label class="radio-inlinue"
+                                                                              style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.headBasinRela" name="pregnancy.headBasinRela"
+                value="name___u672a__u67e5"/>未查</label></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+                class="infi-wj-label-title">水肿: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;"><label class="radio-inline"
+                                                                                    style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.edema" name="pregnancy.edema" value="name___u6709"/>有</label><label
+                class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="pregnancy.edema"
+                                                                         name="pregnancy.edema"
+                                                                         value="name___u65E0"/>无</label>
+            <label class="radio-inline"
+                   style="margin-right: 10px;"><input
+                    type="radio" ng-model="pregnancy.edema" name="pregnancy.edema" value="name___u672a__u67e5"/>未查</label></div>
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label
+                class="infi-wj-label-title">尿蛋白: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;"><label class="radio-inline"
+                                                                                    style="margin-right: 10px;"><input
+                type="radio" ng-model="pregnancy.urinaryProtein" name="pregnancy.urinaryProtein"
+                value="-"/>-</label><label
+                class="radio-inlinue" style="margin-right: 10px;"><input type="radio"
+                                                                         ng-model="pregnancy.urinaryProtein"
+                                                                         name="pregnancy.urinaryProtein"
+                                                                         value="+"/>+</label><label
+                class="radio-inlinue" style="margin-right: 10px;"><input type="radio"
+                                                                         ng-model="pregnancy.urinaryProtein"
+                                                                         name="pregnancy.urinaryProtein"
+                                                                         value="++"/>++</label><label
+                class="radio-inlinue" style="margin-right: 10px;"><input type="radio"
+                                                                         ng-model="pregnancy.urinaryProtein"
+                                                                         name="pregnancy.urinaryProtein"
+                                                                         value="+++"/>+++</label><label
+                class="radio-inlinue" style="margin-right: 10px;"><input type="radio"
+                                                                         ng-model="pregnancy.urinaryProtein"
+                                                                         name="pregnancy.urinaryProtein"
+                                                                         value="未查"/>未查</label></div>
+    </div>
+</div>

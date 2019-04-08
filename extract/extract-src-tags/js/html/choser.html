@@ -1,0 +1,42 @@
+<div class="infi-choser-tab">
+    <!--取数多标签显示-->
+    <!--分类,直接展示分类项-->
+    <ul ng-if="contents.$active" class="infi-second-level">
+        <li ng-repeat="entity in tabs" ng-if="entity.nodeType=='classity'">
+            <span class="infi-tabs-show">{{entity.tagClassName}}</span>
+            <div opt-btn class="infi-inline-block"></div>
+            <div extract-tab tabs="entity.children" contents="entity" caterage="caterage" update-opt="updateOpt(caterage,parent)"></div>
+        </li>
+    </ul>
+    <!--点击可以出自己的tab标签-->
+    <ul class="nav nav-pills infi-second-level {{tabs | tabsShow}}" >
+        <li ng-repeat="entity in tabs" ng-class="{true:'selected'}[entity.$active]"
+            ng-show="($index<=20||contents.showAll)&&(entity.nodeType=='label'||entity.nodeType=='leaf')">
+            <label class="pointer">
+                <span ng-bind="entity.tagClassName" ng-click="showTabDetail(entity,tabs)"></span>
+            </label>
+            <div opt-btn class="infi-inline-block"></div>
+        </li>
+        <!--展开收起按钮-->
+        <li style="margin-top: 4px;cursor: pointer;" ng-show="tabs.length > 20">
+            <i title="展开" class="glyphicon glyphicon-circle-arrow-down" ng-show="!contents.showAll" ng-click="showTabsAll('down')"></i>
+            <i title="收起" class="glyphicon glyphicon-circle-arrow-up" ng-show="contents.showAll" ng-click="showTabsAll('up')"></i>
+        </li>
+    </ul>
+    <!--多层级的递归调用-->
+    <div>
+        <div class="infi-second-level" ng-repeat="child in tabs" ng-if="child.children&&child.$active&&child.nodeType != 'classity'">
+            <div extract-tab tabs="child.children" contents="child" caterage="caterage" update-opt="updateOpt(caterage,parent)"></div>
+        </div>
+    </div>
+    <!--tab最后层级的显示,与options相同-->
+    <div style="margin-top: 10px;" class="infi-second-level" ng-if="contents.$active&&contents.nodeType == 'leaf'&&contents.children.length > 0">
+        <ul class="list-unstyled infi-choser-first-li">
+            <li ng-repeat="option in child.children">
+                <label class="infi-listing-attribute">
+                    <span ng-bind="option.tagClassName" ng-click="showTabDetail(entity,tabs)"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<label>身份：
+    <select class="form-control infi-opt-search-time" ng-model="original.identity" ng-change="changeData()"
+            ng-show="recordList.status == SYS.STATUS_SUCCESS&&recordList.data.status == SYS.STATUS_SUCCESS">
+        <option value="" ng-selected="original.identity == ''">全部</option>
+        <option ng-selected="original.identity == identity.value" ng-repeat="identity in recordList.data.result"
+                ng-bind="identity.label" value="{{identity.value}}"></option>
+    </select>
+    <span ng-show="recordList.status != SYS.STATUS_SUCCESS||recordList.data.status != SYS.STATUS_SUCCESS" class="text-danger">未查询到数据</span>
+</label>

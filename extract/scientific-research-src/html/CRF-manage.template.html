@@ -1,0 +1,84 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>CRF模板管理</h4>
+<div class="infi-box">
+    <h4 class="infi-title">CRF模板管理</h4>
+    <div class="infi-box-containter CRFLists">
+        <div class="dir-nav-container">
+            <div class="marginten">
+                <ul class="nav nav-tabs " role="tablist">
+                    <li role="presentation" class="cursorPointer active " ng-click=""><a>我的CRF模板</a></li>
+                    <li role="presentation" class="cursorPointer" ng-click=""><a>系统CRF模板</a></li>
+                </ul>
+                <button class="infi-fr btn btn-primary" ng-click="updateCRF()">新增CRF</button>
+            </div>
+            <div class="infi-box-containter ">
+                <div class="dir-nav-container">
+
+                    <div class="marginten">
+                        <ul class="row form-inline ">
+                            <li class=" form-group">
+                                <label >CRF表名称:</label>
+                                <input ng-model="params.name" type="text" class="form-control" >
+                                <span ng-click="searchCRFPage()" class="input-group-addon btn btn-primary" ng-click="">搜索</span>
+                            </li>
+                            <li class=" form-group">
+                                <label >科室:</label>
+                                <select ng-change="searchCRFPage()" class=" form-control" ng-model="params.dept">
+                                    <option value="">请选择</option>
+                                    <option ng-selected="opt.id==params.dept" value="{{opt.id}}" ng-repeat="opt in deptList">{{opt.label}}</option>
+                                </select>
+
+                            </li>
+                            <li class=" form-group">
+                                <label >CRF类型:</label>
+                                <select ng-change="searchCRFPage()" class=" form-control" ng-model="params.type">
+                                    <option value="">请选择</option>
+                                    <option ng-selected="opt.id==params.type" value="{{opt.id}}"  ng-repeat="opt in typeList">{{opt.remark}}</option>
+                                </select>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <table class="table table-striped" >
+                    <tr style="text-align: center">
+                        <td>序号</td>
+                        <td style="width: 40%;">CRF名称</td>
+                        <td>科室</td>
+                        <td>CRF类型</td>
+                        <td>创建者</td>
+                        <td>创建时间</td>
+                        <td>操作</td>
+                    </tr>
+
+                    <tr ng-repeat="opt in CRFTemplateList.content" style="text-align: center">
+                        <td>{{$index+1}}</td>
+                        <td>{{opt.name}}</td>
+                        <td>{{opt.dept}}</td>
+                        <td>{{opt.type}}</td>
+                        <td>{{opt.own}}</td>
+                        <td>{{opt.createTime}}</td>
+                        <td> <a class="" ng-click="viewDetail(opt)">查看详情</a></td>
+                    </tr>
+                </table>
+                <div ng-if="showData" class="alert alert-danger">暂无数据,请修改查询条件！！！</div>
+
+                <div class="infi-page">
+                    <uib-pagination total-items="CRFTemplatePage.totalElements" ng-model="CRFTemplatePage.number"
+                                    max-size="7"
+                                    boundary-link-numbers="true" ng-change="updatePageAttend(CRFTemplatePage.number)"
+                                    items-per-page="CRFTemplatePage.size" num-pages="CRFTemplatePage.totalPages"></uib-pagination>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<general-prompt  prompt-main-content="promptMainContent"></general-prompt>
+
+<update-c-r-f  dept-list="deptList" type-list="typeList"></update-c-r-f>
+
+<view-detail ng-if="viewDetailShow" view-template-id = "viewTemplateId"></view-detail>

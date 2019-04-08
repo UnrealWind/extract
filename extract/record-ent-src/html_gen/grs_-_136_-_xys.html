@@ -1,0 +1,29 @@
+<div class="infi-record-box"
+     ng-show="entity.name_136!=undefined && (entity.name_136=='value_13' || entity.name_136.value_13==true)"><h4
+        class="infi-record-title">吸烟史</h4>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>吸烟距今时长: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_149"><input
+                name="entity.name_149" type="text" ng-model="entity.name_149" class="form-control"/><select
+                ng-model="entity.name_149unit" class="form-control"
+                style="width:62px; position: absolute; top: 0;right: 50%;z-index: 10;">
+            <option value="天">天</option>
+            <option value="周">周</option>
+            <option value="月">月</option>
+            <option value="年">年</option>
+        </select></div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>是否已戒烟: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_150">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_150.options"><input type="radio" ng-model="entity.name_150"
+                                                                                 name="entity.name_150"
+                                                                                 value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../html_hand/grs_-_150_-_shi.html?__inline">
+    <link rel="import" href="../html_hand/grs_-_150_-_fou.html?__inline">
+    <div class="row"></div>
+</div>

@@ -1,0 +1,73 @@
+<div class="infi-record-box"
+     ng-show="entity.name_299!=undefined && (entity.name_299=='value_1' || entity.name_299.value_1==true)"><h4
+        class="infi-record-title">乳突异常</h4>
+    <div class="row">
+        <!--<div class="col-md-1 form-group" style="width:76px;text-align: right;padding-right: 0px;"><label>乳突畸形: </label>-->
+        <!--</div>-->
+        <div class="col-md-12 checkbox input-group" style="width: ;float: left;" ng-if="rtjcTabs.value == 'zkjc_rtjx'">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_300.options"><input type="checkbox"
+                                                                                 ng-model="entity.name_300[option.name]"/>{{option.label}}</label>
+            </div>
+        </div>
+        <!--<div class="col-md-1 form-group" style="width:76px;text-align: right;padding-right: 0px;"><label>乳突炎症: </label>-->
+        <!--</div>-->
+        <div class="col-md-12 checkbox input-group" style="width: ;float: left;" ng-if="rtjcTabs.value == 'zkjc_rtyz'">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_303.options"><input type="checkbox"
+                                                                                 ng-model="entity.name_303[option.name]"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <div ng-if="rtjcTabs.value == 'zkjc_rtjx'">
+        <link rel="import" href="../html_gen/zkjc_-_300_-_rtwg.html?__inline">
+    </div>
+    <div ng-if="rtjcTabs.value == 'zkjc_rtyz'">
+        <link rel="import" href="../html_gen/zkjc_-_303_-_rtyb.html?__inline">
+        <link rel="import" href="../html_gen/zkjc_-_303_-_rthz.html?__inline">
+        <link rel="import" href="../html_gen/zkjc_-_303_-_rtyt.html?__inline">
+        <link rel="import" href="../html_gen/zkjc_-_303_-_rtezlbjzd.html?__inline">
+    </div>
+    <div class="row">
+        <!--<div class="col-md-1 form-group" style="width:76px;text-align: right;padding-right: 0px;"><label>乳突肿瘤: </label>-->
+        <!--</div>-->
+        <div class="col-md-12 checkbox input-group" style="width: ;float: left;" ng-if="rtjcTabs.value == 'zkjc_rtzl'">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_306.options"><input type="checkbox"
+                                                                                 ng-model="entity.name_306[option.name]"/>{{option.label}}</label>
+            </div>
+        </div>
+        <!--<div class="col-md-1 form-group" style="width:76px;text-align: right;padding-right: 0px;"><label>乳突异物: </label>-->
+        <!--</div>-->
+        <div class="col-md-12 checkbox input-group" style="width: ;float: left;" ng-if="rtjcTabs.value == 'zkjc_rtyw'">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_309.options"><input type="checkbox"
+                                                                                 ng-model="entity.name_309[option.name]"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <div ng-if="rtjcTabs.value == 'zkjc_rtzl'">
+        <link rel="import" href="../html_gen/zkjc_-_306_-_edwtxcx.html?__inline">
+        <link rel="import" href="../html_gen/zkjc_-_306_-_rttt.html?__inline">
+    </div>
+    <div ng-if="rtjcTabs.value == 'zkjc_rtyw'">
+        <link rel="import" href="../html_gen/zkjc_-_309_-_ytlq.html?__inline">
+    </div>
+
+    <div class="row">
+        <!--<div class="col-md-1 form-group" style="width:104px;text-align: right;padding-right: 0px;">-->
+            <!--<label>乳突其他异常: </label></div>-->
+        <div class="col-md-12 form-group input-group" style="width: ;float: left;" ng-if="rtjcTabs.value == 'zkjc_rtqt'"><input name="entity.name_313"
+                                                                                         type="text"
+                                                                                         ng-model="entity.name_313"
+                                                                                         class="form-control"/>
+            <div class="row infi-record-search-add"><span class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                             ng-repeat="option in dimensions.name_313.options"><input type="radio"
+                                                                                                      ng-model="entity.name_313"
+                                                                                                      name="entity.name_313"
+                                                                                                      value="{{option.label}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+</div></div>

@@ -1,0 +1,147 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>患者详情</h4>
+<div class="infi-box">
+    <div class="infi-adverse-title-box">
+        <h4>基本信息</h4>
+        <hr />
+    </div>
+    <table class="infi-adverse-details-table" border="1" cellpadding="0" cellspacing="1" bordercolor="#aeaeae">
+        <tbody>
+        <tr>
+            <td>{{ detailsJson.basic.patientId.label }}</td>
+            <td>{{ detailsJson.basic.patientId.value }}</td>
+            <td>{{ detailsJson.basic.patientName.label }}</td>
+            <td>{{ detailsJson.basic.patientName.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.sex.label }}</td>
+            <td>{{ detailsJson.basic.sex.value }}</td>
+            <td>{{ detailsJson.basic.age.label }}</td>
+            <td>{{ detailsJson.basic.age.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.patientDept.label }}</td>
+            <td>{{ detailsJson.basic.patientDept.value }}</td>
+            <td>{{ detailsJson.basic.admissionTime.label }}</td>
+            <td>{{ detailsJson.basic.admissionTime.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.admissionWay.label }}</td>
+            <td>{{ detailsJson.basic.admissionWay.value }}</td>
+            <td>{{ detailsJson.basic.admissionDiag.label }}</td>
+            <td>{{ detailsJson.basic.admissionDiag.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.diagnosis.label }}</td>
+            <td>{{ detailsJson.basic.diagnosis.value }}</td>
+            <td>{{ detailsJson.basic.admissionIllness.label }}</td>
+            <td>{{ detailsJson.basic.admissionIllness.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.dischargeWay.label }}</td>
+            <td>{{ detailsJson.basic.dischargeWay.value }}</td>
+            <td>{{ detailsJson.basic.totalCost.label }}</td>
+            <td>{{ detailsJson.basic.totalCost.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.stayHospitalDay.label }}</td>
+            <td>{{ detailsJson.basic.stayHospitalDay.value }}</td>
+            <td>{{ detailsJson.basic.diseaseNum.label }}</td>
+            <td>{{ detailsJson.basic.diseaseNum.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.diseaseDangerNum.label }}</td>
+            <td>{{ detailsJson.basic.diseaseDangerNum.value }}</td>
+            <td>{{ detailsJson.basic.rescueNum.label }}</td>
+            <td>{{ detailsJson.basic.rescueNum.value }}</td>
+        </tr>
+        <tr>
+            <td>{{ detailsJson.basic.attending.label }}</td>
+            <td>{{ detailsJson.basic.attending.value }}</td>
+            <td>{{ detailsJson.basic.departmentDirector.label }}</td>
+            <td>{{ detailsJson.basic.departmentDirector.value }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="infi-adverse-title-box">
+        <h4>上报信息</h4>
+        <hr />
+    </div>
+    <div>
+        <table class="infi-adverse-details-table" border="1" cellpadding="0" cellspacing="1" bordercolor="#aeaeae">
+            <tbody>
+            <tr>
+                <td>{{ detailsJson.report.codeId.label }}</td>
+                <td>{{ detailsJson.report.codeId.value }}</td>
+                <td>{{ detailsJson.report.deptWard.label }}</td>
+                <td>{{ detailsJson.report.deptWard.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.reportDate.label }}</td>
+                <td>{{ detailsJson.report.reportDate.value }}</td>
+                <td>{{ detailsJson.report.happenDate.label }}</td>
+                <td>{{ detailsJson.report.happenDate.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.reporter.label }}</td>
+                <td>{{ detailsJson.report.reporter.value }}</td>
+                <td>{{ detailsJson.report.reporterIdentity.label }}</td>
+                <td>{{ detailsJson.report.reporterIdentity.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.telephone.label }}</td>
+                <td>{{ detailsJson.report.telephone.value }}</td>
+                <td>{{ detailsJson.report.eventType.label }}</td>
+                <td>{{ detailsJson.report.eventType.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.firstEvent.label }}</td>
+                <td>{{ detailsJson.report.firstEvent.value }}</td>
+                <td>{{ detailsJson.report.secondEvent.label }}</td>
+                <td>{{ detailsJson.report.secondEvent.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.thirdEvent.label }}</td>
+                <td>{{ detailsJson.report.thirdEvent.value }}</td>
+                <td>{{ detailsJson.report.happenPlace.label }}</td>
+                <td>{{ detailsJson.report.happenPlace.value }}</td>
+            </tr>
+            <tr>
+                <th colspan="10">
+                    <p class="title">{{ detailsJson.report.mainPerformance.label }}:</p>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="10">
+                    <p class="contain">{{ detailsJson.report.mainPerformance.value }}</p>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="10">
+                    <p class="title">{{ detailsJson.report.mainMeasures.label }}:</p>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="10">
+                    <p class="contain">{{ detailsJson.report.mainMeasures.value }}</p>
+                </th>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.treatmentResult.label }}</td>
+                <td>{{ detailsJson.report.treatmentResult.value }}</td>
+                <td>{{ detailsJson.report.Influence.label }}</td>
+                <td>{{ detailsJson.report.Influence.value }}</td>
+            </tr>
+            <tr>
+                <td>{{ detailsJson.report.departmentOpinion.label }}</td>
+                <td>{{ detailsJson.report.departmentOpinion.value }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button class="btn infi-btn-linear-green-l" ng-click="goBack()">返回</button>
+    </div>
+</div>

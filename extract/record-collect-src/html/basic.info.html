@@ -1,0 +1,108 @@
+<div class="">
+<div class="" ng-class="{false:'basic-open',true:'basic-close'}[close]">
+    <div class="infi-title">
+        <h3  ng-click="changeStatus()"><span class="border-bottom-2"><i class="fas fa-user"></i>基本信息</span>
+        <span class="glyphicon" ng-class="{true:'glyphicon-chevron-down',false:'glyphicon-chevron-right'}[!close]" aria-hidden="true"></span></h3>
+    </div>
+    <ul>
+        <li>
+            <div class="form-inline form-group">
+                <label>姓名：</label>
+                <input type="text" class="form-control reset-input" ng-model="wholeInfo.basicInfo.name"  placeholder="">
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>性别：</label>
+                <ul>
+                    <li>
+                        <label class="radio-inline">
+                            <input ng-model="wholeInfo.basicInfo.sex" type="radio" value="男">男
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-inline">
+                            <input ng-model="wholeInfo.basicInfo.sex" type="radio" value="女">女
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li >
+            <div class="form-inline form-group">
+                <label>ID：</label>
+                <span>
+                    {{wholeInfo.basicInfo.patientId}}
+                    <span ng-if="!wholeInfo.basicInfo.patientId">-</span>
+                </span>
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>挂号费：</label>
+                <select ng-model="wholeInfo.basicInfo.costInfo" class="form-control reset-input">
+                    <option value="">请选择</option>
+                    <option value="{{opt.id}}" ng-repeat="opt in wholeInfo.charge">{{opt.name}}</option>
+                </select>
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>费别：</label>
+                <span>
+                    {{wholeInfo.basicInfo.cost}}
+                    <span ng-if="!wholeInfo.basicInfo.cost">-</span>
+                </span>
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>年龄：</label>
+                <input type="text" class="form-control reset-input" ng-model="wholeInfo.basicInfo.age"  placeholder="">
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>证件类型：</label>
+                <select ng-model="wholeInfo.basicInfo.idType" class="form-control reset-input">
+                    <option value="身份证">身份证</option>
+                </select>
+            </div>
+        </li>
+        <li class="width66">
+            <div class="form-inline form-group">
+                <label>证件号码：</label>
+                <input type="text" class="form-control reset-input" ng-model="wholeInfo.basicInfo.idNumber"  placeholder="">
+            </div>
+        </li>
+        <li>
+            <div class="form-inline form-group">
+                <label>联系电话：</label>
+                <input type="text" class="form-control reset-input" ng-model="wholeInfo.basicInfo.phone"  placeholder="">
+            </div>
+        </li>
+        <li class="width66">
+            <div class="form-inline form-group">
+                <label>现住址：</label>
+                <input type="text" class="presentAddress form-control reset-input" ng-model="wholeInfo.basicInfo.presentAddress"  placeholder="">
+            </div>
+        </li>
+        <li class="width100">
+            <div class="form-inline form-group">
+                <label>户口地址：</label>
+                <input type="text" class="form-control reset-input" ng-model="wholeInfo.basicInfo.address"  placeholder="">
+            </div>
+        </li>
+
+        <li>
+            <div class="form-inline form-group">
+                <label>患者来源：</label>
+                <select ng-model="wholeInfo.basicInfo.source" class="form-control reset-input">
+                    <option value="">请选择</option>
+                    <option value="{{opt.id}}" ng-repeat="opt in wholeInfo.source">{{opt.name}}</option>
+                </select>
+            </div>
+        </li>
+
+    </ul>
+</div>

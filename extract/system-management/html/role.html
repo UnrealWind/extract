@@ -1,0 +1,15 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户管理 -> 角色</h4>
+<div class="infi-box">
+    <h4>角色列表</h4>
+    <a class="btn infi-btn-linear-green-l" style="position: absolute;top:15px;right:25px;" href="#/roleCreate">新建角色</a>
+
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="tab-content">
+                <div infi-table columns="columns" data-ng-if="columns && content" content="content"
+                     update-page="changePage(page)" btn-callback="pageOperation(entity,type)" opts="opts" class="user-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div delete-tip delete-id="deleteId" type="'role'" init="init()"></div>

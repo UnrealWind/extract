@@ -1,0 +1,147 @@
+<html>
+ <head></head>
+ <body>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label><span style="color:red">*</span>课题中文名 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.name" type="text" ng-model="basic.name" class="form-control" style="border-radius: 3px" />
+   </div>
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>课题英文名 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.ename" type="text" ng-model="basic.ename" class="form-control" style="border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>课题代码 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.code" type="text" ng-model="basic.code" class="form-control" style="border-radius: 3px" />
+   </div>
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>课题编号 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.serialNumber" type="text" ng-model="basic.serialNumber" class="form-control" style="border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label><span style="color:red">*</span>课题可见性 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <select ng-model="basic.visible" class="form-control" style="width: 100%;margin-right:20px"><option value="name___u516C__u5F00__u5171__u4EAB">公开共享</option><option value="name___u4EC5__u8BFE__u9898__u7EC4__u6210__u5458__u53EF__u89C1">仅课题组成员可见</option></select>
+   </div>
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label><span style="color:red">*</span>中心设置 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <select ng-model="basic.center" class="form-control" style="width: 100%;margin-right:20px"><option value="name___u591A__u4E2D__u5FC3">多中心</option><option value="name___u5355__u4E2D__u5FC3">单中心</option></select>
+   </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label><span style="color:red">*</span>课题类型 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="float: left;">
+    <select ng-model="basic.type" ng-click="research()" class="form-control" style="width: 40%;margin-right:20px">
+     <option value="name___u63CF__u8FF0__u6027__u7814__u7A76">描述性研究</option>
+     <option value="name___u5206__u6790__u6027__u7814__u7A76">分析性研究</option>
+     <option value="name___u5B9E__u9A8C__u6027__u7814__u7A76">实验性研究</option>
+     <option value="name___u6570__u636E__u5E93__u53CA__u5176__u5B83">数据库及其它</option>
+    </select>
+    <!--<select ng-model="basic.researchType" class="form-control" style="width: 40%;margin-right:20px">-->
+     <!--<option ng-repeat="research in researchType" value="research.value" ng-bind="research.name"></option>-->
+    <!--</select>-->
+
+    <select ng-if='type' class="form-control" style="width: 40%;margin-right:20px" ng-model="basic.researchType" ng-click="selectLeft()" ng-options="research.value as research.name for research in researchType"></select>
+
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>立项依据 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <textarea name="basic.basePoint" ng-model="basic.basePoint" rows="5" class="form-control" style="resize:none;border-radius: 3px;width:95%;"></textarea>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>科研意义与创新点 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <textarea name="basic.significance" ng-model="basic.significance" rows="5" class="form-control" style="resize:none;border-radius: 3px;width:95%;"></textarea>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>研究方案 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <textarea name="basic.researchWay" ng-model="basic.researchWay" rows="5" class="form-control" style="resize:none;border-radius: 3px;width:95%;"></textarea>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>计划开始时间 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.beginTime" infi-date="" type="text" ng-model="basic.beginTime" class="form-control" style="border-radius: 3px" />
+   </div>
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>计划结束时间 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.endTime" infi-date="" type="text" ng-model="basic.endTime" class="form-control" style="border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>研究病种 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <input name="basic.projectName" type="text" ng-model="basic.projectName" class="form-control" style="width:40%;border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label><span style="color:red">*</span>课题负责人 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.master" type="text" ng-model="basic.master" class="form-control" style="border-radius: 3px" />
+   </div>
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>联系电话 : </label>
+   </div>
+   <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+    <input name="basic.phone" type="text" ng-model="basic.phone" class="form-control" style="border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>邮箱 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <input name="basic.email" type="text" ng-model="basic.email" class="form-control" style="width:40%;border-radius: 3px" />
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-1" style="width:12%;line-height:34px;margin-right:5px;text-align: right;padding-right: 0px;">
+    <label>备注 : </label>
+   </div>
+   <div class="col-md-10 form-group input-group" style="width: ;float: left;">
+    <textarea name="basic.remarks" ng-model="basic.remarks" rows="5" class="form-control" style="resize:none;border-radius: 3px;width:95%;"></textarea>
+   </div>
+  </div>
+ </body>
+</html>

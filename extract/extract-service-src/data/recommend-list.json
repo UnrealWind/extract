@@ -1,0 +1,29 @@
+{
+  "nodes":"推荐任务列表",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"规则名称",
+      "name":"name"
+    },{
+      "label":"作用数据范围",
+      "name":"targetLabel"
+    },{
+      "label":"发送对象",
+      "name":"$user"
+    },{
+      "label":"发送时间",
+      "name":"$time"
+    },{
+      "label":"发送方式",
+      "name":"$way"
+    },{
+      "label":"发送内容",
+      "name":"$content"
+    },{
+      "label":"创建时间",
+      "name":"$createTime"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<div id="CRFTemplateList" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>CRF模板列表</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped" >
+                    <tr style="text-align: center">
+                        <td>序号</td>
+                        <td>CRF名称</td>
+                        <td>科室</td>
+                        <td>创建时间</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr ng-repeat="opt in CRFTemplateList.content" style="text-align: center">
+                        <td>{{$index+1}}</td>
+                        <td>{{opt.name}}</td>
+                        <td>{{opt.dept}}</td>
+                        <td>{{opt.createTime}}</td>
+                        <td> <a class="btn btn-success" ng-click="choseCRFTemplate(opt)">选择模板</a></td>
+                    </tr>
+                </table>
+                <div class="infi-page" mark="{{CRFTemplateList.totalPages}}">
+                    <uib-pagination total-items="CRFTemplateList.totalElements" ng-model="CRFTemplateList.number"
+                                    max-size="7"
+                                    boundary-link-numbers="true" ng-change="getCRFTemplateList(CRFTemplateList.number,CRFTemplateList.size)"
+                                    items-per-page="CRFTemplateList.size"  num-pages="CRFTemplateList.totalPages"></uib-pagination>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+

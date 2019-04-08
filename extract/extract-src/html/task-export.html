@@ -1,0 +1,59 @@
+<!--取数-任务导出-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户筛选 -> 属性提取</h4>
+<div ng-show="detailData.type == 'filter'">
+    <link rel="import" href="../../src/template/infi-from-header.html?__inline" />
+</div>
+<header class="infi-section" ng-show="detailData.type == 'import'">
+    <ul class="infi-header-ul-excel">
+        <li ng-class="{true: 'infi-header-active' , false:''}[step == 1]"><span>1.Excel导入筛选病历群</span></li>
+        <li ng-class="{true: 'infi-header-active' , false:''}[step == 3]"><span>2.数据导出</span></li>
+    </ul>
+</header>
+<div class="infi-box" style="">
+    <h4>
+        属性提取
+        <ul class="collect-extract-list">
+            <li class="collect-extract-item"><button class="btn infi-btn-linear-green-l btn-sm" ng-click="collect_extract_record()">收藏提取记录</button></li>
+            <li class="collect-extract-item"><button class="btn infi-btn-linear-green-l btn-sm" ng-click="extract_record_collection()">已收藏提取记录</button></li>
+        </ul>
+    </h4>
+    <div class="dir-nav-container">
+        <div class="row">
+            <div>
+                <!--左侧tab筛选LP-->
+                <div class="col-xs-2" choser-left-tab ng-if="summaryData"></div>
+                <!-- 右侧筛选具体字段 -->
+                <div class="col-xs-8" extract-choser data-ng-if="summaryData&&allData&&mappingData"
+                     mapping-data="mappingData" summary-data="summaryData" all-data="allData" used="'export'"></div>
+                
+                <!-- 属性提取记录 -->
+                <div class="col-xs-2" style="border-left: #e9e7e7 solid 1px;min-height: 650px;">
+                    <h4>属性提取记录</h4>
+                    <div class="record-export"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <a href="" ng-show="detailData.type == 'filter'"><button class="btn infi-btn-linear-green-l" ng-click="saveExtract()">
+        上一步，设置筛选逻辑</button></a>
+    <a href="#/excel-import/{{detailData.id}}" ng-show="detailData.type == 'import'">
+        <button class="btn infi-btn-linear-green-l">上一步，excel导入</button></a>
+    <button class="btn infi-btn-linear-green" ng-click="extract_export()">确认导出</button>
+</div>
+<!--导出的弹框-->
+<div confirm-export export-data="filterData" export-id="detailData.id"></div>
+
+<!--收藏提取条件的弹框-->
+<div collect-export-record export-data="filterData" export-id="detailData.id"></div>
+
+<!-- 已收藏导出条件弹框 -->
+<div collected-exp-rec-list mapping-data="mappingData" summary-data="summaryData" all-data="allData" used="'export'"></div>
+
+<!--错误提示-->
+<div sys-tip></div>
+
+<!--显示数据加载中提示-->
+<div show-load-tip ng-show="!summaryData.showLoad"></div>

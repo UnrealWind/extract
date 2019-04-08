@@ -1,0 +1,161 @@
+[
+  {
+    "children": [
+      {
+        "search": "xiongguhou|XIONGGUHOU|xiongguhou|xgh",
+        "label": "胸骨后"
+      },
+      {
+        "search": "zuoqianxiong|ZUOQIANXIONG|zuoqianxiong|zqx",
+        "label": "左前胸"
+      }
+    ],
+    "label": "部位"
+  },
+  {
+    "children": [
+      {
+        "search": "xiahebu|XIAHEBU|xiahebu|xhb",
+        "label": "下颌部"
+      },
+      {
+        "search": "jingbu|JINGBU|jingbu|jb",
+        "label": "颈部"
+      },
+      {
+        "search": "yanbu|YANBU|yanbu|yb",
+        "label": "咽部"
+      },
+      {
+        "search": "shangfubu|SHANGFUBU|shangfubu|sfb",
+        "label": "上腹部"
+      },
+      {
+        "search": "jianbeibu|JIANBEIBU|jianbeibu|jbb",
+        "label": "肩背部"
+      },
+      {
+        "search": "zuobei|ZUOBEI|zuobei|zb",
+        "label": "左臂"
+      },
+      {
+        "search": "zuoshouzhineice|ZUOSHOUZHINEICE|zuoshouzhineice|zsznc",
+        "label": "左手指内侧"
+      }
+    ],
+    "label": "牵扯部位"
+  },
+  {
+    "children": [
+      {
+        "search": "xiahebutengtong|XIAHEBUTENGTONG|xiahebutengtong|xhbtt",
+        "label": "下颌部疼痛"
+      },
+      {
+        "search": "jingbutengtong|JINGBUTENGTONG|jingbutengtong|jbtt",
+        "label": "颈部疼痛"
+      },
+      {
+        "search": "yanbutengtong|YANBUTENGTONG|yanbutengtong|ybtt",
+        "label": "咽部疼痛"
+      },
+      {
+        "search": "shangfubutengtong|SHANGFUBUTENGTONG|shangfubutengtong|sfbtt",
+        "label": "上腹部疼痛"
+      },
+      {
+        "search": "jianbeibutengtong|JIANBEIBUTENGTONG|jianbeibutengtong|jbbtt",
+        "label": "肩背部疼痛"
+      },
+      {
+        "search": "zuobeitengtongzuoshouzhineicetengtong|ZUOBEITENGTONGZUOSHOUZHINEICETENGTONG|zuobeitengtongzuoshouzhineicetengtong|zbttzsznctt",
+        "label": "左臂疼痛左手指内侧疼痛"
+      }
+    ],
+    "label": "症状"
+  },
+  {
+    "children": [
+      {
+        "search": "jinsuogan|JINSUOGAN|jinsuogan|jsg",
+        "label": "紧缩感"
+      },
+      {
+        "search": "jiaozhagan|JIAOZHAGAN|jiaozhagan|jzg",
+        "label": "绞榨感"
+      },
+      {
+        "search": "yapogan|YAPOGAN|yapogan|ypg",
+        "label": "压迫感"
+      },
+      {
+        "search": "shaozhuogan|SHAOZHUOGAN|shaozhuogan|szg",
+        "label": "烧灼感"
+      },
+      {
+        "search": "biemengan|BIEMENGAN|biemengan|bmg",
+        "label": "憋闷感"
+      },
+      {
+        "search": "zhixigan|ZHIXIGAN|zhixigan|zxg",
+        "label": "窒息感"
+      },
+      {
+        "search": "chenzhonggan|CHENZHONGGAN|chenzhonggan|czg",
+        "label": "沉重感"
+      }
+    ],
+    "label": "性质"
+  },
+  {
+    "children": [
+      {
+        "search": "qingxujidong|QINGXUJIDONG|qingxujidong|qxjd",
+        "label": "情绪激动"
+      },
+      {
+        "search": "baocan|BAOCAN|baocan|bc",
+        "label": "饱餐"
+      },
+      {
+        "search": "laoli|LAOLI|laoli|ll",
+        "label": "劳力"
+      },
+      {
+        "search": "yundong|YUNDONG|yundong|yd",
+        "label": "运动"
+      },
+      {
+        "search": "hanleng|HANLENG|hanleng|hl",
+        "label": "寒冷"
+      }
+    ],
+    "label": "诱发因素"
+  },
+  {
+    "children": [
+      {
+        "search": "xiaoyudengyu15fenzhong|XIAOYUDENGYU15FENZHONG|xiaoyudengyu15fenzhong|xydy15fz",
+        "label": "小于等于15分钟"
+      },
+      {
+        "search": "dayu15fenzhong|DAYU15FENZHONG|dayu15fenzhong|dy15fz",
+        "label": "大于15分钟"
+      }
+    ],
+    "label": "持续时间"
+  },
+  {
+    "children": [
+      {
+        "search": "xiuxi|XIUXI|xiuxi|xx",
+        "label": "休息"
+      },
+      {
+        "search": "fuyongxiaosuanganyou|FUYONGXIAOSUANGANYOU|fuyongxiaosuanganyou|fyxsgy",
+        "label": "服用硝酸甘油"
+      }
+    ],
+    "label": " 缓解方式"
+  }
+]

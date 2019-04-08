@@ -1,0 +1,100 @@
+<div class="infi-box" style="margin-top: 20px;">
+    <h4 class="infi-title">数据预处理</h4>
+    <div class="marginten" >
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class='active'><a class="cursorPointer">空值处理</a></li>
+            <!--<li role="presentation" class=''><a class="cursorPointer" href="#/data.pretreatment.abnormal">异常值处理</a></li>-->
+        </ul>
+    </div>
+    <!--<div class="infi-box-containter" >-->
+        <div class="row marginten" style="">
+            <div class="col-xs-3">
+                <div class="input-group marginten">
+                    <input type="text" class="form-control input-lg" ng-model="searchData" style="height:34px;"><span class="input-group-addon btn btn-primary" ng-click="search()">搜索</span>
+                </div>
+                <div class="marginten">
+                    <select class="selectpicker " style="width: 100%" ng-model="selectLeftData.value" ng-click="selectLeft()" ng-options="selectLeft.value as selectLeft.name for selectLeft in selectLeftData.data"></select>
+                </div>
+                <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+                    <span>{{status.name}}</span>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="backgroud-ddd paddingten marginten col-xs-2" style="text-align: center">
+                        <span class="font-bold">处理策略选择</span>
+                    </div>
+                    <div class="col-xs-2" style="padding:15px 0 0 0;" ng-if="name">
+                        <select class="form-control" style="width: 120px;" ng-model="selectMethodData.value" ng-click="processMethod()" ng-options="selectMethod.value as selectMethod.name for selectMethod in selectMethodData.data"></select>
+                    </div>
+
+                    <div class="col-xs-2"  style="width: 12%;padding:15px 0 0 0;float: right;" ng-if="name">
+                        <button type="button" class="btn btn-primary" ng-click="process()">确认处理</button>
+                    </div>
+                </div>
+
+                <div class="backgroud-ddd paddingten">
+                    <span class="font-bold">已选变量 |</span>
+                    <span ng-bind="name"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 paddingten" >
+                        <div class="row" ng-if="before">
+                            <div class="col-xs-3">
+                                <span class="font-bold">处理前:</span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span>样本量:{{beforeNumber}}</span>
+                                <table class="table infi-table marginten">
+                                    <thead>
+                                    <tr>
+                                        <th class="not-wrap">{{name}}</th>
+                                        <th class="not-wrap">频数</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="before in beforeContent">
+                                            <td class="not-wrap" ng-bind="before.name | kongValue"></td>
+                                            <td class="not-wrap" ng-bind="before.value | pointValue"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="height:450px;" id="main"></div>
+                    </div>
+                    <div class="col-xs-6 paddingten">
+                        <div class="row" ng-if="after">
+                            <div class="col-xs-3">
+                                <span class="font-bold">处理后:</span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span>样本量:{{afterNumber}}</span>
+                                <table class="table infi-table marginten">
+                                    <thead>
+                                    <tr>
+                                        <th class="not-wrap">{{name}}</th>
+                                        <th class="not-wrap">频数</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="after in afterContent">
+                                            <td class="not-wrap" ng-bind="after.name"></td>
+                                            <td class="not-wrap" ng-bind="after.value | pointValue"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="height:450px;" id="mains"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>
+
+
+<div class=" paddingten" style="text-align: right">
+    <button type="button" class="btn btn-primary" ng-click="next()">下一步(筛选设置)</button>
+</div>

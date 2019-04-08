@@ -1,0 +1,143 @@
+<!--取数-excel导入方式新建取数任务-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户筛选 -> 属性提取</h4>
+<header class="infi-section">
+    <ul class="infi-header-ul-excel">
+        <li ng-class="{true: 'infi-header-active' , false:''}[step == 1]"><span>1.Excel导入筛选病历群</span></li>
+        <li ng-class="{true: 'infi-header-active' , false:''}[step == 3]"><span>2.数据导出</span></li>
+    </ul>
+</header>
+
+<div class="infi-box">
+    <h4>筛选后病历数：<span ng-bind="groupData.number"></span></h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div ng-if="step == 1">
+                <div class="infi-box-containter">
+                    <p><b>上传的excel需包含：</b>门诊号 +入院次数 或 门诊号+ 时间（患者在院期间任意时间点）或 门诊号</p>
+                    <div>
+                        <b>请选择导入的excel：</b>
+                        <!--文件上传-->
+                        <label for="filePath" class="btn btn-default">浏览</label>
+                        <input type="file" ngf-select="onFileSelect($files,input)" name="filePath" id="filePath" style="display: none">
+                        <span ng-bind="file.detail.name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <a href="#/task"><button class="btn infi-btn-linear-green-l" >上一步，设置需要提取的数据</button></a>
+    <a href="#/task-export/import/{{groupData.id}}"><button class="btn infi-btn-linear-green-l">下一步，设置筛选逻辑</button></a>
+</div>
+<div>
+    <div class="infi-box col-xs-8">
+        <h4>病历群特征</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div class="row">
+                    <div choser-chart class="infi-chart" chart-data = 'groupData.chartData'
+                         ng-if="groupData.chartData != null && groupData.chartData.length > 0"></div>
+                    <div class="alert alert-danger" ng-show="groupData.chartData == null || groupData.chartData.length == 0">未查询到数据</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-box col-xs-4">
+        <h4>上传病历详情</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div>
+                    <h5>上传详情</h5>
+                    <div id="infi-opt-gh" class="text-danger" style="width:100%;height:300px;">未查询到数据</div>
+                </div>
+                <!-- <div>
+                    <div class="row">
+                        <h5>无法导出的病例清单 <button class="btn infi-btn-linear-green-l btn-sm pull-right">导出</button></h5>
+                    </div>
+                </div> -->
+            </div>  
+        </div>
+
+        <div class="infi-box-containter" ng-if="failedDatas.data.length > 1">
+            <div class="dir-nav-container">
+                <h5 class="clearfix"><span class="pull-left">无法导出病例清单</span><span> (展示前 5 条数据)</span><button class="btn infi-btn-linear-green-l btn-xs pull-right" ng-click="export_failed()">导出</button></h5>
+
+                <table class="table table-striped">
+                    <thead ng-repeat="(ind, val) in failedDatas.data" ng-if="ind == 0">
+                        <tr>
+                            <th ng-bind="val[0]" class="text-center"></th>
+                            <th ng-bind="val[1]" class="text-center"></th>
+                            <th ng-bind="val[2]" class="text-center"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="(ind, val) in failedDatas.data" ng-if="ind > 0 && ind < 6">
+                            <td ng-bind="val[0]" class="text-center"></td>
+                            <td ng-bind="val[1]" class="text-center"></td>
+                            <td ng-bind="val[2]" class="text-center"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <div>
+                    <div class="row">
+                        <h5>无法导出的病例清单 <button class="btn infi-btn-linear-green-l btn-sm pull-right">导出</button></h5>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="excelExport">
+    <div class="modal-dialog" style="width:1200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择筛选用户群导入方式</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group ">
+                    <label>请选择病历文件类型：</label>
+                    <label class="radio-inline" ng-repeat="type in file.fileType.data">
+                        <input type="radio" name="sourceSign" value="{{type.value}}" ng-click="selectFileType(type)"
+                               ng-checked="type.value == file.fileType.checked.value" style="margin-top: 10px;" />{{type.label}}
+                    </label>
+                </div>
+                <div style="overflow: auto;">
+                    <table ng-show="file.list.length > 0" class="infi-nopage-table">
+                        <thead class="infi-pointer">
+                            <tr>
+                                <td ng-repeat="title in file.list[0]" class="hide-popup" ng-click="selectExportType($index,title)"
+                                    ng-class="{true:'active'}[title.content.$selected]">
+                                    <span>{{title.label}}<span ng-show="title.content.label">-</span>{{title.content.label}}</span>
+                                    <ul ng-show="title.$selected&&file.fileType.checked.label">
+                                        <li ng-repeat="content in file.fileType.checked.content" ng-click="selectTypeDetail(content,title)">
+                                            <span ng-bind="content.label"></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="list in file.list" ng-show="$index != 0">
+                            <td ng-repeat="entity in list">
+                                <span ng-bind="entity.label"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div ng-show="file.list.length == 0" class="alert alert-danger">excel未解析出数据</div>
+                    <div>注:此处只展示了excel中前5条数据</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">上一步</button>
+                <button type="button" class="btn btn-primary" ng-click="confirmImport()">导入</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div sys-tip></div>

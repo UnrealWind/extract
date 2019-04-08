@@ -1,0 +1,44 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>上传量表</h4>
+<div class="infi-box">
+	<div>
+		<div class="row">
+			<div class="col-md-6 form-inline">
+				<label class="">上传文件：</label>
+				<input multiple="true" id="{{input.name}}" type="file"  name="file" ngf-select="onFileSelect($files,input)">
+			</div>
+		</div>
+		<div ng-if="showTip == 'blue'" class="alert alert-info">上传中…………</div>
+		<div ng-if="showTip == 'red'" class="alert alert-danger">上传失败！</div>
+		<div ng-if="showTip == 'green'" class="alert alert-success">上传成功！</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>量表名称</th>
+				<th>量表id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="opt in content.page.content">
+				<td>
+					{{$index+1}}
+				</td>
+				<td>
+					{{opt.scaleName}}
+				</td>
+				<td>
+					{{opt.id}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="infi-page">
+		<uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="7"
+				boundary-link-numbers="true" ng-change="changePage({page:content.page.number})"
+				items-per-page="content.page.size"
+				num-pages="content.page.totalPages">
+
+		</uib-pagination>
+	</div>
+</div>

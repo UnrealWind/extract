@@ -1,0 +1,64 @@
+{
+  "page": {
+    "content": [
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      },
+      {
+        "label":"比索洛尔联合氯沙坦治疗高血压对患者左室舒张功能的影响",
+        "value":""
+      }
+    ],
+    "last": false,
+    "totalPages": 5,
+    "totalElements": 50,
+    "numberOfElements": 10,
+    "sort": [
+      {
+        "direction": "ASC",
+        "property": "id",
+        "ignoreCase": false,
+        "nullHandling": "NATIVE",
+        "ascending": true
+      }
+    ],
+    "first": true,
+    "size": 10,
+    "number": 0
+  },
+  "status": "ok",
+  "description": "数据请求成功"
+}

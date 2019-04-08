@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <form class="form-horizontal row">
+    <div ng-repeat="(ind, val) in tmpData" class="col-md-12">
+      <!-- text 类型 -->
+      <div class="form-group" ng-if="val.type == 'text'">
+        <label class="col-sm-2 control-label" ng-bind = "val.label"></label>
+        <div class="col-sm-5 input-group">
+          <input type="text" 
+                 class="form-control" 
+                 placeholder="请输入{{val.label}}"
+                 ng-model="val.model">
+          <div class="input-group-addon" ng-if="val.hasUnit" ng-bind="val.unit"></div>
+        </div>
+      </div>
+      
+      <!-- number 类型 -->
+      <div class="form-group" ng-if="val.type == 'number'">
+        <label class="col-sm-2 control-label" ng-bind = "val.label"></label>
+        <div class="col-sm-5 input-group">
+          <input type="number" 
+                  class="form-control" 
+                  placeholder="请输入{{val.label}}"
+                  ng-model="val.model">
+          <div class="input-group-addon" ng-if="val.hasUnit" ng-bind="val.unit"></div>
+        </div>
+      </div>
+
+      <!-- radio 类型 -->
+      <div class="form-group" ng-if="val.type == 'radio'">
+        <label class="col-sm-2 control-label" ng-bind = "val.label"></label>
+        <div class="col-sm-10 input-group">
+          <label class="radio-inline" ng-repeat="(optInd, optVal) in val.options">
+            <input type="radio" value="optVal.value" name="optVal.label"> {{optVal.label}}
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

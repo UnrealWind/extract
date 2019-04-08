@@ -1,0 +1,39 @@
+<div class="marginten" style="overflow: hidden;">
+    <a class="btn infi-btn-linear-default infi-left marginten" href="#/overall-monitoring">返回上一级</a>
+    <a class="btn infi-btn-linear-green infi-left marginten"
+       href="{{SYS.url}}monitoring/toExcel?eu={{user.eu}}&ep={{user.ep}}&filter_startTime={{screen.startTime}}&filter_endTime={{screen.endTime}}&filter_deptId={{screen.deptId.value}}&filter_wardId={{screen.wardId.value}}&filter_diseaseSeed={{screen.diseaseSeed.value}}&filter_badEvent=">导出excel</a>
+</div>
+<div class="infi-box infi-adverse-report infi-total-table-fix">
+    <table class="infi-table infi-total-table">
+        <thead>
+        <tr>
+            <th rowspan="2" style="vertical-align: middle;">科室名称</th>
+            <th rowspan="2" style="vertical-align: middle;">科室病历总数</th>
+            <th ng-repeat="option in screen.diseaseSeed.options">
+                <div>
+                    <div style="height:50%;">{{option.label}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">发生病例数</div>
+                    <div style="height:50%;width:46%;display: inline-block;">发生概率</div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-if="content.length>0">
+        <tr ng-repeat="entity in content">
+            <td>{{entity.dept}}</td>
+            <td>{{entity.allNum}}</td>
+            <td ng-repeat="child in entity.children">
+                <div style="border-right:solid 1px #ccc;">{{child.size}}</div>
+                <div>{{child.rate}}</div>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="content.length==0">
+        <tr>
+            <td colspan="{{length}}" class="bg-danger" style="line-height: 50px;">
+                暂无数据
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

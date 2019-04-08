@@ -1,0 +1,147 @@
+<div>
+    <div class="infi-nopage-table-title noprint" ng-show="original.tableData.data.result.length > 0">
+        <table class="table infi-nopage-table">
+            <thead>
+            <tr>
+                <td>{{columnName}}</td>
+                <td>
+                    <div class="infi-up-down">
+                        总收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'zsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'zsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'zsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'zsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="infi-up-down">
+                        医事服务费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'ysfw_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'ysfw_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'ysfw_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'ysfw_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="infi-up-down">
+                        检查收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'jcsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'jcsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'jcsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'jcsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="infi-up-down">
+                        检验收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'jysf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'jysf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'jysf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'jysf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="infi-up-down">
+                        药品收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'ypsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'ypsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'ypsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'ypsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <div class="infi-up-down">
+                        治疗收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'zlsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'zlsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'zlsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'zlsf_asc']"></i>
+                    </div>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="infi-table-scoll-y infi-table-scoll-y-noh">
+        <table class="table infi-nopage-table infi-table-striped" style="margin-bottom:0px;">
+            <thead>
+            <tr>
+                <td>{{columnName}}</td>
+                <td>
+                    <span class="infi-hide-column">总收费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        总收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'zsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'zsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'zsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'zsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <span class="infi-hide-column">医事服务费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        医事服务费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'ysfw_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'ysfw_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'ysfw_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'ysfw_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <span class="infi-hide-column">检查收费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        检查收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'jcsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'jcsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'jcsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'jcsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <span class="infi-hide-column">检验收费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        检验收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'jysf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'jysf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'jysf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'jysf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <span class="infi-hide-column">药品收费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        药品收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'ypsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'ypsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'ypsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'ypsf_asc']"></i>
+                    </div>
+                </td>
+                <td>
+                    <span class="infi-hide-column">治疗收费</span><!-- 打印时显示 因为td下有div的话分页表头不会显示在第二页 -->
+                    <div class="infi-up-down noprint">
+                        治疗收费
+                        <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptCharge({type:'zlsf_desc'})"
+                           ng-class="{true:'selected'}[original.range == 'zlsf_desc']"></i>
+                        <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptCharge({type:'zlsf_asc'})"
+                           ng-class="{true:'selected'}[original.range == 'zlsf_asc']"></i>
+                    </div>
+                </td>
+            </tr>
+            </thead>
+            <tr ng-repeat="count in original.tableData.data.result" table-title-scroll="'scroll'"
+                ng-show="original.tableData.status == SYS.STATUS_SUCCESS&&original.tableData.data.status == SYS.STATUS_SUCCESS">
+                <td ng-bind="count[keyName]" ng-click="getDeptLinkage({entity:count})" style="cursor: pointer;"></td>
+                <td ng-bind="count.zsf_size" class="text-right"></td>
+                <td ng-bind="count.ysfw_size" class="text-right"></td>
+                <td ng-bind="count.jcsf_size" class="text-right"></td>
+                <td ng-bind="count.jysf_size" class="text-right"></td>
+                <td ng-bind="count.ypsf_size" class="text-right"></td>
+                <td ng-bind="count.zlsf_size" class="text-right"></td>
+            </tr>
+            <tr ng-show="original.tableData.status != SYS.STATUS_SUCCESS||original.tableData.data.status != SYS.STATUS_SUCCESS">
+                <td colspan="7" class="text-danger">未查询到数据</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+[
+  [
+    {
+      "label":"日期",
+      "name":"mater.date",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"生产情况",
+      "name":"mater.production_situation",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"新生儿情况",
+      "name":"mater.earlybabysituation",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"新生儿死亡原因",
+      "name":"mater.early_newborn_death_cause",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"妊娠期综合症",
+      "name":"mater.maternal_complication",
+      "type":"view"
+    }
+  ]
+]

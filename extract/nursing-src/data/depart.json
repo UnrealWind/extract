@@ -1,0 +1,16 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":[
+      {
+        "label":"全部",
+        "value":""
+      },{
+        "label":"PICC维护",
+        "value":"PICC"
+      },{
+        "label":"PORT维护",
+        "value":"PORT"
+      }
+  ]
+}

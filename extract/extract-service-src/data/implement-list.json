@@ -1,0 +1,20 @@
+{
+  "nodes":"执行任务列表",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"规则名称",
+      "name":"taskName"
+    },{
+      "label":"创建人",
+      "name":"createUser"
+    },{
+      "label":"开始时间",
+      "name":"startTime"
+    },{
+      "label":"结束时间",
+      "name":"finalTime"
+    }
+  ]
+}

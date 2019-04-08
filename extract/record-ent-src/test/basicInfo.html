@@ -1,0 +1,200 @@
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">科室: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_1" type="text"
+                                                                                     ng-model="entity.name_1"
+                                                                                     class="form-control"/></div>
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">门诊号: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_2" type="text"
+                                                                                     ng-model="entity.name_2"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">第几次入院: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_3" type="text"
+                                                                                     ng-model="entity.name_3"
+                                                                                     class="form-control"/></div>
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">姓名: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_4" type="text"
+                                                                                     ng-model="entity.name_4"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">性别: </label></div>
+    <div class="col-md-3 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;" ng-repeat="option in dimensions.name_5.options"><input
+                type="radio" ng-model="entity.name_5" name="entity.name_5"
+                value="{{option.name}}"/>{{option.label}}</label></div>
+    </div>
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">年龄: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_6" type="text"
+                                                                                     ng-model="entity.name_6"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row">
+    <div class="form-group infi-position">
+        <div class="row infi-record-search-add">
+            <div class="col-md-2 form-group" style="text-align: right;padding-right: 0px;">
+                <label class="infi-record-label-title">民族:</label>
+            </div>
+            <div class="infi-input-wrapper col-md-3 form-group input-group">
+                <input class="form-control"  type="text"/>
+            </div>
+        </div>
+        <div class="infi-record-search-box">
+            <span class="z-lst-corner" style="display: inline-block;"></span>
+            <div class="infi-record-search-title">
+                <div class="infi-toolbox">
+                    <p>您选择的属性为：</p>
+                    <a class="close btn btn-default" ng-click="closeSearch()">关闭</a>
+                    <a class="confirm btn btn-primary">确认</a>
+                </div>
+                <!--<div>-->
+                <!--<ul class="infi-record-search-ul">-->
+                <!--<li>-->
+                <!--<label>汉族</label>-->
+                <!--<span ng-click="spliceEntity()">x</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<label>蒙古族</label>-->
+                <!--<span>x</span>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+            </div>
+            <div class="infi-search-content">
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="" value="汉族">汉族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="苗族">苗族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="蒙古族">蒙古族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="" value="朝鲜族">朝鲜族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <span class="infi-search-add-other" ng-click="addOther()">添加其他</span>
+                        </label>
+                    </li>
+                </ul>
+                <div class="infi-other-box">
+                    <input type="text" placeholder="请输入具体名称">
+                    <a class="remarkBtn confirmRemark">确认</a>
+                    <a class="remarkBtn cancelRemark">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">工作单位: </label></div>
+    <div class="col-md-8 form-group input-group" style="width: ;float: left;"><input type="text" name="entity.name_9"
+                                                                                     ng-model="entity.name_9"
+                                                                                     class="form-control"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">出生地: </label></div>
+    <div class="col-md-8 form-group input-group" style="width: ;float: left;"><input name="entity.name_8"
+                                                                                     ng-model="entity.name_8"
+                                                                                     class="form-control"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">入院时间: </label></div>
+    <div class="col-md-3 form-group input-group" style="width: ;float: left;"><input name="entity.name_10"
+                                                                                     infi-date="yyyy-mm-dd hh:ii"
+                                                                                     type="text"
+                                                                                     ng-model="entity.name_10"
+                                                                                     class="form-control"/></div>
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">婚姻状况: </label></div>
+    <div class="col-md-3 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_11.options"><input type="radio" ng-model="entity.name_11"
+                                                                            name="entity.name_11"
+                                                                            value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group infi-position">
+        <div class="row infi-record-search-add">
+            <div class="col-md-2" style="text-align: right;padding-right:0px;">
+                <label class="infi-record-label-title">病情称述者:</label>
+            </div>
+            <div class="infi-input-wrapper col-md-3 form-group input-group">
+                <input class="form-control"  type="text">
+            </div>
+        </div>
+        <div class="infi-record-search-box">
+            <span class="z-lst-corner" style="display: inline-block;"></span>
+            <div class="infi-record-search-title">
+                <div class="infi-toolbox">
+                    <p>您选择的属性为：</p>
+                    <a class="close btn btn-default" ng-click="closeSearch()">关闭</a>
+                    <a class="confirm btn btn-primary">确认</a>
+                </div>
+            </div>
+            <div class="infi-search-content">
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="" value="汉族">汉族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="苗族">苗族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" value="蒙古族">蒙古族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="" value="朝鲜族">朝鲜族
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <span class="infi-search-add-other" ng-click="addOther()">添加其他</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">是否可靠: </label></div>
+    <div class="col-md-3 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_13.options"><input type="radio" ng-model="entity.name_13"
+                                                                            name="entity.name_13"
+                                                                            value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-record-label-title">备注: </label></div>
+    <div class="col-md-8 form-group input-group" style="width: ;float: left;"><textarea name="entity.name_14"
+                                                                                        ng-model="entity.name_14"
+                                                                                        rows="5"
+                                                                                        class="form-control"></textarea>
+    </div>
+</div>
+<div class="row"></div>

@@ -1,0 +1,92 @@
+<h4 class="infi-title" style="margin-bottom: 20px;display: inline-block;"><i class="glyphicon glyphicon-globe"></i>预测详情</h4>
+
+<div class="infi-box">
+    <div class="infi-adverse-title-box">
+        <h4 style="display: inline-block;">患者列表</h4>
+        <div class="infi-adverse-search">
+            <input class="form-control" ng-model="keyword" placeholder="请输入患者姓名或病案号搜索" />
+            <button class="btn infi-btn-linear-green-l" ng-click="getContent(screenConditions.deptId.value,screenConditions.wardId.value,SYS.DEFAULT_PAGE_NUMBER,SYS.DEFAULT_PAGE_SIZE,screenConditions.time,keyword)">搜索</button>
+        </div>
+        <hr />
+    </div>
+    <div class="infi-adverse-screen-box">
+        <ul class="ul-float-left ul-li-4">
+            <li class="infi-adverse-screen">
+                <label>时间:</label>
+                <input class="form-control" name="daterange" ng-model="screenConditions.time"
+                       ng-change="getContent(screenConditions.deptId.value,screenConditions.wardId.value,SYS.DEFAULT_PAGE_NUMBER,SYS.DEFAULT_PAGE_SIZE,screenConditions.time,keyword)"/>
+                <!--<input infi-date name="startTime" ng-change="refresh(screenConditions)"-->
+                <!--class="form-control infi-screen-section" ng-model="screenConditions.startTime"/>~-->
+                <!--<input infi-date name="endTime" ng-change="refresh(screenConditions)"-->
+                <!--class="form-control infi-screen-section" ng-model="screenConditions.endTime"/>-->
+            </li>
+            <li class="infi-adverse-screen">
+                <label>临床部:</label>
+                <select class="form-control">
+                    <option>全院</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>科室:</label>
+                <select class="form-control" ng-model="screenConditions.deptId.value" ng-change="changeDept(screenConditions.deptId.value)">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.deptId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+            <li class="infi-adverse-screen">
+                <label>病区:</label>
+                <select class="form-control" ng-model="screenConditions.wardId.value"
+                        ng-change="getContent(screenConditions.deptId.value,screenConditions.wardId.value,SYS.DEFAULT_PAGE_NUMBER,SYS.DEFAULT_PAGE_SIZE,screenConditions.time,keyword)">
+                    <option value="">全部</option>
+                    <option ng-repeat="option in screenConditions.wardId.options" value="{{option.label}}">{{option.label}}</option>
+                </select>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <!--<div infi-table columns="columns" opts="opts" content="content" update-page="updatePage(page)"-->
+         <!--btn-callback="btnCallback(entity,type)"></div>-->
+    <div>
+        <table class="table infi-table">
+            <thead>
+                <tr>
+                    <th class="infi-table-ordernum">序号</th>
+                    <th ng-repeat="column in columns" ng-bind="column.label"></th>
+                    <th style="width:130px;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entity in content.page.content">
+                    <td>{{$index+1}}</td>
+                    <td>
+                        <span class="infi-ellipsis" ng-bind="entity.patiId|topicCharacter" title="{{entity.patiId}}"></span></td>
+                    <td>
+                        <span class="infi-ellipsis" ng-bind="entity.visitNo|topicCharacter" title="{{entity.visitNo}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.patiName|topicCharacter" title="{{entity.patiName}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.sex|topicCharacter" title="{{entity.sex}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.age|topicCharacter" title="{{entity.age}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.patiStatus|topicCharacter" title="{{entity.patiStatus}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.dept|topicCharacter" title="{{entity.dept}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.ward|topicCharacter" title="{{entity.ward}}"></span></td>
+                    <td><span class="infi-ellipsis" ng-bind="entity.adminssionTime|topicCharacter" title="{{entity.adminssionTime}}"></span></td>
+                    <td>
+                        <a ng-click="showDetails(entity)">查看详情</a>
+                        <a ng-if="entity.isFocus == '0'" ng-click="addAttention(entity)">添加关注</a>
+                        <a ng-if="entity.isFocus == '1'" style="color:red;" ng-click="addAttention(entity)">取消关注</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="infi-page">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="7"
+                            boundary-link-numbers="true" ng-change="updatePage(content.page.number)"
+                            items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+
+            </uib-pagination>
+        </div>
+    </div>
+    <div sys-tip></div>
+</div>

@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>出生地: </label>
+    </div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_134"><textarea
+            name="entity.name_134" ng-model="entity.name_134" rows="2" class="form-control"
+            style="width: 100%;"></textarea></div>
+    <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>现居地: </label>
+    </div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_135"><textarea
+            name="entity.name_135" ng-model="entity.name_135" rows="2" class="form-control"
+            style="width: 100%;"></textarea></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>个人史: </label>
+    </div>
+    <div class="col-md-10 form-group input-group" style="width: ;float: left;" data-name="entity.name_136">
+        <div>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_0"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">疫区居住史</label>
+            <!--<label class="checkbox-inline ng-binding ng-scope"-->
+                   <!--style="margin-right: 10px;">-->
+                <!--<input type="checkbox" ng-model="entity.name_136.value_1"-->
+                       <!--class="ng-pristine ng-untouched ng-valid ng-empty">疫情居住史</label>-->
+            <!--<label class="checkbox-inline ng-binding ng-scope"-->
+                   <!--style="margin-right: 10px;">-->
+                <!--<input type="checkbox" ng-model="entity.name_136.value_2"-->
+                       <!--class="ng-pristine ng-untouched ng-valid ng-empty">疫水居住史</label>-->
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_3"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">牧区居住史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_4"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">矿山居住史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_5"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">高氟区居住史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_6"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">低碘区居住史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_7"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">声暴露接触史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_8"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">声耳毒性药物接触史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_9"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">化学性物质接触史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_10"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">放射物接触史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_11"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">毒物接触史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_12"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">毒品接触史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_13"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">吸烟史</label>
+            <label class="checkbox-inline ng-binding ng-scope"
+                   style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136.value_14"
+                       class="ng-pristine ng-untouched ng-valid ng-empty">饮酒史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" ng-repeat="option in optionMore.name_136" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_136[option.name]"/>{{option.label}}
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-md-5"><input style="width: 60%;" name="entity.name_136" type="text"
+                                         ng-model="entity.name_136other" class="form-control"/>
+                <button style="margin-left: 5px;"
+                        ng-click="addEntity('name_136',entity.name_136,dimensions.name_136.options,entity.name_136other)"
+                        class="btn infi-btn-linear-default">添加
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../html_gen/grs_-_136_-_yqujzs.html?__inline">
+<!--<link rel="import" href="../html_gen/grs_-_136_-_yqjzs.html?__inline">-->
+<!--<link rel="import" href="../html_gen/grs_-_136_-_ysjzs.html?__inline">-->
+<link rel="import" href="../html_gen/grs_-_136_-_ksjzs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_gfjzs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_ddqjzs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_sbljcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_sedxywjcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_hxwzjcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_fswjcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_dwjcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_dpjcs.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_xys.html?__inline">
+<link rel="import" href="../html_gen/grs_-_136_-_yjs.html?__inline">

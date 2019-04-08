@@ -1,0 +1,33 @@
+<div class="basicInfo-component">
+  <link rel="stylesheet" type="text/css" href="./basicInfo.scss">
+
+  <div class="panel panel-default single-component">
+    <div class="panel-heading">
+      <toggle-collapse>
+        <h4 class="panel-title cursor J-collpase-title" 
+            data-toggle="collapse" 
+            data-target="#basicInfo-collapse" 
+            aria-expanded="true" 
+            aria-controls="basicInfo-collapse">
+            <span><i class="toggle-icon glyphicon {{classes[defaultStatus]}}"></i><span>基本信息</span></span>
+            
+        </h4>
+      </toggle-collapse>
+    </div>
+    <div id="basicInfo-collapse" 
+         class="panel-collapse collapse in J-collpase">
+      <div class="panel-body">
+        <div class="item-ls-wrapper">
+          <ul class="item-list clear-mgb"
+              ng-repeat="item in $ctrl.tempData">
+            <li ng-bind="item.name" class="field-wrapper"></li>
+            <li>
+              <button class="btn btn-primary btn-sm"
+                      ng-click="$ctrl.navToFunc.toscaleEnter(item)">编辑</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

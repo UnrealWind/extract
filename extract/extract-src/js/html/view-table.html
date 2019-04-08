@@ -1,0 +1,41 @@
+<section class="infi-section">
+    <!--取数-所有任务列表-->
+    <table class="table infi-table">
+        <thead>
+        <tr>
+            <th ng-repeat="column in $columns" ng-bind="column.label" ></th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-if="$hasData">
+        <tr ng-repeat="entity in $content">
+            <td ng-repeat="data in entity.plain"><span ng-bind="data.label"></span></td>
+            <td class="infi-operation-btn">
+                <span ng-click="btnCallback({entity: entity.original,type: 'view'})">查看</span>
+                <span ng-click="btnCallback({entity: entity.original,type: 'extract'})"
+                      ng-show="entity.original.taskStatus == 'AUDIT_PASSED'">提取</span>
+                <span ng-click="btnCallback({entity: entity.original,type: 'down'})"
+                      ng-show="entity.original.taskStatus == 'DATA_READY' || entity.original.taskStatus == 'DOWNLOAD' || entity.original.taskStatus == 'BANK' ">下载</span>
+                <span ng-click="btnCallback({entity: entity.original,type: 'record'})"
+                      ng-show="entity.original.taskStatus == 'DOWNLOAD' || entity.original.taskStatus == 'BANK' ">成果备案</span>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="!$hasData">
+        <tr>
+            <td colspan="{{$columnSize+2}}">
+                <p ng-bind="$description" class="bg-danger" style="line-height: 50px;"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="infi-page">
+        <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="3"
+                        boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                        num-pages="content.page.totalPages">
+
+        </uib-pagination>
+    </div>
+</section>
+
+

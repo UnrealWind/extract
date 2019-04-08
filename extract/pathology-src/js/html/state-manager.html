@@ -1,0 +1,106 @@
+<!-- 临床医生或者超级管理员（24） -->
+<div ng-if="currUsrRole == 30 || currUsrRole == 24">
+  <!-- 申请单 -->
+  <div ng-if="cellInd == 7">
+    <dt ng-if="cellVal == '0'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="cellVal == '1'"><h4><span class="opt-dt-title label label-success">已发送</span></h4></dt>
+    <dt ng-if="cellVal == '2'"><h4><span class="opt-dt-title label label-default">已撤销</span></h4></dt>
+    <dt ng-if="cellVal == '3'"><h4><span class="opt-dt-title label label-primary">已创建未发送</span></h4></dt>
+    <dt ng-if="cellVal == '4'"><h4><span class="opt-dt-title label label-success">已发送</span></h4></dt>
+
+    <dd ng-if="cellVal == '0'" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('1', 'create', rowVal, cellVal)">新建</a>
+    </dd>
+    <dd ng-if="['1', '2', '3', '4'].indexOf(cellVal) >=0" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('1', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+  </div>
+
+  <!-- 送检单 -->
+  <div ng-if="cellInd == 8">
+    <dt ng-if="cellVal == '0' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="cellVal == '1' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-success">已发送</span></h4></dt>
+    <dt ng-if="cellVal == '3' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-primary">已创建未发送</span></h4></dt>
+    <dt ng-if="cellVal == '4' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-success">已发送</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] == '2'"><h4><span class="opt-dt-title label label-default">已失效</span></h4></dt>
+
+    <dd ng-if="cellVal == '0' && ['1', '4'].indexOf(rowVal['applicationFormStatus']) >= 0" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('2', 'create', rowVal, cellVal)">新建</a>
+    </dd>
+    <dd ng-if="['1', '3', '4'].indexOf(cellVal) >=0 && rowVal['applicationFormStatus'] != '2'" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('2', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+  </div>
+
+  <!-- 病理报告 -->
+  <div ng-if="cellInd == 9">
+    <dt ng-if="['0', '3'].indexOf(cellVal)>=0 && rowVal['applicationFormStatus'] != '2' && ['0', '3'].indexOf(rowVal['applicationFormStatus']) >= 0 && rowVal['finalReportStatus'] == '0'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="['0', '3'].indexOf(cellVal)>=0 && rowVal['applicationFormStatus'] != '2' && ['1','4'].indexOf(rowVal['applicationFormStatus'])>=0 && rowVal['finalReportStatus'] == '0'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '1'"><h4><span class="opt-dt-title label label-success">报告已生成</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '4'"><h4><span class="opt-dt-title label label-success">{{rowVal['finalUpdateTime']}}点更新</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] == '2'"><h4><span class="opt-dt-title label label-default">已失效</span></h4></dt>
+
+
+    <dd ng-if="rowVal['applicationFormStatus'] != '2' && ['1', '4'].indexOf(rowVal['finalReportStatus'])>= 0" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('3', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!-- 病理医生（27） -->
+<div ng-if="currUsrRole == 27">
+  <!-- 申请单 -->
+  <div ng-if="cellInd == 7">
+    <dt ng-if="cellVal == '0'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="cellVal == '1'"><h4><span class="opt-dt-title label label-success">已收到</span></h4></dt>
+    <dt ng-if="cellVal == '2'"><h4><span class="opt-dt-title label label-default">已撤销</span></h4></dt>
+    <dt ng-if="cellVal == '3'"><h4><span class="opt-dt-title label label-primary">未收到</span></h4></dt>
+    <dt ng-if="cellVal == '4'"><h4><span class="opt-dt-title label label-success">{{rowVal['applicationUpdateTime']}}点更新</span></h4></dt>
+
+
+    <dd ng-if="['1', '4'].indexOf(cellVal) >=0 && cellVal != '2'" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('1', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+  </div>
+
+  <!-- 送检单 -->
+  <div ng-if="cellInd == 8">
+    <dt ng-if="cellVal == '0' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="cellVal == '1' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-success">已收到</span></h4></dt>
+    <dt ng-if="cellVal == '3' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-primary">未收到</span></h4></dt>
+    <dt ng-if="cellVal == '4' && rowVal['applicationFormStatus'] != '2'"><h4><span class="opt-dt-title label label-success">{{rowVal['sendUpdateTime']}}点更新</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] == '2'"><h4><span class="opt-dt-title label label-default">已失效</span></h4></dt>
+
+    <dd ng-if="['1','4'].indexOf(cellVal) >=0 && rowVal['applicationFormStatus'] != '2'" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('2', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+  </div>
+
+  <!-- 病理报告 -->
+  <div ng-if="cellInd == 9">
+    <dt ng-if="cellVal == '0' && rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '0' && ['0', '3'].indexOf(rowVal['applicationFormStatus']) >= 0"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="cellVal == '0' && rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '0' && ['1','4'].indexOf(rowVal['applicationFormStatus'])>=0"><h4><span class="opt-dt-title label label-warning">未创建</span></h4></dt>
+    <dt ng-if="['1','3'].indexOf(cellVal) >= 0 && rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '0'"><h4><span class="opt-dt-title label label-primary">报告未生成</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '1'"><h4><span class="opt-dt-title label label-success">报告已生成</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '4'"><h4><span class="opt-dt-title label label-success">报告已生成</span></h4></dt>
+    <dt ng-if="rowVal['applicationFormStatus'] == '2'"><h4><span class="opt-dt-title label label-default">已失效</span></h4></dt>
+
+
+
+    <dd ng-if="rowVal['applicationFormStatus'] == '1' && cellVal == '0' && rowVal['applicationFormStatus'] != '2' && rowVal['finalReportStatus'] == '0'" 
+        class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('3', 'create', rowVal, cellVal)">新建</a>
+    </dd>
+
+    <dd ng-if="rowVal['applicationFormStatus'] == '1' && ['1','3','4'].indexOf(cellVal) >= 0 && rowVal['applicationFormStatus'] != '2'" class="opt-dd">
+      <a href="javascript:;" ng-click="formOpts('3', 'view', rowVal, cellVal)">查看</a>
+    </dd>
+  
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC维护记录
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="save('maintenance')" ng-disabled="btnDisable">保存</button>
+</h4>
+<div class="infi-box">
+	<div class="risk-evaluation">
+		<h4>维护记录</h4>
+	</div>
+	<div class="infi-theme-box">
+		<!--<div class="infi-nursing-theme-content" form-record list="formList.maintenance">-->
+		<!--</div>-->
+		<div class="infi-nursing-theme-content">
+			<div ng-repeat="list in formList.maintenance">
+				<div class="row" ng-if="!line.hasBranch && list.name!='finalInLength' && list.name!='finalExternalLength'" part-form-one form-one="list">
+				</div>
+				<!-- 导管最终内置长度和最终外露长度,从置管信息读取,特殊处理,灰色文字显示 -->
+				<div class="row" ng-if="list.name=='finalInLength' && params.operate==SYS.ADD">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<span style="color:#333;">注:导管最终内置长度:{{formList.maintenance[$index].value}}cm,导管最终外露长度:{{formList.maintenance[$index+1].value}}cm</span>
+					</div>
+				</div>
+				<div class="row" ng-repeat="action in list.action"
+					ng-if="(list.action && list.value==list.actionValue || (list.type=='checkbox' && list.action && list.value[line.actionValue])) && list.name!='measuringArmCircumference'">
+					<div class="cell" ng-repeat="child in action.children" ng-if="child.name!='armCircumferenceType' && child.name!='armCircumferenceNum'" part-form-two form-two="child"></div>
+				</div>
+				<!-- 测量臂围单独写 -->
+				<div class="row" ng-repeat="action in list.action"
+					 ng-if="list.action && list.value==list.actionValue && list.name=='measuringArmCircumference'">
+					<!-- 这个row里面有两行,第一行col-md超过12所以折行,这个第一行放注释,第二行放表单 -->
+					<div class="col-md-2" ng-if="params.operate==SYS.ADD"></div>
+					<div class="col-md-10" ng-if="params.operate==SYS.ADD">
+						<span style="color:#333;">{{armCircumferenceTypeTips}}</span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2" style="width:165px;">
+						<label class="self-num-radio" ng-repeat="option in action.children[0].options">
+							<input type="radio" ng-model="action.children[0].value"  value="{{option.value}}" name="{{action.children[0].name}}"/>
+							{{option.label}}
+						</label>
+					</div>
+					<div class="col-md-1 infi-col-title">
+						<span>臂围:</span>
+					</div>
+					<div class="col-md-3">
+						<input type="number" ng-model="action.children[1].value" class="form-control infi-text-unit" name="{{action.children[1].name}}"
+							   oninput="if(value.length>20)value=value.slice(0,20)"/><span>{{action.children[1].unit}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="risk-evaluation">
+		<h4>特殊情况处理</h4>
+	</div>
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content" form-record list="formList.special">
+		</div>
+	</div>
+	<div class="infi-nursing-bottom-btn">
+		<button class="btn infi-btn-linear-green-l btn-sm " ng-click="save('maintenance')" ng-disabled="btnDisable">保存</button>
+		<button class="btn infi-btn-linear-green btn-sm" ng-click="goBack()">返回</button>
+	</div>
+	<div sys-tip></div>
+</div>		

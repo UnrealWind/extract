@@ -1,0 +1,113 @@
+<div class="row infi-inhospital-info-pd" ng-if="familyWrap.data.result.length>0&&familyWrap.status=='ok'&&
+(familyWrap.data.result[0].family != null|| familyWrap.data.result[0].family_status != null||familyWrap.data.result[0].illnName != null)">
+    <div class="row infi-wj-zd">
+        <p class="infi-wj-jw-pone">家族史</p>
+        <p class="infi-wj-jw-ptwo">家族成员</p>
+        <p class="infi-wj-jw-pthree">状态</p>
+        <p class="infi-wj-jw-pfour">疾病</p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in family"
+         ng-if="family">
+        <p class="infi-wj-jw-pone"></p>
+        <p class="infi-wj-jw-ptwo">
+            <span ng-bind="entity.family"></span>
+        </p>
+        <p class="infi-wj-jw-pthree">
+            <span ng-bind="entity.family_status"></span>
+        </p>
+        <p class="infi-wj-jw-pfour">
+            <span ng-bind="entity.illnName"></span>
+        </p>
+    </div>
+</div>
+
+<div class="row infi-inhospital-info-pd"
+     ng-if="diseaseWrap.status=='ok'&&diseaseWrap.data.result.length>0&&
+     diseaseWrap.data.result[0].illnName != null">
+    <div class="row infi-wj-zd infi-wj-zd-line">
+        <div class="infi-wj-disease-title">
+            <p>疾病史</p>
+        </div>
+        <div class="infi-wj-disease-content">
+            <p class="infi-wj-jw-ptwo" ng-repeat="entity in disease">
+                <span ng-bind="entity.illnName"></span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row infi-inhospital-info-pd"
+     ng-if="pastsurgeryWrap.data.result.length>0&&pastsurgeryWrap.status=='ok'&&
+     pastsurgeryWrap.data.result[0].operName != null">
+    <div class="row infi-wj-zd infi-wj-zd-line">
+        <div class="infi-wj-disease-title">
+            <p>既往手术史</p>
+        </div>
+        <div class="infi-wj-disease-content">
+            <p class="infi-wj-jw-ptwo" ng-repeat="entity in pastsurgery">
+                <span ng-bind="entity.operName"></span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row infi-inhospital-info-pd"
+     ng-if="traumaWrap.status=='ok'&&traumaWrap.data.result.length>0&&
+     ((traumaWrap.data.result[0].truaName != null&&traumaWrap.data.result[0].truaName != '')|| (traumaWrap.data.result[0].occur_date != null&&traumaWrap.data.result[0].occur_date != ''))">
+    <div class="row infi-wj-zd infi-wj-zd-line">
+        <p class="infi-wj-jw-pone">外伤史</p>
+        <p class="infi-wj-jw-ptwo">外伤史名称</p>
+        <p class="infi-wj-jw-pthree">发生日期</p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in trauma"
+         ng-class="{true:'infi-wj-zd-line'}[$index == trauma.length-1]">
+        <p class="infi-wj-jw-pone"></p>
+        <p class="infi-wj-jw-pthree">
+            <span ng-bind="entity.truaName"></span>
+        </p>
+        <p class="infi-wj-jw-pfour">
+            <span ng-bind="entity.occur_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </p>
+    </div>
+</div>
+<div class="row infi-inhospital-info-pd"
+     ng-if="bloodWrap.status=='ok'&&bloodWrap.data.result.length>0&&
+     ((bloodWrap.data.result[0].blood_amount != null&&bloodWrap.data.result[0].blood_amount != '')|| (bloodWrap.data.result[0].occur_date != null&&bloodWrap.data.result[0].occur_date != ''))">
+    <div class="row infi-wj-zd infi-wj-zd-line">
+        <p class="infi-wj-jw-pone">输血史</p>
+        <p class="infi-wj-jw-ptwo">输血量</p>
+        <p class="infi-wj-jw-pthree">发生日期</p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in blood"
+         ng-class="{true:'infi-wj-zd-line'}[$index == blood.length-1]">
+        <p class="infi-wj-jw-pone"></p>
+        <p class="infi-wj-jw-pthree">
+            <span ng-bind="entity.blood_amount"></span>
+        </p>
+        <p class="infi-wj-jw-pfour">
+            <span ng-bind="entity.occur_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </p>
+    </div>
+</div>
+
+<div class="row infi-inhospital-info-pd"
+     ng-if="allergyWrap.status=='ok'&&allergyWrap.data.result.length>0">
+    <div class="row infi-wj-zd infi-wj-zd-line">
+        <p class="infi-wj-jw-pone">过敏史</p>
+        <p class="infi-wj-jw-ptwo">过敏类型</p>
+        <p class="infi-wj-jw-pthree">过敏源</p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in allergy">
+        <p class="infi-wj-jw-pone"></p>
+        <p class="infi-wj-jw-pthree">
+            <span ng-bind="entity.allergyType"></span>
+        </p>
+        <p class="infi-wj-jw-pfour">
+            <span ng-bind="entity.allergyCause"></span>
+        </p>
+    </div>
+</div>
+<!--谁能写这么恶心的判断-->
+<p ng-show="(familyWrap.data.result.length<=0||familyWrap.status!='ok')&&(diseaseWrap.status!='ok'||diseaseWrap.data.result.length<=0)&&
+(pastsurgeryWrap.data.result.length<=0||pastsurgeryWrap.status!='ok')&&(traumaWrap.status!='ok'||traumaWrap.data.result.length<=0)&&
+(bloodWrap.status!='ok'||bloodWrap.data.result.length<=0)&&(allergyWrap.status!='ok'||allergyWrap.data.result.length<=0)" style="margin-bottom: 0;" class="alert-danger alert">暂无数据</p>

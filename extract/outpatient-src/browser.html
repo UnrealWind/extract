@@ -1,0 +1,119 @@
+<!--用户的浏览器如果为ie的化会加载该页面，来进行插件的下载-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>门急诊监控</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="../src/scss/frame.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-modal.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-color.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-listing.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-category.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-drug.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-filter.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-retrieva-record.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-from-header.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-confirm-export.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-collection-screening.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-lefttab.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-screen-name.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-screen-details.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-time-control.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-button.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-timeline.scss" rel="stylesheet" />
+
+    <!--新添加的scss文件-->
+    <link rel="stylesheet" href="../src/scss/infi-forty-two.scss">
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/moment.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+<!-- 头部导航 -->
+<header class="navbar navbar-default infi-header clearfix">
+    <div class="navbar-header infi-header-logo">
+        <span class="logo" href="#/home"></span>
+        <!--<a href="#/home" style="position: fixed;z-index: 25;top:0;left:0; display:inline-block;width:212px;height:72px;"></a>-->
+    </div>
+
+    <div class="infi-header-title pull-left">
+        门急诊监控系统
+    </div>
+
+    <div  class="box-button pull-right" ng-controller="LoginController">
+        <!--<i class="glyphicon glyphicon-fullscreen"></i>-->
+        <a ng-click="logout()" class="glyphicon">退出</a>
+    </div>
+
+    <div class="box-user pull-right" style="padding-left: 160px;">
+        <img src="../src/image/doctor.png" class="user-logo"/>
+        <!--&lt;!&ndash;王中艺&ndash;&gt;-->
+        <!--<i class="pull-right glyphicon glyphicon-menu-down"></i>-->
+    </div>
+
+
+</header>
+<div style="position: absolute; top: 20%; left: 10%;padding: 15px;background-color: white;width:80%;z-index: 31;">
+    <div>
+        <a href="./outpatient_plugin_1.1_v.exe" style="color: #336699; font-size: 24px;text-decoration: underline;" class="font-yahei">请下载控件登录门急诊监控系统</a>
+    </div>
+    <div class="help-content" style="">
+
+        <h1><strong>尊敬的用户，您好：</strong></h1>
+        <p>欢迎使用门急诊监控系统！</p>
+        <p>平台特色包括：</p>
+        <p>1、平台汇聚了本院来访患者历次门诊数据，如：挂号信息、就诊信息、费用信息、流程信息等，您可以很清楚的查看各种数据统计。</p>
+        <p><strong>平台使用方法：</strong></p>
+        <p>1、<a style="color: #336699; text-decoration: underline;" href="./outpatient_plugin_1.1_v.exe"  class="font-yahei download">第一次登录，为实现最佳浏览体验效果，
+
+            请根据提示链接，下载插件</a>并安装，系统会自动生成“门急诊监控系统”桌面快捷方式，双击快捷方式，即可进入平台；再次访问时请直接通过桌面快
+
+            捷方式登录。</p>
+        <p>2、进入平台正式页面后，请在“登录管理平台”进行登录确认.</p>
+        <p>3、登录成功后，即可在具体页面使用相应的功能。</p>
+
+    </div>
+</div>
+<div class='box-bg-loop carousel slide' id='bg-loop'>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="../src/image/banner3.png">
+        </div>
+    </div>
+</div>
+<!-- 右部内容 END-->
+<!--<article class="infi-main">-->
+<!--<div four-day></div>-->
+<!--</article>-->
+
+<footer class="infi-footer">
+    <p class="infi-footer-detail">
+        北京无极慧通科技公司 | 北京市海淀区苏州街18号长远天地大厦A1座906室 | 联系电话:010-82686850
+    </p>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+
+<script type="text/javascript" src="../src/widget/system/system.filter.js"></script>
+<script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<script type="text/javascript" src="../src/widget/timeline/timeline.directive.js"></script>
+
+<script type="text/javascript" src="../src/widget/table/table.js"></script>
+
+<script type="text/javascript" src="../src/widget/system/http.interceptor.factory.js" ></script>
+<script type="text/javascript" src="../src/widget/system/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/session.service.js" ></script>
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+<script type="text/javascript" src="../bower_components/jQuery.print/jQuery.print.js"></script>
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.js"></script>

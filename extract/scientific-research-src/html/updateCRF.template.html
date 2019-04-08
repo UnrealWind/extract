@@ -1,0 +1,37 @@
+
+<div id="updateCRF" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>上传CRF</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="row form-inline ">
+                    <li class="col-md-6 form-group">
+                        <label >科室:</label>
+                        <select class=" form-control" ng-model="CRFparams.dept">
+                            <option value="">请选择</option>
+                            <option ng-selected="opt.id==CRFparams.dept" value="{{opt.id}}" ng-repeat="opt in deptList">{{opt.label}}</option>
+                        </select>
+                    </li>
+                    <li class="col-md-6 form-group">
+                        <label >CRF类型:</label>
+                        <select class=" form-control" ng-model="CRFparams.type">
+                            <option value="">请选择</option>
+                            <option ng-selected="opt.id==CRFparams.type" value="{{opt.id}}"  ng-repeat="opt in typeList">{{opt.remark}}</option>
+                        </select>
+                    </li>
+                    <li class="col-md-6 form-group">
+                        <label >选择CRF:</label>
+                        <input ng-disabled="!CRFparams.type || !CRFparams.dept" multiple="true"  type="file"  name="file" ngf-select="onFileSelect($files)">
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+

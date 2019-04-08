@@ -1,0 +1,223 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究 > {{basic.title}} > 课题基本信息设置</h4>
+<header class="infi-section">
+    <ul class="infi-header-ul">
+        <li class="infi-header-active"><span>1. 课题基本信息设置</span></li>
+        <li><span>2. 课题成员邀请</span></li>
+        <li><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <div class="dir-nav-container">
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题中文名:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.name">
+            </div>
+            <div class="form-label col-md-1">
+                <label>课题英文名:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.ename">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>课题代码:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.ecode">
+            </div>
+            <div class="form-label col-md-1">
+                <label>课题编号:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.no">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题可见性:</label>
+            </div>
+            <div class="col-md-4" >
+                <select class="form-control" ng-options="item.name as item.value for item in visible" ng-model="basic.visible"></select>
+            </div>
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>中心设置:</label>
+            </div>
+            <div class="col-md-4" >
+                <select class="form-control" ng-options="item.name as item.value for item in center" ng-model="basic.center"></select>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题类型:</label>
+            </div>
+            <div class="col-md-4" >
+                <select class="form-control" ng-options="item.name as item.value for item in type" ng-model="basic.type"></select>
+            </div>
+            <div class="form-label col-md-1">
+                <label>课题级别:</label>
+            </div>
+            <div class="col-md-4" >
+                <select class="form-control"  ng-options="item.name as item.value for item in level" ng-model="basic.level"></select>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>课题来源:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.source">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>课题描述:</label>
+            </div>
+            <div class="col-md-10">
+                <textarea maxlength="500" class="form-control" ng-model="basic.describes"></textarea>
+                <p>（课题描述内容不能超过500字）</p>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>立项依据:</label>
+            </div>
+            <div class="col-md-10">
+                <textarea maxlength="500" class="form-control" ng-model="basic.reason"></textarea>
+                <p>（立项依据内容不能超过500字）</p>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>科研意义与创新点:</label>
+            </div>
+            <div class="col-md-10">
+                <textarea maxlength="500" class="form-control" ng-model="basic.meaning"></textarea>
+                <p>（科研意义与创新点内容不能超过500字）</p>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题开始时间:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" readonly infi-date name="daterange" ng-model="basic.startTime">
+            </div>
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题结束时间:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text"  class="form-control"  readonly infi-date name="daterange" ng-model="basic.endTime">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>涉及科室:</label>
+            </div>
+            <div class="col-md-10">
+                <li ng-repeat="item in subjectOffices" style="padding-top: 5px;float: left;margin-right: 14px;">
+                    <label style="font-weight: normal; color: #333;cursor: pointer;">
+                        <input type="checkbox" ng-model="item.select" ng-change="selectCheckbox(item.select,item.label)" >{{item.label}}
+                    </label>
+                </li>
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>研究病种:</label>
+            </div>
+            <div class="col-md-4" >
+                <input placeholder="请输入疾病名称" type="text" class="form-control" ng-model="basic.objectives">
+            </div>
+            <div class="form-label col-md-1">
+                <label>课题发起单位:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.company">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label><span>* &nbsp;</span>课题负责人:</label>
+            </div>
+            <div class="col-md-4" >
+                <select ng-model="basic.userId" ng-options="item.id as item.name for item in ownData" class="form-control">
+
+                </select>
+            </div>
+            <div class="form-label col-md-1">
+                <label>联系电话:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.phone">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>邮箱:</label>
+            </div>
+            <div class="col-md-4" >
+                <input type="text" class="form-control" ng-model="basic.email">
+            </div>
+        </div>
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>备注:</label>
+            </div>
+            <div class="col-md-10">
+                <textarea maxlength="500" class="form-control" ng-model="basic.remark"></textarea>
+                <p>（备注内容不能超过500字）</p>
+            </div>
+        </div>
+
+        <div class="row infi-form-list">
+            <div class="form-label col-md-1">
+                <label>上传附件:</label>
+            </div>
+            <div class="col-md-10">
+                <input  multiple="true"  type="file"  name="file" ngf-select="onFileSelect($files)">
+                <ul class="file-list">
+                    <li ng-repeat="item in fileData">
+                        <em>{{item.originName}}</em>
+                        <span class="btn btn-default" ng-click="deleteFile(item.id)">删除</span>
+                        <span ng-click="downLoad(item)" class="btn btn-default" style="margin-right: 10px;">下载</span>
+                    </li>
+                </ul>
+                <div ng-if="fileData != ''" class="clearfix">
+                    <uib-pagination class="f-r"  total-items="filePage.totalElements" ng-model="filePage.number" max-size="5"
+                                    boundary-link-numbers="true" ng-change="updatePageAttend(filePage.number)" items-per-page="filePage.size"
+                                    num-pages="filePage.totalPages">
+                    </uib-pagination>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <button class="btn infi-btn-linear-green-l" ng-click="topicsNext()">下一步</button>
+    <button class="btn infi-btn-linear-green-l"
+            ng-click="topicsNext('save')"
+            ng-if="saveBtn.currState == 'init'">保存</button>
+
+    <button disabled class="btn"
+            ng-if="saveBtn.currState == 'saving'">保存中...</button>
+</div>
+
+<div class="modal fade"  id="infi-collection">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">筛选名称</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div general-prompt></div>

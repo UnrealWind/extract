@@ -1,0 +1,15 @@
+<!--标签-分类列表-->
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>分类列表</h4>
+<div class="infi-box">
+    <h4>分类列表</h4>
+    <a class="btn infi-btn-linear-green-l" style="position: absolute;top:15px;right:25px;" href="#/classify-create">新建分类</a>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="tab-content">
+                <div infi-table columns="columns" content="content" opts="opts" update-page="changePage(page)"
+                     btn-callback="pageOperation(entity,type)"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div delete-tip delete-id="deleteId" type="''" type1="'/tree'" init="init()"></div>

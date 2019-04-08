@@ -1,0 +1,37 @@
+<div class="infi-form-row row">
+    <div class="col-lg-2">
+        <label>{{name}}:</label>
+    </div>
+    <div class="col-lg-4">
+        <div ng-show="viewDetail.type == 'change' || viewDetail.type == 'create'">
+            <!--输入框，新建和修改时使用-->
+            <input type="text" ng-click="getList()"
+                   class="form-control infi-drug-input input-sm hide-popup" ng-model="entity.selected.$name" required/>
+            <!--必填项标示，新建和修改时使用-->
+            <i class="text-danger">*</i>
+            <!--模拟下拉框，新建和修改时显示-->
+            <div ng-show="entity.$selected&&name!='病区'" class="infi-simulate-select">
+                <div ng-show="entity.data.status == SYS.STATUS_SUCCESS">
+                    <ul ng-show="entity.data.data.length > 0">
+                        <li ng-repeat="data in entity.data.data" ng-bind="data.name"
+                            ng-class="{true:'active'}[data.$active]" ng-click="selectOne(data)"></li>
+                    </ul>
+                    <div ng-show="entity.data.data.length == 0" class="alert alert-danger">此医院未添加过病区</div>
+                </div>
+                <div ng-show="entity.data.status != SYS.STATUS_SUCCESS" ng-bind="entity.data.description" class="alert alert-danger"></div>
+            </div>
+        </div>
+        <!--内容展示，查看时展示-->
+        <span ng-show="viewDetail.type == 'view'" ng-bind="viewDetail.data.name"></span>
+    </div>
+    <!--编码，修改和查看时显示-->
+    <div ng-show="viewDetail.id" class="col-lg-2">
+        <label>编码:</label>
+    </div>
+    <div class="col-lg-4">
+        <input type="text" class="form-control infi-drug-input input-sm" ng-model="entity.selected.code"
+               ng-show="viewDetail.type == 'change'"/>
+        <!--内容展示，查看时展示-->
+        <span ng-show="viewDetail.type == 'view'" ng-bind="viewDetail.data.code"></span>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- 用于表单显示,一行显示一个信息 -->
+<div class="col-md-2 infi-col-title">
+    <span ng-if="formOne.require" style="color:red;">*</span><span>{{formOne.label}}:</span>
+</div>
+<!-- 多选 -->
+<div class="col-md-9" ng-if="formOne.type == 'checkbox'">
+    <label class="self-num-checkbox" ng-repeat="option in formOne.options">
+        <input type="checkbox" ng-model="formOne.value[$index]" value="{{option.value}}"/>
+        {{option.label}}
+    </label>
+</div>
+<!-- 单选 -->
+<div class="col-md-9" ng-if="formOne.type == 'radio'">
+    <label class="self-num-radio" ng-repeat="option in formOne.options">
+        <input type="radio" ng-model="formOne.value"  value="{{option.value}}" name="{{formOne.name}}"/>
+        {{option.label}}
+    </label>
+</div>
+<!-- 单行文本 -->
+<div class="col-md-9" ng-if="formOne.type == 'text'">
+    <input type="text" ng-model="formOne.value" class="form-control" maxlength="20"/>
+</div>
+<!-- 多行文本 -->
+<div class="col-md-9" ng-if="formOne.type == 'textarea'">
+    <textarea ng-model="formOne.value" class="form-control" maxlength="200"></textarea>
+</div>
+<!-- 带单位的单行文本 -->
+<div class="col-md-9" ng-if="formOne.type == 'unit' && (formOne.name=='tubeInLength'||formOne.name=='tubeExternalLength')">
+    <input type="number" ng-model="formOne.value" class="form-control infi-text-unit" ng-blur="lengthBlur({form:formOne})"
+           oninput="if(value.length>20)value=value.slice(0,20)"/>
+    <span>{{formOne.unit}}</span>
+</div>
+<div class="col-md-9" ng-if="formOne.type == 'unit' && formOne.name=='tubeTotalLength'">
+    <input type="number" ng-model="formOne.value" class="form-control infi-text-unit" readonly="readonly" oninput="if(value.length>20)value=value.slice(0,20)"/>
+    <span>{{formOne.unit}}</span>
+</div>
+<div class="col-md-9" ng-if="formOne.type == 'unit' && formOne.name!='tubeInLength' && formOne.name!='tubeExternalLength' && formOne.name!='tubeTotalLength'"
+     oninput="if(value.length>20)value=value.slice(0,20)">
+    <input type="number" ng-model="formOne.value" class="form-control infi-text-unit"/>
+    <span>{{formOne.unit}}</span>
+</div>
+<!-- 时间 -->
+<div class="col-md-9" ng-if="formOne.type == 'datetime'">
+    <input class="form-control" type="text" infi-date="yyyy-mm-dd" ng-model="formOne.value" maxlength="20">
+</div>
+<!-- 前后都有字的 -->
+<div class="col-md-9" ng-if="formOne.type == 'twoLabel'">
+    <span>{{formOne.firstLabel}}</span>
+    <input type="number" ng-model="formOne.value" class="form-control infi-text-unit" oninput="if(value.length>20)value=value.slice(0,20)"/>
+    <span>{{formOne.secondLabel}}</span>
+</div>

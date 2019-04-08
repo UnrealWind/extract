@@ -1,0 +1,131 @@
+
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究 > 课题名称 > 任务管理 > 病例详情</h4>
+<div class="infi-box" style="overflow: auto;">
+    <h4>基本信息</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-xs-2">上报医院:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">病例号:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">性别:</div>
+                <div class="col-xs-10"><input type="radio">男 <input type="radio">女</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">出生日期:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="infi-box" style="overflow: auto;">
+    <h4>诊治情况</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-xs-2">上报医院:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">病例号:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">性别:</div>
+                <div class="col-xs-10"><input type="radio">男 <input type="radio">女</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">出生日期:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="infi-box" style="overflow: auto;">
+    <h4>流行病学史</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-xs-2">上报医院:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">病例号:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">性别:</div>
+                <div class="col-xs-10"><input type="radio">男 <input type="radio">女</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">出生日期:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="infi-box" style="overflow: auto;">
+    <h4>住院情况</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-xs-2">上报医院:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">病例号:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">性别:</div>
+                <div class="col-xs-10"><input type="radio">男 <input type="radio">女</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-xs-2">出生日期:</div>
+                <div class="col-xs-10"><input type="text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <button class="btn infi-btn-linear-green-l" ng-click="auditBy()">审核</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="dataReference()">数据参考</button>
+    <a href="#/audit-case"><button class="btn infi-btn-linear-green-l">返回</button></a>
+</div>
+
+<div>
+    <div class="infi-box" style="overflow: auto;width:50%;position:fixed;top : 200px;right:-50%" id="dataReference">
+        <h4>数据参考</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                数据参考
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="auditBy">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">审核结果</h4>
+            </div>
+            <div class="modal-body">
+                <p>审核理由</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

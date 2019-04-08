@@ -1,0 +1,88 @@
+<div class="infi-word-template" ng-if="checkList && checkList.length>0">
+    <div class="infi-template-topNav">{{targetTemplate}}
+        <ul>
+            <li ng-repeat="opt in checkList" ng-class="{true:'active'}[opt.active]"
+                ng-click="check(opt,checkList,$index)"><a>第{{opt.num}}次 &nbsp; {{opt.headValue}}</a></li>
+        </ul>
+    </div>
+    <div class="infi-word-title">
+        <p class="infi-name">
+            <span>检验号：{{targetInfo.testNo|changeNULL}}</span>
+        </p>
+        <p class="infi-patiId">
+            <span>ID号：{{targetInfo.patiId|changeNULL}}</span>
+        </p>
+    </div>
+    <div class="infi-info-box">
+        <table class="infi-wj-table">
+            <tr>
+                <td><p>检验主题：{{targetInfo.testClass|changeNULL}}</p></td>
+                <td><p>标本：{{targetInfo.specimen|changeNULL}}</p></td>
+                <td><p>检验科室：{{targetInfo.deptIcuName|changeNULL}}</p></td>
+            </tr>
+            <tr>
+                <td><p>申请时间：{{targetInfo.requestedDateTime|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p></td>
+                <td><p>申请医生：{{targetInfo.orderingProvider|changeNULL}}</p></td>
+                <td><p>检验状态：{{targetInfo.result|changeNULL}}</p></td>
+            </tr>
+           </tr>
+        </table>
+    </div>
+    <div class="infi-content">
+        <table class="infi-wj-table">
+            <thead>
+                <tr>
+                    <th><p>项目名称</p></th>
+                    <th><p>测试结果</p></th>
+                    <th><p>异常</p></th>
+                    <th><p>参考值</p></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cursor" ng-repeat="opt in tableDatas.result" ng-click="changeEcharts(opt)">
+                    <td><p>{{opt.test_item_name|changeNULL}}</p></td>
+                    <td><p>{{opt.result|changeNULL}}</p></td>
+                    <td>
+                        <p>{{opt.abnormal_indicator|changeNULL}}
+                            <span class="glyphicon glyphicon-arrow-up red" ng-if="opt.abnormal_indicator == '高'"></span>
+                            <span class="glyphicon glyphicon-arrow-down red" ng-if="opt.abnormal_indicator == '低'"></span>
+                        </p>
+                    </td>
+                    <td><p>{{opt.prin_cont|changeNULL}}</p></td>
+                </tr>
+                <tr ng-if="!tableDatas.result || tableDatas.result.length == 0 || checkList.length == 0" >
+                    <td><p>-</p></td>
+                    <td><p>-</p></td>
+                    <td><p>-</p></td>
+                    <td><p>-</p></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="infi-page">
+            <uib-pagination total-items="tableDatas.totalCount" ng-model="tableDatas.pageNo"
+                boundary-link-numbers="true" ng-change="reFreshPage(targetInfo,tableDatas.pageNo)"
+                items-per-page="tableDatas.pageSize" max-size="7"
+               >
+            </uib-pagination>
+        </div>
+        <p class="infi-doctorName-box">
+            <span>报告医师：{{targetInfo.transcriptionist|changeNULL}}</span>
+            <span>审核医师：{{targetInfo.verifiedBy|changeNULL}}</span>
+            <span>送检日期：{{targetInfo.spcmReceivedDateTime|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            <span>报告日期：{{targetInfo.resultsRptDateDime|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </p>
+
+        <div class="clear-both"></div>
+        <div ng-if="(tableData.result.length != 0 && checkList.length != 0) && !arrDate" class="alert alert-info">数据加载中……</div>
+
+        <div id="checkout" style="height:500px;">
+
+        </div>
+    </div>
+</div>
+
+<div class="infi-word-template" ng-if="!checkList || checkList.length == 0">
+    <p>-</p>
+</div>

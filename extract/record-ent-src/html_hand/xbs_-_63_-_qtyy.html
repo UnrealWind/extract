@@ -1,0 +1,247 @@
+<div class="infi-record-box"
+     ng-show="entity.name_63!=undefined && (entity.name_63=='value_1' || entity.name_63.value_1==true)"><h4
+        class="infi-record-title">其他医院</h4>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>医院名称: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_76"><input
+                name="entity.name_76" type="text" ng-model="entity.name_76" class="form-control" infi-radio-query
+                data-name="entity.name_76"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_76"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_76.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_76" name="entity.name_76" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>诊断时间: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_77"><input
+                name="entity.name_77" infi-date="yyyy-mm-dd" type="text" ng-model="entity.name_77"
+                class="form-control"/></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>诊断结果: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_78"><input
+                name="entity.name_78" type="text" ng-model="entity.name_78" class="form-control" infi-radio-query
+                data-name="entity.name_78"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_78"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_78.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_78" name="entity.name_78" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>辅助检查: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_79"><input style="width:500px;"
+                name="entity.name_79" type="text" ng-model="entity.name_79" readonly="readonly" class="form-control" infi-radio-query
+                data-name="entity.name_79"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_79"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content infi-auxiliary">
+                    <!--<label class="checkbox-inline" style="margin-right: 10px;"-->
+                                                        <!--ng-repeat="option in dimensions.name_79.options"-->
+                                                        <!--data-type="hide-opt" ng-show="option.show!=false">-->
+                        <!--<input ng-click="auxiliaryExam(option,entity.name_79)"-->
+                        <!--type="radio" ng-model="entity[option.name]" name="entity.name_79" value="{{option.name}}"/>{{option.label}}</label>-->
+                    <label class="checkbox-inline" style="margin-right: 10px;"
+                           ng-repeat="option in dimensions.name_79.options">
+                        <input type="checkbox" ng-model="entity.name_79other[option.name]" ng-click="auxiliaryExam(option,'name_79')"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-check">
+        <link rel="import" href="../table/fzjc.html?__inline">
+    </div>
+    <div class="infi-drug">
+        <label style="width: 93px;text-align: right;padding-right: 10px;">药物名称:</label>
+        <div style="display:inline-block;position: relative;">
+            <input name="entity.name_90" type="text" ng-model="entity.name_90" class="form-control" infi-radio-query
+                    data-name="entity.name_90" style="width:165px;" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_90"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_90.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_90" name="entity.name_90" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+
+        <input name="entity.name_91" type="text" ng-model="entity.name_91"
+               style="width:55px;display:inline-block;" placeholder="剂量" class="form-control"/>
+        <div style="position: relative;width:55px;display: inline-block;" data-name="entity.name_92">
+            <input name="entity.name_92" type="text" ng-model="entity.name_92" class="form-control" infi-radio-query
+                   data-name="entity.name_92" style="width:100%;" placeholder="单位" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_92"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_92.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_92" name="entity.name_92" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_93">
+            <input name="entity.name_93" type="text" ng-model="entity.name_93" class="form-control" infi-radio-query
+                   data-name="entity.name_93" style="width:100%;" placeholder="使用方式" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_93"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_93.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_93" name="entity.name_93" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_94">
+            <input name="entity.name_94" type="text" ng-model="entity.name_94"
+                   style="display:inline-block;width:80px;" placeholder="使用频率" class="form-control"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_94"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_94.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_94" name="entity.name_94" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-drug">
+        <label style="width: 93px;text-align: right;padding-right: 10px;">药物名称:</label>
+        <div style="display:inline-block;position: relative;">
+            <input name="entity.name_90_1" type="text" ng-model="entity.name_90_1" class="form-control" infi-radio-query
+                   data-name="entity.name_90_1" style="width:165px;" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_90_1"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_90_1.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_90_1" name="entity.name_90_1" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+
+        <input name="entity.name_91_1" type="text" ng-model="entity.name_91_1"
+               style="width:55px;display:inline-block;" placeholder="剂量" class="form-control"/>
+        <div style="position: relative;width:55px;display: inline-block;" data-name="entity.name_92_1">
+            <input name="entity.name_92_1" type="text" ng-model="entity.name_92_1" class="form-control" infi-radio-query
+                   data-name="entity.name_92_1" style="width:100%;" placeholder="单位" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_92_1"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_92_1.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_92_1" name="entity.name_92_1" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_93_1">
+            <input name="entity.name_93_1" type="text" ng-model="entity.name_93_1" class="form-control" infi-radio-query
+                   data-name="entity.name_93_1" style="width:100%;" placeholder="使用方式" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_93_1"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_93_1.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_93_1" name="entity.name_93_1" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_94_1">
+            <input name="entity.name_94_1" type="text" ng-model="entity.name_94_1"
+                   style="display:inline-block;width:80px;" placeholder="使用频率" class="form-control"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_94_1"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_94_1.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_94_1" name="entity.name_94_1" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-drug">
+        <label style="width: 93px;text-align: right;padding-right: 10px;">药物名称:</label>
+        <div style="display:inline-block;position: relative;">
+            <input name="entity.name_90_2" type="text" ng-model="entity.name_90_2" class="form-control" infi-radio-query
+                   data-name="entity.name_90_2" style="width:165px;" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_90_2"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_90_2.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_90_2" name="entity.name_90_2" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+
+        <input name="entity.name_91_2" type="text" ng-model="entity.name_91_2"
+               style="width:55px;display:inline-block;" placeholder="剂量" class="form-control"/>
+        <div style="position: relative;width:55px;display: inline-block;" data-name="entity.name_92_2">
+            <input name="entity.name_92_2" type="text" ng-model="entity.name_92_2" class="form-control" infi-radio-query
+                   data-name="entity.name_92_2" style="width:100%;" placeholder="单位" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_92_2"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_92_2.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_92_2" name="entity.name_92_2" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_93_2">
+            <input name="entity.name_93_2" type="text" ng-model="entity.name_93_2" class="form-control" infi-radio-query
+                   data-name="entity.name_93_2" style="width:100%;" placeholder="使用方式" />
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_93_2"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_93_2.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_93_2" name="entity.name_93_2" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;width:100px;display: inline-block;" data-name="entity.name_94_2">
+            <input name="entity.name_94_2" type="text" ng-model="entity.name_94_2"
+                   style="display:inline-block;width:80px;" placeholder="使用频率" class="form-control"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_94_2"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_94_2.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_94_2" name="entity.name_94_2" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>药物治疗天数: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_95"><input
+                name="entity.name_95" type="text" ng-model="entity.name_95" class="form-control"/><select
+                ng-model="entity.name_95unit" class="form-control"
+                style="width:62px; position: absolute; top: 0;right: 50%;z-index: 10;">
+            <option value="天">天</option>
+            <option value="周">周</option>
+            <option value="月">月</option>
+            <option value="年">年</option>
+        </select></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>备注: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_96"><textarea
+                name="entity.name_96" ng-model="entity.name_96" rows="2" class="form-control"
+                style="width: 100%;"></textarea></div>
+    </div>
+</div>

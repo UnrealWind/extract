@@ -1,0 +1,66 @@
+<div class="">
+    <div class="infi-title">
+        <h3 ng-if="attr.active" ng-repeat="attr in workSpaceInfo.data.childs">{{attr.name}}</h3>
+    </div>
+
+    <ul class="basic-attr-list">
+        <li ng-class="{true:'active'}[attr.active]" ng-repeat="attr in workSpaceInfo.data.childs" ng-click="addQuestion(workSpaceInfo.data,attr)">
+            <p>{{attr.name}}</p>
+        </li>
+        <li class="more" ng-click="addAttr(workSpaceInfo.data)">
+            <p>添加更多+</p>
+        </li>
+    </ul>
+
+    <ul class="basic-question-list" ng-repeat="attr in workSpaceInfo.data.childs" ng-if="attr.active">
+        <li class="text" ng-repeat="question in attr.childs">
+            <div  ng-if="question.type =='smallText'">
+                <h4>{{$index+1}}.{{question.name}}</h4>
+                <div class="form-inline form-group margin-top">
+                    <input type="text" class="form-control" ng-model="question.value"  placeholder="">
+                    <select ng-model="question.unitValue" class="form-control">
+                        <option value="">--</option>
+                        <option ng-repeat="unit in question.units" value="{{unit.name}}">{{unit.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div ng-if="question.type =='radio'">
+                <h4>{{$index+1}}{{question.name}}</h4>
+                <ul>
+                    <li>
+                        <label class="radio-inline">
+                            <input type="radio" value="test">test
+                        </label>
+                    </li>
+                    <li>
+                        <label class="radio-inline">
+                            <input type="radio" value="test">test
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="question.type =='checkbox'">
+                <h4>{{$index+1}}.{{question.name}}</h4>
+                <ul>
+                    <li ng-repeat="opt in question.options">
+                        <label class="checkbox-inline">
+                            <input ng-checked="question.values.indexOf(opt.kid)>-1" ng-click="addVal(opt,question)" type="checkbox" value="{{opt.kid}}">{{opt.name}}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+    <div ng-repeat="attr in workSpaceInfo.data.childs" ng-if="attr.active && attr.relate && attr.relate.length>0" >
+        <div class="infi-title">
+            <h3>您还可以询问患者是否有以下症状</h3>
+        </div>
+        <ul class="basic-attr-list">
+            <li ng-repeat="relate in attr.relate" ng-click="addAttrs(relate)">
+                <p>{{relate.name}}</p>
+            </li>
+        </ul>
+    </div>
+
+</div>

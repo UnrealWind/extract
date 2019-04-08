@@ -1,0 +1,31 @@
+<div class="infi-wj-self-box" style="font-size: 16px;">
+    <div class="infi-wj-title">
+        <i class="infi-icon" style="font-size: 17px;">&#xe61e;</i>主诉
+    </div>
+
+    <div class="infi-wj-part" >
+        <div class="row">
+            <!--<div ng-repeat="opt in hospitalComplaint" ng-if="hospitalComplaint.length >0 && hospitalComplaint[0].source" class="col-md-12">
+                <p>
+                    <p><span style="color: #000;">{{opt.item_result}}：</span>{{opt.source}}</p>
+                </p>
+            </div>
+            <div class="col-md-12" ng-if = "!hospitalComplaint[0].source || hospitalComplaint[0].source == null
+                || hospitalComplaint[0].source == '' || hospitalComplaint.length == 0">
+                -
+            </div>
+-->
+            <div ng-repeat="opt in hospitalComplaint" ng-if="hospitalComplaint.length >0 " class="col-md-12">
+                <p><span style="color: #000;">{{opt.item_result}}：</span>{{opt.source|changeNULL}}</p>
+            </div>
+            <div class="col-md-12" ng-if = "hospitalComplaint.length == 0">
+                -
+            </div>
+
+            <div ng-if="opt.handler_id == 1 && allResults.length >0 && opt.remark" ng-repeat="opt in allResults" class="col-md-12">
+                <p><span style="color: #000;">备注：</span>{{opt.remark|changeNULL}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+<!-- 标题 -->
+<div class="row">
+  <div class="col-md-12">
+    <h3><i class="glyphicon glyphicon-export"></i> 数据导出
+      <!-- 回首页 -->
+      <a href="#/list" class="btn btn-default pull-right"><i class="glyphicon glyphicon-list"></i> 列表</a>
+    </h3>
+    <hr>
+  </div>
+</div>
+
+<!-- 筛选条件 -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2">
+        <!-- select -->
+        <form class="form-inline">
+          <select class="form-control"
+                  ng-model="exportFilterSelected"
+                  ng-change="selectItem()"
+                  ng-value="item.value"
+                  ng-options="item.label for item in exportFilterSelect.items[currUsr]">
+          </select>
+        </form>
+      </div>
+
+
+      <!-- region -->
+      <div class="col-md-3">
+        <form class="form-inline">
+          <div class="form-group">
+            <!-- <label class="control-label">选择病区： </label> -->
+            <div class="wrads-warpper">
+              <!-- 有 wards -->
+              <div ng-if="wards" class="list-warpper">
+                <div class="list-opt" ng-click="extendWard()">
+                  <span ng-bind="wardSearchObj.selected.label || wards[1].label" class="list-opt-txt"></span>
+                  <i class="glyphicon glyphicon-chevron-down pull-right" ng-if="!wardSearchObj.showWards"></i>
+                  <i class="glyphicon glyphicon-chevron-up pull-right" ng-if="wardSearchObj.showWards"></i>
+                </div>
+    
+                <ul class="list-group wrads-list" ng-if="wardSearchObj.showWards">
+                  <!-- 搜索框 -->
+                  <li class="list-search">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control wrad-search" 
+                                  ng-model="wardSearchObj.keyword" 
+                                  ng-change="wardSearch()" placeholder="拼音/首字母搜索">
+                          <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                        </div>
+                      </div>
+                    </form>
+                  </li>
+                  <li class="list-group-item"
+                      ng-if="!wardSearchObj.keyword || (wards.length > 0 && wardSearchObj.result.indexOf(val) >= 0)"
+                      ng-repeat="(ind, val) in wards"
+                      ng-bind="val.label"
+                      ng-click="selectWard(val, $event)">
+                  </li>
+                </ul>
+              </div>
+
+              <div ng-if="!wards" class="list-wrapper">
+                <div class="list-opt">
+                  <span>暂无数据!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+
+      <!-- filter date -->
+      <div class="col-md-4">
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group" id="exportDate-filter">
+              <input type="text" readonly class="form-control" style="cursor: pointer;">
+              <!-- <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div> -->
+            </div>
+          </div>
+
+          <!-- 导出 -->
+          <button type="submit" class="btn btn-primary" ng-click="exportData()" ng-if="varstatus.exportStatus == 'init'">导出</button>
+          <button type="submit" class="btn btn-default" disabled ng-if="varstatus.exportStatus != 'init'">导出中...</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 表格 -->
+<div class="row regist-list">
+  <div class="col-md-12">
+    <h4>任务列表</h4>
+    <hr>
+    <table class="table infi-table">
+      <thead>
+        <tr>
+          <th ng-repeat="(ind, val) in columns.label" ng-bind="val"></th>
+        </tr>
+      </thead>
+      <tbody ng-if="content.page.content">
+        <tr ng-repeat="row in content.page.content">
+          <td ng-repeat="(key, val) in row" class="txt-elipse">
+            <span title="{{val}}" ng-bind="val"></span>
+          </td>
+        </tr>
+      </tbody>
+
+      <!-- 状态提示 -->
+      <tbody>
+        <tr ng-if="!loading || loading == 'pending'">
+          <td colspan="{{columns.filed.length}}">
+            <p class="bg-warning" style="line-height: 50px;">数据加载中...</p>
+          </td>
+        </tr>
+
+        <tr ng-if="loading == 'rejected' || loading == 'nondata'">  
+          <td colspan="{{columns.filed.length}}">
+            <p class="bg-danger" style="line-height: 50px;">暂无数据</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="infi-page">
+      <div class="form-inline">
+        <div class="form-group">
+          <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" boundary-link-numbers="true" ng-change="updatePage(content.page.number)"
+            items-per-page="content.page.size" num-pages="content.page.totalPages" max-size="8">
+          </uib-pagination>
+        </div>
+
+        <!-- 跳转页码 -->
+        <div class="form-group jumpPage-wrap">
+          <div class="input-group">
+            <input type="number" class="form-control numberInput" ng-model="jumpPage">
+          </div>
+          <button class="btn btn-default" ng-click="updatePage(jumpPage)">跳转</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- toast 通知 -->
+<toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+

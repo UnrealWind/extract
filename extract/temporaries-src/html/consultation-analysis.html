@@ -1,0 +1,84 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>统计分析</h4>
+<div class="infi-box" style="position: static;">
+   <!-- <div class="infi-group">
+        <label>选择查找时间段：</label>
+        <input infi-date="yyyy-mm-dd" ng-model="recordData.startTime" placeholder="开始时间" value="{{recordData.startTime}}"
+               class="form-control infi-group-input datepicker" ng-change="changeData()" /> -
+        <input infi-date="yyyy-mm-dd" placeholder="结束时间" ng-model="recordData.endTime"
+               class="form-control infi-group-input datepicker" value="{{recordData.endTime}}" ng-change="changeData()" />
+        <div style="display: inline-block;">
+            <label>选择类型：</label>
+            <select ng-model="recordData.selectedCombination" ng-change="changeData()">
+                <option ng-repeat="option in selectOptions" value="{{option.value}}" ng-bind="option.label"
+                        ng-selected="recordData.selectedCombination==option.value"></option>
+            </select>
+        </div>
+    </div>-->
+
+    <div>
+        <ul class="ul-float-left">
+            <li class="" style="margin:10px 0 0 10px;">
+                <label>选择查找时间段：</label>
+                <input style="width:120px;" infi-date="yyyy-mm-dd" ng-model="recordData.startTime" placeholder="开始时间" value="{{recordData.startTime}}"
+                       class=" form-control infi-group-input datepicker"  /> -
+                <input style="width:120px;" infi-date="yyyy-mm-dd" placeholder="结束时间" ng-model="recordData.endTime"
+                       class="form-control infi-group-input datepicker" value="{{recordData.endTime}}"  />
+            </li>
+            <!--<li class="" style="width:250px;margin:10px 0 0 20px;">
+                <label>选择类型：</label>
+                <select class="form-control" ng-model="recordData.selectedCombination" >
+                    <option ng-repeat="option in selectOptions" value="{{option.value}}" ng-bind="option.label"
+                            ng-selected="recordData.selectedCombination==option.value"></option>
+                </select>
+            </li>-->
+            <li class="" style="width:250px;margin:10px 0 0 20px;">
+                <label>高血压分级:</label>
+                <select class="form-control" ng-change="selectHyLv()" ng-model="select.tagVal.hy">
+                    <option ng-repeat="opt in select.data" value ="{{opt.value}}">{{opt.label}}</option>
+                </select>
+            </li>
+            <li class="" style="width:250px;margin:10px 0 0 20px;" ng-show="levels.select" ng-repeat="levels in select.data">
+                <label>危险程度:</label>
+                <select class="form-control" ng-model="select.tagVal.lv">
+                    <option  ng-repeat="level in levels.children" value ="{{level.value}}">{{level.label}}</option>
+                </select>
+            </li>
+            <li style="padding-left:10px;margin:10px 0 0 20px;">
+                <a class="btn infi-btn-linear-green-l btn-sm" ng-click="changeData()">搜索</a>
+            </li>
+        </ul>
+       <!-- <div class="bpg-navBar" style="width:300px; left:10px;top:10px">
+            <ul class="bpg-navigation clearfix" style="list-style-type:none;">
+                <li ng-class="{true:'selected'}[recordData.selectedCombination == 0]" ng-click="selectDisease(0)">疾病类型</li>
+                <li ng-class="{true:'selected'}[recordData.selectedCombination == 1]" ng-click="selectDisease(1)">疾病名称</li>
+            </ul>
+        </div>-->
+    </div>
+    <div class="infi-box-containter">
+        <div id="errorTip" class="alert alert-danger" ng-show="options.finish == 'error'">未查寻到数据，请修改查询条件</div>
+        <div id="" class="alert alert-info" ng-show="!options.finish">查询中……</div>
+        <div id="svgDiv" style="height: 1000px;width:1000px;margin: 0 auto;"></div>
+        <div style="width: 240px; height: 100px; position: absolute; left: 871px; top: 0px; opacity: 0;" class="tooltip infi-tooltip" id="toolTip">
+            <div class="header2" id="header1"></div>
+            <div class="header-rule"></div>
+            <div class="header" id="head"></div>
+            <div class="header-rule"></div>
+            <div class="header3" id="header2"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).bind('doConfig',function() {
+        var scope = $(".infi-box").scope();
+        fetchData(scope.options);
+        $(document).unbind('doConfig');
+    });
+</script>
+<script type="text/javascript" src="../js/disease.complication/globals.js"></script>
+<script type="text/javascript" src="../js/disease.complication/initialize.js"></script>
+<script type="text/javascript" src="../js/disease.complication/events.js"></script>
+<script type="text/javascript" src="../js/disease.complication/data.js"></script>
+<script type="text/javascript" src="../js/disease.complication/_buildChords.js"></script>
+<script type="text/javascript" src="../js/disease.complication/update.js"></script>
+<script type="text/javascript" src="../js/disease.complication/main.js"></script>
+<script type="text/javascript" src="../js/disease.complication/drawChart.js"></script>

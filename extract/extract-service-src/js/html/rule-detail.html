@@ -1,0 +1,49 @@
+<div>
+    <!--任务审核特有的功能 END-->
+    <!--<div class="infi-box">-->
+        <!--<h4 class="infi-title">规则详情</h4>-->
+        <!--<div class="infi-box-containter">-->
+            <!--<div id="infi-m-tab" class="infi-m-ct">-->
+                <!--<h4 class="infi-u-tt">筛选条件</h4>-->
+                <!--<ul ng-show="recordData.screenData.length > 0">-->
+                    <!--<li ng-repeat="screenData in recordData.screenData">-->
+                        <!--<div ng-bind="screenData.label"></div>:-->
+                        <!--<div ng-bind="screenData.value"></div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <!--<div ng-show="recordData.screenData.length == 0">未设置</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>&lt;!&ndash; ends.infi-box &ndash;&gt;-->
+
+    <!-- 筛选记录ui -->
+    <div class="infi-box">
+        <h4 class="infi-title">规则内容[共筛选得<span ng-bind="caseNumber"></span>份病历]</h4>
+        <div class="infi-box-containter infi-m-ct">
+            <ul ng-show="recordData.screenRecord != ''">
+                <li ng-bind="recordData.screenRecord"></li>
+            </ul>
+            <div ng-show="recordData.screenRecord == ''">未设置</div>
+        </div>
+    </div><!-- ends.infi-box -->
+    <div class="infi-box" ng-show="viewType == 'view'">
+        <h4 class="infi-title">推荐科室</h4>
+        <div class="infi-box-containter infi-m-ct">
+            <ul ng-show="recordData.dept != ''">
+                <li ng-bind="recordData.dept"></li>
+            </ul>
+            <div ng-show="recordData.dept == ''">未设置</div>
+        </div>
+    </div><!-- ends.infi-box -->
+
+    <div class="infi-box">
+        <h4>病历群特征</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div choser-chart class="infi-chart" chart-data = 'recordData.chartData'
+                     ng-if="recordData.chartData != null && recordData.chartData.length > 0"></div>
+                <div class="alert alert-danger" ng-show="recordData.chartData == null || recordData.chartData.length == 0">未查询到数据</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+[
+  [
+    {
+      "label": "日期",
+      "name": "maternal.date",
+      "type": "time"
+    },
+    {
+      "label": "生产情况",
+      "name": "maternal.productionSituation",
+      "type": "radio",
+      "options": [
+        {
+          "label": "流产",
+          "value": "流产"
+        },
+        {
+          "label": "早产",
+          "value": "早产"
+        },
+        {
+          "label": "死胎",
+          "value": "死胎"
+        },
+        {
+          "label": "死产",
+          "value": "死产"
+        },
+        {
+          "label": "足月产",
+          "value": "足月产"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label": "孕产期合并症",
+      "name": "maternal.maternalComplication",
+      "type": "checkboxOther",
+      "options": [
+        {
+          "label": "妊娠期高血压病",
+          "value": ""
+        },
+        {
+          "label": "子痫前期轻度",
+          "value": ""
+        },
+        {
+          "label": "子痫前期重度",
+          "value": ""
+        },
+        {
+          "label": "子痫",
+          "value": ""
+        },
+        {
+          "label": "妊娠期肝内胆汁淤积症",
+          "value": ""
+        },
+        {
+          "label": "妊娠期糖尿病",
+          "value": ""
+        },
+        {
+          "label": "肺结核",
+          "value": ""
+        },
+        {
+          "label": "丙型肝炎",
+          "value": ""
+        },
+        {
+          "label": "乙型肝炎",
+          "value": ""
+        },
+        {
+          "label": "梅毒",
+          "value": ""
+        },
+        {
+          "label": "艾滋",
+          "value": ""
+        },
+        {
+          "label": "糖尿病",
+          "value": ""
+        },
+        {
+          "label": "妊娠合并慢性高血压",
+          "value": ""
+        },
+        {
+          "label": "贫血",
+          "value": ""
+        },
+        {
+          "label": "心力衰竭",
+          "value": ""
+        },
+        {
+          "label": "慢性肾炎",
+          "value": ""
+        },
+        {
+          "label": "甲状腺功能亢进",
+          "value": ""
+        },
+        {
+          "label": "甲状腺功能减退",
+          "value": ""
+        },
+        {
+          "label": "阑尾炎",
+          "value": ""
+        },
+        {
+          "label": "胆囊炎",
+          "value": ""
+        },
+        {
+          "label": "胆囊结石",
+          "value": ""
+        },
+        {
+          "label": "肠梗阻",
+          "value": ""
+        },
+        {
+          "label": "胃穿孔",
+          "value": ""
+        }
+      ]
+    }
+  ]
+]

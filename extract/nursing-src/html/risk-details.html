@@ -1,0 +1,68 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC风险评估详情
+</h4>
+<div class="infi-box">
+	<div class="risk-evaluation">
+		<h4>风险评估详情
+			<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="back()">返回</button>
+		</h4>
+	</div>
+	<div class="infi-theme-box">
+		<div class="row marginten">
+			<div class="col-md-1" style="text-align: right;">
+				<span>情况:</span>
+			</div>
+			<div class="col-md-1">
+				<span>{{details.riskGrade}}</span>
+			</div>
+			<div class="col-md-1" style="text-align: right;">
+				<span>结论:</span>
+			</div>
+			<div class="col-md-2">
+				<span>{{details.result}}</span>
+			</div>
+			<div class="col-md-1" style="text-align: right;">
+				<span>建议:</span>
+			</div>
+			<div class="col-md-2">
+				<span>{{details.suggest}}</span>
+			</div>
+			<div class="col-md-1" style="text-align: right;width:100px;">
+				<span>评估时间:</span>
+			</div>
+			<div class="col-md-2">
+				<span>{{details.riskAssessmentTime}}</span>
+			</div>
+		</div>
+		<div class="infi-nursing-theme-content">
+			<table class="table infi-table">
+				<thead>
+				<th style="width:60%;">
+					项目
+				</th>
+				<th>
+					选项
+				</th>
+				<th>
+					分值
+				</th>
+				</thead>
+				<tbody>
+				<tr ng-repeat="list in detailsList">
+					<td>
+						{{list.riskAssessContent.riskQuestion}}
+					</td>
+					<td>
+						{{list.riskAssessScore.riskAnswer}}
+					</td>
+					<td>
+						是计1分，否计0分
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>		

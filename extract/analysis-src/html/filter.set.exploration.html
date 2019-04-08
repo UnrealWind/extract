@@ -1,0 +1,169 @@
+
+<div class="row marginten" style="">
+    <div class="col-xs-3">
+        <div class="input-group floatright marginten">
+            <input type="text" class="form-control input-lg" ng-model="searchData" style="height:34px;"><span class="input-group-addon btn btn-primary" ng-click="search()">搜索</span>
+        </div>
+        <div class="marginten">
+            <select class="form-control" ng-model="selectLeftData.value" ng-change="selectLeft()" ng-options="selectLeft.value as selectLeft.name for selectLeft in selectLeftData.data"></select>
+        </div>
+        <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+            <span>{{status.name}}</span>
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <div class="backgroud-ddd paddingten">
+            <span class="font-bold">已选变量 |</span>
+            <span>{{selectedData}}</span>
+        </div>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">分类变量统计</span>
+        </div>
+        <div style="width: 60%;">
+            <table ng-repeat="table in tablesWuxu" class="table infi-table">
+                <caption style="font-weight: bold;font-size: 18px;text-align:center">{{table.label}}</caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">实验组</th>
+                    <th colspan="2">对照组</th>
+                    <th colspan="3">统计量</th>
+                </tr>
+                <tr>
+                    <th>因素</th>
+                    <th>特征</th>
+                    <th>频数</th>
+                    <th>构成比</th>
+                    <th>频数</th>
+                    <th>构成比</th>
+                    <th>卡方</th>
+                    <th>P值</th>
+                    <th>OR</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key,row) in table.data">
+
+                    <!--<td style="vertical-align: middle;" rowspan="{{table.datas.length}}" ng-if="$index == 0">{{table.label}}</td>-->
+                    <td style="vertical-align: middle;" rowspan="{{table.data.length}}" ng-if="$index == 0">{{table.label}}</td>
+                    <td ng-bind="row.name"></td>
+                    <td ng-bind="row.valueExp"></td>
+                    <td ng-bind="row.valuesExp"></td>
+                    <td ng-bind="row.valueCtrl"></td>
+                    <td ng-bind="row.valuesCtrl"></td>
+                    <td style="vertical-align: middle;" rowspan="{{table.data.length}}" ng-if="$index == 0">{{table.chi_value}}</td>
+                    <td style="vertical-align: middle;" rowspan="{{table.data.length}}" ng-if="$index == 0">{{table.p}}</td>
+                    <td style="vertical-align: middle;" rowspan="{{table.data.length}}" ng-if="$index == 0">{{table.or}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">连续变量统计</span>
+        </div>
+        <div style="overflow: auto">
+            <div style="width:1800px;">
+            <table class="table infi-table">
+                <caption></caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="9">实验组</th>
+                    <th colspan="9">对照组</th>
+                    <th colspan="2">统计量</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">95%置信区间</th>
+                    <th></th>
+                    <th colspan="2">分位数</th>
+                    <th colspan="2">范围</th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2">95%置信区间</th>
+                    <th></th>
+                    <th colspan="2">平均值</th>
+                    <th colspan="2">范围</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th ng-repeat="three in trThree" ng-bind="three.name"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in tablesLianxu">
+                    <!--如果存在重复数据会报错-->
+                    <td ng-bind="row.name"></td>
+                    <td ng-bind="row.zs"></td>
+                    <td ng-bind="row.bs"></td>
+                    <td ng-bind="row.ss"></td>
+                    <td ng-bind="row.xs"></td>
+                    <td ng-bind="row.zwss"></td>
+                    <td ng-bind="row.sas"></td>
+                    <td ng-bind="row.szs"></td>
+                    <td ng-bind="row.zxs"></td>
+                    <td ng-bind="row.zds"></td>
+
+                    <td ng-bind="row.zd"></td>
+                    <td ng-bind="row.bd"></td>
+                    <td ng-bind="row.sd"></td>
+                    <td ng-bind="row.xd"></td>
+                    <td ng-bind="row.zwsd"></td>
+                    <td ng-bind="row.sad"></td>
+                    <td ng-bind="row.szd"></td>
+                    <td ng-bind="row.zxd"></td>
+                    <td ng-bind="row.zdd"></td>
+                    <td ng-bind="row.P"></td>
+                    <td ng-bind="row.fc"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <hr>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">分类变量统计图</span>
+        </div>
+        <div ng-repeat="table in tablesWuxu">
+            <div style="width: 49%;display: inline-block">
+                <button type="button" class="btn btn-default" ng-click="switch(table,'bar','left')">柱状图</button>
+                <button type="button" class="btn btn-default" ng-click="switch(table,'pie','left')">饼图</button>
+                <div id="wuxu_left_{{table.label}}" style="height:400px; width: 100%;display: inline-block;"></div>
+            </div>
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="switch(table,'bar','right')">柱状图</button>
+                <button type="button" class="btn btn-default" ng-click="switch(table,'pie','right')">饼图</button>
+                <div id="wuxu_right_{{table.label}}" style="height:400px; width: 100%; display: inline-block;">
+            </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="backgroud-blue paddingten marginten" style="width:200px;text-align: center">
+            <span class="font-bold">连续变量统计图</span>
+        </div>
+        <div ng-repeat="table in tablesLianxu">
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'shadow','left')">箱线图</button>
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'solid','left')">QQ图</button>
+                <!--<div id="continuous-main" style="height:400px;"></div>-->
+                <div id="lianxu_left_{{table.name}}" style="height: 400px;"></div>
+            </div>
+            <div style="width: 49%;display: inline-block;vertical-align: top;">
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'shadow','right')">箱线图</button>
+                <button type="button" class="btn btn-default" ng-click="swithBottom(table,'solid','right')">QQ图</button>
+                <!--<div id="continuous-main" style="height:400px;"></div>-->
+                <div id="lianxu_right_{{table.name}}" style="height: 400px;"></div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

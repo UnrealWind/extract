@@ -1,0 +1,38 @@
+[
+  [
+    {
+      "label": "预约日期",
+      "name": "visitrecord.appointmentDate",
+      "type":"time"
+    },
+    {
+      "label": "检查日期",
+      "name": "visitrecord.checkDate",
+      "type":"time"
+    },
+    {
+      "label": "孕期",
+      "name": "visitrecord.gestationalWeek",
+      "unit": "周"
+    }
+  ],
+  [
+    {
+      "label": "主诉",
+      "name": "visitrecord.complainedSymptoms"
+    }
+  ],
+  [
+    {
+      "label": "处理",
+      "name": "visitrecord.handle",
+      "type":"textarea"
+    }
+  ],
+  [
+    {
+      "label":"签名",
+      "name":"visitrecord.signature"
+    }
+  ]
+]

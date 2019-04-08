@@ -1,0 +1,264 @@
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe noprint"></i>收费分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList()" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList()" />
+    </div>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe noprint"></i>收费分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList()" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList()" />
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="cAnaKpi">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i> 收费总体情况
+        <div print-add print-list="ids" unique="'cAnaKpi'" print-all-list="printAllList"></div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="overallKpiTop"></div>
+    <div kpi-img original="overallKpiBottom"></div>
+</div>
+<div class="infi-opt-self-box" id="cAnaHospital">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>全院收费概况
+        <div print-add print-list="ids" unique="'cAnaHospital'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <label>患者身份：
+                <select class="form-control infi-opt-search-time" ng-model="hospitalCharge.patientIdentity" ng-change="getHospitalCharge()">
+                    <option value="" ng-selected="hospitalCharge.patientIdentity == ''">全部</option>
+                    <option value="军人" ng-selected="hospitalCharge.patientIdentity == '军人'">军人</option>
+                    <option value="非军人" ng-selected="hospitalCharge.patientIdentity == '非军人'">非军人</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">付费类型构成(万元)</h5></div>
+            <div>
+                <div id="nestedPaymentType" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">付费项目</h5></div>
+            <div>
+                <div id="piePayItem" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">全院收费趋势</h5>
+                <div filter-btn-list original="hospitalCharge" key="'staType'" list="daysbtnList" opt="getChargingTrends()"
+                     ng-if="daysbtnList&&hospitalCharge"></div>
+            </div>
+            <div class="infi-table-cell" style="margin-top: 10px;clear:both;">
+                <h5 class="infi-cell-child">指标</h5>
+                <div class="infi-cell-child" ng-show="hospitalCharge.selectTypeList.status == SYS.STATUS_SUCCESS&&
+                hospitalCharge.selectTypeList.data.status == SYS.STATUS_SUCCESS">
+                    <label ng-repeat="entity in hospitalCharge.selectTypeList.data.result" style="margin-right: 5px;">
+                        <input type="checkbox" ng-model="entity.$checked" ng-change="getChargingTrends('checkbox')" />
+                        {{entity.label}}
+                    </label>
+                </div>
+                <span ng-show="hospitalCharge.selectTypeList.status != SYS.STATUS_SUCCESS||
+                hospitalCharge.selectTypeList.data.status != SYS.STATUS_SUCCESS" class="text-danger">暂无数据</span>
+            </div>
+            <div>
+                <!--环形图与环形嵌套图公用一个option,用不同东西区分-->
+                <div id="lineChargingTrends" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">全院收费项目排行</h5>
+                <div filter-btn-list original="hospitalCharge" key="'itemType'" list="projectbtnList" opt="getPayService()"
+                     ng-if="projectbtnList&&hospitalCharge"></div>
+            </div>
+            <div style="margin-top: 10px;">
+                显示个数
+                <select ng-model="hospitalCharge.viewSize" ng-change="getPayService()">
+                    <option value="5" ng-selected="hospitalCharge.viewSize == '5'">前5</option>
+                    <option value="10" ng-selected="hospitalCharge.viewSize == '10'">前10</option>
+                    <option value="15" ng-selected="hospitalCharge.viewSize == '15'">前15</option>
+                </select>
+                <div filter-btn-list original="hospitalCharge" key="'rankType'" list="chartbtnList" opt="getPayService()"
+                     ng-if="chartbtnList&&hospitalCharge"></div>
+            </div>
+            <div>
+                <div id="barPayService" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="cAnaDeptCharge">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i>科室收费概况
+        <div print-add print-list="ids" unique="'cAnaDeptCharge'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <label>患者身份：
+                <select class="form-control infi-opt-search-time" ng-model="deptCharge.patientIdentity" ng-change="getDeptCharge()">
+                    <option value="" ng-selected="deptCharge.patientIdentity == ''">全部</option>
+                    <option value="军人" ng-selected="deptCharge.patientIdentity == '军人'">军人</option>
+                    <option value="非军人" ng-selected="deptCharge.patientIdentity == '非军人'">非军人</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="infi-draw-chart" style="padding:10px 15px 10px 15px;">
+        <div><h5 class="infi-chart-title">科室收费情况概览(万元)</h5></div>
+        <div charge-analysis-table original="deptCharge" get-dept-charge="getDeptCharge(type)" column-name="'科室名称'"
+             key-name="'deptName'" get-dept-linkage="getDeptLinkage(entity)" ng-if="deptCharge.tableData"></div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{deptCharge.selectedColumn.deptName}}付费类型构成(万元)</h5></div>
+            <div>
+                <!--环形图与环形嵌套图公用一个option,用不同东西区分-->
+                <div id="nestedDeptPaymentType" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">付费项目(万元)</h5></div>
+            <div>
+                <div id="pieDeptPayItem" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{deptCharge.selectedColumn.deptName}}收费趋势</h5>
+                <div filter-btn-list original="deptCharge" key="'staType'" list="daysbtnList" opt="getDeptChargingTrends()"
+                     ng-if="daysbtnList&&deptCharge"></div>
+            </div>
+            <div class="infi-table-cell" style="margin-top: 10px;clear:both;">
+                <h5 class="infi-cell-child">指标</h5>
+                <div class="infi-cell-child" ng-show="deptCharge.selectTypeList.status == SYS.STATUS_SUCCESS&&
+                deptCharge.selectTypeList.data.status == SYS.STATUS_SUCCESS">
+                    <label ng-repeat="entity in deptCharge.selectTypeList.data.result" style="margin-right: 5px;">
+                        <input type="checkbox" ng-model="entity.$checked" ng-change="getDeptChargingTrends('checkbox')" />
+                        {{entity.label}}
+                    </label>
+                </div>
+                <span ng-show="deptCharge.selectTypeList.status != SYS.STATUS_SUCCESS||
+                deptCharge.selectTypeList.data.status != SYS.STATUS_SUCCESS" class="text-danger">暂无数据</span>
+            </div>
+            <div>
+                <!--环形图与环形嵌套图公用一个option,用不同东西区分-->
+                <div id="lineDeptChargingTrends" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{deptCharge.selectedColumn.deptName}}项目花费排行</h5>
+                <div filter-btn-list original="deptCharge" key="'itemType'" list="projectbtnList" opt="getDeptPayService()"
+                     ng-if="projectbtnList&&deptCharge"></div>
+            </div>
+            <div style="margin-top: 10px;">
+                显示个数
+                <select ng-model="deptCharge.viewSize" ng-change="getDeptPayService()">
+                    <option value="5" ng-selected="deptCharge.viewSize == '5'">前5</option>
+                    <option value="10" ng-selected="deptCharge.viewSize == '10'">前10</option>
+                    <option value="15" ng-selected="deptCharge.viewSize == '15'">前15</option>
+                </select>
+                <div filter-btn-list original="deptCharge" key="'rankType'" list="chartbtnList" opt="getDeptPayService()"
+                     ng-if="chartbtnList&&deptCharge"></div>
+            </div>
+            <div>
+                <div id="barDeptPayService" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="cAnaDocCharge">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i>医生收费概况
+        <div print-add print-list="ids" unique="'cAnaDocCharge'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="docCharge"
+                 record-list="deptList" select="'department'" change-data="getDocCharge()"></div>
+            <label>医生类型：
+                <select class="form-control infi-opt-search-time" ng-model="docCharge.doctorType" ng-change="getDocCharge()">
+                    <option value="" ng-selected="docCharge.doctorType == ''">全部</option>
+                    <option value="专家" ng-selected="docCharge.doctorType == '专家'">专家</option>
+                    <option value="普通" ng-selected="docCharge.doctorType == '普通'">普通</option>
+                </select>
+            </label>
+            <label>患者身份：
+                <select class="form-control infi-opt-search-time" ng-model="docCharge.patientIdentity" ng-change="getDocCharge()">
+                    <option value="" ng-selected="docCharge.patientIdentity == ''">全部</option>
+                    <option value="军人" ng-selected="docCharge.patientIdentity == '军人'">军人</option>
+                    <option value="非军人" ng-selected="docCharge.patientIdentity == '非军人'">非军人</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="infi-draw-chart" style="padding:10px 15px 10px 15px;">
+        <div><h5 class="infi-chart-title">医生收费情况概览(万元)</h5></div>
+        <div charge-analysis-table original="docCharge" get-dept-charge="getDocCharge(type)" column-name="'医生名称'"
+             key-name="'doc_name'" get-dept-linkage="getDocLinkage(entity)" ng-if="docCharge.tableData"></div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{docCharge.selectedColumn.doc_name}}收费趋势</h5>
+                <div filter-btn-list original="docCharge" key="'staType'" list="daysbtnList" opt="getDocChargingTrends()"
+                     ng-if="daysbtnList&&docCharge"></div>
+            </div>
+            <div class="infi-table-cell" style="margin-top: 10px;clear:both;">
+                <h5 class="infi-cell-child">指标</h5>
+                <div class="infi-cell-child" ng-show="docCharge.selectTypeList.status == SYS.STATUS_SUCCESS&&
+                docCharge.selectTypeList.data.status == SYS.STATUS_SUCCESS">
+                    <label ng-repeat="entity in docCharge.selectTypeList.data.result" style="margin-right: 5px;">
+                        <input type="checkbox" ng-model="entity.$checked" ng-change="getDocChargingTrends('checkbox')" />
+                        {{entity.label}}
+                    </label>
+                </div>
+                <span ng-show="docCharge.selectTypeList.status != SYS.STATUS_SUCCESS||
+                docCharge.selectTypeList.data.status != SYS.STATUS_SUCCESS" class="text-danger">暂无数据</span>
+            </div>
+            <div>
+                <div id="barDocPaymentType" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{docCharge.selectedColumn.doc_name}}项目收费排行</h5>
+                <div filter-btn-list original="docCharge" key="'itemType'" list="projectbtnList" opt="getDocPayService()"
+                     ng-if="projectbtnList&&docCharge"></div>
+            </div>
+            <div style="margin-top: 10px;">
+                显示个数
+                <select ng-model="docCharge.viewSize" ng-change="getDocPayService()">
+                    <option value="5" ng-selected="docCharge.viewSize == '5'">前5</option>
+                    <option value="10" ng-selected="docCharge.viewSize == '10'">前10</option>
+                    <option value="15" ng-selected="docCharge.viewSize == '15'">前15</option>
+                </select>
+                <div filter-btn-list original="docCharge" key="'rankType'" list="chartbtnList" opt="getDocPayService()"
+                     ng-if="chartbtnList&&docCharge"></div>
+            </div>
+            <div>
+                <div id="barDocPayService" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->
+

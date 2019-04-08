@@ -1,0 +1,16 @@
+<div class="infi-input-box">
+  <div class = "infi-input-left">
+      <p class="infi-font-red">
+          <span ng-if="input.notNull" class="infi-font-red">*</span>
+          <span ng-bind="input.label"></span>
+      </p>
+  </div>
+  <div class = "infi-input-right form-group">
+      <div class="infi-input-opt input-group">
+        <input ng-if="input.value" class="form-control" type="text" name="{{input.name}}" value="{{input.value.split(',')[0]}}" readonly="readonly" ng-click="scaleModal(input)">
+        <input ng-if="!input.value" class="form-control" type="text" name="{{input.name}}" value="未完成填写!" readonly="readonly" ng-click="scaleModal(input)">
+      </div>
+  </div>
+  <!-- <scale-modal></scale-modal> -->
+  <chron-scale-modal></chron-scale-modal>
+</div>  

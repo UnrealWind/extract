@@ -1,0 +1,225 @@
+<!-- 查看评估结果 -->
+<div class="container-fluid viewEvaluateRst-page">
+  <style>
+    .main-content-wrapper,
+    article.infi-main {
+      background-color: #f0f3ef;
+    }
+  </style>
+  
+  <!-- 页面主体展示区域 -->
+  <div class="main-wrapper"
+       ng-if="!ifShowBackToEva">
+    <!-- 左侧部分 -->
+    <div class="left-wrapper">
+      <ul class="opt-list">
+        <li class="opt-item cursor"
+            ng-click="evaluateRstAbout.backToList()">
+          <span class="item-icon"><i class="glyphicon glyphicon-list icon-after"></i></span>
+          <span class="hover-txt">患者列表</span>
+        </li>
+        <li class="opt-item cursor"
+            ng-click="evaluateRstAbout.backToPatiManage()">
+          <span class="item-icon"><i class="glyphicon glyphicon-user icon-after"></i></span>
+          <span class="hover-txt">患者主页</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 右侧部分 -->
+    <div class="right-wrapper">
+      <!-- 评估结果 -->
+      <blockquote class="sec-title-quote">
+        <h4 class="quote-txt">
+          评估结果
+        </h4>
+      </blockquote>
+
+      <div class="panel panel-default eva-rst-wrapper">
+        <div id="evaluateRst" 
+              class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ul class="rst-list" ng-if="ifShowBackToEva">
+              <li ng-repeat="(key, val) in evaluateRst track by $index"
+                  class="list-item">
+                <strong ng-bind="key + '：'"></strong><span ng-bind="val.value"></span>
+              </li>
+            </ul>
+
+            <hr class="divider" ng-if="ifShowBackToEva">
+
+            <form class="form-inline" ng-if="planCollect.setGroup">
+              <div class="form-group">
+                <label>患者分组：</label>
+                <select class="form-control"
+                        ng-model="planCollect.setGroup"
+                        ng-change="groupRange.changeSele()">
+                  <option ng-repeat="group in groupRange.data"
+                          value={{group.schemeGroupName}}
+                          ng-bind="group.schemeGroupName"></option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <!-- 未匹配到分组 -->
+                <span class="no-match-plan" ng-if="!planCollect.ifHasCurrPlan">未匹配到分组，推荐方案处为您展示了推荐内容，您<mark>可以在此手动调换</mark>。</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 方案挑选 -->
+      <div ng-if="planCollect.hasFeedBack === true" class="plans-wrapper">
+        <blockquote class="sec-title-quote">
+          <h4 class="quote-txt">
+              <span>方案选择</span>
+              <span><button class="btn btn-success" 
+                            ng-click="evaluateRstAbout.keepCurrPlan()"
+                            ng-if="planCollect['orgPlanData']['current']['nurseSchemes']">保留现有方案</button></span>
+          </h4>
+        </blockquote>
+
+        <div class="planConllect-head-wrapper">
+          <div class="row">
+            <div class="col-md-6 planCollect-col">
+              <!-- 现行方案 -->
+              <h4 class="header-title">
+                <div class="title-txt">
+                  <i class="glyphicon glyphicon-check sec-title-icon"></i> 现行方案 <small>患者正在执行的方案</small>
+                </div>
+                <div class="btn-group btn-group-sm title-opts" role="group">
+                  <button type="button" 
+                          class="btn btn-primary"
+                          ng-if="planCollect['orgPlanData']['current']['nurseSchemes']"
+                          ng-click="planOpts.execuate({'type': 'currPlan', 'plan': planCollect.orgPlanData.current})">执行</button>
+                </div>
+              </h4>
+            </div>
+            <div class="col-md-6 planCollect-col">
+              <!-- 推荐方案 -->
+              <h4 class="header-title">
+                <div class="title-txt">
+                  <i class="glyphicon glyphicon-thumbs-up sec-title-icon"></i> 推荐方案 <small>针对此次评估结果，为您推荐以下方案</small>
+                </div>
+                <div class="btn-group btn-group-sm title-opts" role="group">
+                  <button type="button" 
+                          class="btn btn-primary"
+                          ng-if="planCollect['orgPlanData']['new']['nurseSchemes']"
+                          ng-click="planOpts.execuate({'type': 'recommandPlan', 'plan': planCollect.orgPlanData.new})">执行</button>
+                </div>
+              </h4>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <compare-blank-plan whole-data="planCollect['orgPlanData']"  opt-range="optRange"></compare-blank-plan>
+      
+      </div>
+
+      <div ng-if="planCollect.hasFeedBack === 'faliure'">
+        <p class="text-center bg-danger" style="padding: 10px;">获取方案数据失败！</p>
+      </div>
+
+    
+    </div>
+  </div>
+
+
+  <!-- 是否有未评估量表提示框 -->
+  <div class="modal fade" 
+       id="confirm-hasNullEva-modal" 
+       role="dialog"
+       data-backdrop="static">
+    <div class="modal-dialog" 
+         role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">提示</h4>
+        </div>
+        <div class="modal-body">
+          <dl>
+            <dt>
+              <h5>以下内容未完善：</h5>
+            </dt>
+            <dd ng-repeat="(key, val) in nullEvals">
+              <strong ng-bind="key + ':'"></strong><span ng-bind="val.value"></span>
+            </dd>
+          </dl>
+
+          <blockquote>
+            <p>请完善以上评估信息后，再进入本页面进行方案分配。</p>
+          </blockquote>
+        </div>
+        <div class="modal-footer">
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-click="evaluateRstAbout.backToCompleteEva()">完善评估</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 确认更换方案操作模态框 -->
+  <div id="confirm-exe-Modal" 
+       class="modal fade" 
+       role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" 
+                  class="close"
+                  ng-click="planOpts.clearTmpApply()"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">确认方案</h4>
+        </div>
+        <div class="modal-body container-fluid">
+          <div class="row">
+            <!-- 即将入组 -->
+            <div class="col-md-12 text-center">
+              <strong>患者进入分组: </strong> {{planCollect.setGroup}}
+            </div>
+
+            <div class="col-md-12 text-center"
+                 ng-if="applyPlanState.currState == 'init'">
+              <strong>{{promptTxt.split('，')[0]}}</strong>， {{promptTxt.split('，')[1]}}
+            </div>
+
+            <div class="col-md-12 text-center"
+                 ng-if="applyPlanState.currState == 'failed'">
+              <span class="text-danger">应用失败，请重试！</span>
+            </div>
+
+            <div class="col-md-12 text-center"
+                 ng-if="applyPlanState.currState == 'applied'">
+              <span class="text-success">应用成功！</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="planOpts.clearTmpApply()">取消</button>
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-if="applyPlanState.currState == 'init'" 
+                  ng-click="planOpts.confirmUpdatePlan()">确定</button>
+          <!-- 应用中 -->
+          <button type="button" 
+                  class="btn btn-primary"
+                  disabled
+                  ng-if="applyPlanState.currState == 'applying'">应用中...</button>
+          <!-- 应用失败 -->
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-if="applyPlanState.currState == 'failed'"
+                  ng-click="planOpts.reApply()">重试</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+</div>

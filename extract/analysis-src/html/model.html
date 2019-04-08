@@ -1,0 +1,326 @@
+<header class="infi-section marginten" style="padding-right:20px;">
+    <ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">
+        <li style="line-height: 50px;height: 50px;" ng-repeat="sub in navigation" class="{{sub.active}}"><a href="#/model">{{sub.name}}</a></li>
+    </ul>
+</header>
+
+<div class="row marginten" style="">
+    <div class="col-xs-3">
+        <div class="marginten">
+            <select class="selectpicker " style="width: 100%;height:34px"  ng-model="modelsData.value" ng-click="classIfication(modelsData.value)" ng-options="models.value as models.name for models in modelsData.data"></select>
+        </div>
+        <div class="input-group marginten">
+            <input type="text" class="form-control input-lg" ng-model="searchData" style="height:34px;"><span class="input-group-addon btn btn-primary" ng-click="search()">搜索</span>
+        </div>
+        <div class="marginten">
+            <select class="selectpicker " style="width: 100%;height:34px"  ng-model="selectLeftData.value" ng-click="selectLeft()" ng-options="selectLeft.value as selectLeft.name for selectLeft in selectLeftData.data"></select>
+        </div>
+        <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+            <span>{{status.name}}</span>
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <div class="backgroud-ddd paddingten" style="margin-top:10px;">
+            <span class="font-bold">{{name | sortName}} |</span>
+            <span class="cursorPointer marginten {{group.active}}" ng-click="zubie(group.name)" ng-bind="group.name" ng-repeat="group in groups"></span>
+            <div class=" paddingten" style="text-align:right;float:right;margin:-7px;padding:0;">
+                <button type="button" class="btn btn-primary" ng-click="singleFactor()" ng-if="factorDisplay">单因素分析</button>
+                <button type="button" class="btn btn-primary" ng-click="modelSave()" ng-if="!factorDisplay">保存</button>
+            </div>
+        </div>
+        <div class=" paddingten" ng-if="factorDisplay" style="overflow: auto">
+            <div ng-style="widthDiv">
+                <table class="table infi-table" style="width:145px;display: inline-block; " ng-repeat="tab in tableData">
+                    <thead>
+                        <tr>
+                            <th style="width:145px;display: inline-block; ">{{tab.name}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="td in tab.tbody" style="height:40px;display: block; ">
+                            <td style="width:145px;display: inline-block; " ng-bind="td.name"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="infi-page" ng-if="factorDisplay">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="1"
+                            boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+
+            </uib-pagination>
+        </div>
+        <div ng-if="!factorDisplay">
+            <div class="infi-box" style="margin-top: 20px">
+                <h4 class="infi-title">单因素分析结果</h4>
+                <div class="infi-box-containter">
+                    <div >
+                        <table class="table infi-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:33%;">变量</th>
+                                    <th style="width:33%;">P值</th>
+                                    <th style="width:33%;">是否参与分析</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="msg in singleFactorData">
+                                    <td>{{msg.name}}</td>
+                                    <td >{{msg.value | floatNumber}}</td>
+                                    <td><input type="checkbox" ng-model="msg.check" ng-checked="msg.check" ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="" style="text-align: right">
+                        <button type="button" class="btn btn-primary" ng-click="compute()">模型训练</button>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <div class="infi-box" style="margin-top:20px " ng-if="train">
+                    <h4 class="infi-title">共线性分析结果</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                    <tr>
+                                        <th >变量</th>
+                                        <th >VIF</th>
+                                        <th>容忍度</th>
+                                        <th >选择</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="msg in computeData" ng-if="msg.value !== '' && msg.values !== ''">
+                                        <td>{{msg.name}}</td>
+                                        <td>{{msg.value}}</td>
+                                        <td>{{msg.values}}</td>
+                                        <td><input type="checkbox" ng-model="msg.check" ng-checked="msg.check" ></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <span>训练集:测试集</span>
+                                <input type="text" style=" width: 30px;" ng-model="groupCompareSYa.value" ng-value="groupCompareSYa.value">:
+                                <input type="text" style=" width: 30px;" ng-model="groupCompareDZa.value" ng-value="groupCompareDZa.value">
+                            </div>
+                        </div>
+                        <div class="" style="text-align: right" >
+                            <button type="button" class="btn btn-primary" ng-click="modelTrain()">模型训练</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="infi-box" style="margin-top:20px " ng-if="trainData">
+                    <h4 class="infi-title">正确率</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th ></th>
+                                    <th >正确率</th>
+                                    <th >查准率</th>
+                                    <th>召回率</th>
+                                    <th >AUC面积</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>训练集</td>
+                                        <td>{{accurate.learn.accurary}}</td>
+                                        <td>{{accurate.learn.precision}}</td>
+                                        <td>{{accurate.learn.recall}}</td>
+                                        <td>{{accurate.learn.auc}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>测试集</td>
+                                        <td>{{accurate.test.accurary}}</td>
+                                        <td>{{accurate.test.precision}}</td>
+                                        <td>{{accurate.test.recall}}</td>
+                                        <td>{{accurate.test.auc}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">重合矩阵</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th rowspan="2" style="    line-height: 80px;">重合矩阵</th>
+                                    <th colspan="3">训练集</th>
+                                    <th colspan="3">测试集</th>
+                                </tr>
+                                <tr>
+                                    <th >真实值=0</th>
+                                    <th>真实值=1</th>
+                                    <th >总计</th>
+                                    <th >真实值=0</th>
+                                    <th >真实值=1</th>
+                                    <th >总计</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>预测值=0</td>
+                                    <td>{{coincidence_matrix.learn.FN}}</td>
+                                    <td>{{coincidence_matrix.learn.FP}}</td>
+                                    <td>{{coincidence_matrix.learn.FN*1+coincidence_matrix.learn.FP*1}}</td>
+                                    <td>{{coincidence_matrix.learn.TN}}</td>
+                                    <td>{{coincidence_matrix.learn.TP}}</td>
+                                    <td>{{coincidence_matrix.learn.TN*1+coincidence_matrix.learn.TP*1}}</td>
+                                </tr>
+                                <tr>
+                                    <td>预测值=1</td>
+                                    <td>{{coincidence_matrix.test.FN}}</td>
+                                    <td>{{coincidence_matrix.test.FP}}</td>
+                                    <td>{{coincidence_matrix.test.FN*1+coincidence_matrix.test.FP*1}}</td>
+                                    <td>{{coincidence_matrix.test.TN}}</td>
+                                    <td>{{coincidence_matrix.test.TP}}</td>
+                                    <td>{{coincidence_matrix.test.TN*1+coincidence_matrix.test.TP*1}}</td>
+                                </tr>
+                                <tr>
+                                    <td>总计</td>
+                                    <td>{{coincidence_matrix.learn.FN*1+coincidence_matrix.test.FN*1}}</td>
+                                    <td>{{coincidence_matrix.learn.FP*1+coincidence_matrix.test.FP*1}}</td>
+                                    <td>{{coincidence_matrix.learn.FN*1+coincidence_matrix.learn.FP*1+coincidence_matrix.test.FN*1+coincidence_matrix.test.FP*1}}</td>
+                                    <td>{{coincidence_matrix.learn.TN*1+coincidence_matrix.test.TN*1}}</td>
+                                    <td>{{coincidence_matrix.learn.TP*1+coincidence_matrix.test.TP*1}}</td>
+                                    <td>{{coincidence_matrix.learn.TN*1+coincidence_matrix.learn.TP*1+coincidence_matrix.test.TN*1+coincidence_matrix.test.TP*1}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">方程系数</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th >变量</th>
+                                    <th >系数</th>
+                                    <th>Std. Error z</th>
+                                    <th >p-value</th>
+                                    <th >EXP(B)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="msg in coefficient">
+                                    <td>{{msg.label}}</td>
+                                    <td>{{msg.b}}</td>
+                                    <td>{{msg.std}}</td>
+                                    <td>{{msg.pvalue | pvalueFloat}}</td>
+                                    <td>{{msg.exp}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">ROC曲线</h4>
+                    <div class="infi-box-containter row">
+                        <div class="col-xs-6">
+                            <h5>训练集</h5>
+                            <div id="model-left" style="height:400px;"></div>
+                        </div>
+                        <div class="col-xs-6">
+                            <h5>测试集</h5>
+                            <div id="model-right" style="height:400px;"></div>
+                        </div>
+                    </div>
+                    <div class=" paddingten" style="text-align: right" >
+                        <!--<a href="./data/20170209.xlsx" download="脑梗死患者分析_逻辑回归.xlsx"><button type="button" class="btn btn-primary" >导出数据</button></a>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="model-train">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>是否需要循环计算训练集和测试集？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">循环测试</button>
+                <button type="button" class="btn btn-primary" ng-click="modelTrainSave()">暂不需要</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="single-factor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>您选择的变量存在空值，会影响到模型结果，系统默认删除空值数据，您也可以通过数据预处理功能对空值进行处理。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="singleFactorSave()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-save">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body row">
+                <div class="col-xs-3" style="margin-top: 8px;">请输入模型名称</div>
+                <div class="col-xs-6"><input type="text" class="form-control" ng-model="modelName"></div>
+                <div class="col-xs-3"><button type="button" class="btn btn-primary" ng-click='trueSave()'>确定保存</button></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id='non-compliant'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="marginten">数据出现错误</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-collinearity">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>是否进行共线性计算。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="collinearityYes()">是</button>
+                <button type="button" class="btn btn-primary" ng-click="collinearityNo()">否</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

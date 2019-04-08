@@ -1,0 +1,93 @@
+<div class="row infi-form">
+	<div class="infi-form-navi col-md-2">
+		<div affix></div>
+	</div>
+
+	<div class="infi-form-inputs col-md-10 row">
+		<div id="printArea">
+			<div ng-repeat="modal in currentData track by $index" class="infi-modal-box" ng-class="{true:'col-md-6 current form-inline',false:'col-md-12 current form-inline'}[auditPassData.length>0]" repeat-finish>
+				<!-- <h2 class="infi-modal-name" ng-bind="modal.label"></h2> -->
+				<h2 id="" class="infi-title">
+					<span>{{modal.label}}</span>
+				</h2>
+				<ul class="infi-modal-inputs form-inline">
+					<div style="margin: 10px;"  ng-if= "!modal.notEmpty" class="alert alert-danger" role="alert">您没有填写该模块下的任何数据！</div>
+					<li ng-repeat = "theme in modal.children" ng-if ="(theme.value!== null && theme.value !=='' && theme.value !== undefined) || theme.notEmpty || theme.type=='菜单' && theme.notEmpty" repeat-finish>
+						<input-detail-template input="theme" parent="modal.children"></input-detail-template>
+						<input-upload-ex-detail  ng-if="theme.type=='图片上传-多张' ||theme.type=='病理图片上传-多张'||theme.type=='图片上传-单张'"></input-upload-ex-detail>
+						<div ng-if = "theme.type=='菜单'" class="infi-theme-box">
+							<h3 id="{{theme.name}}" class="infi-theme-name">
+								<p ng-bind="theme.label"></p>
+							</h3>
+							<ul class="infi-theme-inputs">
+								<li ng-repeat = "childTheme in theme.children" ng-if ="(childTheme.value!== null && childTheme.value !=='' && childTheme.value !== undefined) || childTheme.notEmpty|| childTheme.type=='菜单'&& childTheme.notEmpty">
+									<input-detail-template input="childTheme" parent="theme.children"></input-detail-template>
+									<input-upload-ex-detail  ng-if="childTheme.type=='图片上传-多张' ||childTheme.type=='病理图片上传-多张'||childTheme.type=='图片上传-单张'"></input-upload-ex-detail>
+									<div ng-if = "childTheme.type=='菜单'" class="infi-child-theme-box">
+										<h4 id="{{childTheme.name}}" class="infi-child-theme-name">
+											<p ng-bind="childTheme.label"></p>
+										</h4>
+										<ul class="infi-child-theme-inputs">
+											<li ng-repeat="attribute in childTheme.children" ng-if ="(attribute.value!== null && attribute.value !=='' && attribute.value !== undefined) || attribute.notEmpty|| attribute.type=='菜单'&& attribute.notEmpty">
+												<input-detail-template input="attribute" parent="childTheme.children"></input-detail-template>
+												<input-upload-ex-detail  ng-if="attribute.type=='图片上传-多张' ||attribute.type=='病理图片上传-多张'||attribute.type=='图片上传-单张'"></input-upload-ex-detail>
+											</li>
+										</ul>
+									</div> <!-- end of infi-child-theme-box -->
+								</li>
+							</ul>
+						</div><!-- end of infi-theme-box -->
+					</li>
+				</ul>
+			</div><!-- end of infi-modal-box -->
+		</div>
+
+
+		<div ng-repeat="modal in auditPassData" class="infi-modal-box col-md-6 history-audit-pass" ng-if="auditPassData.length>0">
+			<!-- <h2 class="infi-modal-name" ng-bind="modal.label"></h2> -->
+			<h2 id="" class="infi-title">
+				<span ng-bind = "modal.label"></span>
+				<span class="self-font-red infi-version-discribe">历史通过版本</span>
+			</h2>
+
+			<ul class="infi-modal-inputs form-inline">
+				<li ng-repeat = "theme in modal.children"  repeat-history-finish ng-if ="(theme.value!== null && theme.value !=='' && theme.value !== undefined) || theme.notEmpty|| theme.type=='菜单'&& theme.notEmpty">
+					<input-detail-template input="theme" parent="modal.children"></input-detail-template>
+					<input-upload-ex-detail  ng-if="theme.type=='图片上传-多张' ||theme.type=='病理图片上传-多张'||theme.type=='图片上传-单张'"></input-upload-ex-detail>
+					<div ng-if = "theme.type=='菜单'" class="infi-theme-box">
+						<h3 id="{{theme.name}}" class="infi-theme-name">
+							<p ng-bind="theme.label"></p>
+						</h3>
+						<ul class="infi-theme-inputs">
+							<li ng-repeat = "childTheme in theme.children" ng-if ="(childTheme.value!== null && childTheme.value !=='' && childTheme.value !== undefined) || childTheme.notEmpty|| childTheme.type=='菜单'&& childTheme.notEmpty">
+								<input-detail-template input="childTheme" parent="theme.children"></input-detail-template>
+								<input-upload-ex-detail  ng-if="childTheme.type=='图片上传-多张' ||childTheme.type=='病理图片上传-多张' ||childTheme.type=='图片上传-单张'"></input-upload-ex-detail>
+								<div ng-if = "childTheme.type=='菜单'" class="infi-child-theme-box">
+									<h4 id="{{childTheme.name}}" class="infi-child-theme-name">
+										<p ng-bind="childTheme.label"></p>
+									</h4>
+									<ul class="infi-child-theme-inputs">
+										<li ng-repeat="attribute in childTheme.children" ng-if ="(attribute.value!== null && attribute.value !=='' && attribute.value !== undefined) && attribute.notEmpty">
+											<input-detail-template input="attribute" parent="childTheme.children"></input-detail-template>
+											<input-upload-ex-detail  ng-if="attribute.type=='图片上传-多张'||attribute.type=='病理图片上传-多张' ||attribute.type=='图片上传-单张'"></input-upload-ex-detail>
+										</li>
+									</ul>
+								</div> <!-- end of infi-child-theme-box -->
+							</li>
+						</ul>
+					</div><!-- end of infi-theme-box -->
+				</li>
+			</ul>
+		</div><!-- end of infi-modal-box -->
+		<div class="infi-m-btn">
+			<!-- fydebug 取了个巧，解决了一下返回上一页的问题，待优化 -->
+			<a class="btn btn-default" style="margin-right:20px;"  href="javascript:" onclick="history.go(-1)">返回</a>
+			<!-- 打印功能监听不到$last,以后在做 -->
+			<a class="btn btn-primary infi-print" ng-click = "print()">打印报告</a>
+		</div>
+	</div> 
+
+	<img-modal-detail></img-modal-detail>
+	<download-img-model-detail></download-img-model-detail>
+	<!--<div view-attachment></div>-->
+</div>

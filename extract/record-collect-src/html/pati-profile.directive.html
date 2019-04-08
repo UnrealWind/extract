@@ -1,0 +1,628 @@
+<div style="position:relative;">
+  <!-- 患者资料 sidebar -->
+  <div class="pati-profile-wrapper">
+    <div class="content-container">
+      <!-- 两个请求都成功时 -->
+      <div ng-if="hasData == true">
+        <!-- 曾就诊科室 -->
+        <section class="">
+          <!-- 块标题 -->
+          <h4 class="first-title">曾就诊科室</h4>
+
+          <!-- 块内容 -->
+          <dl class="dl-margin-b seconde-sec  pd-l-1em">
+            <dt class=""></dt>
+            <dd
+              class="content-txt inline-b-txt"
+              ng-if="flatOrgData.dept_data.length > 0"
+              ng-repeat="dept in flatOrgData.dept_data"
+            >
+              <span ng-bind="dept.dept_name"></span><span ng-if="!$last">、</span>
+            </dd>
+
+            <dd
+              class="content-txt"
+              ng-if="flatOrgData.dept_data.length == 0"
+            >
+              无
+            </dd>
+          </dl>
+
+          <!-- 特殊标明科室 -->
+          <div class="">
+            <h5 class="second-title orange-sec-title">特殊标明科室:</h5>
+
+            <dl class="dl-margin-b seconde-sec pd-l-1em">
+              <dt></dt>
+
+              <dd
+                class="content-txt orange-txt inline-b-txt "
+                ng-if="flatOrgData.dept_special_data.length > 0"
+                ng-repeat="specDept in flatOrgData.dept_special_data"
+              >
+                <span ng-bind="specDept.dept_name"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.dept_special_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt orange-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- 既往检验史 -->
+        <section class="">
+          <h4 class="first-title">既往检验史</h4>
+          <!-- 特殊标明检验 -->
+          <div class="">
+            <h5 class="second-title orange-sec-title">特殊标明检验:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec pd-l-1P5em"
+              ng-if="flatOrgData.test_special_data.length > 0"
+              ng-repeat="item in flatOrgData.test_special_data"
+            >
+              <dt
+                class="orange-txt rest-dt third-title"
+              >
+                <i class="glyphicon glyphicon-hand-right third-title-icon va-m"></i>
+                <span ng-bind="item.test_class" class="bold-txt"></span>
+              </dt>
+
+              <dd
+                class="content-txt pd-l-1P6em"
+                ng-repeat="subItem in item.test_item"
+              >
+                <span
+                  class=" third-title"
+                  ng-if="subItem.value == 2"
+                  title="{{subItem.name + ' 偏高 ' + subItem.resu}}"
+                ><span
+                    class="exam-name va-top"
+                    ng-bind="subItem.name"
+                  ></span><span
+                    class="glyphicon glyphicon-arrow-up text-danger text-center va-top"
+                  ></span>
+                </span>
+
+                <span
+                  ng-if="subItem.value == 1"
+                  title="{{subItem.name + ' 偏低   ' + subItem.resu}}"
+                ><span
+                    class="exam-name"
+                    ng-bind="subItem.name"
+                  ></span><span
+                    class="glyphicon glyphicon-arrow-down text-muted text-center"
+                  ></span>
+                </span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.test_special_data.length == 0" class="dl-margin-b seconde-sec pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt orange-txt ">无</dd>
+            </dl>
+          </div>
+          <!-- 最近一次检验 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">最近一次检验:</h5>
+
+            <!-- 数据多的只截取前三条 -->
+            <reduce-len
+              ng-if="flatOrgData.test_last_data.length > 0"
+              arr="flatOrgData.test_last_data"
+              len="3"
+            ></reduce-len>
+
+            <dl
+              class="dl-margin-b seconde-sec pd-l-1P5em"
+              ng-if="flatOrgData.test_last_data.length > 0"
+              ng-repeat="item in flatOrgData.test_last_data"
+            >
+              <dt
+                class=" rest-dt third-title"
+              >
+                <i class="glyphicon glyphicon-hand-right third-title-icon va-m"></i>
+                <span ng-bind="item.test_class" class="bold-txt"></span>
+              </dt>
+
+              <dd
+                class="content-txt pd-l-1P6em"
+                ng-repeat="subItem in item.test_item"
+              >
+                <span
+                  class=" third-title"
+                  ng-if="subItem.value == 2"
+                  title="{{subItem.name + ' 偏高 ' + subItem.resu}}"
+                >
+                  <span
+                    class="exam-name va-top"
+                    ng-bind="subItem.name"
+                  ></span>
+                  <span
+                    class="glyphicon glyphicon-arrow-up text-danger text-center va-top"
+                  ></span>
+                  <span class="" ng-bind="subItem.resu"></span>
+                </span>
+
+                <span
+                  class=""
+                  ng-if="subItem.value == 1"
+                  title="{{subItem.name + ' 偏低   ' + subItem.resu}}"
+                >
+                  <span
+                    class="exam-name va-top"
+                    ng-bind="subItem.name"
+                  ></span>
+                  <span
+                    class="glyphicon glyphicon-arrow-down text-muted text-center va-top"
+                  ></span>
+                  <span class="" ng-bind="subItem.resu"></span>
+                </span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.test_last_data.length == 0" class="dl-margin-b seconde-sec pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+        </section>
+
+        <!-- 既往检查史 -->
+        <section class="">
+          <h4 class="first-title">既往检查史</h4>
+
+          <!-- 特殊标明检查 -->
+          <div class="">
+            <h5 class="second-title orange-sec-title">特殊标明检查:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec pd-l-1P5em"
+              ng-if="flatOrgData.exam_special_data.length > 0"
+              ng-repeat="item in flatOrgData.exam_special_data"
+            >
+              <dt
+                class="orange-txt rest-dt third-title"
+              >
+                <i class="glyphicon glyphicon-hand-right third-title-icon va-m"></i>
+                <span ng-bind="item.exam_item_name" class="bold-txt"></span>
+              </dt>
+
+              <dd
+                class="content-txt pd-l-1P6em"
+                ng-repeat="subItem in item.exam_result"
+                ng-bind="subItem.key_name + '(' + (subItem.part) + ')'"
+              ></dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.exam_special_data.length == 0" class="dl-margin-b seconde-sec pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+          <!-- 最近一次检查 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">最近一次检查:</h5>
+
+            <!-- 数据多的只截取前三条 -->
+            <reduce-len
+              ng-if="flatOrgData.exam_last_data.length > 0"
+              arr="flatOrgData.exam_last_data"
+              len="3"
+            ></reduce-len>
+
+            <dl
+              class="dl-margin-b seconde-sec "
+              ng-if="flatOrgData.exam_last_data.length > 0"
+            >
+              <dt></dt>
+              <dd
+                class="content-txt indent1P2"
+                ng-repeat="item in flatOrgData.exam_last_data"
+                ng-bind="item.exam_item_name + ':' + item.desc"
+              ></dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.exam_last_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- 既往用药史 -->
+        <section class="">
+          <h4 class="first-title">既往用药史</h4>
+
+          <!-- 特殊标明用药 -->
+          <div class="">
+            <h5 class="second-title orange-sec-title">特殊标明用药:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec pd-l-1em"
+              ng-if="flatOrgData.drug_special_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt orange-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.drug_special_data"
+              >
+                <span ng-bind="item.drug_name"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.drug_special_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+          <!-- 最近一次用药 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">最近一次用药:</h5>
+
+            <div class="">
+              <dl
+                class="dl-margin-b seconde-sec pd-l-1em"
+                ng-if="flatOrgData.drug_data.length > 0"
+              >
+                <dt></dt>
+
+                <!-- 数据多的只截取前三条 -->
+                <reduce-len
+                  ng-if="flatOrgData.drug_data.length > 0"
+                  arr="flatOrgData.drug_data"
+                  len="3"
+                ></reduce-len>
+
+                <dd
+                  class="content-txt inline-b-txt "
+                  ng-repeat="item in flatOrgData.drug_data"
+                >
+                  <span ng-bind="item.drug_name"></span><span ng-if="!$last">、</span>
+                </dd>
+              </dl>
+
+              <dl ng-if="flatOrgData.drug_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+                <dt class=" "></dt>
+                <dd class="content-txt ">无</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- 既往手术史 -->
+        <section class="">
+          <h4 class="first-title">既往手术史</h4>
+
+          <div class="">
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.operation_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.operation_data"
+              >
+                <span ng-bind="item.operation_name + '(' + item.operation_num + '次)'"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.operation_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- 既往疾病史 -->
+        <section class="">
+          <h4 class="first-title">既往疾病史</h4>
+
+          <div class="">
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.illn_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.illn_data"
+              >
+                <span ng-bind="item.illn_name"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.illn_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- 个人史 -->
+        <section class="">
+          <h4 class="first-title">个人史</h4>
+
+          <!-- 吸烟史 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">吸烟史:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.smoke_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.smoke_data"
+                ng-bind="( item.smoke_drink_time | BlankData ) + '  ' + ( item.smoke_drink_ammount | BlankData ) + '  ' + ( item.quit_info | BlankData )"
+              ></dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.smoke_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+          <!-- 饮酒史 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">饮酒史:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.drink_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.drink_data"
+                ng-bind="(item.smoke_drink_time | BlankData) + '  ' + ( item.smoke_drink_ammount | BlankData ) + '  ' + ( item.quit_info | BlankData)"
+              ></dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.drink_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+
+        <!-- 过敏史 -->
+        <section class="">
+          <h4 class="first-title">过敏史</h4>
+
+          <!-- 药物过敏史 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">药物:</h5>
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.allergy_drug_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.allergy_drug_data"
+              >
+                <span ng-bind="item.allergy_cause"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.allergy_drug_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+          <!-- 食物过敏史 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">食物:</h5>
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.allergy_food_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.allergy_food_data"
+              >
+                <span ng-bind="item.allergy_cause"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.allergy_food_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+
+          <!-- 其他过敏史 -->
+          <div class="">
+            <h5 class="second-title normal-sec-title">其他过敏史:</h5>
+
+            <dl
+              class="dl-margin-b seconde-sec  pd-l-1em"
+              ng-if="flatOrgData.allergy_data.length > 0"
+            >
+              <dt></dt>
+
+              <dd
+                class="content-txt inline-b-txt "
+                ng-repeat="item in flatOrgData.allergy_data"
+              >
+                <span ng-bind="item.allergy_cause"></span><span ng-if="!$last">、</span>
+              </dd>
+            </dl>
+
+            <dl ng-if="flatOrgData.allergy_data.length == 0" class="dl-margin-b seconde-sec  pd-l-1em">
+              <dt class=" "></dt>
+              <dd class="content-txt ">无</dd>
+            </dl>
+          </div>
+        </section>
+      </div>
+
+      <!-- 任意一个请求失败 -->
+      <div ng-if="hasData == false" style="margin-top: 15px;">
+        <p class="bg-danger text-center text-danger danger-prompt">
+          未查询到患者异常信息！
+        </p>
+      </div>
+
+      <!-- 数据查询中 -->
+      <div ng-if="hasData == 'init'" style="margin-top: 15px;">
+        <p class="bg-warning text-center text-warning danger-prompt">
+          数据查询中...
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* reset bootstrap */
+  .dl-margin-b {
+    margin-bottom: 0;
+  }
+
+  .rest-dt {
+    font-weight: 500;
+  }
+
+  /* reset bootstrap end */
+
+
+  /* utils */
+  .indent1P2 {
+    text-indent: 1.2em;
+  }
+
+  .pd-l-1em {
+    padding-left: 1em;
+  }
+
+  .pd-l-1P5em {
+    padding-left: 1.5em;
+  }
+
+  .pd-l-1P6em {
+    padding-left: 1.6em;
+  }
+
+  .bold-txt {
+    font-weight: bold;
+  }
+
+  .va-base {
+    vertical-align: baseline;
+  }
+
+  .va-top {
+    vertical-align: top;
+  }
+
+  
+  .clearIndent {
+    text-indent: 0;
+  }
+
+  /* 一级标题 */
+  .first-title {
+    padding: 4px 0;
+    margin-top: 16px;
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* 二级标题 */
+  .second-title {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  /* 三级标题 */
+  .third-title {
+    font-size: 13px;
+  }
+
+  .third-title-icon {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  /* 正常颜色文本 */
+  .normal-sec-title {
+    color: #333;
+  }
+
+  /* 特殊颜色文本颜色二级标题 */
+  .orange-sec-title {
+    /* color: #ff6600; */
+  }
+
+  /* 二级分块 */
+  .seconde-sec {
+    margin: 5px 0;
+  }
+
+  /* 正文文本 */
+  .content-txt {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 2;
+  }
+
+  /* 正常颜色正文文本 */
+  .normal-txt {
+    color: #000;
+  }
+
+
+  /* 特殊颜色正文文本 */
+  .orange-txt {
+    /* color: #ff6600; */
+  }
+
+  /* 正文需要横向排列 */
+  .inline-b-txt {
+    display: inline-block;
+  }
+
+  .exam-name {
+    display: inline-block;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .exam-name {
+      width: 100px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .exam-name {
+      width: 150px;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    .exam-name {
+      width: 170px;
+    }
+  }
+
+</style>

@@ -1,0 +1,30 @@
+<table class="table infi-table">
+    <caption style="text-align: center;font-weight: bold;">事件级别详情</caption>
+    <thead>
+        <tr>
+            <th>事件类型</th>
+            <th>75-100%</th>
+            <th>50-75%</th>
+            <th>25-50%</th>
+            <th>25-0%</th>
+        </tr>
+    </thead>
+    <!--<tbody ng-if="eventTable && eventTable.length>0">-->
+    <!--<tr ng-repeat="entity in eventTable" ng-click="tableClick(entity)">-->
+    <tbody>
+        <tr ng-click="tableClick(entity)" ng-repeat="entity in eventTable" style="cursor: pointer;">
+            <td>{{entity.eventName}}</td>
+            <td>{{entity.event7Num}}</td>
+            <td>{{entity.event5Num}}</td>
+            <td>{{entity.event2Num}}</td>
+            <td>{{entity.event0Num}}</td>
+        </tr>
+    </tbody>
+    <tbody ng-if="eventTable==null || eventTable.length==0">
+        <tr>
+            <td colspan="5" class="bg-danger" style="line-height: 50px;">
+                暂无数据
+            </td>
+        </tr>
+    </tbody>
+</table>

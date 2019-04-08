@@ -1,0 +1,7 @@
+{
+  "status": [
+    { "id": "all", "label": "全部"},
+    { "id": "proceed", "label": "进行中"},
+    { "id": "ended", "label": "已结束"}
+  ]
+}

@@ -1,0 +1,131 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>方案列表</h4>
+
+<div class="infi-box">
+	
+	<div class="infi-legend-table">
+		<h4>推荐方案列表
+			<div class="infi-legend">
+				<h3>图例：</h3>
+				<ul>
+					<li>推荐方案<span class="legend green"></span></li>
+				</ul>
+			</div>
+			<span class="infi-right">
+	        	<span class="btn btn-primary" ng-click="back()">返回</span>
+	        </span>
+		</h4>
+		<table class="table">
+			<thead>
+				<tr class="active">
+					<th ng-repeat="th in schemeOpt" ng-bind="th.label"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="green" ng-repeat="opts in plan.recom_scheme" ng-click="detail(opts.uuid)">
+					<td ng-repeat="opt in opts.title" class="cursor" title="{{opt.recom_name}} {{opt.drug_names}}">
+						<span ng-if="opt.recom_name">
+							{{opt.recom_name}}
+							<span ng-if="opt.drug_names" class="font-black">
+								{{opt.drug_names}}
+							</span>
+						</span>
+						<span ng-if="!opt.recom_name">-</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-if="!plan.recom_scheme" class="alert alert-info" role="alert">数据加载中……</div>
+		<div ng-if="plan.recom_scheme.length == 0" class="alert alert-info" role="alert">无推荐方案……</div>
+	</div>
+
+	<div class="infi-legend-table">
+		<h4>相对禁忌
+			<div class="infi-legend">
+				<h3>图例：</h3>
+				<ul>
+					<li>相对禁忌<span class="legend orange"></span></li>
+				</ul>
+			</div>
+		</h4>
+		<table class="table">
+			<thead>
+				<tr class="active">
+					<th ng-repeat="th in schemeOpt" ng-bind="th.label"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="opts in plan.relative_contraindication" class="orange"  ng-if="$index<2"  ng-click="detail(opts.uuid)">
+					<td ng-repeat="opt in opts.title" class="cursor" title="{{opt.drug_name}} {{opt.drug_names}}">
+						<span ng-if="opt.drug_name">
+							{{opt.drug_name}}
+							<span ng-if="opt.drug_names" class="font-black">
+								{{opt.drug_names}}
+							</span>
+						</span>
+						<span ng-if="!opt.drug_name">-</span>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+		<div ng-if="!plan.relative_contraindication" class="alert alert-info" role="alert">数据加载中……</div>
+		<div ng-if="plan.relative_contraindication.length == 0" class="alert alert-info" role="alert">无相对禁忌药物……</div>
+	</div>
+
+
+	<div class="infi-legend-table">
+		<h4>绝对禁忌
+			<div class="infi-legend">
+				<h3>图例：</h3>
+				<ul>
+					<li>绝对禁忌<span class="legend red"></span></li>
+				</ul>
+			</div>
+		</h4>
+		<table class="table">
+			<thead>
+			<tr class="active">
+				<th>药物治疗</th>
+				<th>非药物治疗</th>
+				<th>其他治疗</th>
+				<th>相似病例</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="opts in plan.absolute_contraindication" class="red"  ng-click="detail(opts.uuid)">
+					<td ng-repeat="opt in opts.title" class="cursor" title="{{opt.drug_name}} {{opt.drug_names}}">
+						<span ng-if="opt.drug_name">
+								{{opt.drug_name}}
+								<span ng-if="opt.drug_name" class="font-black">
+									{{opt.drug_names}}
+								</span>
+							</span>
+						<span ng-if="!opt.drug_name">-</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-if="!plan.absolute_contraindication" class="alert alert-info" role="alert">数据加载中……</div>
+		<div ng-if="plan.absolute_contraindication.length == 0" class="alert alert-info" role="alert">无绝对禁忌药物……</div>
+	</div>
+
+	<div>
+		<h4>医嘱信息 <p>用药方案 ：{{tableData.page.content[0].recomName}}</p></h4>
+		<div infi-table columns="tableColumns.columns" ng-if="tableData && tableColumns.columns" content="tableData" update-page="getChange(page)" opts="operation" btn-callback="btnCallback(entity,type)"></div>
+
+        <div ng-if="!tableData || !tableColumns.columns" class="alert alert-info" role="alert">数据加载中……</div>
+
+	</div>
+
+	<!-- <div class="infi-forbiden">
+		<h4>禁忌方案列表</h4>
+		<ul>
+			<li ng-repeat="opt in plan.avoid_reason"><a>{{opt.name}}</a></li>
+		</ul>
+		<div ng-if="!plan.avoid_reason" class="alert alert-info" role="alert">数据加载中……</div>
+
+		
+	</div> -->
+	
+	
+</div>

@@ -1,0 +1,344 @@
+<style>
+    .btnDel{
+        position:absolute;
+        top:15px;
+        right:15px;
+    }
+    .none{
+        display: none;
+    }
+    .block{
+        display: block;
+    }
+
+</style>
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题研究 > 课题创建 > 课题任务计划设置</h4>
+<header class="infi-section">
+    <ul class="infi-header-ul">
+        <li><span>1. 课题基本信息设置</span></li>
+        <li><span>2. 课题成员邀请</span></li>
+        <li class="infi-header-active"><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+
+            <!--<div shiyanzu-form experiment="experiment" asd="asd()" HosDep="HosDep" GroupName="GroupName"></div>-->
+            <div>
+                <h4 style="text-align: center">
+                    <span>实验组</span>
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setAdd(0)">添加实验组</button>
+                </h4>
+                <div class="infi-box marginten" ng-repeat="exp in experiment">
+                    <h4>{{exp.name}}</h4>
+                    <button class="btn infi-btn-linear-green-l btn-sm btnDel" ng-click="btnDel(exp.name,0)">删除</button>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="row">
+                                <div class="col-xs-4" ng-repeat="exps in exp.one">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exps.name}}:</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" value="{{exps.value}}" ng-model="exps.value">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:60px;">
+                                        <label >{{exp.casesNumber}}:</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <textarea class="form-control" style="height:60px;resize: none;width:500px;" value="{{exp.casesValue}}" ng-model="exp.casesValue"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exp.CRF}}:</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input type="text" class="form-control"  value="{{exp.CRFValue}}" ng-model="exp.CRFValue" disabled>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setCrf('own',exp.name)">选择模板</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exp.distribution}}:</label>
+                                    </div>
+                                    <div class="col-xs-7 table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <td>医院</td>
+                                                <td>科室</td>
+                                                <td>人数</td>
+                                            </tr>
+                                            <tr ng-repeat="table in exp.distributionTable">
+                                                <td>{{table.hospital}}</td>
+                                                <td>{{table.departments}}</td>
+                                                <td>{{table.number}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setDist(exp.name)">分配人数</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <h4 style="text-align: center">
+                    <span>对照组</span>
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setAdd(1)">添加实验组</button>
+                </h4>
+                <div class="infi-box marginten" ng-repeat="exp in controls">
+                    <h4>{{exp.name}}</h4>
+                    <button class="btn infi-btn-linear-green-l btn-sm btnDel" ng-click="btnDel(exp.name,1)">删除</button>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="row">
+                                <div class="col-xs-4" ng-repeat="exps in exp.one">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exps.name}}:</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" value="{{exps.value}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:60px;">
+                                        <label >{{exp.casesNumber}}:</label>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <textarea class="form-control" style="height:60px;resize: none;width:500px;" value="{{exp.casesValue}}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exp.CRF}}:</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input type="text" class="form-control" value="{{exp.CRFValue}}" disabled>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setCrf('own',exp.name)">选择模板</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                                        <label >{{exp.distribution}}:</label>
+                                    </div>
+                                    <div class="col-xs-7 table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <td>医院</td>
+                                                <td>科室</td>
+                                                <td>人数</td>
+                                            </tr>
+                                            <tr ng-repeat="table in exp.distributionTable">
+                                                <td>{{table.hospital}}</td>
+                                                <td>{{table.departments}}</td>
+                                                <td>{{table.number}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="setDist(exp.name)">分配人数</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div duizhaozu-form controls="controls" setAdd="setAdd"></div>-->
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <a href="#/topics-invite"><button class="btn infi-btn-linear-green-l">上一步</button></a>
+    <button class="btn infi-btn-linear-green-l" ng-click="setSave()">保存</button>
+</div>
+
+<!--提示保存成功-->
+<div class="modal fade"  id="set-save">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>保存成功</p>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+               <button type="button" class="btn btn-primary" ng-click="setSuccess()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--选择CRF模板-->
+<div class="modal fade"  id="set-CrfModal">
+    <div class="modal-dialog"  style="min-width:900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">CRF模板</h4>
+            </div>
+            <div class="modal-body">
+                <div class="infi-box" ng-if="step == 1">
+                    <h4 class="infi-title">CRF模板管理</h4>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="marginten">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active" ng-click="CrfTab(1)"><a>我的CRF模板</a></li>
+                                    <li role="presentation" ng-click="CrfTab(2)"><a>系统CRF模板</a></li>
+                                </ul>
+                            </div>
+                            <div class="infi-box-containter">
+                                <div class="dir-nav-container">
+                                    <div class="marginten">
+                                        <ul class="ul-float-left ul-li-3">
+                                            <li>
+                                            </li>
+                                            <li>
+                                                <label >CRF来源:</label>
+                                                <select ng-model="selectValue" id="
+                                                " ng-click="setSearch()"  class="form-control">
+                                                    <option value="{{opt.value}}" ng-repeat="opt in optionValue">{{opt.name}}</option>
+                                                </select>
+                                            </li>
+                                            <li class="input-group">
+                                                <input id="setSearch" type="text" class="form-control input-lg" ng-model="setKeyword" style="height:34px;"><span class="input-group-addon btn btn-primary" ng-click="setSearch()">搜索</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div infi-table columns="listColumns" data-ng-if="listDatas.status == 'ok'" content="listDatas" opts="tableOpt" btn-callback="pageFns(entity,type)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infi-box" ng-if="step == 2">
+                    <h4 class="infi-title">系统CRF模板</h4>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="marginten">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" ng-click="CrfTab(1)"><a >我的CRF模板</a></li>
+                                    <li role="presentation" class="active" ng-click="CrfTab(2)"><a>系统CRF模板</a></li>
+                                </ul>
+                            </div>
+                            <div class="infi-box-containter">
+                                <div class="dir-nav-container">
+                                    <div class="input-group" style="width:50%; margin: 0 auto;">
+                                        <input type="text" class="form-control input-lg" style="height:34px;" placeholder="请输入CRF表名进行搜索"><span class="input-group-addon btn btn-primary">搜索</span>
+                                    </div>
+                                    <div>
+                                        <ul class="marginten">
+                                            <!--一级-->
+                                            <li ng-repeat="navs in Navigational">
+                                                <i class="glyphicon glyphicon-chevron-{{navs.arrow}}"></i>
+                                                <span ng-click="topicsNav(navs)">{{navs.name}}</span>
+                                                <!--二级-->
+                                                <ul class="marginten {{navs.display}}" >
+                                                    <li ng-repeat="nav in navs.navTwo">
+                                                        <i class="glyphicon glyphicon-chevron-{{nav.arrow}}"></i>
+                                                        <span ng-click="topicsNav(nav)">{{nav.name}}</span>
+                                                        <!--三级-->
+                                                        <ul class="marginten {{nav.display}}">
+                                                            <li class="marginten" ng-repeat="txt in nav.text">
+                                                                <i class="glyphicon glyphicon-list-alt"></i>
+                                                                <span>{{txt.name}}</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infi-box" ng-if="step == 3">
+                    <h4 class="infi-title">查看详情</h4>
+                    <div class="infi-box-containter">
+                        <div class="dir-nav-container">
+                            <div class="infi-box-containter">
+                                <div class="dir-nav-container">
+                                   查看详情
+                                    <button type="button" class="btn btn-default" ng-click="setReturn()">返回</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--分配人数-->
+<div class="modal fade"  id="set-distribution">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">任务分配</h4>
+            </div>
+            <div class="modal-body">
+                <div class="marginten">
+                   <span>分组信息</span> : <span>{{GroupName}}</span>
+                </div>
+                <div class="marginten">
+                    <span>数量计划</span> : <span>100</span>
+                </div>
+                <div class="marginten">
+                    <span>任务分配</span> :
+                </div>
+                <div class="row" ng-repeat="data in HosDep">
+                    <div class="col-xs-3" style="text-align: right;padding:0;line-height:34px;">
+                        <label >{{data.name}} | </label>
+                        <label > {{data.names}}</label>
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" value="{{data.value}}" ng-model="data.value">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="groupSuccess()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

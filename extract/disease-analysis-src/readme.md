@@ -1,0 +1,1 @@
+该自疾病诱因分析，  http://192.168.1.174:18080/medical/disease/incentive

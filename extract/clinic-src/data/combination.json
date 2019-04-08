@@ -1,0 +1,484 @@
+[
+
+  {
+    "dept_name": "神经内科门诊",
+    "total": 40667,
+    "alone_dept_con": "33129",
+    "many_dept_con": "7538",
+    "alone_dept_ratio": "81.46",
+    "many_dept_ratio": "18.54"
+  },
+  {
+    "dept_name": "心脏科门诊",
+    "total": 24142,
+    "alone_dept_con": "15439",
+    "many_dept_con": "8703",
+    "alone_dept_ratio": "63.95",
+    "many_dept_ratio": "36.05"
+  },
+  {
+    "dept_name": "内分泌科门诊",
+    "total": 14442,
+    "alone_dept_con": "9302",
+    "many_dept_con": "5140",
+    "alone_dept_ratio": "64.41",
+    "many_dept_ratio": "35.59"
+  },
+  {
+    "dept_name": "骨科门诊",
+    "total": 9370,
+    "alone_dept_con": "5744",
+    "many_dept_con": "3626",
+    "alone_dept_ratio": "61.30",
+    "many_dept_ratio": "38.70"
+  },
+  {
+    "dept_name": "内科门诊",
+    "total": 9069,
+    "alone_dept_con": "6487",
+    "many_dept_con": "2582",
+    "alone_dept_ratio": "71.53",
+    "many_dept_ratio": "28.47"
+  },
+  {
+    "dept_name": "呼吸科门诊",
+    "total": 8536,
+    "alone_dept_con": "5186",
+    "many_dept_con": "3350",
+    "alone_dept_ratio": "60.75",
+    "many_dept_ratio": "39.25"
+  },
+  {
+    "dept_name": "普通外科门诊",
+    "total": 8371,
+    "alone_dept_con": "5723",
+    "many_dept_con": "2648",
+    "alone_dept_ratio": "68.37",
+    "many_dept_ratio": "31.63"
+  },
+  {
+    "dept_name": "消化科门诊",
+    "total": 8047,
+    "alone_dept_con": "4645",
+    "many_dept_con": "3402",
+    "alone_dept_ratio": "57.72",
+    "many_dept_ratio": "42.28"
+  },
+  {
+    "dept_name": "中医科门诊",
+    "total": 7019,
+    "alone_dept_con": "3979",
+    "many_dept_con": "3040",
+    "alone_dept_ratio": "56.69",
+    "many_dept_ratio": "43.31"
+  },
+  {
+    "dept_name": "皮肤性病科门诊",
+    "total": 6552,
+    "alone_dept_con": "4376",
+    "many_dept_con": "2176",
+    "alone_dept_ratio": "66.79",
+    "many_dept_ratio": "33.21"
+  },
+  {
+    "dept_name": "妇科门诊",
+    "total": 6476,
+    "alone_dept_con": "5128",
+    "many_dept_con": "1348",
+    "alone_dept_ratio": "79.18",
+    "many_dept_ratio": "20.82"
+  },
+  {
+    "dept_name": "眼科门诊",
+    "total": 6103,
+    "alone_dept_con": "3825",
+    "many_dept_con": "2278",
+    "alone_dept_ratio": "62.67",
+    "many_dept_ratio": "37.33"
+  },
+  {
+    "dept_name": "耳鼻咽喉-头颈外科门诊",
+    "total": 5684,
+    "alone_dept_con": "3507",
+    "many_dept_con": "2177",
+    "alone_dept_ratio": "61.70",
+    "many_dept_ratio": "38.30"
+  },
+  {
+    "dept_name": "泌尿外科门诊",
+    "total": 4638,
+    "alone_dept_con": "2768",
+    "many_dept_con": "1870",
+    "alone_dept_ratio": "59.68",
+    "many_dept_ratio": "40.32"
+  },
+  {
+    "dept_name": "产科门诊",
+    "total": 3940,
+    "alone_dept_con": "3499",
+    "many_dept_con": "441",
+    "alone_dept_ratio": "88.81",
+    "many_dept_ratio": "11.19"
+  },
+  {
+    "dept_name": "感染科初检门诊",
+    "total": 3330,
+    "alone_dept_con": "3205",
+    "many_dept_con": "125",
+    "alone_dept_ratio": "96.25",
+    "many_dept_ratio": "3.75"
+  },
+  {
+    "dept_name": "神经外科门诊",
+    "total": 3036,
+    "alone_dept_con": "2357",
+    "many_dept_con": "679",
+    "alone_dept_ratio": "77.64",
+    "many_dept_ratio": "22.36"
+  },
+  {
+    "dept_name": "肾科门诊",
+    "total": 3009,
+    "alone_dept_con": "1880",
+    "many_dept_con": "1129",
+    "alone_dept_ratio": "62.48",
+    "many_dept_ratio": "37.52"
+  },
+  {
+    "dept_name": "口腔科门诊",
+    "total": 2904,
+    "alone_dept_con": "2388",
+    "many_dept_con": "516",
+    "alone_dept_ratio": "82.23",
+    "many_dept_ratio": "17.77"
+  },
+  {
+    "dept_name": "风湿免疫、变态反应科门诊",
+    "total": 2573,
+    "alone_dept_con": "1651",
+    "many_dept_con": "922",
+    "alone_dept_ratio": "64.17",
+    "many_dept_ratio": "35.83"
+  },
+  {
+    "dept_name": "干部保健门诊",
+    "total": 2367,
+    "alone_dept_con": "1854",
+    "many_dept_con": "513",
+    "alone_dept_ratio": "78.33",
+    "many_dept_ratio": "21.67"
+  },
+  {
+    "dept_name": "特需门诊",
+    "total": 2202,
+    "alone_dept_con": "1680",
+    "many_dept_con": "522",
+    "alone_dept_ratio": "76.29",
+    "many_dept_ratio": "23.71"
+  },
+  {
+    "dept_name": "血管外科门诊",
+    "total": 2099,
+    "alone_dept_con": "1485",
+    "many_dept_con": "614",
+    "alone_dept_ratio": "70.75",
+    "many_dept_ratio": "29.25"
+  },
+  {
+    "dept_name": "职工保健门诊",
+    "total": 1972,
+    "alone_dept_con": "1509",
+    "many_dept_con": "463",
+    "alone_dept_ratio": "76.52",
+    "many_dept_ratio": "23.48"
+  },
+  {
+    "dept_name": "胸科门诊",
+    "total": 1264,
+    "alone_dept_con": "949",
+    "many_dept_con": "315",
+    "alone_dept_ratio": "75.08",
+    "many_dept_ratio": "24.92"
+  },
+  {
+    "dept_name": "疼痛科门诊",
+    "total": 1218,
+    "alone_dept_con": "894",
+    "many_dept_con": "324",
+    "alone_dept_ratio": "73.40",
+    "many_dept_ratio": "26.60"
+  },
+  {
+    "dept_name": "超声诊断科门诊",
+    "total": 1180,
+    "alone_dept_con": "531",
+    "many_dept_con": "649",
+    "alone_dept_ratio": "45.00",
+    "many_dept_ratio": "55.00"
+  },
+  {
+    "dept_name": "功能神经外科门诊",
+    "total": 1022,
+    "alone_dept_con": "815",
+    "many_dept_con": "207",
+    "alone_dept_ratio": "79.75",
+    "many_dept_ratio": "20.25"
+  },
+  {
+    "dept_name": "放射科",
+    "total": 1004,
+    "alone_dept_con": "865",
+    "many_dept_con": "139",
+    "alone_dept_ratio": "86.16",
+    "many_dept_ratio": "13.84"
+  },
+  {
+    "dept_name": "消化内镜中心",
+    "total": 881,
+    "alone_dept_con": "216",
+    "many_dept_con": "665",
+    "alone_dept_ratio": "24.52",
+    "many_dept_ratio": "75.48"
+  },
+  {
+    "dept_name": "介入放射科门诊",
+    "total": 857,
+    "alone_dept_con": "621",
+    "many_dept_con": "236",
+    "alone_dept_ratio": "72.46",
+    "many_dept_ratio": "27.54"
+  },
+  {
+    "dept_name": "口腔二部门诊",
+    "total": 713,
+    "alone_dept_con": "697",
+    "many_dept_con": "16",
+    "alone_dept_ratio": "97.76",
+    "many_dept_ratio": "2.24"
+  },
+  {
+    "dept_name": "血液科门诊",
+    "total": 707,
+    "alone_dept_con": "474",
+    "many_dept_con": "233",
+    "alone_dept_ratio": "67.04",
+    "many_dept_ratio": "32.96"
+  },
+  {
+    "dept_name": "康复科理疗门诊",
+    "total": 462,
+    "alone_dept_con": "312",
+    "many_dept_con": "150",
+    "alone_dept_ratio": "67.53",
+    "many_dept_ratio": "32.47"
+  },
+  {
+    "dept_name": "儿科门诊",
+    "total": 413,
+    "alone_dept_con": "393",
+    "many_dept_con": "20",
+    "alone_dept_ratio": "95.16",
+    "many_dept_ratio": "4.84"
+  },
+  {
+    "dept_name": "康复科按摩门诊",
+    "total": 404,
+    "alone_dept_con": "296",
+    "many_dept_con": "108",
+    "alone_dept_ratio": "73.27",
+    "many_dept_ratio": "26.73"
+  },
+  {
+    "dept_name": "康复科针灸门诊",
+    "total": 373,
+    "alone_dept_con": "281",
+    "many_dept_con": "92",
+    "alone_dept_ratio": "75.34",
+    "many_dept_ratio": "24.66"
+  },
+  {
+    "dept_name": "感染科肝炎门诊",
+    "total": 339,
+    "alone_dept_con": "232",
+    "many_dept_con": "107",
+    "alone_dept_ratio": "68.44",
+    "many_dept_ratio": "31.56"
+  },
+  {
+    "dept_name": "计划生育门诊",
+    "total": 264,
+    "alone_dept_con": "222",
+    "many_dept_con": "42",
+    "alone_dept_ratio": "84.09",
+    "many_dept_ratio": "15.91"
+  },
+  {
+    "dept_name": "核磁共振室",
+    "total": 207,
+    "alone_dept_con": "171",
+    "many_dept_con": "36",
+    "alone_dept_ratio": "82.61",
+    "many_dept_ratio": "17.39"
+  },
+  {
+    "dept_name": "核医学科",
+    "total": 175,
+    "alone_dept_con": "43",
+    "many_dept_con": "132",
+    "alone_dept_ratio": "24.57",
+    "many_dept_ratio": "75.43"
+  },
+  {
+    "dept_name": "老年医学（综合）科门诊",
+    "total": 161,
+    "alone_dept_con": "120",
+    "many_dept_con": "41",
+    "alone_dept_ratio": "74.53",
+    "many_dept_ratio": "25.47"
+  },
+  {
+    "dept_name": "血液透析室",
+    "total": 159,
+    "alone_dept_con": "147",
+    "many_dept_con": "12",
+    "alone_dept_ratio": "92.45",
+    "many_dept_ratio": "7.55"
+  },
+  {
+    "dept_name": "康复医学门诊",
+    "total": 108,
+    "alone_dept_con": "77",
+    "many_dept_con": "31",
+    "alone_dept_ratio": "71.30",
+    "many_dept_ratio": "28.70"
+  },
+  {
+    "dept_name": "膀胱镜室",
+    "total": 87,
+    "alone_dept_con": "61",
+    "many_dept_con": "26",
+    "alone_dept_ratio": "70.11",
+    "many_dept_ratio": "29.89"
+  },
+  {
+    "dept_name": "营养科",
+    "total": 76,
+    "alone_dept_con": "36",
+    "many_dept_con": "40",
+    "alone_dept_ratio": "47.37",
+    "many_dept_ratio": "52.63"
+  },
+  {
+    "dept_name": "普通放射",
+    "total": 63,
+    "alone_dept_con": "54",
+    "many_dept_con": "9",
+    "alone_dept_ratio": "85.71",
+    "many_dept_ratio": "14.29"
+  },
+  {
+    "dept_name": "尿动力学室",
+    "total": 24,
+    "alone_dept_con": "5",
+    "many_dept_con": "19",
+    "alone_dept_ratio": "20.83",
+    "many_dept_ratio": "79.17"
+  },
+  {
+    "dept_name": "体外碎石室",
+    "total": 19,
+    "alone_dept_con": "10",
+    "many_dept_con": "9",
+    "alone_dept_ratio": "52.63",
+    "many_dept_ratio": "47.37"
+  },
+  {
+    "dept_name": "慢病门诊",
+    "total": 16,
+    "alone_dept_con": "14",
+    "many_dept_con": "2",
+    "alone_dept_ratio": "87.50",
+    "many_dept_ratio": "12.50"
+  },
+  {
+    "dept_name": "儿科急诊",
+    "total": 8,
+    "alone_dept_con": "7",
+    "many_dept_con": "1",
+    "alone_dept_ratio": "87.50",
+    "many_dept_ratio": "12.50"
+  },
+  {
+    "dept_name": "感染性疾病科门诊",
+    "total": 7,
+    "alone_dept_con": "5",
+    "many_dept_con": "2",
+    "alone_dept_ratio": "71.43",
+    "many_dept_ratio": "28.57"
+  },
+  {
+    "dept_name": "病理科",
+    "total": 6,
+    "alone_dept_con": "4",
+    "many_dept_con": "2",
+    "alone_dept_ratio": "66.67",
+    "many_dept_ratio": "33.33"
+  },
+  {
+    "dept_name": "感染科肠道门诊",
+    "total": 6,
+    "alone_dept_con": "1",
+    "many_dept_con": "5",
+    "alone_dept_ratio": "16.67",
+    "many_dept_ratio": "83.33"
+  },
+  {
+    "dept_name": "内科",
+    "total": 5,
+    "alone_dept_con": "2",
+    "many_dept_con": "3",
+    "alone_dept_ratio": "40.00",
+    "many_dept_ratio": "60.00"
+  },
+  {
+    "dept_name": "支气管镜检查",
+    "total": 4,
+    "alone_dept_con": "3",
+    "many_dept_con": "1",
+    "alone_dept_ratio": "75.00",
+    "many_dept_ratio": "25.00"
+  },
+  {
+    "dept_name": "神经内科",
+    "total": 1,
+    "alone_dept_con": "0",
+    "many_dept_con": "1",
+    "alone_dept_ratio": "0.00",
+    "many_dept_ratio": "100.00"
+  },
+  {
+    "dept_name": "计划生育",
+    "total": 1,
+    "alone_dept_con": "0",
+    "many_dept_con": "1",
+    "alone_dept_ratio": "0.00",
+    "many_dept_ratio": "100.00"
+  },
+  {
+    "dept_name": "急诊内科",
+    "total": 1,
+    "alone_dept_con": "0",
+    "many_dept_con": "1",
+    "alone_dept_ratio": "0.00",
+    "many_dept_ratio": "100.00"
+  },
+  {
+    "dept_name": "急诊产科",
+    "total": 1,
+    "alone_dept_con": "1",
+    "many_dept_con": "0",
+    "alone_dept_ratio": "100.00",
+    "many_dept_ratio": "0.00"
+  }
+
+]

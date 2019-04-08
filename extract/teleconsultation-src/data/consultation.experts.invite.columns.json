@@ -1,0 +1,32 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":{
+    "columns":[
+      {
+        "label":"所在医院",
+        "name":"docHosp"
+      },
+      {
+        "label":"科室",
+        "name":"docDept"
+      },
+      {
+        "label":"职位",
+        "name":"position"
+      },
+      {
+        "label":"会诊专家",
+        "name":"docName"
+      },
+      {
+        "label":"电话",
+        "name":"mobile"
+      },
+      {
+        "label":"邮箱",
+        "name":"email"
+      }
+    ]
+  }
+}

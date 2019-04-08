@@ -1,0 +1,9 @@
+<label>科室：
+    <!--科室的公共控件-->
+    <select class="form-control infi-opt-search-time" ng-model="original.department"
+            ng-show="recordList.status == SYS.STATUS_SUCCESS&&recordList.data.status == SYS.STATUS_SUCCESS" ng-change="changeData({'original':original})">
+        <option value="">全院</option>
+        <option ng-repeat="dept in recordList.data.result" ng-bind="dept.dept_name" value="{{dept.dept_id}}"></option>
+    </select>
+    <span ng-show="recordList.status != SYS.STATUS_SUCCESS||recordList.data.status != SYS.STATUS_SUCCESS" class="text-danger">未查询到数据</span>
+</label>

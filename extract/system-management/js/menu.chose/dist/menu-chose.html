@@ -1,0 +1,14 @@
+<div>
+    <ul class="menu-choses">
+        <li ng-repeat="opt in menuList">
+            <span class="spe-line">
+                   <span></span>
+            </span>
+            <a ng-bind="opt.name" ></a>
+            <span class="btn btn-default btn-sm" ng-click="callBack({opt:opt,type:'create'})">新建子{{type}}</span>
+            <span class="btn btn-default btn-sm" ng-click="callBack({opt:opt,type:'change'})">修改</span>
+            <span class="btn btn-default btn-sm" ng-click="callBack({opt:opt,type:'delete'})">删除</span>
+            <menu-chose ng-if="opt.children && opt.children.length>0" type="type" menu-list="opt.children" call-back="callBack({opt:opt,type:type})"></menu-chose>
+        </li>
+    </ul>
+</div>

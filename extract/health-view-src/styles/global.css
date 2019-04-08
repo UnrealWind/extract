@@ -1,0 +1,39 @@
+.content-list .table tbody tr td:first-child {width: 120px;text-align: right;}
+.content-list .table tbody tr td {text-align: left;}
+.content-list .table tbody tr td ul {margin-top: 8px;display: inline-block;}
+.content-list td ul {margin-left: 134px;padding: 0;}
+.content-list ul li {list-style:none;display: inline-block;vertical-align: center;margin-left: 20px;}
+.content-list .infi-tag-red {background-color: #ffdbdb;
+    border: 1px solid #f00;
+    border-radius: 2px;
+    color: #f00;
+    font-size: 12px;
+    margin: 0 3px 0 30px;
+    padding: 3px 6px;
+    width:10%;
+vertical-align: top;
+position:relative;
+top:15px;}
+.details {float:right;margin-right: 50px;cursor: pointer;}
+.content-list td .nomargin {margin-left:10px;width:80%;}
+.content-list .table > tbody > tr > .rowspanTd {border-top: 0px;}
+.content-list .red {background:red;color:#000;}
+.content-list .orange {background:#ff8f09;color:#000;}
+
+.table-title {overflow: hidden;border-bottom: 1px solid #ddd;}
+.table-title p {text-align: center;font-size: 18px;margin-top: 12px;}
+.sm-table-title {border-bottom: 1px solid #3f8ecb;
+    color: #006abb;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;}
+.content-detail .specialBox{padding:0 20px;}
+.more {text-align: center;}
+.content-detail th,.content-detail td {text-align:center;}
+.self-content {
+    min-width: auto;
+}
+li {padding:6px;}
+.nav-tabs li {cursor: pointer;padding: 0;}

@@ -1,0 +1,16 @@
+<div>
+    <!--普通kpi-->
+    <div class="infi-box-kpi row" ng-show="original.status == SYS.STATUS_SUCCESS">
+        <div class="{{original.$data.col}}" ng-repeat="entity in original.$data.child">
+            <dl class="infi-column-kpi">
+                <dt class="infi-title">{{entity.child[0].name}}:<span ng-bind="entity.child[0].num|nullFilter"></span>{{entity.child[0].unit}}</dt>
+                <dd class="infi-box-containter">
+                    <div>{{entity.child[1].name}}:<span ng-bind="entity.child[1].num|nullFilter"></span>{{entity.child[1].unit}}</div>
+                    <div>{{entity.child[2].name}}:<span ng-bind="entity.child[2].num|nullFilter"></span>{{entity.child[2].unit}}</div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--错误提示-->
+    <div class="alert alert-danger" ng-show="original.status != SYS.STATUS_SUCCESS" ng-bind="original.description"></div>
+</div>

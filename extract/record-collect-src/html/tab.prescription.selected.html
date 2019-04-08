@@ -1,0 +1,29 @@
+<div class="tab-selected-collect-directive">
+  <ul class="nav nav-tabs">
+    <li ng-repeat="navItem in tabLabels"
+        ng-class="{true: 'active'}[tab.currActiveInd == $index]"
+        ng-click="tab.changeInd($index)"><a href="javascript:;" ng-bind="navItem.label"></a>
+    </li>
+  </ul>
+  <div class="tab-content-wrapper">
+    <selected-collect></selected-collect>    
+  </div>
+</div>
+
+<style>
+  .tab-content-wrapper {
+    min-height: 50px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+  }
+
+  @media screen and (max-width: 1120px) {
+    .nav>li>a {
+      padding: 5px;
+    }
+  }
+
+
+</style>

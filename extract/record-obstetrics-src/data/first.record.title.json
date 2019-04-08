@@ -1,0 +1,28 @@
+{
+  "data":[
+    {
+      "label":"基本信息",
+      "value":"jiben"
+    },
+    {
+      "label":"孕产史",
+      "value":"yunchan"
+    },
+    {
+      "label":"既往家族史",
+      "value":"jiwnag"
+    },
+    {
+      "label":"全身检查",
+      "value":"quanshen"
+    },
+    {
+      "label":"早孕检查",
+      "value":"zaoyun"
+    },
+    {
+      "label":"高危评分",
+      "value":"dangerous"
+    }
+  ]
+}

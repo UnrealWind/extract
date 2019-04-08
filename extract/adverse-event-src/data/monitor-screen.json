@@ -1,0 +1,43 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": {
+    "search":"",
+    "deptId":{
+      "value":"",
+      "options":[]
+    },
+    "wardId":{
+      "value":"",
+      "options":[]
+    },
+    "time":"",
+    "eventType":{
+      "value":"",
+      "options":[]
+    },
+    "firstEvent":{
+      "value":"",
+      "options":[]
+    },
+    "secondEvent":{
+      "value":"",
+      "options":[]
+    },
+    "startAge":"",
+    "endAge":"",
+    "sex":{
+      "value":"",
+      "options":[
+        {
+          "label":"男",
+          "value":"男"
+        },
+        {
+          "label":"女",
+          "value":"女"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,350 @@
+<!--此页面是写死的不需要动态生成-->
+<div class="row">
+    <div class="col-md-1 form-group" style="text-align: right">
+        <label>孕产史：</label>
+    </div>
+    <div class="col-md-4 form-group">
+        <a ng-click="addMaternal()"><button class="btn infi-btn-linear-green-l btn-sm">添加孕产史</button></a>
+    </div>
+</div>
+<div ng-repeat="maternal in maternalList">
+    <div class="row">
+        <h5 style="color:#6c91b7;display: inline-block;">孕产史{{$index+1}}:</h5>
+        <button style="float: right; padding: 1px 10px 0 8px" ng-click="spliceMaternal(maternalList,maternal)"  class=" btn infi-btn-linear-default btn-xs"><span  class="glyphicon glyphicon-trash"></span></button>
+    </div>
+    <div class="row" >
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+          <label class="infi-wj-label-title">日期: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;">
+            <input name="maternal.date" infi-date type="text" ng-model="maternal.date" class="form-control" readonly="readonly"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+            <label class="infi-wj-label-title">生产情况: </label>
+        </div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;">
+            <label class="radio-inlinue" >
+                <input type="radio" ng-model="maternal.productionSituation" name="maternal.productionSituation{{$index}}"
+                       value="流产"/>流产
+            </label>
+            <label class="radio-inlinue" >
+                <input type="radio" ng-model="maternal.productionSituation" name="maternal.productionSituation{{$index}}"
+                       value="早产"/>早产
+            </label>
+            <label class="radio-inlinue" >
+                <input type="radio" ng-model="maternal.productionSituation" name="maternal.productionSituation{{$index}}"
+                       value="死胎"/>死胎
+            </label>
+            <label class="radio-inlinue" >
+                <input type="radio" ng-model="maternal.productionSituation" name="maternal.productionSituation{{$index}}" value="死产"/>死产
+            </label>
+            <label class="radio-inlinue" >
+                <input type="radio" ng-model="maternal.productionSituation" name="maternal.productionSituation{{$index}}" value="足月产"/>足月产
+            </label>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 15px; margin-left:11%;" ng-show="maternal.productionSituation == '流产'" class="infi-wj-tabs-box col-md-6 col-md-offset-1">
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>流产方式:</label></div>
+            <div class="col-md-4">
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.proAbortionWay" name="maternal.proAbortionWay{{$index}}" value="自然"/>自然
+                </label>
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.proAbortionWay" name="maternal.proAbortionWay{{$index}}" value="人工"/>人工
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>流产原因:</label></div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="maternal.proAbortionCause">
+            </div>
+            <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.proAbortionCause.length > 50">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+            </div>
+        </div>
+    </div>
+
+    <!--死胎,这个需要后期更改字段-->
+    <div style="margin-bottom: 15px; margin-left:11%;" ng-show="maternal.productionSituation == '死胎'" class="infi-wj-tabs-box col-md-6 col-md-offset-1">
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>新生儿性别:</label></div>
+            <div class="col-md-4">
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.deadFetusBabySex" name="maternal.deadFetusBabySex{{$index}}" value="男"/>男
+                </label>
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.deadFetusBabySex" name="maternal.deadFetusBabySex{{$index}}" value="女"/>女
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>新生儿死亡原因:</label></div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="maternal.deadFetusDeathCause">
+            </div>
+            <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.deadFetusDeathCause.length > 50">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+            </div>
+        </div>
+    </div>
+
+    <!--死产,这个后期需要更改字段-->
+    <div style="margin-bottom: 15px; margin-left: 11%;" ng-show="maternal.productionSituation == '死产'" class="infi-wj-tabs-box col-md-6 col-md-offset-1">
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>新生儿性别:</label></div>
+            <div class="col-md-4">
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.stillbirthBabySex" name="maternal.stillbirthBabySex{{$index}}" value="男"/>男
+                </label>
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.stillbirthBabySex" name="maternal.stillbirthBabySex{{$index}}" value="女"/>女
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>新生儿死亡原因:</label></div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="maternal.stillbirthDeathCause"/>
+            </div>
+            <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.stillbirthDeathCause.length > 50">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 15px; margin-left:11%;" ng-show="maternal.productionSituation == '早产'" class="infi-wj-tabs-box col-md-6 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                <label>新生儿性别：</label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.earlyBabySex" name="maternal.earlyBabySex{{$index}}" value="男"/>男
+                </label>
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.earlyBabySex" name="maternal.earlyBabySex{{$index}}" value="女"/>女
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                <label>存亡情况：</label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.earlyBabySurSituation" name="maternal.earlyBabySurSituation{{$index}}" value="存"/>存
+                </label>
+                <label class="radio-inlinue">
+                    <input type="radio" ng-model="maternal.earlyBabySurSituation" ng-click="maternal.earlyBabyWeight=''"
+                           name="maternal.earlyBabySurSituation{{$index}}" value="亡"/>亡
+                </label>
+            </div>
+        </div>
+        <div ng-if="maternal.earlyBabySurSituation == '存'">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>新生儿体重：</label>
+                </div>
+                <div class="col-md-4 infi-wj-production-situation">
+                    <label>
+                        <input class="form-control" type="text" ng-model="maternal.earlyBabyWeight">
+                    </label>
+                </div>
+                <span class="infi-wj-reason-tip infi-inline-block">kg</span>
+            </div>
+            <div class="row">
+                <div  class="col-md-4 col-md-offset-1 infi-wj-maternal-title"><label>早产原因:</label></div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" ng-model="maternal.earlyBabyCause">
+                </div>
+                <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.earlyBabyCause.length > 50">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="maternal.earlyBabySurSituation == '亡'">
+            <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                <label>新生儿死亡原因：</label>
+            </div>
+            <div class="col-md-4">
+                <label>
+                    <input class="form-control" type="text" ng-model="maternal.earlyNewbornDeathCause">
+                </label>
+            </div>
+            <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.earlyNewbornDeathCause.length > 50">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 15px; margin-left:11%;" ng-show="maternal.productionSituation == '足月产'" class="infi-wj-tabs-box col-md-6 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>新生儿性别：</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpBabySex" name="maternal.fmpBabySex{{$index}}" value="男"/>男
+                    </label>
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpBabySex" name="maternal.fmpBabySex{{$index}}" value="女"/>女
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>生产方式：</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpSituation" name="maternal.fmpSituation{{$index}}" value="自然"/>自然
+                    </label>
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpSituation" name="maternal.fmpSituation{{$index}}" value="手术"/>手术
+                    </label>
+                </div>
+            </div>
+            <div class="row" ng-show="maternal.fmpSituation == '手术'">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>手术原因：</label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        <input class="form-control" type="text" ng-model="maternal.fmpOperationCause">
+                    </label>
+                </div>
+                <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.fmpOperationCause.length > 50">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>存亡情况：</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpBabySurSituation" name="maternal.fmpBabySurSituation{{$index}}" value="存"/>存
+                    </label>
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpBabySurSituation" ng-click="maternal.fmpBabyWeight=''"
+                               name="maternal.fmpBabySurSituation{{$index}}" value="亡"/>亡
+                    </label>
+                </div>
+            </div>
+            <div class="row" ng-if="maternal.fmpBabySurSituation == '存'">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>新生儿体重：</label>
+                </div>
+                <div class="col-md-4 infi-wj-production-situation">
+                    <label>
+                        <input class="form-control" type="text" ng-model="maternal.fmpBabyWeight">
+                    </label>
+                </div>
+                <span class="infi-wj-reason-tip infi-inline-block">kg</span>
+            </div>
+            <div class="row" ng-if="maternal.fmpBabySurSituation == '亡'">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>新生儿死亡原因：</label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        <input class="form-control" type="text" ng-model="maternal.fmpNewbornDeathCause">
+                    </label>
+                </div>
+                <div class="col-md-3 infi-wj-reason-tip text-danger" ng-show="maternal.fmpNewbornDeathCause.length > 50">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>是否畸形：</label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpDeformity" name="maternal.fmpDeformity{{$index}}" value="是"/>是
+                    </label>
+                    <label class="radio-inlinue">
+                        <input type="radio" ng-model="maternal.fmpDeformity" name="maternal.fmpDeformity{{$index}}" value="否"/>否
+                    </label>
+                </div>
+            </div>
+            <div class="row" ng-if="maternal.fmpDeformity == '是'">
+                <div class="col-md-4 col-md-offset-1 infi-wj-maternal-title">
+                    <label>畸形原因：</label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        <input class="form-control" type="text" ng-model="maternal.fmpDeformityCause">
+                    </label>
+                </div>
+                <div class="infi-wj-reason-tip text-danger" ng-show="maternal.fmpDeformityCause.length > 50">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>50字以内
+                </div>
+            </div>
+    </div>
+
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">孕产期合并症: </label></div>
+        <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;">
+            <label class="checkbox-inline" style="margin-right: 10px;"><input
+                    type="checkbox" ng-model="maternal.maternalComplication.name___u65E0"/>无</label>
+            <label class="checkbox-inline" style="margin-right: 10px;"><input
+                type="checkbox" ng-model="maternal.maternalComplication.name___u598A__u5A20__u671F__u9AD8__u8840__u538B__u75C5"/>妊娠期高血压病</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u5B50__u75EB__u524D__u671F__u8F7B__u5EA6"/>子痫前期轻度</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u5B50__u75EB__u524D__u671F__u91CD__u5EA6"/>子痫前期重度</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u5B50__u75EB"/>子痫</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u598A__u5A20__u671F__u809D__u5185__u80C6__u6C41__u6DE4__u79EF__u75C7"/>妊娠期肝内胆汁淤积症</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u598A__u5A20__u671F__u7CD6__u5C3F__u75C5"/>妊娠期糖尿病</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u80BA__u7ED3__u6838"/>肺结核</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u4E19__u578B__u809D__u708E"/>丙型肝炎</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u4E59__u578B__u809D__u708E"/>乙型肝炎</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u6885__u6BD2"/>梅毒</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u827E__u6ECB"/>艾滋</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u7CD6__u5C3F__u75C5"/>糖尿病</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u598A__u5A20__u5408__u5E76__u6162__u6027__u9AD8__u8840__u538B"/>妊娠合并慢性高血压</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u8D2B__u8840"/>贫血</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u5FC3__u529B__u8870__u7AED"/>心力衰竭</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u6162__u6027__u80BE__u708E"/>慢性肾炎</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u7532__u72B6__u817A__u529F__u80FD__u4EA2__u8FDB"/>甲状腺功能亢进</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u7532__u72B6__u817A__u529F__u80FD__u51CF__u9000"/>甲状腺功能减退</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u9611__u5C3E__u708E"/>阑尾炎</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u80C6__u56CA__u708E"/>胆囊炎</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u80C6__u56CA__u7ED3__u77F3"/>胆囊结石</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u80A0__u6897__u963B"/>肠梗阻</label><label
+                class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                           ng-model="maternal.maternalComplication.name___u80C3__u7A7F__u5B54"/>胃穿孔</label>
+            <label
+                    ng-repeat="(key,value) in maternal.maternalComplicationOTHER" class="checkbox-inline"
+                    style="margin-right: 10px;"><input type="checkbox" ng-model="maternal.maternalComplicationOTHER[key]"/>{{key|unescape}}</label><button
+                    infi-other-value checked="maternal.maternalComplication" style="cursor: pointer" data-type="checkboxOther" class="btn infi-btn-linear-default btn-xs"
+                    data-name="maternal.maternalComplication" >添加其他</button></div>
+    </div>
+    <hr ng-show="{{$index+1}}<maternalList.length" style="border:1px solid #ccc"/>
+</div>

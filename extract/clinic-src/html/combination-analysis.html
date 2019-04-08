@@ -1,0 +1,40 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>总量分析</h4>
+<div class="infi-box">
+    <div class="infi-group">
+        <label>选择查找时间段：</label>
+        <input infi-date="yyyy-mm-dd" ng-model="recordData.startTime" placeholder="开始时间" value="{{recordData.startTime}}"
+               class="form-control infi-group-input datepicker" ng-change="changeData()" /> -
+        <input infi-date="yyyy-mm-dd" placeholder="结束时间" ng-model="recordData.endTime"
+               class="form-control infi-group-input datepicker" value="{{recordData.endTime}}" ng-change="changeData()" />
+    </div>
+    <div class="infi-box-containter">
+        <div id="errorTip"></div>
+        <!--各个科室的条形图-->
+        <div id="scaleDiagram"></div>
+        <div ng-show="recordData.pageResult.status == SYS.STATUS_SUCCESS" class="infi-chart">
+            <div ng-repeat="pageResult in recordData.pageResult.data.result" class="infi-chart-detail"
+                 ng-show="recordData.pageResult.data.result.length > 0">
+                <div class="infi-chart-title" ng-bind="pageResult.dept_name"></div>
+                <div>
+                    <div>
+                        <div class="infi-chart-single" chart-width="pageResult.alone_dept_ratio"></div>
+                        <div class="infi-chart-multiple" chart-width="pageResult.many_dept_ratio"></div><br />
+                    </div>
+                    <div>
+                        <span class="infi-chart-tip infi-chart-single"></span>  -单科就诊
+                        <span ng-bind="pageResult.alone_dept_con"></span>人次
+                        占<span ng-bind="pageResult.alone_dept_ratio|keepTwoDecimal"></span>%
+                    </div>
+                    <div>
+                        <span class="infi-chart-tip infi-chart-multiple"></span> -多科就诊
+                        <span ng-bind="pageResult.many_dept_con"></span>人次
+                        占<span ng-bind="pageResult.many_dept_ratio|keepTwoDecimal"></span>%
+                    </div>
+                </div>
+            </div>
+            <div ng-show="recordData.pageResult.data.result.length == 0" ng-bind="recordData.pageResult.description">没有查询到数据，请修改查询条件</div>
+        </div>
+        <div ng-show="recordData.pageResult.status != SYS.STATUS_SUCCESS" ng-bind="recordData.pageResult.description"
+             class="alert alert-danger"></div>
+    </div>
+</div>

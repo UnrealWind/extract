@@ -1,0 +1,31 @@
+<div class="singLine-component">
+  <link rel="stylesheet" type="text/css" href="./singleLine.scss">
+  <ul class="content-list"
+      sort-data
+      data-pre-level="{{$ctrl.preMapLevel}}">
+    <li class="list-item"
+        ng-style="item.style"
+        ng-repeat="item in orderMap track by $index">
+
+      <span class="field-wrapper"
+            ng-if="$ctrl.typeIs(item.data) != 'array' && item.keyTxt !== 'statusCode'"
+            ng-bind="item.data"></span>
+
+      <!-- 操作按钮 -->
+      <plan-exe-btns whole-item="$ctrl.wholeItem"
+                     single-item="$ctrl.singleItem"
+                     pre-map-level="$ctrl.preMapLevel"
+                     ng-if="item.keyTxt === 'statusCode'"
+                     item-status="orderMap[$index - 1]"
+                     spec-val="item.data"
+                     plan-type="item.type"></plan-exe-btns>
+      <!-- 行中行 -->
+      <single-line ng-if="$ctrl.typeIs(item.data) == 'array'"
+                   ng-repeat="subVal in item.data track by $index" 
+                   whole-item="$ctrl.wholeItem"
+                   single-item="subVal"
+                   pre-map-level="{{$ctrl.preMapLevel}}.interviews.next"></single-line>
+    </li>
+  </ul>
+
+</div>

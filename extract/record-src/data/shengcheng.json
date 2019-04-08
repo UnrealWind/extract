@@ -1,0 +1,27 @@
+[
+  [
+    {
+      "label":"宣教课",
+      "name":"basicInfo.educationClass",
+      "type":"checkbox",
+      "options":[
+        {
+          "label":"早孕",
+          "value":""
+        },
+        {
+          "label":"中孕 ",
+          "value":""
+        },
+        {
+          "label":"晚孕",
+          "value":""
+        },
+        {
+          "label":"临产前",
+          "value":""
+        }
+      ]
+    }
+  ]
+]

@@ -1,0 +1,26 @@
+<div ng-repeat="diagnose in diagnose">
+    <div class="row infi-sj-outpa-pad-top">
+        <div class="col-md-2" style="text-align: right;">
+            <p class="infi-wj-outpa-title">诊断类型:</p>
+        </div>
+        <div class="col-md-8">
+            <p ng-bind="diagnose.diag_type"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 " style="text-align: right;">
+            <p class="infi-wj-outpa-title">诊断描述:</p>
+        </div>
+        <div class="col-md-8">
+            <p ng-bind="diagnose.diagnosis_desc"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="text-align: right;">
+            <p class="infi-wj-outpa-title">诊断日期:</p>
+        </div>
+        <div class="col-md-8">
+            <p ng-bind="diagnose.diagnosis_date|date:'yyyy-MM-dd HH:mm:ss'"></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": [
+    {
+      "label":"病案号",
+      "name":"patientId"
+    },{
+      "label":"姓名",
+      "name":"patientName"
+    },{
+      "label":"年龄",
+      "name":"age"
+    },{
+      "label":"性别",
+      "name":"sex"
+    },{
+      "label":"科室",
+      "name":"dept"
+    },{
+      "label":"病区",
+      "name":"ward"
+    },{
+      "label":"事件类别",
+      "name":"eventType"
+    },{
+      "label":"事件发生时间",
+      "name":"happenDate"
+    }
+  ]
+}

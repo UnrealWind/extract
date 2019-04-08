@@ -1,0 +1,735 @@
+{
+  "data": [
+    {
+      "id": 209,
+      "label": "甲类",
+      "value": null,
+      "children": [
+        {
+          "id": 212,
+          "label": "霍乱",
+          "children": [
+            {
+              "id": 322,
+              "label": "霍乱",
+              "value": "A0100"
+            }
+          ]
+        },
+        {
+          "id": 213,
+          "label": "鼠疫",
+          "value": null,
+          "children": [
+            {
+              "id": 254,
+              "label": "鼠疫",
+              "value": "A0200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "label": "乙类",
+      "value": null,
+      "children": [
+        {
+          "id": 214,
+          "label": "白喉",
+          "value": null,
+          "children": [
+            {
+              "id": 255,
+              "label": "白喉",
+              "value": "B0100"
+            }
+          ]
+        },
+        {
+          "id": 215,
+          "label": "百日咳",
+          "value": null,
+          "children": [
+            {
+              "id": 256,
+              "label": "百日咳",
+              "value": "B0200"
+            }
+          ]
+        },
+        {
+          "id": 216,
+          "label": "病毒性肝炎",
+          "value": null,
+          "children": [
+            {
+              "id": 257,
+              "label": "甲型病毒性肝炎",
+              "value": "B0301"
+            },
+            {
+              "id": 258,
+              "label": "乙型病毒性肝炎",
+              "value": "B0302"
+            },
+            {
+              "id": 259,
+              "label": "丙型病毒性肝",
+              "value": "B0303"
+            },
+            {
+              "id": 260,
+              "label": "丁型病毒性肝炎",
+              "value": "B0304"
+            },
+            {
+              "id": 261,
+              "label": "戊型病毒性肝炎",
+              "value": "B0305"
+            }
+          ]
+        },
+        {
+          "id": 217,
+          "label": "布鲁菌病",
+          "value": null,
+          "children": [
+            {
+              "id": 262,
+              "label": "布鲁菌病",
+              "value": "B0400"
+            }
+          ]
+        },
+        {
+          "id": 218,
+          "label": "传染性非典型肺炎",
+          "children": [
+            {
+              "id": 323,
+              "label": "传染性非典型肺炎",
+              "value": "B0500"
+            }
+          ]
+        },
+        {
+          "id": 219,
+          "label": "登革热",
+          "children": [
+            {
+              "id": 324,
+              "label": "登革热",
+              "value": "B0600"
+            }
+          ]
+        },
+        {
+          "id": 220,
+          "label": "肺结核",
+          "value": null,
+          "children": [
+            {
+              "id": 263,
+              "label": "肺结核",
+              "value": "B0700"
+            }
+          ]
+        },
+        {
+          "id": 221,
+          "label": "钩端螺旋体病",
+          "value": null,
+          "children": [
+            {
+              "id": 264,
+              "label": "钩端螺旋体病",
+              "value": "B0800"
+            }
+          ]
+        },
+        {
+          "id": 222,
+          "label": "获得性免疫缺陷综合征",
+          "value": null,
+          "children": [
+            {
+              "id": 251,
+              "label": "呼吸系统",
+              "value": null,
+              "children": [
+                {
+                  "id": 265,
+                  "label": "艾滋病并发耶氏肺孢子菌",
+                  "value": "B0901"
+                },
+                {
+                  "id": 266,
+                  "label": "艾滋病并发肺隐球菌病",
+                  "value": "B0902"
+                },
+                {
+                  "id": 267,
+                  "label": "艾滋病并发肺结核",
+                  "value": "B0903"
+                },
+                {
+                  "id": 268,
+                  "label": "艾滋病并发马尔尼菲青霉菌感染",
+                  "value": "B0904"
+                },
+                {
+                  "id": 269,
+                  "label": "艾滋病并发马红球菌感染",
+                  "value": "B0905"
+                },
+                {
+                  "id": 270,
+                  "label": "艾滋病合并肺弓形虫病",
+                  "value": "B0906"
+                },
+                {
+                  "id": 271,
+                  "label": "艾滋病合并肺Kaposi肉瘤 ",
+                  "value": "B0907"
+                },
+                {
+                  "id": 272,
+                  "label": "艾滋病合并肺毛霉菌",
+                  "value": "B0908"
+                },
+                {
+                  "id": 273,
+                  "label": "艾滋病合并肺念珠菌病",
+                  "value": "B0909"
+                },
+                {
+                  "id": 274,
+                  "label": "艾滋病合并肺诺卡菌病",
+                  "value": "B0910"
+                },
+                {
+                  "id": 275,
+                  "label": "艾滋病合并肺曲霉病",
+                  "value": "B0911"
+                },
+                {
+                  "id": 276,
+                  "label": "艾滋病合并巨细胞病毒肺炎",
+                  "value": "B0912"
+                },
+                {
+                  "id": 277,
+                  "label": "艾滋病合并肺淋巴瘤",
+                  "value": "B0913"
+                },
+                {
+                  "id": 278,
+                  "label": "艾滋病合并细菌性肺炎",
+                  "value": "B0914"
+                },
+                {
+                  "id": 279,
+                  "label": "艾滋病并发非结核分枝杆菌感染",
+                  "value": "B0915"
+                }
+              ]
+            },
+            {
+              "id": 252,
+              "label": "中枢神经系统",
+              "value": null,
+              "children": [
+                {
+                  "id": 280,
+                  "label": "艾滋病并发颅内结核",
+                  "value": "B0916"
+                },
+                {
+                  "id": 281,
+                  "label": "艾滋病并发颅内曲霉菌感染",
+                  "value": "B0917"
+                },
+                {
+                  "id": 282,
+                  "label": "艾滋病并发新型隐球菌脑膜脑炎",
+                  "value": "B0918"
+                },
+                {
+                  "id": 283,
+                  "label": "艾滋病合并单纯疱疹病毒性脑炎",
+                  "value": "B0919"
+                },
+                {
+                  "id": 284,
+                  "label": "艾滋病合并弓形虫脑炎",
+                  "value": "B0920"
+                },
+                {
+                  "id": 285,
+                  "label": "艾滋病合并巨细胞病毒性脑膜脑炎",
+                  "value": "B0921"
+                },
+                {
+                  "id": 286,
+                  "label": "艾滋病合并马红球菌脑膜脑炎",
+                  "value": "B0922"
+                },
+                {
+                  "id": 287,
+                  "label": "艾滋病合并神经梅毒",
+                  "value": "B0923"
+                },
+                {
+                  "id": 288,
+                  "label": "艾滋病进行性多灶性白质脑病",
+                  "value": "B0924"
+                },
+                {
+                  "id": 289,
+                  "label": "艾滋病相关性脑淋巴瘤",
+                  "value": "B0925"
+                },
+                {
+                  "id": 290,
+                  "label": "艾滋病相关性脑萎缩",
+                  "value": "B0926"
+                },
+                {
+                  "id": 291,
+                  "label": "HIV脑炎",
+                  "value": "B0927"
+                }
+              ]
+            },
+            {
+              "id": 253,
+              "label": "消化系统",
+              "value": null,
+              "children": [
+                {
+                  "id": 292,
+                  "label": "艾滋病并发腹部马尔尼菲青霉菌感染",
+                  "value": "B0928"
+                },
+                {
+                  "id": 293,
+                  "label": "艾滋病并发肝非结核分枝杆菌感染",
+                  "value": "B0929"
+                },
+                {
+                  "id": 294,
+                  "label": "艾滋病并发肝结核",
+                  "value": "B0930"
+                },
+                {
+                  "id": 295,
+                  "label": "艾滋病合并肝Kaposi肉瘤",
+                  "value": "B0931"
+                },
+                {
+                  "id": 296,
+                  "label": "艾滋病合并肝癌",
+                  "value": "B0932"
+                },
+                {
+                  "id": 297,
+                  "label": "艾滋病合并肝淋巴瘤",
+                  "value": "B0933"
+                },
+                {
+                  "id": 298,
+                  "label": "艾滋病合并脾淋巴瘤",
+                  "value": "B0934"
+                },
+                {
+                  "id": 299,
+                  "label": "艾滋病合并细菌性肝脓肿",
+                  "value": "B0935"
+                },
+                {
+                  "id": 300,
+                  "label": "艾滋病合并肝真菌感染",
+                  "value": "B0936"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 223,
+          "label": "脊髓灰质炎",
+          "value": null,
+          "children": [
+            {
+              "id": 301,
+              "label": "脊髓灰质炎",
+              "value": "B1000"
+            }
+          ]
+        },
+        {
+          "id": 224,
+          "label": "狂犬病",
+          "children": [
+            {
+              "id": 325,
+              "label": "狂犬病",
+              "value": "B1100"
+            }
+          ]
+        },
+        {
+          "id": 225,
+          "label": "淋病",
+          "value": null,
+          "children": [
+            {
+              "id": 326,
+              "label": "淋病",
+              "value": "B1200"
+            }
+          ]
+        },
+        {
+          "id": 226,
+          "label": "流行性出血热",
+          "value": null,
+          "children": [
+            {
+              "id": 302,
+              "label": "流行性出血热",
+              "value": "B1300"
+            }
+          ]
+        },
+        {
+          "id": 227,
+          "label": "流行性脑脊髓膜炎",
+          "value": null,
+          "children": [
+            {
+              "id": 303,
+              "label": "流行性脑脊髓膜炎",
+              "value": "B1400"
+            }
+          ]
+        },
+        {
+          "id": 228,
+          "label": "流行性乙型脑炎",
+          "value": null,
+          "children": [
+            {
+              "id": 304,
+              "label": "流行性乙型脑炎",
+              "value": "B1500"
+            }
+          ]
+        },
+        {
+          "id": 229,
+          "label": "麻疹",
+          "value": null,
+          "children": [
+            {
+              "id": 305,
+              "label": "麻疹",
+              "value": "B1600"
+            }
+          ]
+        },
+        {
+          "id": 230,
+          "label": "梅毒",
+          "value": null,
+          "children": [
+            {
+              "id": 306,
+              "label": "梅毒",
+              "value": "B1700"
+            }
+          ]
+        },
+        {
+          "id": 231,
+          "label": "疟疾",
+          "value": null,
+          "children": [
+            {
+              "id": 307,
+              "label": "疟疾",
+              "value": "B1800"
+            }
+          ]
+        },
+        {
+          "id": 232,
+          "label": "人感染高致病性禽流感",
+          "value": null,
+          "children": [
+            {
+              "id": 308,
+              "label": "人感染H5N1禽流感",
+              "value": "B1901"
+            },
+            {
+              "id": 309,
+              "label": "人感染H7N9禽流感",
+              "value": "B1902"
+            },
+            {
+              "id": 310,
+              "label": "甲型H1N1流感",
+              "value": "B1903"
+            }
+          ]
+        },
+        {
+          "id": 233,
+          "label": "伤寒和副伤寒",
+          "value": null,
+          "children": [
+            {
+              "id": 311,
+              "label": "伤寒",
+              "value": "B2001"
+            },
+            {
+              "id": 312,
+              "label": "副伤寒",
+              "value": "B2002"
+            }
+          ]
+        },
+        {
+          "id": 234,
+          "label": "炭疽",
+          "value": null,
+          "children": [
+            {
+              "id": 313,
+              "label": "炭疽",
+              "value": "B2100"
+            }
+          ]
+        },
+        {
+          "id": 235,
+          "label": "细菌性和阿米巴性痢疾",
+          "value": null,
+          "children": [
+            {
+              "id": 314,
+              "label": "细菌性痢疾",
+              "value": "B2201"
+            },
+            {
+              "id": 315,
+              "label": "阿米巴性痢疾",
+              "value": "B2202"
+            }
+          ]
+        },
+        {
+          "id": 236,
+          "label": "新生儿破伤风",
+          "value": null,
+          "children": [
+            {
+              "id": 316,
+              "label": "新生儿破伤风",
+              "value": "B2300"
+            }
+          ]
+        },
+        {
+          "id": 237,
+          "label": "猩红热",
+          "value": null,
+          "children": [
+            {
+              "id": 327,
+              "label": "猩红热",
+              "value": "B2400"
+            }
+          ]
+        },
+        {
+          "id": 238,
+          "label": "血吸虫病",
+          "value": null,
+          "children": [
+            {
+              "id": 328,
+              "label": "急性血吸虫病",
+              "value": "B2501"
+            },
+            {
+              "id": 329,
+              "label": "慢性血吸虫病",
+              "value": "B2502"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "label": "丙类",
+      "value": null,
+      "children": [
+        {
+          "id": 239,
+          "label": "包虫病",
+          "value": "C0100",
+          "children": [
+            {
+              "id": 400,
+              "label": "包虫病",
+              "value": "C0100"
+            }
+          ]
+        },
+        {
+          "id": 240,
+          "label": "除霍乱、细菌性和阿米巴性痢疾、伤寒和副伤寒以外的感染性腹泻",
+          "value": null,
+          "children": [
+            {
+              "id": 330,
+              "label": "除霍乱、细菌性和阿米巴性痢疾、伤寒和副伤寒以外的感染性腹泻",
+              "value": "C0200"
+            }
+          ]
+        },
+        {
+          "id": 241,
+          "label": "风疹",
+          "value": null,
+          "children": [
+            {
+              "id": 318,
+              "label": "风疹",
+              "value": "C0300"
+            }
+          ]
+        },
+        {
+          "id": 242,
+          "label": "黑热病",
+          "value": null,
+          "children": [
+            {
+              "id": 331,
+              "label": "黑热病",
+              "value": "C0400"
+            }
+          ]
+        },
+        {
+          "id": 243,
+          "label": "急性出血性结膜炎",
+          "value": null,
+          "children": [
+            {
+              "id": 332,
+              "label": "急性出血性结膜炎",
+              "value": "C0500"
+            }
+          ]
+        },
+        {
+          "id": 244,
+          "label": "流行性斑疹伤寒和地方性斑疹伤寒",
+          "value": null,
+          "children": [
+            {
+              "id": 333,
+              "label": "流行性斑疹伤寒",
+              "value": "C0601"
+            },
+            {
+              "id": 334,
+              "label": "地方性斑疹伤寒",
+              "value": "C0602"
+            }
+          ]
+        },
+        {
+          "id": 245,
+          "label": "流行性感冒",
+          "value": null,
+          "children": [
+            {
+              "id": 401,
+              "label": "流行性感冒",
+              "value": "C0700"
+            }
+          ]
+        },
+        {
+          "id": 246,
+          "label": "甲型H1N1流感",
+          "value": null,
+          "children": [
+            {
+              "id": 402,
+              "label": "甲型H1N1流感",
+              "value": "C0800"
+            }
+          ]
+        },
+        {
+          "id": 247,
+          "label": "流行性腮腺炎",
+          "value": null,
+          "children": [
+            {
+              "id": 335,
+              "label": "流行性腮腺炎",
+              "value": "C0900"
+            }
+          ]
+        },
+        {
+          "id": 248,
+          "label": "麻风病",
+          "value": null,
+          "children": [
+            {
+              "id": 336,
+              "label": "麻风病",
+              "value": "C1000"
+            }
+          ]
+        },
+        {
+          "id": 249,
+          "label": "手足口病",
+          "value": "C1100",
+          "children": [
+            {
+              "id": 337,
+              "label": "手足口病",
+              "value": "C1100"
+            }
+          ]
+        },
+        {
+          "id": 250,
+          "label": "丝虫病",
+          "value": "C1200",
+          "children": [
+            {
+              "id": 338,
+              "label": "丝虫病",
+              "value": "C1200"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

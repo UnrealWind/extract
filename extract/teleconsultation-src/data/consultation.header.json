@@ -1,0 +1,28 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":{
+    "columns":[
+      {
+        "label":"所在医院",
+        "name":"docHosp"
+      },
+      {
+        "label":"科室",
+        "name":"docDept"
+      },
+      {
+        "label":"医生",
+        "name":"docName"
+      },
+      {
+        "label":"会诊角色",
+        "name":"role"
+      },
+      {
+        "label":"医生是否同意",
+        "name":"status"
+      }
+    ]
+  }
+}

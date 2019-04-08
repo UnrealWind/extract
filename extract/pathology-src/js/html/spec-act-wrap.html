@@ -1,0 +1,35 @@
+
+<div class="popover spec-popover fade bottom in show"
+     ng-style="specStyle[enteritem.labelId]">
+    <div class="arrow"></div>
+    <h3 class="popover-title" style="display: none;"></h3>
+    <div class="popover-content">
+        <button type="button" class="close" aria-label="Close" ng-click="closePop()"><span aria-hidden="true">&times;</span></button>
+
+        <!-- 单选类型 -->
+        <div ng-if="enteritem.data.type == '3'">
+            <ul class="enteritem-dimension">
+                <li ng-repeat="single in enteritem.data.dimension.options"
+                    class="enteritem-opt">
+                    <input type="radio" class="form-control align-item" id="{{single.fieldId + '_' +single.order}}"
+                            ng-model="enteritem.data.value"
+                            value="{{single.value}}"
+                            ng-click="checkRadio(single)">
+                    
+                    <label for="{{single.fieldId + '_' +single.order}}" 
+                            class="control-label align-item">{{single.label}}</label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 文本类型 -->
+        <div ng-if="enteritem.data.type == '1'">
+            <div class="">
+                <label>{{enteritem.data.label}}</label>
+                <div>
+                    <input type="text" class="form-control" ng-model="enteritem.data.value">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

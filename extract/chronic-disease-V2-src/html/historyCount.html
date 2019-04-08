@@ -1,0 +1,116 @@
+<!-- 历史统计 -->
+<div class="container-fluid historyCount-page">
+  <style>
+    .main-content-wrapper,
+    article.infi-main {
+      background-color: #f0f3ef;
+    }
+  </style>
+
+  <div class="main-wrapper">
+    <!-- 总览 -->
+    <div class="row summary-wrapper">
+      <!-- 总人数 -->
+      <div class="whole-container">
+        <div class="content-wrapper">
+          <p class="content-title" ng-bind="kpiAllData[0].name"></p>
+          <p class="content-num" ng-bind="kpiAllData[0].value"></p>
+        </div>
+      </div>
+
+      <!-- 分疾病 -->
+      <div class="detail-container">
+        <p class="detail-title">历史入组总体情况</p>
+
+        <ul class="detail-item-list">
+          <li class="detail-item" 
+              ng-repeat="kpi in kpiAllData"
+              ng-if="$index !== 0">
+            <div class="left-wrapper">
+            </div>
+            <div class="right-wrapper">
+              <p class="item-num" ng-bind="kpi.name"></p>
+              <p class="item-title" ng-bind="kpi.value"></p>
+            </div>
+          </li>
+
+
+          <!-- <li class="detail-item">
+            <div class="left-wrapper">
+
+            </div>
+            <div class="right-wrapper">
+              <p class="item-num">423</p>
+              <p class="item-title">间歇性肺疾病入组患者数</p>
+            </div>
+          </li>
+          <li class="detail-item">
+              <div class="left-wrapper">
+
+              </div>
+              <div class="right-wrapper">
+                <p class="item-num">45464</p>
+                <p class="item-title">哮喘入组患者数</p>
+              </div>
+          </li>
+          <li class="detail-item">
+              <div class="left-wrapper">
+
+              </div>
+              <div class="right-wrapper">
+                <p class="item-num">56345</p>
+                <p class="item-title">支气管扩张入组患者数</p>
+              </div>      
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- 时间范围 -->
+    <!-- <div class="row date-range-wrapper">
+      <div class="col-md-12 data-form-wrapper">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="date-range-ipt" class="control-label">时间宽度：</label>
+            <input type="text"
+                    class="form-control cursor"
+                    readonly
+                    id="date-range-ipt"
+                    ipt-date-range
+                    opts="dateRangeOpts"
+                    range-bind="rangeBind">
+          </div>
+        </form>
+      </div>
+    </div> -->
+
+    <div class="row graphs-wrapper clearfix">
+      <!-- 历史入组总体构成情况饼图 -->
+      <div class="graph-wrapper pie-wrapper">
+        <h4 class="graph-title-wrapper">
+          <span class="graph-title">历史入组总体构成情况</span>
+        </h4>
+        <div id="pie-graph" class="grap-drawing">
+
+        </div>
+      </div>
+      <!-- 历史入组总体构成情况柱状图 -->
+      <!-- <div class="graph-wrapper column-wrapper">
+        <h4 class="graph-title-wrapper">
+          <span class="graph-title">历史入组总体构成情况</span>
+          <span class="graph-data-filter-wrapper">
+            <span class="filter-item"
+                  ng-click="changeFilter($index)"
+                  ng-repeat="filter in filterKind"
+                  ng-bind="filter.label"
+                  ng-class="{true: 'active'}[$index == defaultFilterkind]"></span>
+          </span>
+        </h4>
+        <div id="column-graph" class="grap-drawing">
+
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+</div>

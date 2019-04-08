@@ -1,0 +1,37 @@
+[
+  {
+    "name": "门急诊监控",
+    "cls": "-list-alt",
+    "href": "monitor",
+    "show":"",
+    "active": "list-group-active",
+    "child": null
+  },
+  {
+    "name": "多科就诊统计分析",
+    "cls": "-list-alt",
+    "href": "",
+    "active": "",
+    "show":false,
+    "child": [
+      {
+        "name": "总量分析",
+        "cls": "-list-alt",
+        "href": "combination",
+        "active": ""
+      },
+      {
+        "name": "组合分析",
+        "cls": "-barcode",
+        "href": "consultation",
+        "active": ""
+      },
+      {
+        "name": "科室排行分析",
+        "cls": "-check",
+        "href": "proportion",
+        "active": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,320 @@
+<div>
+<div class="row">
+  <!-- 返回 -->
+  <div class="col-md-2">
+    <button class="btn btn-default"
+            ng-click="backListAction.leaveWarn()"><i class="glyphicon glyphicon-chevron-left"></i> 返回</button>
+  </div>
+
+  <!-- 打印/导出 -->
+  <div class="col-md-2" ng-if="['1', '4'].indexOf(currOpt.rowData[btnMap[currOpt.formId]]) >= 0">
+      <button type="button" class="btn btn-default" ng-click="printPage()" title="打印"><i class="glyphicon glyphicon-print"></i></button>
+      <!-- <button type="button" class="btn btn-default" ng-click="savePageAsImg()" title="导出图片"><i class="glyphicon glyphicon-save"></i></button> -->
+  </div>
+
+  <!-- 占位符 -->
+  <div class="col-md-4 text-center"></div>
+
+  <!-- 保存/提交 -->
+  <div class="" ng-if="['0', '1', '3', '4'].indexOf(currOpt.rowData[btnMap[currOpt.formId]]) >= 0 ">
+    <div class="btn-group pull-right col-md-3 clearfix" role="group" ng-if="orgPageData">
+      <!-- 第一二页 临床医生（30）或者超级管理员（24） -->
+      <div ng-if="['1','2'].indexOf(currOpt.formId)>=0">
+        <div ng-if="currUsrRole == 30 || currUsrRole == 24">
+          <button type="button" class="btn btn-primary" ng-click="saveApplyData()" ng-if="varstatus.saveStatus == 'init'"><i class="glyphicon glyphicon-floppy-disk"></i> 保存</button>
+          <button type="button" class="btn btn-primary" disabled ng-if="varstatus.saveStatus != 'init'"><i class="glyphicon glyphicon-floppy-disk"></i> 保存中...</button>
+          
+          <button type="button" class="btn btn-primary" 
+                  ng-click="submitApplyData()" 
+                  ng-if="varstatus.submitStatus == 'init' && ['1','2'].indexOf(currOpt.formId) >=0"><i class="glyphicon glyphicon-send"></i> 发送</button>
+          <button type="button" 
+                  class="btn btn-primary" 
+                  disabled 
+                  ng-if="varstatus.submitStatus != 'init' && ['1','2'].indexOf(currOpt.formId) >=0"><i class="glyphicon glyphicon-floppy-disk"></i> 发送中...</button>
+        
+          <!-- 1 已提交(已发送) 3 保存 && 送检单未发送 && 不是送检单或者报告页 -->
+          <!-- <div ng-if="currUsrRole == 30"> -->
+          <div ng-if="['1', '4'].indexOf(currOpt.rowData[btnMap[currOpt.formId]]) >= 0 && currOpt.rowData['send_form_status'] != 1 && ['2', '3'].indexOf(currOpt.formId) < 0"
+                style="display: inline-block">
+        
+            <!-- 撤销按钮 -->
+            <button type="button" class="btn btn-info" ng-click="recallApplyData()" ng-if="varstatus.recallStatus == 'init'"><i class="glyphicon glyphicon-floppy-remove"></i> 撤销</button>
+            <button type="button" class="btn btn-info" disabled ng-if="varstatus.recallStatus != 'init'"><i class="glyphicon glyphicon-floppy-remove"></i> 撤销中...</button>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <!-- 第一二页 病理医生 -->
+      <div ng-if="['3'].indexOf(currOpt.formId)>=0">
+        <!-- 病理医生 -->
+        <div ng-if="currUsrRole == 27">
+          <button type="button" class="btn btn-primary" ng-click="saveApplyData()" ng-if="varstatus.saveStatus == 'init'"><i class="glyphicon glyphicon-floppy-disk"></i> 保存</button>
+          <button type="button" class="btn btn-primary" disabled ng-if="varstatus.saveStatus != 'init'"><i class="glyphicon glyphicon-floppy-disk"></i> 保存中...</button>
+
+
+          <!-- 生成报告单 -->
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-click="genReport()"
+                  ng-if="['3'].indexOf(currOpt.formId) >=0 && currOpt.rowData['finalReportStatus'] != '1'"><i class="glyphicon glyphicon-export"></i> 生成报告单</button>
+    
+          <button type="button" 
+                  class="btn btn-primary"
+                  ng-click="genReport()"
+                    ng-if="['3'].indexOf(currOpt.formId) >=0 && currOpt.rowData['finalReportStatus'] == '1'"><i class="glyphicon glyphicon-eye-open"></i> 查看报告单</button>
+        </div>
+
+        <!-- 临床医生（30）或者超级管理员（24） -->
+        <div ng-if="currUsrRole == 30 || currUsrRole == 24">
+          <button type="button" 
+            class="btn btn-primary"
+            ng-click="genReport()"
+            ng-if="['3'].indexOf(currOpt.formId) >=0 && currOpt.rowData['finalReportStatus'] == '1'"><i class="glyphicon glyphicon-eye-open"></i> 查看报告单</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- 整个表单外侧容器, 供打印/导出使用 -->
+<div class="no-print" id="domtoimg-wrapper">
+  <!-- page title -->
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h4 ng-if="currOpt.formId == '1'">肾穿申请单</h4>
+      <h4 ng-if="currOpt.formId == '2'">肾活检病理送检单</h4>
+    </div>
+  </div>
+  
+  
+  <hr class="divider title-divider">
+  
+  
+  <!-- 表单正文 -->
+  <div class="row sec-wrapper no-print">
+    <!-- 分块 --> 
+    <div class="panel panel-default"
+         ng-repeat="sec in orgPageData"
+         ng-if="sec.children.length > 0">
+      
+      <!-- panel-head -->
+      <div class="panel-heading sec-header"
+           ng-if="sec.showParentLabelFlag">
+        <h3 class="panel-title"
+            ng-bind="sec.label"></h3>
+      </div>
+  
+      <!-- panel-body -->
+      <div class="panel-body sec-body">
+        <!-- type == 4 为上传文件 独占一行， upload-flex 控制 -->
+        <div class="sec-pos"
+              ng-repeat="item in sec.children"
+              ng-class="{true: 'upload-flex', false: 'normal-flex'}[item.type == 4]"  
+              ng-show="specAct.specInd.indexOf(item.labelId) < 0"
+              insert-divide-line
+              repeat-history-finish>
+
+          <!-- 收集特殊交互的字段源数据 -->
+          <spec-inter-act ng-if="specAct.specEle[item.labelId]" collect="specAct.specEle[item.labelId]" item="item"></spec-inter-act>
+          
+          <!-- 文本输入类型 -->
+          <div ng-if="item.type == '1'"
+                class="sec-item">
+            <label for="{{item.name}}" 
+                    class="text-right sec-label">
+              <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+              <span ng-bind="item.label + ':'"></span>
+            </label>
+
+            <div ng-class="{true: 'input-group unitInput'}[item.hasUnit == '1']">
+              <input type="text" 
+                      class="form-control"
+                      id="{{item.name}}"
+                      placeholder="请输入{{item.label}}"
+                      ng-model="item.value"
+                      title="{{item.value}}"
+                      ng-disabled="((currUsrRole == 30 || currUsrRole == 24) && currOpt.formId == '3') || (currUsrRole == 27 && ['1','2'].indexOf(currOpt.formId) >=0)"
+                      ng-change="countValue($index, item)">
+              <span class="input-group-addon" ng-if="item.hasUnit == '1'" ng-bind="item.units"></span>
+            </div>
+
+          </div>
+
+          <!-- 大文本输入类型 -->
+          <div class="sec-item"
+               ng-if="item.type == '6'">
+
+            <label for="{{item.name}}" 
+                  class="text-right sec-label">
+              <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+              <span ng-bind="item.label + ':'"></span>
+            </label>
+            
+            <div ng-class="{true: 'input-group unitInput'}[item.hasUnit == '1']">
+                <textarea class="form-control" rows="5" cols="35"
+                          id="item.name" 
+                          placeholder="请输入{{item.label}}"
+                          ng-model="item.value"
+                          title="{{item.value}}"
+                          ng-disabled="((currUsrRole == 30 || currUsrRole == 24) && currOpt.formId == '3') || (currUsrRole == 27 && ['1','2'].indexOf(currOpt.formId) >=0)"></textarea>
+            </div>
+          </div>
+
+          <!-- 单一图片 -->
+          <div ng-if="item.type == '7'"
+               class="sec-item">
+            <label for="{{item.name}}"
+                   class="text-right sec-labe">
+              <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+              <span ng-bind="item.label + ':'"></span>
+            </label>
+
+            <img class="single-img"
+                 ng-src="{{item.value}}"
+                 id="item.name"/>
+          </div>
+
+          <!-- 时间选择 -->
+          <div ng-if="item.type == '5'"
+               class="sec-item">
+            <label for="{{item.name}}" 
+                   class="text-right sec-label">
+              <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+              <span ng-bind="item.label + ':'"></span>
+            </label>
+
+            <input readonly
+                  type="text"
+                  name= "item.name"
+                  class="form-control"
+                  ng-model="item.value"
+                  placeholder="请选择{{item.label}}"
+                  title="{{item.value}}"
+                  ipt-date 
+                  ng-disabled="((currUsrRole == 30 || currUsrRole == 24) && currOpt.formId == '3') || (currUsrRole == 27 && ['1','2'].indexOf(currOpt.formId) >=0)">
+          </div>
+
+          <!-- 上传文件 -->
+          <div class="imgList sec-item"
+               ng-if="item.type == '4'">
+            <pre-img show-btn="true" item="item" record-id="orgPageData[0].recordId" edit-able="true"></pre-img>
+          </div>
+
+
+          <!-- 单选类型 -->
+          <div ng-if="item.type == '3'"
+               class="sec-item rad-check-item">
+            <!-- 收集需要必填验证的数据 -->
+            <collect-spec-data  ng-if="item.hasNecessary == 'true'"
+                                collect="mustFilled" data="item"></collect-spec-data>
+
+            <label class="text-right sec-label">
+              <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+              <span ng-bind="item.label + ':'"></span>
+            </label>
+
+            <ul class="clearfix opts-ul">
+              <li ng-repeat="single in item.dimension.options"
+                  class="pull-left opts-li">
+                
+                  <input type="radio" 
+                          name="{{item.label}}" 
+                          id="{{single.fieldId + '_' +single.order}}"
+                          ng-model="item.value" 
+                          value="{{single.value}}"
+                          ng-click="setSpecSup(single)"
+                          ng-disabled="((currUsrRole == 30 || currUsrRole == 24) && currOpt.formId == '3') || (currUsrRole == 27 && ['1','2'].indexOf(currOpt.formId) >=0)">
+
+                  <label class="rad-chec-label" for="{{single.fieldId + '_' +single.order}}">{{single.label}}</label>
+
+                  <!-- 特殊交互容器 -->
+                  <spec-inter-act-con ng-if="specAct.supItem.indexOf(single.childId) >= 0 && specAct.specEnterItem"
+                      enteritem="specAct.specEnterItem" spec-ele="specAct.specEle"></spec-inter-act-con>
+                
+                </li>
+            </ul>
+          </div>
+
+
+          <!-- 多选类型 -->
+          <div class="sec-item rad-check-item"
+               ng-if="item.type == '2'">
+              
+              <!-- 收集需要必填验证的数据 -->
+              <collect-spec-data  ng-if="item.hasNecessary == 'true'"
+                                  collect="mustFilled" data="item"></collect-spec-data>
+
+              <label class="text-right sec-label">
+                <i class="glyphicon glyphicon-asterisk text-danger"  ng-if="item.hasNecessary == 'true'"></i>
+                <span ng-bind="item.label + ':'"></span>
+              </label>
+
+              <ul class="clearfix opts-ul">
+                <li ng-repeat="single in item.dimension.options"
+                    class="pull-left opts-li">
+
+                    <input type="checkbox" 
+                          name="single.label"
+                          id="{{single.fieldId + '_' +single.order}}"
+                          ng-checked="item.value.split(',').indexOf(single.value) >= 0"
+                          ng-model="single.checked"
+                          ng-click="selectCheckbox(single, item)"
+                          ng-disabled="((currUsrRole == 30 || currUsrRole == 24) && currOpt.formId == '3') || (currUsrRole == 27 && ['1','2'].indexOf(currOpt.formId) >=0)">
+
+                    <label class="rad-chec-label" for="{{single.fieldId + '_' +single.order}}">{{single.label}}</label>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+
+        <!-- 占位用，为了修复总数据条数不能被 3 整除导致的末尾行无法对其的问题 -->
+        <div class="sec-pos normal-flex fill-blank"></div>
+        <div class="sec-pos normal-flex fill-blank"></div>
+        <div class="sec-pos normal-flex fill-blank"></div>
+      </div>
+    </div>
+  </div>
+
+</div>  
+
+
+<!-- 打印内容 -->
+<div class="print-content hide" id="form-wrapper">
+  <div class="print-wrapper">
+    <div class="content-wrapper page-break">
+      <div ng-if="currOpt.formId == '1'" class="ng-include: './js/html/apply.html'"></div>
+      <div ng-if="currOpt.formId == '2'" class="ng-include: './js/html/send.html'"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="backListWarn-wrapper"  ng-if="backListAbout.backListWarn">
+  <div class="alert alert-warning backListWarn fade in">
+    <button type="button" class="close"><span ng-click="backListAction.ifGoBack(1)">×</span></button>
+    <h4>您确定返回吗?</h4>
+    <p>如果现在选择返回将保存最近一份提交或保存操作的表单内容.</p>
+    <p>
+      <button type="button" class="btn btn-danger" ng-click="backListAction.ifGoBack(0)">舍弃</button>
+      <button type="button" class="btn btn-default" ng-click="backListAction.ifGoBack(1)">取消</button>
+    </p>
+  </div>
+</div>
+
+<!-- toast 通知 -->
+<toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+
+
+
+</div>
+
+
+<img ng-click="backTop()" src="../images/top.jpg" alt="" class="back-top" style="width: 40px; height:40px; position: fixed; right:14px;
+bottom: 78px; z-index: 10; cursor: pointer;" title="返回顶部">

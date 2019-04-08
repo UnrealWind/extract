@@ -1,0 +1,228 @@
+<!--取数-取数任务列表详情-->
+<div class="infi-content-wrapper">
+    <div ng-show="recordData.kpi.status == SYS.STATUS_SUCCESS" class="infi-box infi-box-kpi row">
+        <div class=" col-lg-3">
+            <dl class="infi-column-kpi">
+                <dt class="infi-title">申请信息</dt>
+                <dd class="infi-box-containter">
+                    <div class="infi-value">
+                        <span ng-bind="recordData.kpi.data.createTime"></span>
+                    </div>
+                    <div class="infi-text">申请人：<span class="red" ng-bind="recordData.kpi.data.user"></span></div>
+                </dd>
+            </dl>
+        </div>
+        <div class=" col-lg-3">
+            <dl class="infi-column-kpi">
+                <dt class="infi-title">当月累计取数次数</dt>
+                <dd class="infi-box-containter">
+                    <div class="infi-value" ng-bind="recordData.kpi.data.taskNumber"></div>
+                    <div class="infi-text">累计可提取阈值：<span style="color: #000;" ng-bind="recordData.kpi.data.threshold"></span></div>
+                </dd>
+            </dl>
+        </div>
+        <div class=" col-lg-3">
+            <dl class="infi-column-kpi">
+                <dt class="infi-title">本次提取病历数</dt>
+                <dd class="infi-box-containter">
+                    <div class="infi-value" style="color: red;" ng-bind="recordData.kpi.data.recordNumber"></div>
+                    <div class="infi-text">当月累计：<span style="color: #000;" ng-bind="recordData.kpi.data.recordTotal"></span></div>
+                </dd>
+            </dl>
+        </div>
+        <div class=" col-lg-3">
+            <dl class="infi-column-kpi">
+                <dt class="infi-title">本次提取标签数</dt>
+                <dd class="infi-box-containter">
+                    <div class="infi-value" ng-bind="recordData.kpi.data.tagNumber"></div>
+                    <div class="infi-text">当月累计：<span style="color: #000;" ng-bind="recordData.kpi.data.tagTotal"></span></div>
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+    <div ng-show="recordData.kpi.status != SYS.STATUS_SUCCESS" ng-bind="recordData.kpi.description"
+         class="alert-danger infi-box infi-box-kpi row"></div>
+    <!--查看详情特有的返回按钮-->
+    <div class="infi-m-btn" ng-show="recordData.viewType == 'detail'">
+        <a class="btn btn-default" onclick="history.back()">返回</a>
+    </div>
+    <!--查看详情特有的返回按钮 END-->
+    <!--任务审核特有的功能-->
+    <div class="infi-box" ng-show="recordData.viewType == 'check'">
+        <h4 class="infi-title">审核任务</h4>
+        <div class="infi-box-containter">
+            <div id="formTip"></div>
+            <div class="infi-m-fm">
+                <p class="infi-m-tab">
+                    <label>是否脱敏:</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="mask" value="1" ng-model="taskCheck.checkMask" />是
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="mask" value="0" ng-model="taskCheck.checkMask" />否
+                    </label>
+                </p>
+
+                <p class="infi-m-tab">
+                    <label>审批结果 :</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="bool" value="true" ng-model="taskCheck.checkResult" />通过
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="bool" value="false" ng-model="taskCheck.checkResult" />驳回
+                    </label>
+                </p>
+                <p class="infi-m-ipt">
+                    <label>审批理由 :</label>
+                    <textarea class="infi-u-ipt" type="text" name="remark" ng-model="taskCheck.checkReason"></textarea>
+                </p>
+                <p class="infi-m-btn">
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="checkTask()">提交</button>
+                    <a class="btn btn-default" onclick="history.back()">返回</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--任务审核特有的功能 END-->
+    <div class="infi-box">
+        <h4 class="infi-title">预览提取结果（限5条）</h4>
+        <!-- 预览提取结果 -->
+        <div preview-export></div>
+
+
+        <h4 class="infi-title">任务详情</h4>
+        <div class="infi-box-containter">
+            <div class="infi-m-ct">
+                <ul ng-show="taskDetail.taskName">
+                    <li><span>任务名称：</span> {{taskDetail.taskName}}</span></li>
+                    <li><span>任务背景：</span> {{taskDetail.taskRemark}}</span></li>
+                    <li><span>研究目的：</span> {{taskDetail.purpose}}</span></li>
+                    <li><span>研究方案：</span> {{taskDetail.researchPlan}}</span></li>
+                </ul>
+            </div>
+
+            <div id="infi-m-tab" class="infi-m-ct">
+                <h4 class="infi-u-tt">筛选条件</h4>
+                <div ng-show="recordData.allData.group.soureType == 'FILTER'">
+                    <ul>
+                        <li ng-show="recordData.screenRecord.length > 0 && recordData.screenRecord[0].historyLogic != ''"
+                             ng-bind="recordData.screenRecord[0].historyLogic"></li>
+                        <li ng-show="recordData.screenRecord.length == 0 || recordData.screenRecord[0].historyLogic == ''">未设置</li>
+                    </ul>
+                    <!--<ul ng-show="recordData.screenData.length > 0">-->
+                        <!--<li ng-repeat="screenData in recordData.screenData">-->
+                            <!--<div ng-bind="screenData.label"></div>:-->
+                            <!--<div ng-bind="screenData.value"></div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<div ng-show="recordData.screenData.length == 0">未设置</div>-->
+                </div>
+                <div ng-show="recordData.allData.group.soureType == 'IMPORT'">
+                    <div ng-show="recordData.excelData">
+                        <span>Excel导入方式新建取数任务,Excel名称:</span><span ng-bind="recordData.excelData.$excelName"></span>
+                    </div>
+                    <div ng-show="!recordData.excelData">未导入excel</div>
+                </div>
+            </div>
+            <div id="infi-m-export" class="infi-m-ct">
+                <h3 class="infi-u-tt">导出属性</h3>
+                <ul ng-show="recordData.extractData.length > 0">
+                    <li ng-repeat="extractData in recordData.extractData">
+                        <div ng-bind="extractData.label"></div>
+                        <div ng-show="extractData.value!=''">
+                            :
+                            <div ng-bind="extractData.value"></div>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-show="recordData.extractData.length == 0">未设置</div>
+            </div>
+
+            <div class="infi-m-ct" ng-show="recordData.viewType != 'check'">        
+                <h3 class="infi-u-tt">成果说明</h3>
+                <ul>
+                    <li>
+                        <p>成果说明： {{resultRecord.descriptionOfResults}}</p>
+                        <p>
+                            成果文件：
+                            <span ng-show="resultRecord.allFileName">
+                                <a href="javascript:;" ng-click='downloadFile(resultRecord.allFileName,resultRecord.achievementId)' ng-bind="resultRecord.allFileName"></a>
+                            </span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- ends.infi-box -->
+
+    <!-- 导入记录ui -->
+    <div class="infi-box">
+        <h4 class="infi-title">导入记录</h4>
+        <div class="infi-box-containter">
+            <div class="infi-m-ct" ng-repeat="screenRecord in recordData.screenRecord" ng-show="recordData.allData.group.soureType == 'FILTER'">
+                <h4 class="infi-u-tt">{{$index+1}}、病例数{{screenRecord.num}}份 — 满足以下全部条件</h4>
+                <ul>
+                    <li>
+                        <div ng-bind="screenRecord.historyLogic" ng-show="screenRecord.historyLogic != ''"></div>
+                        <div ng-show="screenRecord.historyLogic == ''">未设置</div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="recordData.allData.group.soureType == 'IMPORT'">
+                <div ng-show="recordData.excelData">
+                    <div class="row clearfix">
+                        <ul class="list-unstyled record-filter-list pull-left col-md-3">
+                            <li>
+                                <strong class="weight-txt" ng-bind="recordData.excelData.totalNumber"></strong><span class="prompt-txt">总病例数</span>
+                                <span class="">/</span>
+                                <strong class="weight-txt" ng-bind="recordData.excelData.effectiveCaseNumber"></strong><span class="prompt-txt">有效病例</span>
+                            </li>
+                            <li>
+                                <ul class="list-inline filter-item-list">
+                                    <li class="filter-item-label"><span class="label label-success"><span ng-bind="recordData.excelData.exportCaseNumber"></span><span class="prompt-txt">可匹配</span></span></li>
+                                    <li class="filter-item-label"><span class="label label-danger"><span ng-bind="recordData.excelData.cantExportCaseNumber"></span><span class="prompt-txt">不可匹配</span></span></li>
+                                </ul>
+                            </li>
+                        </ul>
+    
+                        <ul class="list-unstyled record-filter-list pull-left col-md-2">
+                            <li><strong class="weight-txt" ng-bind="recordData.excelData.cantExportCaseNumber"></strong><span class="prompt-txt">无效病例</span></li>
+                        </ul>
+                    </div>
+                    
+                    
+                    
+
+                    <div class="panel panel-default" ng-if="taskDetail.failedDatas.data.length > 1">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading clearfix">
+                            <h5 class="pull-left">无法导出病例清单 （展示前 5 条数据）</h5>
+                            <button class="btn infi-btn-linear-green-l btn-sm pull-right" ng-click="export_failed()">导出</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead ng-repeat="(ind, val) in taskDetail.failedDatas.data" ng-if="ind == 0">
+                                    <tr>
+                                        <th ng-bind="val[0]" class="text-center"></th>
+                                        <th ng-bind="val[1]" class="text-center"></th>
+                                        <th ng-bind="val[2]" class="text-center"></th>
+                                    </tr>
+                                </thead>
+        
+                                <tbody>
+                                    <tr ng-repeat="(ind, val) in taskDetail.failedDatas.data" ng-if="ind > 0 && ind < 6">
+                                        <td ng-bind="val[0]" class="text-center"></td>
+                                        <td ng-bind="val[1]" class="text-center"></td>
+                                        <td ng-bind="val[2]" class="text-center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="!recordData.excelData">未导入excel</div>
+            </div>
+        </div>
+    </div><!-- ends.infi-box -->
+</div>

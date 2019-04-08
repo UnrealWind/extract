@@ -1,0 +1,53 @@
+<div class="infi-box">
+    <label>科室选择:</label>
+    <select class="form-control infi-inline-block" ng-model="detpIndex" style="width:200px;margin-bottom: 20px;" ng-change="getAllTags()">
+        <option ng-repeat="info in deptInfo" ng-bind="info.name" value="{{info.value}}"></option>
+    </select>
+    <div class="row">
+        <div class="col-md-3">
+            <nav class="infi-lefttab">
+                <!--取数-条件选取左侧导航-->
+                <ul class="infi-lefttab-ul" ng-show="summaryData.status == SYS.STATUS_SUCCESS">
+                    <li ng-repeat="tab in summaryData.data" title="{{tab.label}}" ng-class="{'infi-lefttab-active':tab.$active}"
+                        ng-click="leftTabChoice(tab)">
+                        <a href="javascript:void(0);" ng-bind="tab.label"></a>
+                        <span></span>
+                    </li>
+                </ul>
+                <div ng-show="summaryData.status != SYS.STATUS_SUCCESS" ng-bind="summaryData.description"></div>
+            </nav>
+        </div>
+        <div class="col-md-9">
+            <section class="infi-section">
+                <!--取数-条件选取页面右侧显示的'性别/年龄'-->
+                <div class="infi-listing">
+                    <ul class="list-unstyled" ng-show="summaryData.status == SYS.STATUS_SUCCESS">
+                        <li ng-repeat="infoList in summaryData.data">
+                            <ul ng-repeat="info in infoList.children" ng-show="infoList.$active">
+                                <li class="infi-show-list infi-show-list-whole">
+                                    <div style="border-bottom: 1px solid #ccc;">
+                                        <label class="pointer">
+                                            <span ng-bind="info.label" class="select-item" ng-click="setTagDetail(info,infoList)"></span>
+                                        </label>
+                                        <i ng-if="info.$active" class="glyphicon glyphicon-plus pointer" title="添加子标签" data-toggle="modal" data-target="#addChild" ng-click="getOtherTab(info)"></i>
+                                    </div>
+                                    <div class="extract-choser" ng-if="info.$active">
+                                        <section class="infi-choser-section" ng-if="detailData.status == SYS.STATUS_SUCCESS">
+                                            <div extract-tab tabs="detailData.data" contents="info" caterage="info" update-opt="getOtherTab(caterage,parent)"></div>
+                                        </section>
+                                    </div>
+                                    <div ng-if="info.$active && detailData.status != SYS.STATUS_SUCCESS" ng-bind="detailData.description"></div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div ng-show="summaryData.status != SYS.STATUS_SUCCESS" ng-bind="summaryData.description"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div delete-tip></div>
+    <div change-modal></div>
+    <div add-child></div>
+    <div sys-tip></div>
+</div>

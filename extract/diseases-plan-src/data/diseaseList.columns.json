@@ -1,0 +1,36 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":{
+    "columns":[
+      {
+        "label":"病历号",
+        "name":"pati_id"
+      },
+      {
+        "label":"入院次数",
+        "name":"pati_visit_id"
+      },
+      {
+        "label":"患者姓名",
+        "name":"name"
+      },
+      {
+        "label":"性别",
+        "name":"sex_name"
+      },
+      {
+        "label":"年龄",
+        "name":"age"
+      },
+      {
+        "label":"入院时间",
+        "name":"admission_date_time"
+      },
+      {
+        "label":"主要诊断",
+        "name":"diagnosis"
+      }
+    ]
+  }
+}

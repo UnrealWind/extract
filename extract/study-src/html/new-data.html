@@ -1,0 +1,40 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>新建取数任务</h4>
+<h5 class="infi-title">数据管理 > 新建取数</h5>
+<header class="infi-section">
+    <ul class="infi-header-ul-new">
+        <li  class="infi-header-active"><span>1. 选择数据源</span></li>
+        <li ><span>2. 筛选条件选取</span></li>
+        <li ><span>3. 筛选逻辑配置</span></li>
+        <li ><span>4. 数据导出</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <h4 class="infi-title">我的课提</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div infi-table columns="listColumns" data-ng-if="listColumns" content="listData" update-page="getList(page)"></div>
+        </div>
+    </div>
+</div>
+<div style="text-align: right ;margin:10px;">
+    <button class="btn infi-btn-linear-green-l">全部提取</button>
+    <a href="#/task"><button class="btn infi-btn-linear-green-l">下一步</button></a>
+</div>
+<div class="infi-box">
+    <h4 class="infi-title">已选择</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <ul class="ul-float-left ul-li-3">
+                <li>
+                    <span>病例数:1000</span>
+                </li>
+                <li>
+                    <span>共同属性:1000</span>
+                </li>
+                <li>
+                    <span>特有属性:1000</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

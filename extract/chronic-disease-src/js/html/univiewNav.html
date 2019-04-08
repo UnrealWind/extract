@@ -1,0 +1,19 @@
+<div class="nav-sec" ng-repeat="(secInd, secVal) in navData">
+    <p class="nav-sec-title" ng-bind="secVal.label"></p>
+    <ul class="sec-first">
+        <li class="sec-first-item"
+            ng-repeat="(secFirInd, secFirVal) in secVal.children"
+            ng-click="showChild()">
+            {{secFirVal.label}}
+
+            <ul ng-if="secFirVal.children.length>0">
+                <li ng-repeat="(secSecInd, secSecVal) in secFirVal.children"
+                    ng-click="scrollTo(secSecVal.label)"
+                    class="sec-second-item">
+                    {{secSecVal.label}}
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

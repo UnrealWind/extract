@@ -1,0 +1,976 @@
+<section class="infi-check">
+    <p>化验及特殊检查</p>
+    <div ng-if="outputText.test.text != ''">
+        <span>检查项目：</span>
+        <span>{{outputText.test.text}}</span>
+    </div>
+    <section class="infi-record-box" ng-if="entity.name_zjxm_cyct == true">
+        <div class="infi-record-title">
+            <h4>纯音测听</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_cyct_time"
+                       ng-model="entity.table_cyct_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <!--<hr />-->
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>气导：</caption>
+            <thead>
+            <tr>
+                <th style="width:100px;">
+                    <div class="out">
+                        <b>频率Hz</b>
+                        <em>侧别</em>
+                    </div>
+                </th>
+                <th>
+                    125
+                </th>
+                <th>
+                    250
+                </th>
+                <th>
+                    500
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    8k
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_125" ng-model="entity.table_qd_ze_125" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_250" ng-model="entity.table_qd_ze_250" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_500" ng-model="entity.table_qd_ze_500" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_1k" ng-model="entity.table_qd_ze_1k" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_2k" ng-model="entity.table_qd_ze_2k" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_4k" ng-model="entity.table_qd_ze_4k" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ze_8k" ng-model="entity.table_qd_ze_8k" class="form-control"
+                           ng-change="calculation('left',entity.table_qd_ze_125,entity.table_qd_ze_250,entity.table_qd_ze_500,entity.table_qd_ze_1k,
+                        entity.table_qd_ze_2k,entity.table_qd_ze_4k,entity.table_qd_ze_8k)"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_125" ng-model="entity.table_qd_ye_125" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_250" ng-model="entity.table_qd_ye_250" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_500" ng-model="entity.table_qd_ye_500" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_1k" ng-model="entity.table_qd_ye_1k" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_2k" ng-model="entity.table_qd_ye_2k" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_4k" ng-model="entity.table_qd_ye_4k" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+                <td>
+                    <input name="entity.table_qd_ye_8k" ng-model="entity.table_qd_ye_8k" class="form-control"
+                           ng-change="calculation('right',entity.table_qd_ye_125,entity.table_qd_ye_250,entity.table_qd_ye_500,entity.table_qd_ye_1k,
+                        entity.table_qd_ye_2k,entity.table_qd_ye_4k,entity.table_qd_ye_8k)"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>左耳PTA: </label></div>
+            <div class="col-md-3 form-group input-group" style="width: ;float: left;" data-name="entity.name_ze_pta">
+                <input style="width:100%;" name="entity.name_ze_pta" type="text" ng-model="entity.name_ze_pta"
+                       class="form-control"/></div>
+            <div class="col-md-1 form-group" style="width:;text-align: left;padding-right: 0px;"><label>dbhl</label></div>
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>左耳受损频率: </label>
+            </div>
+            <div class="col-md-3 form-group input-group" style="width: ;float: left;" data-name="entity.name_ze_sspl">
+                <input style="width:100%;" name="entity.name_ze_sspl" type="text" ng-model="entity.name_ze_sspl" class="form-control"/></div>
+            <div class="col-md-1 form-group" style="width:;text-align: left;padding-right: 0px;"><label>dbhl</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>右耳PTA: </label></div>
+            <div class="col-md-3 form-group input-group" style="width: ;float: left;" data-name="entity.name_ye_pta"><input style="width:100%;"
+                                                                                                                            name="entity.name_pta" type="text" ng-model="entity.name_ye_pta" class="form-control"/></div>
+            <div class="col-md-1 form-group" style="width:;text-align: left;padding-right: 0px;"><label>dbhl</label></div>
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>右耳受损频率: </label>
+            </div>
+            <div class="col-md-3 form-group input-group" style="width: ;float: left;" data-name="entity.name_ye_sspl"><input style="width:100%;"
+                                                                                                                             name="entity.name_sspl" type="text" ng-model="entity.name_ye_sspl" class="form-control"/></div>
+            <div class="col-md-1 form-group" style="width:;text-align: left;padding-right: 0px;"><label>dbhl</label></div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>骨导：</caption>
+            <thead>
+            <tr>
+                <th style="width:100px;">
+                    <div class="out">
+                        <b>频率Hz</b>
+                        <em>侧别</em>
+                    </div>
+                </th>
+                <th>
+                    125
+                </th>
+                <th>
+                    250
+                </th>
+                <th>
+                    500
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    8k
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_125" ng-model="entity.table_gd_ze_125" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_250" ng-model="entity.table_gd_ze_250" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_500" ng-model="entity.table_gd_ze_500" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_1k" ng-model="entity.table_gd_ze_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_2k" ng-model="entity.table_gd_ze_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_4k" ng-model="entity.table_gd_ze_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ze_8k" ng-model="entity.table_gd_ze_8k" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_125" ng-model="entity.table_gd_ye_125" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_250" ng-model="entity.table_gd_ye_250" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_500" ng-model="entity.table_gd_ye_500" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_1k" ng-model="entity.table_gd_ye_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_2k" ng-model="entity.table_gd_ye_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_4k" ng-model="entity.table_gd_ye_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_gd_ye_8k" ng-model="entity.table_gd_ye_8k" class="form-control"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>纯音测听诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_cyct"><input
+                    name="entity.name_cyct" type="text" ng-model="entity.name_cyct" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_sdkcs == true">
+        <div class="infi-record-title">
+            <h4>声导抗测试</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_sdkcs_time"
+                       ng-model="entity.table_sdkcs_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th rowspan="2" style="vertical-align: middle;">
+                    指示耳
+                </th>
+                <th rowspan="2" style="vertical-align: middle;width:108px;">
+                    1000Hz鼓室曲线
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    226Hz鼓室曲线
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    鼓室压力daPa
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    声顺值（ml)
+                </th>
+                <th rowspan="2" style="vertical-align: middle;">
+                    刺激耳
+                </th>
+                <th colspan="5">
+                    声反射阈
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    0.5k
+                </th>
+                <th>
+                    1k
+                </th>
+                <th>
+                    2k
+                </th>
+                <th>
+                    4k
+                </th>
+                <th>
+                    WN
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    左耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <select ng-model="entity.table_sdkcs_ze_1000hz" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="A" name="entity.table_sdkcs_ze_1000hz">A型图</option>
+                        <option value="As" name="entity.table_sdkcs_ze_1000hz">As型图</option>
+                        <option value="Ad" name="entity.table_sdkcs_ze_1000hz">Ad型图</option>
+                        <option value="B" name="entity.table_sdkcs_ze_1000hz">B型图</option>
+                        <option value="C" name="entity.table_sdkcs_ze_1000hz">C型图</option>
+                        <option value="Cs" name="entity.table_sdkcs_ze_1000hz">Cs型图</option>
+                    </select>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_226hz" ng-model="entity.table_sdkcs_ze_226hz" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_dapa" ng-model="entity.table_sdkcs_ze_dapa" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ze_ssz" ng-model="entity.table_sdkcs_ze_ssz" class="form-control"/>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_05k" ng-model="entity.table_sdkcs_zy_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_1k" ng-model="entity.table_sdkcs_zy_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_2k" ng-model="entity.table_sdkcs_zy_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_4k" ng-model="entity.table_sdkcs_zy_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zy_WN" ng-model="entity.table_sdkcs_zy_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_05k" ng-model="entity.table_sdkcs_zz_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_1k" ng-model="entity.table_sdkcs_zz_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_2k" ng-model="entity.table_sdkcs_zz_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_4k" ng-model="entity.table_sdkcs_zz_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_zz_WN" ng-model="entity.table_sdkcs_zz_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">
+                    右耳
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <select ng-model="entity.table_sdkcs_ye_1000hz" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="A" name="entity.table_sdkcs_ye_1000hz">A型图</option>
+                        <option value="As" name="entity.table_sdkcs_ye_1000hz">As型图</option>
+                        <option value="Ad" name="entity.table_sdkcs_ye_1000hz">Ad型图</option>
+                        <option value="B" name="entity.table_sdkcs_ye_1000hz">B型图</option>
+                        <option value="C" name="entity.table_sdkcs_ye_1000hz">C型图</option>
+                        <option value="Cs" name="entity.table_sdkcs_ye_1000hz">Cs型图</option>
+                    </select>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_226hz" ng-model="entity.table_sdkcs_ye_226hz" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_dapa" ng-model="entity.table_sdkcs_ye_dapa" class="form-control"/>
+                </td>
+                <td rowspan="2" style="vertical-align: middle;">
+                    <input name="entity.table_sdkcs_ye_ssz" ng-model="entity.table_sdkcs_ye_ssz" class="form-control"/>
+                </td>
+                <td>
+                    右侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_05k" ng-model="entity.table_sdkcs_yy_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_1k" ng-model="entity.table_sdkcs_yy_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_2k" ng-model="entity.table_sdkcs_yy_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_4k" ng-model="entity.table_sdkcs_yy_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yy_WN" ng-model="entity.table_sdkcs_yy_WN" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    左侧
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_05k" ng-model="entity.table_sdkcs_yz_05k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_1k" ng-model="entity.table_sdkcs_yz_1k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_2k" ng-model="entity.table_sdkcs_yz_2k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_4k" ng-model="entity.table_sdkcs_yz_4k" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_sdkcs_yz_WN" ng-model="entity.table_sdkcs_yz_WN" class="form-control"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>声导抗检查: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_sdkjc"><input
+                    name="entity.name_sdkjc" type="text" ng-model="entity.name_sdkjc" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_yysbl == true">
+        <div class="infi-record-title">
+            <h4>言语识别率</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_yysbl_time"
+                       ng-model="entity.table_yysbl_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    侧别
+                </th>
+                <th>
+                    平均听阈（dBHL）
+                </th>
+                <th>
+                    刺激声强度（掩蔽强度）dBHL
+                </th>
+                <th>
+                    最大言语识别率（%）
+                </th>
+                <th>
+                    最大言语接受域（dBHL）
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左耳
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ze_pjtf" ng-model="entity.table_yysbl_ze_pjtf" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ze_cjsqd" ng-model="entity.table_yysbl_ze_cjsqd" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ze_zdyysbl" ng-model="entity.table_yysbl_ze_zdyysbl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ze_zdyyjsl" ng-model="entity.table_yysbl_ze_zdyyjsl" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右耳
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ye_pjtf" ng-model="entity.table_yysbl_ye_pjtf" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ye_cjsqd" ng-model="entity.table_yysbl_ye_cjsqd" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ye_zdyysbl" ng-model="entity.table_yysbl_ye_zdyysbl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_yysbl_ye_zdyyjsl" ng-model="entity.table_yysbl_ye_zdyyjsl" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4">
+                    <input name="entity.table_yysbl_note" ng-model="entity.table_yysbl_note" class="form-control"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:150px;text-align: right;padding-right: 0px;"><label>言语识别率诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_yysbl"><input
+                    name="entity.name_yysbl" type="text" ng-model="entity.name_yysbl" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_txngfyqfq == true">
+        <div class="infi-record-title">
+            <h4>听性脑干反应潜伏期</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_txngfyqfq_time"
+                       ng-model="entity.table_txngfyqfq_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>刺激信号</th>
+                <th colspan="3"><input name="entity.table_txngfyqfq_cjxh" ng-model="entity.table_txngfyqfq_cjxh" /></th>
+                <th>刺激速率</th>
+                <th colspan="3"><input name="entity.table_txngfyqfq_cjsl" ng-model="entity.table_txngfyqfq_cjsl" /></th>
+            </tr>
+            <tr>
+                <th>刺激声</th>
+                <th colspan="2">刺激声强度dBnHL</th>
+                <th>Ⅰ（ms）</th>
+                <th>Ⅲ（ms）</th>
+                <th>Ⅴ（ms）</th>
+                <th>Ⅰ-Ⅲ（ms）</th>
+                <th>Ⅰ-Ⅴ（ms）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td colspan="2">
+                    <input name="entity.table_txngfyqfq_ze_dbnhl" ng-model="entity.table_txngfyqfq_ze_dbnhl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_1" ng-model="entity.table_txngfyqfq_ze_1" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_3" ng-model="entity.table_txngfyqfq_ze_3" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_4" ng-model="entity.table_txngfyqfq_ze_4" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_13" ng-model="entity.table_txngfyqfq_ze_13" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ze_14" ng-model="entity.table_txngfyqfq_ze_14" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td colspan="2">
+                    <input name="entity.table_txngfyqfq_ye_dbnhl" ng-model="entity.table_txngfyqfq_ye_dbnhl" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_1" ng-model="entity.table_txngfyqfq_ye_1" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_3" ng-model="entity.table_txngfyqfq_ye_3" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_4" ng-model="entity.table_txngfyqfq_ye_4" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_13" ng-model="entity.table_txngfyqfq_ye_13" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_txngfyqfq_ye_14" ng-model="entity.table_txngfyqfq_ye_14" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="7">
+                    <input name="entity.table_txngfyqfq_note" ng-model="entity.table_txngfyqfq_note" class="form-control"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>听性脑干反应潜伏期诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_txngfyqfq"><input
+                    name="entity.name_txngfyqfq" type="text" ng-model="entity.name_txngfyqfq" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_abr == true">
+        <div class="infi-record-title">
+            <h4>高低刺激率ABR</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_abr_time"
+                       ng-model="entity.table_abr_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>侧别</th>
+                <th>低刺激速率（11.1次/秒）Vt（ms）</th>
+                <th>低刺激速率（11.1次/秒）I-V（ms）</th>
+                <th>高刺激速率（51.1次/秒）Vt（ms）</th>
+                <th>高刺激速率（51.1次/秒）I-V（ms）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td>
+                    <input name="entity.table_abr_ze_lowvt" ng-model="entity.table_abr_ze_lowvt" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ze_lowms" ng-model="entity.table_abr_ze_lowms" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ze_highvt" ng-model="entity.table_abr_ze_highvt" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ze_highms" ng-model="entity.table_abr_ze_highms" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td>
+                    <input name="entity.table_abr_ye_lowvt" ng-model="entity.table_abr_ye_lowvt" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ye_lowms" ng-model="entity.table_abr_ye_lowms" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ye_highvt" ng-model="entity.table_abr_ye_highvt" class="form-control"/>
+                </td>
+                <td>
+                    <input name="entity.table_abr_ye_highms" ng-model="entity.table_abr_ye_highms" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    左侧不同刺激速率下I-V波间期差值△I-V（ms）
+                </td>
+                <td colspan="3">
+                    <input name="entity.table_abr_ze_diff" ng-model="entity.table_abr_ze_diff" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    右侧不同刺激速率下I-V波间期差值△I-V（ms）
+                </td>
+                <td colspan="3">
+                    <input name="entity.table_abr_ye_diff" ng-model="entity.table_abr_ye_diff" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4">
+                    <input name="entity.table_abr_note" ng-model="entity.table_abr_note" class="form-control"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:160px;text-align: right;padding-right: 0px;"><label>高低刺激率ABR诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_abr"><input
+                    name="entity.name_abr" type="text" ng-model="entity.name_abr" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_dpoae == true">
+        <div class="infi-record-title">
+            <h4>DPOAE(畸变产物耳声发射)</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_dpoae_time"
+                       ng-model="entity.table_dpoae_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    两纯音频率比f2/f1=1.22
+                </th>
+                <th>
+                    L1= 65 dBSPL
+                </th>
+                <th>
+                    L2= 55 dBSPL
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>侧别</td>
+                <td>引出DPOAE频率（kHz）</td>
+                <td>对侧白噪声抑制</td>
+            </tr>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td><input name="entity.table_dpoae_ze_khz" ng-model="entity.table_dpoae_ze_khz" class="form-control"/></td>
+                <td><input name="entity.table_dpoae_ze_dcbzsyz" ng-model="entity.table_dpoae_ze_dcbzsyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td><input name="entity.table_dpoae_ye_khz" ng-model="entity.table_dpoae_ye_khz" class="form-control"/></td>
+                <td><input name="entity.table_dpoae_ye_dcbzsyz" ng-model="entity.table_dpoae_ye_dcbzsyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="2"><input name="entity.table_dpoae_note" ng-model="entity.table_dpoae_note" class="form-control"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>DPOAE(畸变产物耳声发射)诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_dpoae"><input
+                    name="entity.name_dpoae" type="text" ng-model="entity.name_dpoae" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_ecochg == true">
+        <div class="infi-record-title">
+            <h4>ECochG(耳蜗电图)</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_ecochg_time"
+                       ng-model="entity.table_ecochg_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    刺激信号
+                </th>
+                <th></th>
+                <th>刺激声强度（dBnHL）</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>侧别</td>
+                <td>—SP/AP</td>
+                <td>—SP(ms)</td>
+                <td>AP(ms)</td>
+            </tr>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td><input name="entity.table_ecochg_ze_spap" ng-model="entity.table_ecochg_ze_spap" class="form-control"/></td>
+                <td><input name="entity.table_ecochg_ze_sp" ng-model="entity.table_ecochg_ze_sp" class="form-control"/></td>
+                <td><input name="entity.table_ecochg_ze_ap" ng-model="entity.table_ecochg_ze_ap" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td><input name="entity.table_ecochg_ye_spap" ng-model="entity.table_ecochg_ye_spap" class="form-control"/></td>
+                <td><input name="entity.table_ecochg_ye_sp" ng-model="entity.table_ecochg_ye_sp" class="form-control"/></td>
+                <td><input name="entity.table_ecochg_ye_ap" ng-model="entity.table_ecochg_ye_ap" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="3"><input name="entity.table_ecochg_note" ng-model="entity.table_ecochg_note" class="form-control"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>ECochG(耳蜗电图)诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_ecochg"><input
+                    name="entity.name_ecochg" type="text" ng-model="entity.name_ecochg" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_assr == true">
+        <div class="infi-record-title">
+            <h4>ASSR（听觉稳态诱发电位)</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_assr_time"
+                       ng-model="entity.table_assr_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <caption>单位： HLcg=Correction General Values：Default</caption>
+            <thead>
+            <tr>
+                <th>
+                    阈值
+                </th>
+                <th>500HZ</th>
+                <th>1000HZ</th>
+                <th>2000HZ</th>
+                <th>4000HZ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td><input name="entity.table_assr_ze_500hz" ng-model="entity.table_assr_ze_500hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ze_1000hz" ng-model="entity.table_assr_ze_1000hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ze_2000hz" ng-model="entity.table_assr_ze_2000hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ze_4000hz" ng-model="entity.table_assr_ze_4000hz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td><input name="entity.table_assr_ye_500hz" ng-model="entity.table_assr_ye_500hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ye_1000hz" ng-model="entity.table_assr_ye_1000hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ye_2000hz" ng-model="entity.table_assr_ye_2000hz" class="form-control"/></td>
+                <td><input name="entity.table_assr_ye_4000hz" ng-model="entity.table_assr_ye_4000hz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="4"><input name="entity.table_assr_note" ng-model="entity.table_assr_note" class="form-control"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>ASSR（听觉稳态诱发电位）诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_assr"><input
+                    name="entity.name_assr" type="text" ng-model="entity.name_assr" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_txngfyyz == true">
+        <div class="infi-record-title">
+            <h4>听性脑干反应阈值</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_txngfyyz_time"
+                       ng-model="entity.table_txngfyyz_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <thead>
+            <tr>
+                <th>
+                    侧别
+                </th>
+                <th>气导阈值（dBnHL）</th>
+                <th>骨导阈值（dBnHL）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td><input name="entity.table_txngfyyz_ze_qdyz" ng-model="entity.table_txngfyyz_ze_qdyz" class="form-control"/></td>
+                <td><input name="entity.table_txngfyyz_ze_gdyz" ng-model="entity.table_txngfyyz_ze_gdyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td><input name="entity.table_txngfyyz_ye_qdyz" ng-model="entity.table_txngfyyz_ye_qdyz" class="form-control"/></td>
+                <td><input name="entity.table_txngfyyz_ye_gdyz" ng-model="entity.table_txngfyyz_ye_gdyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="2"><input name="entity.table_txngfyyz_note" ng-model="entity.table_txngfyyz_note" class="form-control"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>听性脑干反应阈值诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_txngfyyz"><input
+                    name="entity.name_txngfyyz" type="text" ng-model="entity.name_txngfyyz" class="form-control"/></div>
+        </div>
+    </section>
+
+    <section class="infi-record-box" ng-if="entity.name_zjxm_hzaerp == true">
+        <div class="infi-record-title">
+            <h4>40HzAERP(40Hz听觉相关电位)</h4>
+            <div style="display:inline-block;float:right;">
+                <span>检查时间：</span>
+                <input class="form-control infi-input-w-mdx" name="entity.table_hzaerp_time"
+                       ng-model="entity.table_hzaerp_time" infi-date="yyyy-mm-dd hh:ii"/>
+            </div>
+        </div>
+        <table class="table infi-table" style="table-layout: fixed;">
+            <tbody>
+            <tr>
+                <td>刺激声</td>
+                <td><input name="entity.table_hzaerp_cjs" ng-model="entity.table_hzaerp_cjs"/></td>
+                <td>状态</td>
+                <td><input name="entity.table_hzaerp_zt" ng-model="entity.table_hzaerp_zt"/></td>
+                <td>频率(Hz)</td>
+                <td><input name="entity.table_hzaerp_pl" ng-model="entity.table_hzaerp_pl"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    侧别
+                </td>
+                <td colspan="4">阈值</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    左
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_ze_yz" ng-model="entity.table_hzaerp_ze_yz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    右
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_ye_yz" ng-model="entity.table_hzaerp_ye_yz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    备注
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_note" ng-model="entity.table_hzaerp_note" class="form-control"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-1 form-group" style="width:260px;text-align: right;padding-right: 0px;"><label>40HzAERP(40Hz听觉相关电位)诊断: </label></div>
+            <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_hzaerp"><input
+                    name="entity.name_hzaerp" type="text" ng-model="entity.name_hzaerp" class="form-control"/></div>
+        </div>
+    </section>
+
+    <div class="infi-output-footer" style="text-align: center;">
+        <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('test')">返回</button>
+    </div>
+</section>

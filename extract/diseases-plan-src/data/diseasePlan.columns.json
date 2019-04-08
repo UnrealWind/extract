@@ -1,0 +1,41 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":{
+    "columns":[
+      {
+        "label":"药品名称 ",
+        "name":"drugName"
+      },
+      {
+        "label":"剂量",
+        "name":"doseage"
+      },
+      {
+        "label":"单位",
+        "name":"doseUnit"
+      },
+      {
+        "label":"频次",
+        "name":"freq"
+      },
+      {
+        "label":"途径",
+        "name":"administrationId"
+      },
+      {
+        "label":"医嘱类型",
+        "name":"repeatIndicator"
+      },
+      {
+        "label":"开始时间",
+        "name":"startDateTime"
+      },
+      
+      {
+        "label":"结束时间",
+        "name":"stopDateTime"
+      }
+    ]
+  }
+}

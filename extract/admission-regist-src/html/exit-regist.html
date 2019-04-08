@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <!-- 标题 -->
+  <div class="row">
+    <div class="col-md-12">
+      <h3><i class="glyphicon glyphicon-edit"></i> 出院登记
+        <!-- 回首页 -->
+        <a href="#/view" class="btn btn-default pull-right"><i class="glyphicon glyphicon-chevron-left"></i> 返回</a>
+      </h3>
+      <hr>
+    </div>
+  </div>
+
+  <!-- 入院已登记信息 -->
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">入院已登记信息</h3>
+        </div>
+
+        <div class="panel-body">
+          <entry-form entry-data="entryData"></entry-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 出院补充登记信息 -->
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">出院补充登记信息</h3>
+        </div>
+
+        <div class="panel-body">
+          <exit-form exit-data="exitData"></exit-form>
+        </div>
+      </div>
+      
+      <button type="button" class="btn btn-primary col-md-12" ng-click="saveForm()" ng-if="!totast.requstStatus || totast.requstStatus == 'resolved' || totast.requstStatus == 'rejected'">保存</button>
+      <button type="button" class="btn btn-primary col-md-12" ng-if="totast.requstStatus == 'pending'">保存中...</button>
+    </div>
+  </div>
+</div>
+
+
+<div toast-pop totast="totast" ng-if="totast.requstStatus == 'resolved' || totast.requstStatus == 'rejected'" ></div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>门急诊监控</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../src/scss/frame.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-modal.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-color.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-category.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-time-control.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-button.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-analysis-chart.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-navi.scss" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/scss/infi-view.scss" />
+    <link rel="stylesheet" href="../src/scss/infi-forty-two.scss" />
+    <link rel="stylesheet" href="../src/scss/infi-monitor.scss" />
+    <link rel="stylesheet" type="text/css" href="../src/scss/infi-navi.scss"/>
+    <!--301门急诊监控使用下面scss,其他医院注释掉-->
+    <link rel="stylesheet" href="../src/scss/infi-monitor-copy.scss" />
+
+    <!--判断浏览器是否为ie浏览器，如果是ie将进入browser.html，进行插件的下载-->
+    <script>
+        (function(){
+            if(!!window.ActiveXObject || "ActiveXObject" in window){
+                window.location.href='browser.html';
+                return false;
+            }
+        })();
+    </script>
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+<!-- 头部导航 -->
+<header class="navbar navbar-default infi-header clearfix">
+    <div class="navbar-header infi-header-logo">
+        <span class="logo" href="#/home">
+            <a href="#"></a>
+        </span>
+    </div>
+
+    <div class="infi-header-title pull-left hide infi-header-301">解放军总医院门急诊实时监控系统</div>
+    <div class="infi-header-title pull-left hide infi-header-other">门急诊监控</div>
+
+    <div class="box-user pull-right" ng-controller="LoginController">
+        <img class="user-logo" src="../src/image/doctor.png">
+        <p class="infi-header-name" ng-bind="name"></p>
+        <span>|</span>
+        <p class="infi-header-name">
+            <a ng-click="logout()" class="glyphicon">退出</a>
+        </p>
+    </div>
+</header>
+<!-- 头部导航 END -->
+
+<!-- 左部导航 -->
+<infi-navi class="noprint"></infi-navi>
+<!-- 左部导航 END -->
+
+<!-- 右部内容-->
+<article class="infi-main">
+    <div ng-view></div>
+</article>
+<!-- 打印dom缓存区 -->
+<div class="print-container hide" id="printCache"></div>
+<!-- 打印区 -->
+<div class="print-container hide" id="printContainer"></div>
+<!-- 右部内容 END-->
+
+<footer class="infi-footer noprint">
+    <p class="infi-footer-detail">
+        北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+    </p>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../src/widget/system/sys/login.check.js"></script>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="../bower_components/jQuery.print/jQuery.print.js"></script>
+<script type="text/javascript" src="../src/china.js"></script>
+<script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+
+<script type="text/javascript" src="../env/env.js"></script>
+<script type="text/javascript" src="all.js"></script>
+
+<script type="text/javascript" src="../src/widget/table/table.js"></script>
+<!-- <script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<script type="text/javascript" src="../src/widget/system/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/session.service.js" ></script> -->
+
+<!-- 新登录 -->
+<script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<script type="text/javascript" src="../src/widget/system/sys/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/http.interceptor.factory.js" ></script>
+
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+<!-- 导航 -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>

@@ -1,0 +1,9 @@
+<select class="form-control"
+        num-to-string
+        model-data="bindModel"
+        ng-model="bindModel"
+        ng-change="choseOption(bindModel)">
+  <option ng-repeat="opt in optRange"
+          ng-bind="opt.label"
+          value="{{opt.id}}"></option>
+</select>

@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>既往疾病史: </label>
+    </div>
+    <div class="col-md-9 checkbox input-group" style="width: ;float: left;" data-name="entity.name_105">
+        <div style="margin-top: -10px;">
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_0"/>高血压</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_1"/>心脏病</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_2"/>糖尿病</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_3"/>脑血管</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_4"/>高血脂</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_5"/>腮腺炎</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_6"/>风疹</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_7"/>麻疹</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_8"/>水痘</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_9"/>眼部疾患</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_10"/>肾脏疾患</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_11"/>骨质疏松病史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_12"/>肝炎</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_13"/>结核</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_14"/>疟疾</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_15"/>抑郁症</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_16"/>焦虑症</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_17"/>外伤史</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_18"/>输血史</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_19"/>药物过敏史</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_20"/>食物过敏史</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_21"/>预防接种史</label>
+            <label class="checkbox-inline" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105.value_22"/>其他过敏史</label>
+        </div>
+        <div>
+            <label class="checkbox-inline" ng-repeat="option in optionMore.name_105" style="margin-right: 10px;">
+                <input type="checkbox" ng-model="entity.name_105[option.name]"/>{{option.label}}
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 input-group" style="margin-left: 135px;"><input style="width: 140px;" name="entity.name_105" type="text"
+                                                                             ng-model="entity.name_105other" class="form-control"/>
+            <button style="margin-left: 5px;"
+                    ng-click="addEntity('name_105',entity.name_105,dimensions.name_105.options,entity.name_105other)"
+                    class="btn infi-btn-linear-default">添加
+            </button>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../html_gen/jws_-_105_-_gxy.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_xzb.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_tyb.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_nxg.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_gxz.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_sxy.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_fz.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_mz.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_sd.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_ybjh.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_szjh.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_gzsss.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_gy.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_jh.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_nj.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_yyz.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_jlz.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_wss.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_sxs.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_yygms.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_swgms.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_yfjzs.html?__inline">
+<link rel="import" href="../html_gen/jws_-_105_-_qtgms.html?__inline">
+<div class="infi-record-box infi-whether">
+    <h4>是否有手术史: </h4>
+    <div style="display: inline-block;"><label class="checkbox-inline"
+                ng-repeat="option in dimensions.name_129.options"><input type="radio" ng-model="entity.name_129"
+                                                                         name="entity.name_129"
+                                                                         value="{{option.name}}"/>{{option.label}}</label>
+    </div>
+    <div class="row"
+         ng-show="entity.name_129!=undefined && (entity.name_129=='value_0' || entity.name_129.value_0==true)">
+        <hr />
+        <link rel="import" href="../html_hand/jws_-_129_-_you.html?__inline">
+    </div>
+</div>

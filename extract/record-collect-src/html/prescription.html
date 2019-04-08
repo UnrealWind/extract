@@ -1,0 +1,155 @@
+<div class="prescription-page">
+  <div class="infi-title">
+    <h3  class="font-strong" ng-click="changeStatus()">
+      <span class="border-bottom-2"><i class="fas fa-pills"></i>门诊处理</span>
+      <span class="glyphicon"
+            ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span></h3>
+  </div>
+  <!-- 页面数据请求成功 -->
+  <div ng-if="orgDataState.state.currState == 'showRst'">
+    <ul class="attr-wrapper">
+      <li class="attr-item attr-item-strong" ng-repeat="secItem in tempModal">
+        <div class="attrname text-right pull-left">
+          <label class="" ng-bind="secItem.label"></label><label>: </label>
+        </div>
+
+        <ul class="CNMedicalList" ng-if="secItem.label == '中药' && CNMedicalList && CNMedicalList.length>0">
+          <li ng-repeat="opt in CNMedicalList">
+            <a ng-click="addCNMedical(opt)" class="btn btn-default">{{opt.name}}</a>
+          </li>
+        </ul>
+
+          <ul class="CNMedicalList" ng-if="secItem.label == '检查' && examList && examList.length>0">
+              <li ng-repeat="opt in examList">
+                  <a ng-click="addTable(opt,0,'dmExams','exams')" class="btn btn-default">{{opt.name}}</a>
+              </li>
+          </ul>
+          <ul class="CNMedicalList" ng-if="secItem.label == '检验' && testList && testList.length>0">
+              <li ng-repeat="opt in testList">
+                  <a ng-click="addTable(opt,1,'dmTests','tests')" class="btn btn-default">{{opt.name}}</a>
+              </li>
+          </ul>
+          <ul class="CNMedicalList" ng-if="secItem.label == '西药' && drugList && drugList.length>0">
+              <li ng-repeat="opt in drugList">
+                  <a ng-click="addTable(opt,2,'dmDrugs','drugs')" class="btn btn-default">{{opt.name}}</a>
+              </li>
+          </ul>
+
+        <div class="answer answer-list clearfix">
+          <!-- 非 tab 形式  -->
+          <div ng-if="!secItem.hasTab">
+            <selected-collect work-space-info="workSpaceInfo" target-data ='tempModal[0].secondSelected' whole-info="wholeInfo" tmp-data = "secItem" view-exam-detail="viewExamDetail(lineData, type)"></selected-collect>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 页面数据请求中 -->
+  <div ng-if="orgDataState.state.currState == 'fetching'">
+    <p class="bg-warning text-center cursor"
+        style="padding: 10px;">数据加载中...</p>
+  </div>
+
+  <!-- 页面数据请求失败 -->
+  <div ng-if="orgDataState.state.currState == 'showErr'">
+    <p class="bg-danger text-center cursor"
+       style="padding: 10px;"
+       ng-click="refetch()">数据请求失败, 点击此处重试!</p>
+  </div>
+
+
+  <!-- 查看检查、检验详情模态框 -->
+  <div class="modal fade view-exam-model" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" ng-if="currViewDetailType == 'exam'">检查详情</h4>
+          <h4 class="modal-title" ng-if="currViewDetailType == 'test'">检验详情</h4>
+        </div>
+
+        <div class="modal-body">
+          <!-- 页面数据请求失败 -->
+          <div ng-if="viewDetailState.state.currState == 'showErr'">
+            <p class="bg-danger text-center cursor"
+              style="padding: 10px;">数据请求失败!</p>
+          </div>
+
+          <!-- 页面数据请求中 -->
+          <div ng-if="viewDetailState.state.currState == 'fetching'">
+            <p class="bg-warning text-center cursor"
+                style="padding: 10px;">数据加载中...</p>
+          </div>
+
+          <!-- 正常展示 -->
+          <div>
+            <!-- 检查 -->
+            <div ng-if="currViewDetailType == 'exam' && viewDetailState.state.currState == 'showRst' && viewExamAbout.rst.results.length > 0 ">
+              <!--<dl class="dl-horizontal" ng-repeat="dlSec in viewExamAbout.rst.results">
+                <dt ng-bind="dlSec.name + ':'" class="cursor dlSec" title="{{dlSec.name}}"></dt>
+                <dd ng-bind="dlSec.value" class="cursor dtSec" title="{{dlSec.value}}"></dd>
+              </dl>-->
+
+              <span ng-repeat="dlSec in viewExamAbout.rst.results" style="display: block;">
+                <label ng-bind="dlSec.name + ':'"  title="{{dlSec.name}}"></label>
+                <span ng-bind="dlSec.value"  title="{{dlSec.value}}"></span>
+              </span>
+            </div>
+            <!-- 检验 -->
+            <div ng-if="currViewDetailType == 'test' && viewDetailState.state.currState == 'showRst' && viewTestAbout.rst.testResults.length > 0 ">
+              <!-- 检验 table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>检验项目</th>
+                    <th>测试结果</th>
+                    <th>单位</th>
+                    <th>异常</th>
+                    <th>参考值</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="opt in viewTestAbout.rst.testResults">
+                    <td>{{opt.itemName}}</td>
+                    <td>{{opt.result}}</td>
+                    <td>{{opt.unit}}</td>
+                    <td>{{opt.flag}}</td>
+                    <td>{{opt.ranges}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .prescription-page .attr-wrapper .attr-item .attrname {
+    width: 40px;
+  }
+
+  .prescription-page .attr-wrapper .attr-item .answer-list {
+    margin-left: 45px;
+  }
+
+  .attr-item-strong {
+    margin-top: 15px !important;
+  }
+
+  .dlSec {
+    width: 200px !important;
+  }
+
+  .dtSec {
+    margin-left: 205px !important;
+  }
+</style>

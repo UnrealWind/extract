@@ -1,0 +1,184 @@
+<h4 class="infi-title" style="margin-bottom: 20px;">
+    <i class="glyphicon glyphicon-globe"></i>
+    CRF名称: {{crfName}}
+    <a href="#/crfList" class="btn infi-btn-linear-green-l f-r">返回</a>
+
+</h4>
+<div class="infi-box">
+    <div>
+        <div class="infi-box-title">
+            <h4>模块列表</h4>
+        </div>
+        <div ng-click="modal(data,'addModule','module','addModule','add')" class="btn infi-btn-linear-green-l f-r m-b-xl" >新建模块</div>
+        <table class="table infi-table crf-list">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>模块名称</th>
+                <th>模块编号</th>
+                <th>组合</th>
+                <th>可执行操作</th>
+            </tr>
+            </thead>
+            <tbody class="crf-list">
+            <tr ng-repeat="item in moduleData">
+                <th>{{ $index+1 }}</th>
+                <th class="text-center">{{ item.name }}</th>
+                <th class="text-center">{{ item.value }}</th>
+                <th class="text-center">{{ item.combineName }}</th>
+                <th class="text-center">
+                    <a href="javascript:;" ng-click="modal(item,'addModule','module','addModule','modify')">修改</a>
+                    <a href="javascript:;" ng-click="deleteNode(item)">删除</a>
+                    <a href="javascript:;" ng-click="modal(item,'addModule','theme','addTheme','add','parent')">添加主题</a>
+                    <a href="javascript:;" ng-click="jumpToPropertyPage(item.id,'add')">添加属性</a>
+                </th>
+            </tr>
+            <tr ng-if="hasModule">
+                <td colspan="5" class="bg-danger" style="text-align: center;line-height: 35px;">当前CRF {{crfValue}} 还没有模块</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <uib-pagination class="f-r"  total-items="modulePage.totalElements" ng-model="modulePage.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttendModule(modulePage)" items-per-page="modulePage.size"
+                            num-pages="modulePage.totalPages">
+            </uib-pagination>
+        </div>
+    </div>
+    <div>
+        <div class="infi-box-title">
+            <h4>主题列表</h4>
+        </div>
+        <div ng-click="modal(data,'addModule','theme','addTheme','add','self')" class="btn infi-btn-linear-green-l f-r m-b-xl" >新建主题</div>
+        <table class="table infi-table crf-list">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>模块名称</th>
+                <th>主题名称</th>
+                <th>主题编号</th>
+                <th>组合</th>
+                <th>可执行操作</th>
+            </tr>
+            </thead>
+            <tbody class="crf-list">
+            <tr ng-repeat="item in themeData">
+                <th>{{ $index+1 }}</th>
+                <th>{{ item.module }}</th>
+                <th>{{ item.name }}</th>
+                <th>{{ item.value }}</th>
+                <th>{{ item.combineName }}</th>
+                <th>
+                    <a href="javascript:;"ng-click="modal(item,'addModule','theme','addTheme','modify')">修改</a>
+                    <a href="javascript:;" ng-click="deleteNode(item)">删除</a>
+                    <a href="javascript:;" ng-click="modal(item,'addModule','sub_theme','addSubTheme','add','parent')">添加子主题</a>
+                    <a href="javascript:;" ng-click="jumpToPropertyPage(item.id,'add')">添加属性</a>
+                </th>
+            </tr>
+            <tr ng-if="hasTheme">
+                <td colspan="6" class="bg-danger" style="text-align: center;line-height: 35px;">当前CRF {{crfName}} 还没有主题</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <uib-pagination class="f-r"  total-items="themePage.totalElements" ng-model="themePage.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttendTheme(themePage)" items-per-page="themePage.size"
+                            num-pages="themePage.totalPages">
+            </uib-pagination>
+
+        </div>
+    </div>
+    <div>
+        <div class="infi-box-title">
+            <h4>子主题列表</h4>
+        </div>
+        <div ng-click="modal(data,'addModule','sub_theme','addSubTheme','add', 'self')" class="btn infi-btn-linear-green-l f-r m-b-xl" >新建子主题</div>
+        <table class="table infi-table crf-list">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>模块</th>
+                <th>主题</th>
+                <th>子主题名称</th>
+                <th>子主题编号</th>
+                <th>组合</th>
+                <th>可执行操作</th>
+            </tr>
+            </thead>
+            <tbody class="crf-list">
+            <tr ng-repeat="item in SubThemeData">
+                <th>{{ $index+1 }}</th>
+                <th>{{ item.module }}</th>
+                <th>{{ item.theme }}</th>
+                <th>{{ item.name }}</th>
+                <th>{{ item.value }}</th>
+                <th>{{ item.combineName }}</th>
+                <th>
+                    <a href="javascript:;" ng-click="modal(item,'addModule','sub_theme','addSubTheme','modify')">修改</a>
+                    <a href="javascript:;" ng-click="deleteNode(item)">删除</a>
+                    <a href="javascript:;" ng-click="jumpToPropertyPage(item.id,'add')">添加属性</a>
+                </th>
+            </tr>
+            <tr ng-if="hasSubTheme">
+                <td colspan="7" class="bg-danger" style="text-align: center;line-height: 35px;">当前CRF {{crfName}} 还没有子主题</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <uib-pagination class="f-r"  total-items="SubThemePage.totalElements" ng-model="SubThemePage.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttendSubTheme(SubThemePage)" items-per-page="SubThemePage.size"
+                            num-pages="SubThemePage.totalPages">
+            </uib-pagination>
+
+        </div>
+    </div>
+    <div>
+        <div class="infi-box-title">
+            <h4>属性列表</h4>
+        </div>
+        <div ng-click="jumpToPropertyPage('0','add')" class="btn infi-btn-linear-green-l f-r m-b-xl">新建属性</div>
+        <table class="table infi-table crf-list">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>模块</th>
+                <th>主题</th>
+                <th>子主题</th>
+                <th>属性名称</th>
+                <th>属性编号</th>
+                <th>组合</th>
+                <th>可执行操作</th>
+            </tr>
+            </thead>
+            <tbody class="crf-list">
+            <tr ng-repeat="item in propertyData">
+                <th>{{ $index+1 }}</th>
+                <th>{{ item.module }}</th>
+                <th>{{ item.theme }}</th>
+                <th>{{ item.sub_theme }}</th>
+                <th>{{ item.name }}</th>
+                <th>{{ item.value }}</th>
+                <th>{{ item.combineName }}</th>
+                <th>
+                    <a href="javascript:;" ng-click="jumpToPropertyPage(item.id, 'modify')">修改</a>
+                    <a href="javascript:;" ng-click="deletePropertyNode(item)">删除</a>
+                </th>
+            </tr>
+            <tr ng-if="hasProperty">
+                <td colspan="8" class="bg-danger" style="text-align: center;line-height: 35px;">当前CRF {{crfName}} 还没有属性</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="clearfix">
+            <uib-pagination class="f-r"  total-items="propertyPage.totalElements" ng-model="propertyPage.number" max-size="5"
+                            boundary-link-numbers="true" ng-change="updatePageAttendProperty(propertyPage)" items-per-page="propertyPage.size"
+                            num-pages="propertyPage.totalPages">
+            </uib-pagination>
+
+        </div>
+    </div>
+</div>
+<div add-module></div>
+
+<div crf-prompt></div>
+<div modify-success></div>

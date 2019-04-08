@@ -1,0 +1,155 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">既往史: </label></div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;"><label class="checkbox-inline"
+                                                                                              style="margin-right: 10px;"><input
+            type="checkbox" ng-model="previous.pastHistory.name___u65E0"/>无</label><label class="checkbox-inline"
+                                                                                      style="margin-right: 10px;"><input
+            type="checkbox" ng-model="previous.pastHistory.name___u5FC3__u810F__u75C5"/>心脏病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u9AD8__u8840__u538B"/>高血压</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u80BE__u75C5"/>肾病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u809D__u75C5"/>肝病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u8D2B__u8840"/>贫血</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u7ED3__u6838__u75C5"/>结核病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u51FA__u8840__u6027__u75C5"/>出血性病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u7532__u72B6__u817A__u75C5"/>甲状腺病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.pastHistory.name___u7CD6__u5C3F__u75C5"/>糖尿病</label><label
+            ng-repeat="(key,value) in previous.pastHistoryOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="previous.pastHistoryOTHER[key]"/>{{key|unescape}}</label><button
+            infi-other-value checked="previous.pastHistory" style="cursor: pointer" data-type="checkboxOther" class="btn infi-btn-linear-default btn-xs"
+            data-name="previous.pastHistory">添加其他</button></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">药敏史: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="previous.drugAllergyHis"
+                                                                                      type="text"
+                                                                                      ng-model="previous.drugAllergyHis"
+                                                                                      class="form-control"/></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">个人史: </label></div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;"><label class="checkbox-inline" style="margin-right: 10px;"><input
+            type="checkbox" ng-model="previous.personalHistory.name___u65E0"/>无</label>
+        <label class="checkbox-inline" style="margin-right: 10px;"><input
+            type="checkbox" ng-model="previous.personalHistory.name___u5438__u70DF"/>吸烟</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.personalHistory.name___u55DC__u9152"/>嗜酒</label>
+        <label ng-repeat="(key,value) in previous.personalHistoryOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="previous.personalHistoryOTHER[key]"/>{{key|unescape}}</label><button
+            infi-other-value checked="previous.personalHistory" style="cursor: pointer" data-type="checkboxOther" class="btn infi-btn-linear-default btn-xs"
+            data-name="previous.personalHistory">添加其他</button></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">工作条件: </label></div>
+    <!--<div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="previous.workCondition"-->
+                                                                                      <!--type="text"-->
+                                                                                      <!--ng-model="previous.workCondition"-->
+                                                                                      <!--class="form-control"/></div>-->
+    <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inlinue"
+                                                                                 style="margin-right: 10px;"><input
+            type="radio" ng-model="previous.workCondition" name="previous.workCondition" value="name___u826f__u597d"/>良好</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.workCondition"
+                                                                     name="previous.workCondition"
+                                                                     value="name___u4e00__u822c"/>一般</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.workCondition"
+                                                                     name="previous.workCondition"
+                                                                     value="name___u5dee"/>差</label></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+        <label class="infi-wj-label-title">爱人年龄:</label>
+    </div>
+    <div class="col-md-4 form-group input-group">
+        <input name="previous.loverAge" type="text" ng-model="previous.loverAge" class="form-control"/>
+        <div class="input-group-addon">岁</div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+        <label class="infi-wj-label-title">爱人血型(RH):</label>
+    </div>
+    <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inlinue"
+                                                                                 style="margin-right: 10px;"><input
+            type="radio" ng-model="previous.loverRh" name="previous.loverRh" value="name_RH__u9633"/>RH阳</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverRh"
+                                                                     name="previous.loverRh"
+                                                                     value="name_RH__u9634"/>RH阴</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverRh"
+                                                                     name="previous.loverRh"
+                                                                     value="name___u672a__u67e5__28RH__29"/>未查(RH)</label></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;">
+        <label class="infi-wj-label-title">爱人血型(ABO):</label>
+    </div>
+    <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inlinue"
+                                                                                 style="margin-right: 10px;"><input
+            type="radio" ng-model="previous.bloodType" name="previous.loverAbo" value="name_A"/>A</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverAbo"
+                                                                     name="previous.loverAbo"
+                                                                     value="name_B"/>B</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverAbo"
+                                                                     name="previous.loverAbo"
+                                                                     value="name_O"/>O</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverAbo"
+                                                                     name="previous.loverAbo" value="name_AB"/>AB</label>
+        <label class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="previous.loverAbo"
+                                                                         name="previous.loverAbo"
+                                                                         value="name___u672a__u67e5__28ABO__29"/>未查(ABO)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">爱人及其家族史: </label>
+    </div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;"><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u65E0"/>无</label>
+        <label class="checkbox-inline"  style="margin-right: 10px;"><input
+            type="checkbox" ng-model="previous.loverFamilyHistory.name___u7ED3__u6838"/>结核</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u809D__u75C5"/>肝病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u53CC__u80CE"/>双胎</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u5438__u70DF"/>吸烟</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u55DC__u9152"/>嗜酒</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.loverFamilyHistory.name___u9057__u4F20__u75C5"/>遗传病</label><label
+            ng-repeat="(key,value) in previous.loverFamilyHistoryOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="previous.loverFamilyHistoryOTHER[key]"/>{{key|unescape}}</label><button
+            infi-other-value checked="previous.loverFamilyHistory" style="cursor: pointer" data-type="checkboxOther" class="btn infi-btn-linear-default btn-xs"
+            data-name="previous.loverFamilyHistory">添加其他</button></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">本人有何遗传病: </label>
+    </div>
+    <div class="col-md-10 form-group input-group" style="margin-top: 6px;float: left;">
+        <label class="checkbox-inline"
+               style="margin-right: 10px;"><input
+                type="checkbox"
+                ng-model="previous.myFamilyHereditaryDisease.name___u65E0"/>无</label><label class="checkbox-inline"
+                                                                                      style="margin-right: 10px;"><input
+            type="checkbox"
+            ng-model="previous.myFamilyHereditaryDisease.name___u5148__u5929__u7578__u5F62"/>先天畸形</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.myFamilyHereditaryDisease.name___u5148__u5929__u611A__u949D"/>先天愚钝</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.myFamilyHereditaryDisease.name___u8840__u53CB__u75C5"/>血友病</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.myFamilyHereditaryDisease.name___u8272__u76F2"/>色盲</label><label
+            class="checkbox-inline" style="margin-right: 10px;"><input type="checkbox"
+                                                                       ng-model="previous.myFamilyHereditaryDisease.name___u5148__u5929__u804B__u54D1"/>先天聋哑</label><label
+            ng-repeat="(key,value) in previous.myFamilyHereditaryDiseaseOTHER" class="checkbox-inline"
+            style="margin-right: 10px;"><input type="checkbox" ng-model="previous.myFamilyHereditaryDiseaseOTHER[key]"/>{{key|unescape}}</label><button
+            infi-other-value checked="previous.myFamilyHereditaryDisease" style="cursor: pointer" class="btn infi-btn-linear-default btn-xs"
+            data-type="checkboxOther" data-name="previous.myFamilyHereditaryDisease">添加其他</button></div>
+</div>

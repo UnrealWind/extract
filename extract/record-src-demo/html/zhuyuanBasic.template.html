@@ -1,0 +1,147 @@
+<div class="infi-wj-self-box" id="basic">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe615;</i>基本信息
+        <div >
+            <p style="display: inline-block;">
+                病历号：{{hospitalizedBaseInfo[0].pati_id|changeNULL}}
+            </p>
+            <p style="display: inline-block;">
+                入院次数：{{hospitalizedBaseInfo[0].pati_visit_id|changeNULL}}
+            </p>
+        </div>
+    </div>
+
+    <div class="infi-wj-part infi-menzhen-basic" >
+        <div class="row">
+            <div class="col-md-2-min" >
+                <p>
+                    姓名：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    性别：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].sex_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    年龄：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].age|changeNULL}}
+                </p>
+            </div>
+
+            <div class="col-md-2-min">
+                <p>
+                    民族：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].national|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    婚姻：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].marr_status_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3-max">
+                <p>
+                    出生日期：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].date_of_birth|changeNULL|date:'yyyy-MM-dd'}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>
+                    血型：
+                </p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].blood|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>联系方式：</p>
+                <p title="{{hospitalizedBaseInfo[0].phone_number_home|changeNULL}}" style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].phone_number_home|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-7">
+                <p style="text-align: left;">
+                    通信地址：
+                </p>
+                <p style="display: inline-block;" title="{{hospitalizedBaseInfo[0].mailing_address|changeNULL}}">
+                    {{hospitalizedBaseInfo[0].mailing_address|changeNULL}}
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>联系人：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].next_of_kin|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p style="text-align: left; min-width: 96px;">联系人方式：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].next_of_kin_phone|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p style="text-align: left; min-width: 96px;">与患者关系：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].relationship|changeNULL}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>住院天数：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].in_hosp_days|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-5">
+                <p>入院/出院 时间：</p>
+                <p style="display: inline-block;" title="{{hospitalizedBaseInfo[0].admission_date_time|changeNULL}}/{{hospitalizedBaseInfo[0].discharge_date_time|changeNULL}}">
+                    {{hospitalizedBaseInfo[0].admission_date_time|changeNULL}}/{{hospitalizedBaseInfo[0].discharge_date_time|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-5">
+                <p>入院/出院 科室：</p>
+                <p style="display: inline-block;" title="{{hospitalizedBaseInfo[0].dept_admission_to_id|changeNULL}}/{{hospitalizedBaseInfo[0].dept_discharge_from_id|changeNULL}}">
+                    {{hospitalizedBaseInfo[0].dept_admission_to_id|changeNULL}}/{{hospitalizedBaseInfo[0].dept_discharge_from_id|changeNULL}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>创建时间：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].create_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p  style="min-width: 115px;" >最近访问时间：</p>
+                <p style="display: inline-block;">
+                    {{hospitalizedBaseInfo[0].last_visit_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

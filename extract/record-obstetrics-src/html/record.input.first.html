@@ -1,0 +1,131 @@
+<div style="margin:10px 0;">
+    <a class="btn infi-btn-linear-green-l btn-sm" href="#/record">返回上一级</a>
+</div>
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-info-sign"></i>ID号：{{hospital.patiId}}
+    </div>
+    <div class="infi-wj-part">
+        <table class="infi-wj-table" style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td class="self-wj-label">
+                    <p>患者姓名：</p>
+                </td>
+                <td>
+                    <p ng-bind="hospital.name"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>EDC：</p>
+                </td>
+                <td>
+                   <input class="form-control ng-pristine ng-valid ng-empty ng-touched infi-wj-basic-ipt"
+                          type="text" infi-date ng-model="basicInfo.edc" readonly="readonly">
+                </td>
+                <td class="self-wj-label">
+                    <p>N0：</p>
+                </td>
+                <td>
+                    <input class="form-control ng-pristine ng-valid ng-empty ng-touched infi-wj-basic-ipt" ng-model="basicInfo.no">
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>首次登记日期：</p>
+                </td>
+                <td>
+                    <input class="form-control ng-pristine ng-valid ng-empty ng-touched infi-wj-basic-ipt" style="display: inline-block;"
+                           type="text" infi-date ng-model="basicInfo.firstRegisterDate" readonly="readonly">
+                    <span style="color:red;">*</span>
+                </td>
+                <td class="self-wj-label">
+                    <p>孕周：</p>
+                </td>
+                <td>
+                    <input class="form-control ng-pristine ng-valid ng-empty ng-touched infi-wj-basic-ipt" type="text" ng-model="basicInfo.gestationalWeeks">
+                </td>
+                <td class="self-wj-label">
+                    <p>宣教课：</p>
+                </td>
+                <td>
+                    <label class="checkbox-inline infi-wj-first-ipt-label">
+                        <input type="checkbox" ng-model="basicInfo.educationClass.name___u65E9__u5B55"/>早孕
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="basicInfo.educationClass.name___u4E2D__u5B55__20"/>中孕
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="basicInfo.educationClass.name___u665A__u5B55"/>晚孕
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="basicInfo.educationClass.name___u4E34__u4EA7__u524D"/>临产前
+                    </label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="infi-wj-self-box" style="margin-top: 40px;">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-edit"></i> 首次信息录入
+    </div>
+    <ul class="nav nav-tabs infi-wj-tabs infi-wj-first" >
+        <li ng-repeat="entity in dataTypes" ng-class="{true:'active'}[entity.active]">
+            <a ng-click="activeType(entity)">{{entity.label}}</a>
+        </li>
+    </ul>
+    <div class="table-content" style="width: 90%;margin-left:3%;" >
+        <!--基本信息-->
+        <div class="infi-wj-content-list" ng-show="'jiben' == currentDataType">
+            <link rel="import" href="record.input.first.basic.info.html?__inline">
+        </div>
+        <!--孕产史-->
+        <div class="infi-wj-content-list" ng-show="'yunchan'== currentDataType">
+            <link rel="import" href="record.input.first.maternal.html?__inline">
+        </div>
+        <!--既往家族史-->
+        <div class="infi-wj-content-list"  ng-show="'jiwnag' == currentDataType">
+            <link rel="import" href=record.input.first.family.history.html?__inline">
+        </div>
+        <!--全身检查-->
+        <div class="infi-wj-content-list" ng-show="'quanshen' == currentDataType">
+            <link rel="import" href="record.input.first.whole.body.html?__inline">
+        </div>
+        <!--早孕检查-->
+        <div class="infi-wj-content-list" ng-show="'zaoyun'==currentDataType">
+            <link rel="import" href="record.input.first.early.pregnancy.html?__inline">
+        </div>
+        <!--高危评分-->
+        <div class="infi-wj-content-list" ng-show="'dangerous'==currentDataType">
+            <link rel="import" href="record.input.first.dangerous.html?__inline">
+        </div>
+    </div>
+    <div sys-tip></div>
+</div>
+<div class="infi-wj-save" style="text-align: right;width: 100%;">
+    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="saveAll('overview/obstetrics')">保存并返回</button>
+    <button class="btn infi-btn-linear-green-l btn-sm infi-wj-big-ipt" ng-click="saveAll('record/input/second')">下一步编辑孕检档案信息</button>
+</div>
+<div class="modal fade" id="maternalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">确认删除该条孕产史?</h4>
+            </div>
+            <!--<div class="modal-body">-->
+            <!--在这里添加一些文本-->
+            <!--</div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button ng-click="deleteThisMaternal()" type="button" class="btn btn-primary">
+                    确认删除
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

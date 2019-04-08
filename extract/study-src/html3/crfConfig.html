@@ -1,0 +1,35 @@
+
+<ul class="marginten">
+
+    <li style="padding-top:10px;" ng-if="crfData[0].value=='' || crfData[0].value == null" ng-repeat="data in crfData">
+        <div ng-if="data.value=='' || data.value == null">
+            <i class="glyphicon glyphicon-chevron-{{data.arrow}}"></i>
+            <span ng-click="choseNavi(data)" class="cursorPointer">{{data.label}}</span>
+
+            <span style="margin: 0 0 0 10px" ng-click="modal(data,'child')" ng-show="data.children[0].value =='' || data.children[0].value == null" class="btn btn-default btn-sm">添加子节点</span>
+            <span style="margin: 0 0 0 10px" ng-click="modal(data,'crf')" ng-show="data.children[0].value !=='' && data.children[0].value !== null" class="btn btn-default btn-sm">添加CRF</span>
+        </div>
+        <crf-config ng-if="data.arrow == 'down' && data.children.length>0" crf-data="data.children" show-mark="showMark"></crf-config>
+    </li>
+
+    <table class="table" ng-if="crfData[0].value!=='' && crfData[0].value !== null">
+        <thead>
+        <tr>
+            <td>序号</td>
+            <td>名称</td>
+            <td>值</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tr ng-repeat="data in crfData">
+            <td>{{$index+1}}</td>
+            <td>{{data.label}}</td>
+            <td>{{data.value}}</td>
+            <td>
+                <!--<a href="javascript:;">查看详情</a>-->
+                <a href="javascript:;" ng-click="modal(data,'update')">配置</a>
+            </td>
+        </tr>
+    </table>
+
+</ul>

@@ -1,0 +1,35 @@
+<!--日常录入-->
+<!--患者基本信息-->
+<div basic-info case-list="caseList"></div>
+<!--档案信息-->
+<!--<div>-->
+
+<!--</div>-->
+<div class="infi-wj-self-box" style="margin-top: 40px;">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-edit"></i> 日常信息录入
+    </div>
+    <ul class="nav nav-tabs infi-wj-tabs infi-wj-daily">
+        <li ng-repeat="entity in dataTypes" ng-class="{true:'active'}[entity.active]">
+            <a ng-click="activeType(entity)">{{entity.label}}</a>
+        </li>
+    </ul>
+    <div class="table-content">
+        <!--妊娠检查-->
+        <div class="infi-wj-content-list" ng-show="'maternal'==currentDataType">
+            <link rel="import" href="record-gestation.html?__inline">
+        </div>
+        <!--复诊信息-->
+        <div class="infi-wj-content-list" ng-show="'further'==currentDataType" >
+            <link rel="import" href="further-consultation.html?__inline">
+        </div>
+        <!--高危评分-->
+        <div class="infi-wj-content-list" ng-show="'dangerous'==currentDataType" >
+            <link rel="import" href="daily-dangerous.html?__inline">
+        </div>
+    </div>
+</div>
+<div class="infi-wj-save" style="text-align: center;width: 100%;">
+    <a href="#/view-obstetrics"><button class="btn infi-btn-linear-green-l btn-sm">返回</button></a>
+    <a><button class="btn infi-btn-linear-green-l btn-sm" ng-click="saveDaily()">保存</button></a>
+</div>

@@ -1,0 +1,55 @@
+<div class="">
+    <div class="infi-title">
+        <h4 class="relative">
+            <span ng-click="addAttr(mainComplaintData.data[0],true)">{{mainComplaintData.name}}
+                <span class="glyphicon" ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span>
+            </span>
+            <span class="btn-pull-right">
+                <a  ng-click="addAttr(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加症状" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                </a>
+                <a  ng-if="!mainComplaintData.data[mainComplaintData.data.length-1].remarkShow && !mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="showRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                </a>
+                <a  ng-if="mainComplaintData.data[mainComplaintData.data.length-1].remarkShow || mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="delRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="删除备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                </a>
+            </span>
+        </h4>
+    </div>
+    <div ng-repeat="attrs in mainComplaintData.data">
+        <ul class="attr">
+            <li ng-repeat="attr in attrs.childs">
+                <div class="spe-attr attr" >
+                    <span ng-click="" class="cursorAuto" title="{{attr.name}}">{{attr.name}}</span>
+                    <span ng-click="delAttr(attrs,$index)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </div>
+                <div class="spe-answer">
+                    <span ng-repeat="question in attr.childs track by $index">
+                        <div ng-if="question.type =='smallText'">
+                            <h4 title="{{question.name}}">{{question.name}}：</h4>
+                            <div class="form-inline form-group">
+                                <input type="text" class="form-control" ng-model="question.value"  placeholder="">
+                                <!--<select ng-model="question.unitValue" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="unit in question.units" value="{{unit.kid}}">{{unit.unit}}</option>
+                                </select>-->
+                                <span>{{question.unit}}</span>
+                                <span ng-click="delAttr(attr,$index)" class="cursor glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <!--<div class="btn-box">
+            <div class="btn btn-default" ng-click="addAttr(attrs)">添加检验</div>
+            <div ng-if="!attrs.remarkShow && !attrs.remark" ng-click="showRemark(attrs)" class="btn btn-default">添加备注</div>
+            <div  ng-if="attrs.remarkShow || attrs.remark" ng-click="delRemark(attrs)" class="btn btn-default">清空备注</div>
+
+        </div>-->
+        <div class="remarks">
+            <textarea ng-if="attrs.remarkShow || attrs.remark" class="form-control" ng-model="attrs.remark" rows="3"></textarea>
+        </div>
+    </div>
+</div>

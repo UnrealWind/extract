@@ -1,0 +1,241 @@
+<div class="infi-record-output" id="nowDisease">
+    <div ng-if="outputText.nowDisease.tplStatus == 'view'" class="infi-view">
+        <div ng-show="!outputText.nowDisease.text" class="infi-nowDisease">
+            <div ng-repeat="dimension in dimensions.name_16.options">
+                <div class="nowDis" ng-if="dimension.label == '听力下降' && entity.name_16[dimension.name] == true">
+                    <span data-ng-if="entity.name_1220"><i>患者于</i><i>{{entity.name_1220}}</i></span>
+                    <span data-ng-if="entity.name_18"><i>,</i><i>因</i><i>{{entity.name_18}}</i></span>
+                    <span data-ng-if="entity.name_19"><i>,</i>
+                        <i ng-repeat="option1 in dimensions.name_19.options"
+                            ng-if="option1.name == entity.name_19">{{option1.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_21">
+                        <i>在</i>
+                        <i ng-repeat="option2 in dimensions.name_21.options"
+                           ng-if="option2.name == entity.name_21">{{option2.label}}</i>
+                    </span>
+                    <span ng-if="entity.name_21 == 'value_2' && entity.name_22">
+                        <i ng-repeat="option3 in dimensions.name_22.options"
+                            ng-if="option3.name == entity.name_22">{{option3.label}}</i>
+                    </span>
+                    <span ><i>,</i><i>出现 </i>
+                        <i ng-repeat="option4 in dimensions.name_20.options"
+                            ng-if="option4.name == entity.name_20">{{option4.label}}</i>
+                        <i>听力下降</i></span>
+                    <span data-ng-if="entity.name_24 && entity.name_24!='value_3'"><i>,</i>
+                        <i ng-repeat="option5 in dimensions.name_24.options"
+                            ng-if="option5.name == entity.name_24">{{option5.label}}</i>
+                        <i>听力下降自行缓解</i></span>
+                    <span ng-if="entity.name_17 == 'value_1'">
+                        <i>,</i><i>首次发生时间</i><i>{{entity.name_1238}}</i><i>{{entity.name_1238unit}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_25"><i>,</i><i>{{entity.name_25}}</i></span>
+                </div>
+                <div class="nowDis" ng-if="dimension.label == '耳鸣' && entity.name_16[dimension.name] == true">
+                    <span data-ng-if="entity.name_30">患者于<i>{{entity.name_30}}</i></span>
+                    <span data-ng-if="entity.name_27"><i>,</i>因<i>{{entity.name_27}}</i></span>
+                    <span data-ng-if="entity.name_28"><i>,</i><i>{{entity.name_28}}</i></span>
+                    <span data-ng-if="entity.name_29">
+                        <i>在</i>
+                        <i ng-repeat="option6 in dimensions.name_29.options"
+                           ng-if="option6.name == entity.name_29">{{option.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_31"><i>,</i><i>出现</i>
+                        <i ng-repeat="option7 in dimensions.name_31.options"
+                           ng-if="option7.name == entity.name_31">{{option7.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_33">
+                        <i>{{entity.name_33}}</i>
+                        <i>耳鸣</i>
+                    </span>
+                    <span data-ng-if="entity.name_32"><i>,</i>
+                        <i ng-repeat="option8 in dimensions.name_32.options"
+                           ng-if="option8.name == entity.name_32">{{option8.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_35"><i>,</i><i>{{entity.name_35}}</i><i>耳鸣加重</i></span>
+                    <span data-ng-if="entity.name_1137"><i>,</i> <i ng-if="entity.name_1137 == 'value_0'">伴有博动</i>
+                        <i ng-if="entity.name_1137 == 'value_1'">不伴有博动</i></span>
+                    <span ng-if="entity.name_26 == 'value_1'">
+                        <i>,</i><i>首次发生时间</i><i>{{entity.name_1239}}</i><i>{{entity.name_1239unit}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_36"><i>,</i><i>{{entity.name_36}}</i></span>
+                </div>
+                <div class="nowDis" ng-if="dimension.label == '眩晕' && entity.name_16[dimension.name] == true">
+                    <span data-ng-if="entity.name_44"><i>患者于</i><i>{{entity.name_44}}</i></span>
+                    <span data-ng-if="entity.name_40"><i>,</i><i>因</i><i>{{entity.name_40}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_43">
+                        <i>{{entity.name_43}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_1138">
+                        出现 <i ng-repeat="option8 in dimensions.name_1138.options"
+                              ng-if="option8.name == entity.name_1138">{{option8.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_38">
+                        <i ng-if="entity.name_38 != '向侧倾倒'">{{entity.name_38}}</i>
+                        <i ng-if="entity.name_38 == '向侧倾倒'"></i><i ng-repeat="option9 in dimensions.name_39.options"
+                           ng-if="option9.name == entity.name_39 && option9.name != 'value_2'">向{{option9.label}}倾倒
+                        </i>
+                        <i ng-if="entity.name_38 == '向侧倾倒'"></i><i ng-repeat="option9 in dimensions.name_39.options"
+                           ng-if="option9.name == entity.name_39 && option9.name == 'value_2'">向侧倾倒
+                        </i>
+                    </span>
+                    <span data-ng-if="entity.name_41"><i>,</i>
+                        <i ng-if="entity.name_41 == 'value_0'"><i>与体位改变有关</i>
+                            <i>,</i><i>{{entity.name_42}}</i><i>时,发生眩晕</i></i>
+                        <i ng-if="entity.name_41 == 'value_1'">与体位改变无关</i>
+                    </span>
+                    <span data-ng-if="entity.name_45"><i>,</i><i>{{entity.name_45}}</i>眩晕加重</span>
+                    <span data-ng-if="entity.name_1139"><i>,</i> <i ng-if="entity.name_1139 == 'value_0'">眩晕自行缓解</i>
+                        <i ng-if="entity.name_1139 == 'value_1'">眩晕无自行缓解</i>
+                    </span>
+                    <span><i ng-repeat="option10 in dimensions.name_1135.options"
+                        ng-if="entity.name_1135[option10.name] && entity.name_1135[option10.name]==true">,{{option10.label}}</i></span>
+                    <span ng-if="entity.name_37 == 'value_1' && entity.name_1240">
+                        <i>,</i><i>首次发生时间：</i><i>{{entity.name_1240}}</i><i>{{entity.name_1240unit}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_46"><i>,</i><i>{{entity.name_46}}</i></span>
+                </div>
+                <div class="nowDis" ng-if="dimension.label == '耳漏' && entity.name_16[dimension.name] == true">
+                    <span data-ng-if="entity.name_1145"><i>患者于</i><i>{{entity.name_1145}}</i></span>
+                    <span data-ng-if="entity.name_1142"><i>,</i><i>因</i><i>{{entity.name_1142}}</i></span>
+                    <span data-ng-if="entity.name_1141"><i>,</i><i>在</i>
+                        <i ng-repeat="option11 in dimensions.name_1141.options"
+                            ng-if="option11.name == entity.name_1141">{{option11.label}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_1143">
+                        <i>出现</i><i>{{entity.name_1143}}</i><i>耳漏</i>
+                    </span>
+                    <span data-ng-if="entity.name_1144"><i>,</i><i>{{entity.name_1144}}</i></span>
+                    <span data-ng-if="entity.name_1146">
+                        <i>,</i>
+                        <i ng-if="entity.name_1146 == 'value_0'">伴有臭味</i>
+                        <i ng-if="entity.name_1146 == 'value_1'">不伴有臭味</i>
+                    </span>
+                    <span data-ng-if="entity.name_1147"><i>,</i><i>{{entity.name_1147}}</i></span>
+                    <span ng-if="entity.name_1140 == 'value_1'">
+                        <i>,</i><i>首次发生时间：</i><i>{{entity.name_1241}}</i><i>{{entity.name_1241unit}}</i>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div id="make"><span><i>{{xbsOption}}</i></span></div>
+            </div>
+            <div>
+                <div class="nowDis" ng-if="entity.name_62 == 'value_0' && entity.name_63 && entity.name_63.value_0 && entity.name_63.value_0==true">
+                    <span data-ng-if="entity.name_64">
+                        <i>曾于</i><i>{{entity.name_64}}</i><i>来我院就诊</i>
+                    </span>
+                    <span data-ng-if="entity.name_65">
+                        <i>,</i><i>诊断为:</i><i>{{entity.name_65}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_66 || entity.name_67 || entity.name_68 || entity.name_69 || entity.name_70">
+                        <i>,</i><i>给予</i><i>{{entity.name_66}}</i><i>{{entity.name_67}}</i>
+                        <i>{{entity.name_68}}</i><i>{{entity.name_69}}</i><i>{{entity.name_70}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_66_1 || entity.name_67_1 || entity.name_68_1 || entity.name_69_1 || entity.name_70_1">
+                        <i>;</i><i>{{entity.name_66_1}}</i><i>{{entity.name_67_1}}</i>
+                        <i>{{entity.name_68_1}}</i><i>{{entity.name_69_1}}</i><i>{{entity.name_70_1}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_66_2 || entity.name_67_2 || entity.name_68_2 || entity.name_69_2 || entity.name_70_2">
+                        <i>;</i><i>{{entity.name_66_2}}</i><i>{{entity.name_67_2}}</i>
+                        <i>{{entity.name_68_2}}</i><i>{{entity.name_69_2}}</i><i>{{entity.name_70_2}}</i>
+                    </span>
+                    <span ng-if="checkWoyuanDrug()">{{checkWoyuanDrug()}}
+                        <i>等治疗,</i>
+                    </span>
+                    <span data-ng-if="entity.name_71">
+                        <i>药物治疗</i>
+                        <i>{{entity.name_71}}</i><i>{{entity.name_71unit}}</i>
+                    </span>
+                    <span ng-if="entity.name_72 == 'value_0'">
+                        <i>,</i><i>{{entity.name_73}}</i><i>{{entity.name_74}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_75">
+                        <i>,</i><i>{{entity.name_75}}</i>
+                    </span>
+                </div>
+                <div class="nowDis" ng-if="entity.name_62 == 'value_0' && entity.name_63 && entity.name_63.value_1 && entity.name_63.value_1==true">
+                    <span data-ng-if="entity.name_77">
+                        <i>曾于</i><i>{{entity.name_77}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_76"><i>前往</i><i>{{entity.name_76}}</i>就诊</span>
+                    <span data-ng-if="entity.name_78"><i>,</i><i>诊断为:</i><i>{{entity.name_78}}</i></span>
+                    <span data-ng-if="entity.name_90 || entity.name_91 || entity.name_92 || entity.name_93 || entity.name_94">
+                        <i>,</i><i>给予</i><i>{{entity.name_90}}</i><i>{{entity.name_91}}</i>
+                        <i>{{entity.name_92}}</i><i>{{entity.name_93}}</i><i>{{entity.name_94}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_90_1 || entity.name_91_1 || entity.name_92_1 || entity.name_93_1 || entity.name_94_1">
+                        <i>;</i><i>{{entity.name_90_1}}</i><i>{{entity.name_91_1}}</i>
+                        <i>{{entity.name_92_1}}</i><i>{{entity.name_93_1}}</i><i>{{entity.name_94_1}}</i>
+                    </span>
+                    <span data-ng-if="entity.name_90_2 || entity.name_91_2 || entity.name_92_2 || entity.name_93_2 || entity.name_94_2">
+                        <i>;</i><i>{{entity.name_90_2}}</i><i>{{entity.name_91_2}}</i>
+                        <i>{{entity.name_92_2}}</i><i>{{entity.name_93_2}}</i><i>{{entity.name_94_2}}</i>
+                    </span>
+                    <span ng-if="checkOtherDrug()">
+                        <i>等治疗,</i>
+                    </span>
+                    <span data-ng-if="entity.name_95"><i>,</i><i>{{entity.name_95}}</i><i>{{entity.name_95unit}}</i></span>
+                    <span data-ng-if="entity.name_79"><i>,</i><i>{{entity.name_79}}</i></span>
+                    <span data-ng-if="entity.name_96"><i>,</i><i>{{entity.name_96}}</i></span>
+                </div>
+                <div class="nowDis">
+                    <span data-ng-if="entity.name_97"><i>门诊以</i><i>{{entity.name_97}}</i><i>收治入院</i></span>
+                </div>
+                <div class="nowDis">
+                    <span>
+                        <i>精神状态</i>
+                        <i ng-repeat="option14 in dimensions.name_98.options"
+                           ng-if="option14.name == entity.name_98">{{option14.label}}</i>
+                    </span>
+                    <span>
+                        <i>,体力</i>
+                        <i ng-repeat="option15 in dimensions.name_99.options"
+                           ng-if="option15.name == entity.name_99">{{option15.label}}</i>
+                    </span>
+                    <span>
+                        <i>,食欲</i>
+                        <i ng-repeat="option16 in dimensions.name_100.options"
+                           ng-if="option16.name == entity.name_100">{{option16.label}}</i>
+                    </span>
+                    <span>
+                        <i>,</i>
+                        <i ng-if="entity.name_101 == 'value_0'">睡眠正常</i>
+                        <i ng-if="entity.name_101 == 'value_1'">睡眠不正常</i>
+                    </span>
+                    <span>
+                        <i>,</i><i>体重</i>
+                        <i ng-repeat="option17 in dimensions.name_102.options"
+                           ng-if="option17.name == entity.name_102">{{option17.label}}</i>
+                    </span>
+                    <span>
+                        <i>,</i><i>{{entity.name_103}}</i>
+                    </span>
+                    <span>
+                        <i>,</i><i>{{entity.name_104}}</i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="outputText.nowDisease.text" class="infi-view-text">
+            <span ng-bind="outputText.nowDisease.text"></span>
+            <div class="infi-check">
+                <link rel="import" href="../table/fzjc.html?__inline">
+            </div>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('nowDisease')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('nowDisease')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.nowDisease.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.nowDisease.text">{{outputText.nowDisease.text}}</textarea>
+        <div class="infi-check">
+            <link rel="import" href="../table/fzjc.html?__inline">
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('nowDisease')">完成</button>
+        </div>
+    </div>
+</div>

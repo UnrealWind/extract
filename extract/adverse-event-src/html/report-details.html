@@ -1,0 +1,121 @@
+<div class="marginten" style="overflow: hidden;">
+    <a class="btn infi-btn-linear-default infi-left marginten" href="#real-time">返回上一级</a>
+    <a class="btn infi-btn-linear-green infi-left marginten"
+       href="{{SYS.url}}adverse/prediction/analysis/toExcel?eu={{user.eu}}&ep={{user.ep}}&filter_startTime={{screen.startTime}}&filter_endTime={{screen.endTime}}&filter_deptId={{screen.deptId.value}}&filter_wardId={{screen.wardId.value}}&filter_diseaseSeed={{screen.diseaseSeed.value}}&filter_badEvent=">导出excel</a>
+</div>
+<div class="infi-box infi-adverse-report infi-event-table-fix">
+    <table class="table infi-table infi-event-table">
+        <thead>
+        <tr>
+            <th rowspan="3">科室名称</th>
+            <th rowspan="3">在院人数</th>
+            <th colspan="4" rowspan="1">压疮</th>
+            <th colspan="4" rowspan="1">静脉外渗</th>
+        </tr>
+        <tr>
+            <th rowspan="2">
+                <div>
+                    <div>75-100%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>50-75%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-50%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-0%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+
+            <th rowspan="2">
+                <div>
+                    <div>75-100%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>50-75%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-50%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+            <th rowspan="2">
+                <div>
+                    <div>25-0%</div>
+                    <div>发生病例数</div>
+                    <div>发生概率</div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-if="content.length>0">
+            <tr ng-repeat="entity in content">
+                <td>{{entity.dept | nullDefault}}</td>
+                <td>{{entity.inhsopNum | nullDefault}}</td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.ycEvent7Num | nullDefault}}</div>
+                    <div>{{entity.ycEvent7Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.ycEvent5Num | nullDefault}}</div>
+                    <div>{{entity.ycEvent5Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.ycEvent2Num | nullDefault}}</div>
+                    <div>{{entity.ycEvent2Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.ycEvent0Num | nullDefault}}</div>
+                    <div>{{entity.ycEvent0Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.jmEvent7Num | nullDefault}}</div>
+                    <div>{{entity.jmEvent7Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.jmEvent5Num | nullDefault}}</div>
+                    <div>{{entity.jmEvent5Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.jmEvent2Num | nullDefault}}</div>
+                    <div>{{entity.jmEvent2Ratio | nullDefault}}</div>
+                </td>
+                <td>
+                    <div style="border-right:solid 1px #ccc;">{{entity.jmEvent0Num | nullDefault}}</div>
+                    <div>{{entity.jmEvent0Ratio | nullDefault}}</div>
+                </td>
+            </tr>
+        </tbody>
+        <tbody ng-if="content.length==0">
+            <tr>
+                <td colspan="{{length}}" class="bg-danger" style="line-height: 50px;">
+                    暂无数据
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

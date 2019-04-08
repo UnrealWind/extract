@@ -1,0 +1,107 @@
+<div class="row infi-form">
+	<div class="infi-form-navi col-md-2">
+		<div affix></div>
+	</div>
+
+	<div class="infi-form-inputs col-md-10 row">
+		<form ng-repeat="modal in currentData" class="infi-modal-box" ng-class="{true:'col-md-6 current form-inline',false:'col-md-12 current form-inline'}[auditPassData.length>0]">
+			<!-- <h2 class="infi-modal-name" ng-bind="modal.label"></h2> -->
+			<h2 id="" class="infi-title">
+				<span>{{modal.label}}</span>
+				<!-- <div class="infi-tag infi-title-change-tip" ng-if="auditPassData.length>0">
+					<span class="infi-tag-red">共{{changed.num}}处修改</span>
+				</div>
+				<div class="infi-title-btn" ng-if="auditPassDataList.length>0">
+					<a class="btn btn-xs self-btn-w-sm self-radius btn-success" ng-click="contrastHistory()">{{discribe}}</a>
+				</div>
+				<span class="self-font-red infi-version-discribe" ng-if="auditPassData.length>0">当前版本</span> -->
+			</h2>
+
+			<ul class="infi-modal-inputs form-inline">
+				<li ng-repeat = "theme in modal.children">
+					<input-template input="theme" parent="modal.children"></input-template>
+
+					<!-- fydebug 这里因为复用了原有代码，抽出来的原因是因为要从顶级controller中获取方法 -->
+					<input-img-file-template ng-if="theme.type=='图片上传-多张' ||theme.type=='图片上传-单张'||theme.type=='病理图片上传-多张'"></input-img-file-template>
+					
+					<div ng-if = "theme.type=='菜单'" class="infi-theme-box">
+						<h3 id="{{theme.name}}" class="infi-theme-name">
+							<p ng-bind="theme.label"></p>
+							<add-group ng-if="input.group && input.group!== null" input="theme" parent="modal.children"></add-group>
+						</h3>
+						<ul class="infi-theme-inputs">
+							<li ng-repeat = "childTheme in theme.children">
+								<input-template input="childTheme" parent="theme.children"></input-template>
+								<input-img-file-template ng-if="childTheme.type=='图片上传-多张' ||childTheme.type=='病理图片上传-多张'||childTheme.type=='图片上传-单张'"></input-img-file-template>
+								
+								<div ng-if = "childTheme.type=='菜单'" class="infi-child-theme-box">
+									<h4 id="{{childTheme.name}}" class="infi-child-theme-name">
+										<p ng-bind="childTheme.label"></p>
+										<add-group ng-if="input.group && input.group!== null" input="childTheme" parent="theme.children"></add-group>
+									</h4>
+									<ul class="infi-child-theme-inputs">
+										<li ng-repeat="attribute in childTheme.children">
+											<input-template input="attribute" parent="childTheme.children"></input-template>
+											<input-img-file-template ng-if="attribute.type=='图片上传-多张'||attribute.type=='病理图片上传-多张'||attribute.type=='图片上传-单张'"></input-img-file-template>
+										</li>
+									</ul>
+								</div> <!-- end of infi-child-theme-box -->
+							</li>
+						</ul>
+					</div><!-- end of infi-theme-box -->
+				</li>
+			</ul>
+		</form><!-- end of infi-modal-box -->
+
+
+
+		<form ng-repeat="modal in auditPassData" class="infi-modal-box col-md-6 history-audit-pass" ng-if="auditPassData && auditPassData.length>0">
+			<!-- <h2 class="infi-modal-name" ng-bind="modal.label"></h2> -->
+			<h2 id="" class="infi-title">
+				<span ng-bind = "modal.label"></span>
+				<span class="self-font-red infi-version-discribe">历史通过版本</span>
+			</h2>
+
+			<ul class="infi-modal-inputs form-inline">
+				<li ng-repeat = "theme in modal.children"  repeat-history-finish>
+					<input-template input="theme" parent="modal.children"></input-template>
+					<input-img-file-template ng-if="theme.type=='文件上传-多个' ||theme.type=='病理图片上传-多张'||theme.type=='图片上传-多张' ||theme.type=='图片上传-单张'||theme.type=='文件上传-单个'"></input-img-file-template>
+					
+					<div ng-if = "theme.type=='菜单'" class="infi-theme-box">
+						<h3 id="{{theme.name}}" class="infi-theme-name">
+							<p ng-bind="theme.label"></p>
+						</h3>
+						<ul class="infi-theme-inputs">
+							<li ng-repeat = "childTheme in theme.children">
+								<input-template input="childTheme" parent="theme.children"></input-template>
+								<input-img-file-template ng-if="childTheme.type=='文件上传-多个' ||childTheme.type=='病理图片上传-多张'||childTheme.type=='图片上传-多张' ||childTheme.type=='图片上传-单张'||childTheme.type=='文件上传-单个'"></input-img-file-template>
+								
+								<div ng-if = "childTheme.type=='菜单'" class="infi-child-theme-box">
+									<h4 id="{{childTheme.name}}" class="infi-child-theme-name">
+										<p ng-bind="childTheme.label"></p>
+									</h4>
+									<ul class="infi-child-theme-inputs">
+										<li ng-repeat="attribute in childTheme.children">
+											<input-template input="attribute" parent="childTheme.children"></input-template>
+											<input-img-file-template ng-if="attribute.type=='文件上传-多个'||attribute.type=='病理图片上传-多张' ||attribute.type=='图片上传-多张' ||attribute.type=='图片上传-单张'||attribute.type=='文件上传-单个'"></input-img-file-template>
+										</li>
+									</ul>
+								</div> <!-- end of infi-child-theme-box -->
+							</li>
+						</ul>
+					</div><!-- end of infi-theme-box -->
+				</li>
+			</ul>
+		</form><!-- end of infi-modal-box -->
+		<div class="infi-m-btn">
+			<a class="btn btn-default" ng-click="saveModule('back')">保存并返回</a>
+			<a class="btn btn-success self-btn-sm self-btn-w-auto self-radius btn-href {{prevshow}}" ng-click = "changeModule(-1)">填写上一模块</a>
+			<a class="btn btn-success self-btn-sm self-btn-w-auto self-radius btn-href {{nextshow}}" ng-click = "changeModule(1)">填写下一模块</a>
+		</div>
+	</div>
+
+	<div img-modal></div>
+	<div img-load datas="datas" stopload="stopload" upls="upls"></div>
+	<!--<div view-attachment>-->
+
+</div>

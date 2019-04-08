@@ -1,0 +1,114 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>随访记录
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="save('follow')" ng-disabled="btnDisable">保存</button>
+</h4>
+<div class="infi-box">
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content">
+			<div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title">
+						<span style="color:red;">*</span><span>随访时间:</span>
+					</div>
+					<div class="col-md-9">
+						<input class="form-control" type="text" infi-date="yyyy-mm-dd" ng-model="formList.visitTime.value" maxlength="20">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title">
+						<span>随访方式:</span>
+					</div>
+					<div class="col-md-9">
+						<label class="self-num-radio" ng-repeat="option in formList.visitMode.options">
+							<input type="radio" ng-model="formList.visitMode.value"  value="{{option.value}}"/>
+							{{option.label}}
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title">
+						<span>是否结束干预:</span>
+					</div>
+					<div class="col-md-9">
+						<label class="self-num-radio" ng-repeat="option in formList.endIntervene.options">
+							<input type="radio" ng-model="formList.endIntervene.value"  value="{{option.value}}"/>
+							{{option.label}}
+						</label>
+					</div>
+				</div>
+				<div class="row" ng-if="formList.endIntervene.value == '是'">
+					<div class="col-md-2 infi-col-title">
+						<span>结束干预原因:</span>
+					</div>
+					<div class="col-md-9">
+						<label class="self-num-radio" ng-repeat="option in formList.endInterveneSeason.options">
+							<input type="radio" ng-model="formList.endInterveneSeason.value"  value="{{option.value}}"/>
+							{{option.label}}
+						</label>
+					</div>
+				</div>
+				<div class="row" ng-if="formList.endIntervene.value == '否'">
+					<div class="col-md-2 infi-col-title">
+						<span>是否拔管:</span>
+					</div>
+					<div class="col-md-9">
+						<label class="self-num-radio" ng-repeat="option in formList.isExtubation.options">
+							<input type="radio" ng-model="formList.isExtubation.value"  value="{{option.value}}"/>
+							{{option.label}}
+						</label>
+					</div>
+				</div>
+				<div class="row" ng-if="formList.endIntervene.value == '否'">
+					<div class="col-md-2 infi-col-title">
+						<span>是否维护:</span>
+					</div>
+					<div class="col-md-9">
+						<label class="self-num-radio" ng-repeat="option in formList.isMaintain.options">
+							<input type="radio" ng-model="formList.isMaintain.value"  value="{{option.value}}"/>
+							{{option.label}}
+						</label>
+					</div>
+				</div>
+				<div class="row" ng-if="formList.isMaintain.value == '是' && formList.endIntervene.value == '否'">
+					<div class="col-md-2 infi-col-title">
+						<span>维护记录:</span>
+					</div>
+					<div class="col-md-9">
+						<textarea ng-model="formList.maintainRecord.value" class="form-control" maxlength="200"></textarea>
+					</div>
+				</div>
+				<div class="row" ng-if="formList.endIntervene.value == '否'">
+					<div class="col-md-2 infi-col-title">
+						<span>导管还需要几个疗程:</span>
+					</div>
+					<div class="col-md-9">
+						<input type="text" ng-model="formList.course.value" class="form-control" maxlength="20"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title">
+						<span>其他记录:</span>
+					</div>
+					<div class="col-md-9">
+						<input type="text" ng-model="formList.other.value" class="form-control" maxlength="20"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title">
+						<span>随访人:</span>
+					</div>
+					<div class="col-md-9">
+						<input type="text" ng-model="formList.person.value" class="form-control" maxlength="20"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="infi-nursing-bottom-btn">
+		<button class="btn infi-btn-linear-green-l btn-sm " ng-click="save('follow')" ng-disabled="btnDisable">保存</button>
+		<button class="btn infi-btn-linear-green btn-sm" ng-click="goBack()">返回</button>
+	</div>
+	<div sys-tip></div>
+</div>		

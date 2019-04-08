@@ -1,0 +1,13 @@
+{
+  "status":"ok",
+  "description":"数据请求成功",
+  "data":[
+    {"name": "头部", "value": "0"},
+    {"name": "颈部", "value": "0"},
+    {"name": "胸部", "value": "0"},
+    {"name": "腹部", "value": "0"},
+    {"name": "生殖", "value": "0"},
+    {"name": "上肢", "value": "0"},
+    {"name": "下肢", "value": "0"}
+  ]
+}

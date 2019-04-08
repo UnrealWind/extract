@@ -1,0 +1,21 @@
+<div>
+    <div class="modal fade" id="treeSelect">
+        <div class="modal-dialog modal-lg" style="width:500px;">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" >&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">选择</h4>
+                    </div>
+                </div>
+                <div class="modal-body infi-modal-view-body">
+                    <tree-view date-resource="mechansimList.data"></tree-view>
+                </div>
+                <div class="modal-footer infi-confirm-export-footer">
+                    <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal'>关闭</button>
+                    <button type="button" class="btn infi-btn-linear-green-l"  data-dismiss="modal" ng-click="changeTreeSelected($root.$selectedNavi)">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

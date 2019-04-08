@@ -1,0 +1,100 @@
+<section>
+    <div class="infi-print-btn">
+        <a class="btn infi-btn-linear-green-l btn-sm" href="#/record/input/second/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}">返回</a>
+        <button class="btn infi-btn-linear-green btn-sm" ng-click="printPregnancy()">打印</button>
+    </div>
+    <div id="pregnancy">
+        <div>
+            <div style="display:inline-block;width:30%;">
+                检查时间:<span>{{pregnancy.date}}</span>
+            </div>
+            <div style="display:inline-block;width:50%;">
+                <h4>武警总医院妇产科孕检报告</h4>
+            </div>
+        </div>
+        <div>
+            <span style="margin:0 5px;">姓名:<span>{{caseList.patiName}}</span></span>
+            <span style="margin:0 5px;">性别:<span>{{printBasic.sex_name}}</span></span>
+            <span style="margin:0 5px;">年龄:<span>{{printBasic.age}}</span>岁</span>
+            <span style="margin:0 5px;">妊娠期:<span ng-if="pregnancy.pregnancyWeek">{{pregnancy.pregnancyWeek}}周</span>
+            <span ng-if="pregnancy.pregnancyDay">{{pregnancy.pregnancyDay}}天</span></span>
+            <span style="margin:0 5px;">病人编号:<span>{{caseList.patiId}}</span></span>
+        </div>
+        <div class="infi-obstertrics-print-table">
+            <table class="table table-bordered infi-wj-visit-tab">
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="infi-subtitle">妊娠检查</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div style="overflow: hidden;">
+                                <div style="display: inline-block;float:left;width:50%;">
+                                    <ul>
+                                        <li>
+                                            血压:<span>{{pregnancy.highPressure}}</span>/<span>{{pregnancy.lowPressure}}</span>mmHg
+                                        </li>
+                                        <li>
+                                            胎心:<span>{{pregnancy.cardiac}}</span>次/分
+                                        </li>
+                                        <li>
+                                            胎位:<span ng-repeat="(key,value) in pregnancy.position">
+                                                    <span ng-bind="key|unescape"></span><span ng-if="!$last">、</span>
+                                                </span>
+                                        </li>
+                                        <li>
+                                            水肿:<span ng-bind="pregnancy.edema|unescape"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="display: inline-block;float:left;width:50%;">
+                                    <ul>
+                                        <li>
+                                            体重:<span ng-bind="pregnancy.weight"></span>kg
+                                        </li>
+                                        <li>
+                                            胎动:<span ng-bind="pregnancy.quickening"></span>
+                                        </li>
+                                        <li>
+                                            头盆关系:<span ng-bind="pregnancy.headBasinRela|unescape"></span>
+                                        </li>
+                                        <li>
+                                            尿蛋白:<span ng-bind="pregnancy.urinaryProtein"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="infi-subtitle">复诊信息</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                <li>
+                                    主诉:<span ng-bind="visitrecord.complainedSymptoms"></span>
+                                </li>
+                                <li>
+                                    处理:<span ng-bind="visitrecord.handle"></span>
+                                </li>
+                                <li>
+                                    备注:<span ng-bind="visitrecord.note"></span>
+                                </li>
+                                <li>
+                                    签名:<span ng-bind="visitrecord.signature"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%;"  class="infi-subtitle">高危评分</td>
+                        <td><span ng-repeat="(key,value) in daily.highRiskScore">
+                            <span ng-bind="key|unescape"></span><span ng-if="!$last">、</span>
+                        </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

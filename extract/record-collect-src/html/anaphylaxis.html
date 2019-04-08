@@ -1,0 +1,85 @@
+<div class="">
+        <div class="infi-title">
+            <h4 class="relative">
+                <span ng-click="switchTemp(mainComplaintData.data[0],true)">{{mainComplaintData.name}}
+                    <span class="glyphicon" ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span>
+                </span>
+                <span class="btn-pull-right">
+                    <a  ng-click="switchTemp(mainComplaintData.data[0])" title="添加症状" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                    </a>
+                    <a  ng-if="!mainComplaintData.data[mainComplaintData.data.length-1].remarkShow && !mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="showRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加备注" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                    </a>
+                    <a  ng-if="mainComplaintData.data[mainComplaintData.data.length-1].remarkShow || mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="delRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="删除备注" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </span>
+            </h4>
+        </div>
+        <ul class="attr-wrapper">
+            <li ng-repeat="item in mainComplaintData.data"
+                class="attr-item">
+                <div class="attrname pull-left text-right txt-underline"
+                        title="{{item.name}}"
+                        ng-bind="item.name"
+                        ng-click="switchTemp(item)"></div>
+
+                <ul class="answer answer-list clearfix">
+                    <li class="answer-item pull-left"
+                        ng-repeat="answer in item.childs">
+
+                        <!-- 答案结果类型为 text -->
+                        <span ng-if="answer.type == 'smallText'">
+                            <span ng-bind="answer.name + ':'" ng-if="item.childs.length > 1"></span>
+
+                            <span ng-if="answer.value">
+                                <span ng-bind="answer.value"></span>
+                                <span ng-repeat="unit in answer.unit"
+                                    ng-bind="unit.unit"
+                                    ng-if="unit.kid == answer.unitValue"></span>
+                            </span>
+
+                            <span class="font-500" ng-if="!answer.value"
+                                ng-bind="'无'"></span>
+                            ;
+                        </span>
+
+                        <!-- 答案结果类型为 checkbox -->
+                        <span ng-if="answer.type == 'checkbox'" class="answer-checkbox-value-wrapper">
+                            <span ng-bind="answer.name + ':'" ng-if="item.childs.length > 1"></span>
+
+                            <span ng-if="answer.values.length > 0">
+                                <span ng-repeat="opt in answer.options"
+                                        ng-if="answer.values.indexOf(opt.kid) >= 0"
+                                        ng-bind="opt.name"
+                                        class="answer-checkbox-value"></span>
+                            </span>
+
+                            <span class="font-500" ng-if="!answer.values || answer.values.length == 0"
+                                ng-bind="'无'"></span>
+                            ;
+                        </span>
+                    </li>
+                </ul>
+
+
+                <div ng-if="$index == mainComplaintData.data.length-1" class="remarks answer-remark">
+                    <textarea class="form-control answer-textarea"
+                            rows="3"
+                            ng-if="item.remarkShow || item.remark"
+                            ng-model="item.remark"></textarea>
+
+
+                    <!--<div class="btn btn-default"
+                            ng-if="!item.remarkShow && !item.remark"
+                            ng-click="showRemark(item)">添加备注</div>
+
+                    <div class="btn btn-default"
+                            ng-if="item.remarkShow || item.remark"
+                            ng-click="delRemark(item)">清空备注</div>-->
+                </div>
+
+            </li>
+        </ul>
+    </div>

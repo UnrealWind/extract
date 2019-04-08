@@ -1,0 +1,126 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>会诊列表</h4>
+<div class="infi-box">
+    <ul class="ul-float-left infi-clt-ul">
+        <li class="infi-time-line">
+            <label>会诊时间:</label>
+            <input ng-change = 'getSelectData("time")' ng-model="filterList.startTime" type="text" class="form-control infi-wj-serch-time"  infi-date />
+            <span>~</span>
+            <input ng-change = 'getSelectData("time")' ng-model="filterList.endTime" type="text" class="form-control infi-wj-serch-time"  infi-date />
+        </li>
+
+        <li ng-repeat = 'hospital in filterData' ng-if="hospital.label === 'hospital'">
+            <label>发起人医院:</label>
+            <select ng-model="filterList.hospitalFilter" ng-change = 'getSelectData()'
+                    class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="">
+                <option value = ''>请选择</option>
+                <option ng-repeat="entity in hospital.children" value="{{entity.label}}">{{entity.label}}</option>
+            </select>
+        </li>
+
+        <li  ng-repeat="depart in filterData" ng-if="depart.label === 'depart'">
+            <label>发起人科室:</label>
+            <select ng-model="filterList.departFilter" ng-change = 'getSelectData()'
+                    class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="" >
+                <option value="">请选择</option>
+                <option ng-repeat="entity in depart.children" value="{{entity.label}}">{{entity.label}}</option>
+            </select>
+        </li>
+
+        <li ng-repeat="user in filterData" ng-if="user.label === 'user'">
+            <label>发起人:</label>
+            <select ng-model="filterList.userFilter" ng-change = 'getSelectData()'
+                    class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="">
+                <option value="">请选择</option>
+                <option ng-repeat="entity in user.children" value="{{entity.label}}">{{entity.label}}</option>
+            </select>
+        </li>
+
+        <li ng-repeat="status in filterData" ng-if="status.label === 'status'">
+            <label>状态:</label>
+            <select ng-model="filterList.statusFilter" ng-change = 'getSelectData()'
+                    class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="">
+                <option value="">请选择</option>
+                <option ng-repeat="entity in status.children" value="{{entity.value}}">{{entity.label}}</option>
+            </select>
+        </li>
+    </ul>
+
+    <ul class="nav nav-tabs" style="margin-top: 20px;">
+        <li class="cursorPointer" ng-repeat="type in dataType" ng-class="{true:'active'}[type.active]" ng-click="activeType(type)">
+            <a ng-bind="type.label"></a>
+        </li>
+        <li class="infi-clt-create-button">
+            <!--<button class="btn infi-btn-linear-green-l btn-sm ng-scope">-->
+                <a class="btn infi-btn-linear-green-l btn-sm ng-scope"
+                   style="text-decoration: none; border-radius: 5px; padding: 6px;" href="#/consultationInput/0/init/0/init" >创建远程会诊</a>
+            <!--</button>-->
+        </li>
+    </ul>
+    <div consultation = 'consultation'  columns="headerData.columns" ng-if="content&&headerData.columns"
+         opts="opts" update-page="changePage(page)"  btn-back="pageFns(entity,type)"  content="content"
+         infi-table class="infi-remote"></div>
+</div>
+
+<!--是否同意会诊，删除，取消-->
+<div class="modal fade" id="myModalConsultation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <span ng-if="operationType === 'agree'">是否同意接受此远程会诊申请</span>
+                    <span ng-if="operationType === 'delete'">是否删除该会诊</span>
+                    <span ng-if="operationType === 'cancel'">是否取消该会诊</span>
+                </h4>
+            </div>
+            <div ng-if="operationType === 'agree'" class="modal-body">
+                <div class="row" style="text-align: center;">
+                    <label style="color: #757575; padding:0 20px;">
+                        <input type="radio" ng-model="status.status" value="pass">同意
+                    </label>
+                    <label style="color: #757575;padding:0 20px;">
+                        <input type="radio" ng-model="status.status" value="refuse">不同意
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button ng-click="ConfirmTheStatus()" type="button" class="btn btn-primary">
+                    确认
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--视频聊天-->
+<div class="modal fade" id="createMyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="createMyModalLabel">创建视频会诊</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="height:150px;line-height: 150px;text-align: center;">
+                    <img style="height: 150px;width: 150px;" src="../../src/image/creat.gif" alt="加载图">
+                </div>
+                <span ng-show="vadio.open == true">成功创建视频会诊点击进入</span>
+                <span ng-show="vadio.open == false">等待会诊发起人创建直播房间</span>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+                <a ng-if = "vadio.open == true" class="btn btn-danger" href="{{vadio.linkUrl}}" target="_blank">进入视频会诊</a>
+                <!--<buttun type="button"class="btn btn-danger" ng-click="closeVideo()">关闭视频会诊</buttun>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div sys-tip></div>
+<div video-tip></div>

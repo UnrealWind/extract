@@ -1,0 +1,198 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>病历列表</h4>
+<div class="infi-box">
+    <div class="btn-tab">
+        <ul>
+            <li>
+                <a class="btn" ng-class="{'today':'btn-primary','all':'btn-default'}[type]" ng-click="changeTab('today')">今日就诊患者</a>
+            </li>
+            <li>
+                <a class="btn" ng-class="{'all':'btn-primary','today':'btn-default'}[type]" ng-click="changeTab('all')">全部患者</a>
+            </li>
+        </ul>
+
+        <span ng-if="type == 'today'" >今日待接诊：{{kpi.today.ready|changeNULL}}人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已接诊:{{kpi.today.finish|changeNULL}}人</span>
+        <span ng-if="type == 'all'" >共接诊{{kpi.all.totalPatient|changeNULL}}位患者&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;累计{{kpi.all.totalRecord|changeNULL}}人次</span>
+        <span class="btn btn-primary infi-fr" ng-click="modalNewRecord()">新建</span>
+    </div>
+    <div  class="infi-box-containter input-lists">
+        <div class="dir-nav-container">
+            <div class="infi-box-containter ">
+                <div class="dir-nav-container">
+                    <div class="marginten">
+                        <ul class="row form-inline " style="margin-top: 0;">
+                            <li class="col-xs-3 form-group">
+                                <label>病案号：</label>
+                                <input ng-change="getRecordList(1,10)" type="text" ng-model="params.filter_LIKE_patientId" class="form-control" >
+                            </li>
+                            <li class="col-xs-3 form-group">
+                                <label>姓名：</label>
+                                <input ng-change="getRecordList(1,10)" type="text" ng-model="params.filter_LIKE_name" class="form-control" >
+                            </li>
+                            <li ng-if="type == 'today'" class="col-xs-3 form-group">
+                                <label>就诊状态：</label>
+                                <select ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_EQ_status">
+                                    <option value="">请选择</option>
+                                    <option value="1">待接诊</option>
+                                    <option value="5">已接诊</option>
+                                </select>
+                            </li>
+                            <li ng-if="type == 'all'" class="col-xs-6 form-group">
+                                <label>就诊时间：</label>
+                                <input ng-change="getRecordList(1,10)" class="form-control" type="text" name="start" readonly="readonly"
+                                       ng-model="params.filter_GTE_visitDate"  ng-click="timePlugin('start','yyyy-mm-dd')">
+                                <span>-</span>
+                                <input ng-change="getRecordList(1,10)" class="form-control" type="text" name="end" readonly="readonly"
+                                       ng-model="params.filter_LTE_visitDate"  ng-click="timePlugin('end','yyyy-mm-dd')">
+                            </li>
+                            <li ng-if="type == 'all'" class="col-xs-4 form-group">
+                                <label>就诊科室：</label>
+                                <select ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_EQ_visitDeptId">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat = "opt in deptList" value = "{{opt.id}}">{{opt.name}}</option>
+                                </select>
+                            </li>
+                            <li ng-if="type == 'all'" class="col-xs-4 form-group">
+                                <label>接诊医生：</label>
+                                <select ng-change="getRecordList(1,10)" class="form-control" ng-model="params.filter_EQ_visitDoctorId">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat = "opt in doctorList" value = "{{opt.id}}">{{opt.name}}</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <table ng-if="type == 'today'" class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>病案号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>就诊状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="opt in recordList.content">
+                        <td>{{opt.patientId}}</td>
+                        <td>{{opt.name}}</td>
+                        <td>{{opt.sex}}</td>
+                        <td>{{opt.age}}</td>
+                        <td>{{opt.status|statusIll}}</td>
+                        <td>
+                            <span ng-if="!routeParams.hideR">
+                                <a target="_blank" ng-if="opt.status == '5'" ng-click="jump('record-collect-src/#/record-collect/view/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId)" class="cursor">查看详情</a> 
+                                <a target="_blank" ng-if="opt.status == '1'" ng-click="jump('record-collect-src/#/record-collect/treatment/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId)" class="cursor">患者接诊</a>
+                            </span>
+                            <span ng-if="routeParams.hideR">
+                                <a target="_blank" ng-if="opt.status == '5'" ng-click="jump('record-collect-src/#/record-collect/view/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId+'/1')" class="cursor">查看详情</a>
+                                <a target="_blank" ng-if="opt.status == '1'" ng-click="jump('record-collect-src/#/record-collect/treatment/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId+'/1')" class="cursor">患者接诊</a>
+                            </span>
+                            &nbsp;&nbsp;
+                            <a target="_blank" href="{{hostPort}}/record-src-demo/#/record/{{opt.xlPatientId}}" class="cursor">统一视图</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table ng-if="type == 'all'" class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>病案号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th style="width:400px;">诊断</th>
+                        <th>就诊日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="opt in recordList.content">
+                        <td>{{opt.patientId}}</td>
+                        <td>{{opt.name}}</td>
+                        <td>{{opt.sex}}</td>
+                        <td>{{opt.age}}</td>
+                        <td class=""><p class="showPoint" title="{{opt.diagnosis}}">{{opt.diagnosis}}</p></td>
+                        <td>{{opt.visitDate}}</td>
+                        <td>
+                            <span ng-if="!routeParams.hideR">
+                                <a target="_blank" ng-if="opt.status == '5'" ng-click="jump('record-collect-src/#/record-collect/view/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId)" class="cursor">查看详情</a>&nbsp;&nbsp;
+                                <a target="_blank" ng-if="opt.status == '1'" ng-click="jump('record-collect-src/#/record-collect/treatment/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId)" class="cursor">患者接诊</a>
+                            </span>
+                            <span ng-if="routeParams.hideR">
+                                <a target="_blank" ng-if="opt.status == '5'" ng-click="jump('record-collect-src/#/record-collect/view/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId+'/1')" class="cursor">查看详情</a>&nbsp;&nbsp;
+                                <a target="_blank" ng-if="opt.status == '1'" ng-click="jump('record-collect-src/#/record-collect/treatment/'+opt.id+'/'+opt.xlPatientId+'/'+opt.xlVisitId+'/'+opt.patientId+'/'+opt.templateId+'/1')" class="cursor">患者接诊</a>
+                            </span>
+                            <a target="_blank" href="{{hostPort}}/record-src-demo/#/record/{{opt.xlPatientId}}" class="cursor">统一视图</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-if="!recordList" class="alert alert-danger">暂无数据！！！</div>
+                <div class="infi-page" >
+                    <uib-pagination total-items="recordList.totalElements" ng-model="recordList.number"
+                                    max-size="7" boundary-link-numbers="true"
+                                    ng-change="getRecordList(recordList.number,10)"
+                                    items-per-page="recordList.size"></uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="" class="modal fade bs-example-modal-lg newRecord" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4>新建病历</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="row form-inline ">
+                        <li class="col-md-6 form-group ">
+                            <label>病历号：</label>
+                            <input type="text" class="form-control" ng-model="newRecordData.patientId">
+                        </li>
+                        <li class="col-md-6 form-group">
+                            <label>姓名：</label>
+                            <input type="text" class="form-control" ng-model="newRecordData.name">
+                        </li>
+                        <li class="col-md-6 ">
+                            <label>&nbsp;&nbsp;&nbsp;性别：</label>
+                            <span class="form-group form-inline fix-radio">
+                                <label class="radio-inline">
+                                    <input ng-model="newRecordData.sex" type="radio" value="男">男
+                                </label>
+                                <label class="radio-inline">
+                                    <input ng-model="newRecordData.sex" type="radio" value="女">女
+                                </label>
+                            </span>
+                        </li>
+                        <li class="col-md-6 form-group">
+                            <label>年龄：</label>
+                            <input type="text" class="form-control" ng-model="newRecordData.age">
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="newRecord()">新建</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .fix-radio input{
+        margin-top:12px;
+    }
+    .fix-radio label {
+        margin-left:20px;
+    }
+
+</style>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>溪流数据</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="contain">
+       <div class="box">
+           <div>
+               用户名：<input type="text" id="username">
+               密码：<input type="text" id="password">
+               <button>提交</button>
+           </div>
+           <div class="tip">*用户名和密码不能为空</div>
+           <div class="result">
+               <h3>加密过的用户名和密码:</h3>
+               <div>
+                   <em class="titleUser"></em>：<b class="username"></b><em class="copy copyusername">复制</em>
+               </div>
+               <div>
+                   <em class="titlePass"></em>：<b class="password"></b><em class="copy copypassword">复制</em>
+               </div>
+           </div>
+           <div class="result">
+               <h3>SYS表加密过的用户名和密码:</h3>
+               <div>
+                   <em class="title_sys_User"></em>：<b class="user_sys_name"></b><em class="copy copy_sys_username">复制</em>
+               </div>
+               <div>
+                   <em class="title_sys_Pass"></em>：<b class="pass_sys_word"></b><em class="copy copy_sys_password">复制</em>
+               </div>
+           </div>
+       </div>
+    </div>
+</body>
+<script src="./js/jquery-2.2.3.min.js"></script>
+<script src="./js/main.js"></script>
+</html>

@@ -1,0 +1,151 @@
+<div class="">
+    <div class="infi-title">
+        <h4 class="relative">
+            <span ng-click="addAttr(mainComplaintData.data[0],true)">{{mainComplaintData.name}}
+                <span class="glyphicon" ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span>
+            </span>
+            <span class="btn-pull-right">
+                <a  ng-click="addAttr(mainComplaintData.data[0])" title="添加症状" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                </a>
+                <a  ng-if="!mainComplaintData.data[mainComplaintData.data.length-1].remarkShow && !mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="showRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                </a>
+                <a  ng-if="mainComplaintData.data[mainComplaintData.data.length-1].remarkShow || mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="delRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="删除备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                </a>
+            </span>
+        </h4>
+    </div>
+    <div ng-if="$index<1" ng-repeat="attrs in mainComplaintData.data">
+        <ul class="attr">
+            <li ng-repeat="attr in attrs.childs">
+                <div class="attr" >
+                    <span ng-click="addQuestion(attrs,attr)" class="txt-underline" title="{{attr.name}}">{{attr.name}}</span>
+                    <span ng-click="delAttr(attrs,$index)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </div>
+                <div class="answer">
+                    <span ng-repeat="opt in attr.childs">
+                        <span ng-if="opt.type == 'smallText' && opt.value" >{{opt.name}}:
+                            <span>{{opt.value}}</span>
+                            <span ng-if="opt.unitValue == unit.name" ng-repeat="unit in opt.units">{{unit.name}}</span>
+                            ;
+                        </span>
+                        <span ng-if="opt.type == 'radio'">{{opt.name}}:
+                            <span ng-if="options.kid == opt.value" ng-repeat="options in opt.options">{{options.name}}</span>
+                            ;
+                        </span>
+                        <span ng-if="opt.type == 'checkbox' && opt.values && opt.values.length>0">{{opt.name}}:
+                            <span ng-repeat="value in opt.values track by $index">
+                                <span ng-if="options.kid == value" ng-repeat="options in opt.options">
+                                    {{options.name}}
+                                </span>
+                            </span>
+                            ;
+                        </span>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <!--<div class="btn-box">
+            <div class="btn btn-default" ng-click="addAttr(attrs)">添加症状</div>
+            <div ng-if="!attrs.remarkShow && !attrs.remark" ng-click="showRemark(attrs)" class="btn btn-default">添加备注</div>
+            <div  ng-if="attrs.remarkShow || attrs.remark" ng-click="delRemark(attrs)" class="btn btn-default">清空备注</div>
+
+        </div>
+        <div class="remarks">
+            <textarea ng-if="attrs.remarkShow || attrs.remark" class="form-control" ng-model="attrs.remark" rows="3"></textarea>
+        </div>-->
+    </div>
+
+    <ul class="attr-wrapper">
+        <li ng-if="$index>0" ng-repeat="item in mainComplaintData.data"
+            class="attr-item">
+            <div class="attrname pull-left text-right txt-underline"
+                 title="{{item.name}}"
+                 ng-bind="item.name"
+                 ng-click="switchTemp(item)">
+            </div>
+
+            <ul class="answer answer-list clearfix">
+                <li class="answer-item pull-left"
+                    ng-repeat="answer in item.childs">
+
+                    <!-- 答案结果类型为 text -->
+                    <span ng-if="answer.type == 'smallText'">
+                        <span ng-bind="answer.name + ':'"></span>
+
+                        <span ng-if="answer.value">
+                            <span ng-bind="answer.value"></span>
+                            <!--<span ng-repeat="unit in answer.unit"
+                                ng-bind="unit.unit"
+                                ng-if="unit.kid == answer.unitValue"></span>-->
+                            <span ng-bind="answer.unit"></span>
+                        </span>
+
+                        <span class="font-500" ng-if="!answer.value"
+                              ng-bind="'无'"></span>
+                        ;
+                    </span>
+
+                    <!-- 答案结果类型为 checkbox -->
+                    <span ng-if="answer.type == 'checkbox'" class="answer-checkbox-value-wrapper">
+                        <span ng-bind="answer.name + ':'"></span>
+
+                        <span ng-if="answer.values.length > 0">
+                            <span ng-repeat="opt in answer.options"
+                                  ng-if="answer.values.indexOf(opt.kid) >= 0"
+                                  class="answer-checkbox-value">
+                                {{opt.name}}
+                                <span ng-if="opt.childs && opt.childs[0].value == '是'">
+                                    <span ng-repeat="options in opt.childs" ng-if="options.value ">
+                                        <span>
+                                            {{options.name}}：{{options.value}}{{options.unitValue}}
+                                        </span>
+                                    </span>
+                                </span>;
+                            </span>
+
+                        </span>
+
+                        <span>
+                            <span ng-repeat="checkedItem in answer.searchAbout.checkedRst"
+                                  ng-if="!findObjectByKey(answer.options, 'kid', checkedItem.kid).isIn"
+                                   class="answer-checkbox-value">
+                                {{checkedItem.name}}
+                                <span ng-repeat="options in checkedItem.childs">
+                                    {{options.name}}：{{options.value}}{{options.unitValue}}
+                                </span>
+                            </span>
+
+                        </span>
+
+                        <!-- {{answer.searchAbout.checkedRst}} -->
+
+                        <span ng-if="!answer.values || answer.values.length == 0"
+                              ng-bind="'无'"></span>
+                    </span>
+                </li>
+
+            </ul>
+
+
+            <div class="remarks answer-remark">
+                <textarea class="form-control answer-textarea"
+                          rows="3"
+                          ng-if="item.remarkShow || item.remark"
+                          ng-model="item.remark"></textarea>
+
+
+               <!-- <div class="btn btn-default"
+                     ng-if="!item.remarkShow && !item.remark"
+                     ng-click="showRemark(item)">添加备注</div>
+
+                <div class="btn btn-default"
+                     ng-if="item.remarkShow || item.remark"
+                     ng-click="delRemark(item)">清空备注</div>-->
+            </div>
+
+        </li>
+    </ul>
+</div>

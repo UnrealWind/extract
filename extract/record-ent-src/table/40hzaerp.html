@@ -1,0 +1,51 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_hzaerp == true">
+    <div class="infi-record-title">
+        <h4>40HzAERP(40Hz听觉相关电位)</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_hzaerp_time"
+                   ng-model="entity.table_hzaerp_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <tbody>
+            <tr>
+                <td>刺激声</td>
+                <td><input name="entity.table_hzaerp_cjs" ng-model="entity.table_hzaerp_cjs"/></td>
+                <td>状态</td>
+                <td><input name="entity.table_hzaerp_zt" ng-model="entity.table_hzaerp_zt"/></td>
+                <td>频率(Hz)</td>
+                <td><input name="entity.table_hzaerp_pl" ng-model="entity.table_hzaerp_pl"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    侧别
+                </td>
+                <td colspan="4">阈值</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    左
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_ze_yz" ng-model="entity.table_hzaerp_ze_yz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    右
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_ye_yz" ng-model="entity.table_hzaerp_ye_yz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    备注
+                </td>
+                <td colspan="4"><input name="entity.table_hzaerp_note" ng-model="entity.table_hzaerp_note" class="form-control"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:260px;text-align: right;padding-right: 0px;"><label>40HzAERP(40Hz听觉相关电位)诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_hzaerp"><input
+                name="entity.name_hzaerp" type="text" ng-model="entity.name_hzaerp" class="form-control"/></div>
+    </div>
+</section>

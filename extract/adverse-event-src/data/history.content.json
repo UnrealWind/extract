@@ -1,0 +1,21 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": [
+    {
+      "eventLevel":"Ⅲ类事件",
+      "firstEvent":"护理质量",
+      "secondEvent":"压疮事件",
+      "occurPro":"75%",
+      "flagState":"未标记",
+      "active":false
+    },{
+      "eventLevel":"Ⅲ类事件",
+      "firstEvent":"护理质量",
+      "secondEvent":"压疮事件2",
+      "occurPro":"75%",
+      "flagState":"未标记",
+      "active":false
+    }
+  ]
+}

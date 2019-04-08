@@ -1,0 +1,141 @@
+
+    <div style="float:right;margin-right: 20px; top:-10px;margin-top: -5px;" ng-if="modify">
+        <!--topics-modify 是topics的备用html-->
+        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="topicsModify()">课题信息修改</button>
+    </div>
+    <h4 class="infi-title" style="margin-bottom: 15px"><i class="glyphicon glyphicon-globe"></i>课题概况</h4>
+
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="infi-box">
+                <div class="marginten">
+                    <!--<h4>整体情况</h4>-->
+                    <!--<ul class="nav nav-tabs" role="tablist">-->
+                        <!--<li role="presentation" class='active'><a>整体情况</a></li>-->
+                        <!--<li role="presentation" ><a href="#/project-data">课题数据</a></li>-->
+                    <!--</ul>-->
+                </div>
+                <h4 class="infi-title">课题任务:</h4>
+                <div class="infi-box-containter {{cls}}">
+                    <div class="alert alert-info" role="alert">
+                        系统暂无数据
+                    </div>
+                </div>
+                <div class="infi-box-containter {{clss}}">
+                        <div class="row">
+                            <div class="col-xs-6" >
+                                <div id="main" style="height:400px;"></div>
+                            </div>
+                            <div class="col-xs-6" >
+                                <div class="infi-section">
+                                    <div>
+                                        <table class="table infi-table" style="border:1px solid #ddd;">
+                                            <thead>
+                                            <tr>
+                                                <th ng-repeat="theader in topicsTableHeader" ng-bind="theader.label" ></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="tbody in topicsTableBody">
+                                                <td><span ng-bind="tbody.name"></span></td>
+                                                <td><span ng-bind="tbody.Num"></span></td>
+                                                <td><span ng-bind="tbody.Nums"></span></td>
+                                                <td ng-style="tbody.background"><span ng-bind="tbody.degree"></span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" ng-class="{true: 'active' , false:''}[step == task.name]" ng-click="descriptionTab(task.name,task.content)" ng-repeat="task in taskGroup"><a class="cursorPointer">{{task.name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="marginten">
+                            <p><label>描述 : </label><span>{{description}}</span></p>
+                        </div>
+                        <div class="infi-box" style="border:1px solid transparent;box-shadow: 2px 2px 2px #fff;margin: 0;padding: 0;">
+                            <h4 class="infi-title">各中心数据采集情况</h4>
+                            <div class="infi-section" >
+                                <div>
+                                    <table class="table infi-table" style="border:1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th ng-repeat="theader in completionHeader" ng-bind="theader.label" ></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="tbody in completionBodyData">
+                                            <td><span ng-bind="$index+1"></span></td>
+                                            <td><span ng-bind="tbody.hospital"></span></td>
+                                            <td><span ng-bind="tbody.departments"></span></td>
+                                            <td><span ng-bind="tbody.task"></span></td>
+                                            <td><span ng-bind="tbody.recordNum"></span></td>
+                                            <td><span ng-bind="tbody.completed"></span></td>
+                                            <td><span ng-bind="tbody.degree"></span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="infi-box">
+                <h4 class="infi-title">课题基本信息:</h4>
+                <div class="infi-box-containter">
+                    <link rel="import" href="../html2/overview.view.form.html?__inline" />
+                    <div class="row" >
+                        <div class="col-md-1 form-group" style="text-align: right;padding-right: 0px;    width: 12%;" >
+                            <label>各中心情况: </label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="alert alert-info" role="alert" ng-if="!center">
+                                系统暂无数据没有数据
+                            </div>
+                            <table class="table infi-table" style="border:1px solid #ddd;margin: 0;" ng-if="center">
+                                <thead>
+                                    <tr>
+                                        <th>中心</th>
+                                        <th>医院</th>
+                                        <th>科室</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="tbody in centerGenral">
+                                    <td><span ng-bind="tbody.type"></span></td>
+                                    <td><span ng-bind="tbody.hospitalName"></span></td>
+                                    <td><span ng-bind="tbody.sectName"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infi-box">
+                <h4 class="infi-title">附件下载:</h4>
+                <div class="infi-box-containter">
+                    <div class="alert alert-danger" ng-if="entity.subjectFiles.length==0" role="alert">
+                        您没有上传任何附件！！！
+                    </div>
+                     <div class="infi-attachment-downList" ng-if="entity.subjectFiles.length>0" >
+                        <table class="table">
+                            <tr ng-repeat="opt in downloadList">
+                                <td>
+                                    <span>{{entity.subjectFiles[$index].originName}}</span>
+                                </td>
+                                <td>
+                                    <a href="{{opt | getUrlParameter}}" class="btn btn-default">下载</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

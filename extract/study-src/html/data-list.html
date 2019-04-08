@@ -1,0 +1,37 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据管理 > 数据取数 > 查看取数任务</h4>
+<div class="infi-box">
+    <h4 class="infi-title">查看取数任务</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="marginten">
+                <ul class="ul-float-left ul-li-3">
+                    <li style="width:40%;">
+                        <label >申请时间:</label>
+                        <input type="text" class="form-control" style="width:35%;">
+                        ~
+                        <input type="text" class="form-control" style="width:35%;">
+                    </li>
+                    <li style="width:26%;">
+                        <label>审核状态:</label>
+                        <select name="" class="form-control">
+                            <option value="">全部</option>
+                            <option value="">待审核</option>
+                            <option value="">数据提取中</option>
+                            <option value="">数据提取成功</option>
+                            <option value="">数据提取失败</option>
+                            <option value="">数据已下载</option>
+                            <option value="">审核驳回</option>
+                        </select>
+                    </li>
+                    <li class="input-group">
+                        <input type="text" class="form-control input-lg" style="height:34px;" placeholder="请输入任务名称进行搜索"><span class="input-group-addon btn btn-primary" ng-click="searchList()">搜索</span>
+                    </li>
+                </ul>
+            </div>
+            <h4><span style="border-bottom: 1px solid black">取数列表</span></h4>
+            <div infi-table columns="listColumns" data-ng-if="listColumns" content="listData" update-page="getList(page)"></div>
+        </div>
+    </div>
+</div>
+
+<button class="btn infi-btn-linear-green-l btn-sm" ><a href="#/data-details">详情</a></button>

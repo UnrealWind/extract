@@ -1,0 +1,19 @@
+<div style="min-width: 990px;overflow-x: auto;">
+    <div style="margin-top: 8px;">
+        <h4 class="infi-title infi-inline-block"><i class="glyphicon glyphicon-globe"></i>执行详情</h4>
+        <div class="infi-m-btn infi-rule-back">
+            <a class="btn btn-default" onclick="history.back()">返回</a>
+        </div>
+    </div>
+    <div class="infi-box">
+        <h4>命中人群列表</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div class="tab-content">
+                    <div infi-table columns="columns" content="content" opts="opts" update-page="changePage(page)"
+                         btn-callback="pageOperation(entity,type)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

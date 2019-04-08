@@ -1,0 +1,398 @@
+<div class="infi-word-template">
+    <!--<h2>病案纸</h2>-->
+    <div class="infi-word-title">
+        <p class="infi-name">
+            <span>姓名：{{targetData.name}}</span>
+        </p>
+        <p class="infi-patiId">
+            <span>住院号：{{targetData.in_hosp_no|changeNULL}}</span>
+        </p>
+    </div>
+    <div class="infi-content">
+        <h3>
+            <!--<span class="align-left">2009-04-20 16:56</span>-->
+            <span class="">{{targetData.label}}</span>
+        </h3>
+
+        <!--入院记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34763-1'">
+            <p ng-if="targetData.content.data.main_complaint">
+                <b>主诉：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.main_complaint"></p>
+            </p>
+            <p ng-if="targetData.content.data.history_of_present_illness">
+                <b>现病史：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.history_of_present_illness"></p>
+            </p>
+            <p ng-if="targetData.content.data.past_history">
+                <b>既往史：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.past_history"></p>
+            </p>
+            <p ng-if="targetData.content.data.persional_history">
+                <b>个人史：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.persional_history"></p>
+            </p>
+            <p ng-if="targetData.content.data.family_history">
+                <b>家族史：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.family_history"></p>
+            </p>
+            <p ng-if="targetData.content.data.physical_examination">
+                <b>体格检查：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.physical_examination"></p>
+            </p>
+            <p ng-if="targetData.content.data.speciality_check_up">
+                <b>专科检查：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.speciality_check_up"></p>
+            </p>
+            <p ng-if="targetData.content.data.laboratory_test_special_examination">
+                <b>化验及特殊检查：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.laboratory_test_special_examination"></p>
+            </p>
+            <p ng-if="targetData.content.data.preliminary_diagnosis">
+                <b>初步诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.preliminary_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.final_diagnosis">
+                <b>最后诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.final_diagnosis"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--出院记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34106-1'">
+            <p ng-if="targetData.content.data.condition_of_admission">
+                <b>入院时情况：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.condition_of_admission"></p>
+            </p>
+            <p ng-if="targetData.content.data.admission_diagnosis">
+                <b>入院诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.admission_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.inpatient_diagnosis_treatment">
+                <b>住院诊治经过：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.inpatient_diagnosis_treatment"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_situation">
+                <b>出院时情况：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_situation"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_diagnosis">
+                <b>出院诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_order">
+                <b>出院医嘱：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_order"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--24小时入出院记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34763-2'">
+            <p ng-if="targetData.content.data.main_complaint">
+                <b>主诉：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.main_complaint"></p>
+            </p>
+            <p ng-if="targetData.content.data.condition_of_admission">
+                <b>入院时情况：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.condition_of_admission"></p>
+            </p>
+            <p ng-if="targetData.content.data.admission_diagnosis">
+                <b>入院诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.admission_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.inpatient_diagnosis_treatment">
+                <b>住院诊治经过：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.inpatient_diagnosis_treatment"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_situation">
+                <b>出院时情况：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_situation"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_diagnosis">
+                <b>出院诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_order">
+                <b>出院医嘱：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_order"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--首次病程-->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-1'">
+            <p ng-if="targetData.content.data.case_character">
+                <b>病例特点：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.case_character"></p>
+            </p>
+            <p ng-if="targetData.content.data.laboratory_tests_other">
+                <b>化验及其他检查：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.laboratory_tests_other"></p>
+            </p>
+            <p ng-if="targetData.content.data.consultation_discussion">
+                <b>拟诊讨论：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.consultation_discussion"></p>
+            </p>
+            <p ng-if="targetData.content.data.diagnostic_analysis">
+                <b>诊断分析：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.diagnostic_analysis"></p>
+            </p>
+            <p ng-if="targetData.content.data.discharge_situation">
+                <b>初步诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.discharge_situation"></p>
+            </p>
+            <p ng-if="targetData.content.data.assessment_plan">
+                <b>诊疗计划：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.assessment_plan"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--死亡记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34106-3'">
+            <p ng-if="targetData.content.data.condition_of_admission">
+                <b>入院时情况：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.condition_of_admission"></p>
+            </p>
+            <p ng-if="targetData.content.data.admission_diagnosis">
+                <b>入院诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.admission_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.inpatient_diagnosis_treatment">
+                <b>住院诊治经过：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.inpatient_diagnosis_treatment"></p>
+            </p>
+            <p ng-if="targetData.content.data.cause_of_death">
+                <b>死亡原因：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.cause_of_death"></p>
+            </p>
+            <p ng-if="targetData.content.data.diagnosis_death">
+                <b>死亡诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.diagnosis_death"></p>
+            </p>
+
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--手术记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-8'">
+            <p ng-if="targetData.content.data.date_of_surgery">
+                <b>手术日期：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.date_of_surgery"></p>
+            </p>
+            <p ng-if="targetData.content.data.preoperative_diagnosis">
+                <b>术前诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.preoperative_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.Postoperative_diagnosis">
+                <b>术后诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Postoperative_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.operation_name">
+                <b>手术名称：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.operation_name"></p>
+            </p>
+            <p ng-if="targetData.content.data.Surgery">
+                <b>手术者：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Surgery"></p>
+            </p>
+            <p ng-if="targetData.content.data.Anesthesia_method">
+                <b>麻醉方法：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Anesthesia_method"></p>
+            </p>
+            <p ng-if="targetData.content.data.anesthesiologists">
+                <b>麻醉医师：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.anesthesiologists"></p>
+            </p>
+            <p ng-if="targetData.content.data.After_operation">
+                <b>手术经过：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.After_operation"></p>
+            </p>
+            <p ng-if="targetData.content.data.Imaging_method">
+                <b>造影方法：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Imaging_method"></p>
+            </p>
+            <p ng-if="targetData.content.data.Imaging_results">
+                <b>造影结果：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Imaging_results"></p>
+            </p>
+            <p ng-if="targetData.content.data.conclusion">
+                <b>结论：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.conclusion"></p>
+            </p>
+            <p ng-if="targetData.content.data.Postoperative_precautions">
+                <b>术后注意事项：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Postoperative_precautions"></p>
+            </p>
+            <p ng-if="targetData.content.data.record">
+                <b>记录：</b>{{targetData.content.data.record}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.record"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--查房记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-4'">
+            <p ng-if="targetData.content.data.condition">
+                <p class="htmlString" ng-bind-html="targetData.content.data.condition"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+
+        <!--会诊记录 -->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-15'">
+            <p ng-if="targetData.content.data.Date_of_consultation">
+                <b>会诊日期：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Date_of_consultation"></p>
+            </p>
+            <p ng-if="targetData.content.data.Consultation_section">
+                <b>会诊科别：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Consultation_section"></p>
+            </p>
+            <p ng-if="targetData.content.data.Medical_record_purpose_consultation">
+                <b>病历及会诊目的：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Medical_record_purpose_consultation"></p>
+            </p>
+            <p ng-if="targetData.content.data.Consultation_opinion">
+                <b>会诊意见：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Consultation_opinion"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--科间会诊记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '54549-2'">
+            <p ng-if="targetData.content.data.Consultation_department">
+                <b>会诊科室：</b>{{targetData.content.data.Consultation_department}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.Consultation_department"></p>
+            </p>
+            <p ng-if="targetData.content.data.Name_title_of_consultant">
+                <b>会诊医师姓名及职称：</b>{{targetData.content.data.Name_title_of_consultant}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.Name_title_of_consultant"></p>
+            </p>
+            <p ng-if="targetData.content.data.Purpose_of_consultation">
+                <b>会诊目的：</b>{{targetData.content.data.Purpose_of_consultation}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.Purpose_of_consultation"></p>
+            </p>
+            <p ng-if="targetData.content.data.consultation_hours">
+                <b>会诊时间：</b>{{targetData.content.data.consultation_hours	}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.consultation_hours"></p>
+            </p>
+            <p ng-if="targetData.content.data.See_consultation">
+                <b>会诊所见：</b>{{targetData.content.data.See_consultation}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.See_consultation"></p>
+            </p>
+            <p ng-if="targetData.content.data.diag">
+                <b>诊断：</b>{{targetData.content.data.diag}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.diag"></p>
+            </p>
+            <p ng-if="targetData.content.data.Treatment_opinion">
+                <b>治疗意见：</b>{{targetData.content.data.Treatment_opinion}}
+                <p class="htmlString" ng-bind-html="targetData.content.data.Treatment_opinion"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+        <!--院内会诊记录 院外会诊记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '54549-3' || targetData.medicalRecordTypeId == '54549-4'">
+            <p ng-if="targetData.content.data.date">
+                <b>时间：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.date"></p>
+            </p>
+            <p ng-if="targetData.content.data.place">
+                <b>地点：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.place"></p>
+            </p>
+            <p ng-if="targetData.content.data.compere">
+                <b>主持人：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.compere"></p>
+            </p>
+            <p ng-if="targetData.content.data.Attendants">
+                <b>参加人员：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Attendants"></p>
+            </p>
+            <p ng-if="targetData.content.data.Report_medical_record_by_octor">
+                <b>经治医师汇报病历：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Report_medical_record_by_octor"></p>
+            </p>
+            <p ng-if="targetData.content.data.Department_Director_Report">
+                <b>各科室主任汇报：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.Department_Director_Report"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+
+        <!--转科后首次病程记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-2'">
+            <p ng-if="targetData.content.data.case_character">
+                <b>病例特点：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.case_character"></p>
+            </p>
+            <p ng-if="targetData.content.data.consultation_discussion">
+                <b>拟诊讨论：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.consultation_discussion"></p>
+            </p>
+            <p ng-if="targetData.content.data.preliminary_diagnosis">
+                <b>初步诊断：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.preliminary_diagnosis"></p>
+            </p>
+            <p ng-if="targetData.content.data.assessment_plan">
+                <b>诊疗计划：</b>
+                <p class="htmlString" ng-bind-html="targetData.content.data.assessment_plan"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+
+        <!--术后病程记录-->
+        <div ng-if="targetData.medicalRecordTypeId == '34130-16'">
+            <p ng-if="targetData.content.data.content">
+                <p class="htmlString" ng-bind-html="targetData.content.data.content"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+
+        <!--会诊记录单-->
+        <div ng-if="targetData.medicalRecordTypeId == '54549-1'">
+            <p ng-if="targetData.content.data.Consultation_opinion">
+                <p class="htmlString" ng-bind-html="targetData.content.data.Consultation_opinion"></p>
+            </p>
+            <p ng-if="targetData.content.data.Medical_record_purpose_consultation">
+                <p class="htmlString" ng-bind-html="targetData.content.data.Medical_record_purpose_consultation"></p>
+            </p>
+            <p class="infi-name" ng-if="targetData.content.data.doctor_signature">
+                医生：{{targetData.content.data.doctor_signature}}</p>
+            <p class="infi-name" ng-if="targetData.content.data.autograph">
+                医生：{{targetData.content.data.autograph}}</p>
+        </div>
+    </div>
+</div>

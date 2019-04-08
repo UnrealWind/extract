@@ -1,0 +1,142 @@
+[
+  {
+    "dept_list": "康复科按摩门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 0.26,
+    "cnt": 0.56
+  },
+  {
+    "dept_list": "血管外科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 0.66,
+    "cnt": 0.99
+  },
+  {
+    "dept_list": "口腔科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 0.53,
+    "cnt": 1.45
+  },
+  {
+    "dept_list": "肾科门诊",
+    "age_id": "2",
+    "dept_name": "中医科门诊",
+    "ratio": 0.63,
+    "cnt": 1.55
+  },
+  {
+    "dept_list": "职工保健门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 0.86,
+    "cnt": 1.85
+  },
+  {
+    "dept_list": "干部保健门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 2.04,
+    "cnt": 2.2
+  },
+  {
+    "dept_list": "妇科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 0.3,
+    "cnt": 2.44
+  },
+  {
+    "dept_list": "风湿免疫、变态反应科门诊",
+    "age_id": "2",
+    "dept_name": "中医科门诊",
+    "ratio": 0.99,
+    "cnt": 2.5
+  },
+  {
+    "dept_list": "泌尿外科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 3.32,
+    "cnt": 4.41
+  },
+  {
+    "dept_list": "普通外科门诊",
+    "age_id": "1",
+    "dept_name": "中医科门诊",
+    "ratio": 0.03,
+    "cnt": 5.66
+  },
+  {
+    "dept_list": "皮肤性病科门诊",
+    "age_id": "1",
+    "dept_name": "中医科门诊",
+    "ratio": 0.03,
+    "cnt": 5.69
+  },
+  {
+    "dept_list": "眼科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 3.68,
+    "cnt": 5.98
+  },
+  {
+    "dept_list": "耳鼻咽喉-头颈外科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 3.09,
+    "cnt": 6.58
+  },
+  {
+    "dept_list": "消化科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 3.62,
+    "cnt": 6.88
+  },
+  {
+    "dept_list": "呼吸科门诊",
+    "age_id": "2",
+    "dept_name": "中医科门诊",
+    "ratio": 3.72,
+    "cnt": 7.96
+  },
+  {
+    "dept_list": "内科门诊",
+    "age_id": "2",
+    "dept_name": "中医科门诊",
+    "ratio": 4.08,
+    "cnt": 7.99
+  },
+  {
+    "dept_list": "骨科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 6.41,
+    "cnt": 10.46
+  },
+  {
+    "dept_list": "神经内科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 7.66,
+    "cnt": 12.82
+  },
+  {
+    "dept_list": "内分泌科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 9.01,
+    "cnt": 14.08
+  },
+  {
+    "dept_list": "心脏科门诊",
+    "age_id": "3",
+    "dept_name": "中医科门诊",
+    "ratio": 16.18,
+    "cnt": 25.42
+  }
+]

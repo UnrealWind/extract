@@ -1,0 +1,25 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"医院",
+      "name":"companyName"
+    },{
+      "label":"科室",
+      "name":"officeName"
+    },{
+      "label":"姓名",
+      "name":"name"
+    },{
+      "label":"电话",
+      "name":"phone"
+    },{
+      "label":"邮箱",
+      "name":"email"
+    },{
+      "label":"备注",
+      "name":"remarks"
+    }
+  ]
+}

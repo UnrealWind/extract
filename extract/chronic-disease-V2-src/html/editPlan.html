@@ -1,0 +1,71 @@
+<div class="container-fluid editPlan-page">
+  <style>
+    .main-content-wrapper,
+    article.infi-main {
+      background-color: #f0f3ef;
+    }
+  </style>
+
+  <div class="main-wrapper">
+    <!-- 方案展示 -->
+    <div class="row plan-wrapper">
+      <div class="col-md-12 plan-container">
+        <!-- 左侧部分 -->
+        <div class="left-wrapper">
+          <ul class="opt-list">
+            <li class="opt-item save-plan cursor"
+                ng-click="saveCurrPlan()"
+                title="当前方案将被页面内容替换">
+              <span class="item-icon"><i class="glyphicon glyphicon-floppy-disk icon-after"></i></span>
+              <span class="hover-txt">保存方案</span>
+            </li>
+            
+            <li class="opt-item cursor"
+                ng-click="naviFuncs.keepCurrPlan()"
+                title="维持现行方案,不做更改">
+              <span class="item-icon"><i class="glyphicon glyphicon-remove icon-after"></i></span>
+              <span class="hover-txt">放弃修改</span>
+            </li>
+
+            <li class="opt-item cursor"
+                ng-click="naviFuncs.toPatiManage()">
+              <span class="item-icon"><i class="glyphicon glyphicon-chevron-left icon-after"></i></span>
+              <span class="hover-txt">返回前页</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="center-wrapper">
+          <div class="row group-wrapper">
+            <div class="col-md-12">
+              <form class="form-inline" ng-if="planCollect.setGroup">
+                <div class="form-group">
+                  <label>患者分组：</label>
+                  <select class="form-control"
+                          ng-model="planCollect.setGroup"
+                          ng-change="groupRange.changeSele()">
+                    <option ng-repeat="group in groupRange.data"
+                            value={{group.schemeGroupName}}
+                            ng-bind="group.schemeGroupName"></option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <blank-plan plan-collect="planRendData" opt-range="optRange"></blank-plan>
+        </div>
+
+        <!-- 右侧部分 -->
+        <div class="right-wrapper">
+          <div class="fixed-wrapper">
+            <anchor-scroll nav-data="planRendData" ng-if="planRendData && planRendData.length > 0"></anchor-scroll>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast 通知 -->
+  <toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+</div>

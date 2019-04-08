@@ -1,0 +1,24 @@
+{
+  "nodes":"规则列表",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"规则名称",
+      "name":"name"
+    },{
+      "label":"规则内容",
+      "name":"contentLabel"
+    },
+    {
+      "label":"创建人",
+      "name":"createrUser"
+    },{
+      "label":"创建时间",
+      "name":"createTime"
+    },{
+      "label":"状态",
+      "name":"statusLabel"
+    }
+  ]
+}

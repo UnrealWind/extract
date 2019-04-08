@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>慢病系统</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="../src/widget/system/sys/login.check.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../src/scss/infi-navi.scss"/>
+    <link rel="stylesheet" type="text/css" href="./scss/all.scss">
+    <style>
+        html { font-size: 100px; }
+        body { font-size: 14px; }
+    </style>
+
+    <script>
+        (function(doc,win){
+            var docEI = doc.documentElement,
+            resizeEvt = 'orientationchange' in window?'orientataionchange':'resize',
+            recalc = function(){
+                var clientWidth = docEI.clientWidth;
+                if(!clientWidth) return;
+                docEI.style.fontSize = 100*(clientWidth/1850)+'px';
+            }
+
+            if(!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+    </script>
+    <link href="../src/scss/infi-chronic1.2.scss" rel="stylesheet" >
+    
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+        <div class="main-content">
+            <!-- 头部导航 -->
+            <header class="navbar navbar-default infi-header clearfix">
+                <div class="navbar-header infi-header-logo">
+                    <span class="logo">
+                        <a href="#/view"></a>
+                    </span>
+                </div>
+        
+                <a class="infi-header-title pull-left" 
+                   href="#/list" 
+                   style="text-decoration: none;"
+                   title="返回首页">慢病系统</a>
+        
+        
+                <div class="box-user pull-right" ng-controller="LoginController">
+                    <span class="infi-user-box" ng-click="userInfo()">
+                        <img src="../src/image/doctor.png" class="user-logo cursorPointer"/>
+                        <span ng-bind="name"></span>
+                    </span>
+                    <span ng-click="logout()" class="cursorPointer"> | 退出</span>
+                </div>
+            </header>
+            <!-- 头部导航 END -->
+        
+            <!-- 左部导航 -->
+        
+            <infi-navi></infi-navi>
+    
+            <!-- 右部内容-->
+            <article class="infi-main">
+                <div ng-view class="route-switch"></div>
+            </article>
+            <!-- 右部内容 END-->
+        </div>
+
+        <!-- 回到顶部 -->
+        <back-to-top></back-to-top>
+
+
+    <footer class="infi-footer">
+        <p class="infi-footer-detail">
+            北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+        </p>
+    </footer>
+
+
+
+
+</body>
+</html>
+<!-- jQuery -->
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- angular -->
+<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+<!-- angular-route -->
+<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+<!-- ng-file-upload -->
+<script type="text/javascript" src="../bower_components/ng-file-upload-shim/ng-file-upload.js"></script>
+<script type="text/javascript" src="../bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+<!-- env.js -->
+<script src="../env/env.js"></script>
+<!-- all.js -->
+<script type="text/javascript" src="all.js"></script>
+<!-- bootstrap -->
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/src/angular-ui-bootstrap.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script type="text/javascript" src="/bower_components/moment/moment.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datetimepicker -->
+<script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!-- echarts -->
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.js"></script>
+<!-- jQuery.print -->
+<script type="text/javascript" src="../bower_components/jQuery.print/jQuery.print.js"></script>
+<!-- login -->
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/system.directive.js" ></script>
+<script type="text/javascript" src="../src/widget/system/system.filter.js" ></script>
+
+<script type="text/javascript" src="../src/widget/system/sys/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/http.interceptor.factory.js" ></script>
+<!-- navi -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>
+
+

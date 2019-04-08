@@ -1,0 +1,35 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"序号",
+      "name":"number"
+    },{
+      "label":"任务名称",
+      "name":"name"
+    },{
+      "label":"申请人",
+      "name":"CRFname"
+    },
+    {
+      "label":"申请人医院",
+      "name":"clinic"
+    },{
+      "label":"第几次申请",
+      "name":"createdtime"
+    },{
+      "label":"申请时间",
+      "name":"changetime"
+    },{
+      "label":"病例数量",
+      "name":"useNubmer"
+    },{
+      "label":"审核状态",
+      "name":"useNubmers"
+    },{
+      "label":"操作",
+      "name":"operat"
+    }
+  ]
+}

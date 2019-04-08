@@ -1,0 +1,114 @@
+<div class="planItem-search-dir">
+  <div class="ipt input-group">
+    <input type="text"
+            id="J-search-input-{{planType}}"
+            class="form-control J-ipt-instance"
+            placeholder="输入关键字搜索"
+            ng-model="searchAbout.kw"
+            ng-change="searchAbout.search(null)">
+    <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+  </div>
+
+  <!-- 搜索结果 -->
+  <div class="planItem-search-dir-rst-wrapper"
+       ng-show="searchAbout.currState !== 'init'">
+    <!-- 搜索状态提示语 -->
+    <!-- 搜索中 -->
+    <p class="state-prompt text-center" ng-if="searchAbout.currState === 'searching'">
+      <span class="text-muted">搜索中...</span>
+    </p>
+    
+    <!-- 请求出错 -->
+    <p class="state-prompt text-center" ng-if="searchAbout.currState === 'showErr'">
+      <span class="text-danger">请求出错了!</span>
+    </p>
+
+    <!-- 结果为空 -->
+    <p class="state-prompt text-center" ng-if="searchAbout.currState === 'showRst' && searchAbout.rst.length == 0">
+      <span class="text-warning">未搜到相关数据</span>
+    </p>
+
+    <!-- 结果展示 -->
+    <ul class="rst-list"
+        ng-if="searchAbout.currState === 'showRst' && searchAbout.rst.length > 0">
+      <li class="rst-item item-count-line clearfix">
+        <span class="pull-right item-count">共搜到 <b>{{searchAbout.rst.length}}</b> 条数据</span>
+      </li>
+      <li class="rst-item clearfix"
+          ng-repeat="item in searchAbout.rst"
+          ng-click="singleItemClick({item: item, event: $event})">
+        <span class="field-wrapper pull-left"
+              ng-repeat="field in renderField"
+              ng-bind="item[field.key]"
+              ng-style="field.style"></span>
+        <span class="pull-right item-prompt">点击添加</span>
+       </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .planItem-search-dir {
+    position: relative;
+  }
+
+  .planItem-search-dir>.planItem-search-dir-rst-wrapper {
+    z-index: 5;
+    position: absolute;
+    top: 38px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: 1px solid #66afe9;
+    -webkit-box-shadow: 4px 5px 5px 3px rgba(0,0,0,.06);
+            box-shadow: 4px 5px 5px 3px rgba(0,0,0,.06);
+    background-color: #fff;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list {
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item {
+    padding: 5px 0;
+    margin-right: 10px;
+    color: #007fff;
+    cursor: pointer;
+  }
+
+  .rst-item .item-count {
+    color: #6b6b6b !important;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item .field-wrapper {
+    display: inline-block;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item:hover {
+    background-color:#f3f3f3;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item.item-count-line:hover {
+    background-color: transparent;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item .item-prompt {
+    display: none;
+  }
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item:hover .item-prompt {
+    display: inline-block;
+    color: #ccc;
+    font-size: 14px;
+  }
+
+
+  .planItem-search-dir-rst-wrapper .rst-list .rst-item:last-child {
+    border-bottom: none;
+  }
+
+  .state-prompt {
+    margin-bottom: 0;
+  }
+</style>

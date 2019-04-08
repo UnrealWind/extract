@@ -1,0 +1,101 @@
+<div class="infi-record-output" id="family">
+    <div ng-if="outputText.family.tplStatus == 'view'" class="infi-view">
+        <div ng-show="!outputText.family.text">
+            <div>
+                <span data-ng-if="entity.name_178">
+                <i ng-repeat="option in dimensions.name_178.options"
+                    ng-if="option.name == entity.name_178">{{option.label}}</i>
+                <i>。</i>
+                </span>
+            </div>
+            <div ng-if="(entity.name_178=='value_0' || entity.name_178=='value_2') && (entity.name_179 || entity.name_180)">
+                 <span>
+                    <i >父亲：</i>
+                 </span>
+                <span>
+                    <i  ng-repeat="option in dimensions.name_179.options"
+                        ng-if="option.name == entity.name_179">{{option.label}}</i>
+                </span>
+                <span data-ng-if="entity.name_180">
+                    <i>,</i>
+                    <i >{{entity.name_180}}</i>
+                </span>
+                <span>
+                    <i>。</i>
+                </span>
+            </div>
+            <div ng-if="(entity.name_178=='value_0' || entity.name_178=='value_1') && (entity.name_181 || entity.name_182)">
+                <span><i>母亲：</i></span>
+                <span>
+                    <i  ng-repeat="option in dimensions.name_181.options"
+                        ng-if="option.name == entity.name_181">{{option.label}}</i>
+                </span>
+                <span data-ng-if="entity.name_182">
+                    <i>,</i>
+                    <i>{{entity.name_182}}</i>
+                </span>
+                <span>
+                    <i>。</i>
+                </span>
+            </div>
+            <div data-ng-if="entity.name_183 && entity.name_183!='0'">
+                <span>
+                    <i>兄弟：</i>
+                    <i >{{entity.name_183}}</i>
+                    <i>个,</i>
+                </span>
+                <span>
+                <i  ng-repeat="option in dimensions.name_184.options"
+                    ng-if="option.name == entity.name_184">{{option.label}}</i>
+                </span>
+                <span>
+                    <i>,</i>
+                    <i data-ng-if="entity.name_185">{{entity.name_185}}</i>
+                </span>
+                <span>
+                    <i>。</i>
+                </span>
+            </div>
+            <div data-ng-if="entity.name_186 && entity.name_186!='0'">
+                <span>
+                <i>姐妹：</i>
+                <i >{{entity.name_186}}</i>
+                <i>个,</i>
+                </span>
+                <span>
+                <i ng-repeat="option in dimensions.name_187.options"
+                    ng-if="option.name == entity.name_187">{{option.label}}</i>
+                </span>
+                <span>
+                    <i>,</i>
+                    <i data-ng-if="entity.name_188">{{entity.name_188}}</i>
+                </span>
+                <span>
+                    <i>。</i>
+                </span>
+            </div>
+            <div data-ng-if="entity.name_1581">
+                <span>
+                    <i>{{entity.name_1581}}</i>
+                </span>
+                <span>
+                    <i>。</i>
+                </span>
+            </div>
+        </div>
+        <div ng-if="outputText.family.text" class="infi-view-text">
+            <span ng-bind="outputText.family.text"></span>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('family')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('family')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.family.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.family.text">{{outputText.family.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('family')">完成</button>
+        </div>
+    </div>
+
+</div>

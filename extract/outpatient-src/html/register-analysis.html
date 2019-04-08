@@ -1,0 +1,220 @@
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>挂号分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList('change')" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList('change')" />
+    </div>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>挂号分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList('change')" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList('change')" />
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="rAnaKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 门急诊总体情况
+        <div print-add print-list="ids" unique="'rAnaKpi'" print-all-list="printAllList"></div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="overallKpi"></div>
+</div>
+<div class="infi-opt-self-box" id="rAnaTypeTrends">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 门急诊挂号类型趋势
+        <div print-add print-list="ids" unique="'rAnaTypeTrends'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <!--科室下拉框控件 dept-list:科室列表数据 original:盛放绑定的科室的数据 date:选择的日期-->
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="typeTrends"
+                 record-list="deptList" select="'department'" change-data="getInitialChart(original)"></div>
+            <!--统计类型控件 original:盛放绑定的统计类型的数据 date:选择的日期-->
+            <div analysis-btn-select original="typeTrends" ng-if="typeTrends" date="searchDate"></div>
+        </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row noprint">
+            <!--左侧checkbox控件 original:需要的所有的数据 date:选择的日期 title:checkbox列表的title list:checkbox列表数据 col-cell:此行div对应的class-->
+            <div analysis-check-list original="typeTrends" ng-if="typeTrends.select[0]" date="searchDate"
+                 title="'门诊类型'" list="typeTrends.select[0]" col-cell="'col-md-5'"></div>
+            <div analysis-check-list original="typeTrends" ng-if="typeTrends.selectType[0]" date="searchDate"
+                 title="'指标'" list="typeTrends.selectType[0]" col-cell="'col-md-7'"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="infi-inline-block">已选:</h5>
+                <div ng-repeat="entity in typeTrends.ids" style="display: inline;">
+                    <div analysis-selected-tag left-data="typeTrends.select[$index]" right-data="typeTrends.selectType[$index]"
+                         ng-if="typeTrends.select[$index]&&typeTrends.selectType[$index]" style="display: inline;"></div>
+                </div>
+            </div>
+            <div class="col-md-2 noprint">
+                <input type="button" class="btn btn-default btn-sm" value="重置" ng-click="clearSelected(typeTrends)" />
+            </div>
+        </div>
+        <div>
+            <div id="lineRegisterType" class="infi-whole-chart text-danger"></div>
+            <img class='infi-created-img' />
+        </div>
+
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rAnaChannelTrends">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 门急诊挂号渠道趋势
+        <div print-add print-list="ids" unique="'rAnaChannelTrends'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="channelTrends"
+                 record-list="deptList" select="'department'" change-data="getInitialChart(original)"></div>
+            <div analysis-btn-select original="channelTrends" ng-if="channelTrends" date="searchDate"></div>
+        </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row noprint">
+            <div analysis-check-list original="channelTrends" ng-if="channelTrends.select[0]" date="searchDate"
+                 title="'现场挂号渠道'" list="channelTrends.select[0]" col-cell="'col-md-5'"></div>
+            <div analysis-check-list original="channelTrends" ng-if="channelTrends.selectType[0]" date="searchDate"
+                 title="'指标'" list="channelTrends.selectType[0]" col-cell="'col-md-7'"></div>
+        </div>
+        <div class="row noprint">
+            <div analysis-check-list original="channelTrends" ng-if="channelTrends.select[1]" date="searchDate"
+                 title="'预约挂号渠道'" list="channelTrends.select[1]" col-cell="'col-md-5'"></div>
+            <div analysis-check-list original="channelTrends" ng-if="channelTrends.selectType[1]" date="searchDate"
+                 title="'指标'" list="channelTrends.selectType[1]" col-cell="'col-md-7'"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="infi-inline-block">已选:</h5>
+                <div ng-repeat="entity in channelTrends.ids" style="display: inline;">
+                    <div analysis-selected-tag left-data="channelTrends.select[$index]" right-data="channelTrends.selectType[$index]"
+                         ng-if="channelTrends.select[$index]&&channelTrends.selectType[$index]" style="display: inline;"></div>
+                </div>
+            </div>
+            <div class="col-md-2 noprint">
+                <input type="button" class="btn btn-default btn-sm" value="重置" ng-click="clearSelected(channelTrends)" />
+            </div>
+        </div>
+        <div>
+            <div id="lineRegisterChannel" class="infi-whole-chart text-danger"></div>
+            <img class='infi-created-img' />
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rAnaMiss">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 门诊爽约情况
+        <div print-add print-list="ids" unique="'rAnaMiss'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="outpatientMiss"
+                 record-list="deptList" select="'department'" change-data="getInitialChart(original)"></div>
+            <div analysis-btn-select original="outpatientMiss" ng-if="outpatientMiss" date="searchDate"></div>
+        </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row noprint">
+            <div analysis-check-list original="outpatientMiss" ng-if="outpatientMiss.select[0]" date="searchDate"
+                 title="'挂号未诊'" list="outpatientMiss.select[0]" col-cell="'col-md-5'"></div>
+            <div analysis-check-list original="outpatientMiss" ng-if="outpatientMiss.selectType[0]" date="searchDate"
+                 title="'指标'" list="outpatientMiss.selectType[0]" col-cell="'col-md-7'"></div>
+        </div>
+        <div class="row noprint">
+            <div analysis-check-list original="outpatientMiss" ng-if="outpatientMiss.select[1]" date="searchDate"
+                 title="'预约未取号'" list="outpatientMiss.select[1]" col-cell="'col-md-5'"></div>
+            <div analysis-check-list original="outpatientMiss" ng-if="outpatientMiss.selectType[1]" date="searchDate"
+                 title="'指标'" list="outpatientMiss.selectType[1]" col-cell="'col-md-7'"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="infi-inline-block">已选:</h5>
+                <div ng-repeat="entity in outpatientMiss.ids" style="display: inline;">
+                    <div analysis-selected-tag left-data="outpatientMiss.select[$index]" right-data="outpatientMiss.selectType[$index]"
+                         ng-if="outpatientMiss.select[$index]&&outpatientMiss.selectType[$index]" style="display: inline;"></div>
+                </div>
+            </div>
+            <div class="col-md-2 noprint">
+                <input type="button" class="btn btn-default btn-sm" value="重置" ng-click="clearSelected(outpatientMiss)" />
+            </div>
+        </div>
+        <div>
+            <div id="lineOutpatientMiss" class="infi-whole-chart text-danger"></div>
+            <img class='infi-created-img' />
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rAnaBackNumber">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 门诊退号情况
+        <div print-add print-list="ids" unique="'rAnaBackNumber'" print-all-list="printAllList"></div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row">
+            <div class="col-md-8" style="border-right: #e9e7e7 1px solid;">
+                <div>
+                    <h5 class="infi-inline-block">门诊退号趋势</h5>
+                    <div class="infi-opt-search">
+                        <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="outpatientBackNumber"
+                             record-list="deptList" select="'department'" change-data="getInitialChart(original)"></div>
+                        <div analysis-btn-select original="outpatientBackNumber" ng-if="outpatientBackNumber" date="searchDate"></div>
+                    </div>
+                </div>
+                <div class="row noprint">
+                    <div analysis-check-list original="outpatientBackNumber" ng-if="outpatientBackNumber.select[0]" date="searchDate"
+                         title="'挂号渠道'" list="outpatientBackNumber.select[0]" col-cell="'col-md-5'"></div>
+                    <div analysis-check-list original="outpatientBackNumber" ng-if="outpatientBackNumber.selectType[0]" date="searchDate"
+                         title="'指标'" list="outpatientBackNumber.selectType[0]" col-cell="'col-md-7'"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h5 class="infi-inline-block">已选:</h5>
+                        <div ng-repeat="entity in outpatientBackNumber.ids" style="display: inline;">
+                            <div analysis-selected-tag left-data="outpatientBackNumber.select[$index]" right-data="outpatientBackNumber.selectType[$index]"
+                                 ng-if="outpatientBackNumber.select[$index]&&outpatientBackNumber.selectType[$index]" style="display: inline;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 noprint">
+                        <input type="button" class="btn btn-default btn-sm" value="重置" ng-click="clearSelected(outpatientBackNumber)" />
+                    </div>
+                </div>
+                <div>
+                    <div id="lineBackNumber" class="infi-whole-chart text-danger"></div>
+                    <img class='infi-created-img' />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h5 class="infi-inline-block">门诊科室排行</h5>
+                    <div class="infi-opt-search">
+                        <input type="button" class="btn btn-default btn-sm" value="退号人次" ng-click="getDepartmentRanking('number')"
+                               ng-class="{true:'btn-success'}[departmentRanking.type == 'number']" />
+                        <input type="button" class="btn btn-default btn-sm" value="退号率" ng-click="getDepartmentRanking('ratio')"
+                               ng-class="{true:'btn-success'}[departmentRanking.type == 'ratio']" />
+                    </div>
+                    <div style="margin-top: 10px;">
+                        显示个数
+                        <select ng-model="departmentRanking.viewSize" ng-change="getDepartmentRanking('')">
+                            <option value="5" ng-selected="departmentRanking.viewSize == '5'">前5</option>
+                            <option value="10" ng-selected="departmentRanking.viewSize == '10'">前10</option>
+                            <option value="15" ng-selected="departmentRanking.viewSize == '15'">前15</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div id="barDeptRanking" class="text-danger" style="height:500px;width:90%;"></div>
+                    <img class='infi-created-img' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

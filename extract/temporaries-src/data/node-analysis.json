@@ -1,0 +1,204 @@
+[
+
+  {
+    "CAND_NAME": "神经内科门诊&骨科门诊",
+    "Amount": 512,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&骨科门诊",
+    "Amount": 487,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "神经内科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 420,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "神经内科门诊&神经外科门诊",
+    "Amount": 298,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "眼科门诊&神经内科门诊",
+    "Amount": 268,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&眼科门诊",
+    "Amount": 252,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&泌尿外科门诊",
+    "Amount": 247,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "普通外科门诊&神经内科门诊",
+    "Amount": 213,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&普通外科门诊",
+    "Amount": 206,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内科门诊&骨科门诊",
+    "Amount": 204,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内分泌科门诊&眼科门诊",
+    "Amount": 190,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 174,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "泌尿外科门诊&神经内科门诊",
+    "Amount": 168,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内分泌科门诊&骨科门诊",
+    "Amount": 158,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "呼吸科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 154,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "妇科门诊&普通外科门诊",
+    "Amount": 151,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内分泌科门诊&普通外科门诊",
+    "Amount": 151,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "中医科门诊&骨科门诊",
+    "Amount": 143,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "普通外科门诊&超声诊断科门诊",
+    "Amount": 136,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "普通外科门诊&皮肤性病科门诊",
+    "Amount": 130,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "普通外科门诊&消化科门诊",
+    "Amount": 126,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "呼吸科门诊&骨科门诊",
+    "Amount": 126,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "中医科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 121,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内分泌科门诊&泌尿外科门诊",
+    "Amount": 120,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "皮肤性病科门诊&眼科门诊",
+    "Amount": 114,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "呼吸科门诊&普通外科门诊",
+    "Amount": 110,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "神经内科门诊&血管外科门诊",
+    "Amount": 109,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "皮肤性病科门诊&骨科门诊",
+    "Amount": 107,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "中医科门诊&普通外科门诊",
+    "Amount": 97,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内科门诊&普通外科门诊",
+    "Amount": 97,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "中医科门诊&眼科门诊",
+    "Amount": 97,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "消化科门诊&骨科门诊",
+    "Amount": 95,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内分泌科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 94,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内科门诊&眼科门诊",
+    "Amount": 91,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "功能神经外科门诊&神经内科门诊",
+    "Amount": 90,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 89,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "普通外科门诊&肾科门诊",
+    "Amount": 86,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "内科门诊&泌尿外科门诊",
+    "Amount": 84,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "消化科门诊&耳鼻咽喉-头颈外科门诊",
+    "Amount": 81,
+    "total": 27263
+  },
+  {
+    "CAND_NAME": "心脏科门诊&血管外科门诊",
+    "Amount": 78,
+    "total": 27263
+  }
+
+]

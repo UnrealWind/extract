@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "label": "药品信息",
+      "value": "drug"
+    },
+    {
+      "label": "检查信息",
+      "value": "exam"
+    },
+    {
+      "label": "检验信息",
+      "value": "test"
+    },
+    {
+      "label": "手术信息",
+      "value": "surgery"
+    },
+    {
+      "label": "医嘱信息",
+      "value": "advice"
+    },
+    {
+      "label":"电子病例",
+      "value":"case"
+    }
+  ]
+}

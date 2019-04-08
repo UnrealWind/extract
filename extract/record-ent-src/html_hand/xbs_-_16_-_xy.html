@@ -1,0 +1,141 @@
+<div class="infi-record-box"
+     ng-show="entity.name_16!=undefined && (entity.name_16=='value_2' || entity.name_16.value_2==true)"><h4
+        class="infi-record-title">眩晕</h4>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>眩晕持续时长: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_44">
+            <input name="entity.name_44" infi-date="yyyy-mm-dd" type="text" ng-model="entity.name_44"
+                   class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+            <!--<input-->
+                <!--name="entity.name_44" type="text" ng-model="entity.name_44" class="form-control"/><select-->
+                <!--ng-model="entity.name_44unit" class="form-control"-->
+                <!--style="width:62px; position: absolute; top: 0;right: 50%;z-index: 10;">-->
+                <!--<option value="天">天</option>-->
+                <!--<option value="周">周</option>-->
+                <!--<option value="月">月</option>-->
+                <!--<option value="年">年</option>-->
+            <!--</select>-->
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>是否首次发生: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_37">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_37.options"><input type="radio" ng-model="entity.name_37"
+                                                                                name="entity.name_37"
+                                                                                value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../html_gen/xbs_-_37_-_fou.html?__inline">
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>眩晕感觉: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_38"><input
+                name="entity.name_38" type="text" ng-model="entity.name_38" class="form-control" infi-radio-query
+                data-name="entity.name_38"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_38"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_38.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_38" name="entity.name_38" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>眩晕程度: </label>
+        </div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_1138">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_1138.options"><input type="radio"
+                                                                                  ng-model="entity.name_1138"
+                                                                                  name="entity.name_1138"
+                                                                                  value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../html_gen/xbs_-_38_-_nxqd.html?__inline">
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>眩晕诱因: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_40"><input
+                name="entity.name_40" type="text" ng-model="entity.name_40" class="form-control" infi-radio-query
+                data-name="entity.name_40"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_40"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_40.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_40" name="entity.name_40" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>是否与体位改变有关: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_41">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_41.options"><input type="radio" ng-model="entity.name_41"
+                                                                                name="entity.name_41"
+                                                                                value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../html_gen/xbs_-_41_-_shi.html?__inline">
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>眩晕出现形式: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_43"><input
+                name="entity.name_43" type="text" ng-model="entity.name_43" class="form-control" infi-radio-query
+                data-name="entity.name_43"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_43"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_43.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_43" name="entity.name_43" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>眩晕加重时间: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_45"><input
+                name="entity.name_45" type="text" ng-model="entity.name_45" class="form-control" infi-radio-query
+                data-name="entity.name_45"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_45"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_45.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_45" name="entity.name_45" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>是否自行缓解: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_1139">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_1139.options"><input type="radio"
+                                                                                  ng-model="entity.name_1139"
+                                                                                  name="entity.name_1139"
+                                                                                  value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>伴随症状: </label>
+        </div>
+        <div class="col-md-4 checkbox input-group" style="width: ;float: left;" data-name="entity.name_1135">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_1135.options"><input type="checkbox"
+                                                                                  ng-model="entity.name_1135[option.name]"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>补充说明: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_46"><textarea
+                name="entity.name_46" ng-model="entity.name_46" rows="2" class="form-control"
+                style="width: 100%;"></textarea></div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    用户管理 -> 用户 -> <span ng-show="viewDetail.type == 'create'">新建用户</span>
+    <span ng-show="viewDetail.type == 'view'">查看用户</span>
+    <span ng-show="viewDetail.type == 'change'">修改用户</span>
+</h4>
+<div class="infi-box">
+    <form name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>登录名称:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.userDetail.loginName"
+                       ng-change="checkUserName()" required/>
+                <span class="infi-error-tip" ng-show="loginName.type == 'invalid'||loginName.type == 'error'"
+                      ng-bind="loginName.checked.data.desc"></span>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>中文名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.userDetail.name" required/>
+                <i class="text-danger">*</i>
+            </div>
+        </div>
+        <div class="infi-form-row row" ng-if="viewDetail.type == 'create'">
+            <div class="col-lg-2"><label>用户密码:</label></div>
+            <div class="col-lg-4">
+                <input type="password" class="form-control infi-drug-input input-sm" ng-change="checkPwd()"
+                       ng-model="viewDetail.$password" required/>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>确认密码:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="password" class="form-control infi-drug-input input-sm" ng-change="checkPwd()"
+                       ng-model="viewDetail.$confirmPassword" required/>
+                <span class="infi-error-tip" ng-show="!pwdCommon">两次输入的密码需一致</span>
+                <i class="text-danger">*</i>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="email" class="form-control infi-drug-input input-sm" name="email" ng-model="viewDetail.userDetail.email"/>
+                <!--邮箱不正确的提示-->
+                <span ng-show="form.email.$invalid" class="infi-error-tip">邮箱格式不正确</span>
+            </div>
+            <div class="col-lg-2"><label>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.userDetail.phone"/>
+            </div>
+        </div>
+        <div class="infi-form-row infi-group row">
+            <div class="col-lg-2"><label>机构名称:</label></div>
+            <div class="col-lg-4">
+                <!--<select ng-model="viewDetail.userDetail.companyId" ng-change="changeCompany()"-->
+                        <!--class="infi-drug-input" ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length > 0" required>-->
+                    <!--&lt;!&ndash;<option value="">请选则</option>&ndash;&gt;-->
+                    <!--<option ng-repeat="hospital in mechansimList.data" ng-bind="hospital.name" value="{{hospital.id}}"></option>-->
+                <!--</select>-->
+                <div ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length > 0" class="infi-inline-block infi-drug-input">
+                    <span ng-bind="viewDetail.userDetail.$companyName"></span>
+                    <a class="pull-right pointer" data-toggle="modal" data-target="#treeSelect">更改机构</a>
+                </div>
+                <span ng-show="mechansimList.status == SYS.STATUS_SUCCESS&&mechansimList.data.length == 0" class="text-danger">暂无机构,请先添加机构</span>
+                <span ng-show="mechansimList.status != SYS.STATUS_SUCCESS" ng-bind="mechansimList.description" class="text-danger"></span>
+                <i class="text-danger">*</i>
+            </div>
+
+
+            <div class="col-lg-2"><label>子机构名称:</label></div>
+            <div class="col-lg-4">
+                <div class="infi-inline-block infi-drug-input">
+                    <span ng-bind="viewDetail.userDetail.$childCompanyName"></span>
+                    <a class="pull-right pointer" ng-click="choseChildMechansimList()">更改子机构</a>
+                </div>
+                <span ng-show="childMechanismList.status == SYS.STATUS_SUCCESS&&childMechanismList.data.length == 0" class="text-danger">暂无子机构,请先添加机构</span>
+                <span ng-show="childMechanismList.status != SYS.STATUS_SUCCESS" ng-bind="childMechanismList.description" class="text-danger"></span>
+                <i class="text-danger">*</i>
+            </div>
+
+        </div>
+
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:{{viewDetail.userDetail.titleId}}</label></div>
+            <div class="col-lg-4 infi-have-tip" mark="{{viewDetail.userDetail.titleId}}">
+                <select  ng-model="viewDetail.userDetail.titleId"  class="form-control infi-drug-input input-sm">
+                    <option value="0">请选择职称 </option>
+                    <option ng-repeat="opt in titleList" value="{{opt.id}}" ng-selected="viewDetail.userDetail.titleId == opt.id" >{{opt.name}}</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>角色名称:</label></div>
+            <div class="col-lg-8">
+                <ul class="infi-choser-first-li">
+                    <li ng-repeat="role in roleList.data" ng-show="roleList.status == SYS.STATUS_SUCCESS">
+                        <label>
+                            <input type="checkbox" ng-model="role.$checked" />
+                            <span ng-bind="role.name"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <span ng-show="roleList.status != SYS.STATUS_SUCCESS" ng-bind="roleList.description" class="text-danger"></span>
+                        <span ng-show="roleList.status == SYS.STATUS_SUCCESS&&roleList.data.length == 0" class="text-danger">暂无角色,请先添加角色</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="infi-submit-container">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存"
+                   ng-disabled="!form.$valid || loginName.type == 'invalid'|| loginName.type == 'error' || !pwdCommon" ng-click="saveRole()"/>
+            <!--<a class="infi-change-pwd" ng-click="showChangePwd()" ng-show="viewDetail.type == 'change'">修改密码</a>-->
+            <a class="infi-change-pwd" ng-click="resetPwd()" ng-show="resetPwdType == 'ok'">重置密码</a>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="changePwd">
+    <div class="modal-dialog" style="width:380px;">
+        <form class="modal-content">
+            <div class="modal-header ">
+                <div class="infi-confirm-export-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" ng-click="clearChangedPwd()">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">修改密码</h4>
+                </div>
+            </div>
+            <div class="modal-body infi-change-pwd-popup">
+                <div class="row">
+                    <label>旧密码:</label>
+                    <input type="password" class="form-control infi-drug-input input-sm infi-inline-block"
+                           ng-model="pwd.oldPwd" required />
+                </div>
+                <div class="row">
+                    <label>新密码:</label>
+                    <input type="password" class="form-control infi-drug-input input-sm infi-inline-block"
+                           ng-model="pwd.newPwd" ng-change="checkChangedPwd()" required />
+                </div>
+                <div class="row infi-have-tip">
+                    <label>确认密码:</label>
+                    <input type="password" class="form-control infi-drug-input input-sm infi-inline-block"
+                           ng-model="pwd.confirmPwd" ng-change="checkChangedPwd()" required/>
+                    <span class="infi-error-tip" ng-show="!pwd.common">两次输入的密码需一致</span>
+                </div>
+            </div>
+            <div class="modal-footer infi-confirm-export-footer">
+                <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal' ng-click="clearChangedPwd()">关闭</button>
+                <button type="button" class="btn infi-btn-linear-green-l" ng-disabled="!form.$valid || !pwd.common"
+                        ng-click="confirmChangedPwd()">确认</button>
+            </div>
+        </form><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div sys-tip></div>
+<div tree-select></div>
+<div child-tree-select></div>

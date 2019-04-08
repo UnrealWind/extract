@@ -1,0 +1,25 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"疾病类型",
+      "name":"project"
+    },{
+      "label":"CRF表名称",
+      "name":"originName"
+    },{
+      "label":"CRF来源",
+      "name":"sourceType"
+    },{
+      "label":"创建者",
+      "name":"creator"
+    },{
+      "label":"创建时间",
+      "name":"createTime"
+    },{
+      "label":"使用次数",
+      "name":"useNumber"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>新建规则</h4>
+<div navi-header header-data="headerData" col="col" step="step" ng-if="headerData"></div>
+
+<!--保存的规则的详情-->
+<div task-rule data-ng-if="ruleDetail" detail="ruleDetail"></div>
+
+<div class="infi-box">
+    <h4 ng-show="!groupData.type">详细信息筛选[共筛选得<span ng-bind="caseNumber"></span>份病历]</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row infi-logic-container">
+                <div class="col-xs-2">
+                    <ul ng-show="groupData.allData.status == SYS.STATUS_SUCCESS">
+                        <li ng-repeat="entity in groupData.originalData" ng-show="entity.values.length > 0">
+                            <label style="cursor: pointer;display: inline;" ng-bind="entity.tagLabel" id="{{entity.uniqueId}}" draggable="true"
+                                   ondragstart="formLogic.drag(event)" class="infi-drag"></label>
+                            <label>&nbsp;:&nbsp;</label>
+                            <span ng-repeat="tag in entity.values" class="infi-drag-detail" id="{{tag.uniqueId}}"
+                                  ng-class="{'true':'infi-mark-option'}[tag.number > 0]" draggable="true" ondragstart="formLogic.drag(event)">{{tag.label}},</span>
+                    </ul>
+                    <p class="alert-danger" ng-show = "groupData.allData.status !=  SYS.STATUS_SUCCESS"
+                       ng-bind = "groupData.allData.description"></p>
+                </div>
+                <div class="col-xs-10">
+                    <div ondragover="formLogic.allowDrop(event)" ondrop="formLogic.drop(event)" class="node-parent node-outside" style="border:1px solid #ccc;min-height:300px;padding-bottom:100px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--推荐任务需要的传递按钮-->
+<div style="text-align: right ;margin:10px;" ng-show="groupData.type">
+    <button class="btn infi-btn-linear-green-l saveLogic" ng-click="saveLogic('task-service/back/')">上一步，筛选条件选取</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="saveLogic('result-rule/recommend/input/')">下一步,选择推送结果</button>
+</div>
+<!--创建规则需要的传递按钮-->
+<div style="text-align: right ;margin:10px;" ng-show="!groupData.type">
+    <button class="btn infi-btn-linear-green-l saveLogic" ng-click="saveLogic('task-service/')">上一步，筛选条件选取</button>
+    <button class="btn infi-btn-linear-green-l" ng-click="saveLogic('rule-save/')">下一步,规则保存</button>
+</div>
+<!--病例群特征只有在创建规则时需要使用-->
+<div style="display: table;width:100%;" ng-show="!groupData.type">
+    <div class="infi-box" style="display: table-cell;width:65%;border-right:none;">
+        <h4>病历群特征</h4>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div class="row">
+                    <div choser-chart class="infi-chart" chart-data = 'groupData.chartData'
+                         ng-if="groupData.chartData != null && groupData.chartData.length > 0"></div>
+                    <div class="alert alert-danger" ng-show="groupData.chartData == null || groupData.chartData.length == 0">未查询到数据</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--逻辑配置项历史记录-->
+    <div logic-history></div>
+</div>
+
+<!--错误提示-->
+<div sys-tip></div>
+
+<script>
+    //unbind防止数据拼写dom的方法被绑定多次
+    $(document).unbind('doConfig').bind('doConfig',function(){
+        var scope = $(".infi-box").scope();
+        formLogic = FormLogic(scope.groupData.originalData,scope.groupData.logicData,$(".node-outside"));
+        //页面初始化时调用画图并且计入历史记录
+        scope.changeChart(formLogic.getFilterData(scope.groupData.historyData));
+        //添加组
+        $(".dir-nav-container").on('click', '.add-group', function (){
+            formLogic.addGroup($(this));
+        });
+        //删除拖拽的元素，并且切换绘图数据
+        $(".dir-nav-container").on('click', '.remove-detail', function () {
+            formLogic.removeOption($(this).closest('.infi-logic-detail'),$(this).closest('.node-parent'));
+            scope.changeChart(formLogic.getFilterData(scope.groupData.historyData));
+        });
+        //删除组
+        $(".dir-nav-container").on('click', '.remove-group', function () {
+            formLogic.removeGroup($(this).closest('.node-parent'));
+            scope.changeChart(formLogic.getFilterData(scope.groupData.historyData));
+        });
+        //与或逻辑选择，并且切换绘图数据
+        $(".node-outside").on('click', '.infi-logic-btn .btn', function () {
+            formLogic.choseLogic($(this));
+            scope.changeChart(formLogic.getFilterData(scope.groupData.historyData));
+        });
+        //下拉框改变时切换绘图数据
+        $(".dir-nav-container").on('change',".infi-logic-detail-equal",function () {
+            scope.changeChart(formLogic.getFilterData(scope.groupData.historyData));
+        });
+    })
+</script>

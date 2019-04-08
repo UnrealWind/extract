@@ -1,0 +1,124 @@
+<h4 class="infi-title" style="margin-bottom: 20px;">
+    <i class="glyphicon glyphicon-globe"></i>
+    新建CRF属性
+    <div ng-click="goToCustomizePage()"  class="btn infi-btn-linear-green-l f-r">返回</div>
+</h4>
+<div class="infi-box clearfix">
+    <div class="col-md-12 col-sm-12 infi-contian">
+        <div class="row">
+            <div class="item-row">
+                <label class="col-md-4 title"><span class="star-red">*&nbsp;</span>模块:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.moduleData" ng-options="item.id as item.name for item in moduleDataList" ng-change="selectModule(basic.moduleData)" class="form-control" type="text"></select>
+                    <p ng-if="moduleWarm" class="warming">模块不能为空</p>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">主题:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.themeData" ng-options="item.id as item.name for item in themeDataList" ng-change="selectTheme(basic.themeData,basic.moduleData)"  class="form-control" type="text"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">子主题:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.subThemeData"  ng-options="item.id as item.name for item in subThemeDataList" ng-change="selectSubTheme(basic.moduleData,basic.themeData,basic.subThemeData)" class="form-control" type="text"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">
+                    <span class="star-red">*&nbsp;</span>
+                    属性名称:
+                </label>
+                <div class="col-md-8">
+                    <input ng-model="basic.name" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">
+                    <span class="star-red">*&nbsp;</span>
+                    属性编号:
+                </label>
+                <div class="col-md-8">
+                    <input ng-model="basic.value" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">属性组合:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.combineId"  ng-options="item.id as item.name for item in combineId" class="form-control" type="text"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">值类型:</label>
+                <div class="col-md-8">
+                    <select  ng-options="item.value as item.name for item in valueType" ng-change="changeType()" ng-model="basic.valueType" class="form-control" type="text">
+                    </select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">属性值列表:</label>
+                <div class="col-md-8">
+                    <input ng-disabled="disabled" ng-model="basic.valueList" class="form-control" type="text" placeholder="属性值以逗号隔开">
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">单位:</label>
+                <div class="col-md-8">
+                    <input ng-model="basic.unit" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">上一级属性:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.preId" class="form-control" ng-options="item.id as item.name for item in preId" type="text" ng-change="selectPreValue(basic.preId)"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">上一级属性值:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.preValue" class="form-control" type="text">
+                        <option ng-repeat="item in preValue" value="{{item}}" ng-selected="basic.preValue == item">{{ item }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">属性排序:</label>
+                <div class="col-md-8">
+                    <input ng-model="basic.order"  ng-change="changeOrder(basic.order)" class="form-control" type="text">
+                    <p ng-if="orderWarm" class="warming">排序只能包含数字</p>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">筛选:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.filted" class="form-control" ng-options="item.value as item.label for item in boolean"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">导出:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.exported" class="form-control" ng-options="item.value as item.label for item in boolean"></select>
+                </div>
+            </div>
+            <div class="item-row">
+                <label class="col-md-4 title">是否必选:</label>
+                <div class="col-md-8">
+                    <select ng-model="basic.required" class="form-control" ng-options="item.value as item.label for item in boolean"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item-row">
+                <label class="col-md-4 title">备注:</label>
+            </div>
+        </div>
+        <div class="row">
+            <textarea ng-model="basic.description" class="col-md-9" style=" display: block;margin:0 auto;resize:none; float: none;" cols="30" rows="5"></textarea>
+        </div>
+    </div>
+</div>
+<div class="topics-button ng-scope">
+    <button class="btn infi-btn-linear-green-l" ng-click="saveProperty()">保存</button>
+</div>
+<div add-property-success></div>

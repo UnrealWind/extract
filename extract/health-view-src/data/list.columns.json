@@ -1,0 +1,18 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[{
+      "label":"姓名",
+      "name":"patientName"
+    },{
+      "label":"性别",
+      "name":"sexName"
+    },{
+      "label":"年龄",
+      "name":"age"
+    },{
+      "label":"创建时间",
+      "name":"createdTime"
+    }
+  ]
+}

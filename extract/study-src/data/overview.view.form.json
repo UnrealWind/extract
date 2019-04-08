@@ -1,0 +1,106 @@
+
+
+
+[
+  [
+    {
+      "label": "课题中文名称",
+      "name": "entity.name",
+      "type": "view"
+    },
+    {
+      "label": "课题英文名称",
+      "name": "entity.ename",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "课题类型",
+      "name": "entity.type",
+      "type": "view"
+    },
+    {
+      "label": "课题编号",
+      "name": "entity.serialNumber",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "课题代码",
+      "name": "entity.code",
+      "type": "view"
+    },
+    {
+    "label": "负责人",
+    "name": "entity.master",
+    "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "研究病种",
+      "name": "entity.projectName",
+      "type": "view"
+    },
+    {
+      "label": "预期耗时",
+      "name": "entity.expectDays",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "课题创建单位",
+      "name": "entity.hospitalName",
+      "type": "view"
+    },
+    {
+      "label": "创建时间",
+      "name": "entity.beginTime",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "邮箱",
+      "name": "entity.email",
+      "type": "view"
+    },
+    {
+      "label": "联系电话",
+      "name": "entity.phone",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "课题合作单位",
+      "name": "entity.attendUsers.hospitalName",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "立项依据",
+      "name": "entity.basePoint",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "科研意义与创新点",
+      "name": "entity.significance",
+      "type": "view"
+    }
+  ],
+  [
+    {
+      "label": "研究方案",
+      "name": "entity.researchWay",
+      "type": "view"
+    }
+  ]
+]
+

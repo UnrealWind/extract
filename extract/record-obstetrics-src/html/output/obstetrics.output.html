@@ -1,0 +1,392 @@
+<section>
+    <div class="infi-print-btn">
+        <a class="btn infi-btn-linear-green-l btn-sm" href="#/overview/obstetrics/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}">返回</a>
+        <button class="btn infi-btn-linear-green btn-sm" ng-click="printObstetrics()">打印</button>
+    </div>
+    <div id="obstetrics">
+        <div>
+            EDC：<span ng-bind="entity.edc"></span>
+        </div>
+        <div>
+            <div style="display:inline-block;width:33%;">
+                NO：<span ng-bind="entity.no"></span>
+            </div>
+            <div style="display:inline-block;width:33%;text-align:center;">
+                <h3>产期检查记录</h3>
+            </div>
+            <div style="display:inline-block;width:16%;text-align:right;">
+                标识号：
+            </div>
+            <div style="display:inline-block;width:16%;text-align:left;">
+                <span ng-bind="entity.pati_id"></span>
+            </div>
+        </div>
+        <div>
+            <div style="display:inline-block;width:36%;">
+                首次登记日期：<span ng-bind="entity.first_register_date|date:'yyyy-MM-dd'"></span>
+            </div>
+            <div style="display:inline-block;width:15%;">
+                孕周：<span ng-bind="entity.gestational_weeks"></span>
+            </div>
+            <div style="display:inline-block;width:15%;">
+                宣教课：<span ng-bind="entity.education_class|unescape"></span>
+            </div>
+            <div style="display:inline-block;width:16%;text-align:right;">
+                住院号：
+            </div>
+            <div style="display:inline-block;width:16%;text-align:left;">
+            </div>
+        </div>
+        <div style="text-align:center;"><span>-----------------------用户基本信息-----------------------</span></div>
+        <div style="word-break:keep-all;" class="infi-obstertrics-print-description">
+            <span>姓名：<span ng-bind="entity.pati_name"></span></span>
+            <span>年龄：<span ng-bind="basicInfo.age"></span>岁</span>
+            <span>职业：<span ng-bind="basicInfo.professional"></span></span>
+            <span>工作单位：<span ng-bind="basicInfo.work_units"></span></span>
+            <span>电话：<span ng-bind="basicInfo.phone"></span></span>
+        </div>
+        <div style="word-break:keep-all;" class="infi-obstertrics-print-description">
+            <span>结婚年龄：<span ng-bind="basicInfo.marry_age"></span>岁</span>
+            <span>初孕年龄：<span ng-bind="basicInfo.first_gestational"></span>岁</span>
+            <span>月经初潮：<span ng-bind="basicInfo.menarche"></span>岁</span>
+            <span>月经周期：<span ng-bind="basicInfo.menstrual_cycle"></span>天</span>
+            <span>月经期：<span ng-bind="basicInfo.menstrual_continuous"></span>天</span>
+            <span>末次月经：<span ng-bind="basicInfo.last_gestational_date|date:'yyyy-MM-dd'"></span></span>
+        </div>
+        <div style="word-break:keep-all;" class="infi-obstertrics-print-description">
+            <span>避孕法：<span ng-bind="basicInfo.contraception|unescape"></span></span>
+            <span>本次妊娠疾病：<span ng-bind="basicInfo.pregnancy_disease|unescape"></span></span>
+            <span>本次妊娠用药史：<span ng-bind="basicInfo.pregnancy_drug| unescape"></span></span>
+        </div>
+        <div class="infi-obstertrics-print-table">
+            <table class="table table-bordered infi-wj-visit-tab infi-two-cell infi-output-bottom">
+                <tbody>
+                    <tr>
+                        <td class="infi-subtitle">孕产史</td>
+                        <td class="infi-subtitle">既往家族史</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div ng-repeat="mater in maters|limitTo:2" class="infi-print-master">
+                                <p>孕产史{{$index+1}}</p>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <span>日期：</span>
+                                            <span>{{mater.date| empty}}</span>
+                                        </li>
+                                        <li>
+                                            <span>生产情况：</span>
+                                            <span>{{mater.production_situation| empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='流产'">
+                                            <div>
+                                                <span>流产方式：</span>
+                                                <span>{{mater.pro_abortion_way| empty}}</span>
+                                            </div>
+                                            <div>
+                                                <span>流产原因：</span>
+                                                <span>{{mater.ppro_abortion_cause| empty}}</span>
+                                            </div>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='早产'">
+                                            <div>
+                                                <span>新生儿性别：</span>
+                                                <span>{{mater.early_baby_sex| empty}}</span>
+                                            </div>
+                                            <div>
+                                                <span>新生儿存亡情况：</span>
+                                                <span>{{mater.early_baby_sur_situation| empty}}</span>
+                                            </div>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='早产' && mater.early_baby_sur_situation=='存'">
+                                            <div>
+                                                <span>新生儿体重：</span>
+                                                <span>{{mater.early_baby_weight| empty}}</span>
+                                                <span ng-if="mater.early_baby_weight">kg</span>
+                                            </div>
+                                            <div>
+                                                <span>早产原因：</span>
+                                                <span>{{mater.early_baby_cause| empty}}</span>
+                                            </div>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='早产' && mater.early_baby_sur_situation=='亡'">
+                                            <span>新生儿死亡原因：</span>
+                                            <span>{{mater.early_newborn_death_cause| empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='死胎'">
+                                            <span>新生儿性别：</span>
+                                            <span>{{mater.dead_fetus_baby_sex|empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='死胎'">
+                                            <span>新生儿死亡原因：</span>
+                                            <span>{{mater.dead_fetus_death_cause|empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='死产'">
+                                            <span>新生儿性别：</span>
+                                            <span>{{mater.stillbirth_baby_sex|empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='死产'">
+                                            <span>新生儿死亡原因：</span>
+                                            <span>{{mater.stillbirth_death_cause | empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产'">
+                                            <div>
+                                                <span>新生儿性别：</span>
+                                                <span>{{mater.fmp_baby_sex| empty}}</span>
+                                            </div>
+                                            <div>
+                                                <span>生产方式：</span>
+                                                <span>{{mater.fmp_situation| empty}}</span>
+                                            </div>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产' && mater.fmp_situation=='手术'">
+                                            <span>手术原因：</span>
+                                            <span>{{mater.fmp_operation_cause| empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产'">
+                                            <div>
+                                                <span>新生儿存亡情况：</span>
+                                                <span>{{mater.fmp_baby_sur_situation| empty}}</span>
+                                            </div>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产' && mater.fmp_baby_sur_situation=='存'">
+                                            <span>新生儿体重：</span>
+                                            <span>{{mater.fmp_baby_weight| empty}}</span>
+                                            <span ng-if="mater.fmp_baby_weight">kg</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产' && mater.fmp_baby_sur_situation=='亡'">
+                                            <span>新生儿死亡原因：</span>
+                                            <span>{{mater.fmp_newborn_death_cause| empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产'">
+                                            <span>是否畸形：</span>
+                                            <span>{{mater.fmp_deformity| empty}}</span>
+                                        </li>
+                                        <li ng-if="mater.production_situation=='足月产' && mater.fmp_deformity=='是'">
+                                            <span>畸形原因：</span>
+                                            <span>{{mater.fmp_deformity_cause| empty}}</span>
+                                        </li>
+                                        <li>
+                                            <span>孕产期合并症：</span>
+                                            <span>{{mater.maternal_complication|unescape}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div ng-if="!maters.length>0">无</div>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <span>既往史：</span>
+                                    <span ng-bind="familyHistory.past_history| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>药敏史：</span>
+                                    <span ng-bind="familyHistory.drug_allergy_his| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>个人史：</span>
+                                    <span ng-bind="familyHistory.personal_history| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>工作条件：</span>
+                                    <span ng-bind="familyHistory.work_condition| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>爱人年龄：</span>
+                                    <span>{{familyHistory.lover_age| unescape}}岁</span>
+                                </li>
+                                <li>
+                                    <span>爱人血型：</span>
+                                    <span ng-bind="familyHistory.lover_rh| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>爱人及其家族史：</span>
+                                    <span ng-bind="familyHistory.lover_family_history| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>本人家族遗传病：</span>
+                                    <span ng-bind="familyHistory.my_family_hereditary_disease| unescape"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-obstertrics-print-table">
+            <table class="table table-bordered infi-wj-visit-tab infi-two-cell infi-output-bottom">
+                <tbody>
+                    <tr>
+                        <td class="infi-subtitle">
+                            全身检查
+                        </td>
+                        <td class="infi-subtitle">
+                            化验
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">
+                            <ul>
+                                <li>
+                                    <span>孕前体重：</span>
+                                    <span>{{whole.pre_pregnancy_weight| empty}}kg</span>
+                                </li>
+                                <li>
+                                    <span>体重：</span>
+                                    <span>{{whole.weight| empty}}kg</span>
+                                </li>
+                                <li>
+                                    <span>身长：</span>
+                                    <span>{{whole.height| empty}}cm</span>
+                                </li>
+                                <li>
+                                    <span>血压：</span>
+                                    <span>{{whole.blood_pres| unescape}}mmHg</span>
+                                </li>
+                                <li>
+                                    <span>心脏：</span>
+                                    <span ng-bind="whole.heart| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>肺脏：</span>
+                                    <span ng-bind="whole.lung| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>肝：</span>
+                                    <span ng-bind="whole.liver| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>脾：</span>
+                                    <span ng-bind="whole.spleen| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>水肿：</span>
+                                    <span ng-bind="whole.edema| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>静脉曲张：</span>
+                                    <span ng-bind="whole.varicosity| unescape"></span>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <span>肝功：</span>
+                                    <span ng-bind="testInfo.liverfunc| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>血型：</span>
+                                    <span ng-bind="testInfo.blood| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>尿常规：</span>
+                                    <span ng-bind="testInfo.urine_routines| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>澳抗：</span>
+                                    <span ng-bind="testInfo.australia_antigen| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>血常规：</span>
+                                    <span ng-bind="testInfo.routine_blood| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>尿糖：</span>
+                                    <span ng-bind="testInfo.urine_sugar|unescape"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infi-subtitle">早孕检查</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>
+                                    <span>外阴：</span>
+                                    <span ng-bind="early.vulva| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>阴道：</span>
+                                    <span ng-bind="early.vagina| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>宫颈：</span>
+                                    <span ng-bind="early.cervical| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>宫体：</span>
+                                    <span ng-bind="early.corpus| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>附件：</span>
+                                    <span ng-bind="early.adnexa| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>滴虫：</span>
+                                    <span ng-bind="early.trichomonad| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>霉菌：</span>
+                                    <span ng-bind="early.mold| unescape"></span>
+                                </li>
+                                <li>
+                                    <span>其他备注：</span>
+                                    <span ng-bind="early.other_note| unescape"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-obstertrics-print-table">
+            <table class="table table-bordered infi-wj-visit-tab infi-two-cell infi-output-bottom">
+                <tbody>
+                    <tr>
+                        <td style="width:10%;">高危评分</td>
+                        <td>
+                            <ul>
+                                <li ng-if="entity.high_risk_score">
+                                    <span ng-bind="entity.high_risk_score|unescape"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-obstertrics-print-table">
+            <table class="table table-bordered infi-wj-visit-tab infi-output-bottom">
+                <tbody>
+                    <tr>
+                        <td class="infi-subtitle">首次诊断</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>
+                                    <span>诊断：</span>
+                                    <span ng-bind="first.diagnose| empty"></span>
+                                </li>
+                                <li>
+                                    <span>处理：</span>
+                                    <span ng-bind="first.handle| empty"></span>
+                                </li>
+                                <li>
+                                    <span>签名：</span>
+                                    <span ng-bind="first.signature| empty"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

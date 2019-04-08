@@ -1,0 +1,41 @@
+<div class="infi-record-output" id="nature">
+    <div ng-show="outputText.nature.tplStatus == 'view'" class="infi-view">
+        <div ng-show="!outputText.nature.text">
+            <span data-ng-if="entity.name_4"><i style="font-style:normal">{{entity.name_4}}</i></span>
+            <span data-ng-if="entity.name_5"><i>,</i>
+                <i style="font-style:normal" ng-if="entity.name_5 == 'value_0'">男</i>
+                <i style="font-style:normal" ng-if="entity.name_5 == 'value_1'">女</i>
+            </span>
+            <span data-ng-if="entity.name_6"><i>,</i><i style="font-style:normal">{{entity.name_6}}</i><i>岁</i></span>
+            <span data-ng-if="entity.name_7"><i>,</i><i style="font-style:normal">{{entity.name_7}}</i></span>
+            <span data-ng-if="entity.name_8"><i>,</i><i style="font-style:normal">{{entity.name_8}}</i><i>人</i></span>
+            <span data-ng-if="entity.name_9"><i>,</i><i>工作单位：</i><i style="font-style:normal">{{entity.name_9}}</i></span>
+            <span data-ng-if="entity.name_11"><i>,</i>
+                <i style="font-style:normal" ng-if="entity.name_11 == 'value_0'">未婚</i>
+                <i style="font-style:normal" ng-if="entity.name_11 == 'value_1'">已婚</i>
+                <i style="font-style:normal" ng-if="entity.name_11 == 'value_2'">离异</i>
+            </span>
+            <span data-ng-if="entity.name_10"><i>,</i><i>于</i><i style="font-style:normal">{{entity.name_10}}</i><i>入院,当日采集病史</i></span>
+            <span data-ng-if="entity.name_12"><i>,</i><i style="font-style:normal">{{entity.name_12}}</i><i>陈述病史</i></span>
+            <span data-ng-if="entity.name_13"><i>,</i>
+                <i style="font-style:normal" ng-if="entity.name_13 == 'value_0'">可靠</i>
+                <i style="font-style:normal" ng-if="entity.name_13 == 'value_1'">不可靠</i>
+            </span>
+            <span data-ng-if="entity.name_14"><i>,</i><i style="font-style:normal">{{entity.name_14}}</i></span>
+        </div>
+        <div ng-if="outputText.nature.text" class="infi-view-text">
+            <span ng-bind="outputText.nature.text"></span>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('nature')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('nature')">返回</button>
+        </div>
+    </div>
+    <div ng-show="outputText.nature.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.nature.text">{{outputText.nature.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('nature')">完成</button>
+        </div>
+    </div>
+
+</div>

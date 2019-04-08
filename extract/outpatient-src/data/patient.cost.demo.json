@@ -1,0 +1,74 @@
+{
+  "data": {
+    "id": 28,
+    "name": null,
+    "label": "挂号监控_预约渠道排行",
+    "type": null,
+    "limits": null,
+    "result": [
+      {
+        "value": 20000,
+        "channel_type": "预约挂号",
+        "type": "张*平",
+        "name": "张*平"
+      },
+      {
+        "value": 18000,
+        "channel_type": "预约挂号",
+        "type": "周*",
+        "name": "周*"
+      },
+      {
+        "value": 17000,
+        "channel_type": "预约挂号",
+        "type": "李*",
+        "name": "李*"
+      },
+      {
+        "value": 16000,
+        "channel_type": "预约挂号",
+        "type": "李*",
+        "name": "李*"
+      },
+      {
+        "value": 15000,
+        "channel_type": "预约挂号",
+        "type": "赵*",
+        "name": "赵*"
+      },
+      {
+        "value": 14000,
+        "channel_type": "预约挂号",
+        "type": "张*季",
+        "name": "张*季"
+      },
+      {
+        "value": 13000,
+        "channel_type": "预约挂号",
+        "type": "司*",
+        "name": "司*"
+      },
+      {
+        "value": 11000,
+        "channel_type": "预约挂号",
+        "type": "余*",
+        "name": "余*"
+      },
+      {
+        "value": 11000,
+        "channel_type": "预约挂号",
+        "type": "张*",
+        "name": "张*"
+      },
+      {
+        "value": 10000,
+        "channel_type": "预约挂号",
+        "type": "刘*缘",
+        "name": "刘*缘"
+      }
+    ],
+    "status": "ok"
+  },
+  "status": "ok",
+  "description": "数据请求成功"
+}

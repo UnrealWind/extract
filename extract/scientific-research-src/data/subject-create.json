@@ -1,0 +1,53 @@
+{
+  "visible": [
+    { "name": "公开共享", "value": "公开共享"},
+    { "name": "仅课题组成员可见", "value": "仅课题组成员可见"}
+  ],
+  "center": [
+    { "name": "多中心", "value": "多中心"},
+    { "name": "单中心", "value": "单中心"}
+  ],
+  "type": [
+    { "name": "前瞻性研究", "value": "前瞻性研究"},
+    { "name": "回顾性研究", "value": "回顾性研究"}
+  ],
+  "level": [
+    { "name": "国家级", "value": "国家级"},
+    { "name": "省部级", "value": "省部级"},
+    { "name": "局级", "value": "局级"}
+  ],
+  "subjectOffices": [
+    {"name": "呼吸科"},
+    {"name": "心内科"},
+    {"name": "神经内科"},
+    {"name": "肾内科"},
+    {"name": "重症医学科"},
+    {"name": "胸外科"},
+    {"name": "风湿免疫科"},
+    {"name": "消化内科"}
+  ],
+  "basic": {
+    "title": "课题创建",
+    "name": "",
+    "ename": "",
+    "ecode": "",
+    "no": "",
+    "visible": "公开共享",
+    "center": "多中心",
+    "type": "前瞻性研究",
+    "level": "",
+    "reason": "",
+    "source": "",
+    "describes": "",
+    "meaning": "",
+    "startTime": "",
+    "endTime": "",
+    "subjectOffices": "",
+    "objectives": "",
+    "company": "",
+    "own": "",
+    "phone": "",
+    "email": "",
+    "remark": ""
+  }
+}

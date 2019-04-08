@@ -1,0 +1,27 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":{
+    "heart":{
+      "imgId":"image2236",
+      "imgOpacity":"0.4",
+      "lineId":"path3446",
+      "textId":"text2283",
+      "textLabel":"冠状动脉粥样硬化性心脏病<br/>是冠状动脉血管发生动脉粥<br/>样硬化病变而引起血管腔狭<br/>窄或阻塞，造成心肌缺血、缺<br/>氧或坏死而导致的心脏病，<br/>常常被称为“冠心病”。"
+    },
+    "liver":{
+      "imgId":"image2252",
+      "imgOpacity":"0.4",
+      "lineId":"path3450",
+      "textId":"text2255",
+      "textLabel":"肝病是指发生在<br/>肝脏的病变。包<br/>括乙肝，甲肝，<br/>丙肝，肝硬化，<br/>脂肪化，肝癌，<br/>酒精肝等等多种<br/>肝病。是一种常<br/>见的危害性极大<br/>的疾病，应以积极<br/>预防为主。"
+    },
+    "lungs":{
+      "imgId":"image2214",
+      "imgOpacity":"0.5",
+      "lineId":"path3470",
+      "textId":"text2289",
+      "textLabel":"肺病是一种病名。<br/>痫证的一种。<br/>发作时面色灰白，<br/>目睛上视，惊跳，<br/>颈项反折，<br/>手松开，张口吐舌，<br/>声如羊叫等。<br/>由肺虚受邪，<br/>伤及肝肾所致。"
+    }
+  }
+}

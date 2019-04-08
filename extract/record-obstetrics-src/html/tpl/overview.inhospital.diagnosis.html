@@ -1,0 +1,83 @@
+<div>
+    <div class="row infi-wj-zd">
+        <p class="infi-wj-p1">诊断类型</p>
+        <p class="infi-wj-p1">诊断序号</p>
+        <p class="infi-wj-p1">诊断子类型</p>
+        <p class="infi-wj-p2">诊断内容</p>
+        <p class="infi-wj-p4">诊断日期</p>
+        <p class="infi-wj-p4">治疗天数</p>
+        <p class="infi-wj-p4">治疗效果</p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="outpatient in outpatientDiagnose"
+         ng-if="outpatientDiagnose">
+        <p class="infi-wj-p1">
+            <span ng-if="$index == 0" ng-bind="outpatient.diag_type"></span>
+        </p>
+        <p class="infi-wj-p1 infi-wj-p1-no">
+            <span ng-bind="outpatient.diagnosis_no"></span>
+        </p>
+        <p class="infi-wj-p1">
+            <span ng-bind="outpatient.diag_type_sub"></span>
+        </p>
+        <p class="infi-wj-p2">
+            <span ng-bind="outpatient.diagnosis_desc"></span>
+        </p>
+        <p class="infi-wj-p4">
+            <span ng-bind="outpatient.diagnosis_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="outpatient.treat_days"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="outpatient.treat_result"></span>
+        </p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in inDiagnose"
+         ng-if="inDiagnose" ng-class="{true:'infi-wj-zd-line-past'}[$index == 0]" >
+        <p class="infi-wj-p1">
+            <span ng-if="$index == 0" ng-bind="entity.diag_type"></span>
+        </p>
+        <p class="infi-wj-p1 infi-wj-p1-no">
+            <span ng-bind="entity.diagnosis_no"></span>
+        </p>
+        <p class="infi-wj-p1">
+            <span ng-bind="entity.diag_type_sub"></span>
+        </p>
+        <p class="infi-wj-p2">
+            <span ng-bind="entity.diagnosis_desc"></span>
+        </p>
+        <p class="infi-wj-p4">
+            <span ng-bind="entity.diagnosis_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="entity.treat_days"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="entity.treat_result"></span>
+        </p>
+    </div>
+    <div class="row infi-wj-zd" ng-repeat="entity in outDiagnose" ng-if="outDiagnose"
+         ng-class="{true:'infi-wj-zd-line-past'}[$index == 0]">
+        <p class="infi-wj-p1">
+            <span ng-if="$index == 0" ng-bind="entity.diag_type"></span>
+        </p>
+        <p class="infi-wj-p1 infi-wj-p1-no">
+            <span ng-bind="entity.diagnosis_no"></span>
+        </p>
+        <p class="infi-wj-p1">
+            <span ng-bind="entity.diag_type_sub"></span>
+        </p>
+        <p class="infi-wj-p2">
+            <span ng-bind="entity.diagnosis_desc"></span>
+        </p>
+        <p class="infi-wj-p4">
+            <span ng-bind="entity.diagnosis_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="entity.treat_days"></span>
+        </p>
+        <p class="infi-wj-p4 infi-wj-p1-no">
+            <span ng-bind="entity.treat_result"></span>
+        </p>
+    </div>
+</div>

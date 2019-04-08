@@ -1,0 +1,46 @@
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">该患者没有在系统中存在, 请完善以下信息: </div>
+    <div class="panel-body">
+      <form class="form-horizontal">
+        <!-- 文本类型 -->
+        <div class="form-group"
+              ng-repeat="(ind, val) in info"
+              ng-if="val.type == 'input'">
+          <label class="col-sm-3 text-right" ng-bind="val.label + ':'"></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" ng-model="createInfo[val.model]">
+          </div>
+        </div>
+
+        <!-- 单选类型 -->
+        <div class="form-group" 
+              ng-if="val.type == 'radio'"
+              ng-repeat="(ind, val) in info">
+          <label class="col-sm-3 text-right" ng-bind="val.label + ':'"></label>
+          <div class="col-sm-9" style="margin-top: 5px;">
+            <label class="radio-inline revise-radio-lab" ng-repeat="(subInd, subVal) in val.opts">
+              <input type="radio"
+                      value="{{subVal.value}}"
+                      name="{{val.label}}"
+                      ng-model="createInfo[val.model]">{{subVal.label}}
+            </label>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <form class="form-horizontal">
+    <label class="col-sm-2 control-label  revise-radio-lab">护理组:</label>
+    <div class="radio" style="padding-top: 0;">
+      <label class="radio-inline revise-radio-lab" ng-repeat="(ind, val) in group.groupOrgData">
+        <input type="radio" 
+                name="{{val.name}}"
+                value="{{val.id}}"
+                ng-model="createInfo.groupId"> {{val.name}}
+      </label>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,322 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>方案详情</h4>
+<div class="infi-box">
+    <div class="row">
+
+        <div class="legend-tip">
+        	<p>治疗方案</p>
+			<div class="infi-legend">
+				<h3>图例：</h3>
+				<ul>
+					<li>推荐方案<span class="legend green"></span></li>&nbsp;&nbsp;
+					<li>相对禁忌<span class="legend orange"></span></li>&nbsp;&nbsp;
+					<li>绝对禁忌<span class="legend red"></span></li>
+				</ul>
+			</div>
+			<span class="infi-right">
+	        	<span class="btn btn-primary" ng-click="back()">返回</span>
+	        </span>
+		</div>
+
+    	<div class="infi-left-tab col-md-2">
+
+    		<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm ">
+    			<div>
+    				<div ng-if="!plan" class="alert alert-info">加载中……</div>
+	    			<ul class="nav bs-docs-sidenav">
+			    		<li  ng-click="refreshDetail(opts,'推荐理由')" ng-repeat="opts in plan.recom_scheme" class="{{opts.color}} {{opts.status}}">
+			    			<a  title="{{opts.recom_name}} {{opts.drug_names}}">
+								{{opts.recom_name}} {{opts.drug_names}}
+			    			</a>
+		    			</li>
+
+		    			<li ng-click="refreshDetail(opt,'相对禁忌理由')" ng-repeat="opt in plan.relative_contraindication" class="orange {{opt.status}}" ng-if="$index<2">
+			    			<a ng-if="opt.drug_names.label && opt.drug_names.label!=null && opt.drug_names.label !=''" title="{{opt.drug_name}}【{{opt.drug_names.label}}】">
+			    				{{opt.drug_name}}
+			    				<span>({{opt.drug_names.label}})</span>
+			    			</a>
+			    			<a ng-if="!opt.drug_names.label || opt.drug_names.label==null || opt.drug_names.label ==''" title="{{opt.drug_name}}">
+			    				{{opt.drug_name}}
+			    			</a>
+		    			</li>
+
+						<li ng-click="refreshDetail(opt,'绝对禁忌理由')" ng-repeat="opt in plan.absolute_contraindication" class="red {{opt.status}}">
+							<a ng-if="opt.drug_names.label && opt.drug_names.label!=null && opt.drug_names.label !=''" title="{{opt.drug_name}}【{{opt.drug_names.label}}】">
+								{{opt.drug_name}}
+								<span>({{opt.drug_names.label}})</span>
+							</a>
+							<a ng-if="!opt.drug_names.label || opt.drug_names.label==null || opt.drug_names.label ==''" title="{{opt.drug_name}}">
+								{{opt.drug_name}}
+							</a>
+						</li>
+
+			    	</ul>
+    			</div>
+    		</nav>
+    	</div>
+
+    	<div class="col-md-10 infi-box" style="margin-top: 20px;">
+	    	<ul class="nav nav-tabs" role="tablist">
+	        	<li ng-hide="((opt.label=='降压目标'||opt.label=='典型病例') && tabList.class_id == 100059) || ((opt.label=='降压目标'||opt.label=='相关危险因素处理'||opt.label=='典型病例') && tabList.class_id == 100064)" role="presentation" ng-repeat = "opt in tabList.data" ng-class="{true:'active'}[tabList.tagValue == opt.label]">
+	            	<a ng-click="changeTab(opt)" class="cursorPointer" ng-bind ="opt.label"></a>
+	        	</li>
+	        </ul>
+
+	        <div ng-if="tabList.tagValue == '方案推荐依据'" class="" target = "">
+	        	<h4 class="infi-title">
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.recom_scheme">
+						<span ng-repeat="opt in opts.scheme">{{opt.recom_name}}</span>
+					</span>
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.relative_contraindication">{{opts.drug_name}}</span>
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.absolute_contraindication">{{opts.drug_name}}</span>
+				</h4>
+				<div class="" >
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th style="width:250px;">患者情况</th>
+								<th ng-bind="tabList.strDiscribe"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div ng-if="!defaultData" class="alert alert-info" role="alert">加载中……</div>
+
+									<ul ng-if="defaultData">
+										<li ng-repeat = "modal in defaultData">
+											<p class="title" ng-bind="modal.label"></p>
+											<ul>
+												<li ng-if="!modal.noVal" ng-repeat="opt in modal.data" >
+													<p ng-if="opt.value && opt.value !=0 && opt.type =='小文本输入'">{{opt.label}}:{{opt.value}}
+														<span ng-if="opt.unit">{{opt.unit}}</span>
+													</p>
+													<p ng-if="opt.value && opt.value !=0 && opt.type =='开关'"> {{opt.label}}</p>
+													<p ng-if="opt.value && opt.type =='单选'"> {{opt.label}}:{{opt.showValue}}</p>
+													<p ng-if="opt.value && opt.value !=0 && opt.type =='下拉菜单'"> {{opt.label}}:{{opt.showValue}}</p>
+
+												</li>
+												<li ng-if="modal.noVal">无</li>
+											</ul>
+										</li>
+									</ul>
+								</td>
+								<td >
+									<ul>
+										<li ng-if="planBasis.length>0" ng-repeat="opt in planBasis">
+											{{$index+1}}、{{opt}}
+										</li>
+
+										<li ng-if="planBasis == null || planBasis.length == 0">无</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+		        </div>
+	        </div>
+
+	        <div ng-if="tabList.tagValue == '方案介绍'"  target = "方案介绍">
+
+	        	<div ng-if="(!drugIntroduce || drugIntroduce==null)" class="alert alert-danger" role="alert">暂无药品介绍……</div>
+	        	<div ng-if="drugIntroduce && drugIntroduce.length>0" ng-repeat="opt in drugIntroduce" class="introduce row">
+	        		<div class="col-md-1">
+	        			 <i class="iconfont icon-yiliao"></i>
+	        		</div>
+	        		<div class="col-md-11">
+	        			<ul class="no-indent">
+		        			<li><h4 class="blue">药品类型：{{opt.drugClassName[0]}}</h4></li>
+							<li><h4>药品作用机理：</h4><p ng-if="opt.actionPrinciple!==null" ng-repeat="str in opt.actionPrinciple">{{str}}</p>
+								<p ng-if="opt.actionPrinciple == null||opt.actionPrinciple==''">-</p></li>
+							<li><h4>主要不良反应：</h4><p ng-if="opt.untowardEffect!==null" ng-repeat="str in opt.untowardEffect">{{str}}</p>
+								<p ng-if="opt.untowardEffect==null">-</p></li>
+							<li><h4>用药提示：</h4><p ng-if="opt.medicationPrompts!==null" ng-repeat="str in opt.medicationPrompts">{{str}}</p>
+								<p ng-if="opt.medicationPrompts==null">-</p></li>
+							<li><h4>适应症状：</h4><p ng-if="opt.indication!==null" ng-repeat="str in opt.indication">{{str}}</p>
+								<p ng-if="opt.indication==null">-</p></li>
+							<li><h4>禁忌症状：</h4><p ng-if="opt.relativeContraindication!==null" ng-repeat="str in opt.relativeContraindication">{{str}}</p>
+								<p ng-if="opt.relativeContraindication==null">-</p></li>
+							<li><h4>注意事项：</h4><p ng-if="opt.attention!==null" ng-repeat="str in opt.attention">{{str}}</p>
+								<p ng-if="opt.attention==null">-</p></li>
+							<li><h4>常见药品：</h4></li>
+		        		</ul>
+
+		        		<table class="table table-bordered" ng-if="opt.commonDrugs">
+							<thead>
+								<tr class="active">
+									<th>药品名称</th>
+									<th>达峰时间</th>
+									<th>半衰期（小时）</th>
+									<th>每天剂量（mg）</th>
+									<th>分服次数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat = "drug in opt.commonDrugs">
+									<td>{{drug.drugName}}</td>
+									<td>{{drug.peakTime}}</td>
+									<td>{{drug.halfLife}}</td>
+									<td>{{drug.dosage}}</td>
+									<td>{{drug.frequency}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered" ng-if="opt.pneumoniaDrugs">
+							<thead>
+							<tr class="active">
+								<th>药品名称</th>
+								<th>每天剂量（mg）</th>
+								<th>分服次数</th>
+								<th>方式</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat = "drug in opt.pneumoniaDrugs">
+								<td>{{drug.drug_name}}</td>
+								<td>{{drug.dosage}}</td>
+								<td>{{drug.frequency}}</td>
+								<td>{{drug.take}}</td>
+							</tr>
+							</tbody>
+						</table>
+	        		</div>
+	        		<hr ng-if="drugIntroduce.length>1 && $index+1<drugIntroduce.length" class="bk-99">
+	        	</div>
+	        	
+	        </div>
+
+	        <div ng-if="tabList.tagValue == '降压目标' && tabList.class_id == 100037"  target = "降压目标">
+	        	<h4 class="infi-title">降压目标</h4>
+	        	<div class="introduce" ng-repeat="opt in hyperAim">
+					<h4>{{opt.condition}}</h4>
+	        		<p>{{opt.result}}</p>
+	        	</div>
+	        </div>
+
+	        <div ng-if="tabList.tagValue == '相关危险因素处理'"  target  = "相关危险因素处理">
+	        	
+        		<h4 class="infi-title">相关危险因素处理</h4>
+        		<div ng-if="dangerInfo && dangerInfo!=='' && dangerInfo!==null">
+		        	<div class="introduce">
+		        		<div ng-repeat="opt in dangerInfo">
+		        			<h4>{{opt.fieldName}}</h4>
+		        			<p>{{opt.dangerHandle}}</p>
+		        		</div>
+		        	</div>
+	        	</div>
+	        	<div  class="alert alert-danger" ng-if="!dangerInfo || dangerInfo == '' || dangerInfo == null">暂无相关危险因素处理……</div>
+	        </div>
+
+	        <div ng-if="tabList.tagValue == '方案相关文献'"  target = "方案相关文献">
+	        	<h4 class="infi-title">方案相关文献</h4>
+	        	<div class="">
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th>文献名称</th>
+								<th>详细信息</th>
+							</tr>
+						</thead>
+						<tbody ng-if="planLiterature && planLiterature.length > 0">
+							<tr ng-repeat="opt in planLiterature">
+								<td>{{opt.label}}</td>
+								<td><a  href="javascript:;" ng-click="viewPDF(opt.value,'scheme')">查看</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div  class="alert alert-danger" ng-if="!planLiterature || planLiterature.length == 0">暂无方案相关文献……</div>
+		        </div>
+	        </div>
+	        
+	        <div ng-if="tabList.tagValue == '药品不良反应相关文献'"  target = "药品不良反应相关文献">
+	        	<h4 class="infi-title">药品不良反应相关文献</h4>
+	        	<div class="">
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th>文献名称</th>
+								<th>详细信息</th>
+							</tr>
+						</thead>
+						<tbody ng-if="drugLiterature && drugLiterature.length > 0">
+						<tr ng-repeat="opt in drugLiterature">
+							<td>{{opt.label}}</td>
+							<td><a  href="javascript:;" ng-click="viewPDF(opt.value,'drug')">查看</a></td>
+						</tr>
+						</tbody>
+					</table>
+					<div  class="alert alert-danger" ng-if="!drugLiterature || drugLiterature.length == 0">暂无药品不良反应相关文献……</div>
+		        </div>
+	        </div>
+
+	        <div ng-if="tabList.tagValue == '典型病例'"  target = "典型病例">
+				<h4 class="infi-title">
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.recom_scheme">
+						<span ng-repeat="opt in opts.scheme">{{opt.recom_name}}</span>
+					</span>
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.relative_contraindication">{{opts.drug_name}}</span>
+					<span class="infi-title" ng-if="opts.status == 'active'" ng-repeat ="opts in plan.absolute_contraindication">{{opts.drug_name}}</span>
+				</h4>
+	        	<div class="">
+	        	
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th>病历号</th>
+								<th>入院次数</th>
+								<th>患者姓名</th>
+								<th>性别</th>
+								<th>年龄</th>
+								<th>入院时间</th>
+								<th style="width: 200px;">主要诊断</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody ng-if="typicalRecord &&  typicalRecord.length > 0">
+							<tr ng-repeat="opt in typicalRecord">
+								<td>{{opt.pati_id}}</td>
+								<td >{{opt.pati_visit_id}}</td>
+								<td >{{opt.name}}</td>
+								<td>{{opt.sex_name}}</td>
+								<td>{{opt.age}}</td>
+								<td >{{opt.admission_date_time}}</td>
+								<td >{{opt.diagnosis}}</td>
+								<td ><a target="_blank" href="/record-src/#/overview/inhospital/{{opt.xl_patient_id}}/{{opt.xl_medical_id}}/{{opt.pati_id}}">查看</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<p>注：依据诊断中存在高血压的患者及患者的方案去匹配病历</p>
+					<div  class="alert alert-danger" ng-if="!typicalRecord || typicalRecord.length == 0">暂无典型病例……</div>
+		        </div>
+	        </div>
+	        
+	    </div>
+    </div>
+</div>
+
+<div class="infi-box">
+	<div target = "标准来源">
+    	<h4 class="infi-title">标准来源指南</h4>
+    	<div>
+
+			<table class="table">
+				<thead>
+					<tr class="active">
+						<th>序号</th>
+						<th>疾病名称</th>
+						<th>标准来源</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody ng-if="standardSource && standardSource && standardSource.length > 0">
+					<tr ng-repeat="opt in standardSource">
+						<td>{{$index+1}}</td>
+						<td >{{opt.disease}}</td>
+						<td >{{opt.name}}</td>
+						<td><a href="javascript:;" ng-click="viewPDF(opt.id,'guide')">查看</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div  class="alert alert-danger" ng-if="!standardSource ||  standardSource.length == 0">暂无标准来源指南……</div>
+        </div>
+    </div>
+</div>

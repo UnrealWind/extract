@@ -1,0 +1,40 @@
+<div id="missionList" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>任务列表</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tr style="text-align: center;">
+                        <td>序号</td>
+                        <td>医院</td>
+                        <td>科室</td>
+                        <td style="width:150px;">采集任务量</td>
+                    </tr>
+                    <tr ng-repeat="opt in missionList" style="text-align: center;">
+                        <td>{{$index+1}}</td>
+                        <td>{{opt.hospital}}</td>
+                        <td>{{opt.dept}}</td>
+                        <td><input placeholder="请输入数字" class="form-control" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" ng-model="opt.recordSize"/></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="setMission()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tips" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="alert alert-danger">分配的病例数之和不能大于总病历数！！！</div>
+        </div>
+    </div>
+</div>
+

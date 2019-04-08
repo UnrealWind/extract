@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>智能诊断配置页</title>
+  <link rel="shortcut icon" href="/src/image/favicon.ico" type="image/x-icon" />
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+  <link href="/src/scss/frame.css" rel="stylesheet" />
+  <link href="/src/scss/infi-confirm-export.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
+  <link href="/src/scss/infi-iDiagnosis.css" rel="stylesheet" />
+</head>
+<body ng-app="infi-basic" ng-controller="HomeController">
+  <div class="config-wrapper">
+    <ng-view class="route-switch"></ng-view>
+  </div>
+
+
+<!--操作提示-->
+<div sys-tip></div>
+
+
+</body>
+<!-- jQuery -->
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- angular -->
+<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+<!-- angular-route -->
+<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+<!-- bootstrap -->
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/src/angular-ui-bootstrap.js"></script>
+<!-- angular-ui-tree -->
+<script type="text/javascript" src="/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js"></script>
+<!-- pinyin-engine -->
+<script type="text/javascript" src="/src/plugin/pinyin-engine/dist/cn.js"></script>
+<!-- common -->
+<script type="text/javascript" src="../common.js"></script>
+<!-- config -->
+<script type="text/javascript" src="config.js"></script>
+</html>

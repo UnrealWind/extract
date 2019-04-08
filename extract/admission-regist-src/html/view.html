@@ -1,0 +1,232 @@
+<div class="container-fluid">
+  <!-- 标题 -->
+  <div class="row">
+    <div class="col-md-12">
+      <h3><i class="glyphicon glyphicon-eye-open"></i> 概览
+        <!-- 回首页 -->
+        <a href="#/dataExport" class="btn btn-default pull-right"><i class="glyphicon glyphicon-export"></i> 进入数据导出</a>
+      </h3>
+      <hr>
+    </div>
+  </div>
+  <!-- 1. 搜索 / 导出 -->
+  <div class="row">
+    <!-- 搜索 -->
+    <div class="col-md-12">
+      <form class="form-inline col-md-9">
+        <!-- 患者姓名 -->
+        <div class="form-group col-md-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-name" placeholder="输入患者姓名" ng-model="filteProfile.patName">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 患者 ID -->
+        <div class="form-group col-md-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-id" placeholder="输入患者 ID" ng-model="filteProfile.patiId">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 患者疾病 -->
+        <div class="from-group col-md-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-disease" placeholder="输入患者疾病" ng-model="filteProfile.patiDisease">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 患者病区 -->
+        <div class="from-group col-md-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="patient-ward" placeholder="输入患者病区" ng-model="filteProfile.patiWard">
+            <div class="input-group-addon btn btn-default" ng-click="updatePage('1')">
+              <i class="glyphicon glyphicon-search"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- 重置筛选 -->
+      <button class="btn btn-default"
+              ng-click="resetFilter()">重置筛选</button>
+
+      <button class="btn btn-primary"
+              type="button"
+              ng-click="addNewApplyForm()">
+
+        <i class="glyphicon glyphicon-plus ease-trans"
+           ng-class="{true: 'rotate90'}[newApplyFormData.showForm]"></i> 添加患者
+      </button>
+    </div>
+  </div>
+  <!-- 新建肾穿申请单 表单内容 默认隐藏 -->
+  <div class="row" id="newApplyFormWrapper">
+    <div class="col-md-10 col-md-offset-1">
+      <new-apply-form new-apply-form-data="newApplyFormData"
+                      ng-if="newApplyFormData.showForm">
+      </new-apply-form>
+    </div>
+  </div>
+  <!-- 2. table -->
+  <div class="row regist-list">
+    <div class="col-md-12">
+        <section class="infi-section">
+            <table class="table infi-table">
+              <thead>
+                <tr>
+                  <th ng-repeat="(ind, val) in columns.label" ng-bind="val"></th>
+                </tr>
+              </thead>
+              <tbody ng-if="content.page.content">
+                <tr ng-repeat="row in content.page.content">
+                  <td ng-repeat="bindModel in columns.filed" class="txt-elipse">
+                    <span class="value-container" title="{{row[bindModel]}}" ng-if="bindModel == 'admission_date_time'">
+                      {{row[bindModel].split(' ')[0]}} <br/>
+                      {{row[bindModel].split(' ')[1]}}
+                    </span>
+                    <span class="value-container" title="{{row[bindModel]}}" ng-bind="row[bindModel]" ng-if="bindModel != 'admission_date_time' && bindModel != 'admission_flag' && bindModel != 'discharge_flag'"></span>
+
+                    <!-- 入院登记 -->
+                    <span ng-if="bindModel == 'admission_flag'">
+                      <button class="btn btn-warning" role="button"  ng-if="row[bindModel] == '0'" ng-click="editRegist('entry', 'create', row)">登记</button>
+                      <button class="btn btn-primary" role="button"  ng-if="row[bindModel] == '1'" ng-click="editRegist('entry', 'update', row)">已登记</button>
+                    </span>
+
+                    <!-- 出院登记 -->
+                    <span ng-if="bindModel == 'discharge_flag'">
+                      <button class="btn btn-warning" role="button"  ng-if="row[bindModel] == '0'" ng-click="editRegist('exit', 'create', row)">登记</button>
+                      <button class="btn btn-primary" role="button"  ng-if="row[bindModel] == '1'" ng-click="editRegist('exit', 'update', row)">已登记</button>
+                    </span>
+                  </td>
+                </tr>
+
+              <!-- 状态提示 -->
+              <tbody>
+                <tr ng-if="loading == 'pending'">
+                  <td colspan="{{columns.filed.length}}">
+                    <p class="bg-warning" style="line-height: 50px;">数据加载中...</p>
+                  </td>
+                </tr>
+              </tbody>
+
+                <tr ng-if="loading == 'rejected'">
+                  <td colspan="{{columns.filed.length}}">
+                    <p class="bg-danger" style="line-height: 50px;">请求错误，请刷新重试</p>
+                  </td>
+                </tr>
+
+                <tr ng-if="loading == 'blank'">
+                  <td colspan="{{columns.filed.length}}">
+                    <p class="bg-warning" style="line-height: 50px;">暂无数据</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="infi-page">
+              <div class="form-inline">
+                <div class="form-group">
+                  <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" boundary-link-numbers="true" ng-change="updatePage(content.page.number)"
+                    items-per-page="content.page.size" num-pages="content.page.totalPages" max-size="8">
+                  </uib-pagination>
+                </div>
+
+                <!-- 跳转页码 -->
+                <div class="form-group jumpPage-wrap">
+                  <div class="input-group">
+                    <input type="number" class="form-control numberInput" ng-model="jumpPage" min="1">
+                  </div>
+                  <button class="btn btn-default" ng-click="updatePage(jumpPage)">跳转</button>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </div>
+
+  <!-- hr -->
+  <div class="split-wrapper">
+    <hr class="split-line">
+    <span class="split-title">出入院统计</span>
+  </div>
+
+  <!-- data filter -->
+  <div class="row filter-wrapper">
+    <!-- filter date -->
+    <div class="col-md-6">
+      <form class="form-inline pull-right">
+        <div class="form-group">
+          <div class="input-group" id="statistics-filter">
+            <input type="text" readonly class="form-control" style="cursor: pointer;">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <!-- region -->
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="control-label">选择病区： </label>
+          <div class="wrads-warpper">
+            <!-- 有 wards -->
+            <div ng-if="wards" class="list-warpper">
+              <div class="list-opt" ng-click="extendWard()">
+                <span ng-bind="wardSearchObj.selected.label || wards[1].label" class="list-opt-txt"></span>
+                <i class="glyphicon glyphicon-chevron-down pull-right" ng-if="!wardSearchObj.showWards"></i>
+                <i class="glyphicon glyphicon-chevron-up pull-right" ng-if="wardSearchObj.showWards"></i>
+              </div>
+  
+              <ul class="list-group wrads-list" ng-if="wardSearchObj.showWards">
+                <!-- 搜索框 -->
+                <li class="list-search">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="text" class="form-control wrad-search" 
+                               ng-model="wardSearchObj.keyword" 
+                               ng-change="wardSearch()" placeholder="拼音/首字母搜索">
+                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+                <li class="list-group-item"
+                    ng-if="!wardSearchObj.keyword || (wards.length > 0 && wardSearchObj.result.indexOf(val) >= 0)"
+                    ng-repeat="(ind, val) in wards"
+                    ng-bind="val.label"
+                    ng-click="selectItem(val, $event)">
+                </li>
+              </ul>
+            </div>
+
+            <div ng-if="!wards" class="list-wrapper">
+              <div class="list-opt">
+                <span>暂无数据!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- filter-graph -->
+  <div class="row filter-graph">
+    <div class="graph-loc-wrapper">
+      <!-- 入院人数 -->
+      <div class="filter-graph-part-wrap pull-left" id="entryPie">
+      </div>
+  
+      <!-- 出院人数 -->
+      <div class="filter-graph-part-wrap pull-left" id="exitPie">
+      </div>
+    </div>
+  </div>
+</div>

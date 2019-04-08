@@ -1,0 +1,62 @@
+{
+  "status": "ok",
+  "description": "数据请求成功",
+  "data": [
+    {
+      "name":"挂号总体情况",
+      "url": "1",
+      "value": "registeredInfo",
+      "elementId":null,
+      "type":"Single"
+    },
+    {
+      "name":"挂号类型分布",
+      "url": "2",
+      "value": "registeredType",
+      "elementId":"infi-opt-gh",
+      "type":"dbPie"
+    },
+    {
+      "name":"预约指标展示",
+      "url": "3",
+      "value": "subscribe",
+      "elementId":null,
+      "type":"Single"
+    },
+    {
+      "name":"付费类型分布",
+      "url": "4",
+      "value": "payType",
+      "elementId":"infi-opt-ff",
+      "type":"pie"
+    },
+    {
+      "name":"预约途径分布",
+      "url":"5",
+      "value":"way",
+      "elementId":"infi-opt-tj",
+      "type":"optPie"
+    },
+    {
+      "name":"重点门诊科室排行[问诊人次]",
+      "url": "6",
+      "value": "outpatient",
+      "elementId":"infi-opt-ks",
+      "type":"bar"
+    },
+    {
+      "name":"重点急诊科室排行[问诊人次]",
+      "url": "7",
+      "value": "emergency",
+      "elementId":"infi-opt-mz-ks",
+      "type":"bar"
+    },
+    {
+      "name":"门诊统计报表",
+      "url": "8",
+      "value": "statistics",
+      "elementId":null,
+      "type":"table"
+    }
+  ]
+}

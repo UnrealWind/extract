@@ -1,0 +1,57 @@
+
+<div style="padding: 10px;">
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">既往史：</label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.past_history| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">药敏史： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.drug_allergy_his| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">个人史： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.personal_history| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">工作条件： </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.work_condition| unescape"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">爱人年龄： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text">
+                <p style="display: inline-block;" ng-bind="familyHistory.lover_age| unescape "></p>
+                <p style="display: inline-block;" ng-if="familyHistory.lover_age">岁</p></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">爱人血型： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.lover_rh| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">爱人及其家族史： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.lover_family_history| unescape "></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-titles">本人家族遗传病： </label>
+        </div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;">
+            <div class="infi-wj-obstetrics-text" ng-bind="familyHistory.my_family_hereditary_disease| unescape "></div>
+        </div>
+    </div>
+</div>

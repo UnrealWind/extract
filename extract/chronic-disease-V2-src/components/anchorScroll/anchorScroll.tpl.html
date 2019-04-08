@@ -1,0 +1,13 @@
+<div class="anchorScroll-component">
+  <link rel="stylesheet" type="text/css" href="./anchorScroll.scss">
+  <ul class="nav-list-wrapper">
+    <li ng-repeat="navItem in $ctrl.navData"
+        class="nav-item-wrapper"
+        ng-class="{true: 'active'}[$index == $ctrl.currAct]">
+      <a ng-bind="navItem.name"
+         class="nav-item-txt"
+         ng-click="$ctrl.jumpTo(navItem.type + 'head', $index)"
+         ng-class="{true: 'active'}[$index == $ctrl.currAct]"></a>
+    </li>
+  </ul>
+</div>

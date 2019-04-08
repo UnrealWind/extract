@@ -1,0 +1,21 @@
+<div>
+    <!--带有图片的kpi-->
+    <div class="infi-box-kpi row" ng-show="original.status == SYS.STATUS_SUCCESS">
+        <div class="{{original.$data.col}} row infi-kpi-img" ng-repeat="entity in original.$data.child">
+            <div class="col-md-3 noprint">
+                <img ng-src="img/{{entity.image}}" />
+            </div>
+            <dl class="infi-column-kpi col-md-9">
+                <dt ng-class="{true:'infi-no-third'}[!entity.child[2]]" class="infi-title">{{entity.child[0].name}}:
+                    <span ng-bind="entity.child[0].num|nullFilter"></span>{{entity.child[0].unit}}</dt>
+                <dd class="infi-box-containter">
+                    <div>{{entity.child[1].name}}:<span ng-bind="entity.child[1].num|nullFilter"></span>{{entity.child[1].unit}}</div>
+                    <div ng-show="entity.child[2]">{{entity.child[2].name}}:
+                        <span ng-bind="entity.child[2].num|nullFilter"></span>{{entity.child[2].unit}}</div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--数据未读取到提示-->
+    <div ng-show="original.status != SYS.STATUS_SUCCESS" ng-bind="original.description" class="alert alert-danger"></div>
+</div>

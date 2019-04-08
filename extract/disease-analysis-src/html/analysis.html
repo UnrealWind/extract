@@ -1,0 +1,54 @@
+<div>
+    <h4 class="infi-title ng-scope"><i class="glyphicon glyphicon-globe"></i>疾病诱因分析</h4>
+    <div class="infi-old-title form-group">
+        <label>疾病：</label>
+        <select  class="form-control" ng-model ="params.filter_ill_id" ng-change="changeCharts('all')">
+            <option ng-repeat ="opt in diseases" value ="{{opt.value}}" ng-bind = "opt.label"></option>
+        </select>
+        <!--<label>时间：
+            <input infi-date="yyyy-mm-dd" ng-model="params.filter_start_date"  placeholder="开始时间" value="" class="form-control">
+            <input infi-date="yyyy-mm-dd" ng-model="params.filter_end_date"  placeholder="结束时间" value="" class="form-control">
+        </label>-->
+    </div>
+    <div class="infi-box">
+        <h4>气象因素分析
+            <label>
+                <select  class="form-control" ng-model ="params.filter_type_id" ng-change="changeCharts('weather')">
+                    <option ng-repeat ="opt in analysisType" value ="{{opt.value}}" ng-bind = "opt.label"></option>
+                </select>
+            </label>
+        </h4>
+        <weather ng-if="refreshWeather && analysisType" analysis-type="analysisType" params="params"></weather>
+
+        <h4>基本属性分析</h4>
+        <ul class="row"　ng-if="refreshBasic">
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-1"></div>
+            </li>
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-2"></div>
+            </li>
+        </ul>
+
+        <h4>生活习惯分析</h4>
+        <ul class="row"　ng-if="refreshBasic">
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-3"></div>
+            </li>
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-4"></div>
+            </li>
+        </ul>
+
+        <h4>疾病史分析</h4>
+        <ul class="row"　ng-if="refreshBasic">
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-5"></div>
+            </li>
+            <li class="col-md-6">
+                <div class="basicAttr" id="basicAttr-6"></div>
+            </li>
+        </ul>
+
+    </div>
+</div>

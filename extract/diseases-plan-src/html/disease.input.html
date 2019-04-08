@@ -1,0 +1,25 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>患者信息</h4>
+<div class="infi-box">
+	<div class="infi-form">
+		<div class="infi-form-inputs">
+			<form ng-if="currentData && currentData.length>0" class="infi-modal-box"  ng-repeat = "modal in currentData" class="infi-modal-inputs form-inline">
+
+				<h2 id="" class="infi-title">
+					<span>{{modal.label}}
+					<span class="infi-right" ng-if="$index==0">
+				        	<span class="btn btn-primary" ng-click="back()">返回</span>
+				        </span>
+					</span>
+				</h2>	
+				<ul class="infi-modal-inputs row">
+					<li repeat-list-finish ng-repeat = "opt in modal.data" ng-class="{true:'col-md-12',false:'col-md-4'}[opt.children.length >0 ]" >
+						<input-plan-template input="opt"  parent="modal.data"></input-plan-template>
+					</li>
+				</ul>
+			</form><!-- end of infi-modal-box -->
+			<div class="infi-m-btn">
+				<button class="btn btn-primary" ng-click = "save()">确定</button>
+			</div>
+		</div> 
+	</div>
+</div>

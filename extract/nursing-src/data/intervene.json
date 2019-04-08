@@ -1,0 +1,22 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":[
+    {
+      "label":"全部",
+      "value":""
+    },{
+      "label":"高",
+      "value":"高"
+    },{
+      "label":"中",
+      "value":"中"
+    },{
+      "label":"低",
+      "value":"低"
+    },{
+      "label":"待评估",
+      "value":"待评估"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": {
+    "doctor":[
+      {
+        "label":"医嘱内容",
+        "name":"adviceContent"
+      },{
+        "label":"医嘱执行时间",
+        "name":"executeTime"
+      },{
+        "label":"执行护士姓名",
+        "name":"nurse"
+      }
+    ],
+    "output":[
+      {
+        "label":"名称",
+        "name":"infoName"
+      },{
+        "label":"数值",
+        "name":"num"
+      },{
+        "label":"单位",
+        "name":"unit"
+      },{
+        "label":"记录时间",
+        "name":"measureTime"
+      },{
+        "label":"记录人姓名",
+        "name":"measureName"
+      }
+    ],
+    "physical":[
+      {
+        "label":"名称",
+        "name":"infoName"
+      },{
+        "label":"数值",
+        "name":"num"
+      },{
+        "label":"单位",
+        "name":"unit"
+      },{
+        "label":"测量时间",
+        "name":"measureTime"
+      }
+    ]
+  }
+}

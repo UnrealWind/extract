@@ -1,0 +1,17 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC置管前评估详情
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="preDetailsBack()">返回</button>
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" style="margin-right: 10px;" ng-if="!params.tubeInfoId"
+			ng-click="addCatheter()">开始置管</button>
+</h4>
+<div class="infi-box">
+	<div class="risk-evaluation">
+		<h4>基本信息</h4>
+	</div>
+	<div class="infi-theme-details">
+		<div form-details details-list="detailsList"></div>
+	</div>
+</div>
+<div add-catheter entity="params" evaluate="details"></div>

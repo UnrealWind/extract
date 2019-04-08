@@ -1,0 +1,31 @@
+<div class="infi-nursing-back">
+    <!--topics-modify 是topics的备用html-->
+    <a class="btn infi-btn-linear-green-l btn-sm" href="#/list">返回</a>
+</div>
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>患者详情</h4>
+<div class="infi-box">
+    <h4 class="infi-btn-title infi-inline-block">基本信息</h4>
+    <button class="btn infi-btn-linear-green-l infi-right" ng-if="basicInfo.isHospitalization == '院内'" ng-click="showDischarge()">出院记录</button>
+    <button class="btn infi-btn-linear-green-l infi-right" ng-if="basicInfo.isHospitalization == '院后'" ng-click="showEnter()">入院记录</button>
+    <hr />
+    <div class="infi-section">
+        <div basic-info basic="basicInfo" data-ng-if="basicInfo">
+        </div>
+    </div>
+
+    <h4 class="infi-btn-title infi-inline-block">置管护理档案</h4>
+    <button class="btn infi-btn-linear-green-l infi-right" ng-click="addCatheter()">新增置管信息</button>
+    <button class="btn infi-btn-linear-green-l infi-right" ng-click="addEvaluate()" style="margin-right:10px;">新增可行性评估</button>
+    <hr />
+    <div class="infi-section">
+        <div class="infi-nursing-timeline" infi-timeline
+             type="'nursing'" events="lines" btn-click="addCatheter(entity)"
+             btn2-click="showDeletion(entity)" ng-if="lines.data.length>0">
+        </div>
+    </div>
+    <div discharge-record></div>
+    <div admission-record></div>
+    <div add-catheter evaluate="newEvaluate" entity="basicInfo"></div>
+    <div confirm-deletion data="temporaryDeletion" confirm-delete="confirmDelete(data)"></div>
+    <div sys-tip></div>
+</div>

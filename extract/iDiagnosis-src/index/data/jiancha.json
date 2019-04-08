@@ -1,0 +1,165 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "search": "STduanyadi|STDUANYADI|stduanyadi|STdyd",
+            "label": "ST段压低"
+          },
+          {
+            "search": "Tbodiping|TBODIPING|tbodiping|Tbdp",
+            "label": "T波低平"
+          },
+          {
+            "search": "Tbodaozhi|TBODAOZHI|tbodaozhi|Tbdz",
+            "label": "T波倒置"
+          },
+          {
+            "search": "weijianyichang|WEIJIANYICHANG|weijianyichang|wjyc",
+            "label": "未见异常"
+          }
+        ],
+        "label": "静息心电图",
+        "selectType": "radio"
+      },
+      {
+        "children": [
+          {
+            "search": "STduanyadi|STDUANYADI|stduanyadi|STdyd",
+            "label": "ST段压低"
+          },
+          {
+            "search": "weijianyichang|WEIJIANYICHANG|weijianyichang|wjyc",
+            "label": "未见异常"
+          }
+        ],
+        "label": "负荷心电图",
+        "selectType": "radio"
+      },
+      {
+        "children": [
+          {
+            "search": "xinshibijieduanyundongyichang|XINSHIBIJIEDUANYUNDONGYICHANG|xinshibijieduanyundongyichang|xsbjdydyc",
+            "label": "心室壁阶段运动异常"
+          },
+          {
+            "search": "xinjiquexue|XINJIQUEXUE|xinjiquexue|xjqx",
+            "label": "心肌缺血"
+          },
+          {
+            "search": "weijianyichang|WEIJIANYICHANG|weijianyichang|wjyc",
+            "label": "未见异常"
+          }
+        ],
+        "label": "负荷超声心动图",
+        "selectType": "radio"
+      },
+      {
+        "children": [
+          {
+            "search": "xinjiquexue|XINJIQUEXUE|xinjiquexue|xjqx",
+            "label": "心肌缺血"
+          },
+          {
+            "search": "weijianyichang。|WEIJIANYICHANG。|weijianyichang。|wjyc。",
+            "label": "未见异常"
+          }
+        ],
+        "label": "核素心肌灌注试验",
+        "selectType": "radio" 
+      },
+      {
+        "children": [
+          {
+            "search": "guanmaixiazhai＞50%|GUANMAIXIAZHAI＞50%|guanmaixiazhai＞50%|gmxz＞50%",
+            "label": "冠脉狭窄＞50%"
+          },
+          {
+            "search": "guanmaixiazhai≤50%|GUANMAIXIAZHAI≤50%|guanmaixiazhai≤50%|gmxz≤50%",
+            "label": "冠脉狭窄≤50%"
+          }
+        ],
+        "label": "冠脉CTA",
+        "selectType": "radio"
+      }
+    ],
+    "label": "常见检查结果"
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "search": "xinshibijieduanyundongyichang|XINSHIBIJIEDUANYUNDONGYICHANG|xinshibijieduanyundongyichang|xsbjdydyc",
+            "label": "心室壁阶段运动异常"
+          },
+          {
+            "search": "zhudongmaibanxiazhai（zhongdu）|ZHUDONGMAIBANXIAZHAI（ZHONGDU）|zhudongmaibanxiazhai（zhongdu）|zdmbxz（zd）",
+            "label": "主动脉瓣狭窄（重度）"
+          },
+          {
+            "search": "erjianbanxiazhai（zhongdu）|ERJIANBANXIAZHAI（ZHONGDU）|erjianbanxiazhai（zhongdu）|ejbxz（zd）",
+            "label": "二尖瓣狭窄（重度）"
+          },
+          {
+            "search": "sanjianbanxiazhai（zhongdu）|SANJIANBANXIAZHAI（ZHONGDU）|sanjianbanxiazhai（zhongdu）|sjbxz（zd）",
+            "label": "三尖瓣狭窄（重度）"
+          },
+          {
+            "search": "feidongmaibanxiazhai（zhongdu）|FEIDONGMAIBANXIAZHAI（ZHONGDU）|feidongmaibanxiazhai（zhongdu）|fdmbxz（zd）",
+            "label": "肺动脉瓣狭窄（重度）"
+          },
+          {
+            "search": "weijianyichang|WEIJIANYICHANG|weijianyichang|wjyc",
+            "label": "未见异常"
+          }
+        ],
+        "label": "超声心动图",
+        "selectType": "radio"
+      },
+      {
+        "children": [
+          {
+            "search": "xinshibijieduanyundongyichang|XINSHIBIJIEDUANYUNDONGYICHANG|xinshibijieduanyundongyichang|xsbjdydyc",
+            "label": "心室壁阶段运动异常"
+          },
+          {
+            "search": "xinjiquexue|XINJIQUEXUE|xinjiquexue|xjqx",
+            "label": "心肌缺血"
+          },
+          {
+            "search": "weijianyichang|WEIJIANYICHANG|weijianyichang|wjyc",
+            "label": "未见异常"
+          }
+        ],
+        "label": "负荷超声心动图",
+        "selectType": "radio"
+      }
+    ],
+    "label": "超声"
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "search": "guanmaixiazhaidayu50%|GUANMAIXIAZHAIDAYU50%|guanmaixiazhaidayu50%|gmxzdy50%",
+            "label": "冠脉狭窄大于50%"
+          },
+          {
+            "search": "guanmaixiazhaixiaoyu50%|GUANMAIXIAZHAIXIAOYU50%|guanmaixiazhaixiaoyu50%|gmxzxy50%",
+            "label": "冠脉狭窄小于50%"
+          },
+          {
+            "search": "xinjiqiao|XINJIQIAO|xinjiqiao|xjq",
+            "label": "心肌桥"
+          }
+        ],
+        "label": "冠脉造影术",
+        "selectType": "radio"
+      }
+    ],
+    "label": "造影"
+  }
+]

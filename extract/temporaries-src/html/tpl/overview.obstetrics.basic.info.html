@@ -1,0 +1,102 @@
+<div class="infi-wj-part">
+    <table class="infi-wj-table" style="table-layout: fixed">
+        <tbody>
+        <tr>
+            <td class="self-wj-label" valign="top">
+                <p>年龄：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.age"></p> <span ng-if="basicInfo.age">岁</span>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>职业：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.professional"></p>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>工作单位：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.work_units"></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="self-wj-label">
+                <p>电话：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.phone"></p>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>结婚年龄：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.marry_age"></p> <span
+                    ng-if="basicInfo.marry_age">岁</span>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>初孕年龄：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.first_gestational"></p> <span
+                    ng-if="basicInfo.first_gestational">岁</span>
+            </td>
+            <!--ljy_debug 增加字段,前端页面显示-->
+
+        </tr>
+        <tr>
+            <td valign="top" class="self-wj-label">
+                <p>月经初潮：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.menarche"></p> <span
+                    ng-if="basicInfo.menarche">岁</span>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>月经周期：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.menstrual_cycle"></p> <span
+                    ng-if="basicInfo.menstrual_cycle">天</span>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>月经期：</p>
+            </td>
+            <td valign="top">
+                <p style="display: inline-block;" ng-bind="basicInfo.menstrual_continuous"></p> <span
+                    ng-if="basicInfo.menstrual_continuous">天</span>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" class="self-wj-label">
+                <p>末次月经：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.last_gestational_date|date:'yyyy-MM-dd'"></p>
+            </td>
+            <td valign="top" class="self-wj-label">
+                <p>避孕法：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.contraception|unescape"></p>
+            </td>
+            <td class="self-wj-label" valign="top">
+                <p>本次妊娠疾病：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.pregnancy_disease|unescape"></p>
+            </td>
+
+        </tr>
+        <tr>
+            <td valign="top" class="self-wj-label">
+                <p>本次妊娠用药史：</p>
+            </td>
+            <td valign="top">
+                <p ng-bind="basicInfo.pregnancy_drug|unescape"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

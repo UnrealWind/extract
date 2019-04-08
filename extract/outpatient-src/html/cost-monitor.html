@@ -1,0 +1,273 @@
+<div time-show class="infi-inline-block infi-title-time noprint"></div>
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>费用监控</h4>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>费用监控</h4>
+    <div class="infi-today-time">
+        <span ng-bind="now|date:'yyyy-MM-dd HH:mm:ss'"></span>
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="cMonKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 收费总体情况
+        <div print-add print-list="ids" unique="'cMonKpi'" print-all-list="printAllList"></div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="overallKpiTop"></div>
+    <div kpi-img original="overallKpiBottom"></div>
+</div>
+<div class="infi-opt-self-box" id="cMonPayment">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>收费构成监控
+        <div print-add print-list="ids" unique="'cMonPayment'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="paymentType"
+                 record-list="dimension.deptList" select="'department'" change-data="getPaymentType()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">付费类型构成（人次）</h5></div>
+            <div>
+                <!--环形图与环形嵌套图公用一个option,用不同东西区分-->
+                <div id="nestedPaymentType" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">付费项目(万元)</h5> 今日收费：{{paymentType.costType}}</div>
+            <div>
+                <div id="piePayItem" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="cMonPayService">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>收费项目排行监控
+        <div print-add print-list="ids" unique="'cMonPayService'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="payService"
+                 record-list="dimension.deptList" select="'department'" change-data="getPayService()"></div>
+            <label>患者身份：
+                <select class="form-control infi-opt-search-time" ng-model="payService.identity" ng-change="getPayService()">
+                    <option value="" ng-selected="payService.identity == ''">全部</option>
+                    <option value="军人" ng-selected="payService.identity == '军人'">军人</option>
+                    <option value="非军人" ng-selected="payService.identity == '非军人'">非军人</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <h5 class="infi-chart-title">药品收费排行</h5>
+                <!--显示个数directive original-盛放筛选的数据 count-各自的筛选条件所在的commom的idx-->
+                <div cost-monitor-ranking original="payService" count="'0'" visit-data="visitData" class="infi-inline-block"></div>
+                <!--显示排行类型directive-->
+                <div cost-monitor-btn original="payService" count="'0'" visit-data="visitData"></div>
+            </div>
+            <div>
+                <div id="barDrugFee" class="infi-whole-cost-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <h5 class="infi-chart-title">检查收费排行</h5>
+                <div cost-monitor-ranking original="payService" count="'1'" visit-data="visitData" class="infi-inline-block"></div>
+                <div cost-monitor-btn original="payService" count="'1'" visit-data="visitData"></div>
+            </div>
+            <div>
+                <div id="barCheckCharges" class="infi-whole-cost-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <h5 class="infi-chart-title">检验收费排行</h5>
+                <div cost-monitor-ranking original="payService" count="'2'" visit-data="visitData" class="infi-inline-block"></div>
+                <div cost-monitor-btn original="payService" count="'2'" visit-data="visitData"></div>
+            </div>
+            <div>
+                <div id="barInspectionFee" class="infi-whole-cost-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="cMonDoctorFee">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 医生收费监控
+        <div print-add print-list="ids" unique="'cMonDoctorFee'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="doctorFee"
+                 record-list="dimension.deptList" select="'department'" change-data="getDoctorFee()"></div>
+            <label>医生类型：
+                <select class="form-control infi-opt-search-time" ng-model="doctorFee.number" ng-change="getDoctorFee()">
+                    <option value="" ng-selected="doctorFee.number == ''">全部</option>
+                    <option value="专家" ng-selected="doctorFee.number == '专家'">专家</option>
+                    <option value="普通" ng-selected="doctorFee.number == '普通'">普通</option>
+                </select>
+            </label>
+            <!--<label>患者身份：-->
+                <!--<select class="form-control infi-opt-search-time" ng-model="doctorFee.identity" ng-change="getDoctorFee()">-->
+                    <!--<option value="" ng-selected="doctorFee.identity == ''">全部</option>-->
+                    <!--<option value="军人" ng-selected="doctorFee.identity == '军人'">军人</option>-->
+                    <!--<option value="非军人" ng-selected="doctorFee.identity == '非军人'">非军人</option>-->
+                <!--</select>-->
+            <!--</label>-->
+        </div>
+    </div>
+    <div class="infi-box-kpi row" ng-show="doctorFee.kpi.status == SYS.STATUS_SUCCESS">
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].jrsf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">今日收费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].ysfwf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">医事服务费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].ypsf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">药品收费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].jcsf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">检查收费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].jysf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">检验收费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="doctorFee.kpi.data.result[0].zlsf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">治疗收费</div>
+            </div>
+        </div>
+    </div>
+    <!--错误提示-->
+    <div ng-show="doctorFee.kpi.status != SYS.STATUS_SUCCESS" ng-bind="doctorFee.kpi.description"
+         class="alert alert-danger"></div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <div id="verticalDoctorFee" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div>
+                <h5 class="infi-chart-title">{{doctorFee.docName}}患者人均次均费用</h5>
+            </div>
+            <div>
+                <div id="verticalBarPatient" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6" ng-if="doctorFee.changedData.data != null">
+            <div table-list-title original="doctorFee.rightTable" record-list="doctorFee.changedData" style="margin-top: 16px;"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h" table-list original="doctorFee.rightTable" record-list="doctorFee.changedData" scroll="'scroll'"></div>
+        </div>
+        <div class="col-md-6 text-danger" ng-if="doctorFee.changedData.data == null">{{doctorFee.changedData.description}}
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="cMonRetreatFee">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 患者退费情况监控
+        <div print-add print-list="ids" unique="'cMonRetreatFee'"  print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="patientRetreatFee"
+                 record-list="dimension.deptList" select="'department'" change-data="getPatientRetreatFee()"></div>
+            <label>医生类型：
+                <select class="form-control infi-opt-search-time" ng-model="patientRetreatFee.number" ng-change="getPatientRetreatFee()">
+                    <option value="" ng-selected="patientRetreatFee.number == ''">全部</option>
+                    <option value="专家" ng-selected="patientRetreatFee.number == '专家'">专家</option>
+                    <option value="普通" ng-selected="patientRetreatFee.number == '普通'">普通</option>
+                </select>
+            </label>
+            <label>患者身份：
+                <select class="form-control infi-opt-search-time" ng-model="patientRetreatFee.identity" ng-change="getPatientRetreatFee()">
+                    <option value="" ng-selected="patientRetreatFee.identity == ''">全部</option>
+                    <option value="军人" ng-selected="patientRetreatFee.identity == '军人'">军人</option>
+                    <option value="非军人" ng-selected="patientRetreatFee.identity == '非军人'">非军人</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="infi-box-kpi row" ng-show="patientRetreatFee.kpi.status == SYS.STATUS_SUCCESS">
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].jrztf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">今日总退费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].ysfwf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">医事服务费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].yptf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">药品退费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].jctf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">检查退费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].jytf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">检验退费</div>
+            </div>
+        </div>
+        <div class="col-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="patientRetreatFee.kpi.data.result[0].zltf_size|nullFilter"></div>万元<br />
+                <div class="infi-title">治疗退费</div>
+            </div>
+        </div>
+    </div>
+    <!--错误提示-->
+    <div ng-show="patientRetreatFee.kpi.status != SYS.STATUS_SUCCESS" ng-bind="patientRetreatFee.kpi.description"
+         class="alert alert-danger"></div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <div>
+                <div id="verticalPatientFee" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

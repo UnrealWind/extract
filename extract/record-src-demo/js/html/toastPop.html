@@ -1,0 +1,15 @@
+<div class="toast-wrapper row">
+  <div class="col-md-6 col-md-offset-2">
+    <div class="alert alert-success" role="alert" ng-if="totast.status == 'ok'">
+      {{totast.description}}
+    </div>
+
+    <!-- <div class="alert alert-warning" role="alert"></div> -->
+
+
+    <div class="alert alert-danger" role="alert" 
+         ng-if="totast.status == 'error' || totast.status >= 400">
+        <span class="text-danger" ng-bind=" totast.description ? totast.description : '数据加载错误! error_code:' + totast.status"></span>
+      </div>
+  </div>
+</div>

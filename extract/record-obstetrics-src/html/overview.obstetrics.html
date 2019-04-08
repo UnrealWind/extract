@@ -1,0 +1,264 @@
+<div class="infi-wj-top-nav">
+    <div class="infi-wj-top-nav-url">
+        <a href="#/record">
+            <button class="btn infi-btn-linear-green-l btn-sm">返回上一级页面</button>
+        </a>
+        <a href="#/output/obstetrics/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}">
+            <button class="btn infi-btn-linear-green btn-sm">预览</button>
+        </a>
+    </div>
+    <div class="infi-wj-top-nav-title">
+        <h3 style="display: inline-block;">
+            <span style="padding-right: 10px;" ng-bind="entity.first_register_date|date:'yyyy-MM-dd'"></span>
+            产科档案&nbsp;&nbsp;[状态:
+            <span ng-if="entity.status == '关闭'" ng-bind="entity.status" style="color:#ad0000;"></span>
+            <span ng-if="entity.status != '关闭'" ng-bind="entity.status" style="color:#028679;"></span>
+            <span id="closePopover" ng-mouseover="mouseOver()" ng-mouseleave="mouseLeave()" ng-if="entity.status == '关闭'"
+                  data-toggle="popover" title="说明" data-html="true"
+                  data-content="关闭时间：{{entity.status_close_time}}<br>详细说明：{{entity.status_close_cause}}">{{entity.status_close_situation}}</span>
+            ]
+        </h3>
+    </div>
+    <div style="position:absolute;right:0;top:0;line-height:44px;">
+        <a ng-click="closeObstetrics()"><button class="btn infi-btn-linear-green-l btn-sm" ng-if="entity.status!='关闭'">档案关闭</button></a>
+        <a href="#/record/input/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}/first">
+            <button class="btn infi-btn-linear-green-l btn-sm">编辑基本信息</button></a>
+        <a ng-click="creatObstetrics()">
+            <button class="btn infi-btn-linear-green btn-sm">创建产科档案</button>
+        </a>
+    </div>
+</div>
+
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <div class="infi-wj-over-dangerous-box">
+            <span>高危评分：</span>
+            <ul class="list-unstyled infi-wj-over-dangerous">
+                <li ng-if="entity.high_risk_score">
+                    <span  ng-bind="entity.high_risk_score|unescape"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div prompt data="entityWrap"></div>
+    <div class="infi-wj-part" ng-if="entityWrap.status=='ok'&&entityWrap.data.result.length>0">
+        <table class="infi-wj-table" style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td class="self-wj-label">
+                    <p>ID号：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.pati_id"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>患者姓名：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.pati_name"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>EDC：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.edc"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>NO：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.no"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>首次登记日期：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.first_register_date|date:'yyyy-MM-dd'"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>孕周：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.gestational_weeks"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>宣教课：</p>
+                </td>
+                <td>
+                    <p ng-bind="entity.education_class|unescape"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <div class="infi-wj-obstetrics-content">
+        <div class="infi-wj-self-box" style="margin-top:20px;">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 用户基本信息
+            </div>
+            <div prompt data="basicInfoWrap"></div>
+            <div ng-if="basicInfoWrap.status=='ok'&&basicInfoWrap.data.result.length>0">
+                <link rel="import" href="tpl/overview.obstetrics.basic.info.html?__inline">
+            </div>
+        </div>
+        <!--存放用户信息列表-->
+        <div class="infi-wj-self-box" style="margin-top:20px; padding:5px;">
+            <!--<div class="infi-wj-title">-->
+                <!--<i class="glyphicon glyphicon-info-sign"></i>-->
+            <!--</div>-->
+            <div class="infi-wj-list-box" ng-repeat="mater in maters|limitTo:num">
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">孕产史{{$index+1}}</span>
+                    <a style="float: right;cursor: pointer;color: darkred;" ng-show="{{$index}}==1&&isShow&&maters.length>2" ng-click="lookMores(maters)">查看更多</a>
+                    <a style="float: right;cursor: pointer;color: darkred;" ng-show="{{$index}}>1&&{{$index}}==maters.length-1" ng-click="closeMores(maters)">收起</a>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.maternal.html?__inline">
+                </div>
+            </div>
+            <div class="infi-wj-list-box">
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">既往史及家族史</span>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.family.history.html?__inline">
+                </div>
+            </div>
+            <div class="infi-wj-list-box" >
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">全身检查</span>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.whole.test.html?__inline">
+                </div>
+            </div>
+            <div class="infi-wj-list-box">
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">化验</span>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.test.html?__inline">
+                </div>
+            </div>
+            <div class="infi-wj-list-box">
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">早孕检查</span>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.early.pregnancy.html?__inline">
+                </div>
+            </div>
+
+            <div class="infi-wj-list-box" style="width: 80% ;">
+                <div class="infi-wj-list-box-title">
+                    <span class="infi-wj-titles">首次诊断</span>
+                </div>
+                <div>
+                    <link rel="import" href="tpl/overview.obstetrics.first.html?__inline">
+                </div>
+            </div>
+            <!--<div class="infi-wj-first-record">-->
+            <!--<div class="infi-wj-list-box-title">-->
+            <!--<span>首次诊断</span>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="infi-wj-self-box" style="margin-top:20px;">
+            <div class="infi-wj-title">
+                <i class="glyphicon glyphicon-info-sign"></i> 孕检记录
+                <a href="#/record/input/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}/third" style="float: right"><button class="btn infi-btn-linear-green-l btn-sm">编辑产后42天检查</button></a>
+                <a href="#/record/input/second/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}" style="float: right">
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-if="pregnancyStatus">编辑孕检记录</button>
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-if="!pregnancyStatus">创建孕检记录</button>
+                </a>
+            </div>
+            <ul class="nav nav-tabs infi-wj-list-tabs">
+                <li ng-repeat="type in dataTypes" ng-class="{true:'active'}[type.active]">
+                    <a ng-click="activeType(type)">{{type.label}}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <!--妊娠图-->
+                <div  ng-show="'renshen'==currentDataType">
+                    <p class="alert alert-danger" ng-if="highPressListWrap.status != 'ok'&& lowPressListWrap.status!='ok'&&weightListWrap.status!='ok'">暂无数据</p>
+                    <div ng-if="highPressListWrap.status == 'ok'||lowPressListWrap.status == 'ok'" id="bloodChart" style="height: 350px;padding: 10px; width: 105%;"></div>
+                    <div ng-if="weightListWrap.status == 'ok'" id="weightChart" style="height: 350px; padding: 10px; width: 105%;"></div>
+                </div>
+                <!--复诊信息-->
+                <div  ng-show="'fuzhen'==currentDataType">
+                    <div style="width: 100%;" prompt data="diagnoseWrap" ></div>
+                    <div ng-if="diagnoseWrap.status=='ok'&&diagnoseWrap.data.result.length>0" visit-record diagnose="diagnose" query-params="queryParams" class="infit-wj-visit-record"></div>
+                </div>
+                <!--检查信息-->
+                <div ng-show="'jiancha'==currentDataType">
+                    <div style="width: 100%;" prompt data="examWrap"></div>
+                    <div ng-if="examWrap.status=='ok'&&examWrap.data.result.length>0" exam-record exam="exam" class="infit-wj-visit-record"></div>
+                </div>
+                <!--检验信息-->
+                <div  ng-show="'jianyan'==currentDataType">
+                    <div prompt data="oblistWrap"></div>
+                    <div ng-if="oblistWrap.status=='ok'&&oblistWrap.data.result.length>0">
+                        <link rel="import" href="tpl/overview.exam.html?__inline">
+                    </div>
+                </div>
+                <!--处方信息-->
+                <div ng-show="'chufang'==currentDataType">
+                    <div prompt data="drugInfiWrap"></div>
+                    <div ng-if="drugInfiWrap.status == 'ok'&&drugInfiWrap.data.result.length>0">
+                        <link rel="import" href="tpl/overview.obstetrics.prescription.record.html?__inline">
+                    </div>
+                </div>
+                <!--生产信息-->
+                <div style="height:300px; width:300px;" ng-show="'shengchan'==currentDataType">生产信息</div>
+                <!--产后42天检查-->
+                <div ng-show="'chanhou'==currentDataType">
+                    <p class="alert alert-danger" ng-if="childInfoWrap.status != 'ok'&& momInfoWrap.status!='ok'||childInfoWrap.data.result.length<=0">暂无数据</p>
+                    <!--产妇情况-->
+                    <div ng-if="childInfoWrap.status=='ok'&&childInfoWrap.data.result.length>0||momInfoWrap.status=='ok'&&momInfoWrap.data.result.length>0">
+                        <div class="row" style="padding-top: 10px;">
+                            <div class="col-md-2" style="text-align: center">
+                            <p>检查日期：</p>
+                            </div>
+                            <div class="col-md-7" style="text-align:left;">
+                                <p ng-bind="momInfo.check_date"></p>
+                            </div>
+                        </div>
+
+                        <div class="infi-wj-forty-box">
+                            <div class="infi-wj-list-box-title">
+                                <span class="infi-wj-titles">产妇情况</span>
+                            </div>
+                            <div>
+                                <link rel="import" href="tpl/overview.obstetrics.mom.html?__inline">
+                            </div>
+                        </div>
+                        <!--婴儿情况-->
+                        <div class="infi-wj-forty-box">
+                            <div class="infi-wj-list-box-title">
+                                <span class="infi-wj-titles">婴儿情况</span>
+                            </div>
+                            <div>
+                                <link rel="import" href="tpl/overview.obstetrics.child.html?__inline">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infi-wj-obstetrics-right-nav" style="vertical-align: top;margin-top: 20px;;">
+        <div nav-list="navList" nav-list-door="navListDoor" timeline-datas="timelineDatas" show-archives="true"
+             archives-wrap="archivesWrap" archives="archives" query-params="queryParams" right-nav></div>
+    </div>
+    <!--用户基本信息-->
+    <div sys-tip></div>
+    <div close-obstetrics close-reason="closeReason" submit-close="submitClose(entity)"></div>
+</div>
+
+<!--首次诊断,什么鬼-->

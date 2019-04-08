@@ -1,0 +1,37 @@
+<!--取数-标签思维导图点击下面的属性值或者特殊属性值的属性列表-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    <p ng-show="child.type == 'resource'">属性值列表</p>
+    <p ng-show="child.type == 'special'">特殊属性值的属性列表</p>
+</h4>
+<div class="infi-box">
+    <h4>列表</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <table class="table infi-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>id</th>
+                        <th>名称</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="page in content.page" ng-click="goToMind(page)"
+                    ng-class="{true:'pointer',false:''}[page.tableName != null]" ng-show="content.page.length > 0">
+                    <td>{{$index+1}}</td>
+                    <td ng-bind="page.id"></td>
+                    <td ng-bind="page.name"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" ng-show="content.status != SYS.STATUS_SUCCESS||content.page.length == 0"
+                        class="alert alert-danger">未查询到数据</td>
+                </tr>
+            </table>
+            <div class="infi-page">
+                <uib-pagination total-items="content.totalElements" ng-model="content.number" max-size="7"
+                                boundary-link-numbers="true" ng-change="changePage(content.number)"
+                                items-per-page="SYS.DEFAULT_PAGE_SIZE">
+                </uib-pagination>
+            </div>
+        </div>
+    </div>
+</div>

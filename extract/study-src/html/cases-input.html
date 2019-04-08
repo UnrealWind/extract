@@ -1,0 +1,232 @@
+<style>
+    #red{
+        background-color: lightblue;
+    }
+</style>
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>课题管理 > {{navTopicName}} > 病例录入</h4>
+<div class="infi-box">
+    <h4 class="infi-title">病例录入</h4>
+    <div class="infi-box-containter" ng-if="!casesPrompt">
+        <div class="alert alert-info" role="alert">
+            没有填写实验组或对照组
+        </div>
+    </div>
+    <div class="infi-box-containter" ng-if="casesPrompt">
+        <div class="dir-nav-container">
+
+            <div class="">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{true: 'active' , false:''}[step == task.name]" ng-click="descriptionTab(task.name,task.content,task.id)" ng-repeat="task in taskGroup"><a class="cursorPointer">{{task.name}}</a></li>
+                </ul>
+            </div>
+            <div class="marginten">
+                <p><label>描述 : </label><span>{{description}}</span></p>
+            </div>
+            <div class="marginten infi-box" style="border: 1px solid transparent;
+    box-shadow: 2px 2px 2px #fff;
+    margin: 0;
+    padding: 0;" >
+                <div style="text-align: right">
+                    <!--<button class="btn infi-btn-linear-green-l btn-sm" ><a href="#/new-cases">新建病例</a></button>-->
+                    <!--<button class="btn infi-btn-linear-green-l btn-sm" ><a href="#/excel-preview">excel上传</a></button>-->
+                    <!--<button class="btn infi-btn-linear-green-l btn-sm" ><a href="#/conversion">自动转换</a></button>-->
+                    <!--<a href="#/cases-input-details">详情</a>-->
+
+                    <button class="btn infi-btn-linear-green-l btn-sm" ng-click="newCases()">新建病例</button>
+                    <!-- <label for="filePath" class="btn infi-btn-linear-green-l btn-sm">excel上传</label>
+                    <a href="#/excel-preview/{{routeParamsId}}/{{groupId}}"><button class="btn infi-btn-linear-green-l btn-sm" >自动转换</button></a> -->
+                </div>
+                <h4 class="infi-title">病例录入列表</h4>
+                <div class="marginten">
+                    <ul class="ul-float-left ul-li-3">
+                        <li style="width:400px;margin:10px 0 0 0;">
+                            <label >创建时间：</label>
+                            <input type="text" class="form-control" style="width:34%;" name="startTime" ng-model="casesInputFilter.listStartTime" ng-change="filterValue()" ng-click="timePlugin('startTime')">  ~
+                            <input type="text" class="form-control" style="width:34%;" name="endTime" ng-model="casesInputFilter.listEndTime" ng-change="filterValue()" ng-click="timePlugin('endTime')">
+                        </li>
+                        <li style="width:300px;margin:10px 0 0 0;">
+                            <label >数据来源:</label>
+                            <select ng-model="casesInputFilter.sourceValue" ng-click="setSearch()" ng-change="filterValue()" class="form-control">
+                                <option value="{{opt.value}}" ng-repeat="opt in sourcesData">{{opt.name}}</option>
+                            </select>
+                        </li>
+                        <li style="width:300px;margin:10px 0 0 0;">
+                            <label >当前状态:</label>
+                            <select ng-model="casesInputFilter.currentValue" ng-click="setSearch()" ng-change="filterValue()" class="form-control">
+                                <option value="{{opt.value}}" ng-repeat="opt in currentCondition">{{opt.name}}</option>
+                            </select>
+                        </li>
+                        <li class="input-group"  style="width:250px;margin:10px 0 0 0;">
+                            <input id="setSearch" type="text" class="form-control input-lg" ng-model="casesInputFilter.setKeyword" ng-change="filterValue()" style="height:34px;font-size: 12px;" placeholder="输入病历编号、患者姓名搜索">
+                            <span class="input-group-addon btn btn-primary" ng-click="filterValue()">搜索</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--<div infi-table columns="listColumns" content="listDatas" update-page="setCrf(page)" opts="tableOpt" btn-callback="pageFns(entity,type)">-->
+                <!--</div>-->
+
+                <table class="table infi-table">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" ng-model="selectAll.value" ng-click="all()"> 全选</th>
+                        <th ng-repeat="column in columns" ng-bind="column.label" ></th>
+                        <th ng-if="opts" ng-bind="opts.label"> </th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="hasData">
+                    <tr ng-repeat="entity in content" id="{{entity.colour}}">
+                        <th style="text-align: center">
+                            <input type="checkbox" ng-click="single(entity.select)" ng-checked="entity.select" ng-model="entity.select">
+                        </th>
+                        <td>{{$index + 1}}</td>
+                        <td><span ng-bind="entity.recordNumber"></span></td>
+                        <td><span ng-bind="entity.patientName"></span></td>
+                        <td><span ng-bind="entity.updateTime"></span></td>
+                        <td><span ng-bind="entity.sourceType"></span></td>
+                        <td>
+                                <span ng-bind="entity.statusName"
+                                      ng-class="{
+                                      'cases-green':entity.statusName == '审核通过',
+                                      'cases-red':entity.statusName == '审核驳回',
+                                      'cases-blue':entity.statusName == '待审核' || entity.statusName =='待批准修改'}">
+
+                                </span>
+                        </td>
+                        <td>
+                                <span ng-if="
+                                    entity.status !== 'audit_modify_reject' &&
+                                    entity.statusName == '已保存' ||
+                                    entity.statusName == '同意修改' ||
+                                    entity.statusName == '审核驳回'">
+                                    <a href="#/input-data/{{entity.subjectId}}/{{entity.projectName}}/{{entity.id}}">修改</a>
+                                </span>
+                                <span ng-if="
+                                    entity.statusName == '已保存' ||
+                                    entity.statusName == '同意修改' &&
+                                    entity.status !== 'audit_modify_reject' "
+                                      ng-click="casesSubmit(entity.id,'提交')">
+                                    <a class="cursorPointer">提交</a>
+                                </span>
+                                <span ng-if="entity.status == 'newed'"
+                                      ng-click="casesDelete(entity.id,'删除')">
+                                    <a class="cursorPointer">删除</a>
+                                </span>
+                                <span ng-if="entity.statusName == '审核通过'||
+                                    entity.status == 'audit_modify_reject'"
+                                      ng-click="casesModification(entity.id,'申请修改')">
+                                    <a class="cursorPointer">申请修改</a>
+                                </span>
+                            <span ng-if="entity.statusName == '待审核' || entity.statusName == '待批准修改'">---</span>
+                        </td>
+                        <td>
+                            <a href="#/input-details/{{entity.subjectId}}/{{entity.projectName}}/{{entity.id}}">查看详情</a>&nbsp;&nbsp;
+                            <!--<a href="{{sys}}study-src/#/input-details/{{entity.subjectId}}/{{entity.projectName}}/{{entity.id}}">打印</a>-->
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="!hasData">
+                    <tr>
+                        <td colspan="9">
+                            <p ng-bind="descriptions" class="bg-danger" style="line-height: 50px;"></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="infi-page">
+                    <div class="infi-btn-box" style="float: left;margin-top: 20px;">
+                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="dataDelete()">删除</button>
+                        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="dataSubmit()">提交</button>
+                    </div>
+                    <uib-pagination total-items="contents.page.totalElements" ng-model="contents.page.number" max-size="5"
+                                    boundary-link-numbers="true" ng-change="updatePageAttend({page:contents.page.number})" items-per-page="contents.page.size"
+                                    num-pages="contents.page.totalPages">
+                    </uib-pagination>
+                </div>
+                
+                <!--文件上传-->
+                <input type="file" ngf-select="onFileSelect($files,input)" name="filePath" id="filePath" style="display: none">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"  id="cases-modal" >
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新建病例</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" ng-repeat="cases in casesNew">
+                    <div class="col-xs-3" style="text-align: right;">
+                        <label style="line-height:34px;"><span style="color:red;">*</span>{{cases.name}}:</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" class="form-control" value="{{cases.value}}" ng-model="cases.value">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="casesSave()">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade"  id="prompt" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <span>
+                    确定{{dataName}}吗?
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="confirm()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade"  id="excel-preview" >
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">数据预览</h4>
+            </div>
+            <div class="modal-body">
+                <div class="infi-box">
+                    <h4 class="infi-title">导入数据情况</h4>
+                    <div class="infi-box-containter">
+                        <table class="table infi-table">
+                            <thead>
+                            <tr>
+                                <th ng-repeat='tab in excelTable' ng-bind="tab.name"></th>
+                                <!--<th><span>操作</span></th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="excelTbody in excelTbodyTr">
+                                <td ng-repeat='tbody in excelTbody' ng-bind="tbody.name"></td>
+                                <!--<td><span ng-click="excelDelete(excelTbody)">删除</span></td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button ng-if="excelSaveDisplay" type="button" class="btn btn-primary" ng-click="excelSave()">保存</button>
+                <button ng-if="!excelSaveDisplay" type="button" class="btn btn-primary">保存中...</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div general-prompt></div>

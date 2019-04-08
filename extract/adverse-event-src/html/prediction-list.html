@@ -1,0 +1,183 @@
+<div class="infi-adverse-basic">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 overflow-ellipsis" title="{{params.patientId}}">病案号:{{params.patientId}}</div>
+        <div class="col-md-2 col-sm-2">姓名:{{basic.patiName}}</div>
+        <div class="col-md-1 col-sm-1">性别:{{basic.sex}}</div>
+        <div class="col-md-1 col-sm-1">年龄:{{basic.age}}</div>
+        <div class="col-md-2 col-sm-2" style="max-width:180px;">入院时间:{{basic.adminssionTime}}</div>
+        <div class="col-md-2 col-sm-2">床号:{{basic.bedNo}}</div>
+    </div>
+</div>
+<div class="infi-adverse-title">
+    <h4 class="infi-title" style="margin-bottom: 20px;display: inline-block;"><i class="glyphicon glyphicon-globe"></i>查看详情</h4>
+    <a class="btn infi-btn-linear-green-l btn-sm infi-title-btn-right" href="#/patient-list">返回</a>
+</div>
+<div class="infi-box">
+    <div class="infi-adverse-title-box">
+        <div class="infi-adverse-title-span">
+            <h4>今日预测情况</h4>
+            <div class="infi-adverse-square">
+                图例：
+                <p>
+                    <span class="red"></span>
+                    <label>>75%</label>
+                </p>
+                <p>
+                    <span class="orange"></span>
+                    <label>50%~75%</label>
+                </p>
+                <p>
+                    <span class="green"></span>
+                    <label>25%~50%</label>
+                </p>
+                <p>
+                    <span class="dark"></span>
+                    <label><25%</label>
+                </p>
+            </div>
+            <span>{{nowTime}}</span>
+        </div>
+        <hr />
+    </div>
+    <div class="infi-legend-table">
+        <table class="table">
+            <thead>
+                <tr class="active">
+                    <th>事件名称
+                    </th>
+                    <th>发生概率
+                    </th>
+                    <th>标记状态
+                    </th>
+                    <th>操作
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-if="presentContent.length>0">
+                <tr ng-class="{'orange':'orange','green':'green','red':'red','dark':'dark'}[entity.status]" ng-click="skip('today')"
+                    ng-repeat="entity in presentContent">
+                    <td>
+                        {{entity.eventName|defaultLine}}
+                    </td>
+                    <td>{{entity.occurPro|defaultLine}}%
+                    </td>
+                    <td>
+                        {{entity.flagState|flagState}}
+                    </td>
+                    <td ng-click="emptyClick()">
+                        <!--<a ng-if="entity.flagState == '0'" ng-click="confirm(entity,'confirm',$event)" style="text-decoration: underline;">确认</a>-->
+                        <a ng-if="entity.flagState == '2'" ng-click="confirm(entity,'confirm',$event)" class="btn btn-primary btn-xs">标记已发生</a>
+                        <a ng-if="entity.flagState == '2'" ng-click="confirm(entity,'revoke',$event)" class="btn btn-primary btn-xs">标记未发生</a>
+                        <a ng-if="entity.flagState == '0' || entity.flagState == '1'" ng-click="confirm(entity,'cancel',$event)" class="btn btn-primary btn-xs">取消</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-if="presentContent.length<=0 || presentContent=='' || presentContent==null">
+                <tr>
+                    <td colspan="4" class="bg-danger" style="text-align: center;line-height: 35px;">系统没有查询到数据,请修改查询条件</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="infi-adverse-title-box">
+        <div class="infi-adverse-title-span">
+            <h4>历史预测情况</h4>
+            <div class="infi-adverse-time">
+                选择时间:
+                <input class="form-control" name="daterange" ng-model="historyTime"
+                       ng-change="getHistory(params.patientId,historyTime)"/>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="infi-legend-table">
+        <table class="table">
+            <thead>
+            <tr class="active">
+                <th>事件名称
+                </th>
+                <th>起始时间
+                </th>
+                <th>结束时间
+                </th>
+                <th>发生概率
+                </th>
+            </tr>
+            </thead>
+            <tbody ng-if="historyContent.length>0">
+                <tr ng-repeat="entity in historyContent"
+                    ng-click="getHistoryList(entity)">
+                    <td>
+                        {{entity.eventName|defaultLine}}
+                    </td>
+                    <td>
+                        {{entity.startDateTime|defaultLine}}
+                    </td>
+                    <td>
+                        {{entity.endDateTime|defaultLine}}
+                    </td>
+                    <td>
+                        {{entity.occurPro}}
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-if="historyContent.length<=0 || historyContent=='' || historyContent==null">
+            <tr>
+                <td colspan="4" class="bg-danger" style="text-align: center;line-height: 35px;">系统没有查询到数据,请修改查询条件</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="infi-adverse-title-box">
+        <div class="infi-adverse-title-span">
+            <h4>医嘱信息</h4>
+            <div class="infi-adverse-time">
+                选择时间:
+                <input class="form-control" name="daterange" ng-model="orderTime"
+                   ng-change="updatePage(SYS.DEFAULT_PAGE_NUMBER,orderTime)"/>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="">
+        <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat="tab in tabs" role="presentation" ng-class="{true: 'active' , false:''}[tab.active]">
+                <a class="cursorPointer" ng-click="switchTab(tab)">{{tab.label}}</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-if="currentTab == 'doctor'">
+        <div infi-table columns="columns.doctor" content="content" data-ng-if="content" update-page="updatePage(page,orderTime)"></div>
+    </div>
+    <div ng-if="currentTab == 'output'">
+        <div infi-table columns="columns.output" content="content" data-ng-if="content" update-page="updatePage(page,orderTime)"></div>
+        <div class="infi-adverse-title-box">
+            <h4>入量</h4>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="outputLine" class="infi-adverse-normal-chart"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="currentTab == 'physical'">
+        <div infi-table columns="columns.physical" content="content" data-ng-if="content" update-page="updatePage(page,orderTime)"></div>
+        <div class="infi-adverse-title-box">
+            <h4>体征信息</h4>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="physicalFever" class="infi-adverse-normal-chart" style="height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div sys-tip></div>
+
+    <div event-table-modal skip-history="skipHistory()" history-list-date="historyListDate"></div>
+</div>

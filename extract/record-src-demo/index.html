@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>患者医疗统一视图</title>
+    <!-- <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />-->
+    <link rel="shortcut icon" href="../src/image/jumei/favicon-jumei.png" type="image/x-icon" />
+
+    <script type="text/javascript" src="../src/widget/system/sys/login.check.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <!--新添加的scss文件-->
+    <link rel="stylesheet" href="../src/scss/infi-retro.scss">
+    <!-- <link rel="stylesheet" href="../src/scss/infi-record-collect-juhua.scss"> -->
+    <!-- <link rel="stylesheet" href="../src/scss/infi-retro-mini.scss"> -->
+
+    <!--emm,iconfont unicode使用不能放在scss中，目前先暂时放在这里-->
+    <style>
+        @font-face {
+            font-family: 'iconfont';  /* project id 662809 */
+            src: url('//at.alicdn.com/t/font_662809_pj6eamjhrs76tj4i.eot');
+            src: url('//at.alicdn.com/t/font_662809_pj6eamjhrs76tj4i.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_662809_pj6eamjhrs76tj4i.woff') format('woff'),
+            url('//at.alicdn.com/t/font_662809_pj6eamjhrs76tj4i.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_662809_pj6eamjhrs76tj4i.svg#iconfont') format('svg');
+        }
+        .infi-icon {
+            font-family:'iconfont' !important;
+            font-size:20px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+            margin:0 10px 0 0;
+        }
+    </style>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/moment.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/src/scss/chaoyang-theme-red.css"/> -->
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+    <!-- 头部导航 -->
+    <header class="navbar navbar-default infi-header clearfix">
+        <div class="navbar-header infi-header-logo">
+            <span class="logo" href="#/home"></span>
+        </div>
+
+        <div class="infi-header-title pull-left">
+            患者医疗统一视图
+        </div>
+
+        <div class="box-user pull-right infi-wj-box-user" ng-controller="LoginController">
+            <img class="user-logo" src="../src/image/doctor.png">
+            <p class="infi-header-name" ng-bind="name">
+            </p>
+            <span>|</span>
+            <p class="infi-header-name">
+                <a id="logout-click" ng-click="logout()" class="glyphicon">退出</a>
+            </p>
+        </div>
+    </header>
+    <!-- 头部导航 END -->
+
+    <!-- 左部导航 -->
+    <infi-navi></infi-navi>
+    <!-- 左部导航 END -->
+
+    <!-- 右部内容 -->
+    <article style="min-height: 600px;" class="infi-main infi-wj-article">
+        <div ng-view></div>
+        <footer class="infi-footer infi-wj-footer" style="padding-bottom: 0;">
+            <p class="infi-footer-detail">
+                北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+            </p>
+        </footer>
+    </article>
+</body>
+</html>
+
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+<script src="../env/env.js"></script>
+<script src="all.js"></script>
+
+<script type="text/javascript" src="../src/widget/system/system.filter.js"></script>
+<script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<!--<script type="text/javascript" src="./js/timeline.directive.js"></script>-->
+
+<script type="text/javascript" src="../src/widget/table/table.js"></script>
+
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+
+<script type="text/javascript" src="../src/widget/system/sys/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/http.interceptor.factory.js" ></script>
+
+<!--<script type="text/javascript" src="../src/widget/system/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/http.interceptor.factory.js" ></script>-->
+
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.js"></script>
+<script type="text/javascript" src="../bower_components/jQuery.print/jQuery.print.js"></script>
+
+<!-- 导航 -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>

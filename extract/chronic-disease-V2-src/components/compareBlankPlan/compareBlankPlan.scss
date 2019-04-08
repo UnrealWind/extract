@@ -1,0 +1,323 @@
+@import '../../scss/mixin.scss';
+
+// variable define
+$border-color: #eee;
+$main-opt-color: #007fff;
+$main-opt-color-hover: #0876e4;
+
+
+// mixin
+// reset bootstrap 默认input text 框的 padding
+@mixin defaultPlainPad  {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+
+@mixin defaultIptPad{
+  input[type="text"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@mixin defaultSelePad {
+  select {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+// reset bootstrap
+.reset-panel-heading {
+  background-color: #fff !important;
+}
+
+.table>tbody>tr>td {
+  padding-left: 0;
+  padding-right: 5px;
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.reset-input {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  &:focus,&:active {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+  }
+  &[readonly] {
+    background-color: transparent;
+  }
+  &.opt-btn {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// common class
+.visible {
+  overflow: visible!important;
+}
+
+.width100P {
+  width: 100%
+}
+
+.prompt {
+  padding: 10px 0;
+}
+
+.zero-marginB {
+  margin-bottom: 0;
+}
+
+.clear-bd-t {
+  border-top: none !important;
+}
+
+.col-2 {
+  .plain {
+    display: inline-block;
+    padding: 6px 12px;
+  }
+
+  .plain-ipt-plain {
+    font-size: 0;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 14px;
+
+      &.plain {
+        @include defaultPlainPad;
+      }
+      
+
+      &.ipt {
+        width: 55px;
+        @include defaultIptPad;
+      }
+    }
+  }
+}
+
+
+.col-3 {
+  // ipt-sele-ipt-plain 类型
+  .ipt-sele-ipt-plain {
+    font-size: 0;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.ipt {
+        width: 50px;
+        @include defaultIptPad;
+      }
+
+      &.sele {
+        width: 60px;
+        @include defaultSelePad;
+      }
+
+      &.plain {
+        width: 30px;
+        input[type="text"] {
+          padding-left: 3px;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .ipt-sele-ipt,
+  .sele-ipt-sele {
+    font-size: 0;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.ipt {
+        width: 70px;
+        @include defaultIptPad;
+      }
+
+      &.sele {
+        width: 70px;
+        @include defaultSelePad;
+      }
+    }
+  }
+}
+
+.col-5 {
+  .ipt-sele {
+    font-size: 0;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.ipt {
+        width: 35px;
+        @include defaultIptPad;
+      }
+
+      &.sele {
+        width: 50px;
+        @include defaultSelePad;
+      }
+
+      &.plain {
+        width: 30px;
+        input[type="text"] {
+          padding-left: 3px;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .singleSele {
+    font-size: 0;
+    .item {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.sele {
+        width: 95px;
+        @include defaultSelePad;
+      }
+    }
+  }
+}
+
+
+
+.compareBlankPlan-component {
+  .locate-th {
+    padding: 0;
+  }
+
+
+  // 方案展示无数据提示
+  .plan-detail-null {
+    padding: 10px;
+  }
+
+  .single-component {
+    .panel-body {
+      padding-top: 10px;
+
+      .first-level {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        table>tbody>tr {
+          &>td {
+            border: none;
+          }
+        }
+      }
+
+      .second-level {
+        table>tbody>tr:first-child {
+          &>td {
+            border-top: none;
+          }
+        }
+
+        table>tbody>tr {
+          &>td {
+            border-bottom: 1px solid #eee;
+          }
+        }
+
+        table>tbody>tr:last-child {
+          &>td {
+            border-bottom: none;
+          }
+        }
+
+      }
+    }
+  
+    .plan-sec {
+      .table {
+
+        .table-inline-search-ipt {
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .response-ipt {
+    input[type="text"],
+    select {
+      padding-left: 3px !important;
+      padding-right: 3px !important;
+    }
+  }
+
+  .col-3 {
+    // ipt-sele-ipt-plain 类型
+    .ipt-sele-ipt-plain {
+      .item {
+        &.ipt {
+          width: 45px;
+        }
+  
+        &.sele {
+          width: 55px;
+        }
+      }
+    }
+  
+    .ipt-sele-ipt,
+    .sele-ipt-sele {
+      .item {
+        &.ipt {
+          width: 55px;
+        }
+  
+        &.sele {
+          width: 60px;
+        }
+      }
+    }
+  }
+
+  .col-5 {
+    .ipt-sele {
+      .item {
+        &.ipt {
+          width: 30px;
+        }
+        &.sele {
+          width: 40px;
+        }
+      }
+    }
+  
+    .singleSele {
+      .item {
+        &.sele {
+          width: 70px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+}

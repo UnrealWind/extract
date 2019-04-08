@@ -1,0 +1,330 @@
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-analysis-modifyed"><a href="#/data.select">数据选择</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/variable.set">变量设置</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/data.pretreatment">数据预处理</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/filter.set">筛选设置</a></li>
+        <li class="infi-header-active"><a href="#/model">建模</a></li>
+        <li><a href="#/complete">已建模型</a></li>
+    </ul>
+</header>
+<!--<header class="infi-section" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed"><a href="#/data.select">数据管理</a></li>-->
+        <!--<li class="infi-analysis-modifyed"><a href="#/data.select1">描述统计</a></li>-->
+        <!--<li class="infi-header-active"><a href="#/data.select2">建立模型</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<header class="infi-section marginten" style="padding-right:20px;">
+    <ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">
+        <li style="line-height: 50px;height: 50px;" ng-repeat="sub in navigation" class="{{sub.active}}"><a href="#/model">{{sub.name}}</a></li>
+    </ul>
+</header>
+
+<div class="row marginten" style="">
+    <div class="col-xs-3">
+        <div class="marginten">
+            <select class="form-control" ng-model="selectModel" ng-click="selectModelClick()">
+                <option value="">请选择模型</option>
+                <option value="逻辑回归">逻辑回归</option>
+                <option value="支持向量机">支持向量机</option>
+                <option value="贝叶斯分类模型">贝叶斯分类模型</option>
+            </select>
+        </div>
+        <div class="input-group floatright marginten">
+            <input type="text" class="form-control input-lg"  style="height:34px;"><span class="input-group-addon btn btn-primary">搜索</span>
+        </div>
+        <div class="marginten">
+            <select class="form-control" value='selectLeftData' ng-model="selectLeftData" ng-click="selectLeft()">
+                <option value="">全部</option>
+                <option value="1">分类变量</option>
+                <option value="2">连续变量</option>
+            </select>
+        </div>
+        <div class="marginten cursorPointer {{status.active}}" ng-click="conditionClick(status)" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in condition">
+            <span>{{status.name}}</span>
+        </div>
+        <div class="marginten cursorPointer {{status.active}}" style="text-align: center;border:1px solid #ddd;border-radius:3px;line-height: 25px" ng-repeat="status in conditionDatas">
+            <span>{{status.name}}</span>
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <!--<header class="infi-section" style="height:59px;">-->
+            <!--<ul class="infi-header-ul infi-header-ul-3" style="height:50px;">-->
+                <!--<li style="height:48px;line-height:48px;" ng-repeat="sub in navigation" class="{{sub.active}}"><span>{{sub.name}}</span></li>-->
+            <!--</ul>-->
+        <!--</header>-->
+        <div class="backgroud-ddd paddingten" style="margin-top:10px;">
+            <span class="font-bold">{{name}} |</span>
+            <span class="cursorPointer" ng-if="zubie1" ng-click="zubie(1)" style="background: #fff;padding: 5px;border-radius: 3px">实验组</span>
+            <span class="cursorPointer" ng-if="zubie2" ng-click="zubie(1)" >实验组</span>
+            <span> | </span>
+            <span class="cursorPointer" ng-if="zubie1" ng-click="zubie(2)">对照组</span>
+            <span class="cursorPointer" ng-if="zubie2" ng-click="zubie(2)" style="background: #fff;padding: 5px;border-radius: 3px">对照组</span>
+            <div class=" paddingten" style="    text-align: right;    float: right;
+    margin: -7px;    padding: 0;" >
+                <button type="button" class="btn btn-primary" ng-click="singleFactor()" ng-if="factorDisplay">单因素分析</button>
+                <button type="button" class="btn btn-primary" ng-click="modelSave()" ng-if="!factorDisplay">保存</button>
+            </div>
+        </div>
+        <div class=" paddingten" ng-if="factorDisplay" style="overflow: auto">
+            <div style="width: 900px">
+                <table class="table infi-table" style="width:145px;display: inline-block; " ng-repeat="tab in tableData">
+                    <thead>
+                    <tr>
+                        <th style="width:145px;display: inline-block; ">{{tab.name}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="td in tab.tbody" style="height:40px;display: block; ">
+                        <td  style="width:145px;display: inline-block; ">{{td.name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="infi-page" ng-if="factorDisplay">
+            <uib-pagination total-items="content.page.totalElements" ng-model="content.page.number" max-size="1"
+                            boundary-link-numbers="true" ng-change="updatePage({page:content.page.number})" items-per-page="content.page.size"
+                            num-pages="content.page.totalPages">
+
+            </uib-pagination>
+        </div>
+        <div ng-if="!factorDisplay">
+            <div class="infi-box" style="margin-top: 20px">
+                <!--<h4 class="infi-title">变量修改</h4>-->
+                <div class="infi-box-containter">
+                    <div >
+                        <table class="table infi-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:33%;">变量</th>
+                                    <th style="width:33%;">P值</th>
+                                    <th style="width:33%;">是否参与分析</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="msg in singleFactorData">
+                                    <td>{{msg.name}}</td>
+                                    <td>{{msg.value}}</td>
+                                    <td><input type="checkbox" ng-checked="msg.check" ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="" style="text-align: right">
+                        <button type="button" class="btn btn-primary" ng-click="compute()">多重共线性计算</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="train">
+                <div class="infi-box" style="margin-top:20px " >
+                    <!--<h4 class="infi-title">变量修改</h4>-->
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                    <tr>
+                                        <th >变量</th>
+                                        <th >VIF</th>
+                                        <th>容忍度</th>
+                                        <th >选择</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="msg in computeData">
+                                        <td>{{msg.name}}</td>
+                                        <td>{{msg.value}}</td>
+                                        <td>{{msg.values}}</td>
+                                        <td><input type="checkbox" ng-checked="msg.check" ></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <span>训练集:测试集</span>
+                                <input type="text" value="1" style=" width: 50px;">:
+                                <input type="text" value="4" style=" width: 50px;">
+                            </div>
+                        </div>
+                        <div class="" style="text-align: right" >
+                            <button type="button" class="btn btn-primary" ng-click="modelTrain()">模型训练</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="infi-box" style="margin-top:20px " ng-if="trainData">
+                    <h4 class="infi-title">正确率</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th ></th>
+                                    <th >正确率</th>
+                                    <th >查准率</th>
+                                    <th>召回率</th>
+                                    <th >AUC面积</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>训练集</td>
+                                        <td>91%</td>
+                                        <td>92%</td>
+                                        <td>93%</td>
+                                        <td>0.969</td>
+                                    </tr>
+                                    <tr>
+                                        <td>测试集</td>
+                                        <td>89%</td>
+                                        <td>91%</td>
+                                        <td>93%</td>
+                                        <td>0.961</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">重合矩阵</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th rowspan="2" style="    line-height: 80px;">重合矩阵</th>
+                                    <th colspan="3">训练集</th>
+                                    <th colspan="3">测试集</th>
+                                </tr>
+                                <tr>
+                                    <th >真实值=0</th>
+                                    <th>真实值=1</th>
+                                    <th >总计</th>
+                                    <th >真实值=0</th>
+                                    <th >真实值=1</th>
+                                    <th >总计</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>预测值=0</td>
+                                    <td>562</td>
+                                    <td>66</td>
+                                    <td>628</td>
+                                    <td>173</td>
+                                    <td>27</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>预测值=1</td>
+                                    <td>79</td>
+                                    <td>899</td>
+                                    <td>978</td>
+                                    <td>34</td>
+                                    <td>335</td>
+                                    <td>369</td>
+                                </tr>
+                                <tr>
+                                    <td>总计</td>
+                                    <td>641</td>
+                                    <td>965</td>
+                                    <td>1606</td>
+                                    <td>207</td>
+                                    <td>362</td>
+                                    <td>569</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">方程系数</h4>
+                    <div class="infi-box-containter">
+                        <div >
+                            <table class="table infi-table">
+                                <thead>
+                                <tr>
+                                    <th >变量</th>
+                                    <th >系数</th>
+                                    <th>Std. Error z</th>
+                                    <th >p-value</th>
+                                    <th >EXP(B)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="msg in coefficientData">
+                                    <td>{{msg.name}}</td>
+                                    <td>{{msg.value}}</td>
+                                    <td>{{msg.value1}}</td>
+                                    <td>{{msg.value2}}</td>
+                                    <td>{{msg.value3}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="infi-title">ROC曲线</h4>
+                    <div class="infi-box-containter row">
+                        <div class="col-xs-6">
+                            <h5>训练集</h5>
+                            <img src="../data/111.png" alt="" style="width:400px;">
+                        </div>
+                        <div class="col-xs-6">
+                            <h5>测试集</h5>
+                            <img src="../data/222.png" alt=""  style="width:400px;">
+                        </div>
+                    </div>
+                    <div class=" paddingten" style="text-align: right" >
+                        <a href="./data/20170209.xlsx" download="脑梗死患者分析_逻辑回归.xlsx"><button type="button" class="btn btn-primary" >导出数据</button></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="model-train">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>是否需要循环计算训练集和测试集？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">循环测试</button>
+                <button type="button" class="btn btn-primary" ng-click="modelTrainSave()">暂不需要</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="single-factor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>您选择的变量存在空值，会影响到模型结果，系统默认删除空值数据，您也可以通过数据预处理功能对空值进行处理。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="singleFactorSave()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal-save">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body row">
+                <div class="col-xs-3" style="margin-top: 8px;">请输入模型名称</div>
+                <div class="col-xs-6"><input type="text" class="form-control"></div>
+                <div class="col-xs-3"><a href="#/complete"><button type="button" class="btn btn-primary" >确定保存</button></a></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

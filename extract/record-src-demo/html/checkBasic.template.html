@@ -1,0 +1,88 @@
+<div class="infi-wj-self-box" id="basic">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe615;</i>基本信息
+        <div >
+            <p style="display: inline-block;">
+                病历号：{{checkBaseInfo[0].pati_id|changeNULL}}
+            </p>
+        </div>
+    </div>
+
+    <div class="infi-wj-part infi-menzhen-basic" >
+        <div class="row">
+            <div class="col-md-2" >
+                <p>
+                    姓名：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    性别：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].sex_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    年龄：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].age|changeNULL}}
+                </p>
+            </div>
+
+            <div class="col-md-2-min">
+                <p>
+                    民族：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].nati_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-2-min">
+                <p>
+                    婚姻：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].marr_status_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    出生日期：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].date_of_birth|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>
+                    血型：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].blood_type|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>体检机构：</p>
+                <p  style="display: inline-block;">
+                    {{checkBaseInfo[0].hosp_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-7">
+                <p>
+                    通信地址：
+                </p>
+                <p style="display: inline-block;">
+                    {{checkBaseInfo[0].date_time|changeNULL}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

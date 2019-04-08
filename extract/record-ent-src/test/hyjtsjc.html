@@ -1,0 +1,70 @@
+<section class="infi-check">
+    <div class="row">
+        <div class="col-md-2 form-group" style="width:120px;text-align: right;padding-right: 0px;margin:10px 10px 0 0;"><label>检查项目: </label>
+        </div>
+        <div class="col-md-9 checkbox input-group" style="width: ;float: left;" data-name="entity.name_zjxm">
+            <div>
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_cyct"/>纯音测听</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_sdkcs"/>声导抗测试</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_yysbl"/>言语识别率</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_txngfyqfq"/>听性脑干反应潜伏期</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_abr"/>高低刺激率ABR</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_dpoae"/>DPOAE(畸变产物耳声发射)</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_ecochg"/>ECochG(耳蜗电图)</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_assr"/>ASSR（听觉稳态诱发电位)</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_txngfyyz"/>听性脑干反应阈值</label>-->
+                <!--<label class="checkbox-inline" style="margin-right: 10px;">-->
+                    <!--<input type="checkbox" ng-model="entity.name_zjxm_hzaerp"/>40HzAERP(40Hz听觉相关电位)</label>-->
+                <label class="checkbox-inline" style="margin-right: 10px;" ng-repeat="option in dimensions.name_1055.options">
+                    <input type="checkbox" ng-model="entity[option.entityName]"/>{{option.label}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>添加检查项目: </label>
+        </div>
+        <div class="col-md-7 input-group" style="margin-left: 135px;"><input style="width: 140px;" name="entity.name_1055" type="text" ng-model="entity.name_1055other" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+            <button style="margin-left: 5px;" ng-click="addEntity('name_1055',entity.name_1055,dimensions.name_1055.options,entity.name_1055other)" class="btn infi-btn-linear-default">添加
+            </button>
+        </div>
+    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>添加检查项目: </label>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="">-->
+            <!--<input-->
+                    <!--name="jcxm" type="text" ng-model="jcxm" class="form-control"-->
+                    <!--data-name=""/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--纯音测听-->
+    <link rel="import" href="../table/cyct.html?__inline">
+    <!-- 声导抗测试 -->
+    <link rel="import" href="../table/sdkcs.html?__inline">
+    <!-- 言语识别率 -->
+    <link rel="import" href="../table/yysbl.html?__inline">
+    <!-- 听性脑干反应潜伏期 -->
+    <link rel="import" href="../table/txngfyqfq.html?__inline">
+    <!-- 高低刺激率ABR -->
+    <link rel="import" href="../table/gdcjl.abr.html?__inline">
+    <!-- DPOAE(畸变产物耳声发射) -->
+    <link rel="import" href="../table/dpoae.html?__inline">
+    <!-- ECochG(耳蜗电图) -->
+    <link rel="import" href="../table/ecochg.html?__inline">
+    <!-- ASSR（听觉稳态诱发电位) -->
+    <link rel="import" href="../table/assr.html?__inline">
+    <!-- 听性脑干反应阈值 -->
+    <link rel="import" href="../table/txngfyyz.html?__inline">
+    <!-- 40HzAERP(40Hz听觉相关电位) -->
+    <link rel="import" href="../table/40hzaerp.html?__inline">
+</section>

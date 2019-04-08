@@ -1,0 +1,37 @@
+<div ng-if="showBtn">
+  <label for="{{item.name}}" 
+          class="text-right item-label">
+    <i class="glyphicon glyphicon-asterisk text-danger" ng-if="item.hasNecessary == 'true'"></i>
+    <span ng-bind="item.label + ':'"></span>
+  </label>
+  
+  <input type="file" 
+          ngf-select="uploadImg($files, $invalidFiles)"
+          multiple
+          accept="image/png|jpg|jpeg" />
+</div>
+
+<!-- 缩略图 -->
+<div ng-if="imgPath.length > 0" class="thumb-flex-wrapper">
+  <div ng-repeat="imgSite in imgBase64" class="thumb-wrapper">
+    <div class="previewImg thumbnail clearfix">
+      <div class="delete-thumbnail pull-right"
+            ng-click="deleteThumb($index)"
+            ng-if="editAble">
+        <i class="glyphicon glyphicon-remove"></i>
+      </div>
+      <img ng-src="{{imgSite}}">
+    </div>
+  </div>
+</div>
+
+<style>
+  .thumb-flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .previewImg.thumbnail {
+    width: 490px;
+  }
+</style>

@@ -1,0 +1,60 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC风险评估
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="save()" ng-disabled="btnDisable">保存</button>
+</h4>
+<div class="infi-box">
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content">
+			<div>
+				<div class="row">
+					<div class="col-md-2 infi-col-title" style="line-height:34px;"><span style="color:red;">*</span>风险评估时间:</div>
+					<div class="col-md-3">
+						<input class="form-control infi-inline-block" style="width:300px;" type="text" name="riskTime"
+							   infi-date="yyyy-mm-dd" ng-model="riskTime">
+					</div>
+					<div class="col-md-2 infi-col-title" style="line-height:34px;"><span style="color:red;">*</span>评估人:</div>
+					<div class="col-md-3">
+						<input class="form-control infi-inline-block" style="width:300px;" type="text" ng-model="assessor">
+					</div>
+				</div>
+			</div>
+
+			<table class="table infi-table">
+				<thead>
+					<th style="width:60%;">
+						项目
+					</th>
+					<th>
+						选项
+					</th>
+					<th>
+						分值
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="list in formList.data">
+						<td>
+							{{list.riskQuestion}}
+						</td>
+						<td>
+							<label class="self-num-radio">
+								<input type="radio" name="{{list.id}}" ng-model="list.riskAnswer" value="是"/>
+								是
+							</label>
+							<label class="self-num-radio">
+								<input type="radio" name="{{list.id}}" ng-model="list.riskAnswer" value="否"/>
+								否
+							</label>
+						</td>
+						<td>
+							是计1分，否计0分
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div sys-tip></div>
+</div>		

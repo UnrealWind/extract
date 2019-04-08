@@ -1,0 +1,309 @@
+<div time-show class="infi-inline-block infi-title-time noprint"></div>
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>就诊监控</h4>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>就诊监控</h4>
+    <div class="infi-today-time">
+        <span ng-bind="now|date:'yyyy-MM-dd HH:mm:ss'"></span>
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="vMonKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 就诊总体情况
+        <div print-add print-list="ids" unique="'vMonKpi'" print-all-list="printAllList"></div>
+    </div>
+    <div class="infi-box-kpi row" ng-show="overallKpi.status == SYS.STATUS_SUCCESS">
+        <div class="col-md-4 row infi-kpi-img">
+            <div class="col-md-3 noprint">
+                <img src="../img/visit-total.png" />
+            </div>
+            <dl class="infi-column-kpi col-md-9">
+                <dt class="infi-title">门急诊总人次:<span ng-bind="overallKpi.data.result[0].mjz_size|nullFilter"></span></dt>
+                <dd class="infi-box-containter">
+                    <div>
+                        <div class="infi-kpi-col7">已诊人次:<span ng-bind="overallKpi.data.result[0].mjz_yz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">医生数:<span ng-bind="overallKpi.data.result[0].mjz_ys_size|nullFilter"></span></div>
+                    </div>
+                    <div>
+                        <div class="infi-kpi-col7">未诊人次:<span ng-bind="overallKpi.data.result[0].mjz_wz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">医患比:<span ng-bind="overallKpi.data.result[0].mjz_yhb_size|nullFilter"></span></div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4 row infi-kpi-img">
+            <div class="col-md-3 noprint">
+                <img src="../img/visit-expert.png" />
+            </div>
+            <dl class="infi-column-kpi col-md-9">
+                <dt class="infi-title">专家号人次:<span ng-bind="overallKpi.data.result[0].zj_size|nullFilter"></span></dt>
+                <dd class="infi-box-containter">
+                    <div>
+                        <div class="infi-kpi-col7">已诊人次:<span ng-bind="overallKpi.data.result[0].zj_yz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">专家数:<span ng-bind="overallKpi.data.result[0].zj_ys_size|nullFilter"></span></div>
+                    </div>
+                    <div>
+                        <div class="infi-kpi-col7">未诊人次:<span ng-bind="overallKpi.data.result[0].zj_wz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">医患比:<span ng-bind="overallKpi.data.result[0].zj_yhb_size|nullFilter"></span></div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4 row infi-kpi-img">
+            <div class="col-md-3 noprint">
+                <img src="../img/visit-ordinary.png" />
+            </div>
+            <dl class="infi-column-kpi col-md-9">
+                <dt class="infi-title">普通号人次:<span ng-bind="overallKpi.data.result[0].pt_size|nullFilter"></span></dt>
+                <dd class="infi-box-containter">
+                    <div>
+                        <div class="infi-kpi-col7">已诊人次:<span ng-bind="overallKpi.data.result[0].pt_yz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">普诊医生数:<span ng-bind="overallKpi.data.result[0].pt_ys_size|nullFilter"></span></div>
+                    </div>
+                    <div>
+                        <div class="infi-kpi-col7">未诊人次:<span ng-bind="overallKpi.data.result[0].pt_wz_size|nullFilter"></span></div>
+                        <div class="infi-kpi-col5">医患比:<span ng-bind="overallKpi.data.result[0].pt_yhb_size|nullFilter"></span></div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--数据未读取到提示-->
+    <div ng-bind="overallKpi.description" ng-show="overallKpi.status != SYS.STATUS_SUCCESS" class="alert alert-danger"></div>
+</div>
+<div class="infi-opt-self-box" id="vMonPatient">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>医患配置监控
+        <div print-add print-list="ids" unique="'vMonPatient'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="patientAllocation"
+                   record-list="deptList" select="'department'" change-data="changePatientAllocation()"></div>
+        <div number-select original="patientAllocation" change-data="changePatientAllocation()"></div>
+    </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table infi-nopage-table" style="margin-top: 40px;">
+                    <thead>
+                        <tr>
+                            <td>今日统计</td>
+                            <td>门急诊量</td>
+                            <td>医生数</td>
+                            <td>比值</td>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="count in patientAllocation.count.data.result"
+                        ng-show="patientAllocation.count.status == SYS.STATUS_SUCCESS&&patientAllocation.count.data.status == SYS.STATUS_SUCCESS">
+                        <td ng-bind="count.time"></td>
+                        <td ng-bind="count.outpatient_size_total" class="text-right"></td>
+                        <td ng-bind="count.doctor_size_total" class="text-right"></td>
+                        <td ng-bind="count.total_ratio" class="text-right"></td>
+                    </tr>
+                    <tr ng-show="patientAllocation.count.status != SYS.STATUS_SUCCESS||patientAllocation.count.data.status != SYS.STATUS_SUCCESS">
+                        <td colspan="4" class="text-danger">未查询到数据</td>
+                    </tr>
+                    <thead>
+                        <tr>
+                            <td>历史均值</td>
+                            <td>门急诊量</td>
+                            <td>医生数</td>
+                            <td>比值</td>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="meanValue in patientAllocation.meanValue.data.result"
+                        ng-show="patientAllocation.meanValue.status == SYS.STATUS_SUCCESS&&patientAllocation.meanValue.data.status == SYS.STATUS_SUCCESS">
+                        <td ng-bind="meanValue.time"></td>
+                        <td ng-bind="meanValue.outpatient_history_total" class="text-right"></td>
+                        <td ng-bind="meanValue.doctor_history_total" class="text-right"></td>
+                        <td ng-bind="meanValue.history_ratio" class="text-right"></td>
+                    </tr>
+                    <tr ng-show="patientAllocation.meanValue.status != SYS.STATUS_SUCCESS||patientAllocation.meanValue.data.status != SYS.STATUS_SUCCESS">
+                        <td colspan="4" class="text-danger">未查询到数据</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <div id="lineBarPatientRatio" class="infi-half-chart text-danger"></div>
+                    <img class='infi-created-img' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="vMonDepartment">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>科室接诊情况
+        <div print-add print-list="ids" unique="'vMonDepartment'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="departmentVisits"
+                 record-list="deptList" select="'department'" change-data="changeDepartmentVisits()"></div>
+        </div>
+    </div>
+    <div class="infi-draw-chart">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <h5 class="infi-chart-title">科室就诊情况</h5>
+                    <div class="infi-opt-search">
+                        <input type="button" class="btn btn-default btn-sm" value="上午" ng-click="changeVisit('上午')"
+                               ng-class="{true:'btn-success'}[departmentVisits.visitType == '上午']" />
+                        <input type="button" class="btn btn-default btn-sm" value="下午" ng-click="changeVisit('下午')"
+                               ng-class="{true:'btn-success'}[departmentVisits.visitType == '下午']"/>
+                        <input type="button" class="btn btn-default btn-sm" value="夜间" ng-click="changeVisit('夜间')"
+                               ng-class="{true:'btn-success'}[departmentVisits.visitType == '夜间']"/>
+                        <input type="button" class="btn btn-default btn-sm" value="全天" ng-click="changeVisit('')"
+                               ng-class="{true:'btn-success'}[departmentVisits.visitType == '']"/>
+                    </div>
+                </div>
+                <!--table-->
+                <div style="margin-top: 50px;" table-list original="departmentVisits.leftTable" record-list="departmentVisits.deptList"></div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h5 class="infi-chart-title">专家工作情况</h5>
+                    <div class="infi-opt-search">
+                        <input type="button" class="btn btn-default btn-sm" value="上午" ng-click="changeWork('上午')"
+                               ng-class="{true:'btn-success'}[departmentVisits.workType == '上午']" />
+                        <input type="button" class="btn btn-default btn-sm" value="下午" ng-click="changeWork('下午')"
+                               ng-class="{true:'btn-success'}[departmentVisits.workType == '下午']"/>
+                        <input type="button" class="btn btn-default btn-sm" value="夜间" ng-click="changeWork('夜间')"
+                               ng-class="{true:'btn-success'}[departmentVisits.workType == '夜间']"/>
+                        <input type="button" class="btn btn-default btn-sm" value="全天" ng-click="changeWork('')"
+                               ng-class="{true:'btn-success'}[departmentVisits.workType == '']"/>
+                    </div>
+                </div>
+                <div>
+                    <div id="verticalBarWork" class="infi-half-chart text-danger"></div>
+                    <img class='infi-created-img' />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--gqm_debug 暂时隐掉-->
+<div class="infi-opt-self-box" id="vMonDoc">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 医生接诊情况监控
+        <div print-add print-list="ids" unique="'vMonDoc'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="docVisits"
+                 record-list="deptList" select="'department'" change-data="changeDocVisits()"></div>
+            <div number-select original="docVisits" change-data="changeDocVisits()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div style="margin-bottom: 10px;">
+                <h5 class="infi-chart-title">医生接诊时间监控</h5>
+                <div class="infi-opt-search">
+                    <input type="button" class="btn btn-default btn-sm" value="上午" ng-click="changeDocVisits('上午')"
+                           ng-class="{true:'btn-success'}[docVisits.visitType == '上午']" />
+                    <input type="button" class="btn btn-default btn-sm" value="下午" ng-click="changeDocVisits('下午')"
+                           ng-class="{true:'btn-success'}[docVisits.visitType == '下午']"/>
+                    <input type="button" class="btn btn-default btn-sm" value="夜间" ng-click="changeDocVisits('夜间')"
+                           ng-class="{true:'btn-success'}[docVisits.visitType == '夜间']"/>
+                </div>
+            </div>
+            <!--table-->
+            <div table-list-title original="docVisits.leftTable" record-list="docVisits.searchedData"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h" table-list original="docVisits.leftTable" record-list="docVisits.searchedData"
+                 tables-id="docVisits.tableColumn.leftTable" get-child-table="changeTimePatient(type)" scroll="'scroll'"></div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">就诊患者列表</h5>
+            </div>
+            <div table-list-title class="infi-visit-phone" original="docVisits.rightTable" record-list="docVisits.changedData" style="margin-top: 16px;"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h infi-visit-phone" table-list original="docVisits.rightTable" record-list="docVisits.changedData"
+                 tables-id="docVisits.tableColumn.rightTable" scroll="'scroll'"></div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="vMonReport">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 患者报到情况监控
+        <div print-add print-list="ids" unique="'vMonReport'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="patientReport"
+                 record-list="deptList" select="'department'" change-data="changePatientReport()"></div>
+            <div number-select original="patientReport" change-data="changePatientReport()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div>
+                <h5 class="infi-chart-title">患者报到情况</h5>
+                <div class="infi-opt-search">
+                    <input type="button" class="btn btn-default btn-sm" value="上午" ng-click="changePatientReport('上午')"
+                           ng-class="{true:'btn-success'}[patientReport.visitType == '上午']" />
+                    <input type="button" class="btn btn-default btn-sm" value="下午" ng-click="changePatientReport('下午')"
+                           ng-class="{true:'btn-success'}[patientReport.visitType == '下午']"/>
+                    <input type="button" class="btn btn-default btn-sm" value="夜间" ng-click="changePatientReport('夜间')"
+                           ng-class="{true:'btn-success'}[patientReport.visitType == '夜间']"/>
+                    <input type="button" class="btn btn-default btn-sm" value="全天" ng-click="changePatientReport('')"
+                           ng-class="{true:'btn-success'}[patientReport.visitType == '']"/>
+                </div>
+            </div>
+            <div>
+                <div id="verticalBarPatient" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">{{patientReport.selectName}}患者详情</h5>
+            </div>
+            <div table-list-title class="infi-visit-phone" original="patientReport.rightTable" record-list="patientReport.changedData" style="margin-top: 16px;"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h infi-visit-phone" table-list original="patientReport.rightTable" record-list="patientReport.changedData" scroll="'scroll'"></div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="vMonPatientVisits">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 患者就诊情况监控
+        <div print-add print-list="ids" unique="'vMonPatientVisits'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="patientVisits"
+                 record-list="deptList" select="'department'" change-data="changePatientVisits()"></div>
+            <div number-select original="patientVisits" change-data="changePatientVisits()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div>
+                <h5 class="infi-chart-title">患者就诊情况</h5>
+                <div class="infi-opt-search">
+                    <input type="button" class="btn btn-default btn-sm" value="上午" ng-click="changePatientVisits('上午')"
+                           ng-class="{true:'btn-success'}[patientVisits.visitType == '上午']" />
+                    <input type="button" class="btn btn-default btn-sm" value="下午" ng-click="changePatientVisits('下午')"
+                           ng-class="{true:'btn-success'}[patientVisits.visitType == '下午']"/>
+                    <input type="button" class="btn btn-default btn-sm" value="夜间" ng-click="changePatientVisits('夜间')"
+                           ng-class="{true:'btn-success'}[patientVisits.visitType == '夜间']"/>
+                    <input type="button" class="btn btn-default btn-sm" value="全天" ng-click="changePatientVisits('')"
+                           ng-class="{true:'btn-success'}[patientVisits.visitType == '']"/>
+                </div>
+            </div>
+            <div>
+                <div id="piePatient" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">{{patientVisits.selectName}}患者详情</h5>
+            </div>
+            <div table-list-title class="infi-visit-phone" original="patientVisits.rightTable" record-list="patientVisits.changedData" style="margin-top: 16px;"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h infi-visit-phone" table-list original="patientVisits.rightTable" record-list="patientVisits.changedData" scroll="'scroll'"></div>
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

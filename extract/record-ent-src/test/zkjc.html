@@ -1,0 +1,108 @@
+<!--<div class="row infi-speciality-title">-->
+    <div>
+        <div style="width: ;padding-right: 0px;" class="infi-speciality-left"><label>林纳试验（RT左耳）: </label>
+        </div>
+        <div class="infi-speciality-left radio" style="width: ;margin-right:10px;">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_215.options"><input type="radio" ng-model="entity.name_215"
+                                                                                 name="entity.name_215"
+                                                                                 value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+        <div style="width: ;padding-right: 0px;" class="infi-speciality-left"><label>林纳试验（RT右耳）: </label>
+        </div>
+        <div class="infi-speciality-left radio" style="width: ;">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_216.options"><input type="radio" ng-model="entity.name_216"
+                                                                                 name="entity.name_216"
+                                                                                 value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div style="width: ;padding-right: 0px;" class="infi-speciality-left"><label>韦伯实验（WT）: </label>
+        </div>
+        <div class="infi-speciality-left radio" style="width: 35%;">
+            <div><label class="checkbox-inline" style="margin-right: 10px;"
+                        ng-repeat="option in dimensions.name_217.options"><input type="radio" ng-model="entity.name_217"
+                                                                                 name="entity.name_217"
+                                                                                 value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+<div class="row infi-speciality-title">
+    <div class="infi-speciality-disease" style="width: ;padding-right: 0px;"><label>耳廓检查: </label></div>
+    <div class="col-md-9 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_218.options"><input type="radio" ng-model="entity.name_218"
+                                                                             name="entity.name_218"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../tab/ekjc.html?__inline">
+<div class="row infi-speciality-title">
+    <div class="infi-speciality-disease" style="width: ;padding-right: 0px;"><label>外耳道检查: </label></div>
+    <div class="col-md-9 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_234.options"><input type="radio" ng-model="entity.name_234"
+                                                                             name="entity.name_234"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../tab/wedjc.html?__inline">
+<div class="row infi-speciality-title">
+    <div class="infi-speciality-disease" style="width: ;padding-right: 0px;"><label>鼓膜检查: </label></div>
+    <div class="col-md-9 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_270.options"><input type="radio" ng-model="entity.name_270"
+                                                                             name="entity.name_270"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../tab/gmjc.html?__inline">
+<div class="row infi-speciality-title">
+    <div class="infi-speciality-disease" style="width: ;padding-right: 0px;"><label>乳突检查: </label></div>
+    <div class="col-md-9 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_299.options"><input type="radio" ng-model="entity.name_299"
+                                                                             name="entity.name_299"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../tab/rtjc.html?__inline">
+<div class="row infi-speciality-title">
+    <div class="infi-speciality-disease" style="width: ;padding-right: 0px;"><label>鼓室检查: </label></div>
+    <div class="col-md-9 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_316.options"><input type="radio" ng-model="entity.name_316"
+                                                                             name="entity.name_316"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+</div>
+<link rel="import" href="../tab/gsjc.html?__inline">
+
+<div class="row">
+    <div class="col-md-3 form-group" style="width: ;text-align: right;padding-right: 0px;"><label>捏鼻鼓气时鼓膜活动度: </label>
+    </div>
+    <div class="col-md-6 radio input-group" style="width: ;float: left;">
+        <div><label class="checkbox-inline" style="margin-right: 10px;"
+                    ng-repeat="option in dimensions.name_334.options"><input type="radio" ng-model="entity.name_334"
+                                                                             name="entity.name_334"
+                                                                             value="{{option.name}}"/>{{option.label}}</label>
+        </div>
+    </div>
+    <!--<div class="col-md-2 form-group" style="width: ;text-align: right;padding-right: 0px;"><label>其他耳部症状: </label></div>-->
+    <!--<div class="col-md-4 form-group input-group" style="width: ;float: left;">-->
+        <!--<div><label class="checkbox-inline" style="margin-right: 10px;"-->
+                    <!--ng-repeat="option in dimensions.name_335.options"><input type="checkbox"-->
+                                                                             <!--ng-model="entity.name_335[option.name]"/>{{option.label}}</label>-->
+        <!--</div>-->
+        <!--<a infi-other-value2 checked="entity.name_335" style="cursor: pointer;display:inline-block;"-->
+           <!--data-type="checkboxOther" data-name="entity.name_335">添加其他</a></div>-->
+</div>
+<div class="row"></div>

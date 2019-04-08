@@ -1,0 +1,25 @@
+.menu-choses ul li{
+  margin:0 20px;
+}
+.menu-choses ul li span,.menu-choses li span{
+  margin-left:10px;
+}
+
+.spe-line {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 10px;
+  margin:0 10px;
+}
+.menu-choses .spe-line span {
+  float: left;
+  margin: 0;
+  padding:0;
+  display: inline-block;
+  height:50%;
+  width:100%;
+  border-bottom: 1px solid #ccc;
+  border-left:1px solid #ccc;
+}

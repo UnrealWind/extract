@@ -1,0 +1,34 @@
+<div basic-info case-list="caseList"></div>
+<div class="infi-wj-self-box" style="margin-top: 40px;">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-edit"></i> 产妇及婴儿信息录入&nbsp;&nbsp;&nbsp;
+        <label style="float: right;">
+            请输入检查日期：<input infi-date style="display: inline-block;" ng-model="basic.checkDate" readonly="readonly"
+                           class="form-control ng-pristine ng-valid ng-touched infi-wj-basic-ipt ng-not-empty"
+                           type="text" placeholder="请输入检查日期">
+
+        </label>
+    </div>
+    <ul class="nav nav-tabs infi-wj-tabs">
+        <li ng-repeat="entity in typeList" ng-class="{true:'active'}[entity.active]">
+            <a ng-click="activeType(entity)" ng-bind="entity.label"></a>
+        </li>
+    </ul>
+    <div class="table-content">
+        <div class="infi-wj-content-list" ng-show="'mom'==typeData">
+            <link rel="import" href="42day-cf.html?__inline">
+        </div>
+        <div class="infi-wj-content-list" ng-show="'child'==typeData">
+            <link rel="import" href="42day-child.html?__inline">
+        </div>
+    </div>
+</div>
+<div class="infi-wj-save" style="text-align: right;width: 100%;">
+    <a href="#/overview/obstetrics/{{queryParams.xlPatientId}}/{{queryParams.xlMedicalId}}/{{queryParams.patientId}}">
+        <button class="btn infi-btn-linear-green-l btn-sm">返回</button>
+    </a>
+    <a>
+        <button class="btn infi-btn-linear-green-l btn-sm" ng-click="saveForty()">保存</button>
+    </a>
+</div>
+<div sys-tip></div>

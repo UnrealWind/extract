@@ -1,0 +1,126 @@
+.infi-box legend{
+			margin-bottom:0px;
+			height: 30px;
+	    	line-height: 30px;
+	    	border-color:#006abb;
+			color: #006abb;
+	    	font-size: 16px;
+	    	overflow: hidden;
+	    	text-overflow: ellipsis;
+	    	z-index:50;
+		}
+		.infi-box .form-group{
+			/* position:relative; */
+			margin:20px 50px 0 0;
+			z-index:50;
+		}
+		.infi-box .form-group label,.form-group-textArea label{
+			width:140px;
+    		font-size: 12px;
+    		text-align:right;
+    		color: #5b85ab;
+    		padding:0 12px;
+		}
+		label i{
+			height:12px;
+			line-height:12px;
+			font-size:8px;
+			color:#c40000;
+		}
+		.infi-box .form-group select{
+			width:175px;
+			height: 34px;
+		    line-height: 1.42857;
+			padding: 6px 12px;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+		    color: #555;
+		    font-size: 14px;
+		} 
+		.form-group .infi-m-tb{
+			position:absolute;
+			margin-top:0px;
+			margin-left:133px;
+			width:800px;
+			display:none;
+			border: 1px solid #e9e7e7;
+			border-radius:4px;
+			background:#fff;
+			z-index:100;
+		}
+		.form-group .infi-m-tb td{
+			text-align:center;
+		}
+		.form-group .infi-m-tb td button{
+			border:none;
+		}
+		.form-inline .infi-u-msg{
+			display:none;
+		}
+		.form-inline .infi-u-msg .patientName{
+			width: 175px;
+			height: 34px;
+			display: inline-block;
+		    line-height: 1.42857;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    overflow:hidden;
+    		vertical-align: middle;
+		}
+		.infi-box-lst{
+			padding-top:5px;
+			padding-bottom:20px;
+			overflow:hidden;
+		}
+		.infi-box-lst .infi-box-containter{
+			border:none;
+			padding:0px;
+		}
+		.infi-box-lst .infi-box-containter .info{
+			text-align:center;
+		}
+		.infi-section-page{
+			margin: 0px;
+		}
+		.form-group-textArea {
+			float:left;
+			position:relative;
+		}
+		.form-group-textArea label{
+			position:relative;
+			top:-30px;
+		}
+		fieldset>.row {
+			margin:20px 0;
+		}
+		.form-group-textArea.col-xs-6{
+			padding:0px;
+		}
+		.form-group-textArea .form-control {
+			width:310px 
+		}
+		#lookup-patients-wrap span {color:#006abb;}
+		#lookup-patients-wrap .fontRed {color:#c40000;}
+		.table-striped td a {cursor:pointer;}
+		.ajaxFileUpload {width:180px;}
+		
+		.ajaxFileUpload-prompt-success,.ajaxFileUpload-prompt-error{text-decoration: underline;background-color: #FFF;max-width:120px;margin-left:-120px;text-overflow:ellipsis;overflow:hidden;margin-bottom:-9px;padding-right:30px;}
+		.ajaxFileUpload-prompt-success{color:green;}
+		.ajaxFileUpload-prompt-error{color:red;}
+		
+		/* 20160425原有页面并没有radio类型的input所以在此新增其样式 */
+		.infi-box .form-group .infi-radioFix {width:auto;text-align:left;display:inline-block;}
+		.infi-box .form-group .infi-radioFix label {width:auto;margin: 0 0 0 20px;}
+		.infi-box .form-group .infi-radioFix input {height:auto;}
+		.infi-m-btn button {padding:6px 24px;display:inline-block;}
+		.infi-m-btn {text-align:right;}
+		#infi-u-details table tr td:first-child {width:140px;}
+		
+		.infi-m-btn .btn-default {margin:0 15px 0 0}
+		#infi-u-judge textarea {margin-top: 10px;}
+		.alert-danger {margin:10px;width:auto;}
+		
+		/* 2016 10-24缺失时间筛选控件样式 */
+		.title>.infi-input-box {display: inline-block;padding: 0 20px;border-left:1px solid #ccc;margin: 0 0 0 25px;height:44px;}
+		.title>.infi-input-box input {display:inline-block;width:150px;height:27px;} 

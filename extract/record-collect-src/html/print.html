@@ -1,0 +1,64 @@
+<div ng-repeat="opt in wholeInfo.checkPrintData track by $index" rander-over class="print" style="width: 210mm; height: 147mm">
+    <h2>北京长峰医院</h2>
+    <h3>{{opt.examName}}检查申请单</h3>
+    <ul class="row header">
+        <li class="col-xs-3">
+            <label>病案号：</label>
+            <span>{{opt.patientId|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>申请科室：</label>
+            <span>{{opt.requestDept|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>检查部位：</label>
+            <span>{{opt.examPosition|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>姓名：</label>
+            <span>{{opt.name|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>性别：</label>
+            <span>{{opt.sex|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>年龄：</label>
+            <span>{{opt.age|changeNULL}}</span>
+        </li>
+        <li class="col-xs-3">
+            <label>费别：</label>
+            <span>{{opt.cost|changeNULL}}</span>
+        </li>
+    </ul>
+    <ul class="row">
+        <li class="col-xs-12">
+            <label>病历摘要：</label>
+            <span>
+                {{opt.remark|changeNULL}}
+            </span>
+        </li>
+        <li class="col-xs-12">
+            <label>临床诊断：</label>
+            <span>
+                {{opt.diagnosis|changeNULL}}
+            </span>
+        </li>
+    </ul>
+
+    <ul class="row footer">
+        <li class="col-xs-4">
+            <label>申请医师：</label>
+            <span>{{opt.requestDoctor|changeNULL}}</span>
+        </li>
+        <li class="col-xs-4">
+            <label>申请时间：</label>
+            <span>{{opt.requestDate|changeNULL}}</span>
+        </li>
+        <li class="col-xs-4">
+            <label>检查地点：</label>
+            <span>{{opt.requestDept|changeNULL}}</span>
+        </li>
+    </ul>
+
+</div>

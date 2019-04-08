@@ -1,0 +1,105 @@
+<div class="infi-record-box"
+     ng-show="entity.name_16!=undefined && (entity.name_16=='value_3' || entity.name_16.value_3==true)"><h4
+        class="infi-record-title">耳漏</h4>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>耳漏时间: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_1145">
+            <input name="entity.name_1145" infi-date="yyyy-mm-dd" type="text" ng-model="entity.name_1145"
+                   class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+            <!--<input-->
+                <!--name="entity.name_1145" type="text" ng-model="entity.name_1145" class="form-control"/><select-->
+                <!--ng-model="entity.name_1145unit" class="form-control"-->
+                <!--style="width:62px; position: absolute; top: 0;right: 50%;z-index: 10;">-->
+                <!--<option value="天">天</option>-->
+                <!--<option value="周">周</option>-->
+                <!--<option value="月">月</option>-->
+                <!--<option value="年">年</option>-->
+            <!--</select>-->
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>是否首次发生: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_1140">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_1140.options"><input type="radio"
+                                                                                  ng-model="entity.name_1140"
+                                                                                  name="entity.name_1140"
+                                                                                  value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../html_gen/xbs_-_1140_-_fou.html?__inline">
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>部位: </label>
+        </div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_1141">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_1141.options"><input type="radio"
+                                                                                  ng-model="entity.name_1141"
+                                                                                  name="entity.name_1141"
+                                                                                  value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>病变原因: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_1142"><input
+                name="entity.name_1142" type="text" ng-model="entity.name_1142" class="form-control" infi-radio-query
+                data-name="entity.name_1142"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_1142"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_1142.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_1142" name="entity.name_1142" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>溢液性质: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_1143"><input
+                name="entity.name_1143" type="text" ng-model="entity.name_1143" class="form-control" infi-radio-query
+                data-name="entity.name_1143"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_1143"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_1143.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_1143" name="entity.name_1143" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;"><label>耳漏的量: </label>
+        </div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_1144"><input
+                name="entity.name_1144" type="text" ng-model="entity.name_1144" class="form-control"/></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>耳漏是否伴臭味: </label></div>
+        <div class="col-md-4 radio input-group" style="width: ;float: left;" data-name="entity.name_1146">
+            <div><label class="checkbox-inline" style="margin-right: 10px; margin-top: -20px;"
+                        ng-repeat="option in dimensions.name_1146.options"><input type="radio"
+                                                                                  ng-model="entity.name_1146"
+                                                                                  name="entity.name_1146"
+                                                                                  value="{{option.name}}"/>{{option.label}}</label>
+            </div>
+        </div>
+        <div class="col-md-1 form-group" style="width:120px;text-align: right;padding-right: 0px;">
+            <label>耳漏伴随症状: </label></div>
+        <div class="col-md-4 form-group input-group" style="width: ;float: left;" data-name="entity.name_1147"><input
+                name="entity.name_1147" type="text" ng-model="entity.name_1147" class="form-control" infi-radio-query
+                data-name="entity.name_1147"/>
+            <div class="row infi-record-search-add" infi-radio-large data-name="entity.name_1147"><span
+                    class="z-lst-corner" style="display: inline-block;"></span>
+                <div class="infi-search-content"><label class="checkbox-inline" style="margin-right: 10px;"
+                                                        ng-repeat="option in dimensions.name_1147.options"
+                                                        data-type="hide-opt" ng-show="option.show!=false"><input
+                        type="radio" ng-model="entity.name_1147" name="entity.name_1147" value="{{option.label}}"/>{{option.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+</div>

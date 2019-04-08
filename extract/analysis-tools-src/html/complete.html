@@ -1,0 +1,36 @@
+<header class="infi-section" style="padding-right:20px;">
+    <ul class="infi-header-ul" style="margin-left:20px;">
+        <li class="infi-analysis-modifyed"><a href="#/data.select">数据选择</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/variable.set">变量设置</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/data.pretreatment">数据预处理</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/filter.set">筛选设置</a></li>
+        <li class="infi-analysis-modifyed"><a href="#/model">建模</a></li>
+        <li class="infi-header-active"><a href="#/complete">已建模型</a></li>
+    </ul>
+</header>
+<!--<header class="infi-section" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul infi-header-ul-3" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed"><a href="#/data.select">数据管理</a></li>-->
+        <!--<li class="infi-analysis-modifyed"><a href="#/data.select1">描述统计</a></li>-->
+        <!--<li class="infi-header-active"><a href="#/data.select2">建立模型</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+<!--<header class="infi-section marginten" style="padding-right:20px;">-->
+    <!--<ul class="infi-header-ul" style="margin-left:20px;">-->
+        <!--<li class="infi-analysis-modifyed"  style="width:16.66%;line-height: 50px;height: 50px;"><a href="#/data.select2">数据选择</a></li>-->
+        <!--<li class="infi-analysis-modifyed" style="width:16.66%;line-height: 50px;height: 50px;"><a href="#/filter.set1">数据分组</a></li>-->
+        <!--<li class="infi-analysis-modifyed" style="width:16.66%;line-height: 50px;height: 50px;"><a href="#/model">模型选择</a></li>-->
+        <!--<li class="infi-analysis-modifyed" style="width:16.66%;line-height: 50px;height: 50px;"><a >变量选择</a></li>-->
+        <!--<li class="infi-analysis-modifyed" style="width:16.66%;line-height: 50px;height: 50px;"><a >模型执行</a></li>-->
+        <!--<li class="infi-header-active" style="width:16.66%;line-height: 50px;height: 50px;"><a href="#/complete">模型管理</a></li>-->
+    <!--</ul>-->
+<!--</header>-->
+
+<div class="infi-box" style="margin-top:50px;" ng-repeat="content in contents">
+    <div class="CRF-details-button" style="overflow: auto;margin:5px; padding-bottom:5px;   border-bottom: #3f8ecb solid 1px;">
+        <h4 style="color: #006abb;display: inline-block">{{content.name}}</h4>
+        <span style="margin-left:50px;">保存时间：{{time}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   数据源：脑梗死患者分析</span>
+        <button type="button" class="btn btn-default" ng-click="inviteDelete(content.name)">删除</button>
+        <a href="#/model/{{a}}"><button type="button" class="btn btn-primary">查看</button></a>
+    </div>
+</div>

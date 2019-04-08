@@ -1,0 +1,42 @@
+<div>
+    <!-- 保存模板弹出框 -->
+    <div class="modal fade" id="save-model-propt">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="clear();"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">确认保存模板信息</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="infi-confirm-export-body">
+                        <div class="alert alert-danger" ng-if="hasCollectName == false" style="text-align: center;" role="alert">模块名称必须填写</div>
+                        <div class="infi-export-body-name">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-name"><i class="text-danger">*</i> 模板名称:</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input id="infi-export-body-name" ng-model="collectName" name="" value="" type="text" class="form-control" placeholder="请输入模板名称" />
+                            </div>
+                        </div>
+                        <!-- <div class="infi-export-body-remarks">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-remarks">模板备注:</label>
+                            </div>
+                            <div class=" col-xs-8">
+                                <textarea id="infi-export-body-remarks" ng-model="collectRemark" type="text" class="form-control col-xs-8"
+                                          name="" value="" placeholder="请输入模板备注"></textarea>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer infi-confirm-export-footer">
+                    <button type="button" class="btn infi-btn-linear-default" ng-click="clear();" data-dismiss='modal'>取消</button>
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="confirmCollect()">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div sys-tip></div>
+</div>

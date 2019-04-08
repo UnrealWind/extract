@@ -1,0 +1,178 @@
+<div class="infi-wj-article infi-opt-article">
+    <div class="infi-opt-access">
+        <div class="infi-opt-access-num">
+            <p class="infi-opt-access-title">历史累计问诊人次:</p>
+            <p ng-bind="registeredInfo.history_size"></p>
+        </div>
+        <div class="infi-opt-access-date">
+            <p class="infi-opt-access-title">统计日期截止到:</p>
+            <p ng-bind="abortTime"></p>
+        </div>
+    </div>
+    <div class="infi-opt-self-box">
+        <div class="infi-opt-title">
+            <i class="glyphicon glyphicon-edit"></i> 挂号总体情况
+            <div class="infi-opt-search">
+                <button ng-click='getOnDayData()' class="btn infi-btn-linear-green-l btn-sm ng-scope">今天</button>
+                <label>
+                    时间：<input type="text" ng-change="getOnDayData(requestDate)" ng-model="requestDate"
+                              class="form-control infi-opt-search-time" infi-date>
+                </label>
+
+            </div>
+        </div>
+        <div>
+            <table class="infi-opt-tab" style="table-layout: fixed">
+                <tbody>
+                <tr>
+                    <td class="self-opt-label">
+                        <p>挂号人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="registeredInfo.regist_size"></p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>门诊人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="registeredInfo.outpatient_size"></p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>门诊专家号：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="registeredInfo.experts_size"></p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>门诊普通号：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="registeredInfo.ordinary_size"></p>
+                    </td>
+                    <!--<td class="self-opt-label">-->
+                        <!--<p>急诊人次：</p>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<p ng-bind="registeredInfo.emergemcy_size"></p>-->
+                    <!--</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-opt-cont">
+            <div class="infi-opt-cont-lft">
+                <div ng-if="!registeredType||registeredType.length<=0" class="infi-opt-echarts-title">
+                    <p>挂号类型分布</p>
+                </div>
+                <div id="infi-opt-gh"></div>
+            </div>
+            <div class="infi-opt-cont-rgt">
+                <div ng-if="!payType||payType.length<=0" class="infi-opt-echarts-title">
+                    <p>付费类型分布</p>
+                </div>
+                <div id="infi-opt-ff"></div>
+            </div>
+        </div>
+        <div class="infi-opt-cont">
+            <div class="infi-opt-cont-lft">
+                <div ng-if="!outpatient||outpatient.length<=0" class="infi-opt-echarts-title">
+                    <p>重点门诊科室排行[问诊人次]</p>
+                </div>
+                <div id="infi-opt-ks"></div>
+            </div>
+            <!--<div class="infi-opt-cont-lft">-->
+                <!--<div ng-if="!emergency||emergency.length<=0" class="infi-opt-echarts-title">-->
+                    <!--<p>重点急诊科室排行[问诊人次]</p>-->
+                <!--</div>-->
+                <!--<div id="infi-opt-mz-ks"></div>-->
+            <!--</div>-->
+        </div>
+        <div class="infi-opt-cont infi-opt-tab-content">
+            <div class="infi-opt-table-title">
+                <p>门诊统计报表[问诊人次]</p>
+            </div>
+            <table class="table table-striped infi-opt-mointor-tab">
+                <thead class="infi-opt-thead">
+                <tr>
+                    <th>科室</th>
+                    <th>挂号次数</th>
+                    <th>普通号</th>
+                    <th>专家号</th>
+                    <th>上午就诊人次</th>
+                    <th>下午就诊人次</th>
+                    <th>夜间就诊人次</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="statistic in statistics">
+                    <td ng-bind="statistic.dept_name"></td>
+                    <td ng-bind="statistic.regist_size"></td>
+                    <td ng-bind="statistic.ordinary_size"></td>
+                    <td ng-bind="statistic.experts_size"></td>
+                    <td ng-bind="statistic.morning_size"></td>
+                    <td ng-bind="statistic.afternoon_size"></td>
+                    <td ng-bind="statistic.evening_size"></td>
+                </tr>
+                <tr ng-if="!statistics||statistics.length<=0">
+                    <td colspan="7">
+                        <span class="infi-opt-danger">暂无数据</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-opt-title infi-opt-yy">
+            <i class="glyphicon glyphicon-edit"></i> 预约总体情况
+        </div>
+        <div>
+            <table class="infi-opt-tab" style="table-layout: fixed">
+                <tbody>
+                <tr>
+                    <td class="self-opt-label">
+                        <p>预约挂号总人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="subscribe.appoint_size">1000人</p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>上午预约人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="subscribe.morning_size">200人</p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>下午预约人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="subscribe.afternoon_size">100人</p>
+                    </td>
+                    <td class="self-opt-label">
+                        <p>夜间预约人次：</p>
+                    </td>
+                    <td>
+                        <p ng-bind="subscribe.night_size">300人</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="infi-opt-cont">
+            <div class="infi-opt-cont-lft">
+                <div ng-if="!way||way.length<=0" class="infi-opt-echarts-title">
+                    <p>预约途径分布</p>
+                </div>
+                <div id="infi-opt-tj"></div>
+            </div>
+            <div class="infi-opt-cont-rgt">
+                <!--<div class="infi-opt-echarts-title">-->
+                    <!--<p>就诊情况统计</p>-->
+                <!--</div>-->
+                <div>
+                    <button ng-click="total()" class="btn infi-btn-linear-default btn-sm ng-scope infi-opt-btn">总计
+                    </button>
+                </div>
+                <div id="infi-opt-zj"></div>
+            </div>
+        </div>
+    </div>
+</div>

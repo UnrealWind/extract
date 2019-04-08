@@ -1,0 +1,18 @@
+<div class="row infi-nursing-details" ng-repeat="list in detailsList">
+    <div class="cell" ng-repeat="(key,value) in list.children">
+        <div class="col-md-2 infi-col-title">
+            <span>{{value.label}}:</span>
+        </div>
+        <div class="col-md-3" ng-if="value.type != 'checkbox' && value.type != 'unit'">
+            <span>{{value.value}}</span>
+        </div>
+        <div class="col-md-3" ng-if="value.type == 'unit'">
+            <span>{{value.value}}</span>
+            <span ng-if="value.unit!='×109/L'">{{value.unit}}</span>
+            <span ng-if="value.unit=='×109/L'">×10^9/L</span>
+        </div>
+        <div class="col-md-3" ng-if="value.type == 'checkbox'">
+            <span ng-repeat="child in value.value">{{child}}</span>
+        </div>
+    </div>
+</div>

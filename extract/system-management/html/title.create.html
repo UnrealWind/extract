@@ -1,0 +1,26 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户管理 -> 职称 ->
+    <span ng-show="viewDetail.type == 'create'&&!viewDetail.id">新建职称</span>
+    <span ng-show="viewDetail.type == 'view'">查看职称</span>
+    <span ng-show="viewDetail.type == 'change'">修改职称</span>
+</h4>
+<div class="infi-box">
+    <form class="infi-manage" name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>职称名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.data.name" required/>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.data.value" />
+            </div>
+        </div>
+
+        <div ng-show="viewDetail.type != 'view'" class="infi-submit-container">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存" ng-disabled="!form.$valid||!sortIsNumber"
+                   ng-click="saveMechansim()"/>
+        </div>
+    </form>
+</div>
+<div sys-tip></div>

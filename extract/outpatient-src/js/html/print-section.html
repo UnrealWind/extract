@@ -1,0 +1,18 @@
+<div class="infi-print-section" ng-show="printAllList.$checked">
+    <div class="infi-print-header">
+        <i class="glyphicon glyphicon-remove" ng-click="closeSection()"></i>
+        <h4>打印列表</h4>
+    </div>
+    <ul>
+        <li ng-repeat="entity in printAllList" ng-show="entity.$checked">
+            <i class="glyphicon glyphicon-remove" ng-click="closeItem(entity)"></i>
+            <i class="glyphicon glyphicon-chevron-up" ng-click="upItem($index)"></i>
+            <i class="glyphicon glyphicon-chevron-down" ng-click="downItem($index)"></i>
+            {{entity.name}}
+        </li>
+    </ul>
+    <div class="infi-opt-div">
+        <input type="button" value="打印" class="btn btn-default btn-sm infi-print-submit" ng-click="print()" /><br />
+        <a class="infi-print-clear" ng-click="clearSection()">清空此栏</a>
+    </div>
+</div>

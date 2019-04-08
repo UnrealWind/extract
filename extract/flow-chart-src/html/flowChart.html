@@ -1,0 +1,65 @@
+
+<div>
+    <h4 class="infi-title ng-scope"><i class="glyphicon glyphicon-globe"></i>流程图</h4>
+    <div class="infi-box row">
+        <h4>流程图</h4>
+        <div class="col-md-2"></div>
+        <ul class="fce-drag col-md-10">
+            <li ng-repeat="data in conditions" class="cursor btn btn-default" draggable="true"
+                ondragstart="drag(event)" ng-dragend="dragEnd($event)">
+                {{data.data.label}}
+            </li>
+        </ul>
+
+        <div class="col-md-2 infi-basic-attr">
+            <ul>
+                <li>
+                    <a ng-click="choseGroupShow(data)" ng-class="{true:'active'}[groupActive]">
+                        <span ng-class="{true:'glyphicon glyphicon-triangle-bottom',
+                        false:'glyphicon glyphicon-triangle-right'}[groupActive]">
+                        </span>已上传流程图
+                    </a>
+                    <ul ng-if="groupActive" ng-repeat = "data in groups" draggable="true" ondragstart="drag(event)" ng-dragend="dragEnd($event)">
+                      <li>
+                          <a >{{data.label}}</a>
+                      </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <hr/>
+
+            <basic-attr datas = "datas"></basic-attr>
+        </div>
+        <div class="col-md-10" id="flowCharts"  ng-dragover="allowDrop($event)" ondrop="drop(event)">
+
+        </div>
+    </div>
+
+    <div id="tip" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <input class="form-control" type="text" ng-model="tipData">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function drag (event) {
+        console.log(this,event)
+        event.stopPropagation();
+        var target = $(event.target).scope();
+        !target.data?target = $(event.target).parent().parent():'';
+        event.dataTransfer.setData('text/plain', JSON.stringify(target.data));
+    }
+
+    function drop(event) {
+        var scope = $('article>div').scope();
+        scope.drop(event);
+    }
+
+</script>
+<script src="../js/init.fce.js"></script>
+
+

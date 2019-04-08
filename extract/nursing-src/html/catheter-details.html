@@ -1,0 +1,197 @@
+<div class="infi-title-btn-right">
+    <a class="btn infi-btn-linear-green-l btn-sm" href="#/details/{{params.patientId}}">返回</a>
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>置管详情
+</h4>
+<div class="infi-box">
+	<div class="risk-evaluation">
+		<h4>风险评估情况
+		    <a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" href="#/risk-evaluation/{{params.patientId}}?tubeInfoId={{params.tubeInfoId}}">风险评估</a>
+		</h4>
+		<div class="alert alert-danger">您还没有进行风险评估！！！</div>
+		<div class="infi-box-containter infi-box-containter-fix">
+			<div class="row">
+				<div class="col-md-6" id = "chart-risk-evaluation">
+					
+				</div>
+				<div class="col-md-6">
+					<div infi-table columns="riskColumns" content="riskTable" opts="opts" update-page="updatePage(page)"
+						 data-ng-if="riskTable" btn-callback="showDetails(entity,type)"></div>
+				</div>
+			</div>	
+		</div>
+	</div><!-- end of 风险评估 -->
+	
+	<div class="pre-evaluation">
+		<h4>PICC置管前评估
+		    <span class="btn btn-default btn-default-fix" ng-click="">{{preList.feasibilityTime}}</span>
+		    <a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-if="hasPre"
+				href="#/pre-evaluation/pre/edit/{{params.patientId}}/{{preList.id}}?tubeInfoId={{params.tubeInfoId}}">修改</a>
+			<a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-if="!hasPre"
+			   href="#/pre-evaluation/pre/add/{{params.patientId}}?tubeInfoId={{params.tubeInfoId}}">新增</a>
+		</h4>
+		<div class="infi-nursing-alert alert-danger" ng-if="!hasPre">您还没有PICC置管前评估！！！</div>
+		<div class="infi-box-containter infi-box-containter-fix" ng-if="hasPre">
+			<div class="relative">
+				<a class="btn infi-btn-linear-green-l btn-sm infi-btn-absolute-fix" href="#/pre-details/pre/details/{{params.patientId}}/{{preList.id}}?tubeInfoId={{params.tubeInfoId}}">查看详情</a>
+				<link rel="import" href="tpl/pre.template.details.html?__inline">
+			</div>	
+		</div>
+	</div>
+
+	<div class="catheter-record">
+		<h4>PICC置管记录
+		    <span class="btn btn-default btn-default-fix" ng-click="">{{tubeList.tubeTime}}</span>
+		    <a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix"
+				href="#/catheter-record/catheter/edit/{{params.patientId}}/{{tubeList.tubetype}}/{{tubeList.id}}?tubeInfoId={{params.tubeInfoId}}">修改</a>
+		</h4>
+		<div class="infi-box-containter infi-box-containter-fix">
+			<div class="relative">
+				<a class="btn infi-btn-linear-green-l btn-sm infi-btn-absolute-fix" href="#/catheter-record-list/catheter/details/{{params.patientId}}/{{tubeList.id}}?tubeInfoId={{params.tubeInfoId}}">查看详情</a>
+				<link rel="import" href="tpl/catheter.template.details.html?__inline">
+			</div>	
+		</div>
+	</div>
+
+	<div class="maintenance-record">
+		<h4>PICC维护记录
+		    <a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix"
+			   href="#/maintenance-record/maintenance/add/{{params.patientId}}?tubeInfoId={{params.tubeInfoId}}">新增</a>
+		</h4>
+		<div class="infi-nursing-alert alert-danger" ng-if="maintenanceList==null">您还没有PICC维护记录！！！</div>
+
+		<!--<div class="center" ng-if="maintenanceNum=2&&maintenanceList.length>0" ng-click="lookMaintenanceMores()"><span>显示全部</span></div>-->
+		<!--<div class="center" ng-if="maintenanceNum>2" ng-click="closeMaintenanceMores()"><span>收起</span></div>-->
+
+		<!--<div class="infi-box-containter infi-box-containter-fix" ng-if="maintenanceList.length>0" ng-repeat="list in maintenanceList|limitTo:maintenanceNum">-->
+		<div class="infi-box-containter infi-box-containter-fix" ng-if="maintenanceList.length>0" ng-repeat="list in maintenanceList">
+			<div class="relative">
+				<span class="btn btn-default btn-default-fix infi-time-absolute-fix" ng-click="">第{{maintenanceList.length-$index}}次维护&nbsp;&nbsp;{{list.serviceTime}}</span>
+				<a class="btn infi-btn-linear-green-l btn-sm infi-btn-double-absolute-fix"
+					href="#/maintenance-record/maintenance/edit/{{params.patientId}}/{{list.id}}?tubeInfoId={{params.tubeInfoId}}">修改</a>
+				<a class="btn infi-btn-linear-green-l btn-sm infi-btn-absolute-fix" href="#/maintenance-details/maintenance/details/{{params.patientId}}/{{list.id}}?tubeInfoId={{params.tubeInfoId}}">查看详情</a>
+				<ul class="row">
+					<li class="col-md-6 row">
+						<span class="col-md-4">维护护士：</span>
+						<span class="col-md-8">{{list.nurseSign}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">更换敷料：</span>
+						<span class="col-md-8">{{list.dressingChange}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">更换接头：</span>
+						<span class="col-md-8">{{list.replaceConnector}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">导管有无脱出：</span>
+						<span class="col-md-8">{{list.tubeMove}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">穿刺点有无异常：</span>
+						<span class="col-md-8">{{list.punctureSiteAbnormal}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">导管破损：</span>
+						<span class="col-md-8">{{list.tubeBreak}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">静脉炎：</span>
+						<span class="col-md-8">{{list.hasPhlebitis}}</span>
+					</li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+
+	<div class="extubation-record">
+		<h4>PICC拔管记录
+			<span class="btn btn-default btn-default-fix" ng-click="">{{extubationList.extubationTime}}</span>
+			<a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-if="extubationList==null"
+			   href="#/extubation-record/extubation/add/{{params.patientId}}?tubeInfoId={{params.tubeInfoId}}">新增</a>
+			<a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-if="extubationList!=null"
+			   href="#/extubation-record/extubation/edit/{{params.patientId}}/{{extubationList.id}}?tubeInfoId={{params.tubeInfoId}}">修改</a>
+		</h4>
+		<div class="infi-nursing-alert alert-danger" ng-if="extubationList==null">您还没有PICC拔管记录！！！</div>
+		<div class="infi-box-containter infi-box-containter-fix" ng-if="extubationList!=null">
+			<div class="relative">
+				<ul class="row">
+					<li class="col-md-6 row">
+						<span class="col-md-4">拔管原因：</span>
+						<span class="col-md-8">{{extubationList.extubationReason}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">计划外说明：</span>
+						<span class="col-md-8">{{extubationList.unscheduledInstruction}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">导管使用天数：</span>
+						<span class="col-md-8">{{extubationList.useDays}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">B超结果：</span>
+						<span class="col-md-8">{{extubationList.bresult}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">抗凝治疗：</span>
+						<span class="col-md-8">{{extubationList.disappear}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">应用导管期间并发症：</span>
+						<span class="col-md-8">{{extubationList.complication}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">导管规格：</span>
+						<span class="col-md-8">{{extubationList.tubeSpecifications}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">置管部位：</span>
+						<span class="col-md-8">{{extubationList.tubePosition}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">其他置管部位：</span>
+						<span class="col-md-8">{{extubationList.otherTubePosition}}</span>
+					</li>
+					<li class="col-md-6 row">
+						<span class="col-md-4">拔管护士：</span>
+						<span class="col-md-8">{{extubationList.extubationNurse}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<h4>随访记录
+		    <a class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix"
+			   href="#/follow-up-record/follow/add/{{params.patientId}}?tubeInfoId={{params.tubeInfoId}}&templateId=1">新增</a>
+		</h4>
+		<div class="infi-nursing-alert alert-danger" ng-if="followList.length==0">您还没有随访记录！！！</div>
+
+		<!--<div class="center"  ng-if="followNum=2&&followList.length>2" ng-click="lookFollowMores()"><span>显示全部</span></div>-->
+		<!--<div class="center"  ng-if="followNum>2" ng-click="closeFollowMores()"><span>收起</span></div>-->
+
+		<!--<div class="infi-box-containter infi-box-containter-fix" ng-if="followList!=null" ng-repeat="(key,value) in followList|limitTo:followNum">-->
+		<div class="infi-box-containter infi-box-containter-fix" ng-if="followList!=null" ng-repeat="(key,value) in followList">
+			<div class="relative">
+				<span class="btn btn-default btn-default-fix infi-time-absolute-fix" ng-click="">第{{followListLength-$index}}次随访&nbsp;&nbsp;{{value.time}}</span>
+
+				<a class="btn infi-btn-linear-green-l btn-sm infi-btn-absolute-fix"
+				 href="#/follow-up-record/follow/edit/{{params.patientId}}/{{value.data[0].id}}?tubeInfoId={{params.tubeInfoId}}&templateId=1">修改</a>
+				<ul class="row">
+					<li class="col-md-6 row" ng-repeat="entity in value.data">
+						<span class="col-md-4">{{entity.visitContent.visitQuestion}}：</span>
+						<span class="col-md-8">{{entity.visitResult.visitQuestionResult}}</span>
+					</li>
+				</ul>
+			</div>	
+		</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('.alert').hide();
+</script>

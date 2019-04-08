@@ -1,0 +1,296 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>患者管理</h4>
+<div class="infi-box">
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="infi-box infi-nursing-title-box infi-nursing-search">
+                <h4 class="infi-btn-title infi-inline-block">患者列表</h4>
+                 <span class="infi-right">
+                    <input type="text" class="form-control input-lg"
+                           ng-model="searchWords" placeholder="请输入 患者姓名 或 病历号 进行搜索">
+                    <span class="btn btn-primary" ng-click="updateListType(searchWords)">搜索</span>
+                 </span>
+                <hr />
+            </div>
+            <div class="">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li ng-repeat="tab in tabs" role="presentation" ng-class="{true: 'active' , false:''}[tab.active]">
+                        <a class="cursorPointer" ng-click="switchTab(tab)">{{tab.label}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="marginten">
+                <div ng-if="currentTab.label == '院内管理'">
+                    <ul class="ul-float-left ul-li-3">
+                        <li class="infi-nuring-sreen">
+                            <label >科室:</label>
+                            <select ng-model="screen.hosptial.depart.value" class="form-control infi-input-wd"
+                                    ng-change="hospitalChange(screen.hosptial.depart.value,'hosptial')">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.hosptial.depart.options" value="{{option.label}}">{{option.label}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >病区:</label>
+                            <select ng-model="screen.hosptial.area.value" class="form-control infi-input-wd"
+                            ng-change="updateList(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,screen.hosptial.tableTab.value)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.hosptial.area.options" value="{{option.label}}">{{option.label}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >置管类型:</label>
+                            <select ng-model="screen.hosptial.tubeType.value" class="form-control infi-input-wd"
+                                    ng-change="updateList(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,screen.hosptial.tableTab.value)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.hosptial.tubeType.options" value="{{option.type_name}}">{{option.type_name}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen-lg">
+                            <label >置管时间:</label>
+                            <input type="text" class="form-control infi-screen-time" name="hstartTime"
+                                   ng-model="screen.hosptial.tubeTime.startTime" ng-click="timePlugin('hstartTime')"
+                                   ng-change="updateList(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,screen.hosptial.tableTab.value)">  ~
+                            <input type="text" class="form-control infi-screen-time" name="hendTime" ng-model="screen.hosptial.tubeTime.endTime"
+                                   ng-click="timePlugin('hendTime')"
+                                   ng-change="updateList(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,screen.hosptial.tableTab.value)">
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >风险等级:</label>
+                            <select ng-model="screen.hosptial.riskLevel.value" class="form-control infi-input-wd"
+                                    ng-change="updateList(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,screen.hosptial.tableTab.value)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.hosptial.riskLevel.options" value="{{option.grade_type}}">{{option.grade_type}}</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div class="infi-nursing-div-tab">
+                        <div class="infi-left">
+                            <ul class="infi-nursing-tab">
+                                <li ng-repeat="tab in screen.hosptial.tableTab.options" ng-class="{true: 'active' , false:''}[tab.active]">
+                                    <a ng-bind="tab.label" ng-click="choseTableTab(tab,'hosptial')"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="infi-right">
+                            <button class="btn infi-btn-linear-green-l" ng-click="showAdd()">新增患者</button>
+                        </div>
+                    </div>
+                    <div class="infi-box" style="padding:0;">
+                        <div class="infi-section">
+                            <div>
+                                <table class="table infi-table">
+                                    <thead>
+                                    <tr>
+                                        <th ng-repeat="column in screen.hosptial.columns" ng-bind="column.label"></th>
+                                        <th style="width:120px;">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-if="screen.hosptial.content.success">
+                                    <tr ng-repeat="entity in screen.hosptial.content.result">
+                                        <td>
+                                            <span ng-bind="entity.patient_name"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity['dept-ward']"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.patient_id"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.visit_id"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.tubetype"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.tube_time|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.manage_date|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.plan_manage_date|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.delay_days"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.risk_assessment_time"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.risk_grade"></span>
+                                        </td>
+                                        <td>
+                                            <a href="#/details/{{entity.patient_id}}" target="_blank">查看详情</a>
+                                            <a ng-click="showEdit(entity)">修改</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody ng-if="!screen.hosptial.content.success">
+                                    <tr>
+                                        <td colspan="12">
+                                            <p class="bg-danger" style="line-height: 50px;" ng-bind="screen.hosptial.content.desc"></p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="infi-page">
+                                    <uib-pagination total-items="screen.hosptial.content.totalCount" ng-model="screen.hosptial.content.pageNo" max-size="7"
+                                                    boundary-link-numbers="true" ng-change="updatePage(screen.hosptial.depart.value,screen.hosptial.area.value,screen.hosptial.tubeType.value,screen.hosptial.riskLevel.value,
+                            screen.hosptial.tubeTime.startTime,screen.hosptial.tubeTime.endTime,searchWords,screen.hosptial.tableTab.value,screen.hosptial.content.pageNo)"
+                                                    items-per-page="screen.hosptial.content.pageSize"
+                                                    num-pages="screen.hosptial.content.totalPages"></uib-pagination>
+                                </div>
+                            </div>
+                            <!--<div infi-table data-ng-if="screen.hosptial.content" btn-callback="showDetails(entity,type)"-->
+                                 <!--columns="screen.hosptial.columns" opts="opts" content="screen.hosptial.content">-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="currentTab.label == '院后管理'">
+                    <ul class="ul-float-left ul-li-3">
+                        <li class="infi-nuring-sreen">
+                            <label >科室:</label>
+                            <select ng-model="screen.after.depart.value" class="form-control infi-input-wd"
+                                    ng-change="hospitalChange(screen.after.depart.value,'after')">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.after.depart.options" value="{{option.label}}">{{option.label}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >病区:</label>
+                            <select ng-model="screen.after.area.value" class="form-control infi-input-wd"
+                                    ng-change="updateList(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.after.area.options" value="{{option.label}}">{{option.label}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >置管类型:</label>
+                            <select ng-model="screen.after.tubeType.value" class="form-control infi-input-wd"
+                                    ng-change="updateList(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.after.tubeType.options" value="{{option.type_name}}">{{option.type_name}}</option>
+                            </select>
+                        </li>
+                        <li class="infi-nuring-sreen-lg">
+                            <label >置管时间:</label>
+                            <input type="text" class="form-control infi-screen-time" name="pstartTime" ng-model="screen.after.tubeTime.startTime" ng-click="timePlugin('pstartTime')"
+                                   ng-change="updateList(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime)">  ~
+                            <input type="text" class="form-control infi-screen-time" name="pendTime" ng-model="screen.after.tubeTime.endTime" ng-click="timePlugin('pendTime')"
+                                   ng-change="updateList(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime)">
+                        </li>
+                        <li class="infi-nuring-sreen">
+                            <label >风险等级:</label>
+                            <select ng-model="screen.after.riskLevel.value" class="form-control infi-input-wd"
+                                    ng-change="updateList(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime)">
+                                <option value=""></option>
+                                <option ng-repeat="option in screen.after.riskLevel.options" value="{{option.grade_type}}">{{option.grade_type}}</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div class="infi-nursing-div-tab">
+                        <div class="infi-left">
+                            <ul class="infi-nursing-tab">
+                                <li ng-repeat="tab in screen.after.tableTab.options" ng-class="{true: 'active' , false:''}[tab.active]">
+                                    <a ng-bind="tab.label" ng-click="choseTableTab(tab,'after')"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="infi-right">
+                            <button class="btn infi-btn-linear-green-l" ng-click="showAdd()">新增患者</button>
+                        </div>
+                    </div>
+                    <div class="infi-box" style="padding:0;">
+                        <div class="infi-section">
+                            <div>
+                                <table class="table infi-table">
+                                    <thead>
+                                        <tr>
+                                            <th ng-repeat="column in screen.after.columns" ng-bind="column.label"></th>
+                                            <th style="width:120px;">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-if="screen.after.content.success">
+                                    <tr ng-repeat="entity in screen.after.content.result">
+                                        <td>
+                                            <span ng-bind="entity.patient_name"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity['dept-ward']"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.patient_id"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.visit_id"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.tubetype"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.tube_time|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.manage_date|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.plan_manage_date|date:'yyyy-MM-dd'"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.delay_days"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.risk_assessment_time"></span>
+                                        </td>
+                                        <td>
+                                            <span ng-bind="entity.risk_grade"></span>
+                                        </td>
+                                        <td>
+                                            <a href="#/details/{{entity.patient_id}}">查看详情</a>
+                                            <a ng-click="showEdit(entity)">修改</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody ng-if="!screen.after.content.success">
+                                    <tr>
+                                        <td colspan="12">
+                                            <p class="bg-danger" style="line-height: 50px;" ng-bind="screen.after.content.desc"></p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="infi-page">
+                                    <uib-pagination total-items="screen.after.content.totalCount" ng-model="screen.after.content.pageNo" max-size="7"
+                                                    boundary-link-numbers="true" ng-change="updatePage(screen.after.depart.value,screen.after.area.value,screen.after.tubeType.value,screen.after.riskLevel.value,
+                            screen.after.tubeTime.startTime,screen.after.tubeTime.endTime,searchWords,screen.after.tableTab.value,screen.after.content.pageNo)">
+                                                    items-per-page="screen.after.content.pageSize"
+                                                    num-pages="screen.after.content.totalPages"></uib-pagination>
+                                </div>
+                            </div>
+                            <!--<div infi-table data-ng-if="screen.after.content" btn-callback="showDetails(entity,type)"-->
+                                 <!--columns="screen.after.columns" opts="opts" content="screen.after.content">-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div infi-patient patient="newPatient" add-patient="addPatient(entity)"-->
+                 <!--depart-list="departList" area-list="areaList" change-depart="changeDepart(value)"></div>-->
+            <div infi-patient></div>
+       </div>
+   </div>
+   <div sys-tip></div>
+</div>

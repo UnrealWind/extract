@@ -1,0 +1,71 @@
+<div>
+    <!--取数-导出取数任务弹框-->
+    <div class="modal fade" id="exportBox">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="infi-confirm-export-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="clear()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">请确认您导出的信息</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="infi-confirm-export-body">
+                        <!--<div>-->
+                            <!--<span class="alert-info">(导出病例数量约为1000000份)</span>-->
+                        <!--</div>-->
+                        <!-- 任务名称 -->
+                        <div class="infi-export-body-name">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-name"><span class="text-danger">*</span> 请输入任务名称:</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input id="infi-export-body-name" ng-model="taskName" name="" value="" type="text" class="form-control" placeholder="请输入任务名称" />
+                            </div>
+                        </div>
+
+                        <!-- 研究目的 -->
+                        <div class="infi-export-body-name">
+                            <div class="col-xs-4">
+                                <label for="infi-export-body-purpose"><span class="text-danger">*</span> 请输入研究目的:</label>
+                            </div>
+
+                            <div class="col-xs-8">
+                                <input id="infi-export-body-purpose" ng-model="purpose" type="text" class="form-control" placeholder="请输入研究目的">
+                            </div>
+                        </div>
+
+                        <!-- 任务背景 -->
+                        <div class="infi-export-body-remarks">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-remarks"><span class="text-danger">*</span> 请输入任务背景:</label>
+                            </div>
+                            <div class=" col-xs-8">
+                                <textarea id="infi-export-body-remarks" ng-model="taskRemark" type="text" class="form-control col-xs-8"
+                                          name="" value="" placeholder="请输入任务背景"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- 研究方案 -->
+                        <div class="infi-export-body-remarks">
+                            <div class=" col-xs-4">
+                                <label for="infi-export-body-remarks"><span class="text-danger">*</span> 请输入研究方案:</label>
+                            </div>
+                            <div class=" col-xs-8">
+                                <textarea id="infi-export-body-remarks" ng-model="researchPlan" type="text" class="form-control col-xs-8"
+                                          name="" value="" placeholder="请输入研究方案"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="requireVali" class="alert alert-danger"　style="text-align: center;">请完整填写必要信息！</div>
+                </div>
+                <div class="modal-footer infi-confirm-export-footer">
+                    <button type="button" class="btn infi-btn-linear-default" ng-click="clear()" data-dismiss='modal'>关闭</button>
+                    <button type="button" class="btn infi-btn-linear-green-l" ng-click="confirmExport()" ng-disabled="preventClick" >确认导出</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div sys-tip></div>
+</div>

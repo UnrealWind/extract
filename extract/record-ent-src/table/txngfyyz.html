@@ -1,0 +1,48 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_txngfyyz == true">
+    <div class="infi-record-title">
+        <h4>听性脑干反应阈值</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_txngfyyz_time"
+                   ng-model="entity.table_txngfyyz_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th>
+                    侧别
+                </th>
+                <th>气导阈值（dBnHL）</th>
+                <th>骨导阈值（dBnHL）</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                左
+            </td>
+            <td><input name="entity.table_txngfyyz_ze_qdyz" ng-model="entity.table_txngfyyz_ze_qdyz" class="form-control"/></td>
+            <td><input name="entity.table_txngfyyz_ze_gdyz" ng-model="entity.table_txngfyyz_ze_gdyz" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                右
+            </td>
+            <td><input name="entity.table_txngfyyz_ye_qdyz" ng-model="entity.table_txngfyyz_ye_qdyz" class="form-control"/></td>
+            <td><input name="entity.table_txngfyyz_ye_gdyz" ng-model="entity.table_txngfyyz_ye_gdyz" class="form-control"/></td>
+        </tr>
+        <tr>
+            <td>
+                备注
+            </td>
+            <td colspan="2"><input name="entity.table_txngfyyz_note" ng-model="entity.table_txngfyyz_note" class="form-control"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>听性脑干反应阈值诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_txngfyyz"><input
+                name="entity.name_txngfyyz" type="text" ng-model="entity.name_txngfyyz" class="form-control"/></div>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<div class="infi-record-output" id="zkjc">
+    <div ng-if="outputText.always.tplStatus == 'view'" class="infi-view">
+        <div  class="infi-view-text">
+            <span ng-bind="outputText.always.text">
+        </span>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('always')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('always')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.always.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="5" style="width:96%;" ng-model="outputText.always.text">{{outputText.always.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="viewText('always')">完成</button>
+        </div>
+    </div>
+</div>

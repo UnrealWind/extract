@@ -1,0 +1,33 @@
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>用户管理 -> 机构 ->
+    <span ng-show="viewDetail.type == 'create'&&viewDetail.id">新建子机构</span>
+    <span ng-show="viewDetail.type == 'create'&&!viewDetail.id">新建机构</span>
+    <span ng-show="viewDetail.type == 'view'">查看机构</span>
+    <span ng-show="viewDetail.type == 'change'">修改机构</span>
+</h4>
+<div class="infi-box">
+    <form class="infi-manage" name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>机构名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.data.name" required/>
+                <i class="text-danger">*</i>
+            </div>
+            <div class="col-lg-2"><label>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.data.code" />
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序:</label></div>
+            <div class="col-lg-4 infi-have-tip">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.data.order" ng-change="checkSort()" />
+                <span ng-show="!sortIsNumber" class="infi-error-tip">排序为数字</span>
+            </div>
+        </div>
+        <div ng-show="viewDetail.type != 'view'" class="infi-submit-container">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存" ng-disabled="!form.$valid||!sortIsNumber"
+                   ng-click="saveMechansim()"/>
+        </div>
+    </form>
+</div>
+<div sys-tip></div>

@@ -1,0 +1,71 @@
+
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>数据列表</h4>
+<div class="infi-box">
+    <!--<div class="floatright">-->
+        <!--<a href="#/first-record"><button class="btn infi-btn-linear-green-l btn-sm" ng-click="record_wj_create()">创建产科档案</button></a>-->
+    <!--</div>-->
+    <h4>孕检列表</h4>
+    <div>
+        <ul class="ul-float-left">
+            <li>
+                <label >姓名:</label>
+                <input type="text" class="form-control" placeholder="请输入患姓名" ng-model="IdEntity.patiName">
+            </li>
+            <li>
+                <label >门诊号:</label>
+                <input type="text" class="form-control" placeholder="请输入门诊号" ng-model="IdEntity.patiId">
+            </li>
+            <li>
+                <a class="btn infi-btn-linear-green-l btn-sm" ng-click="searchList()">搜索</a>
+            </li>
+        </ul>
+    </div>
+    <section class="infi-section">
+        <div>
+            <table class="table infi-table">
+                <thead>
+                <tr>
+                    <th ng-repeat="column in listColumns" ng-bind="column.label" ></th>
+                    <th ng-if="opts" ng-bind="opts.label"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="entity in listData.content" ng-click="selectCase(entity)" ng-class="{true:'active'}[entity.active]">
+                    <td>
+                        <span ng-bind="entity.patiId"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.patiName"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.sex"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.birth"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.createDate"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="entity.lastVistDate"></span>
+                    </td>
+                    <td>
+                        <!--查看详情跳转到统一视图页面-->
+                        <!--根据该分病人的标识进行操作-->
+                        <a href="#/time-base">点击查看详情</a>
+                        <!--跳转到创建档案页面-->
+                        <a href="#/first-record">创建档案</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="infi-page">
+                <uib-pagination total-items="listData.totalElements" ng-model="listData.number" max-size="7"
+                                boundary-link-numbers="true" ng-change="updatePage(listData.number)" items-per-page="listData.size"
+                                num-pages="listData.totalPages"></uib-pagination>
+            </div>
+        </div>
+        <div ng-if="queryParams.content.status != 'ok'" ng-bind="queryParams.content.description">
+        </div>
+    </section>
+</div>

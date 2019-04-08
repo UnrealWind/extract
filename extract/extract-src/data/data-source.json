@@ -1,0 +1,11 @@
+{
+  "notes":"标签-源始标签列表表头json",
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"源标签名称",
+      "name":"name"
+    }
+  ]
+}

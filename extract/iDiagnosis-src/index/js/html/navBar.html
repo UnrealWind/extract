@@ -1,0 +1,20 @@
+<div class="navbar-container">
+  <!-- 导航列表 -->
+  <ul class="navbar-list">
+    <li class="navbar-item fl"
+        ng-style="navWidth"
+        ng-if="navData" 
+        ng-repeat="navItem in navData"
+        ng-bind="navItem.label"
+        ng-click="changeStep(2, $index)">
+    </li>
+    <li class="navbar-item fl"
+        ng-style="navWidth"
+        style="cursor: default;">诊断结果</li>
+  </ul>
+
+  <!-- 列表进度背景 -->
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar" ng-style="curWidth"></div>
+  </div>
+</div>

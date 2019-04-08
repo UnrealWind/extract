@@ -1,0 +1,134 @@
+<h4 class="infi-title" style="margin-bottom: 20px;display: inline-block;"><i class="glyphicon glyphicon-globe"></i>事件详情</h4>
+<a class="btn infi-btn-linear-green-l btn-sm infi-title-btn-right" href="#/prediction-list/{{params.patientId}}">返回</a>
+<div class="infi-box">
+    <div class="row">
+        <div class="infi-left-tab col-md-2">
+            <div>
+                <p class="time-adverse">{{showTime}}</p>
+            </div>
+            <nav class="bs-docs-sidebar">
+                <div>
+                    <ul class="nav bs-docs-sidenav">
+                        <li class="green" ng-repeat="entity in navi"  ng-class="{'orange':'orange','green':'green','red':'red','yellow':'yellow'}[entity.status]">
+                            <a ng-click="switchNavi(entity)">
+                                {{entity.eventName}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="infi-box col-md-10">
+            <div class="">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li ng-repeat="tab in tabs" role="presentation" ng-class="{true: 'active' , false:''}[tab.active]">
+                        <a class="cursorPointer" ng-click="switchTab(tab)">{{tab.label}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="currentTab.name == 'basis'">
+                <div class="infi-adverse-title-box">
+                    <h4>{{currentNaviName}}</h4>
+                    <hr />
+                </div>
+                <div>
+                    <table class="table infi-table-person" >
+                        <thead>
+                        <tr class="active">
+                            <th>患者信息</th>
+                            <th>预测理由</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="title">基本信息</p>
+                                    <ul class="infi-adverse-prediction-basic">
+                                        <li>
+                                            <label>病案号:</label><p class="overflow-ellipsis" style="max-width: 160px; margin-bottom: -5px;" title="{{patientBasic.patiId}}">{{patientBasic.patiId}}</p>
+                                        </li>
+                                        <li>
+                                            <label>患者姓名:</label><p>{{patientBasic.patiName}}</p>
+                                        </li>
+                                        <li>
+                                            <label>年龄:</label><p>{{patientBasic.age}}</p>
+                                        </li>
+                                        <li>
+                                            <label>性别:</label><p>{{patientBasic.sex}}</p>
+                                        </li>
+                                        <li>
+                                            <label>科室:</label><p>{{patientBasic.dept}}</p>
+                                        </li>
+                                        <li>
+                                            <label>病区:</label><p>{{patientBasic.ward}}</p>
+                                        </li>
+                                        <li>
+                                            <label>床号:</label><p>{{patientBasic.bedNo}}</p>
+                                        </li>
+                                        <li>
+                                            <label>入院时间:</label><p>{{patientBasic.admissionTime}}</p>
+                                        </li>
+                                        <li>
+                                            <label>入院次数:</label><p>{{patientBasic.visitNo}}</p>
+                                        </li>
+                                        <li>
+                                            <label>临床诊断:</label><p>{{patientBasic.diagnosis}}</p>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <table class="prediction-list" border="1" cellpadding="0" cellspacing="1" bordercolor="#aeaeae">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center result">项目</th>
+                                            <th class="text-center result">结果</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="data in dataSort1">
+                                            <th class="text-center"> {{ data.label }}</th>
+                                            <th class="text-center">{{ data.value }}</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <tfooter ng-if="lock == false" class="tfooter" ng-click="addMoreData()">查看更多</tfooter>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div ng-if="currentTab.name == 'danger'">
+                <div class="infi-adverse-title-box">
+                    <h4>相关危险因素处理</h4>
+                    <hr />
+                </div>
+                <div ng-repeat="data in currentTab.data" class="infi-adverse-factors">
+                    <span>{{data.textName}}</span>
+                    <p>{{data.textContent}}</p>
+                </div>
+            </div>
+            <div ng-if="currentTab.name == 'adverse'">
+                <div class="infi-adverse-title-box">
+                    <h4>不良事件相关文献</h4>
+                    <hr />
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="active">
+                            <th>文献名称</th>
+                            <th>详细信息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entity in currentTab.data">
+                            <td>{{entity.label}}</td>
+                            <td><a href="javascript:;" ng-click="viewPdf(entity)">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

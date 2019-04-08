@@ -1,0 +1,50 @@
+<!--数据检索-搜索以及搜索详情-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>数据检索 -> 搜索</h4>
+<div style="margin-bottom: 10px;">
+    <input type="text" class="form-control infi-inline-block" style="width:500px;" ng-model="keyword" placeholder="请输入搜索字段" />
+    <input type="button" class="btn btn-primary" style="" value="搜索" ng-click="search(SYS.DEFAULT_PAGE_NUMBER)" />
+</div>
+<div class="infi-box">
+    <h4>共<span ng-bind="recordNum"></span>份相关病历</h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container" ng-show="(recordPage.status == SYS.STATUS_SUCCESS&&recordPage.data.length>1)&&!searchLoad">
+            <div ng-repeat="list in recordPage.data" ng-show="!$first" style=" border-bottom: 1px solid #e7e7e7;padding:5px;">
+                <a class="infi-case-title" ng-click="goToDetail(list)">主诉:<span ng-bind="list.complaintInfo"></span></a>
+                <div class="row">
+                    <div class="col-md-2 infi-case-img" ng-class="{true:'infi-case-img-woman',false:'infi-case-img-man'}[list.sexName=='女']"></div>
+                    <div class="col-md-10 infi-case-content">
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding:0px;">性别:</div>
+                            <div class="col-md-2" ng-bind="list.sexName"></div>
+                            <div class="col-md-2 text-right">年龄:</div>
+                            <div class="col-md-2" ng-bind="list.age"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding:0px;">诊断:</div>
+                            <div class="col-md-10">
+                                <i class="glyphicon infi-show-reason" title="{{list.iTitle}}"  ng-show="list.optType" ng-click="optShow(list)"
+                                   ng-class="{'close':'glyphicon-chevron-down','open':'glyphicon-chevron-up'}[list.optType]"></i>
+                                <div ng-show="!list.optType||list.optType == 'open'" ng-bind-html="list.diagnoseInfo"></div>
+                                <div ng-show="list.optType == 'close'" ng-bind-html="list.$diagnoseInfo"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding:0px;">搜索理由:</div>
+                            <div class="col-md-10 infi-retrieval-reason">
+                                <div ng-show="!list.optType||list.optType == 'open'" ng-bind-html="list.highlightField"></div>
+                                <div ng-show="list.optType == 'close'" ng-bind-html="list.$highlightField"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infi-page">
+                <uib-pagination total-items="recordPage.data[0].total" ng-model="recordPage.data[0].pageNumber" max-size="3"
+                    boundary-link-numbers="true" ng-change="search(recordPage.data[0].pageNumber)" items-per-page="recordPage.data[0].pageSize">
+                </uib-pagination>
+            </div>
+        </div>
+        <div ng-show="(recordPage.status != SYS.STATUS_SUCCESS||recordPage.data.length<=1)&&!searchLoad" class="text-danger infi-big-size">未查询到数据</div>
+        <div ng-show="searchLoad" class="text-danger infi-big-size">正在查询...</div>
+    </div>
+</div>

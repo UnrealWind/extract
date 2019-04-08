@@ -1,0 +1,55 @@
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe63b;</i>药品信息
+    </div>
+    <div class="infi-wj-part">
+        <table class="infi-wj-table infi-drug-table">
+            <thead>
+            <tr>
+
+                <th>
+                    <p>药品名称</p>
+                </th>
+                <th>
+                    <p>规格</p>
+                </th>
+                <th>
+                    <p>频次</p>
+                </th>
+                <th>
+                    <p>单位</p>
+                </th>
+                <th>
+                    <p>数量</p>
+                </th>
+                <th>
+                    <p>时间</p>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="opt in outpatientDrug">
+                <td>
+                    <p>{{opt.drug_name|changeNULL}}</p>
+                </td>
+                <td>
+                    <p>{{opt.drug_spec|changeNULL}}</p>
+                </td>
+                <td>
+                    <p>{{opt.freq|changeNULL}}</p>
+                </td>
+                <td>
+                    <p>{{opt.package_units|changeNULL}}</p>
+                </td>
+                <td>
+                    <p>{{opt.quantity|changeNULL}}</p>
+                </td>
+                <td>
+                    <p>{{opt.presc_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                </td>
+            </tr>
+            <tr ng-if="outpatientDrug.length == 0"><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="modal fade"  id="dischargeRecord" >
+    <div class="modal-dialog infi-modal-half-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                出院记录
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>出院时间:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="dischargeTime" type="text" ng-model="basicInfo.dischargeTime" ng-click="timePlugin('dischargeTime')"
+                               class="form-control" maxlength="20"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>出院带管:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="self-num-radio">
+                            <input name="tube" type="radio" ng-model="basicInfo.hasTube" value="是"
+                                   class="form-control" />是
+                        </label>
+                        <label class="self-num-radio">
+                            <input name="tube" type="radio" ng-model="basicInfo.hasTube" value="否"
+                                   class="form-control" />否
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer infi-confirm-export-footer">
+                <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal'>取消</button>
+                <button type="button" class="btn infi-btn-linear-green-l" ng-click="saveDischarge()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

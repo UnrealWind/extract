@@ -1,0 +1,94 @@
+[
+  [
+    {
+      "label": "高危评分",
+      "name": "daily.highRiskScore",
+      "type": "checkboxOther",
+      "options": [
+        {
+          "label": "无",
+          "value": ""
+        },{
+          "label": "不良产科史",
+          "value": ""
+        },
+        {
+          "label": "妊娠期糖尿病",
+          "value": ""
+        },
+        {
+          "label": "妊娠期高血压疾病",
+          "value": ""
+        },
+        {
+          "label": "瘢痕子宫",
+          "value": ""
+        },
+        {
+          "label": "妊娠期胆汁淤积综合征",
+          "value": ""
+        },
+        {
+          "label": "臀位",
+          "value": ""
+        },
+        {
+          "label": "妊娠合并甲状腺疾病",
+          "value": ""
+        },
+        {
+          "label": "妊娠合并内科疾病",
+          "value": ""
+        },
+        {
+          "label": "妊娠合并外科疾病",
+          "value": ""
+        },
+        {
+          "label": "多胎妊娠",
+          "value": ""
+        },
+        {
+          "label": "软产道异常",
+          "value": ""
+        },
+        {
+          "label": "羊水过少",
+          "value": ""
+        },
+        {
+          "label": "羊水过多",
+          "value": ""
+        },
+        {
+          "label": "先找流产",
+          "value": ""
+        },
+        {
+          "label": "前置胎盘",
+          "value": ""
+        },
+        {
+          "label": "胎盘早剥",
+          "value": ""
+        },
+        {
+          "label": "过期妊娠",
+          "value": ""
+        },
+        {
+          "label": "年龄大于35岁",
+          "value": ""
+        },
+        {
+          "label": "年龄小于18岁",
+          "value": ""
+        },
+        {
+          "label": "骨盆异常",
+          "value": ""
+        }
+      ]
+    }
+  ]
+]

@@ -1,0 +1,301 @@
+  <div class="">
+  <div class="infi-title">
+    <h3 ng-bind="workSpaceInfo.data.name"></h3>
+  </div>
+
+  <div class="secs-wrapper">
+    <!-- 既往疾病史 ... -->
+    <!-- 当前激活项 -->
+    <section  class="sec-container"
+              ng-repeat="sec in workSpaceInfo.data.data"
+              ng-if="sec.active">
+      <h4 class="sec-title text-primary"
+          ng-bind="sec.name"></h4>
+
+      <div ng-repeat="secChild in sec.childs" class="sec-content-wrapper">
+        <!-- 搜索框 -->
+        <input type="text"
+               ng-if="sec.hasSearch == true"
+               ng-model="secChild.searchAbout.kw"
+               ng-change="searchFilter(sec.kid, secChild.searchAbout.kw, secChild)"
+               class="form-control sec-search"
+               placeholder="按拼音首字母或汉字搜索">
+
+        <!-- 小文本类型 -->
+        <div ng-if="secChild.type == 'smallText'">
+          <ul class="clearfix">
+            <li class="sec-child-label pull-left"
+                ng-bind="secChild.name + ':'"></li>
+
+            <li class="sec-child-input pull-left">
+              <input class="form-control"
+                     type="text"
+                     ng-model="secChild.value">
+            </li>
+
+            <li class="sec-child-unit pull-left">
+              <!-- unit length > 1 -->
+              <div ng-if="secChild.units && secChild.units.length > 0">
+                  <select ng-model="secChild.unitValue"
+                          class="form-control">
+                    <option value="">&#45;&#45;</option>
+                    <option ng-repeat="opt in secChild.units" value="{{opt.name}}">{{opt.name}}</option>
+                  </select>
+              </div>
+
+              <!-- unit length = 1 -->
+              <div ng-if="secChild.unit">
+                <span ng-bind="secChild.unit"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 多选类型 -->
+        <div ng-if="secChild.type == 'checkbox' && workSpaceInfo.data.name == '现病史'"
+             class="sec-child-checkbox-wrapper">
+          <!-- 多选 -->
+          <init-checked-array sec-child="secChild"></init-checked-array>
+
+          <!-- 输入了关键词 -->
+          <div ng-if="secChild.searchAbout.kw">
+            <div class="inline-block" ng-if="secChild.searchAbout.rst.length > 0" ng-repeat="rstItem in secChild.searchAbout.rst">
+              <input ng-change="showChild(rstItem)" type="checkbox" ng-model="rstItem.something"
+                     toggle-checkbox  mark="{{rstItem.name}}"
+                     sec-child="secChild"
+                     values="secChild.values"
+                     check="rstItem"
+                     ng-checked="secChild.values.indexOf(rstItem.kid) >= 0">
+              <label style="margin-left: 0;" ng-click="showChild(rstItem,'showOnly')" class="sec-child-checkbox normalFont">
+                {{rstItem.name}}
+              </label>
+            </div>
+
+            <div ng-if="!secChild.searchAbout.rst">
+              搜索中...
+            </div>
+
+            <div ng-if="secChild.searchAbout.rst && secChild.searchAbout.rst.length == 0">
+              未搜索到相关结果！
+            </div>
+          </div>
+
+          <!-- 关键词为空 -->
+          <div class="inline-block" ng-repeat="checked in secChild.searchAbout.checkedRst" ng-if="!secChild.searchAbout.kw && !findObjectByKey(secChild.options, 'kid', checked.kid).isIn">
+            <input ng-change="showChild(checked)"  type="checkbox" ng-model="checked.something"
+                   toggle-checkbox  mark="{{checked.name}}"
+                   sec-child="secChild"
+                   values="secChild.values"
+                   check="checked"
+                   ng-checked="secChild.values.indexOf(checked.kid) >= 0">
+            <label style="margin-left: 0;" ng-click="showChild(checked,'showOnly')"
+                   class="sec-child-checkbox normalFont">
+              {{checked.name}}
+            </label>
+          </div>
+
+          <div class="inline-block" ng-repeat="check in secChild.options" ng-if="!secChild.searchAbout.kw">
+
+            <input ng-change="showChild(check)" type="checkbox" ng-model="check.something"
+                   toggle-checkbox   mark="{{check.name}}"
+                   sec-child="secChild"
+                   values="secChild.values"
+                   check="check"
+                   ng-checked="secChild.values.indexOf(check.kid) >= 0">
+            <label style="margin-left: 0;" ng-click="showChild(check,'showOnly')" class="sec-child-checkbox normalFont">
+              {{check.name}}
+            </label>
+
+          </div>
+
+        </div>
+
+        <div ng-if="secChild.type == 'checkbox' && workSpaceInfo.data.name != '现病史'"
+             class="sec-child-checkbox-wrapper">
+          <!-- 多选 -->
+          <init-checked-array sec-child="secChild"></init-checked-array>
+
+          <!-- 输入了关键词 -->
+          <div ng-if="secChild.searchAbout.kw">
+            <div ng-if="secChild.searchAbout.rst.length > 0">
+              <label  ng-repeat="rstItem in secChild.searchAbout.rst"
+                      class="sec-child-checkbox normalFont">
+
+                <input  ng-change="showChild(rstItem)" type="checkbox" ng-model="checked.something"
+                        toggle-checkbox
+                        sec-child="secChild"
+                        values="secChild.values"
+                        check="rstItem"
+                        ng-checked="secChild.values.indexOf(rstItem.kid) >= 0"> {{rstItem.name}}
+              </label>
+            </div>
+
+            <div ng-if="!secChild.searchAbout.rst">
+              搜索中...
+            </div>
+
+            <div ng-if="secChild.searchAbout.rst && secChild.searchAbout.rst.length == 0">
+              未搜索到相关结果！
+            </div>
+          </div>
+
+          <!-- 关键词为空 -->
+          <div ng-if="!secChild.searchAbout.kw">
+            <label  ng-repeat="checked in secChild.searchAbout.checkedRst"
+                    class="sec-child-checkbox normalFont"
+                    ng-if="!findObjectByKey(secChild.options, 'kid', checked.kid).isIn">
+
+              <input type="checkbox" ng-model="checked.something"
+                     toggle-checkbox
+                     sec-child="secChild"
+                     values="secChild.values"
+                     check="checked"
+                     ng-checked="secChild.values.indexOf(checked.kid) >= 0"> {{checked.name}}
+            </label>
+
+
+            <label  ng-repeat="check in secChild.options"
+                    class="sec-child-checkbox normalFont">
+
+              <input ng-change="showChild(check)"  type="checkbox" ng-model="checked.something"
+                     toggle-checkbox
+                     sec-child="secChild"
+                     values="secChild.values"
+                     check="check"
+                     ng-checked="secChild.values.indexOf(check.kid) >= 0"> {{check.name}}
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- 当前未激活项 -->
+    <section class="sec-container"
+              ng-repeat="sec in workSpaceInfo.data.data"
+              ng-if="!sec.active && workSpaceInfo.mark!='drugState'">
+      <h4 class="sec-title"
+          ng-bind="sec.name"></h4>
+
+      <div ng-repeat="secChild in sec.childs" class="sec-content-wrapper">
+        <!-- 搜索框 -->
+        <input type="text"
+               ng-if="sec.hasSearch == true"
+               ng-model="secChild.searchAbout.kw"
+               ng-change="searchFilter(sec.kid, secChild.searchAbout.kw, secChild)"
+               class="form-control sec-search"
+               placeholder="按拼音首字母或汉字搜索">
+        <!-- 小文本类型 -->
+        <div ng-if="secChild.type == 'smallText'">
+          <ul class="clearfix">
+            <li class="sec-child-label pull-left"
+                ng-bind="secChild.name + '：'"></li>
+
+            <li class="sec-child-input pull-left">
+              <input class="form-control"
+                     type="text"
+                     ng-model="secChild.value">
+            </li>
+
+            <li class="sec-child-unit pull-left">
+              <!-- unit length > 1 -->
+              <div ng-if="secChild.units && secChild.units.length > 0">
+                <select ng-model="secChild.unitValue"
+                        class="form-control">
+                  <option value="">&#45;&#45;</option>
+                  <option ng-repeat="opt in secChild.units" value="{{opt.name}}">{{opt.name}}</option>
+                </select>
+            </div>
+
+            <!-- unit length = 1 -->
+            <div ng-if="secChild.unit">
+              <span ng-bind="secChild.unit"></span>
+            </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 多选类型 -->
+        <div ng-if="secChild.type == 'checkbox' "
+             class="sec-child-checkbox-wrapper">
+          <!-- 多选 -->
+          <init-checked-array sec-child="secChild"></init-checked-array>
+
+          <!-- 输入了关键词 -->
+          <div ng-if="secChild.searchAbout.kw">
+            <div ng-if="secChild.searchAbout.rst.length > 0">
+              <label  ng-repeat="rstItem in secChild.searchAbout.rst"
+                      class="sec-child-checkbox normalFont">
+
+                <input  type="checkbox"
+                        toggle-checkbox
+                        sec-child="secChild"
+                        values="secChild.values"
+                        check="rstItem"
+                        ng-checked="secChild.values.indexOf(rstItem.kid) >= 0"> {{rstItem.name}}
+              </label>
+            </div>
+
+            <div ng-if="!secChild.searchAbout.rst">
+              搜索中...
+            </div>
+
+            <div ng-if="secChild.searchAbout.rst && secChild.searchAbout.rst.length == 0">
+              未搜索到相关结果！
+            </div>
+          </div>
+
+          <!-- 关键词为空 -->
+          <div ng-if="!secChild.searchAbout.kw">
+            <label  ng-repeat="checked in secChild.searchAbout.checkedRst"
+                    class="sec-child-checkbox normalFont"
+                    ng-if="!findObjectByKey(secChild.options, 'kid', checked.kid).isIn">
+
+              <input  type="checkbox"
+                      toggle-checkbox
+                      sec-child="secChild"
+                      values="secChild.values"
+                      check="checked"
+                      ng-checked="secChild.values.indexOf(checked.kid) >= 0"> {{checked.name}}
+              </label>
+
+
+              <label  ng-repeat="check in secChild.options"
+                      class="sec-child-checkbox normalFont">
+
+                <input  type="checkbox"
+                        toggle-checkbox
+                        sec-child="secChild"
+                        values="secChild.values"
+                        check="check"
+                        ng-checked="secChild.values.indexOf(check.kid) >= 0"> {{check.name}}
+              </label>
+            </div>
+          </div>
+
+      </div>
+    </section>
+  </div>
+    <div class="deepQuesChild" ng-if="targetQuestion && targetQuestion.childs.length>0 && workSpaceInfo.data.name == '现病史'">
+      <label>{{targetQuestion.name}}：</label>
+      <div ng-repeat="opt in targetQuestion.childs">
+        <div ng-if="opt.type == 'radio'">
+          &nbsp;&nbsp;<label>{{opt.name}}：</label>
+          <label ng-repeat="options in opt.options" class="radio-inline">
+            <input  ng-change="choseParent()" ng-model="opt.value" type="radio"  value="{{options.name}}"> {{options.name}}
+          </label>
+        </div>
+        <div class="basic-question-list " ng-if="opt.type == 'smallText'">
+          &nbsp;&nbsp;<label>{{opt.name}}：</label>
+          <div class="form-inline form-group inline-block">
+            <input  ng-change="choseParent()" type="text" class="form-control" ng-model="opt.value"  placeholder="">
+            <select  ng-change="choseParent()" ng-model="opt.unitValue" class="form-control">
+              <option value="">--</option>
+              <option ng-repeat="unit in opt.units" value="{{unit.name}}">{{unit.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

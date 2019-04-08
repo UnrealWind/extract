@@ -1,0 +1,24 @@
+<div class="modal fade" id="collectionDetail">
+    <!--取数-条件选取页面已收藏的筛选条件详情-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <div class="infi-confirm-export-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">筛选条件详情</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h5>筛选名称:<span ng-bind="colletionDetail.name"></span></h5>
+                <div class="node-parent node-outside" style="border:1px solid #ccc;min-height:300px;max-height:500px;overflow:auto;padding-bottom:100px;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn infi-btn-linear-green-l" ng-click="optCollectList(colletionDetail,'delete')">删除</button>
+                <!--<button class="btn infi-btn-linear-green-l" ng-click="optCollectList('change',colletionDetail.id)">修改</button>-->
+                <button class="btn infi-btn-linear-green-l" ng-click="optCollectList(colletionDetail,'apply')">应用</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

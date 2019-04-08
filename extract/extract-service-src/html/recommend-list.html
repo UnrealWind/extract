@@ -1,0 +1,19 @@
+<div style="min-width: 866px;overflow-x: auto;">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>推荐任务列表</h4>
+    <div class="infi-box">
+        <h4>任务列表</h4>
+        <div style="position: absolute;right:30px;top:15px;">
+            <a href="#/select-rule"><button class="btn infi-btn-linear-green-l">创建推荐任务</button></a>
+        </div>
+        <div class="infi-box-containter">
+            <div class="dir-nav-container">
+                <div class="tab-content">
+                    <div infi-table columns="columns" content="content" opts="opts" update-page="changePage(page)"
+                         btn-callback="pageOperation(entity,type)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div delete-tip url="'pushTask/delete/'" delete-id="deleteId" init="init()"></div>
+    <div sys-tip></div>
+</div>

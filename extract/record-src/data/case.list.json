@@ -1,0 +1,15 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":[
+    {
+      "patiId":"1008",
+      "patiName":"张三",
+      "patiVisitId":"8",
+      "firstRegisterDate":"2016-6-9",
+      "gestationalWeeks":"12",
+      "educationClass":"临产前",
+      "EDC":"2017-5-7"
+    }
+  ]
+}

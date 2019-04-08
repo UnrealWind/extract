@@ -1,0 +1,40 @@
+<div class="evaluateSidebar-component">
+  <link rel="stylesheet" href="./evaluateSidebar.scss">
+  <div class="panel panel-default sidebar-container">
+    <div class="btn-group btn-group-justified btn-list" role="group">
+      <div class="btn-group cursor sidebar-tab-item-wrapper" role="group"
+            ng-click="$ctrl.sidebarAbout.switchFrom(0)">
+        <a type="button" 
+            class="btn btn-default sidebar-tab-item"
+            ng-class="{true: 'active'}[0 === $ctrl.sidebarAbout.currActiveInd]">患者病情</a>
+      </div>
+      <div class="btn-group cursor sidebar-tab-item-wrapper" role="group"
+            ng-click="$ctrl.sidebarAbout.switchFrom(1)">
+        <a type="button" 
+            class="btn btn-default sidebar-tab-item"
+            ng-class="{true: 'active'}[1 === $ctrl.sidebarAbout.currActiveInd]">智能推荐</a>
+      </div>
+    </div>
+
+
+    <div class="panel-body sidebar-wrapper">
+      <!-- 住院次数 -->
+      <div class="row">
+        <div class="col-md-12">
+          <strong ng-bind="$ctrl.lastYearInTime.name + ':'"></strong><span ng-bind="$ctrl.lastYearInTime.value"></span>
+        </div>
+      </div>
+      <!-- 评估结果们 -->
+      <div class="row form-result-wrapper">
+        <div class="col-md-12">
+          <ul>
+            <li ng-repeat="rst in $ctrl.evaluateRst track by $index">
+              <strong ng-bind="rst.name + ':'"></strong> <span ng-bind="rst.resultLevel"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

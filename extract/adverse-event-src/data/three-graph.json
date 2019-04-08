@@ -1,0 +1,330 @@
+{
+  "success":true,
+  "regionData":{
+  "calculable" : false,
+  "tooltip" : {
+    "trigger": "item",
+    "formatter": "<div style='box-shadow: 3px 3px 3px #888888;'><div style='font-size:15px;border:1px solid #ddd;border-radius:3px 3px 0 0;background-color:#f2f2f2;padding:5px;'>{b}</div><div style='border-left:1px solid #ddd;border-right:1px solid #ddd;background-color:#fff;padding:5px 5px 0 10px;'>病例数: {c}</div><div style='border:1px solid #ddd;border-top:none;background-color:#fff;padding:5px 5px 0px 10px;border-radius:0 0 3px 3px;'>所占比例：{d}%</div></div>",
+    "backgroundColor":"rgba(0,0,0,0)",
+    "textStyle":{ "color":"#787878" }
+  },
+  "series" : [
+    {
+      "type":"pie",
+      "radius" : ["37", "49%"],
+      "itemStyle" : {
+        "normal" : {
+          "label" : {
+            "show" : false
+          },
+          "labelLine" : {
+            "show" : false
+          }
+        },
+        "emphasis" : {
+          "label" : {
+            "show" : false,
+            "position" : "inner",
+            "textStyle" : {
+              "fontSize" : "30",
+              "fontWeight" : "bold"
+            }
+          }
+        }
+      },
+      "data": [
+        {
+          "name": "全部不良事件",
+          "value": 1193,
+          "itemStyle": {
+            "normal": {
+              "color":"#ffa40c"
+            }
+          }
+        }
+
+      ]
+    },
+    {
+
+      "type":"pie",
+      "radius" : ["50%", "70%"],
+      "itemStyle" : {
+        "normal" : {
+          "label" : {
+            "show" : false
+          },
+          "labelLine" : {
+            "show" : false
+          }
+        },
+        "emphasis" : {
+          "label" : {
+            "show" : false,
+            "position" : "center",
+            "textStyle" : {
+              "fontSize" : "30",
+              "fontWeight" : "bold"
+            }
+          }
+        }
+      },
+      "data": [
+
+        {
+          "name": "医务人员安全",
+          "value": 34
+        }
+      ,
+        {
+          "name": "医技质量",
+          "value": 31
+        }
+      ,
+        {
+          "name": "医疗质量",
+          "value": 324
+        }
+      ,
+        {
+          "name": "后勤安全",
+          "value": 40
+        }
+      ,
+        {
+          "name": "患者安全",
+          "value": 62
+        }
+      ,
+        {
+          "name": "护理质量",
+          "value": 489
+        }
+      ,
+        {
+          "name": "药物事件",
+          "value": 95
+        }
+      ,
+        {
+          "name": "转运服务类",
+          "value": 10
+        }
+      ]
+    },
+    {
+
+      "type":"pie",
+      "radius" : ["71%", "90%"],
+      "itemStyle" : {
+        "normal" : {
+          "label" : {
+            "show" : false
+          },
+          "labelLine" : {
+            "show": false
+          }
+        },
+        "emphasis" : {
+          "label" : {
+            "show" : false,
+            "position" : "center",
+            "textStyle" : {
+              "fontSize" : "30",
+              "fontWeight" : "bold"
+            }
+          }
+        }
+      },
+      "data": [
+
+        {
+          "name": "公共设施事件",
+          "value": 33
+        }
+      ,
+        {
+          "name": "其他事件",
+          "value": 110
+        }
+      ,
+        {
+          "name": "其它事件",
+          "value": 3
+        }
+      ,
+        {
+          "name": "内窥镜事件",
+          "value": 2
+        }
+      ,
+        {
+          "name": "刺伤事件",
+          "value": 24
+        }
+      ,
+        {
+          "name": "医用耗材",
+          "value": 8
+        }
+      ,
+        {
+          "name": "医疗器械事件",
+          "value": 5
+        }
+      ,
+        {
+          "name": "医疗沟通事件",
+          "value": 7
+        }
+      ,
+        {
+          "name": "医疗设备事件",
+          "value": 10
+        }
+      ,
+        {
+          "name": "压疮事件",
+          "value": 223
+        }
+      ,
+        {
+          "name": "坠床事件",
+          "value": 7
+        }
+      ,
+        {
+          "name": "干扰事件",
+          "value": 1
+        }
+      ,
+        {
+          "name": "急救处置事件",
+          "value": 21
+        }
+      ,
+        {
+          "name": "患者不满事件",
+          "value": 2
+        }
+      ,
+        {
+          "name": "患者识别事件",
+          "value": 3
+        }
+      ,
+        {
+          "name": "手术事件",
+          "value": 160
+        }
+      ,
+        {
+          "name": "接触传染源",
+          "value": 2
+        }
+      ,
+        {
+          "name": "放射技术诊查事件",
+          "value": 3
+        }
+      ,
+        {
+          "name": "晕倒事件",
+          "value": 14
+        }
+      ,
+        {
+          "name": "标本",
+          "value": 8
+        }
+      ,
+        {
+          "name": "检验事件",
+          "value": 1
+        }
+      ,
+        {
+          "name": "注射事件",
+          "value": 28
+        }
+      ,
+        {
+          "name": "烧烫伤事件",
+          "value": 7
+        }
+      ,
+        {
+          "name": "病情评估",
+          "value": 10
+        }
+      ,
+        {
+          "name": "皮肤破溃",
+          "value": 176
+        }
+      ,
+        {
+          "name": "私自离院",
+          "value": 4
+        }
+      ,
+        {
+          "name": "管路事件",
+          "value": 12
+        }
+      ,
+        {
+          "name": "自伤自残事件",
+          "value": 8
+        }
+      ,
+        {
+          "name": "药物过敏",
+          "value": 84
+        }
+      ,
+        {
+          "name": "营养膳食",
+          "value": 2
+        }
+      ,
+        {
+          "name": "被伤害事件",
+          "value": 4
+        }
+      ,
+        {
+          "name": "诊断治疗事件",
+          "value": 51
+        }
+      ,
+        {
+          "name": "跌倒事件",
+          "value": 31
+        }
+      ,
+        {
+          "name": "转运",
+          "value": 2
+        }
+      ,
+        {
+          "name": "输血事件",
+          "value": 15
+        }
+      ,
+        {
+          "name": "院内感染相关事件",
+          "value": 1
+        }
+      ,
+        {
+          "name": "麻醉事件",
+          "value": 3
+        }
+
+      ]
+    }
+  ]
+}
+}

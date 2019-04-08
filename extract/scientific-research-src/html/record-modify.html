@@ -1,0 +1,33 @@
+<h4 class="infi-title">
+    <i class="glyphicon glyphicon-globe"></i>
+    修改记录
+    <span ng-click="goToRecordInput()" class="btn btn-primary f-r" style="line-height: 20px;">返回</span>
+</h4>
+<div class="infi-box">
+    <div ng-repeat="record in modifyRecord" class="row" style="border-bottom: 1px solid #ccc; margin: 0;padding: 10px 0;">
+        <div class="row" ng-repeat="item in record.crfRecordLogInfos" ng-if="item.type == 'update' || item.type == 'delete'"style="margin:20px 0 0;">
+            <p>修改模块:{{item.category}}</p>
+            <p ng-if="item.type == 'update'">
+                <span>修改内容：</span>
+                <span>{{item.name}}:&nbsp;</span>
+                <span>{{item.beforeValue}}&nbsp;&nbsp;</span>
+
+                <span>修改为</span>
+                <span>{{item.name}}:&nbsp;&nbsp;</span>
+                <span>{{item.afterValue}}</span>
+            </p>
+            <p ng-if="item.type == 'delete'">
+                <span>删除内容：</span>
+                <span>{{item.name}}</span>
+            </p>
+            <p>
+                <span>修改原因：</span>
+                <span>{{item.cause}}</span>
+            </p>
+        </div>
+        <div class="row"  style="margin:0; padding-left: 30px; font-weight: bold">
+            <span>修改人：</span><span>{{record.updator}}</span>&nbsp;&nbsp;&nbsp;
+            <span>修改时间：</span><span>{{record.updateTime}}</span>
+        </div>
+    </div>
+</div>

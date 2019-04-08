@@ -1,0 +1,149 @@
+<div>
+    <div class="infi-ele-phone-header">
+        <h3 style="display: inline-block;">
+            <span class="glyphicon glyphicon-globe"></span>
+            健康画像</h3>
+        <a href="http://jkda.whhealth.gov.cn/#/?zjhm={{params.identityId}}">健康档案
+            <span class="glyphicon glyphicon-paperclip"></span>
+        </a>
+    </div>
+</div>
+<div style="width:100%;height:30em;" class="border-bottom">
+    <div style="width:60%;height:100%;margin:0 auto;" >
+        <div style="height:100%;width:100%;" id="chart1"></div>
+    </div>
+</div>
+
+<div>
+    <div class="infi-ele-phone-header">
+        <h3><span class="glyphicon glyphicon-globe"></span>
+            异常项目</h3>
+    </div>
+    <span class="infi-ele-phone-title">检查</span>
+    <div ng-if="exceptionProject.status!='fail'" class="infi-ele-table border-bottom">
+        <div class="row" ng-repeat="exam in exceptionProject.data.examInfo" ng-click="queryClass(exam,'exam','mobile')">
+            <div class="col-xs-7"><a style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inherit;">{{exam.examClassName}}</a></div>
+            <div class="col-xs-5"><span>{{exam.keyName}}</span></div>
+        </div>
+    </div>
+    <div ng-if="exceptionProject.status=='fail'" class="infi-ele-danger">{{exceptionProject.data}}
+    </div>
+    <span class="infi-ele-phone-title">检验</span>
+    <div ng-if="exceptionProject.status!='fail'" class="infi-ele-table border-bottom">
+        <div class="row" ng-repeat="test in exceptionProject.data.testInfo" ng-click="queryClass(test,'test','mobile')">
+            <div class="col-xs-7"><a style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inherit;">{{test.keyName}}</a></div>
+            <div class="col-xs-5"><span>{{test.msg}}</span></div>
+        </div>
+    </div>
+    <div ng-if="exceptionProject.status=='fail'" class="infi-ele-danger">{{exceptionProject.data}}
+    </div>
+</div>
+
+
+<div>
+    <div class="infi-ele-phone-header">
+        <h3><span class="glyphicon glyphicon-globe"></span>
+            疾病预测</h3>
+    </div>
+    <div class="infi-ele-diagnosis-content" ng-if="diagnosis.status != 'fail'">
+        <div ng-repeat="entity in diagnosis.data" class="row border-bottom">
+            <h5 style="display: inline-block;" class="">
+                {{$index+1}}、{{entity.diagnoseResult}}&nbsp;&nbsp;
+
+            </h5>
+            <div class="progress" style="display: inline-block;width:30%;">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-class="{true:'progress-bar-info',false:'progress-bar-warning'}[entity.degree<=60]"
+                     style="min-width: 2em; width: {{entity.similarDegree}};">
+                    {{entity.similarDegree}}
+                </div>
+            </div>
+            <p >诊断理由：{{entity.msg}}</p>
+        </div>
+    </div>
+    <div class="infi-ele-danger" ng-if="diagnosis.status == 'fail'">{{diagnosis.data}}
+    </div>
+</div>
+
+<div class="">
+    <div class="infi-ele-phone-header">
+        <h3><span class="glyphicon glyphicon-globe"></span>
+            健康建议</h3>
+    </div>
+    <div class="marginten">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" ng-repeat="tab in tabs" ng-class="{true:'active'}[tab.active]">
+                <a role="tab" data-toggle="tab" ng-click="switchTab(tab)">{{tab.label}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="marginten">
+        <!-- 膳食建议 -->
+        <div ng-if="currentTab == 'dietaryAdvice' && tabs[0].data!=null" class="infi-dietaryAdvice">
+            <div ng-repeat="entity in tabs[0].data" class="border-bottom">
+                <h5>{{entity.dietType}}</h5>
+                <div>{{entity.dietIntroduce}}</div>
+            </div>
+        </div>
+        <div ng-if="currentTab == 'dietaryAdvice' && tabs[0].data==null && tabs[0].status!='fail'" class="alert alert-info margin">
+            暂无数据……
+        </div>
+        <div ng-if="currentTab == 'dietaryAdvice' && tabs[0].status=='fail'" class="alert alert-info margin">
+            {{tabs[0].data}}
+        </div>
+        <!-- 运动建议 -->
+        <div ng-if="currentTab == 'sportAdvice'" class="infi-sportAdvice">
+            <div ng-repeat="entity in tabs[1].data">
+                {{entity.motionName}}
+            </div>
+        </div>
+        <div ng-if="currentTab == 'sportAdvice' && tabs[1].data==null && tabs[0].status!='fail'" class="alert alert-info margin">
+            暂无数据……
+        </div>
+        <div ng-if="currentTab == 'sportAdvice' && tabs[0].status=='fail'" class="alert alert-info margin">
+            {{tabs[0].data}}
+        </div>
+        <!-- 就医建议 -->
+        <div ng-if="currentTab == 'medicalAdvice' && tabs[0].status!='fail'" class="infi-medicalAdvice">
+
+            <table class="table">
+                <thead>
+                    <tr class="active">
+                        <th style="min-width:12rem;">就诊科室</th>
+                        <th>就诊理由</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entity in tabs[2].data">
+                        <td>
+                            {{entity.deptName}}
+                        </td>
+                        <td>{{entity.msg}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--<div class="row infi-head">
+                <div class="col-md-4">
+                    <h5>就诊科室</h5>
+                </div>
+                <div class="col-md-8">
+                    <h5>就诊理由</h5>
+                </div>
+            </div>
+            <div class="row infi-content" ng-repeat="entity in tabs[2].data">
+                <div class="col-md-4">
+                    <span>{{entity.deptName}}</span>
+                </div>
+                <div class="col-md-8">
+                    <span>{{entity.msg}}</span>
+                </div>
+            </div>-->
+        </div>
+        <div ng-if="currentTab == 'medicalAdvice' && tabs[2].data==null && tabs[0].status!='fail'" class="alert alert-info margin">
+            暂无建议……
+        </div>
+        <div ng-if="currentTab == 'medicalAdvice' && tabs[0].status=='fail'" class="alert alert-info margin">
+            {{tabs[0].data}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div>
+    <div ng-repeat="case in caseInfo" class="infi-wj-case-content" ng-if="case.active">
+        <p class="infi-wj-case-content-p" ng-bind="case.content"></p>
+    </div>
+    <div class="infi-wj-case-nav">
+        <ul>
+            <li ng-repeat="case in caseInfo" style="padding: 10px;">
+                <a ng-class="{true:'infi-wj-rt-nav'}[case.active]">
+                    <span style="cursor: pointer" ng-click="selectCaseType(case)" ng-bind="case.title"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

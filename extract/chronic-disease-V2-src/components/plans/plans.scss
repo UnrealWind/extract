@@ -1,0 +1,103 @@
+@import '../../scss/mixin.scss';
+
+// variable define
+$border-color: #eee;
+$main-opt-color: #007fff;
+$main-opt-color-hover: #0876e4;
+
+// reset bootstrap
+.reset-panel-heading {
+  background-color: #fff !important;
+}
+
+.debeat-margin {
+  margin-left: 0!important;
+}
+
+.plans-component {
+  .single-component {
+    @include box-shadow;
+
+    .panel-title {
+      @include display-flex;
+      @include align-item-center;
+      @include justify-content-space-between;
+      .toggle-icon {
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  
+    .plan-sec {
+      .sec-title {
+        margin-bottom: .10rem;
+        border-bottom: .01rem solid #efefef;
+
+        .title-txt {
+          font-size: 14px;
+          color: #777777;
+          
+          .title-txt-icon {
+            display: inline-block;
+            margin-right: 3px;
+            font-size: 16px;
+            vertical-align: top;
+          }
+        }
+      }
+
+      .sec-title.followUp-title {
+        @include display-flex;
+        @include align-item-center;
+        @include justify-content-space-between;
+      }
+  
+      .sec-item {
+        margin-top: -.10rem;
+      }
+
+      .plan-null-warning {
+        padding: 5px 0;
+      }
+  
+      // 新建随访按钮
+      .create-follwUp {
+        text-align: center;
+        line-height: 2;
+        border: 1px solid $main-opt-color;
+        border-radius: 3px;
+        color: $main-opt-color;
+        cursor: pointer;
+        transition: all .2s;
+  
+        &:hover {
+          background-color: $main-opt-color;
+          color: #fff;
+        }
+  
+        .debate-magin-left {
+          margin-left: -40px;
+        }
+      }
+    }
+  }
+
+  // 模态框相关
+  .modal {
+    .modal-body {
+      .control-label {
+        line-height: inherit;
+      }
+
+      .createFollowUpForm {
+        .form-group {
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

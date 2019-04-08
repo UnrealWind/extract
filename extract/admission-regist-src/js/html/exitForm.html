@@ -1,0 +1,61 @@
+<div class="row clear-margin">
+  <div ng-repeat="(ind, val) in exitDataCopy">
+      <div class="col-md-6 form-item" ng-if="val.type != 'list'">
+        <!-- plain -->
+        <form class="form-inline" ng-if="val.type == 'plain'">
+          <div class="form-group item-wrap clearfix">
+            <label class="text-right pull-left item-label" ng-bind="val.label + ':'"></label>
+            <div class="pull-left">
+              <span ng-bind="exitData[val.value]" class="label-txt"></span>
+            </div>
+          </div>
+        </form> 
+
+        <!-- input　类型 -->
+        <form class="form-inline" ng-if="val.type == 'text'">
+          <div class="form-group item-wrap clearfix">
+            <label class="text-right pull-left item-label" ng-bind="val.label + ':'"></label>
+            <div class="pull-left">
+              <input type="text" class="form-control" placeholder="{{val.placeholder}}" ng-model="exitData[val.value]">
+            </div>
+          </div>
+        </form>
+
+        <!-- datetime -->
+        <form class="form-inline" ng-if="val.type == 'datetime'">
+          <div class="form-group item-wrap clearfix">
+            <label for="{{val.id}}" class="text-right pull-left item-label" ng-bind="val.label + ':'"></label>
+            
+            <div id="{{val.id}}" class="input-group">
+              <input size="16" type="text" readonly class="form-control" ng-model="exitData[val.value]">
+              <!-- <div class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </div> -->
+            </div>
+          </div>
+        </form>
+      </div>
+
+      
+
+
+      <div ng-if="val.type == 'list'" class="col-md-12 clear-padding">
+          <div class="col-md-6 form-item" ng-repeat="(ind, val) in exitData[val.value] track by $index"  ng-class="{1: 'hide'}[val.deleted]">
+            <div class="form-group item-wrap clearfix" title="{{val.title}}">
+              <label for="{{val.value + $index}}" class="text-right pull-left item-label" ng-bind="'出院诊断' + ':'"></label>
+              <div class="pull-left diag-wrap">
+                <input type="text" class="form-control" id="{{val.value + $index}}" placeholder="请输入出院诊断" ng-model="val.diagnosisDesc">
+                <i class="glyphicon glyphicon-minus deletNewDiag" title="删除" ng-click="deleNewDiag($index)"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <!-- 添加诊断 -->
+            <div class="add-diag" ng-click="addNewOutDiag()">
+              <i class="glyphicon glyphicon-plus"></i> <span>添加出院诊断</span>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

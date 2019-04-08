@@ -1,0 +1,16 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data":{
+    "patiId":"001",
+    "patiName":"张三",
+    "age":"20",
+    "sex":"男",
+    "dept":"心内科",
+    "ward":"第四科室",
+    "bedNo":"01",
+    "admissionTime":"2017-09-06",
+    "visitNo":"1",
+    "diagnosis":"那时的几十分觉得十分sadasdsdsfsdaf"
+  }
+}

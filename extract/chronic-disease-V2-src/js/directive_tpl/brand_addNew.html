@@ -1,0 +1,110 @@
+<div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">该患者没有在系统中存在, 请完善以下信息: </div>
+    <div class="panel-body">
+      <form novalidate
+            name="brandNewPatiForm"
+            id="brand-new-pati-form"
+            class="form-horizontal brandNewPatiForm">
+        <!-- 姓名 -->
+        <div class="form-group">
+          <label for="new-pati-name" class="col-sm-3 text-right">姓名：</label>
+          <div class="col-sm-9"
+               ng-class="{'has-error' : brandNewPatiForm.patiName.$dirty && brandNewPatiForm.patiName.$error.required}">
+            <input type="text"
+                    ng-model="createInfo['name']"
+                    ng-model-options="{debounce: 250}"
+                    class="form-control" 
+                    id="new-pati-name" 
+                    name="patiName"
+                    placeholder="请输入姓名"
+                    required>
+            <span class="help-block"
+                  ng-show="brandNewPatiForm.patiName.$dirty && brandNewPatiForm.patiName.$error.required">此项为必填</span>
+          </div>
+        </div>
+
+        <!-- 身份证号 -->
+        <div class="form-group">
+          <label for="idCard-num" class="col-sm-3 text-right">身份证号：</label>
+          <!-- <div class="col-sm-9"
+                ng-class="{'has-error' : brandNewPatiForm.idCardNum.$dirty && (brandNewPatiForm.idCardNum.$error.required || brandNewPatiForm.idCardNum.$error.idcardnum)}"> -->
+          <div class="col-sm-9">
+            <!-- <input type="text"
+                    ng-model="createInfo['idCard']"
+                    ng-model-options="{debounce: 250}"
+                    class="form-control" 
+                    id="idCard-num" 
+                    name="idCardNum"
+                    placeholder="请输入身份证号"
+                    idcardnum
+                    required> -->
+            <input type="text"
+                    ng-model="createInfo['idCard']"
+                    ng-model-options="{debounce: 250}"
+                    class="form-control" 
+                    id="idCard-num" 
+                    name="idCardNum"
+                    placeholder="请输入身份证号">
+            <span ng-click="createInfo['idCard'] = 130165198745121415"
+                  ng-if="$root.ENV == 'dev'"
+                  class="cursor"
+                  style="position: absolute; top: 8px; right: 30px;">填入测试号码</span>
+            <!-- <span class="help-block"
+                  ng-show="brandNewPatiForm.idCardNum.$dirty && brandNewPatiForm.idCardNum.$error.required">此项为必填</span>
+            <span class="help-block"
+                  ng-show="brandNewPatiForm.idCardNum.$dirty && brandNewPatiForm.idCardNum.$error.idcardnum">身份证号不合法</span> -->
+          </div>
+        </div>
+
+        <!-- 性别 -->
+        <div class="form-group">
+          <label class="col-sm-3 text-right">性别：</label>
+          <div class="col-sm-9">
+            <label class="radio-inline revise-radio-lab line-height-inherit">
+              <input type="radio"
+                      name="genderRad"
+                      value="男"
+                      ng-model="createInfo['sex']"
+                      required>男
+            </label>
+
+            <label class="radio-inline revise-radio-lab line-height-inherit">
+              <input type="radio"
+                      name="genderRad"
+                      value="女"
+                      ng-model="createInfo['sex']"
+                      required>女
+            </label>
+            
+            <span ng-class="{'has-error' : brandNewPatiForm.genderRad.$dirty && brandNewPatiForm.genderRad.$error.required}">
+              <span class="help-block"
+                    ng-show="brandNewPatiForm.genderRad.$dirty && brandNewPatiForm.genderRad.$error.required">请选择性别</span>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <form novalidate
+        name="groupForm"
+        class="form-horizontal">
+    <label class="col-sm-2 control-label revise-radio-lab">护理组:</label>
+    <div class="radio" style="padding-top: 0;">
+      <label class="radio-inline revise-radio-lab" 
+             ng-repeat="(ind, val) in groupOrgData">
+        <input type="radio"
+               style="margin-top: 11px;" 
+               name="groupRad"
+               value="{{val.id}}"
+               ng-model="createInfo.groupId"
+               ng-change="changeGroup(val)"
+               required> {{val.name}}
+      </label>
+
+      <span class="help-block"
+            ng-show="brandNewPatiForm.groupRad.$dirty && brandNewPatiForm.groupRad.$error.required">请选择护理组</span>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,77 @@
+<div class="infi-wj-right-nav-box">
+    <div class="infi-wj-right-nav-title">
+        <h5>门诊信息</h5>
+    </div>
+    <!--<p style="margin: 0;" class="alert alert-danger" ng-if="timelineDatas.status != 'ok'||navListDoor.length<=0">暂无数据</p>-->
+    <div ng-if="timelineDatas.status == 'ok'&&timelineDatas.data.length>0">
+        <ul ng-repeat="year in navListDoor">
+            <li style="background: #eeeff1;cursor:pointer;" ng-click = showList(year)>
+                <div class="row">
+                    <span ng-bind="year.label"></span>
+                    <span ng-show="year.active!=true" class="glyphicon glyphicon-chevron-down"></span>
+                    <span ng-show="year.active==true" class="glyphicon glyphicon-chevron-up"></span>
+                </div>
+            </li>
+            <li ng-repeat="data in year.events" ng-show="year.active" style="text-align: left;padding-left: 20px;">
+                <div class="row" style="padding:3px 0;">
+                    <div style="display: inline-block;" ng-class="{true:'infi-btn-linear-green-l'}[queryParams.xlMedicalId == data.xlMedicalId]">
+                        <a href="#/overview/outpatient/{{data.xlPatientId}}/{{data.xlMedicalId}}/{{queryParams.patientId}}" ng-if="showArchives">
+                            <span ng-bind="data.time|date:'yyyy-MM-dd'"></span>
+                            <span ng-bind="data.title|replacePrefix"></span>
+                        </a>
+                        <a href="#/301/overview/outpatient/{{data.xlPatientId}}/{{data.xlMedicalId}}/{{queryParams.patientId}}" ng-if="!showArchives">
+                            <span ng-bind="data.time|date:'yyyy-MM-dd'"></span>
+                            <span ng-bind="data.title|replacePrefix"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="infi-wj-right-nav-title">
+        <h5>住院信息</h5>
+    </div>
+    <!--<p style="margin: 0;" class="alert alert-danger" ng-if="timelineDatas.status != 'ok'||navListDoor.length<=0">暂无数据</p>-->
+    <div ng-if="timelineDatas.status == 'ok'&&timelineDatas.data.length>0">
+        <ul ng-repeat="year in navList">
+            <li style="background: #eeeff1; cursor:pointer;" ng-click = showList(year)>
+                <span ng-bind="year.label"></span>
+                <span ng-show="year.active!=true" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="year.active==true" class="glyphicon glyphicon-chevron-up"></span>
+            </li>
+            <li ng-repeat="data in year.events" ng-show="data.type=='tijain'&&year.active" style="text-align: left;padding-left: 20px;">
+                <div class="row" style="padding:3px 0;">
+                    <div style="display: inline-block;" ng-class="{true:'infi-btn-linear-green-l'}[queryParams.xlMedicalId == data.xlMedicalId]">
+
+                        <a href="#/overview/inhospital/{{data.xlPatientId}}/{{data.xlMedicalId}}/{{queryParams.patientId}}" ng-if="showArchives">
+                            <span ng-bind="data.time|date:'yyyy-MM-dd'"></span>
+                            <span ng-bind="data.title|replacePrefix"></span>
+                        </a>
+                        <a href="#/301/overview/inhospital/{{data.xlPatientId}}/{{data.xlMedicalId}}/{{queryParams.patientId}}" ng-if="!showArchives">
+                            <span ng-bind="data.time|date:'yyyy-MM-dd'"></span>
+                            <span ng-bind="data.title|replacePrefix"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="infi-wj-right-nav-title" ng-if="showArchives">
+        <h5>专科信息</h5>
+    </div>
+    <p style="margin: 0;" class="alert alert-danger" ng-if="(archivesWrap.status != 'ok'||archivesWrap.data.result.length<0) && showArchives">暂无数据</p>
+    <div ng-if="archivesWrap.status == 'ok' && showArchives">
+        <ul>
+            <li ng-repeat="archive in archives" ng-show="archives.length>0" style="text-align: left;padding-left: 20px;">
+                <div class="row" style="padding: 3px 0;">
+                    <div style="display: inline-block;" ng-class="{true:'infi-btn-linear-green-l'}[queryParams.xlMedicalId == archive.xl_medical_id]">
+                        <a href="#/overview/obstetrics/{{queryParams.xlPatientId}}/{{archive.xl_medical_id}}/{{queryParams.patientId}}">
+                            <span ng-bind="archive.first_register_date|date:'yyyy-MM-dd'"></span>
+                            产科档案
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

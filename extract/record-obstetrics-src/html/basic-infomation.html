@@ -1,0 +1,51 @@
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="glyphicon glyphicon-info-sign"></i> ID号：{{caseList.patiId}}
+    </div>
+    <div class="infi-wj-part">
+        <table class="infi-wj-table" style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td class="self-wj-label">
+                    <p>患者姓名：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.patiName"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>EDC：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.edc"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>NO：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.no"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="self-wj-label">
+                    <p>首次登记日期：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.firstRegisterDate"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>孕周：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.gestationalWeeks"></p>
+                </td>
+                <td class="self-wj-label">
+                    <p>宣教课：</p>
+                </td>
+                <td>
+                    <p ng-bind="caseList.educationClass|unescape"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="infi-ele-form">
+    <div class="chart">
+        <div>
+            <h4>健康画像</h4>
+        </div>
+        <div style="width:80%;height:90%;margin:0 auto;">
+            <div id="chart1" style="width:100%;height:100%;z-index:10;"></div>
+        </div>
+    </div>
+    <div class="infi-ele-form-content">
+        <div class="infi-ele-top-form">
+            <div class="infi-ele-left-form">
+                <h4>异常项目</h4>
+                <div>
+                    <span class="infi-ele-left-form-span">检查</span>
+                    <div ng-if="exceptionProject.data.examInfo.length>0">
+                        <div class="row" ng-repeat="exam in exceptionProject.data.examInfo" ng-click="queryClass(exam,'exam')">
+                            <div class="col-md-5"><a>{{exam.examClassName}}</a>:</div>
+                            <div class="col-md-5"><span>{{exam.keyName}}</span></div>
+                        </div>
+                    </div>
+                    <div ng-if="(exceptionProject.data.examInfo==null || exceptionProject.data.examInfo.length==0) && exceptionProject.status!='fail'" class="infi-ele-abnormal">
+                        无异常
+                    </div>
+                    <div ng-if="exceptionProject.status=='fail'" class="infi-ele-danger">
+                        {{exceptionProject.data}}
+                    </div>
+                </div>
+                <div>
+                    <span class="infi-ele-left-form-span">检验</span>
+                    <div ng-if="exceptionProject.data.testInfo.length>0">
+                        <div class="row" ng-repeat="test in exceptionProject.data.testInfo" ng-click="queryClass(test,'test')">
+                            <div class="col-md-7"><a>{{test.keyName}}</a></div>
+                            <div class="col-md-4"><span>{{test.msg}}</span></div>
+                        </div>
+                    </div>
+                    <div ng-if="(exceptionProject.data.testInfo==null || exceptionProject.data.testInfo.length==0) && exceptionProject.status!='fail'" class="infi-ele-abnormal">
+                        无异常
+                    </div>
+                    <div ng-if="exceptionProject.status=='fail'" class="infi-ele-danger">
+                        {{exceptionProject.data}}
+                    </div>
+                </div>
+            </div>
+            <div class="infi-ele-right-form" ng-if="abnormalInterpretation.status!='fail'">
+                <h4>异常解读</h4>
+                <div class="infi-content" ng-if="abnormalInterpretation!=null && itemType == 'exam'">
+                    <div class="infi-content-title">
+                        <h5>{{abnormalInterpretation.className}}</h5>
+                        <span>{{abnormalInterpretation.examTime}}</span>
+                    </div>
+                    <hr />
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-1"><h5>检查描述</h5>:</div>-->
+                        <!--<div class="col-md-4">-->
+                            <!--<span>{{abnormalInterpretation.examDesc}}</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-1"><h5>检查印象</h5>:</div>-->
+                        <!--<div class="col-md-4">-->
+                            <!--<span>{{abnormalInterpretation.result}}</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <h5>检查描述</h5>
+                    <div ng-if="abnormalInterpretation.examDesc">{{abnormalInterpretation.examDesc}}</div>
+                    <div ng-if="!abnormalInterpretation.examDesc" class="infi-ele-danger">暂无数据</div>
+                    <h5>检查印象</h5>
+                    <div ng-if="abnormalInterpretation.result">{{abnormalInterpretation.result}}</div>
+                    <div ng-if="!abnormalInterpretation.result" class="infi-ele-abnormal">无异常</div>
+                    <h5>临床意义</h5>
+                    <div ng-if="abnormalInterpretation.expan" class="infi-ele-paragraph">{{abnormalInterpretation.expan}}</div>
+                    <div ng-if="!abnormalInterpretation.expan" class="infi-ele-abnormal">无异常</div>
+                </div>
+                <div class="infi-content" ng-if="abnormalInterpretation!=null && itemType == 'test'">
+                    <div class="infi-content-title">
+                        <h5>{{abnormalInterpretation.className}}</h5>
+                    </div>
+                    <hr />
+                    <table class="table infi-table">
+                        <thead>
+                            <tr>
+                                <th>检验时间</th>
+                                <th>检验结果</th>
+                                <th>下限</th>
+                                <th>上限</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{abnormalInterpretation.testTime}}</td>
+                                <td>{{abnormalInterpretation.result}}</td>
+                                <td>{{abnormalInterpretation.valueMin}}</td>
+                                <td>{{abnormalInterpretation.valueMax}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5>临床意义</h5>
+                    <div ng-if="abnormalInterpretation.expan" class="infi-ele-paragraph">{{abnormalInterpretation.expan}}</div>
+                    <div ng-if="!abnormalInterpretation.expan" class="infi-ele-abnormal">无异常</div>
+                </div>
+                <div ng-if="abnormalInterpretation==null" class="infi-ele-abnormal">
+                    无异常
+                </div>
+            </div>
+            <div class="infi-ele-right-form" ng-if="abnormalInterpretation.status == 'fail'">
+                <h4>异常解读</h4>
+                <div class="infi-ele-danger">{{abnormalInterpretation.data}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div style="height:900px;width:400px;" id="chart1"></div>-->
+

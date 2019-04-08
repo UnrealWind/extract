@@ -1,0 +1,25 @@
+<div class="modal fade"  id="addCatheter" >
+    <div class="modal-dialog infi-model-tube">
+        <div class="modal-content">
+            <div class="modal-header">
+                请选择置管类型
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 infi-align">
+                        <a class="btn btn-default" ng-click="tubeTartget('PICC')">PICC</a>
+                    </div>
+                    <div class="col-md-6 infi-align">
+                        <button class="btn btn-default" ng-disabled="true">PORT</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer infi-confirm-export-footer">
+                <button type="button" class="btn infi-btn-linear-default" data-dismiss='modal'>取消</button>
+                <!--<button type="button" class="btn infi-btn-linear-green-l" ng-click="addPatient()">确认</button>-->
+            </div>
+        </div>
+    </div>
+</div>

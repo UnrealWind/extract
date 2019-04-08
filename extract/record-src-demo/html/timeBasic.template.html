@@ -1,0 +1,103 @@
+
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe615;</i>基本信息
+        <div >
+            <p style="display: inline-block;">
+                病历号：{{timeBaseInfo[0].pati_id|changeNULL}}
+            </p>
+        </div>
+    </div>
+    <div class="infi-wj-part infi-menzhen-basic"  ng-if="!timeBaseInfo ">
+        <div class="alert alert-info">数据加载中……</div>
+    </div>
+    <div class="infi-wj-part infi-menzhen-basic"  ng-if="timeBaseInfo && timeBaseInfo.length>0">
+        <div class="row">
+            <div class="col-md-3" >
+                <p>
+                    姓名：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    性别：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].sex_name|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    出生日期：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].date_of_birth|changeNULL|date:'yyyy-MM-dd'}}
+                </p>
+            </div>
+
+            <div class="col-md-3">
+                <p>
+                    婚姻状态：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].marr_status_name|changeNULL}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" >
+                <p>
+                    联系方式：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].phone_number_home|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    联系人：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].next_of_kin|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    通信地址：
+                </p>
+                <p style="display: inline-block;" title="{{timeBaseInfo[0].mailing_address|changeNULL}}">
+                    {{timeBaseInfo[0].mailing_address|changeNULL}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p title="与患者关系" style="min-width: 96px;">
+                    与患者关系：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].relationship|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-3" >
+                <p>
+                    创建时间：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].create_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p title="最近访问时间"  style="min-width: 115px; text-align: left">
+                    最近访问时间：
+                </p>
+                <p style="display: inline-block;">
+                    {{timeBaseInfo[0].last_visit_date|changeNULL|date:'yyyy-MM-dd HH:mm:ss'}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,457 @@
+<div class="modal fade bs-example-modal-lg plan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">心绞痛治疗方案介绍</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="tabs-left col-xs-2">
+                    <ul>
+                        <li ng-click="changeLeftTab(plan)" ng-repeat="plan in wholeInfo.illData.total_recom.recom" ng-class="{true:'active'}[workSpaceInfo.planId == plan.id]">综合治疗方案{{$index+1}}</li>
+                        <li ng-click="changeLeftTab(wholeInfo.illData.total_recom.absolute_contraindication)"  ng-class="{true:'active'}[workSpaceInfo.planId == wholeInfo.illData.total_recom.absolute_contraindication.id]">绝对禁忌方案</li>
+                        <li ng-click="changeLeftTab(wholeInfo.illData.total_recom.relative_contraindication)"  ng-class="{true:'active'}[workSpaceInfo.planId == wholeInfo.illData.total_recom.relative_contraindication.id]">相对禁忌方案</li>
+                    </ul>
+                    <ul ng-repeat="plans in wholeInfo.illData.single_recom">
+                        <li ng-click="changeLeftTab(plan)" ng-repeat="plan in plans.recom" ng-class="{true:'active'}[workSpaceInfo.planId == plan.id]">{{plans.label}}方案{{$index+1}}</li>
+                        <li ng-click="changeLeftTab(plans.absolute_contraindication)"  ng-class="{true:'active'}[workSpaceInfo.planId == plans.absolute_contraindication.id]">{{plans.label}}绝对禁忌方案</li>
+                        <li ng-click="changeLeftTab(plans.relative_contraindication)"  ng-class="{true:'active'}[workSpaceInfo.planId == plans.relative_contraindication.id]">{{plans.label}}相对禁忌方案</li>
+                    </ul>
+                </div>
+                <div class="tabs-right col-xs-10">
+                    <ul>
+                        <li ng-click="choseTab('方案说明')" ng-class="{true:'active'}[tagTab=='方案说明']">方案说明</li>
+                        <li ng-click="choseTab('治疗目标')" ng-class="{true:'active'}[tagTab=='治疗目标']">治疗目标</li>
+                        <li ng-click="choseTab('参考指南')" ng-class="{true:'active'}[tagTab=='参考指南']">参考指南</li>
+                        <li ng-click="choseTab('疾病相关文献')" ng-class="{true:'active'}[tagTab=='疾病相关文献']">疾病相关文献</li>
+                        <li ng-click="choseTab('药品不良反应文献')" ng-class="{true:'active'}[tagTab=='药品不良反应文献']">药品不良反应文献</li>
+                    </ul>
+                </div>
+                <div class="main col-xs-10 row">
+                    <div class="main-in-tab col-xs-3">
+                        <ul>
+                            <li ng-if="workSpaceInfo.planId == plan.id && wholeInfo.illData && wholeInfo.illData.total_recom" ng-repeat="plan in wholeInfo.illData.total_recom.recom" class="has-pop">
+                                <div class="pop pop-plan">
+                                    <h6 class="plan-h6">治疗方案</h6>
+                                    <ul ng-if="plan.recom_scheme && plan.recom_scheme.length>0">
+                                        <li  ng-repeat="opt in plan.recom_scheme">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7 ng-click="scroll(opt,'用药方案')">{{opt.label}}</h7>
+                                            <p>
+                                                {{opt.recom_name}}
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!plan.recom_scheme || plan.recom_scheme.length==0">-</p>
+                                    <h6 class="plan-h6">药品推荐</h6>
+                                    <ul ng-if="plan.scheme_drug && plan.scheme_drug.length>0">
+                                        <li  ng-repeat="opt in plan.scheme_drug">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                            <p ng-repeat="drug in opt.scheme">
+                                                <span class="label-medical">{{drug.name}}</span>  {{drug.doseage}}，{{drug.admission}}，{{drug.freq}}
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!plan.scheme_drug || plan.scheme_drug.length==0">-</p>
+                                    <h6 class="plan-h6">手术</h6>
+                                    <ul ng-if="plan.scheme_operation && plan.scheme_operation.length>0">
+                                        <li ng-repeat="opt in plan.scheme_operation">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!plan.scheme_operation || plan.scheme_operation.length==0">-</p>
+                                    <h6 class="plan-h6">处置</h6>
+                                    <ul ng-if="plan.scheme_disposition && plan.scheme_disposition.length>0">
+                                        <li ng-repeat="opt in plan.scheme_disposition">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!plan.scheme_disposition || plan.scheme_disposition.length==0">-</p>
+                                </div>
+                            </li>
+                            <li ng-if="workSpaceInfo.planId == wholeInfo.illData.total_recom.absolute_contraindication.id" class="has-pop">
+                                <div ng-if="wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition.length>0 || wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation.length>0 || wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug.length>0" class="pop pop-plan">
+                                    <h6 class="plan-h6">药品</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug && wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug.length>0">
+                                        <li  ng-repeat="opt in wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.drug_main_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug || wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug.length==0">-</p>
+                                    <h6 class="plan-h6">手术</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation && wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation.length>0">
+                                        <li ng-repeat="opt in wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation || wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation.length==0">-</p>
+                                    <h6 class="plan-h6">处置</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition && wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition.length>0">
+                                        <li ng-repeat="opt in wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition || wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition.length==0">-</p>
+                                </div>
+
+                                <div ng-if="wholeInfo.illData.total_recom.absolute_contraindication.scheme_disposition.length==0 && wholeInfo.illData.total_recom.absolute_contraindication.scheme_operation.length==0 && wholeInfo.illData.total_recom.absolute_contraindication.scheme_drug.length==0" class="pop pop-plan">
+                                    <p>无禁忌</p>
+                                </div>
+                            </li>
+                            <li ng-if="workSpaceInfo.planId == wholeInfo.illData.total_recom.relative_contraindication.id" class="has-pop">
+                                <div ng-if="wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition.length>0 || wholeInfo.illData.total_recom.relative_contraindication.scheme_operation.length>0 || wholeInfo.illData.total_recom.relative_contraindication.scheme_drug.length>0" class="pop pop-plan">
+                                    <h6 class="plan-h6">药品</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.relative_contraindication.scheme_drug && wholeInfo.illData.total_recom.relative_contraindication.scheme_drug.length>0">
+                                        <li  ng-repeat="opt in wholeInfo.illData.total_recom.relative_contraindication.scheme_drug">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.drug_main_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.relative_contraindication.scheme_drug || wholeInfo.illData.total_recom.relative_contraindication.scheme_drug.length==0">-</p>
+                                    <h6 class="plan-h6">手术</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.relative_contraindication.scheme_operation && wholeInfo.illData.total_recom.relative_contraindication.scheme_operation.length>0">
+                                        <li ng-repeat="opt in wholeInfo.illData.total_recom.relative_contraindication.scheme_operation">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.relative_contraindication.scheme_operation || wholeInfo.illData.total_recom.relative_contraindication.scheme_operation.length==0">-</p>
+                                    <h6 class="plan-h6">处置</h6>
+                                    <ul ng-if="wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition && wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition.length>0">
+                                        <li ng-repeat="opt in wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                            <h7>{{opt.recom_name}}</h7>
+                                        </li>
+                                    </ul>
+                                    <p ng-if="!wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition || wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition.length==0">-</p>
+                                </div>
+
+                                <div ng-if="wholeInfo.illData.total_recom.relative_contraindication.scheme_disposition.length==0 && wholeInfo.illData.total_recom.relative_contraindication.scheme_operation.length==0 && wholeInfo.illData.total_recom.relative_contraindication.scheme_drug.length==0" class="pop pop-plan">
+                                    <p>无禁忌</p>
+                                </div>
+                            </li>
+
+                            <li ng-if="wholeInfo.illData && wholeInfo.illData.single_recom && wholeInfo.illData.single_recom.length>0" ng-repeat="plans in wholeInfo.illData.single_recom">
+                                <ul>
+                                    <li ng-if="plan.id == workSpaceInfo.planId " ng-repeat="plan in plans.recom" class="has-pop">
+                                        <div class="pop pop-plan">
+                                            <h6 class="plan-h6">{{plans.label}}</h6>
+                                            <ul ng-if="plan.recom_scheme && plan.recom_scheme.length>0">
+                                                <li ng-repeat="opt in plan.recom_scheme">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                    <h7>{{opt.label}}</h7>
+                                                    <p>
+                                                        {{opt.recom_name}}
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                            <p ng-if="!plan.recom_scheme || plan.recom_scheme.length == 0">-</p>
+                                            <h7>药品推荐</h7>
+                                            <ul ng-if="plan.scheme_drug && plan.scheme_drug.length>0">
+                                                <li  ng-repeat="opt in plan.scheme_drug">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                    <h7>{{opt.recom_name}}</h7>
+                                                    <p ng-repeat="drug in opt.scheme">
+                                                        <span class="label-medical">{{drug.name}}</span>  {{drug.doseage}}，{{drug.admission}}，{{drug.freq}}
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                            <p ng-if="!plan.scheme_drug || plan.scheme_drug.length == 0">-</p>
+                                        </div>
+                                    </li>
+
+                                    <li ng-if="plans.absolute_contraindication.id == workSpaceInfo.planId">
+                                        <h5>绝对禁忌方案</h5>
+                                        <ul>
+                                            <li class="has-pop">
+
+                                                <div ng-if="plans.absolute_contraindication.scheme_drug.length>0 || plans.absolute_contraindication.scheme_operation.length>0 || plans.absolute_contraindication.scheme_disposition.length>0" class="pop pop-plan">
+                                                    <h6 class="plan-h6">药品</h6>
+                                                    <ul ng-if="plans.absolute_contraindication.scheme_drug && plans.absolute_contraindication.scheme_drug.length>0">
+                                                        <li ng-repeat="opt in plans.absolute_contraindication.scheme_drug">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.drug_main_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.absolute_contraindication.scheme_drug || plans.absolute_contraindication.scheme_drug.length==0">-</p>
+                                                    <h6 class="plan-h6">手术</h6>
+                                                    <ul ng-if="plans.absolute_contraindication.scheme_operation && plans.absolute_contraindication.scheme_operation.length>0">
+                                                        <li ng-repeat="opt in plans.absolute_contraindication.scheme_operation">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.recom_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.absolute_contraindication.scheme_operation || plans.absolute_contraindication.scheme_operation.length==0">-</p>
+                                                    <h6 class="plan-h6">处置</h6>
+                                                    <ul ng-if="plans.absolute_contraindication.scheme_disposition && plans.absolute_contraindication.scheme_disposition.length>0">
+                                                        <li ng-repeat="opt in plans.absolute_contraindication.scheme_disposition">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.recom_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.absolute_contraindication.scheme_operation || plans.absolute_contraindication.scheme_operation.length==0">-</p>
+                                                </div>
+
+                                                <div ng-if="plans.absolute_contraindication.scheme_drug.length==0 && plans.absolute_contraindication.scheme_operation.length==0 && plans.absolute_contraindication.scheme_disposition.length==0" class="pop pop-plan">
+                                                    <p>无禁忌</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li ng-if="plans.relative_contraindication.id == workSpaceInfo.planId">
+                                        <h5>相对禁忌方案</h5>
+                                        <ul>
+                                            <li class="has-pop">
+                                                <div ng-if="plans.relative_contraindication.scheme_drug.length>0 || plans.relative_contraindication.scheme_operation.length>0 || plans.relative_contraindication.scheme_disposition.length>0" class="pop pop-plan">
+                                                    <h6 class="plan-h6">药品</h6>
+                                                    <ul ng-if="plans.relative_contraindication.scheme_drug && plans.relative_contraindication.scheme_drug.length>0">
+                                                        <li  ng-repeat="opt in plans.relative_contraindication.scheme_drug">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.drug_main_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.relative_contraindication.scheme_drug || plans.relative_contraindication.scheme_drug.length==0">-</p>
+                                                    <h6 class="plan-h6">手术</h6>
+                                                    <ul ng-if="plans.relative_contraindication.scheme_operation && plans.relative_contraindication.scheme_operation.length>0">
+                                                        <li ng-repeat="opt in plans.relative_contraindication.scheme_operation">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.recom_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.relative_contraindication.scheme_operation || plans.relative_contraindication.scheme_operation.length==0">-</p>
+                                                    <h6 class="plan-h6">处置</h6>
+                                                    <ul ng-if="plans.relative_contraindication.scheme_disposition && plans.relative_contraindication.scheme_disposition.length>0">
+                                                        <li ng-repeat="opt in plans.relative_contraindication.scheme_disposition">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-leaf green-tip"></span>
+                                                            <h7>{{opt.recom_name}}</h7>
+                                                        </li>
+                                                    </ul>
+                                                    <p ng-if="!plans.relative_contraindication.scheme_disposition || plans.relative_contraindication.scheme_disposition.length==0">-</p>
+                                                </div>
+
+                                                <div ng-if="plans.relative_contraindication.scheme_drug.length==0 && plans.relative_contraindication.scheme_operation.length==0 && plans.relative_contraindication.scheme_disposition.length==0" class="pop pop-plan">
+                                                    <p>无禁忌</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!--方案说明-->
+                    <div ng-if="tagTab=='方案说明'&&wholeInfo.plan.introduct && wholeInfo.plan.introduct.length>0" class="plan-introduction col-xs-9">
+                        <ul>
+                            <li>
+                                <h4><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;方案说明</h4>
+                                <ul ng-if="wholeInfo.plan.introduct && wholeInfo.plan.introduct.length>0">
+                                    <li ng-repeat="opt in wholeInfo.plan.introduct">
+                                        <div ng-if="opt.name == '治疗方案'">
+                                            <h5 >{{opt.name}}</h5>
+                                            <ul>
+                                                <li ng-repeat="result in opt.resultInfos">
+                                                    <h6 id="用药方案-{{result.id}}">{{result.name}}</h6>
+                                                    <p>{{result.reason}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div ng-if="opt.name == '推荐用药'">
+                                            <h5 id="药品推荐-{{opt.id}}">{{opt.name}}</h5>
+                                            <ul ng-if="!opt.resultInfos">
+                                                <li ng-if="opt.name">
+                                                    <h6>药品名称</h6>
+                                                    <p>{{opt.name}}</p>
+                                                </li>
+                                                <li ng-if="opt.introduce">
+                                                    <h6>介绍</h6>
+                                                    <p>{{opt.introduce}}</p>
+                                                </li>
+                                                <li ng-if="opt.indication">
+                                                    <h6>指示</h6>
+                                                    <p>{{opt.indication}}</p>
+                                                </li>
+                                                <li ng-if="opt.contraindication">
+                                                    <h6>禁忌症</h6>
+                                                    <p>{{opt.contraindication}}</p>
+                                                </li>
+                                                <li ng-if="opt.attention">
+                                                    <h6>注意</h6>
+                                                    <p>{{opt.attention}}</p>
+                                                </li>
+                                            </ul>
+                                            <ul ng-if="opt.resultInfos" ng-repeat="option in opt.resultInfos">
+                                                <li ng-if="option.name">
+                                                    药品名称</h6>
+                                                    <p id="药品推荐-{{option.id}}">{{option.name}}</p>
+                                                </li>
+                                                <li ng-if="option.introduce">
+                                                    <h6>介绍</h6>
+                                                    <p>{{option.introduce}}</p>
+                                                </li>
+                                                <li ng-if="option.indication">
+                                                    <h6>指示</h6>
+                                                    <p>{{option.indication}}</p>
+                                                </li>
+                                                <li ng-if="option.contraindication">
+                                                    <h6>禁忌症</h6>
+                                                    <p>{{option.contraindication}}</p>
+                                                </li>
+                                                <li ng-if="option.attention">
+                                                    <h6>注意</h6>
+                                                    <p>{{option.attention}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div ng-if="opt.name == '推荐手术'">
+                                            <h5 id="手术-{{opt.id}}">{{opt.name}}</h5>
+                                            <ul>
+                                                <li ng-if="opt.introduce">
+                                                    <h6>介绍</h6>
+                                                    <p>{{opt.introduce}}</p>
+                                                </li>
+                                                <li ng-if="opt.indication">
+                                                    <h6>指示</h6>
+                                                    <p>{{opt.indication}}</p>
+                                                </li>
+                                                <li ng-if="opt.contraindication">
+                                                    <h6>禁忌症</h6>
+                                                    <p>{{opt.contraindication}}</p>
+                                                </li>
+                                                <li ng-if="opt.attention">
+                                                    <h6>注意</h6>
+                                                    <p>{{opt.attention}}</p>
+                                                </li>
+                                                <li ng-if="opt.meaning">
+                                                    <h6>含义</h6>
+                                                    <p>{{opt.meaning}}</p>
+                                                </li>
+                                            </ul>
+                                            <ul ng-if="opt.resultInfos" ng-repeat="option in opt.resultInfos">
+                                                <li ng-if="option.name">
+                                                    <h6>手术名称</h6>
+                                                    <p id="手术-{{option.id}}">{{option.name}}</p>
+                                                </li>
+                                                <li ng-if="option.introduce">
+                                                    <h6>介绍</h6>
+                                                    <p>{{option.introduce}}</p>
+                                                </li>
+                                                <li ng-if="option.indication">
+                                                    <h6>指示</h6>
+                                                    <p>{{option.indication}}</p>
+                                                </li>
+                                                <li ng-if="option.contraindication">
+                                                    <h6>禁忌症</h6>
+                                                    <p>{{option.contraindication}}</p>
+                                                </li>
+                                                <li ng-if="option.attention">
+                                                    <h6>注意</h6>
+                                                    <p>{{option.attention}}</p>
+                                                </li>
+                                                <li ng-if="option.meaning">
+                                                    <h6>含义</h6>
+                                                    <p>{{option.meaning}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <div ng-if="!wholeInfo.plan.introduct || wholeInfo.plan.introduct.length == 0" class="alert alert-info">暂无方案说明</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--治疗目标-->
+                    <div ng-if="tagTab=='治疗目标'" class="ill-tag col-xs-9">
+                        <ul ng-if="wholeInfo.plan.target && wholeInfo.plan.target.length>0">
+                            <li ng-repeat="opt in wholeInfo.plan.target">
+                                <h4>{{opt.name}}</h4>
+                                <p>{{opt.value}}</p>
+                            </li>
+                        </ul>
+                        <div ng-if="!wholeInfo.plan.target || wholeInfo.plan.target.length==0" class="alert alert-info">暂无方案说明</div>
+                    </div>
+
+                    <!--文献-->
+                    <div  ng-if="tagTab=='参考指南'" class="pdf-list col-xs-9">
+                        <h3>文献</h3>
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>指南名称</th>
+                                <th>指南详情</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="opt in wholeInfo.plan.guide.page.content">
+                                <td>{{$index+1}}</td>
+                                <td>{{opt.originName}}</td>
+                                <td><a target="_blank" href="/record-collect-src/#/view-pdf/{{opt.id}}/guide">查看</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="!wholeInfo.plan.guide ||!wholeInfo.plan.guide.page.content" class="alert alert-info">暂无数据！！！</div>
+                    </div>
+
+                    <!--disease 疾病相关文献 -->
+                    <div  ng-if="tagTab=='疾病相关文献'" class="pdf-list col-xs-9">
+                        <h3>文献</h3>
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>指南名称</th>
+                                <th>指南详情</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="opt in wholeInfo.plan.disease.page.content">
+                                <td>{{$index+1}}</td>
+                                <td>{{opt.originName}}</td>
+                                <td><a target="_blank" href="/record-collect-src/#/view-pdf/{{opt.id}}/disease">查看</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="!wholeInfo.plan.disease ||!wholeInfo.plan.disease.page.content" class="alert alert-info">暂无数据！！！</div>
+                    </div>
+
+                    <!--drug 药品不良反应文献-->
+                    <div  ng-if="tagTab=='药品不良反应文献'" class="pdf-list col-xs-9">
+                        <h3>文献</h3>
+                        <table class="table table-striped" >
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>指南名称</th>
+                                <th>指南详情</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="opt in wholeInfo.plan.drug.page.content">
+                                <td>{{$index+1}}</td>
+                                <td>{{opt.originName}}</td>
+                                <td><a target="_blank" href="/record-collect-src/#/view-pdf/{{opt.id}}/drug">查看</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="!wholeInfo.plan.drug ||!wholeInfo.plan.drug.page.content" class="alert alert-info">暂无数据！！！</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

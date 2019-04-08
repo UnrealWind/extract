@@ -1,0 +1,39 @@
+<div class="">
+    <div class="infi-title cursorAuto">
+        <h3>{{workSpaceInfo.data.name}}</h3>
+    </div>
+    <ul class="basic-attr-list">
+        <li class="cursorAuto" ng-repeat="attr in workSpaceInfo.data.childs">
+            <p>{{attr.name}}</p>
+        </li>
+    </ul>
+    <hr ng-if="workSpaceInfo.data.childs.length>0"/>
+
+    <div class="search-box">
+        <div class="form-inline form-group">
+            <input type="text" class="form-control" ng-change="search(workSpaceInfo.data.kid)" ng-model="searchVal" placeholder="可按拼音首字母或汉字搜索">
+        </div>
+        <ul class="basic-attr-list-search">
+            <li ng-class="{true:'active'}[attr.checked]" ng-if="searchResult.length>0" ng-repeat="attr in searchResult" ng-click="addSearchAttr(attr)">
+                <p>{{attr.name}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="!searchVal" class="template-box">
+        <div class="tab">
+            <ul ng-repeat="attrs in attrTree">
+                <li ng-repeat="attributes in attrs.childs" ng-click="addActive(attributes)" ng-class="{true:'active'}[attributes.active]">
+                    <p>{{attributes.name}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="main" ng-repeat="attrs in attrTree">
+            <ul ng-repeat = "attributes in attrs.childs" ng-if="attributes.active">
+                <li class="spe" ng-click="addAttr(attributes,attr)" ng-repeat = "attr in attributes.childs" ng-class="{true:'active'}[attr.checked]">
+                    <p title="{{attr.name}}">{{attr.name}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

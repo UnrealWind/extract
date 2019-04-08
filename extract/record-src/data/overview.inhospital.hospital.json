@@ -1,0 +1,53 @@
+//这个地方给的有问题;
+
+[
+  [
+    {
+      "label":"体温",
+      "name":"hospital.vital_signs_values",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"脉搏",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"呼吸",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"血压",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"身高",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"体重",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ],
+  [
+    {
+      "label":"BIM",
+      "name":"hospital.",
+      "type":"view"
+    }
+  ]
+]

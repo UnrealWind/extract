@@ -1,0 +1,343 @@
+<div time-show class="infi-inline-block infi-title-time noprint"></div>
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>挂号监控</h4>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>挂号监控</h4>
+    <div class="infi-today-time">
+        <span ng-bind="now|date:'yyyy-MM-dd HH:mm:ss'"></span>
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="rMonKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 今日挂号总体情况
+        <div print-add print-list="ids" unique="'rMonKpi'" print-all-list="printAllList"></div>
+    </div>
+    <div kpi-img original="overallKpi"></div>
+</div>
+<div class="infi-opt-self-box" id="rMonConstitution">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>今日挂号构成监控
+        <div print-add print-list="ids" unique="'rMonConstitution'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <label>诊断类型：
+                <select  class="form-control infi-opt-search-time" ng-model="constitutionMonitor.type" ng-change="changeConstitutionData()">
+                    <option value="0"  ng-selected="constitutionMonitor.type == 0">门诊+急诊</option>
+                    <option value="1"  ng-selected="constitutionMonitor.type == 1">门诊</option>
+                    <option value="2"  ng-selected="constitutionMonitor.type == 2">急诊</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">挂号时段构成</h5></div>
+            <div>
+                <div id="nestedTimeInterval" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">挂号类型构成</h5></div>
+            <div>
+                <div id="pieType" class="text-danger" style="height:170px;width:100%;border-bottom: #e9e7e7 1px solid;"></div>
+                <img class='infi-created-img' />
+            </div>
+            <div><h5 class="infi-chart-title">挂号身份构成</h5></div>
+            <div>
+                <div id="pieIdentity" class="text-danger" style="height:170px;width:100%;"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rMonStatus">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>今日挂号情况监控
+        <div print-add print-list="ids" unique="'rMonStatus'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <label>挂号类型：
+                <select class="form-control infi-opt-search-time" ng-model="statusMonitor.type" ng-change="changeStatusData()">
+                    <option value="0" ng-selected="statusMonitor.type == 0">门诊+急诊</option>
+                    <option value="1" ng-selected="statusMonitor.type == 1">门诊</option>
+                    <option value="2" ng-selected="statusMonitor.type == 2">急诊</option>
+                </select>
+            </label>
+            <!--<div dept-select original="statusMonitor" record-list="dimension.deptList" change-data="changeStatusData()"></div>-->
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="statusMonitor"
+                 record-list="dimension.deptList" select="'department'" change-data="changeStatusData()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">首次挂号患者情况</h5></div>
+            <div>
+                <div id="nestedFirstRegistration" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">再次挂号患者情况</h5></div>
+            <div>
+                <div id="nestedAgainRegistration" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div></div>
+</div>
+<div class="infi-opt-self-box" id="rMonChannel">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>门诊挂号渠道监控
+        <div print-add print-list="ids" unique="'rMonChannel'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div identity-select original="channelMonitor" record-list="dimension.identityList" change-data="changeChannelData()"></div>
+            <div number-select original="channelMonitor" change-data="changeChannelData()"></div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">门诊挂号渠道</h5></div>
+            <div>
+                <div id="nestedEmergencyRegistration" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">自助机付费渠道</h5></div>
+            <div>
+                <div id="nestedAutonomyRegistration" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div></div>
+</div>
+<div class="infi-opt-self-box" id="rMonTodayNum">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 预约今日号源监控
+        <div print-add print-list="ids" unique="'rMonTodayNum'" print-all-list="printAllList"></div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="todayNumResource.kpi"></div>
+    <div style="padding:10px;">
+        <div identity-select original="todayNumResource" record-list="dimension.identityList" change-data="changeTodayNumData()"></div>
+        <div number-select original="todayNumResource" change-data="changeTodayNumData()"></div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">预约渠道排行</h5>
+            </div>
+            <div>
+                <div id="barChannel" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">取号情况</h5>&nbsp;&nbsp;全部>><span ng-bind="todayNumResource.takeNoType"></span>
+            </div>
+            <div>
+                <div id="pieTakeNo" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<!--gqm_debug 301需要隐掉 infi-chart-hide-->
+<div class="infi-opt-self-box infi-chart-hide" id="rMonOtherNum">
+    <div class="infi-opt-title"><i class="glyphicon glyphicon-edit"></i> 现场预约他日号源监控
+        <div print-add print-list="ids" unique="'rMonOtherNum'" print-all-list="printAllList"></div>
+    </div>
+    <div class="infi-box-kpi row infi-kpi-circle-middle" ng-show="otherNumResource.kpi.status == SYS.STATUS_SUCCESS">
+        <div class="infi-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="otherNumResource.kpi.data.result[0].yy_size|nullFilter"></div>
+                <div class="infi-title">预约人次</div>
+            </div>
+        </div>
+        <div class="infi-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="otherNumResource.kpi.data.result[0].zj_size|nullFilter"></div>
+                <div class="infi-title">专家号人次</div>
+            </div>
+        </div>
+        <div class="infi-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="otherNumResource.kpi.data.result[0].pt_size|nullFilter"></div>
+                <div class="infi-title">普通号人次</div>
+            </div>
+        </div>
+        <div class="infi-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="otherNumResource.kpi.data.result[0].zjhyl_size|nullFilter"></div>
+                <div class="infi-title">专家号余量</div>
+            </div>
+        </div>
+        <div class="infi-md-2 infi-column-kpi">
+            <div class="infi-kpi-circle">
+                <div ng-bind="otherNumResource.kpi.data.result[0].pthyl_size|nullFilter"></div>
+                <div class="infi-title">普通号余量</div>
+            </div>
+        </div>
+    </div>
+    <!--数据未读取到提示-->
+    <div ng-show="otherNumResource.kpi.status != SYS.STATUS_SUCCESS" ng-bind="otherNumResource.kpi.description" class="alert alert-danger"></div>
+    <div style="padding:10px 10px 0px 10px;">
+        <label>时间：
+            <input infi-date="yyyy-m-d" class="form-control datepicker infi-opt-search-time" max-view="4"
+                   ng-model="otherNumResource.otherDate" placeholder="选择他日时间" ng-change="changeOtherNumDateData()" />
+            <input type="button" class="btn btn-default btn-sm" value="全部" ng-click="selectAllOtherNum()" />
+        </label>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6" style="border-right:none;">
+            <div><h5 class="infi-chart-title">预约他日号源排行</h5></div>
+            <div class="infi-nopage-table-title noprint" ng-if="otherNumResource.searchedData.data.result.length > 0">
+                <table class="table infi-nopage-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td colspan="3">预约人次</td>
+                            <td colspan="2">余量</td>
+                        </tr>
+                    </thead>
+                    <tr style="background-color: #fff;">
+                        <td>科室名称</td>
+                        <td>预约</br>人次</td>
+                        <td>专家号</br>人次</td>
+                        <td>普通号</br>人次</td>
+                        <td>专家号</br>余量</td>
+                        <td>普通号</br>余量</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h" ng-if="otherNumResource.searchedData.data.result.length > 0">
+                <table id="leftTableNum" class="table infi-nopage-table infi-table-striped">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td colspan="3">预约人次</td>
+                            <td colspan="2">余量</td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>科室名称</td>
+                        <td>预约</br>人次</td>
+                        <td>专家号</br>人次</td>
+                        <td>普通号</br>人次</td>
+                        <td>专家号</br>余量</td>
+                        <td>普通号</br>余量</td>
+                    </tr>
+                    <tr ng-repeat="list in otherNumResource.searchedData.data.result" table-title-scroll="'scroll'">
+                        <td ng-bind="list.dept" ng-click="getOtherListData(list.dept)" class="pointer"></td>
+                        <td ng-bind="list.a" class="text-right"></td>
+                        <td ng-bind="list.b" class="text-right"></td>
+                        <td ng-bind="list.c" class="text-right"></td>
+                        <td ng-bind="list.d" class="text-right"></td>
+                        <td ng-bind="list.e" class="text-right"></td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-show="otherNumResource.searchedData.data.result.length == 0" class="text-danger">未查询到数据</div>
+            <div ng-show="otherNumResource.searchedData.status != SYS.STATUS_SUCCESS"  class="text-danger"
+                 ng-bind="otherNumResource.searchedData.description"></div>
+        </div>
+        <div class="col-md-6" data-ng-init="load()">
+            <div>
+                <h5 class="infi-chart-title">预约他日号源清单</h5>
+            </div>
+            <!--table-->
+            <div class="infi-other-num" table-list-title original="otherNumResource.rightColumn" record-list="otherNumResource.changedData"></div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h infi-other-num" table-list original="otherNumResource.rightColumn"
+                 record-list="otherNumResource.changedData" tables-id="tableColumn" scroll="'scroll'"></div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rMonMissOverall">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 今日爽约总体情况
+        <div print-add print-list="ids" unique="'rMonMissOverall'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div number-select original="missOverall" change-data="changeMissOverallData()"></div>
+        </div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="missOverall.kpi"></div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">预约未取号分布</h5>
+                <div>
+                    <p class="infi-inline-block">爽约人次：<span ng-bind="missOverall.kpi.data.result[0].yywqhsyrc|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">爽约率：<span ng-bind="missOverall.kpi.data.result[0].yywqhsyl|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">军人人次：<span ng-bind="missOverall.kpi.data.result[0].yywqhjrrc|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">军人占比：<span ng-bind="missOverall.kpi.data.result[0].yywqhjrzb|nullFilter"></span>&nbsp;</p>
+                </div>
+            </div>
+            <div>
+                <div id="pieNoTakeNo" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h5 class="infi-chart-title">挂号未诊分布</h5>
+                <div>
+                    <p class="infi-inline-block">爽约人次：<span ng-bind="missOverall.kpi.data.result[0].ghwzsyrc|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">爽约率：<span ng-bind="missOverall.kpi.data.result[0].ghwzsyl|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">军人人次：<span ng-bind="missOverall.kpi.data.result[0].ghwzjrrc|nullFilter"></span>&nbsp;</p>
+                    <p class="infi-inline-block">军人占比：<span ng-bind="missOverall.kpi.data.result[0].ghwzjrzb|nullFilter"></span></p>
+                </div>
+            </div>
+            <div>
+                <div id="pieNoDiagnosis" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="rMonRetreatOverall">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 今日退号总体情况
+        <div print-add print-list="ids" unique="'rMonRetreatOverall'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <!--<div dept-select original="retreatOverall" record-list="dimension.deptList" change-data="changeRetreatOverallData()"></div>-->
+            <div select-simulate ng-if="dimension.deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="retreatOverall"
+                 record-list="dimension.deptList" select="'department'" change-data="changeRetreatOverallData()"></div>
+            <div number-select original="retreatOverall" change-data="changeRetreatOverallData()"></div>
+            <label>挂号途径：
+                <select class="form-control infi-opt-search-time" ng-model="retreatOverall.channel" ng-change="changeRetreatOverallData()">
+                    <option value="" ng-selected="retreatOverall.channel == ''">全部</option>
+                    <option value="现场挂号" ng-selected="retreatOverall.channel == '现场挂号'">现场挂号</option>
+                    <option value="预约挂号" ng-selected="retreatOverall.channel == '预约挂号'">预约挂号</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="retreatOverall.kpi"></div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">退号趋势</h5></div>
+            <div>
+                <div id="barBackNumber" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">原退号途径</h5></div>
+            <div>
+                <div id="pieBackNumber" class="infi-half-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

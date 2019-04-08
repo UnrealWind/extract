@@ -1,0 +1,339 @@
+<!--打印设置列表-->
+<div print-section print-list="ids" print-all-list="printAllList"></div>
+<div class="infi-fix-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>接诊分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList('change')" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList('change')" />
+    </div>
+</div>
+<!-- 一个和header一模一样的div，用在打印时给每一个模块添加标题，先隐藏，在打印容器让其显示 -->
+<div class="infi-hide-header">
+    <h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>接诊分析</h4>
+    <div class="pull-right infi-fix-right">
+        时间选择：
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.startDate" placeholder="开始时间" ng-change="getChartList('change')" /> ~
+        <input infi-date="yyyy-mm-dd" class="form-control datepicker" style="display: inline-block;width: 150px;" max-view="4"
+               ng-model="searchDate.endDate" placeholder="结束时间" ng-change="getChartList('change')" />
+    </div>
+</div>
+<div class="infi-opt-self-box" id="vAnaKpi">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i> 接诊总体情况
+        <div print-add print-list="ids" unique="'vAnaKpi'" print-all-list="printAllList"></div>
+    </div>
+    <!--kpi-->
+    <div kpi-img original="overallKpi"></div>
+</div>
+<div class="infi-opt-self-box" id="vAnaHosAdmissions">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>全院接诊概况
+        <div print-add print-list="ids" unique="'vAnaHosAdmissions'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <input type="button" class="btn btn-default btn-sm" value="全部" ng-class="{true:'btn-success'}[hospitalAdmissions.number == '']"
+                   ng-click="changeBtnData(hospitalAdmissions,'number','',getHospitalAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="专家号" ng-class="{true:'btn-success'}[hospitalAdmissions.number == '专家']"
+                   ng-click="changeBtnData(hospitalAdmissions,'number','专家',getHospitalAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="普通号" ng-class="{true:'btn-success'}[hospitalAdmissions.number == '普通']"
+                   ng-click="changeBtnData(hospitalAdmissions,'number','普通',getHospitalAdmissions)"/>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <h5 class="infi-chart-title">全院出诊接诊趋势</h5>
+            <div>
+                <div class="infi-inline-block">
+                    指标:
+                    <label><input type="radio" name="hospital" checked ng-click="changeRadioData('1',hospitalAdmissions,getHospitalAdmissions,'radio')" />
+                        出诊次数&nbsp;&nbsp;接诊人次</label>
+                    <label><input type="radio" name="hospital" ng-click="changeRadioData('2',hospitalAdmissions,getHospitalAdmissions,'radio')" />
+                        出诊次数&nbsp;&nbsp;次均接诊次数</label>
+                </div>
+                <div class="infi-opt-search">
+                    <input type="button" class="btn btn-default btn-sm" value="按天统计" ng-class="{true:'btn-success'}[hospitalAdmissions.staType == 'day']"
+                           ng-click="changeBtnData(hospitalAdmissions,'staType','day',getHospitalAdmissions)"/>
+                    <input type="button" class="btn btn-default btn-sm" value="按周统计" ng-class="{true:'btn-success'}[hospitalAdmissions.staType == 'week']"
+                           ng-click="changeBtnData(hospitalAdmissions,'staType','week',getHospitalAdmissions)"/>
+                    <input type="button" class="btn btn-default btn-sm" value="按月统计" ng-class="{true:'btn-success'}[hospitalAdmissions.staType == 'month']"
+                           ng-click="changeBtnData(hospitalAdmissions,'staType','month',getHospitalAdmissions)"/>
+                </div>
+            </div>
+            <div>
+                <div id="lineBarhospitalAdmissions" class="infi-whole-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="infi-opt-self-box" id="vAnaDeptAdmissions">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>科室接诊概况
+        <div print-add print-list="ids" unique="'vAnaDeptAdmissions'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <input type="button" class="btn btn-default btn-sm" value="全部" ng-class="{true:'btn-success'}[deptAdmissions.number == '']"
+                   ng-click="changeBtnData(deptAdmissions,'number','',getDeptAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="专家号" ng-class="{true:'btn-success'}[deptAdmissions.number == '专家']"
+                   ng-click="changeBtnData(deptAdmissions,'number','专家',getDeptAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="普通号" ng-class="{true:'btn-success'}[deptAdmissions.number == '普通']"
+                   ng-click="changeBtnData(deptAdmissions,'number','普通',getDeptAdmissions)"/>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">科室接诊排行</h5></div>
+            <div class="infi-nopage-table-title noprint" ng-show="deptAdmissions.searchedData.data.result.length > 0">
+                <table class="table infi-nopage-table">
+                    <thead>
+                    <tr>
+                        <td>科室名称</td>
+                        <td>
+                            <div class="infi-up-down">
+                                出诊次数
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('cz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('cz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="infi-up-down">
+                                接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('jz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'jz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('jz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'jz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="infi-up-down">
+                                次均接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('cjjz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cjjz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('cjjz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cjjz_asc']"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h" ng-show="deptAdmissions.searchedData.status == SYS.STATUS_SUCCESS">
+                <table class="table infi-nopage-table infi-table-striped" ng-show="deptAdmissions.searchedData.data.result.length > 0">
+                    <thead>
+                    <tr>
+                        <td>科室名称</td>
+                        <td>
+                            <span class="infi-hide-column">出诊次数</span>
+                            <div class="infi-up-down noprint">
+                                出诊次数
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('cz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('cz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="infi-hide-column">接诊人次</span>
+                            <div class="infi-up-down noprint">
+                                接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('jz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'jz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('jz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'jz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="infi-hide-column">次均接诊人次</span>
+                            <div class="infi-up-down noprint">
+                                次均接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDeptAdmissions('cjjz_desc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cjjz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDeptAdmissions('cjjz_asc')"
+                                   ng-class="{true:'selected'}[deptAdmissions.range == 'cjjz_asc']"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="list in deptAdmissions.searchedData.data.result" table-title-scroll="'scroll'">
+                        <td ng-bind="list.dept" ng-click="selectOneDept(list)" style="cursor: pointer;"></td>
+                        <td ng-bind="list.cz_size" class="text-right"></td>
+                        <td ng-bind="list.jz_size" class="text-right"></td>
+                        <td ng-bind="list.cjjz_size" class="text-right"></td>
+                    </tr>
+                </table>
+                <div ng-show="deptAdmissions.searchedData.data.result.length == 0" class="text-danger">未查询到数据</div>
+            </div>
+            <div ng-show="deptAdmissions.searchedData.status != SYS.STATUS_SUCCESS"  class="text-danger"
+                 ng-bind="deptAdmissions.searchedData.description"></div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{deptAdmissions.dept.dept}}专家接诊患者分布</h5></div>
+            <div>
+                <div id="regionDeptReceive" class="text-danger infi-half-chart"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <h5 class="infi-chart-title">{{deptAdmissions.dept.dept}}接诊趋势</h5>
+            <div>
+                <div class="infi-inline-block">
+                    指标:
+                    <label><input type="radio" name="dept" checked ng-click="changeRadioData('1',deptAdmissions,getDeptReceiveTrend,'radio')" />
+                        出诊次数&nbsp;&nbsp;接诊人次</label>
+                    <label><input type="radio" name="dept" ng-click="changeRadioData('2',deptAdmissions,getDeptReceiveTrend,'radio')" />
+                        出诊次数&nbsp;&nbsp;次均接诊次数</label>
+                </div>
+                <div class="infi-opt-search">
+                    <input type="button" class="btn btn-default btn-sm" value="按天统计" ng-class="{true:'btn-success'}[deptAdmissions.staType == 'day']"
+                           ng-click="changeBtnData(deptAdmissions,'staType','day',getDeptReceiveTrend)"/>
+                    <input type="button" class="btn btn-default btn-sm" value="按周统计" ng-class="{true:'btn-success'}[deptAdmissions.staType == 'week']"
+                           ng-click="changeBtnData(deptAdmissions,'staType','week',getDeptReceiveTrend)"/>
+                    <input type="button" class="btn btn-default btn-sm" value="按月统计" ng-class="{true:'btn-success'}[deptAdmissions.staType == 'month']"
+                           ng-click="changeBtnData(deptAdmissions,'staType','month',getDeptReceiveTrend)"/>
+                </div>
+            </div>
+            <div>
+                <div id="lineBardeptAdmissions" class="infi-whole-chart text-danger"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="infi-opt-self-box" id="vAnaDocAdmissions">
+    <div class="infi-opt-title">
+        <i class="glyphicon glyphicon-edit"></i>医生接诊概况
+        <div print-add print-list="ids" unique="'vAnaDocAdmissions'" print-all-list="printAllList"></div>
+        <div class="infi-opt-search">
+            <div select-simulate ng-if="deptList" title="'科室'" show-name="'dept_name'" commit-id="'dept_id'" original="doctorAdmissions"
+                 record-list="deptList" select="'department'" change-data="getDoctorAdmissions()"></div>
+            <input type="button" class="btn btn-default btn-sm" value="全部" ng-class="{true:'btn-success'}[doctorAdmissions.number == '']"
+                   ng-click="changeBtnData(doctorAdmissions,'number','',getDoctorAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="专家号" ng-class="{true:'btn-success'}[doctorAdmissions.number == '专家']"
+                   ng-click="changeBtnData(doctorAdmissions,'number','专家',getDoctorAdmissions)"/>
+            <input type="button" class="btn btn-default btn-sm" value="普通号" ng-class="{true:'btn-success'}[doctorAdmissions.number == '普通']"
+                   ng-click="changeBtnData(doctorAdmissions,'number','普通',getDoctorAdmissions)"/>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">医生接诊排行</h5></div>
+            <div class="infi-nopage-table-title noprint" ng-show="doctorAdmissions.searchedData.data.result.length > 0">
+                <table class="table infi-nopage-table infi-table-striped">
+                    <thead>
+                    <tr>
+                        <td>医生名称</td>
+                        <td>
+                            <div class="infi-up-down">
+                                出诊次数
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="infi-up-down">
+                                接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('jz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('jz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="infi-up-down">
+                                次均接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cjjz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cjjz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_asc']"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="infi-table-scoll-y infi-table-scoll-y-h" ng-show="doctorAdmissions.searchedData.status == SYS.STATUS_SUCCESS">
+                <table class="table infi-nopage-table infi-table-striped" ng-show="doctorAdmissions.searchedData.data.result.length > 0">
+                    <thead>
+                    <tr>
+                        <td>医生名称</td>
+                        <td>
+                            <span class="infi-hide-column">出诊次数</span>
+                            <div class="infi-up-down noprint">
+                                出诊次数
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="infi-hide-column">接诊人次</span>
+                            <div class="infi-up-down noprint">
+                                接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('jz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('jz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'jz_asc']"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="infi-hide-column">次均接诊人次</span>
+                            <div class="infi-up-down noprint">
+                                次均接诊人次
+                                <i class="glyphicon glyphicon-chevron-up" ng-click="getDoctorAdmissions('cjjz_desc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_desc']"></i>
+                                <i class="glyphicon glyphicon-chevron-down" ng-click="getDoctorAdmissions('cjjz_asc')"
+                                   ng-class="{true:'selected'}[doctorAdmissions.range == 'cjjz_asc']"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="list in doctorAdmissions.searchedData.data.result" table-title-scroll="'scroll'">
+                        <td ng-bind="list.doc_name" ng-click="selectOneDoc(list)" style="cursor: pointer;"></td>
+                        <td ng-bind="list.czcs_size" class="text-right"></td>
+                        <td ng-bind="list.jzrc_size" class="text-right"></td>
+                        <td ng-bind="list.cjjzrc_size" class="text-right"></td>
+                    </tr>
+                </table>
+                <div ng-show="doctorAdmissions.searchedData.data.result.length == 0" class="text-danger">未查询到数据</div>
+            </div>
+            <div ng-show="doctorAdmissions.searchedData.status != SYS.STATUS_SUCCESS"  class="text-danger"
+                 ng-bind="doctorAdmissions.searchedData.description"></div>
+        </div>
+        <div class="col-md-6">
+            <div><h5 class="infi-chart-title">{{doctorAdmissions.doc.doc_name}}接诊患者分布</h5></div>
+            <div>
+                <div id="regionDocReceive" class="text-danger infi-half-chart"></div>
+                <img class='infi-created-img' />
+            </div>
+        </div>
+    </div>
+    <div class="row infi-draw-chart">
+        <div class="col-md-12">
+            <h5 class="infi-chart-title">{{doctorAdmissions.doc.doc_name}}出诊详情</h5>
+            <div class="infi-opt-search">
+                <input type="button" class="btn btn-default btn-sm" value="按天统计" ng-class="{true:'btn-success'}[doctorAdmissions.staType == 'day']"
+                       ng-click="changeBtnData(doctorAdmissions,'staType','day',getDocReceiveDetail)"/>
+                <input type="button" class="btn btn-default btn-sm" value="按周统计" ng-class="{true:'btn-success'}[doctorAdmissions.staType == 'week']"
+                       ng-click="changeBtnData(doctorAdmissions,'staType','week',getDocReceiveDetail)"/>
+                <input type="button" class="btn btn-default btn-sm" value="按月统计" ng-class="{true:'btn-success'}[doctorAdmissions.staType == 'month']"
+                       ng-click="changeBtnData(doctorAdmissions,'staType','month',getDocReceiveDetail)"/>
+            </div>
+        </div>
+        <div>
+            <div id="lineBarDocVisit" class="infi-whole-chart text-danger col-md-12"></div>
+            <img class='infi-created-img' />
+        </div>
+    </div>
+</div>
+<!--打印容器-->
+<!--<div class="print-container hide" id="printContainer"></div>-->

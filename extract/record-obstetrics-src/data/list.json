@@ -1,0 +1,44 @@
+{
+  "status": "ok",
+  "description": "数据请求成功",
+  "data": {
+    "page":{
+      "content":[
+        {
+          "patiId": "1008",
+          "sex":"女",
+          "patiName": "张三",
+          "birthday": "1993-2-3",
+          "createdTime": "2016-9-01",
+          "accessTime":"2016-10-01"
+        },
+        {
+          "patiId": "1008",
+          "sex":"女",
+          "patiName": "张三",
+          "birthday": "1993-2-3",
+          "createdTime": "2016-9-01",
+          "accessTime":"2016-10-01"
+        }
+      ],
+      "sort": [
+        {
+          "direction": "DESC",
+          "property": "id",
+          "ignoreCase": false,
+          "nullHandling": "NATIVE",
+          "ascending": false
+        }
+      ],
+      "totalPages": 2,
+      "firstPage": true,
+      "lastPage": true,
+      "numberOfElements": 4,
+      "totalElements": 8,
+      "size": 4,
+      "number": 0
+    },
+    "status":"ok",
+    "description":"数据请求成功"
+  }
+}

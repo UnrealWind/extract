@@ -1,0 +1,22 @@
+<ul ng-repeat = "data in datas">
+    <li>
+        <!---->
+        <a ng-if="data.clazz == 'classify'||data.clazz == 'tag'" ng-click="chose(data)" class="" ng-class="{true:'active'}[data.active]">
+            <span ng-class="{true:'glyphicon glyphicon-triangle-bottom',
+            false:'glyphicon glyphicon-triangle-right'}[data.active]">
+            </span>{{data.label}}
+        </a>
+       <a ng-click="chose(data)" ng-if="data.clazz == 'value'"  draggable="true" ondragstart="drag(event)" ng-dragend="dragEnd($event)">
+           <span ng-if="(data.classifyNodes && data.classifyNodes.length>0)||
+            (data.valueNodes && data.valueNodes.length>0)||
+            (data.relateNodes && data.relateNodes.length>0)||
+            (data.attributeNodes && data.attributeNodes.length>0)" ng-class="{true:'glyphicon glyphicon-triangle-bottom',
+            false:'glyphicon glyphicon-triangle-right'}[data.active]">
+            </span>{{data.label}}</a>
+
+        <basic-attr ng-if="data.classifyNodes && data.classifyNodes.length>0 &&data.active" datas = "data.classifyNodes"></basic-attr>
+        <basic-attr ng-if="data.valueNodes && data.valueNodes.length>0 &&data.active" datas = "data.valueNodes"></basic-attr>
+        <basic-attr ng-if="data.relateNodes && data.relateNodes.length>0 &&data.active" datas = "data.relateNodes"></basic-attr>
+        <basic-attr ng-if="data.attributeNodes && data.attributeNodes.length>0 &&data.active" datas = "data.attributeNodes"></basic-attr>
+    </li>
+</ul>

@@ -1,0 +1,13 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"角色名称",
+      "name":"name"
+    }, {
+      "label":"机构名称",
+      "name":"companyName"
+    }
+  ]
+}

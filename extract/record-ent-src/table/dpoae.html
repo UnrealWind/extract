@@ -1,0 +1,57 @@
+<section class="infi-record-box" ng-if="entity.name_zjxm_dpoae == true">
+    <div class="infi-record-title">
+        <h4>DPOAE(畸变产物耳声发射)</h4>
+        <div style="display:inline-block;float:right;">
+            <span>检查时间：</span>
+            <input class="form-control infi-input-w-mdx" name="entity.table_dpoae_time"
+                   ng-model="entity.table_dpoae_time" infi-date="yyyy-mm-dd hh:ii"/>
+        </div>
+    </div>
+    <table class="table infi-table" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th>
+                    两纯音频率比f2/f1=1.22
+                </th>
+                <th>
+                    L1= 65 dBSPL
+                </th>
+                <th>
+                    L2= 55 dBSPL
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>侧别</td>
+                <td>引出DPOAE频率（kHz）</td>
+                <td>对侧白噪声抑制</td>
+            </tr>
+            <tr>
+                <td>
+                    左
+                </td>
+                <td><input name="entity.table_dpoae_ze_khz" ng-model="entity.table_dpoae_ze_khz" class="form-control"/></td>
+                <td><input name="entity.table_dpoae_ze_dcbzsyz" ng-model="entity.table_dpoae_ze_dcbzsyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    右
+                </td>
+                <td><input name="entity.table_dpoae_ye_khz" ng-model="entity.table_dpoae_ye_khz" class="form-control"/></td>
+                <td><input name="entity.table_dpoae_ye_dcbzsyz" ng-model="entity.table_dpoae_ye_dcbzsyz" class="form-control"/></td>
+            </tr>
+            <tr>
+                <td>
+                    备注
+                </td>
+                <td colspan="2"><input name="entity.table_dpoae_note" ng-model="entity.table_dpoae_note" class="form-control"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-1 form-group" style="width:250px;text-align: right;padding-right: 0px;"><label>DPOAE(畸变产物耳声发射)诊断: </label></div>
+        <div class="col-md-5 form-group input-group" style="width: ;float: left;" data-name="entity.name_dpoae"><input
+                name="entity.name_dpoae" type="text" ng-model="entity.name_dpoae" class="form-control"/></div>
+    </div>
+</section>

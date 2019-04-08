@@ -1,0 +1,59 @@
+<div class="">
+    <div class="infi-title">
+        <h4 class="relative">
+                <span ng-click="changeStatus(mainComplaintData.data[0],true)">{{mainComplaintData.name}}
+                    <span class="glyphicon" ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span>
+                </span>
+            <span class="btn-pull-right">
+                    <a  ng-click="addAttr(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加症状" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                    </a>
+                    <a  ng-if="!mainComplaintData.data[mainComplaintData.data.length-1].remarkShow && !mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="showRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加备注" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                    </a>
+                    <a  ng-if="mainComplaintData.data[mainComplaintData.data.length-1].remarkShow || mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="delRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="删除备注" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </span>
+        </h4>
+    </div>
+
+    <div class="init-quest">
+        <div class="form-inline form-group double">
+            <label>血压(mmHg)：</label>
+            <input type="text" class="form-control" ng-model="mainComplaintData.data[0].childs[0].min"  placeholder="">
+            <span>/</span>
+            <input type="text" class="form-control" ng-model="mainComplaintData.data[0].childs[0].max"  placeholder="">
+        </div>
+        <div class="form-inline form-group">
+            <label>心率(次/分)：</label>
+            <input type="text" class="form-control" ng-model="mainComplaintData.data[1].childs[0].value" placeholder="">
+        </div>
+    </div>
+    <div ng-repeat="attrs in mainComplaintData.data" ng-if="$index>1">
+        <ul class="attr">
+            <li >
+                <div class="attr" >
+                    <span ng-click="addAttr(attrs)" class="txt-underline" title="{{attrs.name}}">{{attrs.name}}</span>
+                </div>
+                <div class="answer">
+                    <span class="margin" ng-repeat="opt in attrs.childs">
+                        {{opt.name}}
+                        <span ng-click="delAttr($index,attrs)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </span>
+                    <span class="margin" ng-if="!attrs.childs || attrs.childs.length == 0">-</span>
+                </div>
+            </li>
+        </ul>
+
+        <!--<div class="btn-box">
+            <div class="btn btn-default" ng-click="addAttr(attrs)">添加体征</div>
+            <div ng-if="!attrs.remarkShow && !attrs.remark" ng-click="showRemark(attrs)" class="btn btn-default">添加备注</div>
+            <div  ng-if="attrs.remarkShow || attrs.remark" ng-click="delRemark(attrs)" class="btn btn-default">清空备注</div>
+
+        </div>-->
+        <div class="remarks">
+            <textarea ng-if="attrs.remarkShow || attrs.remark" class="form-control" ng-model="attrs.remark" rows="3"></textarea>
+        </div>
+    </div>
+</div>

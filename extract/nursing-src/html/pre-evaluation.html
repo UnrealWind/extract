@@ -1,0 +1,72 @@
+<div class="infi-title-btn-right">
+</div>
+<h4 class="infi-title">
+	<i class="glyphicon glyphicon-globe"></i>PICC置管前评估
+	<button class="btn infi-btn-linear-green-l btn-sm infi-btn-fr-fix" ng-click="save('pre')" ng-disabled="btnDisable">保存</button>
+</h4>
+<div class="infi-box">
+	<div class="risk-evaluation">
+		<h4>基本信息</h4>
+	</div>
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content">
+			<div>
+				<div class="row" ng-repeat="list in formList.basic">
+					<div class="cell" ng-repeat="children in list.children">
+						<div class="col-md-2 infi-col-title">
+							<span ng-if="children.require" style="color:red;">*</span><span>{{children.label}}:</span>
+						</div>
+						<div class="col-md-3" ng-if="children.type == 'word'">
+							<span>{{children.value}}</span>
+						</div>
+						<div class="col-md-3" ng-if="children.type == 'unit'">
+							<input type="number" ng-model="children.value" name="{{children.name}}" style="width:82%;display: inline-block;" oninput="if(value.length>20)value=value.slice(0,20)"
+								   class="form-control infi-text-unit" />
+							<span ng-if="children.unit == '×109/L'">10^9/L</span>
+							<span ng-if="children.unit != '×109/L'">{{children.unit}}</span>
+						</div>
+						<div class="col-md-3" ng-if="children.type == 'text'">
+							<input type="text" ng-model="children.value" name="{{children.name}}" class="form-control" maxlength="20"/>
+						</div>
+						<div class="col-md-3" ng-if="children.type == 'datetime'">
+							<input class="form-control" type="text" infi-date="yyyy-mm-dd" ng-model="children.value" name="{{children.name}}" maxlength="20">
+						</div>
+						<div class="col-md-3" ng-if="children.type == 'radio'">
+							<label class="self-num-radio" ng-repeat="option in children.options">
+								<input type="radio" ng-model="children.value" value="{{option.value}}" name="{{children.name}}"/>
+								{{option.label}}
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="risk-evaluation">
+		<h4>详细信息</h4>
+	</div>
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content" form-record list="formList.detailed">
+		</div>
+	</div>
+	<div class="risk-evaluation">
+		<h4>结论</h4>
+	</div>
+	<div class="infi-theme-box">
+		<div class="infi-nursing-theme-content">
+			<div ng-repeat="list in formList.conclusion">
+				<div class="row" part-form-one form-one="list">
+				</div>
+				<div class="row" ng-if="list.action && list.value==list.actionValue || (list.type=='checkbox' && list.action && list.value[list.actionValue])" ng-repeat="action in list.action">
+					<div class="cell" ng-repeat="child in action.children" part-form-two form-two="child">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="infi-nursing-bottom-btn">
+		<button class="btn infi-btn-linear-green-l btn-sm " ng-click="save('pre')" ng-disabled="btnDisable">保存</button>
+		<button class="btn infi-btn-linear-green btn-sm" ng-click="goBack()">返回</button>
+	</div>
+	<div sys-tip></div>
+</div>

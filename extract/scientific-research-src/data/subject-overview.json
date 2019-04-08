@@ -1,0 +1,20 @@
+{
+  "tabData": [
+    { "id": "1", "label": "本月", "active": "true"},
+    { "id": "2", "label": "上月", "active": "false"}
+  ],
+  "month":[
+    {"value": "一月","label":"01"},
+    {"value": "二月","label":"02"},
+    {"value": "三月","label":"03"},
+    {"value": "四月","label":"04"},
+    {"value": "五月","label":"05"},
+    {"value": "六月","label":"06"},
+    {"value": "七月","label":"07"},
+    {"value": "八月","label":"08"},
+    {"value": "九月","label":"09"},
+    {"value": "十月","label":"10"},
+    {"value": "十一月","label":"11"},
+    {"value": "十二月","label":"12"}
+  ]
+}

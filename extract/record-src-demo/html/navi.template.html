@@ -1,0 +1,8 @@
+<p ng-class="{'true':'active'}[target.active]" ng-click="showChild(target,parent)" title = "{{target.label}}">
+    <span ng-if="target.type" class="infi-navi-icon-{{target.type}}"></span>{{target.label}}
+</p>
+<ul ng-if="target.children && target.children.length>0" class="infi-child-navi" ng-class="{'true':'openChild-{{target.children.length}} active','false':'shrinkChild-{{target.children.length}}'}[target.active]">
+    <li ng-repeat="opt in target.children">
+        <record-navi target="opt" parent = "target.children" target-template = "targetTemplate"></record-navi>
+    </li>
+</ul>

@@ -1,0 +1,15 @@
+<!--标签-源始标签列表-->
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>源始标签列表</h4>
+<div class="infi-box">
+    <h4>数据源列表</h4>
+    <a class="btn infi-btn-linear-green-l" style="position: absolute;top:15px;right:25px;" href="#/tag-source-create">新建源始标签</a>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="tab-content">
+                <div infi-table columns="columns" content="content" opts="opts" update-page="changePage(page)"
+                     btn-callback="pageOperation(entity,type)"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div delete-tip delete-id="deleteId" type="'/resource'" type1="'/tag'" init="init()"></div>

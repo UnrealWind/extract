@@ -1,0 +1,43 @@
+<div class="format">
+    <div class="row">
+        <button class="btn btn-sm btn-primary-white f-l">返回</button>
+        <button class="btn btn-m btn-primary-white f-r m-l-l">提交</button>
+        <button class="btn btn-m btn-primary-white f-r">打印</button>
+    </div>
+    <div class="result">
+        <dif class="word">统计结果</dif>
+    </div>
+    <div class="row" >
+        <div class="table-box col-md-7" style="float: none;">
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th>统计项目</th>
+                    <th>地方</th>
+                    <th>军人</th>
+                    <th>合计</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in [1,2,3,5,4,7,8,9]">
+                    <th ng-repeat="item in [1,2,3,4]"></th>
+                </tr>
+                <tr>
+                    <th colspan="4" style="text-align: left;">开展业务</th>
+                 </tr>
+                <tr ng-repeat="item in [1,2,3,5,4,7,8,9]">
+                    <th colspan="4" style="text-align: left;">
+                        <span style="display: inline-block;width: 30%;">肾穿刺活检术</span>
+                        <input type="text" class="form-control" style="display: inline-block;width: 20%;margin: 0 20px;height: 20px;">
+                        <span>例</span>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+            <div class="btn-operate">
+                <button class="btn btn-sm btn-primary-white f-r m-l-s">—</button>
+                <button class="btn btn-sm btn-primary-white f-r">＋</button>
+            </div>
+        </div>
+    </div>
+</div>

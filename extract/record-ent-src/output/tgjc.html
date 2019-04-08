@@ -1,0 +1,152 @@
+<div class="infi-record-output" id="bodyExam">
+    <div ng-if="outputText.bodyExam.tplStatus == 'view'" class="infi-view">
+        <div ng-show="!outputText.bodyExam.text">
+            <div>
+                <span data-ng-if="entity.name_189"><i>体温:</i><i>{{entity.name_189}}</i>℃</span>
+                <span data-ng-if="entity.name_190"><i>,</i>
+                    <i>,</i>脉搏：<i>{{entity.name_190}}</i>次/分</span>
+                <span data-ng-if="entity.name_191"><i>,</i>
+                    呼吸：<i>{{entity.name_191}}</i>次/分</span>
+                    <span data-ng-if="entity.name_1108"><i>,</i>心率：<i>{{entity.name_1108}}</i>次/份</span>
+                <span data-ng-if="entity.name_192_shrink"><i>,</i>
+                    收缩压<i>{{entity.name_192_shrink}}</i>mmHg</span>
+                <span data-ng-if="entity.name_192_diastolic"><i>,</i>
+                    舒张压<i>{{entity.name_192_diastolic}}</i>mmHg</span>
+                <span data-ng-if="entity.name_193"><i>,</i>
+                    身高：<i>{{entity.name_193}}</i>cm</span>
+                <span data-ng-if="entity.name_194"><i>,</i>
+                    体重：<i>{{entity.name_194}}</i>kg</span>
+                    <span data-ng-if="entity.name_195"><i>,</i>BMI:<i>{{entity.name_195}}</i></span>
+                <span><i>,</i>
+                    发育<i ng-repeat="option in dimensions.name_196.options"
+                         ng-if="option.name == entity.name_196">{{option.label}}</i></span>
+                <span><i>,</i>
+                    营养<i ng-repeat="option in dimensions.name_197.options"
+                         ng-if="option.name == entity.name_197">{{option.label}}</i></span>
+                <span ng-if="dimensions.name_198.options.length>0"><i>,</i>
+                    面容<i ng-repeat="option in dimensions.name_198.options"
+                         ng-if="option.name == entity.name_198">{{option.label}}</i></span>
+                <span ng-if="dimensions.name_199.options.length>0"><i>,</i>
+                    表情<i ng-repeat="option in dimensions.name_199.options"
+                         ng-if="option.name == entity.name_199">{{option.label}}</i></span>
+                <span ng-if="dimensions.name_200.options.length>0"><i>,</i>
+                    <i ng-repeat="option in dimensions.name_200.options"
+                       ng-if="option.name == entity.name_200">{{option.label}}</i>体位</span>
+                <span ng-if="dimensions.name_202.options.length>0"><i>,</i>
+                    查体<i ng-repeat="option in dimensions.name_202.options"
+                         ng-if="option.name == entity.name_202">{{option.label}}</i>。</span>
+            </div>
+            <div>
+                <span>全身皮肤黏膜<i ng-repeat="option in dimensions.name_203.options"
+                                       ng-if="option.name == entity.name_203">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_204.options" ng-if="option.name == entity.name_204">{{option.label}}</i>皮疹</span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_205.options" ng-if="option.name == entity.name_205">{{option.label}}</i>皮下出血</span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_206.options" ng-if="option.name == entity.name_206">{{option.label}}</i>皮下结节</span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_207.options" ng-if="option.name == entity.name_207">{{option.label}}</i>瘢痕</span><span><i>,</i>毛发<i
+                    ng-repeat="option in dimensions.name_208.options" ng-if="option.name == entity.name_208">{{option.label}}</i></span><span><i>,</i>皮下<i
+                    ng-repeat="option in dimensions.name_209.options" ng-if="option.name == entity.name_209">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_210.options" ng-if="option.name == entity.name_210">{{option.label}}</i>肝掌</span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_211.options" ng-if="option.name == entity.name_211">{{option.label}}</i>蜘蛛痣</span><span><i>,</i>全身浅表淋巴结<i
+                    ng-repeat="option in dimensions.name_212.options" ng-if="option.name == entity.name_212">{{option.label}}</i>。</span>
+
+            </div>
+            <div>
+                <span>头部<i ng-repeat="option in dimensions.name_213.options"
+                               ng-if="option.name == entity.name_213">{{option.label}}</i></span><span><i>,</i>眼睑<i
+                ng-repeat="option in dimensions.name_214.options" ng-if="option.name == entity.name_214">{{option.label}}</i></span><span><i>,</i>结膜<i
+                ng-repeat="option in dimensions.name_1071.options" ng-if="option.name == entity.name_1071">{{option.label}}</i></span><span><i>,</i>眼球<i
+                ng-repeat="option in dimensions.name_1072.options" ng-if="option.name == entity.name_1072">{{option.label}}</i></span><span><i>,</i>巩膜<i
+                ng-repeat="option in dimensions.name_1073.options" ng-if="option.name == entity.name_1073">{{option.label}}</i></span><span><i>,</i>对光反射<i
+                ng-repeat="option in dimensions.name_1075.options" ng-if="option.name == entity.name_1075">{{option.label}}</i></span><span><i>,</i>外耳道<i
+                ng-repeat="option in dimensions.name_1076.options" ng-if="option.name == entity.name_1076">{{option.label}}</i></span><span><i>,</i><i
+                ng-repeat="option in dimensions.name_1077.options" ng-if="option.name == entity.name_1077">{{option.label}}</i>异常分泌物</span><span><i>,</i>乳突<i
+                ng-repeat="option in dimensions.name_1078.options" ng-if="option.name == entity.name_1078">{{option.label}}</i></span><span><i>,</i><i
+                ng-repeat="option in dimensions.name_1079.options" ng-if="option.name == entity.name_1079">{{option.label}}</i>听力粗试障碍</span><span><i>,</i>嗅觉<i
+                ng-repeat="option in dimensions.name_1080.options" ng-if="option.name == entity.name_1080">{{option.label}}</i></span><span><i>,</i>口唇<i
+                ng-repeat="option in dimensions.name_1081.options" ng-if="option.name == entity.name_1081">{{option.label}}</i></span><span><i>,</i>口腔黏膜<i
+                ng-repeat="option in dimensions.name_1082.options" ng-if="option.name == entity.name_1082">{{option.label}}</i></span><span><i>,</i>舌苔<i
+                ng-repeat="option in dimensions.name_1083.options" ng-if="option.name == entity.name_1083">{{option.label}}</i></span><span><i>,</i>伸舌<i
+                ng-repeat="option in dimensions.name_1084.options" ng-if="option.name == entity.name_1084">{{option.label}}</i></span><span><i>,</i>齿龈<i
+                ng-repeat="option in dimensions.name_1085.options" ng-if="option.name == entity.name_1085">{{option.label}}</i></span><span><i>,</i>扁桃体<i
+                ng-repeat="option in dimensions.name_1087.options" ng-if="option.name == entity.name_1087">{{option.label}}</i>。</span>
+            </div>
+            <div>
+                <span>颈<i ng-repeat="option in dimensions.name_1088.options"
+                                  ng-if="option.name == entity.name_1088">{{option.label}}</i></span><span><i>,</i>颈动脉<i
+                    ng-repeat="option in dimensions.name_1089.options" ng-if="option.name == entity.name_1089">{{option.label}}</i></span><span><i>,</i>颈静脉<i
+                    ng-repeat="option in dimensions.name_1090.options" ng-if="option.name == entity.name_1090">{{option.label}}</i></span><span><i>,</i>气管<i
+                    ng-repeat="option in dimensions.name_1091.options" ng-if="option.name == entity.name_1091">{{option.label}}</i></span><span><i>,</i>肝颈静脉回流征<i
+                    ng-repeat="option in dimensions.name_1092.options" ng-if="option.name == entity.name_1092">{{option.label}}</i></span><span><i>,</i>甲状腺<i
+                    ng-repeat="option in dimensions.name_1093.options" ng-if="option.name == entity.name_1093">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_1094.options" ng-if="option.name == entity.name_1094">{{option.label}}</i>压痛、振颤、血管杂音。</span>
+            </div>
+            <div>
+                <span>胸廊<i ng-repeat="option in dimensions.name_1095.options"
+                                   ng-if="option.name == entity.name_1095">{{option.label}}</i></span><span><i>,</i>胸骨<i
+                    ng-repeat="option in dimensions.name_1096.options" ng-if="option.name == entity.name_1096">{{option.label}}</i></span><span><i>,</i>双侧乳房<i
+                    ng-repeat="option in dimensions.name_1097.options" ng-if="option.name == entity.name_1097">{{option.label}}</i></span><span><i>,</i>呼吸运动<i
+                    ng-repeat="option in dimensions.name_1098.options" ng-if="option.name == entity.name_1098">{{option.label}}</i></span><span><i>,</i>肋间隙<i
+                    ng-repeat="option in dimensions.name_1099.options" ng-if="option.name == entity.name_1099">{{option.label}}</i></span><span><i>,</i>语颤<i
+                    ng-repeat="option in dimensions.name_1100.options" ng-if="option.name == entity.name_1100">{{option.label}}</i></span><span><i>,</i>叩诊有<i
+                    ng-repeat="option in dimensions.name_1101.options" ng-if="option.name == entity.name_1101">{{option.label}}</i></span><span><i>,</i>呼吸<i
+                    ng-repeat="option in dimensions.name_191.options" ng-if="option.name == entity.name_191">{{option.label}}</i></span><span><i>,</i>呼吸<i
+                    ng-repeat="option in dimensions.name_1102.options" ng-if="option.name == entity.name_1102">{{option.label}}</i></span><span><i>,</i>双肺呼吸音<i
+                    ng-repeat="option in dimensions.name_1103.options" ng-if="option.name == entity.name_1103">{{option.label}}</i></span><span><i>,</i>心前区<i
+                    ng-repeat="option in dimensions.name_1105.options" ng-if="option.name == entity.name_1105">{{option.label}}</i></span><span><i>,</i>心尖博动<i
+                    ng-repeat="option in dimensions.name_1106.options" ng-if="option.name == entity.name_1106">{{option.label}}</i></span><span><i>,</i>心浊音界<i
+                    ng-repeat="option in dimensions.name_1107.options" ng-if="option.name == entity.name_1107">{{option.label}}</i></span><span><i>,</i>心律<i
+                    ng-repeat="option in dimensions.name_1109.options" ng-if="option.name == entity.name_1109">{{option.label}}</i></span><span><i>,</i>各瓣膜听诊区<i
+                    ng-repeat="option in dimensions.name_1110.options" ng-if="option.name == entity.name_1110">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_1111.options" ng-if="option.name == entity.name_1111">{{option.label}}</i>心包摩擦音。</span>
+            </div>
+            <div>
+                <span>腹<i ng-repeat="option in dimensions.name_1112.options"
+                                  ng-if="option.name == entity.name_1112">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_1113.options" ng-if="option.name == entity.name_1113">{{option.label}}</i>腹壁静脉曲张</span><span><i>,</i>腹部<i
+                    ng-repeat="option in dimensions.name_1114.options" ng-if="option.name == entity.name_1114">{{option.label}}</i></span><span><i>,</i>腹部<i
+                    ng-repeat="option in dimensions.name_1116.options" ng-if="option.name == entity.name_1116">{{option.label}}</i></span><span><i>,</i>腹部<i
+                    ng-repeat="option in dimensions.name_1114.options" ng-if="option.name == entity.name_1114">{{option.label}}</i></span><span><i>,</i>腹部<i
+                    ng-repeat="option in dimensions.name_1116.options" ng-if="option.name == entity.name_1116">{{option.label}}</i></span><span><i>,</i>肝脏<i
+                    ng-repeat="option in dimensions.name_1117.options" ng-if="option.name == entity.name_1117">{{option.label}}</i></span><span><i>,</i>脾脏<i
+                    ng-repeat="option in dimensions.name_1118.options" ng-if="option.name == entity.name_1118">{{option.label}}</i></span><span><i>,</i>Murphy氏征<i
+                    ng-repeat="option in dimensions.name_1119.options" ng-if="option.name == entity.name_1119">{{option.label}}</i></span><span><i>,</i>肾脏<i
+                    ng-repeat="option in dimensions.name_1120.options" ng-if="option.name == entity.name_1120">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_1121.options" ng-if="option.name == entity.name_1121">{{option.label}}</i>移动性浊音</span><span><i>,</i>肠鸣音<i
+                    ng-repeat="option in dimensions.name_1122.options" ng-if="option.name == entity.name_1122">{{option.label}}</i></span><span><i>,</i>肠鸣音<i
+                    ng-repeat="option in dimensions.name_1123.options" ng-if="option.name == entity.name_1123">{{option.label}}</i>次/分。</span>
+            </div>
+            <div>
+                <span>肛门生殖器<i ng-repeat="option in dimensions.name_1124.options"
+                                      ng-if="option.name == entity.name_1124">{{option.label}}</i>。</span>
+            </div>
+            <div>
+                <span>脊柱<i ng-repeat="option in dimensions.name_1125.options"
+                                   ng-if="option.name == entity.name_1125">{{option.label}}</i></span><span><i>,</i>四肢<i
+                    ng-repeat="option in dimensions.name_1126.options" ng-if="option.name == entity.name_1126">{{option.label}}</i></span><span><i>,</i>关节<i
+                    ng-repeat="option in dimensions.name_1128.options" ng-if="option.name == entity.name_1128">{{option.label}}</i></span>
+            </div>
+            <div>
+                <span>双侧膝、跟腱反射<i ng-repeat="option in dimensions.name_1132.options"
+                                         ng-if="option.name == entity.name_1132">{{option.label}}</i></span><span><i>,</i><i
+                    ng-repeat="option in dimensions.name_1133.options" ng-if="option.name == entity.name_1133">{{option.label}}</i>Babinski征</span><span><i>,</i>Babinski征检查结果<i
+                    ng-repeat="option in dimensions.name_1134.options" ng-if="option.name == entity.name_1134">{{option.label}}</i>。</span>
+            </div>
+        </div>
+        <div ng-if="outputText.bodyExam.text" class="infi-view-text">
+            <textarea rows="15" style="width:96%;border:none;outline:none;letter-spacing: 1px;"
+                      readonly="readonly">{{outputText.bodyExam.text}}</textarea>
+        </div>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="modifyText('bodyExam')">修改</button>
+            <button class="btn infi-btn-linear-green btn-sm" ng-click="goBackView('bodyExam')">返回</button>
+        </div>
+    </div>
+    <div ng-if="outputText.bodyExam.tplStatus == 'modify'" class="infi-view">
+        <textarea rows="15" style="width:96%;" ng-model="outputText.bodyExam.text">{{outputText.bodyExam.text}}</textarea>
+        <div class="infi-output-footer">
+            <button class="btn infi-btn-linear-green-l btn-sm" ng-click="viewText('bodyExam')">完成</button>
+        </div>
+    </div>
+</div>
+
+

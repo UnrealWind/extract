@@ -1,0 +1,47 @@
+<div class="">
+    <div class="infi-title">
+        <h4 class="relative">
+            <span ng-click="addAttr(mainComplaintData.data[0],true)">{{mainComplaintData.name}}
+                <span class="glyphicon" ng-class="{'open':'glyphicon-chevron-down','close':'glyphicon-chevron-right'}[mainComplaintData.status]" aria-hidden="true"></span>
+            </span>
+            <span class="btn-pull-right">
+                <a  ng-click="addAttr(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加症状" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                </a>
+                <a  ng-if="!mainComplaintData.data[mainComplaintData.data.length-1].remarkShow && !mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="showRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="添加备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                </a>
+                <a  ng-if="mainComplaintData.data[mainComplaintData.data.length-1].remarkShow || mainComplaintData.data[mainComplaintData.data.length-1].remark" ng-click="delRemark(mainComplaintData.data[mainComplaintData.data.length-1])" title="删除备注" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                </a>
+
+                 <a ng-if="!routeParams.hideR" ng-click="ill()" title="治疗" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true" ></span>
+                </a>
+            </span>
+        </h4>
+    </div>
+    <div ng-repeat="attrs in mainComplaintData.data">
+        <ul class="attr">
+            <li ng-repeat="attr in attrs.childs">
+                <div class="attr spe" >
+                    <label title="{{attr.name}}">
+                        <input ng-change="addDig(attr)" ng-model="whatever" type="checkbox"/>
+                        {{attr.name}}
+                    </label>
+                    <span ng-click="delAttr(attrs,$index)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </div>
+
+            </li>
+        </ul>
+        <!--<div class="btn-box">
+            <div class="btn btn-default" ng-click="addAttr(attrs)">添加诊断</div>
+            <div ng-if="!attrs.remarkShow && !attrs.remark" ng-click="showRemark(attrs)" class="btn btn-default">添加备注</div>
+            <div ng-if="attrs.remarkShow || attrs.remark" ng-click="delRemark(attrs)" class="btn btn-default">清空备注</div>
+            <div ng-if="!routeParams.hideR" class="btn btn-default" ng-click="ill()">治疗</div>
+        </div>-->
+        <div class="remarks">
+            <textarea ng-if="attrs.remarkShow || attrs.remark" class="form-control" ng-model="attrs.remark" rows="3"></textarea>
+        </div>
+    </div>
+</div>

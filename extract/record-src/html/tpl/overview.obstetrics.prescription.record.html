@@ -1,0 +1,40 @@
+<div  class="infi-wj-self-box infi-visit-box" style="width: 100%;border: none;padding: 10px;">
+    <!--<div class="infi-wj-list-box-title infi-wj-visit-title">-->
+        <!--<div class="infi-visit-week">-->
+            <!--<span>门诊时间:</span>-->
+            <!--<span ng-bind="drugInfi.time|date:'yyyy-MM-dd'"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="infi-wj-table-box">
+        <table class="table table-bordered infi-wj-visit-tab">
+            <thead>
+            <tr>
+                <th>药品名称</th>
+                <th>规格</th>
+                <th>单位</th>
+                <th>数量</th>
+                <th>时间</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entity in drugInfi">
+                    <th>
+                        <span ng-bind="entity.drug_name"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="entity.drug_spec"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="entity.package_units"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="entity.quantity"></span>
+                    </th>
+                    <th>
+                        <span ng-bind="entity.presc_date|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

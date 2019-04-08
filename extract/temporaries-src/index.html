@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>多科就诊</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../src/scss/frame.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-modal.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-color.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-category.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-time-control.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-button.scss" rel="stylesheet"/>
+    <link href="../src/scss/infi-analysis-chart.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-navi.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-timeline.scss" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/scss/infi-forty-two.scss">
+    <link rel="stylesheet" href="css/monitor.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../src/scss/infi-navi.scss"/>
+</head>
+
+<body ng-app="infi-basic" ng-controller="HomeController">
+<!-- 头部导航 -->
+<header class="navbar navbar-default infi-header clearfix">
+    <div class="navbar-header infi-header-logo">
+        <span class="logo" href="#/home">
+            <a href="#"></a>
+        </span>
+    </div>
+
+    <div class="infi-header-title pull-left">多科就诊</div>
+
+    <div class="box-user pull-right" ng-controller="LoginController">
+        <img class="user-logo" src="../src/image/doctor.png">
+        <p class="infi-header-name" ng-bind="name"></p>
+        <span>|</span>
+        <p class="infi-header-name">
+            <a ng-click="logout()" class="glyphicon">退出</a>
+        </p>
+    </div>
+</header>
+<!-- 头部导航 END -->
+
+<!-- 左部导航 -->
+<infi-navi></infi-navi>
+<!-- 左部导航 END -->
+
+<!-- 右部内容-->
+<article class="infi-main">
+    <div ng-view></div>
+</article>
+<!-- 右部内容 END-->
+
+<footer class="infi-footer">
+    <p class="infi-footer-detail">
+        北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+    </p>
+</footer>
+</body>
+</html>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/moment.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../src/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../bower_components/echarts/dist/echarts.js"></script>
+<script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+<script src="all.js"></script>
+<script type="text/javascript" src="../src/widget/timeline/timeline.directive.js"></script>
+<script type="text/javascript" src="../src/widget/system/system.directive.js"></script>
+<script type="text/javascript" src="../src/widget/system/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/session.service.js" ></script>
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+<script type="text/javascript" src="../src/widget/system/http.interceptor.factory.js" ></script>
+<!-- 导航 -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>

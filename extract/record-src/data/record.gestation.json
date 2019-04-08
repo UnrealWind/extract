@@ -1,0 +1,194 @@
+[
+  [
+    {
+      "label": "检查日期",
+      "name": "pregnancy.date",
+      "type":"time"
+    },
+    {
+      "label": "妊娠期",
+      "name": "pregnancy.pregnancyWeek",
+      "unit": "周"
+    },
+    {
+      "label": "血压",
+      "name": "pregnancy.highPressure",
+      "secondName": "pregnancy.lowPressure",
+      "type": "twoValue",
+      "unit": "mmHg"
+    },
+    {
+      "label": "体重",
+      "name": "pregnancy.weight"
+    }
+  ],
+  [
+    {
+      "label": "胎心",
+      "name": "pregnancy.cardiac",
+      "unit": "次/分"
+    }
+  ],
+  [
+    {
+      "label": "胎位",
+      "name": "pregnancy.position",
+      "type":"radio",
+      "options":[
+        {
+          "label": "LOA",
+          "value": ""
+        },
+        {
+          "label": "LOT",
+          "value": ""
+        },
+        {
+          "label": "LOP",
+          "value": ""
+        },
+        {
+          "label": "ROA",
+          "value": ""
+        },
+        {
+          "label": "ROT",
+          "value": ""
+        },
+        {
+          "label": "ROP",
+          "value": ""
+        },
+        {
+          "label": "LST",
+          "value": ""
+        },
+        {
+          "label": "LSP",
+          "value": ""
+        },
+        {
+          "label": "RSA",
+          "value": ""
+        },
+        {
+          "label": "RST",
+          "value": ""
+        },
+        {
+          "label": "RSP",
+          "value": ""
+        },
+        {
+          "label": "LMA",
+          "value": ""
+        },
+        {
+          "label": "LMT",
+          "value": ""
+        },
+        {
+          "label": "LMP",
+          "value": ""
+        },
+        {
+          "label": "RMA",
+          "value": ""
+        },
+        {
+          "label": "RMT",
+          "value": ""
+        },
+        {
+          "label": "RMP",
+          "value": ""
+        },
+        {
+          "label": "LScA",
+          "value": ""
+        },
+        {
+          "label": "LScP",
+          "value": ""
+        },
+        {
+          "label": "RScA",
+          "value": ""
+        },
+        {
+          "label": "RScP",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label":"头盆关系",
+      "name":"pregnancy.headBasinRela",
+      "type":"radio",
+      "options":[
+        {
+          "label":"头盆相称",
+          "value":"头盆相称"
+        },
+        {
+          "label":"临界不称",
+          "value":"临界不称"
+        },
+        {
+          "label":"轻度不称",
+          "value":"轻度不称"
+        },
+        {
+          "label":"中度不称",
+          "value":"中度不称"
+        },
+        {
+          "label":"重度不称",
+          "value":"重度不称"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "label":"水肿",
+      "name":"pregnancy.edema",
+      "type":"radio",
+      "options":[
+        {
+          "label":"有",
+          "value":"有"
+        },
+        {
+          "label":"无",
+          "value":"无"
+        }
+      ]
+    },
+    {
+      "label":"尿蛋白",
+      "name":"pregnancy.urinaryProtein",
+      "type":"radio",
+      "options":[
+        {
+          "label":"-",
+          "value":"-"
+        },
+        {
+          "label":"+",
+          "value":"+"
+        },
+        {
+          "label":"++",
+          "value":"++"
+        },
+        {
+          "label":"+++",
+          "value":"+++"
+        }
+      ]
+    }
+  ]
+]

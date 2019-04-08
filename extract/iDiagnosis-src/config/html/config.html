@@ -1,0 +1,134 @@
+<div class="col-md-12 container config-content-wrapper">
+  <div class="page-header">
+    <h2 class="clearfix">
+      <i class="glyphicon glyphicon-cog"></i> 模板配置详情 <small>详细配置模板</small>
+    </h2>
+  </div>
+
+  <ol class="breadcrumb current-path">
+    <li>当前位置：</li>
+    <li><a href="#/list">模板列表</a></li>
+    <li class="active">详细配置模板</li>
+  </ol>
+
+  
+  <div class="tab-container col-md-12">
+    <div class="tab-fix-height">
+      <div class="row">
+        <div class="col-md-12 back-btn">
+          <div class="btn-group" role="group">
+            <button class="btn btn-default" ng-if="stepHeader > 0" ng-click="stepBack()"><i class="glyphicon glyphicon-chevron-left"></i> 上一步</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="row config-area-wrapper">
+          <!-- 已配置 -->
+          <div class="col-md-3 config-area">
+            <div class="config-content-wrapper">
+              <!-- <div ng-if="!copyAllSaved" class="configed-download">
+                <dl>
+                  <dt class="glyphicon glyphicon-cloud-download loading-icon"></dt>
+                  <dd class="loading-text">数据加载中...</dd>
+                </dl>
+              </div> -->
+              <ul class="list-group" ng-if = 'currOpts.currSaved'>
+                <li ng-repeat="opt in currOpts.currSaved" class="list-group-item clearfix">
+                  <div class="pull-left"><strong ng-bind="opt.label"></strong></div>
+                    <div class="btn-group pull-right" role="group">
+                        <button type="button" 
+                        class="btn btn-primary btn-xs"
+                        ng-repeat = "btn in addBtnMap[opt.clazz]"
+                        ng-bind = "btn.txt"
+                        ng-click = "addSubEle(btn.type, opt)"
+                      >
+                      </button>
+                  </div>
+                </li>
+              </ul>
+
+
+            </div>
+            <div class="panel-footer config-area-footer text-center"><i class="glyphicon glyphicon-bookmark"></i> <strong class="text-muted">已配置</strong></div>
+          </div>
+
+          <!-- 选择区 -->
+          <div class="col-md-5 config-area">
+            <div class="row">
+              <div class="col-md-12 clearfix">
+                <!-- 搜索 -->
+                <form class="form-inline pull-left">
+                  <div class="form-group">
+                    <input type="text"
+                           class="form-control" 
+                           placeholder="输入拼音/汉字/首字母搜索"
+                           ng-model="searchAbout.keyword"
+                           ng-change="searchAction()">
+                  </div>
+                </form>
+                <div class="btn-group pull-right" role="group">
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="selectAction(0)">全选</button>
+                  <button type="button" class="btn btn-primary btn-xs" ng-click="selectAction(1)">反选</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row config-content-wrapper">
+              <div class="col-md-12">
+                <div >
+                  <div class="config-positon-wrapper">
+                    <span 
+                      ng-repeat="opt in currOpts.origOpts"
+                      ng-if="searchAbout.rst.indexOf(opt) >= 0 || !searchAbout.keyword" 
+                      class="list-content-item btn btn-default" 
+                      ng-class="{true:'btn-selected'}[opt.isChecked]" 
+                      ng-click="pickOpts(opt)">
+                      <span ng-bind="opt.label"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+
+            <div class="panel-footer config-area-footer text-center"><i class="glyphicon glyphicon-transfer"></i> <strong class="text-muted">选择区</strong></div>
+          </div>
+
+          <!-- 已选择 -->
+          <div class="col-md-4 config-area">
+            <div class="alert alert-success drag-prompt" role="alert">
+              拖动元素调整最终显示顺序
+              <button type="button" class="btn btn-primary btn-xs pull-right" ng-click="saveSelected()">保存</button>
+            </div>
+
+            <div class="config-content-wrapper" ui-tree = 'treeOptions'>
+              <ol ui-tree-nodes ng-model = 'copyedData.currSavedCp'>
+                <li ng-repeat="opt in copyedData.currSavedCp" ui-tree-node>
+                  <div ui-tree-handle class="tree-node tree-node-content">{{$index + 1}}.  {{opt.label}}</div>
+                </li>
+              </ol>
+            </div>
+
+
+            <div class="panel-footer config-area-footer text-center">
+              <i class="glyphicon glyphicon-eye-open"></i> <strong class="text-muted">已选择</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--操作提示-->
+<div sys-tip></div>
+
+
+
+
+
+
+

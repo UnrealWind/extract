@@ -1,0 +1,16 @@
+{
+  "data":[
+    {
+      "label":"妊娠检查",
+      "value":"maternal"
+    },
+    {
+      "label":"复诊信息",
+      "value":"further"
+    },
+    {
+      "label":"高危评分",
+      "value":"dangerous"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<div class="infi-form-inputs col-md-12 infi-consultation">
+	<form ng-repeat="modal in detailsData.version" class="infi-modal-box current form-inline">
+		
+		<h2 id="" class="infi-title">
+			<span>{{modal.label}}</span>
+			<a ng-if="$index===0 && routeParams.recordId !=0  && !plugin.consultationStatus && role.role === 'creator'" class="btn infi-btn-linear-green-l btn-sm ng-scope" style="text-decoration: none; border-radius: 5px; padding: 6px;float: right;margin-top: 5px;" href="javascript:;" ng-click = "changeStatus('details')">保存会诊信息</a>
+		</h2>
+
+		<ul class="infi-modal-inputs form-inline row">
+			<li ng-repeat = "theme in modal.children" 
+			 ng-class="{'true':'col-md-6','false':'col-md-12'}[theme.type!=='图片上传-多张' && theme.type!=='图片上传-单张' && theme.type!=='大文本输入'&& theme.type!=='中文本输入'&& theme.type!=='文件上传']">
+				<input-template input="theme" parent="modal.children"></input-template>
+
+				<input-img-file-template ng-if="theme.type=='图片上传-多张' ||theme.type=='图片上传-单张'"></input-img-file-template>
+				
+			</li>
+
+		</ul>
+	</form><!-- end of infi-modal-box -->
+	
+	<div class="infi-m-btn" ng-if="routeParams.recordId ==0">
+		<a class="btn btn-default" ng-click="saveModal('list')"> 保存并返回 </a>
+		<a class="btn infi-btn-linear-green-l" href='javascript:;' ng-click="saveModal('expert')"> 下一步，邀请会诊专家 </a>
+	</div>
+
+
+	<div img-modal></div>
+	<div img-load datas="datas" stopload="stopload" upls="upls"></div>
+	<div sys-tip></div>
+</div>	

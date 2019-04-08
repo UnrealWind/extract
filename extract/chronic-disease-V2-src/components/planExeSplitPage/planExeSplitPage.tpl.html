@@ -1,0 +1,48 @@
+<div class="planExeSplitPage-directive">
+  <link rel="stylesheet" type="text/css" href="./planExeSplitPage.scss">
+  <div class="data-display-wrapper">
+    <!-- 数据查找中 -->
+    <div ng-if="$ctrl.state.currState == 'fetching'">
+      <p class="bg-warning text-center tab-inline-prop">数据查找中...</p>
+    </div>
+
+    <!-- 请求出错 -->
+    <div ng-if="$ctrl.state.currState == 'showErr'">
+      <p class="bg-danger text-center tab-inline-prop">请求出错，请重试！</p>
+    </div>
+
+    <single-line  class="sec-item"
+                  ng-repeat="singleItem in $ctrl.pageData.content track by singleItem.id" 
+                  whole-item="singleItem"
+                  single-item="singleItem"
+                  pre-map-level="{{$ctrl.currGroup.type}}.{{$ctrl.currPlan.type}}.execuate"></single-line>
+  </div>
+
+  <div class="page-split-wrapper"
+       ng-if="$ctrl.state.currState === 'showRst'">
+    <!-- 分页操作符 -->
+    <div class="spliter-wrapper">
+      <uib-pagination total-items="$ctrl.pageData.totalElements" 
+                        ng-model="$ctrl.pageData.number" 
+                        boundary-link-numbers="true" 
+                        ng-change="$ctrl.getPlanExeSplit($ctrl.pageData.number)"
+                        items-per-page="$ctrl.pageData.size" 
+                        num-pages="$ctrl.pageData.totalPages" 
+                        max-size="4">
+      </uib-pagination>
+    </div>
+    
+    <!-- 跳页 -->
+    <div class="jump-num-wrapper">
+      <div class="clearfix">
+        <input type="number" 
+                class="form-control pull-left jumpNum-ipt" 
+                ng-model="$ctrl.jumpPageNum" 
+                min="1">
+        <button class="btn btn-default pull-left jumpNum-btn"
+                ng-disabled="!$ctrl.jumpPageNum || $ctrl.jumpPageNum > $ctrl.pageData.totalPages" 
+                ng-click="$ctrl.getPlanExeSplit($ctrl.jumpPageNum)">跳转</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "status": "ok",
+  "description": "数据请求成功",
+  "data": {
+    "page":{
+      "content":[
+        {
+          "id": 69,
+          "patientId": "a102",
+          "hospitalId": "a102",
+          "medicalId": "1",
+          "visitId": "1",
+          "updator": null,
+          "number": "1",
+          "name": "首都医科大学佑安医院",
+          "CRFname": "放射科",
+          "clinic": "主任",
+          "createdtime": "张三",
+          "changetime":"1111111111111",
+          "useNubmer":"100000000@.com",
+          "useNubmers":"超级管理员",
+          "opentime":"2016-01-01",
+          "operat":"管理"
+        }
+      ],
+      "sort": [
+        {
+          "direction": "DESC",
+          "property": "id",
+          "ignoreCase": false,
+          "nullHandling": "NATIVE",
+          "ascending": false
+        }
+      ],
+      "totalPages": 2,
+      "firstPage": true,
+      "lastPage": true,
+      "numberOfElements": 4,
+      "totalElements": 8,
+      "size": 4,
+      "number": 0
+    },
+    "status":"ok",
+    "description":"数据请求成功"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description":"数据请求成功",
+  "status":"ok",
+  "data":[
+    {
+      "label":"全部",
+      "value":""
+    },{
+      "label":"PICC",
+      "value":"PICC"
+    },{
+      "label":"PORT",
+      "value":"PORT"
+    },{
+      "label":"未置管",
+      "value":"未置管"
+    }
+  ]
+}

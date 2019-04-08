@@ -1,0 +1,192 @@
+<div class="format">
+    <div class="row">
+        <button class="btn btn-sm btn-primary-white f-l" ng-click="goBack()">返回</button>
+        <button class="btn btn-m btn-primary-white f-r" ng-click="print()">打印</button>
+    </div>
+    <div id="print">
+        <h5 style="text-align: center;">
+            <span>{{year}}年{{month}}月{{day}}日</span>&nbsp;&nbsp;
+            <span>肾脏病科二线交班</span>&nbsp;&nbsp;
+            <span> 二线：<em contenteditable="true" style="border-bottom: 1px solid #333; display: inline-block; min-width:40px; font-style: normal;" ></em> &nbsp;
+                三线：<em contenteditable="true" style="border-bottom: 1px solid #333; display: inline-block; min-width:40px; font-style: normal;" ></em>
+            </span>
+        </h5>
+        <div class="table-box">
+            <span class="table-title">总体情况:</span>
+            <table class="table" border="1" style="margin: 10px 0 20px;">
+                <thead>
+                <tr ng-repeat="item in selfDept">
+                    <th>病人总数</th><th>{{item.count}}</th>
+                    <th>出院</th><th>{{item.cy}}</th>
+                    <th>入院</th><th>{{item.ry}}</th>
+                    <th>病重</th><th>{{item.seriouslyIll}}</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="item in selfDept">
+                    <th>病危</th><th>{{item.terminallyIll}}</th>
+                    <th>死亡</th><th>{{item.diePati}}</th>
+                    <th>军人</th><th>{{item.soldier}}</th>
+                    <th>特殊病人</th><th>{{item.specialPati}}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="allDeptLength">
+                    <th colspan="9" style="height: 10px;"></th>
+                </tr>
+                <tr ng-if="allDeptLength">
+                    <th ng-repeat="item in situation">{{item}}</th>
+                </tr>
+                <tr ng-repeat="item in allDept" ng-if="allDeptLength">
+                    <th>{{item.ward}}</th>
+                    <th>{{item.discharge}}</th>
+                    <th>{{item.admission}}</th>
+                    <th>{{item.count}}</th>
+                    <th>{{item.seriouslyIll}}</th>
+                    <th>{{item.terminallyIll}}</th>
+                    <th>{{item.diePati}}</th>
+                    <th>{{item.soldier}}</th>
+                    <th>{{item.specialPati}}</th>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="table-box">
+            <span class="table-title">急会诊情况</span>
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in overall">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody id="overall">
+                <tr ng-repeat="item in overallData track by $index">
+                    <th>{{item.deptName}}</th>
+                    <th>{{item.bed}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.age}}</th>
+                    <th style="width: 13%;">{{item.isCrri}}</th>
+                    <th style="width: 13%;">{{item.diagDisposal}}</th>
+                    <th>{{item.operItem}}</th>
+                    <th>{{item.opertor}}</th>
+                    <th class="hide">{{item.id}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-box">
+            <span class="table-title">危重病人</span>
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in patient">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody id="patient">
+                <tr ng-repeat="item in patientData track by $index" repeat-history-finish>
+                    <th>
+                        <span ng-if="item.dieaseLevel == 1">病危</span>
+                        <span ng-if="item.dieaseLevel == 2">病重</span>
+                        <span ng-if="item.dieaseLevel == 3">新增病重</span>
+                    </th>
+                    <th>{{item.deptName}}</th>
+                    <th>{{item.bed}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.age}}</th>
+                    <th>
+                        <span ng-if="item.identity == '地方'">地方</span>
+                        <span ng-if="item.identity == '军人'">军人</span>
+                        <span ng-if="item.identity == '特殊病人'">特殊病人</span>
+                    </th>
+                    <th style="width: 13%;">{{item.diagDisposal}}</th>
+                    <th style="width: 13%;">{{item.operItem}}</th>
+                    <th>{{item.opertor}}</th>
+                    <th>{{item.orderDate}}</th>
+                    <th class="hide">{{item.id}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-box">
+            <span class="table-title">新增军人</span>
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in solider track by $index">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody id="solider">
+                <tr ng-repeat="item in soliderData track by $index">
+                    <th>{{item.deptName}}</th>
+                    <th>{{item.bed}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.age}}</th>
+                    <th>{{item.identity}}</th>
+                    <th style="width: 13%;">{{item.diagDisposal}}</th>
+                    <th>{{item.specialDisposal}}</th>
+                    <th>{{item.operItem}}</th>
+                    <th>{{item.opertor}}</th>
+                    <th class="hide">{{item.id}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-box">
+            <span class="table-title">特殊病人</span>
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in special">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody id="special">
+                <tr ng-repeat="item in specialData track by $index">
+                    <th>{{item.deptName}}</th>
+                    <th>{{item.bed}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.age}}</th>
+                    <th style="width: 13%;">{{item.diagDisposal}}</th>
+                    <th>{{item.operItem}}</th>
+                    <th>{{item.opertor}}</th>
+                    <th class="hide">{{item.id}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-box">
+            <span class="table-title">联合会诊患者</span>
+            <table class="table" border="1">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in consultation">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody id="consultation">
+                <tr ng-repeat="item in consultationData track by $index" repeat-history-finish>
+                    <th>{{item.deptName}}</th>
+                    <th>{{item.bed}}</th>
+                    <th>{{item.name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.age}}</th>
+                    <th>
+                        <span ng-if="item.identity == 1">地方</span>
+                        <span ng-if="item.identity == 2">军人</span>
+                        <span ng-if="item.identity == 3">特殊病人</span>
+                    </th>
+                    <th style="width: 13%;">{{item.diagDisposal}}</th>
+                    <th style="width: 13%;">{{item.operItem}}</th>
+                    <th>{{item.opertor}}</th>
+                    <th class=" hide">{{item.id}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

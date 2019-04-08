@@ -1,0 +1,24 @@
+<div class="infi-wj-self-box">
+    <div class="infi-wj-title">
+        <i class="infi-icon">&#xe63b;</i>体格检查
+    </div>
+
+    <div class="infi-wj-part infi-menzhen-basic" >
+        <div class="row">
+            <div class="" ng-repeat="opt in hospitalBody" ng-class="{true:'col-md-12',false:'col-md-3'}[opt.vital_signs_type == 10]">
+                <p>
+                    {{opt.label}}：
+                </p>
+                <p style="display: inline-block;">
+                    {{opt.value|changeNULL}}
+                </p>
+            </div>
+            <div class="col-md-12" ng-if="hospitalBody.length == 0">-</div>
+
+            <div ng-if="opt.handler_id == 12 && allResults.length >0 && opt.remark" ng-repeat="opt in allResults" class="col-md-12">
+                <p><span style="color: #000;">备注：</span>{{opt.remark|changeNULL}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

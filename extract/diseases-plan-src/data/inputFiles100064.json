@@ -1,0 +1,1483 @@
+[
+  {
+    "label": "基本信息",
+    "name": "basic_info",
+    "data": [
+      {
+        "label": "性别",
+        "value": "0",
+        "type": "单选",
+        "switchChecked": "",
+        "children": [],
+        "id": "1",
+        "dimension": {
+          "options": [
+            {
+              "label": "男",
+              "value": "男"
+            },
+            {
+              "label": "女",
+              "value": "女"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "年龄",
+        "value": "0",
+        "type": "小文本输入",
+        "prompt": "",
+        "id": "2"
+      },
+      {
+        "label": "身高",
+        "value": "0",
+        "type": "小文本输入",
+        "unit": "cm",
+        "prompt": "",
+        "id": "3"
+      },
+      {
+        "label": "体重",
+        "value": "0",
+        "type": "小文本输入",
+        "unit": "kg",
+        "prompt": "",
+        "id": "4"
+      },
+      {
+        "label": "入院心率",
+        "value": "0",
+        "type": "小文本输入",
+        "unit": "次/分",
+        "prompt": "",
+        "id": "5"
+      },
+      {
+        "label": "入院收缩压",
+        "value": "0",
+        "type": "小文本输入",
+        "unit": "mmHg",
+        "prompt": "",
+        "id": "6"
+      },
+      {
+        "label": "入院舒张压",
+        "value": "0",
+        "type": "小文本输入",
+        "unit": "mmHg",
+        "prompt": "",
+        "id": "7"
+      }
+    ]
+  },
+  {
+    "label": "症状",
+    "name": "symptom",
+    "data": [
+      {
+        "label": "意识状态",
+        "value": "0",
+        "type": "下拉菜单",
+        "id": "1",
+        "dimension": {
+          "options": [
+            {
+              "label": "昏迷",
+              "value": "昏迷"
+            },
+            {
+              "label": "昏睡",
+              "value": "昏睡"
+            },
+            {
+              "label": "嗜睡",
+              "value": "嗜睡"
+            },
+            {
+              "label": "意识模糊",
+              "value": "意识模糊"
+            },
+            {
+              "label": "神志谵妄",
+              "value": "神志谵妄"
+            },
+            {
+              "label": "淡漠",
+              "value": "淡漠"
+            },
+            {
+              "label": "谵妄",
+              "value": "谵妄"
+            }
+          ]
+        },
+        "prompt": ""
+      }
+    ]
+  },
+  {
+    "label": "病情严重程度",
+    "name": "illness_seve",
+    "data": [
+      {
+        "label": "CURB—65评分",
+        "value": "0",
+        "type": "下拉菜单",
+        "id": "1",
+        "dimension": {
+          "options": [
+            {
+              "label": "0—1",
+              "value": "0—1"
+            },
+            {
+              "label": "2",
+              "value": "2"
+            },
+            {
+              "label": "3—5",
+              "value": "3—5"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "尿素（Urea）测定≥7.14",
+        "value": "0",
+        "type": "开关",
+        "id": "4",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肌酐≥110",
+        "value": "0",
+        "type": "开关",
+        "id": "7",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "胸片多肺叶浸润",
+        "value": "0",
+        "type": "开关",
+        "id": "5",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺CT多肺叶浸润",
+        "value": "0",
+        "type": "开关",
+        "id": "6",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      }
+    ]
+  },
+  {
+    "label": "病原菌感染",
+    "name": "pathogen_infection",
+    "data": [
+      {
+        "label": "金黄色葡萄球菌甲氧西林敏感",
+        "value": "0",
+        "type": "开关",
+        "id": "1",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "钾绿铜单杆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "2",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "不动杆菌属",
+        "value": "0",
+        "type": "开关",
+        "id": "3",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炎克雷伯菌",
+        "value": "0",
+        "type": "开关",
+        "id": "4",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肠杆菌科菌不产酶",
+        "value": "0",
+        "type": "开关",
+        "id": "5",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肠杆菌属细菌",
+        "value": "0",
+        "type": "开关",
+        "id": "6",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "大肠埃希菌",
+        "value": "0",
+        "type": "开关",
+        "id": "7",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "鲍曼不动杆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "8",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "多重耐药菌",
+        "value": "0",
+        "type": "开关",
+        "id": "9",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感嗜血杆菌不产B内酰胺酶",
+        "value": "0",
+        "type": "开关",
+        "id": "10",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感嗜血杆菌产B内酰胺酶",
+        "value": "0",
+        "type": "开关",
+        "id": "11",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "卡他莫拉菌",
+        "value": "0",
+        "type": "开关",
+        "id": "12",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "金黄色葡萄球菌甲氧西林耐药",
+        "value": "0",
+        "type": "开关",
+        "id": "13",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "产ESBL肠科菌杆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "14",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "高产AmpC酶肠杆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "15",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "产碳青霉烯酶肠杆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "16",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "厌氧菌",
+        "value": "0",
+        "type": "开关",
+        "id": "17",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炎支原体",
+        "value": "0",
+        "type": "开关",
+        "id": "18",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炎衣原体",
+        "value": "0",
+        "type": "开关",
+        "id": "19",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "军团菌",
+        "value": "0",
+        "type": "开关",
+        "id": "20",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "鹦鹉热衣原体",
+        "value": "0",
+        "type": "开关",
+        "id": "21",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "伯士考克斯体",
+        "value": "0",
+        "type": "开关",
+        "id": "22",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "类鼻疽博克霍尔德菌",
+        "value": "0",
+        "type": "开关",
+        "id": "23",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "百日咳博德特菌",
+        "value": "0",
+        "type": "开关",
+        "id": "24",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "嗜麦芽窄食单胞菌",
+        "value": "0",
+        "type": "开关",
+        "id": "25",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "奴卡菌",
+        "value": "0",
+        "type": "开关",
+        "id": "26",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "放射菌",
+        "value": "0",
+        "type": "开关",
+        "id": "27",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "鼠疫耶尔森菌",
+        "value": "0",
+        "type": "开关",
+        "id": "28",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炭疽",
+        "value": "0",
+        "type": "开关",
+        "id": "29",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "曲霉",
+        "value": "0",
+        "type": "开关",
+        "id": "30",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "毛霉",
+        "value": "0",
+        "type": "开关",
+        "id": "31",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺孢子",
+        "value": "0",
+        "type": "开关",
+        "id": "32",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "有荚膜包绕的酵母菌",
+        "value": "0",
+        "type": "开关",
+        "id": "33",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "荚膜组织胞浆菌",
+        "value": "0",
+        "type": "开关",
+        "id": "34",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "马尔尼菲青霉菌",
+        "value": "0",
+        "type": "开关",
+        "id": "35",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炎链球菌",
+        "value": "0",
+        "type": "开关",
+        "id": "36",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感病毒或人禽流感病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "37",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "腺病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "38",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "呼吸道合胞病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "39",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "中东冠状病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "40",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺孢子肺炎",
+        "value": "0",
+        "type": "开关",
+        "id": "41",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "42",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "人禽流感病毒",
+        "value": "0",
+        "type": "开关",
+        "id": "43",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺炎支原体抗体检测",
+        "value": "0",
+        "type": "开关",
+        "id": "44",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感嗜血杆菌不产β内酰胺酶",
+        "value": "0",
+        "type": "开关",
+        "id": "45",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "流感嗜血杆菌产β内酰胺酶",
+        "value": "0",
+        "type": "开关",
+        "id": "46",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "铜绿假单胞菌",
+        "value": "0",
+        "type": "开关",
+        "id": "47",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      }
+    ]
+  },
+  {
+    "label": "伴临床疾患",
+    "name": "clinical_disease",
+    "data": [
+      {
+        "label": "脑卒中",
+        "value": "0",
+        "type": "开关",
+        "id": "1",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "慢性肾功能不全",
+        "value": "0",
+        "type": "开关",
+        "id": "2",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "糖尿病",
+        "value": "0",
+        "type": "开关",
+        "id": "3",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "慢性阻塞性肺疾病",
+        "value": "0",
+        "type": "开关",
+        "id": "4",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "慢性支气管炎",
+        "value": "0",
+        "type": "开关",
+        "id": "5",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "哮喘",
+        "value": "0",
+        "type": "开关",
+        "id": "6",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肝硬化",
+        "value": "0",
+        "type": "开关",
+        "id": "7",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "长期服用免疫抑制剂",
+        "value": "0",
+        "type": "开关",
+        "id": "8",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "酗酒",
+        "value": "0",
+        "type": "开关",
+        "id": "9",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "支气管扩张",
+        "value": "0",
+        "type": "开关",
+        "id": "10",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "慢性心功能不全",
+        "value": "0",
+        "type": "开关",
+        "id": "11",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "肺纤维化",
+        "value": "0",
+        "type": "开关",
+        "id": "12",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "癫痫",
+        "value": "0",
+        "type": "开关",
+        "id": "13",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "妊娠",
+        "value": "0",
+        "type": "开关",
+        "id": "14",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      },
+      {
+        "label": "哺乳期",
+        "value": "0",
+        "type": "开关",
+        "id": "15",
+        "children": [],
+        "dimension": {
+          "options": [
+            {
+              "label": "是",
+              "value": "1"
+            },
+            {
+              "label": "否",
+              "value": "0"
+            }
+          ]
+        },
+        "prompt": ""
+      }
+    ]
+  }
+
+]

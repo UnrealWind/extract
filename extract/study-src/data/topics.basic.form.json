@@ -1,0 +1,162 @@
+[
+    [
+        {
+            "label": "课题中文名", 
+            "name": "basic.name", 
+            "type": "text"
+        }, 
+        {
+            "label": "课题英文名", 
+            "name": "basic.ename", 
+            "type": "text"
+        }
+    ], 
+    [
+        {
+            "label": "课题代码", 
+            "name": "basic.code", 
+            "type": "text"
+        }, 
+        {
+            "label": "课题编号", 
+            "name": "basic.serialNumber", 
+            "type": "text"
+        }
+    ], 
+    [
+        {
+            "label": "课题可见性", 
+            "name": "basic.visible", 
+            "type": "select", 
+            "options": [
+                {
+                    "label": "公开共享", 
+                    "value": "公开共享"
+
+                }, 
+                {
+                    "label": "仅课题组成员可见", 
+                    "value": "仅课题组成员可见"
+                }
+            ]
+        }, 
+        {
+            "label": "中心设置", 
+            "name": "basic.center", 
+            "type": "select", 
+            "options": [
+                {
+                    "label": "多中心", 
+                    "value": "多中心"
+                }, 
+                {
+                    "label": "单中心", 
+                    "value": "单中心"
+                }
+            ]
+        }
+    ], 
+    [
+        {
+            "label": "课题类型", 
+            "name": "basic.type,basic.researchType",
+            "type": "select", 
+            "options": [
+                [
+                    {
+                        "label": "描述性研究", 
+                        "value": "描述性研究"
+                    }, 
+                    {
+                        "label": "分析性研究", 
+                        "value": "分析性研究"
+                    }, 
+                    {
+                        "label": "实验性研究", 
+                        "value": "实验性研究"
+                    }, 
+                    {
+                        "label": "数据库及其它", 
+                        "value": "数据库及其它"
+                    }
+                ], 
+                [
+                    {
+                        "label": "病例对照研究", 
+                        "value": "病例对照研究"
+                    }, 
+                    {
+                        "label": "队列研究", 
+                        "value": "队列研究"
+                    }
+                ]
+            ]
+        }
+    ], 
+    [
+        {
+            "label": "立项依据", 
+            "name": "basic.basePoint", 
+            "type": "textarea"
+        }
+    ], 
+    [
+        {
+            "label": "科研意义与创新点", 
+            "name": "basic.significance", 
+            "type": "textarea"
+        }
+    ], 
+    [
+        {
+            "label": "研究方案", 
+            "name": "basic.researchWay", 
+            "type": "textarea"
+        }
+    ], 
+    [
+        {
+            "label": "计划开始时间", 
+            "name": "basic.beginTime", 
+            "type": "time"
+        }, 
+        {
+            "label": "计划结束时间", 
+            "name": "basic.endTime", 
+            "type": "time"
+        }
+    ], 
+    [
+        {
+            "label": "研究病种", 
+            "name": "basic.projectName", 
+            "type": "text"
+        }
+    ], 
+    [
+        {
+            "label": "课题负责人", 
+            "name": "basic.master", 
+            "type": "text"
+        }, 
+        {
+            "label": "联系电话", 
+            "name": "basic.phone", 
+            "type": "text"
+        }
+    ], 
+    [
+        {
+            "label": "邮箱", 
+            "name": "basic.email", 
+            "type": "text"
+        }
+    ], 
+    [
+        {
+            "label": "备注", 
+            "name": "basic.remarks", 
+            "type": "textarea"
+        }
+    ]
+]

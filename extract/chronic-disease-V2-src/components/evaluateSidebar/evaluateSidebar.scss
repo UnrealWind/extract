@@ -1,0 +1,43 @@
+// variable define
+$border-color: #eee;
+$main-opt-color: #007fff;
+$main-text-color:#3780f7;
+$main-opt-color-hover: #0876e4;
+
+.evaluateSidebar-component {
+  .sidebar-container {
+    .form-result-wrapper {
+      margin-top: 15px;
+    }
+  
+    .btn-list {
+      z-index: 2;
+      .sidebar-tab-item-wrapper {
+        .sidebar-tab-item {
+          border: none;
+          border-bottom: 1px solid #ccc;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+  
+        &>.sidebar-tab-item:first-child {
+          border-right: 1px solid #ccc;
+        }
+  
+        &>.sidebar-tab-item.active {
+          color: #fff;
+          background-color: $main-opt-color;
+        }
+  
+      }
+    }
+
+    .sidebar-wrapper {
+      height: 100%;
+      margin-bottom: 0;
+      margin-top: -33px;
+      padding-top: 43px;
+      overflow-y: auto; 
+    }
+  }
+}

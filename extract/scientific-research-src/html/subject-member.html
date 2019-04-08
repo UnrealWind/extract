@@ -1,0 +1,192 @@
+<h4 class="infi-title"><i class="glyphicon glyphicon-globe">
+</i>课题研究 > {{subjectName}} > 课题成员邀请</h4>
+<header ng-if="subjectNew" class="infi-section">
+    <ul class="infi-header-ul">
+        <li><span>1. 课题基本信息设置</span></li>
+        <li class="infi-header-active"><span>2. 课题成员邀请</span></li>
+        <li><span>3. 课题任务计划设置</span></li>
+    </ul>
+</header>
+<div class="infi-box">
+    <h4>已邀请成员列表
+        <span class="CRF-details-button" style="position: absolute;top: 15px;right: 20px;">
+            <button type="button" class="btn btn-default" ng-disabled="power!='own' && power!='leader'" ng-click="inviteDelete()">删除</button>
+            <button type="button" class="btn btn-primary" ng-disabled="power!='own' && power!='leader'" ng-click="inviteModals()">新增邀请</button>
+        </span>
+    </h4>
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div class="row infi-form-list">
+                <div class="form-label col-md-1 select-list">人员姓名:</div>
+                <div class="col-md-2 p-l-r-none">
+                    <input type="text" class="form-control" ng-model="invitedName" ng-change="filterInvitedChange()">
+                </div>
+                <div class="form-label col-md-1 select-list">医院:</div>
+                <div class="col-md-2 p-l-r-none">
+                    <select class="form-control" ng-change="filterInvitedChange()" ng-model="hospital" ng-options="item.id as item.label for item  in hospitals">
+                    </select>
+                </div>
+                <div class="form-label col-md-1 select-list">科室:</div>
+                <div class="col-md-2 p-l-r-none">
+                    <select class="form-control" ng-change="filterInvitedChange()" ng-model="deparment" ng-options="item.id as item.label for item  in departments"></select>
+                </div>
+                <div class="form-label col-md-1 select-list">职称:</div>
+                <div class="col-md-2 p-l-r-none">
+                    <select class="form-control" ng-change="filterInvitedChange()" ng-model="jobTitle" ng-options="item.id as item.label for item  in jobTitles"></select>
+                </div>
+            </div>
+            <!--table-->
+            <table class="table infi-table invite-list">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" ng-model="selectAll" ng-change="selectAllData(selectAll,invitedData,'invited')">全选</th>
+                    <th>序号</th>
+                    <th ng-repeat="item in invitedColumns"> {{item.name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in invitedData">
+                    <th><input type="checkbox" ng-model="item.checked" ng-change="selectItem(item.checked,invitedData,$index,'invited')"></th>
+                    <th>{{ $index+1 }}</th>
+                    <th>{{ item.hospital }}</th>
+                    <th>{{ item.dept }}</th>
+                    <th>{{ item.name }}</th>
+                    <th>{{ item.jobTitle }}</th>
+                    <th>{{ item.attendTime }}</th>
+                    <th class="email-phone"  >
+                        <span class="btn-href">
+                            <i ng-click="applicationView($event,item)" ng-if="item.checkStatus == 'apply'">申请查看</i>
+                            <i ng-click="applicationView($event,item)" ng-if="item.checkStatus == 'applying'" style="color:#ccc; text-decoration: none;"> 申请中</i>
+                            <i ng-click="applicationView($event,item)" class="infi-control-mark" ng-if="item.checkStatus == 'success'">查看</i>
+                            <i ng-click="applicationView($event,item)" ng-if="item.checkStatus == 'failture'" style="color: #ccc;">申请查看</i>
+                        </span>
+                        <div class="show-email-phone" ng-show="show && item.show"  ng-mouseleave="hideEmailPhone($event)" >
+                            <p><i>手机:</i> &nbsp;<em>{{item.phone}}</em><span ng-click="copyText($event,item.phone)" class="btn-href m-l-l">复制</span></p>
+                            <p><i>邮箱:</i> &nbsp;<em>{{item.email}}</em><span ng-click="copyText($event,item.email)" class="btn-href m-l-l">复制</span></p>
+                        </div>
+                    </th>
+                    <th ng-if="power=='own' || power=='leader'" class="btn-href" ng-click="changePower(item)">
+                        {{item._identity}}
+                    </th>
+                    <th ng-if="power!='own' && power!='leader'" class="btn-href">
+                        {{item._identity}}
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-if="showInvited" class="alert alert-danger">暂无数据！！！</div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <uib-pagination class="f-r"  total-items="invitedPage.totalElements" ng-model="invitedPage.number" max-size="5"
+                        boundary-link-numbers="true" ng-change="updatePageAttend(invitedPage.number)" items-per-page="invitedPage.size"
+                        num-pages="invitedPage.totalPages">
+        </uib-pagination>
+
+    </div>
+</div>
+<div class="topics-button">
+    <button ng-if="subjectNew" class="btn infi-btn-linear-green-l" ng-click="invitePrevious()">上一步</button>
+    <button ng-if="subjectNew" class="btn infi-btn-linear-green-l" ng-click="inviteNext()">下一步</button>
+    <button ng-if="subjectNew" class="btn infi-btn-linear-green-l" ng-click="inviteNext(undefined,'save')">保存</button>
+</div>
+
+
+<div class="modal fade"  id="invites-modal" >
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="dir-nav-container">
+                    <div class="row infi-form-list">
+                        <div class="form-label col-md-1 select-list">人员姓名:</div>
+                        <div class="col-md-2 p-l-r-none">
+                            <input type="text" class="form-control" ng-model="UnInvitedName" ng-change="filterUnInvitedChange()">
+                        </div>
+                        <div class="form-label col-md-1 select-list">医院:</div>
+                        <div class="col-md-2 p-l-r-none">
+                            <select class="form-control" ng-model="UnHospital" ng-change="filterUnInvitedChange()" ng-options="item.id as item.label for item  in UnHospitals"></select>
+                        </div>
+                        <div class="form-label col-md-1 select-list">科室:</div>
+                        <div class="col-md-2 p-l-r-none">
+                            <select class="form-control" ng-model="UnDeparment" ng-change="filterUnInvitedChange()" ng-options="item.id as item.label for item  in UnDepartments"></select>
+                        </div>
+                        <div class="form-label col-md-1 select-list">职称:</div>
+                        <div class="col-md-2 p-l-r-none">
+                            <select class="form-control" ng-model="UnJobTitle" ng-change="filterUnInvitedChange()" ng-options="item.id as item.label for item  in UnJobTitles"></select>
+                        </div>
+                    </div>
+                    <table class="table infi-table invite-list">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox"  ng-model="selectAll1" ng-change="selectAllData(selectAll1,unInvitedData,'uninvited')">全选</th>
+                            <th>序号</th>
+                            <th ng-repeat="item in UnInvitedColumns"> {{item.name}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in unInvitedData">
+                            <th><input type="checkbox" ng-model="item.checked" ng-change="selectItem(item.checked,unInvitedData,$index,'uninvited')"></th>
+                            <th>{{ $index+1 }}</th>
+                            <th>{{ item.hospital }}</th>
+                            <th>{{ item.dept }}</th>
+                            <th>{{ item.name }}</th>
+                            <th>{{ item.jobTitle }}</th>
+                            <th class="email-phone">
+                                <span class="btn-href">
+                                    <i ng-click="applicationView($event,item)" ng-if="item.checkStatus == 'apply'">申请查看</i>
+                                    <i ng-click="applicationView($event,item)"ng-if="item.checkStatus == 'applying'" style="color:#ccc; text-decoration: none;">申请中</i>
+                                    <i ng-click="applicationView($event,item)"ng-if="item.checkStatus == 'success'">查看</i>
+                                    <i ng-click="applicationView($event,item)" ng-if="item.checkStatus == 'failture'" style="color: #ccc;">申请查看</i>
+                                </span>
+                                <div ng-show="show && item.show" class="show-email-phone">
+                                    <p><i>手机:</i> &nbsp;<em>{{item.phone}}</em><span ng-click="copyText($event,item.phone)" class="btn-href m-l-l">复制</span></p>
+                                    <p><i>邮箱:</i> &nbsp;<em>{{item.email}}</em><span ng-click="copyText($event,item.email)" class="btn-href m-l-l">复制</span></p>
+                                </div>
+                            </th>
+                            <th>
+                                <select ng-model="permission" ng-options="item.id as item.label for item in permissions" class="form-control" ng-change="permissionChange(item,permission)"></select>
+                            </th>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="showUninvited" class="alert alert-danger">暂无数据！！！</div>
+                </div>
+                <div class="clearfix">
+                    <uib-pagination class="f-r"  total-items="unInvitedPage.totalElements" ng-model="unInvitedPage.number" max-size="5"
+                                    boundary-link-numbers="true" ng-change="updatePageAttendUnInvited(unInvitedPage.number)" items-per-page="unInvitedPage.size"
+                                    num-pages="unInvitedPage.totalPages">
+                    </uib-pagination>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="inviteModal()">邀请</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--删除邀请人员模态框-->
+<div general-prompt></div>
+
+<div class="modal fade"  id="invite-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>邀请成功</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div invites-modal></div>
+

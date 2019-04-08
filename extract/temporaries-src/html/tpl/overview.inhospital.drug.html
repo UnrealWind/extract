@@ -1,0 +1,42 @@
+<div  class="infi-wj-self-box infi-visit-box" style="width: 100%;padding: 10px;border: none;">
+<div class="infi-wj-table-box">
+    <table class="table table-bordered infi-wj-visit-tab">
+        <thead>
+        <tr>
+            <th>药品名称</th>
+            <th>剂量</th>
+            <th>单位</th>
+            <th>频次</th>
+            <th>途径</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="drugInfi in drugInfi">
+            <th>
+                <span ng-bind="drugInfi.drugName"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.doseage"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.doseUnit"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.freq"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.administrationId"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.startDateTime|date:'yyyy-MM-dd HH:mm:ss'"></span>
+            </th>
+            <th>
+                <span ng-bind="drugInfi.stopDateTime |date:'yyyy-MM-dd HH:mm:ss'"></span>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>

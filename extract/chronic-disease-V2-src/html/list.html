@@ -1,0 +1,220 @@
+<div class="container-fluid list-page">
+  <!-- 页面标题 -->
+  <div class="row defeat-clearfix">
+    <div class="col-md-12">
+      <h3 class="clearfix">
+        <span class="pull-left"><i class="glyphicon glyphicon-th-list"></i> 患者列表</span>
+        <button class="btn btn-primary pull-right"
+                ng-click="addNewPatiAct()"
+                data-toggle="modal" 
+                data-target="#creatPatiDiag"><i class="glyphicon glyphicon-plus"></i> 新建患者
+        </button>
+      </h3>
+      <hr>
+    </div>
+    <!-- 列表筛选条件 -->
+    <div class="col-md-12">
+      <form class="form-inline filter-wrapper">
+        <!-- patient name -->
+        <div class="form-group filter-conditions">
+          <label for="patiName">姓名:</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="patiName" 
+                  placeholder="请输入姓名"
+                  ng-model="filterAbout.patiName"
+                  ng-change="filterChange()">
+        </div>
+        <!-- department id -->
+        <div class="form-group filter-conditions">
+          <label for="depID">门诊 ID:</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="depID" 
+                  placeholder="请输入门诊 ID"
+                  ng-model="filterAbout.depId"
+                  ng-change="filterChange()">
+        </div>
+        <!-- nursing group -->
+        <div class="form-group filter-conditions">
+          <label for="nurseGP">护理组:</label>
+          <select class="form-control" 
+                  id="nurseGP"
+                  ng-options="group as group.name for group in groupAbout.groupOrgData track by group.id"
+                  ng-model="filterAbout.patiGroup"
+                  ng-change="filterChange()">
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <!-- 列表主体 -->
+    <div class="col-md-12">
+      <div class="pati-list">
+        <table class="table table-hover"
+               width="100%">
+          <thead>
+            <tr>
+              <th class="text-center"
+                  ng-repeat="th in patiTabAbout.columns"
+                  ng-bind="th.label"
+                  width="{{th.width}}">
+              </th>
+            </tr>
+          </thead>
+      
+          <tbody>
+            <tr ng-repeat="row in patiTabAbout.fillData.content"
+                ng-if="patiTabAbout.state.currState == 'showRst' && patiTabAbout.fillData.content.length > 0">
+              <td ng-repeat="(ind, val) in patiTabAbout.contentMap"
+                  class="txt-elipse text-center">
+                <span ng-bind="row[val]" 
+                      title="{{row[val]}}"
+                      class="">
+                </span>
+              </td>
+              <!-- 操作 -->
+              <td class="text-center">
+                <button class="btn btn-default" ng-click="toManage('table', row)">管理</button>
+              </td>
+            </tr>
+      
+            <!-- 数据查找中 -->
+            <tr ng-if="patiTabAbout.state.currState == 'fetching'">
+              <td colspan="{{patiTabAbout.columns.length}}">
+                <p class="bg-warning text-center tab-inline-prop">数据查找中...</p>
+              </td>
+            </tr>
+      
+            <!-- 暂无数据 -->
+            <tr ng-if="patiTabAbout.state.currState == 'showRst' && patiTabAbout.fillData.length == 0">
+              <td colspan="{{patiTabAbout.columns.length}}">
+                <p class="bg-warning text-center tab-inline-prop">暂无数据</p>
+              </td>
+            </tr>
+      
+            <!-- 请求出错 -->
+            <tr ng-if="patiTabAbout.state.currState == 'showErr'">
+              <td colspan="{{patiTabAbout.columns.length}}">
+                <p class="bg-danger text-center tab-inline-prop">请求出错，请重试！</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 分页 -->
+    <div class="col-md-12">
+      <div class="infi-page">
+        <div class="form-inline">
+          <div class="form-group">
+            <uib-pagination total-items="patiTabAbout.fillData.totalElements" 
+                            ng-model="patiTabAbout.fillData.number" 
+                            boundary-link-numbers="true" 
+                            ng-change="getList(patiTabAbout.fillData.number)"
+                            items-per-page="patiTabAbout.fillData.size" 
+                            num-pages="patiTabAbout.fillData.totalPages" 
+                            max-size="6">
+            </uib-pagination>
+          </div>
+          <!-- 跳转页码 -->
+          <div class="form-group jumpPage-wrap">
+            <div class="input-group">
+              <input type="number" 
+                      class="form-control numberInput" 
+                      ng-model="patiTabAbout.jumpPage" 
+                      min="1">
+            </div>
+            <button class="btn btn-default" 
+                    ng-click="getList(patiTabAbout.jumpPage)">跳转</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 新建患者模态框 -->
+    <div class="modal fade" id="creatPatiDiag" data-backdrop="static">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">新建患者</h4>
+          </div>
+          <div class="modal-body">
+            <!-- pid 患者存在查询 -->
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                  <input type="text"
+                         class="form-control"
+                         ng-model="patiAbout.depId"
+                         ng-change="checkPatiAbout.search()"
+                         placeholder="输入 PID 检索患者">
+                  <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 搜索状态提示 -->
+            <div class="row checkPatiStatus-wrapper"
+                 ng-if="['fetching', 'showErr'].indexOf(checkPatiAbout.currState) >= 0">
+              <div class="col-md-8 col-md-offset-2">
+                  <!-- 搜索中 -->
+                  <p class="bg-warning text-center" ng-if="checkPatiAbout.currState == 'fetching'">查找患者中...</p>
+                  <!-- 搜索失败 -->
+                  <p class="bg-danger text-center" ng-if="checkPatiAbout.currState == 'showErr'">查找失败！</p>
+              </div>
+            </div>
+  
+            <!-- 结果展示区 -->
+            <div class="row ifPatiExit-wrapper"
+                 ng-if="checkPatiAbout.currState == 'showRst'">
+              <div class="col-md-12">
+                <!-- 已存在 -->
+                <existed-pati ng-if="patiAbout.isExisted == 'existed'"
+                              group-org-data="groupAbout.groupOrgData"
+                              create-info="patiAbout.pInfo"></existed-pati>
+                <!-- 全新患者 -->
+                <brand-new-pati ng-if="patiAbout.isExisted == 'notIn'"
+                                selected-group="filterAbout.patiGroup"
+                                group-org-data="groupAbout.groupOrgData"
+                                create-info="patiAbout.pInfo"
+                                form-entity="createPatiAbout.newPatiFormEntity"></brand-new-pati>
+              </div>
+            </div>
+          </div>
+  
+          <!-- modal-footer 只有在查找到结果之后才显示相关操作按钮 -->
+          <div class="modal-footer">
+            <div ng-if="checkPatiAbout.currState == 'showRst'">
+              <!-- 不存在 -->
+              <div ng-if="patiAbout.isExisted == 'notIn'">
+                <button type="button" 
+                        class="btn btn-primary"
+                        ng-click="createPatiAction()"
+                        ng-disabled="createPatiAbout.newPatiFormEntity.brandNewPatiForm.$invalid || createPatiAbout.newPatiFormEntity.groupForm.$invalid"
+                        ng-if="['init', 'creatErr'].indexOf(createPatiAbout.currState) >= 0">创建</button>
+                <button type="button" 
+                        class="btn btn-primary"
+                        disabled
+                        ng-if="createPatiAbout.currState == 'creating'">创建中...</button>
+              </div>
+    
+              <!-- 已存在 -->
+              <div ng-if="patiAbout.isExisted == 'existed'">
+                <button type="button" 
+                        class="btn btn-primary"
+                        ng-click="toManage('create')">前往管理</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- toast 通知 -->
+    <toast-pop totast="totast.mainBody" ng-if="totast.mainBody"></toast-pop>
+  </div>
+</div>

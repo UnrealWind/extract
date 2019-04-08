@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="shortcut icon" href="../src/image/favicon.ico" type="image/x-icon" />
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/scss/frame.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-button.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-outside.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-drug.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-choser.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-manage.scss" rel="stylesheet" />
+    <link href="../src/scss/infi-password.scss" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/scss/infi-forty-two.scss">
+    <link rel="stylesheet" type="text/css" href="../src/scss/infi-navi.scss"/>
+    <link href="../bower_components/angular-ivh-treeview/dist/ivh-treeview.css" rel="stylesheet" />
+    <link href="../bower_components/angular-ivh-treeview/dist/ivh-treeview-theme-basic.css" rel="stylesheet" />
+</head>
+<body ng-app="infi-basic" ng-controller="HomeController">
+    <!-- 头部导航 -->
+    <header class="navbar navbar-default infi-header clearfix">
+        <div class="navbar-header infi-header-logo">
+            <span class="logo" href="#/home">
+                <a href="#/user"></a>
+            </span>
+        </div>
+
+        <div class="infi-header-title pull-left">
+            用户管理
+        </div>
+
+        <div class="box-user pull-right" ng-controller="LoginController">
+            <img class="user-logo" src="../src/image/doctor.png">
+            <p class="infi-header-name" ng-bind="name"></p>
+            <span>|</span>
+            <div change-pwd class="infi-inline-block"></div>
+            <span>|</span>
+            <p class="infi-header-name">
+                <a ng-click="logout()" class="glyphicon">退出</a>
+            </p>
+        </div>
+    </header>
+    <!-- 头部导航 END -->
+
+    <!-- 左部导航 -->
+    <infi-navi></infi-navi>
+    <!--<nav class="infi-main-nav">-->
+        <!--<ul class="list-group">-->
+            <!--<li class="list-group-item {{nav.active}}" ng-mouseenter="liHover()" ng-repeat="nav in extract_navigation">-->
+                <!--<i class="icon glyphicon glyphicon{{nav.cls}}"></i>-->
+                <!--<a href="#/{{nav.href}}" ng-click="extract_nav(nav,$index)">{{nav.name}}</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</nav>-->
+    <!-- 左部导航 END -->
+
+    <!-- 右部内容-->
+    <article class="infi-main">
+        <div ng-view></div>
+    </article>
+    <!-- 右部内容 END-->
+    <div change-pwd-model></div>
+    <footer class="infi-footer">
+        <p class="infi-footer-detail">
+            北京无极慧通科技公司 | 北京市海淀区大钟寺东路168号中嘉大厦4层410 | 联系电话:010-82686850
+        </p>
+    </footer>
+</body>
+</html>
+<script type="text/javascript" src="../src/widget/system/sys/login.check.js"></script>
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="../src/angular-ui-bootstrap.js"></script>
+
+<script type="text/javascript" src="../env/env.js"></script>
+<script type="text/javascript" src="all.js"></script>
+
+<!--<script type="text/javascript" src="system/auth.service.js" ></script>-->
+<!--<script type="text/javascript" src="system/login.controller.js" ></script>-->
+<!--<script type="text/javascript" src="system/session.service.js" ></script>-->
+<!--<script type="text/javascript" src="system/http.interceptor.factory.js" ></script>-->
+<script type="text/javascript" src="../bower_components/md5/src/md5.js"></script>
+
+<script type="text/javascript" src="../src/widget/system/sys/auth.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/login.controller.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/session.service.js" ></script>
+<script type="text/javascript" src="../src/widget/system/sys/http.interceptor.factory.js" ></script>
+
+<script type="text/javascript" src="../src/widget/table/table.js"></script>
+<script type="text/javascript" src="../src/widget/password/opt-pwd.directive.js"></script>
+
+<link href="js/menu.chose/dist/menu-chose.css" rel="stylesheet" />
+<script type="text/javascript" src="js/menu.chose/dist/menu.chose.js"></script>
+
+<script type="text/javascript" src="../bower_components/angular-ivh-treeview/dist/ivh-treeview.js"></script>
+<!-- 导航 -->
+<script type="text/javascript" src="../src/widget/navi/navi.directive.js"></script>
+<script type="text/javascript" src="../src/widget/navi/navi.services.js"></script>

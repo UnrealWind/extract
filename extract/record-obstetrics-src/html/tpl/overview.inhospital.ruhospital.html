@@ -1,0 +1,56 @@
+<div class="infi-wj-part">
+    <p style="margin: 0;" class="alert alert-danger"
+       ng-if="(temperatureWrap.status!='ok'&&pulseWrap.status!='ok'&&breatheWrap.status!='ok'&&bloodPressureWrap.status!='ok'&&heightWrap.status!='ok'&&weightWrap.status!='ok'&&bmi.status!='ok')||(temperatureWrap.data.result.length<=0&&pulseWrap.data.result.length<=0&&breatheWrap.data.result.length<=0&&bloodPressureWrap.data.result.length<=0&&heightWrap.data.result.length<=0&&weightWrap.data.result.length<=0&&bmiWrap.data.result.length<=0)">暂无数据</p>
+    <table class="infi-wj-table" style="table-layout: fixed" ng-if="(temperatureWrap.status=='ok'&&pulseWrap.status=='ok'&&temperatureWrap.data.result.length>0)||(breatheWrap.status =='ok'&&pulseWrap.data.result.length>0)||(bloodPressureWrap.status=='ok'&&bloodPressureWrap.data.result.length>0)||(heightWrap.status=='ok'&&heightWrap.data.result.length>0)||(weightWrap.status=='ok'&&weightWrap.data.result.length>0)||(bmi.status=='ok'&&bmiWrap.data.result.length>0)">
+        <tbody>
+        <tr>
+            <td class="self-wj-label">
+                <p>体温：</p>
+            </td>
+            <td>
+                <p ng-bind="temperature.tw_vital_signs_values"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>脉搏：</p>
+            </td>
+            <td>
+                <p ng-bind="pulse.mb_vital_signs_values"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>呼吸：</p>
+            </td>
+            <td>
+                <p ng-bind="breathe.hx_vital_signs_values"></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="self-wj-label">
+                <p>血压：</p>
+            </td>
+            <td>
+                <span ng-bind="bloodPressure.xy_vital_signs_values"></span>
+            </td>
+            <td class="self-wj-label">
+                <p>身高：</p>
+            </td>
+            <td>
+                <p ng-bind="height.sg_vital_signs_values"></p>
+            </td>
+            <td class="self-wj-label">
+                <p>体重：</p>
+            </td>
+            <td>
+                <p ng-bind="weight.tz_vital_signs_values"></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="self-wj-label">
+                <p>BMI：</p>
+            </td>
+            <td>
+                <p ng-bind="bmi.bmi_vital_signs_values|bmi"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

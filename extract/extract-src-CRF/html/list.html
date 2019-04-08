@@ -1,0 +1,154 @@
+<div class="self-content self-caseinfo">
+    <!--<h4 class="infi-title"><i class="glyphicon glyphicon-globe"></i>取数任务</h4>-->
+    <div class="title">
+        <span class="glyphicon glyphicon-list"></span>取数任务
+    </div>
+    <div ng-controller = "genInfoInput">
+        <div class="self-box">
+            <div class="title">
+                <span class="glyphicon glyphicon-list"></span>
+                <p ng-show="type == 'all'" class="infi-inline-block">任务列表</p>
+                <p ng-show="type == 'check'" class="infi-inline-block">审核列表</p>
+                <span class="self-box-fr" ng-show="type == 'all'">
+                    <a class="btn btn-xs self-btn-w-sm self-radius btn-success" data-toggle="modal" data-target="#infi-u-group" ng-click="goToTask()">新建任务</a>
+                </span>
+            </div>
+            <div ng-if="description" class="alert alert-danger">{{description}}</div>
+            <table class="table self-table-list valign-middle" ng-if="!description">
+                <tbody>
+                <tr>
+                    <td>序号</td>
+                    <td>任务名称</td>
+                    <td>所属项目</td>
+                    <td>预估病历数量</td>
+                    <td>状态</td>
+                    <td>操作</td>
+                </tr>
+                <tr ng-repeat="opt in listData">
+                    <td>{{$index+1}}</td>
+                    <td>{{opt.label}}</td>
+                    <td>{{opt.projectName}}</td>
+                    <td>{{opt.group.recordSize}}</td>
+                    <td current-state></td>
+                    <!--<td>-->
+                    <!--<a href="${ctx}/extract/task/detail/{{opt.id}}">详情</a>&nbsp;-->
+                    <!--<a ng-if="opt.status==='extract_pass'" href="${ctx}/extract/task/export/{{opt.id}}">执行任务</a>-->
+                    <!--<a ng-if="opt.status === 'extract_fail'" href="${ctx}/extract/task/export/{{opt.id}}">下载</a>-->
+                    <!--<a ng-if="!opt.oneClickMark" ng-click="exportRecord(opt)">导出</a>-->
+                    <!--<p ng-if="opt.oneClickMark" style="color:#aaa">导出</p>-->
+                <!--</td> -->
+                    <td>
+                        <a href="#/detail/{{opt.id}}">详情</a>&nbsp;
+                        <a ng-if="opt.status == 'AUDIT_PRE'&&type=='check'" ng-click = "modalJudge(opt.id)">审核</a>
+                        <a ng-if="opt.status == 'AUDIT_PASSED' || opt.status == 'EXTRACT_FAILED' && !opt.oneClickMark" ng-click="exportRecord(opt)">提取任务</a>
+                        <a ng-if="opt.status == 'EXTRACT_DOWNLOADED' || opt.status == 'EXTRACT_SUCCESS'" ng-click="downloadFile(opt.id)">下载</a>
+                        <p ng-if="opt.oneClickMark" style="color:#aaa">导出</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="self-page" ng-if="!description">
+                <div class="to-page">{{totalData.number+1}}
+                    /{{totalPage}}页</div>
+                <ul class="pagination">
+                    <li ng-class="{true:'disabled',false:''}[totalData.number<1]"><a href="javascript:;" ng-click="changePage(totalData.number)"><</a></li>
+                    <li ng-repeat = "opt in pageList" ng-click="changePage(opt.value)" ng-class="{true:'active',false:''}[{{opt.pageNum}}]"><a href="javascript:;">{{opt.value}}</a></li>
+                    <li ng-class="{true:'disabled',false:''}[totalData.number+2>totalPage]"><a href="javascript:;" ng-click="changePage(totalData.number+2)">></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 模态框  详情-->
+        <div class="modal fade" id="infi-u-details">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">项目信息详情</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat = "opt in inputData.content">
+                                <td>{{opt.label}}</td>
+                                <td>{{opt.value}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- 模态框 删除原因 -->
+        <div class="modal fade" id="infi-u-delete">
+            <div class="modal-dialog">
+                <div class="self-modal box-delete">
+                    <div class="title">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="close">&times;</span></button>
+                        请填写刪除原因
+                        <div  ng-if="deleteReason === '' || deleteReason === null" class="alert alert-danger" role="alert">请填写刪除原因 !!!</div>
+                    </div>
+                    <div class="part">
+                        <span class="infi-delCheck"></span>
+                        <textarea class="form-control self-radius" name ="remark" rows="6" ng-model ="deleteReason"></textarea>
+                    </div>
+                    <div class="footer clearfix">
+                        <button type="button" class="btn btn-default btn-xs self-radius self-btn-sm pull-right" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-success btn-xs self-radius self-btn-sm pull-right" ng-click="deleteData(deleteId)">提交</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--模态框 审核-->
+        <div class="modal fade" id="infi-u-judge">
+            <div class="modal-dialog">
+                <div class="self-modal box-judge">
+                    <div class="title">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="close">&times;</span></button>
+                        审核结果：
+                        <label class="radio-inline"><input type="radio" name="pass" value="yes" ng-model ="isJudge"/>通过</label>
+                        <label class="radio-inline"><input type="radio" name="pass" value="no" ng-model ="isJudge"/>驳回</label>
+                        <div  ng-if="(judgeReason === '' || judgeReason === null) && isJudge === 'no'" class="alert alert-danger" role="alert">请填写备注 !!!</div>
+                    </div>
+                    <div class="part">
+                        <span class="infi-delCheck"></span>
+                        审核理由：
+                        <br>
+                        <textarea class="form-control self-radius" name ="remarks" rows="6" ng-model ="judgeReason"></textarea>
+                    </div>
+                    <div class="footer clearfix">
+                        <button type="button" class="btn btn-default btn-xs self-radius self-btn-sm pull-right" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-success btn-xs self-radius self-btn-sm pull-right" ng-click="judgeData(judgeId)" ng-disabled='judgeReason == false && isJudge !== "yes"'>确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!--模态框 分组list-->
+        <div class="modal fade" id="infi-u-group" role="dialog">
+            <div class="modal-dialog">
+                <div class="self-modal box-judge">
+                    <div class="title">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="colseGroup()"><span aria-hidden="true" class="close">&times;</span></button>
+                        选择分组：
+                    </div>
+                    <div class="part">
+                        <span class="infi-delCheck"></span>
+                        分组名称：
+                        <select ng-show="groupList.status == SYS.STATUS_SUCCESS" ng-model="subjectGroupId">
+                            <option ng-repeat="group in groupList.data" value="{{group.id}}" ng-bind="group.name"></option>
+                        </select>
+                        <div ng-show="groupList.status != SYS.STATUS_SUCCESS" ng-bind="groupList.description" class="text-danger"></div>
+                    </div>
+                    <div class="footer clearfix">
+                        <button type="button" class="btn btn-default btn-xs self-radius self-btn-sm pull-right" data-dismiss="modal" ng-click="colseGroup()">关闭</button>
+                        <button type="button" class="btn btn-success btn-xs self-radius self-btn-sm pull-right" ng-click="goToTask()"
+                                ng-disabled="groupList.status != SYS.STATUS_SUCCESS||groupList.data.length == 0">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <modal-record-id></modal-record-id>
+    </div>
+</div>

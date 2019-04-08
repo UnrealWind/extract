@@ -1,0 +1,36 @@
+<ul class="event_list">
+    <div>
+        <h3>{{apiInfo.recordTime}}</h3>
+        <li>
+            <p><a>医嘱</a>
+            <div class="timeline-tpl-detail">
+                <doctor-advice api-info="apiInfo"></doctor-advice>
+            </div>
+        </li>
+        <li>
+            <p><a>检查</a></p>
+            <div class="timeline-tpl-detail">
+                <check-template api-info="apiInfo"></check-template>
+            </div>
+        </li>
+        <li>
+            <p><a>检验</a></p>
+            <div class="timeline-tpl-detail">
+                <checkout-template api-info="apiInfo"></checkout-template>
+            </div>
+        </li>
+        <li>
+            <p><a>手术</a></p>
+            <div class="timeline-tpl-detail">
+                <operation api-info="apiInfo"></operation>
+            </div>
+        </li>
+
+        <li ng-if="targetData && targetData.length>0">
+            <p><a>电子病历</a></p>
+            <div class="timeline-tpl-detail" ng-repeat="opt in targetData">
+                <course-disease target-data="opt" api-info="apiInfo" ></course-disease>
+            </div>
+        </li>
+    </div>
+</ul>

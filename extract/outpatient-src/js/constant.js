@@ -1,0 +1,22 @@
+angular.module("infi-basic").value('SYS',{
+    STATUS_SUCCESS: 'ok',
+    // url:'http://192.168.1.167:37661/301_outpatient/',
+    // url:'http://192.168.1.167:37661/301_outpatient/',
+    url : backApi["outpatient-src"].url,
+    // url:'http://192.168.1.55:8080/301_outpatient/',
+    // url:'http://192.168.1.164:23112/301_outpatient/',
+    infiUrl:'data/',
+    DEFAULT_PAGE_SIZE:'10',
+    //url:'http://172.18.0.210:37661/301_outpatient/',
+    STATUS_ERROR:'error',
+    localUrl:'data/',
+    jsonUrl:'json/',
+    STATUS_AUTH_PASSED: "AUTH_PASSED",
+    STATUS_AUTH_FAIL: 'AUTH_FAIL',
+    STATUS_DO_LOGIN: 'doLogin',
+    STATUS_QUERYING: 'querying',
+    ROLES_READY: 'rolesReady',
+    ROLES_CODER: 'coder',
+    ROLES_SENIOR_CODER: 'seniorcoder',
+    ROLES_ADMIN: 'admin'
+});

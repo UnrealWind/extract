@@ -1,0 +1,68 @@
+<div ng-repeat="line in list">
+    <!-- 没有子主题的情况 -->
+    <div class="row" ng-if="!line.hasBranch" part-form-one form-one="line">
+    </div>
+    <!-- 有交互的情况 -->
+    <div class="row" ng-if="line.action && line.value==line.actionValue || (line.type=='checkbox' && line.action && line.value[line.actionValue])" ng-repeat="action in line.action">
+        <div class="cell" ng-repeat="child in action.children" part-form-two form-two="child">
+        </div>
+    </div>
+    <!-- 有子主题的情况 -->
+    <div class="infi-nursing-part" ng-if="line.hasBranch">
+        <div class="infi-nursing-part-title">
+            <h5>{{line.label}}</h5>
+        </div>
+        <div class="infi-nursing-theme-content">
+            <div ng-repeat="part in line.children" ng-if="!line.titleLong">
+                <div class="row" part-form-one form-one="part">
+                </div>
+                <div class="row" ng-if="part.action && part.value==part.actionValue" ng-repeat="action in part.action">
+                    <div class="cell" ng-repeat="child in action.children" part-form-two form-two="child">
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="part in line.children" ng-if="line.titleLong">
+                <div class="row">
+                    <div class="col-md-5 infi-col-title">
+                        <span>{{part.label}}:</span>
+                    </div>
+                    <!-- 多选 -->
+                    <div class="col-md-6" ng-if="part.type == 'checkbox'">
+                        <label class="self-num-checkbox" ng-repeat="option in part.options">
+                            <input type="checkbox" ng-model="part.value[$index]" value="{{option.value}}" name="{{part.name}}"/>
+                            {{option.label}}
+                        </label>
+                    </div>
+                    <!-- 单选 -->
+                    <div class="col-md-6" ng-if="part.type == 'radio'">
+                        <label class="self-num-radio" ng-repeat="option in part.options">
+                            <input type="radio" ng-model="part.value"  value="{{option.value}}" name="{{part.name}}"/>
+                            {{option.label}}
+                        </label>
+                    </div>
+                    <!-- 单行文本 -->
+                    <div class="col-md-6" ng-if="part.type == 'text'">
+                        <input type="text" ng-model="part.value" class="form-control" name="{{part.name}}" maxlength="20"/>
+                    </div>
+                    <!-- 多行文本 -->
+                    <div class="col-md-6" ng-if="part.type == 'textarea'">
+                        <textarea ng-model="part.value" class="form-control" name="{{part.name}}" maxlength="200"></textarea>
+                    </div>
+                    <!-- 带单位的单行文本 -->
+                    <div class="col-md-6" ng-if="line.type == 'unit'">
+                        <input type="number" ng-model="line.value" class="form-control infi-text-unit" name="{{part.name}}"
+                               oninput="if(value.length>20)value=value.slice(0,20)"/><span>{{line.unit}}</span>
+                    </div>
+                    <!-- 时间 -->
+                    <div class="col-md-6" ng-if="line.type == 'datetime'">
+                        <input class="form-control" type="text" infi-date="yyyy-mm-dd" ng-model="line.value" name="{{part.name}}" maxlength="20"/>
+                    </div>
+                </div>
+                <div class="row" ng-if="part.action && part.value==part.actionValue" ng-repeat="action in part.action">
+                    <div class="cell" ng-repeat="child in action.children" part-form-two form-two="child">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

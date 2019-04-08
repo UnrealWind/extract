@@ -1,0 +1,28 @@
+{
+  "data":[
+    {
+      "label":"妊娠图",
+      "value":"renshen"
+    },
+    {
+      "label":"复诊信息",
+      "value":"fuzhen"
+    },
+    {
+      "label":"检查信息",
+      "value":"jiancha"
+    },
+    {
+      "label":" 检验信息",
+      "value":"jianyan"
+    },
+    {
+      "label":"药品信息",
+      "value":"chufang"
+    },
+    {
+      "label":"产后42天",
+      "value":"chanhou"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<!--标签-新建标签列表-->
+<h4 class="infi-title" style="margin-bottom: 20px;"><i class="glyphicon glyphicon-globe"></i>
+    配置 -> 标签 -> <span ng-show="viewDetail.type == 'create'">新建</span>
+    <span ng-show="viewDetail.type == 'view'">查看</span>
+    <span ng-show="viewDetail.type == 'change'">修改</span>
+</h4>
+<div class="infi-box">
+    <form name="form">
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>标签名称:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.label"
+                       ng-show="viewDetail.type != 'view'"/>
+                <span ng-show="viewDetail.type == 'view'" ng-bind="viewDetail.detail.label"></span>
+            </div>
+            <div class="col-lg-2"><label>标签编号:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.name"
+                       ng-show="viewDetail.type != 'view'"/>
+                <span ng-show="viewDetail.type == 'view'" ng-bind="viewDetail.detail.name"></span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>标签源列表:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.resourceTagId" class="infi-drug-input"
+                        ng-show="resourceTag.status == SYS.STATUS_SUCCESS&&viewDetail.type != 'view'">
+                    <option ng-repeat="res in resourceTag.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-if="resourceTag.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{resourceTag.data|viewSelect:viewDetail.detail.resourceTagId}}</span>
+                <span ng-show="resourceTag.status != SYS.STATUS_SUCCESS" ng-bind="resourceTag.description"></span>
+            </div>
+            <div class="col-lg-2"><label>前置条件列表:</label></div>
+            <div class="col-lg-4">
+                <select ng-model="viewDetail.detail.preResourceId" class="infi-drug-input"
+                        ng-show="preResource.status == SYS.STATUS_SUCCESS&&viewDetail.type != 'view'">
+                    <option ng-repeat="res in preResource.data" value="{{res.id}}" ng-bind="res.name"></option>
+                </select>
+                <span ng-if="preResource.status == SYS.STATUS_SUCCESS && viewDetail.type == 'view'">
+                    {{preResource.data|viewSelect:viewDetail.detail.preResourceId}}</span>
+                <span ng-show="preResource.status != SYS.STATUS_SUCCESS" ng-bind="preResource.description"></span>
+            </div>
+        </div>
+        <div class="infi-form-row row">
+            <div class="col-lg-2"><label>排序字段:</label></div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control infi-drug-input input-sm" ng-model="viewDetail.detail.sort"
+                       ng-change="checkSort()" ng-show="viewDetail.type != 'view'"/>
+                <span ng-show="viewDetail.type == 'view'" ng-bind="viewDetail.detail.sort"></span>
+                <span class="text-danger" ng-show="!sortIsNumber">应填写数字</span>
+            </div>
+        </div>
+        <div class="infi-submit-container" ng-show="viewDetail.type != 'view'">
+            <input type="submit" class="btn infi-btn-linear-green-l" value="保存" ng-click="saveDatas()"/>
+        </div>
+    </form>
+</div>
+<div sys-tip></div>

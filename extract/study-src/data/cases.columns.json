@@ -1,0 +1,28 @@
+{
+  "status":"ok",
+  "description":"数据读取成功",
+  "data":[
+    {
+      "label":"序号",
+      "name":"id"
+    },{
+      "label":"病历编号",
+      "name":"project"
+    },{
+      "label":"患者姓名",
+      "name":"originName"
+    },{
+      "label":"创建时间",
+      "name":"sourceType"
+    },{
+      "label":"数据来源",
+      "name":"creator"
+    },{
+      "label":"当前状态",
+      "name":"createTime"
+    },{
+      "label":"可执行的操作",
+      "name":"useNumber"
+    }
+  ]
+}

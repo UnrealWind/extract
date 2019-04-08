@@ -1,0 +1,112 @@
+<div>
+  <div class="input-wrapper">
+    <input type="text"
+            id="J-search-input-{{sign}}"
+            class="form-control reset-input width100 reset-palain react-font-size search-input"
+            placeholder="输入关键字搜索"
+            ng-model="searchAbout.kw"
+            ng-click="clickToSearch(searchAbout.kw, $event)"
+            ng-change="searchAbout.search(searchAbout.kw, null)" >
+  </div>
+
+  <!-- 搜索结果 -->
+  <div class="search-rst-wrapper"
+        id="J-search-rst-wrapper-{{sign}}"
+        ng-show="['searching', 'showRst', 'showErr'].indexOf(searchAbout.currState) >= 0">
+
+    <p class="text-center text-muted reset-margin reset-palain react-font-size"
+        ng-if="searchAbout.currState == 'searching'">搜索中...</p>
+
+    <p class="text-center text-muted reset-margin react-font-size"
+        ng-if="searchAbout.currState == 'showRst' && searchAbout.rst.length == 0">暂无结果</p>
+
+    <p class="text-center text-muted reset-margin reset-palain react-font-size"
+        ng-if="searchAbout.currState == 'showErr'">请求出错, 请检查网络后重新尝试</p>
+
+    <div class="rst-wrapper"
+          ng-if="searchAbout.currState == 'showRst' && searchAbout.rst.length > 0">
+      <!-- 固定表头 -->
+      <div class="fixed-tabel-head">
+        <!-- 覆盖滚动条 -->
+        <table class="table table-condensed table-bordered">
+          <thead>
+            <tr>
+              <th ng-repeat="th in specTh" ng-bind="th"></th>
+            </tr>
+          </thead>
+
+          <!-- 仅为了与下方表身对其 -->
+          <tbody class="vs-collapse">
+            <tr ng-repeat="rst in searchAbout.rst track by $index">
+              <td ng-repeat="(cellKey, cellVal) in rst"
+                  ng-if="showSpecField.indexOf(cellKey) >= 0"
+                  ng-bind="cellVal"
+                  title="{{cellVal}}"
+                  ng-click="addToSelected({rst: rst, saveto: saveto, callback: clearInput,sign:sign})"
+                  class="reset-palain cursor react-font-size"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 表身 -->
+      <div class="fixed-tabel-body">
+          <table class="table table-condensed table-bordered table-hover">
+            <tbody>
+              <tr ng-class="{true:'active'}[rst.active]" ng-repeat="rst in searchAbout.rst track by $index">
+                <td ng-repeat="(cellKey, cellVal) in rst"
+                    ng-if="showSpecField.indexOf(cellKey) >= 0"
+                    ng-bind="cellVal"
+                    title="{{cellVal}}"
+                    ng-click="addToSelected({rst: rst, saveto: saveto, callback: undefined,sign:sign})"
+                    class="reset-palain cursor react-font-size"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .search-rst-wrapper {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  }
+
+  .input-wrapper {
+    position: relative;
+  }
+
+
+
+  .fixed-tabel-head {
+    position: relative;
+  }
+
+  .vs-collapse {
+    visibility: collapse;
+  }
+
+
+  .fixed-tabel-body {
+    z-index: 3;
+    position: relative;
+    /* margin-top: -20px; */
+    height: 250px;
+    overflow-y: auto;
+  }
+
+  .rst-wrapper>.rst-title {
+    margin-bottom: 10px !important;
+    font-size: 14px;
+  }
+
+
+</style>

@@ -1,0 +1,34 @@
+{
+  "description": "数据请求成功",
+  "status": "ok",
+  "data": [
+    {
+      "label":"病案号",
+      "name":"patiId"
+    },{
+      "label":"入院次数",
+      "name":"visitNo"
+    },{
+      "label":"姓名",
+      "name":"patiName"
+    },{
+      "label":"性别",
+      "name":"sex"
+    },{
+      "label":"年龄",
+      "name":"age"
+    },{
+      "label":"患者状态",
+      "name":"patiStatus"
+    },{
+      "label":"科室",
+      "name":"dept"
+    },{
+      "label":"病区",
+      "name":"ward"
+    },{
+      "label":"入院时间",
+      "name":"admissionTime"
+    }
+  ]
+}

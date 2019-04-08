@@ -1,0 +1,21 @@
+<h4 class="infi-title">
+    <i class="glyphicon glyphicon-globe"></i>待处理申请
+</h4>
+<div class="infi-box">
+    <div class="infi-box-containter">
+        <div class="dir-nav-container">
+            <div ng-if="notInvited" class="alert alert-danger">您暂时还没有待处理申请！！！</div>
+            <p ng-repeat="item in acceptData">
+                {{ item.hosp }}&nbsp;
+                {{ item.dept }}&nbsp;
+                {{ item.job }}&nbsp;
+                {{ item.name }}&nbsp;
+                {{ item.subject_name }}&nbsp;
+                {{ item.create_time }}&nbsp;
+                想查看您的电话和邮箱&nbsp;
+                <a style="color: #337ab7" ng-click="accept('success',item,$event)">同意</a>
+                <a style="color: #337ab7" ng-click="accept('apply',item,$event)">拒绝</a>
+            </p>
+        </div>
+    </div>
+</div>

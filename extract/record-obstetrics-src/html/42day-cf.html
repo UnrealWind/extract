@@ -1,0 +1,230 @@
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">血压: </label></div>
+    <div  class="col-md-4 form-group input-group" style="width: ;float: left;position: relative;"><input infi-input-other name="basic.highPressure"
+                                                                                     type="text"
+                                                                                     ng-model="basic.highPressure"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon"> /</div>
+        <input name="basic.lowPressure" infi-input-other type="text" ng-model="basic.lowPressure" class="form-control"/>
+        <div class="input-group-addon" style=""> mmHg</div>
+        <div style="left: 0;"  class="infi-wj-highPressure">
+            <label><input ng-model="basic.highPressure" type="radio" value="90">90</label>
+            <label><input ng-model="basic.highPressure" type="radio" value="100">100</label>
+            <label><input ng-model="basic.highPressure" type="radio" value="110">110</label>
+            <label><input ng-model="basic.highPressure" type="radio" value="120">120</label>
+            <label><input ng-model="basic.highPressure" type="radio" value="130">130</label>
+            <label><input ng-model="basic.highPressure" type="radio" value="140">140</label>
+        </div>
+        <div style="left: 44%;"  class="infi-wj-lowPressure">
+            <label><input ng-model="basic.lowPressure" type="radio" value="60">60</label>
+            <label><input ng-model="basic.lowPressure" type="radio" value="70">70</label>
+            <label><input ng-model="basic.lowPressure" type="radio" value="80">80</label>
+            <label><input ng-model="basic.lowPressure" type="radio" value="90">90</label>
+        </div>
+    </div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">体重: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.weight" type="text"
+                                                                                     ng-model="basic.weight"
+                                                                                     class="form-control"/>
+        <div class="input-group-addon" style=""> kg</div>
+    </div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">尿常规: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.routineUrine"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input
+            name="basic.routineUrineAbnormalInst" type="text" ng-model="basic.routineUrineAbnormalInst"
+            class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">乳房: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.breast"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.breastAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.breastAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">乳汁: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.milk"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.milkAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.milkAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">血色素: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.hemoglobin"
+                                                                                      type="text"
+                                                                                      ng-model="basic.hemoglobin"
+                                                                                      class="form-control"/>
+        <div class="input-group-addon" style=""> g/L</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">转经: </label></div>
+    <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inlinue"
+                                                                                 style="margin-right: 10px;"><input
+            type="radio" ng-model="basic.turnMenstruation" name="basic.turnMenstruation" value="name___u5DF2"/>已</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="basic.turnMenstruation"
+                                                                     name="basic.turnMenstruation"
+                                                                     value="name___u672A"/>未</label></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">恶露: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.lochia"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.lochiaAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.lochiaAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">腹部切口: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.abdominalIncision"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input
+            name="basic.abdominalIncisionAbnormalInst" type="text" ng-model="basic.abdominalIncisionAbnormalInst"
+            class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">会阴伤口: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.perineumWound"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input
+            name="basic.perineumWoundAbnormalInst" type="text" ng-model="basic.perineumWoundAbnormalInst"
+            class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">盆底拖力: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.basinLiftForce"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input
+            name="basic.basinLiftForceAbnormalInst" type="text" ng-model="basic.basinLiftForceAbnormalInst"
+            class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">阴道: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.vagina"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.vaginaAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.vaginaAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">宫颈: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.cervical"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.cervicalAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.cervicalAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">宫体: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.corpus"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.corpusAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.corpusAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">附件: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><select ng-model="basic.adnexa"
+                                                                                      class="form-control"
+                                                                                      style="width: 90%">
+        <option value="name___u6B63__u5E38">正常</option>
+        <option value="name___u5F02__u5E38">异常</option>
+    </select></div>
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">备注: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input name="basic.adnexaAbnormalInst"
+                                                                                     type="text"
+                                                                                     ng-model="basic.adnexaAbnormalInst"
+                                                                                     class="form-control"/></div>
+</div>
+<div class="row"></div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">计划生育: </label></div>
+    <div class="col-md-10 radio input-group" style="width: ;float: left;"><label class="radio-inlinue"
+                                                                                 style="margin-right: 10px;"><input
+            type="radio" ng-model="basic.familyPlan" name="basic.familyPlan" value="name___u6709"/>有</label><label
+            class="radio-inlinue" style="margin-right: 10px;"><input type="radio" ng-model="basic.familyPlan"
+                                                                     name="basic.familyPlan"
+                                                                     value="name___u65E0"/>无</label></div>
+</div>
+<div class="row">
+    <div class="col-md-1 form-group" style="width: ;text-align: right;padding-right: 0px;"><label class="infi-wj-label-title">签名: </label></div>
+    <div class="col-md-4 form-group input-group" style="width: ;float: left;"><input style="width:90%;" name="basic.maternalSignature"
+                                                                                      type="text"
+                                                                                      ng-model="basic.maternalSignature"
+                                                                                      class="form-control"/></div>
+</div>

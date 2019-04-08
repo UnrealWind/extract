@@ -1,0 +1,5 @@
+<div class="infi-opt-search">
+    <input ng-repeat="entity in list" type="button" class="btn btn-default btn-sm" value="{{entity.label}}"
+           ng-click="changeStatisticsType(entity.value)"
+           ng-class="{true:'btn-success'}[original[key] == entity.value]" />
+</div>

@@ -1,0 +1,35 @@
+<div class="marginten">
+    <table class="table infi-table">
+        <thead>
+        <tr>
+            <th rowspan="2" style="vertical-align: middle;">科室名称</th>
+            <th rowspan="2" style="vertical-align: middle;">科室病历总数</th>
+            <!--<th colspan="2">出血</th>-->
+            <th>
+                <div>
+                    <div style="height:50%;">{{adverseSelection.label}}</div>
+                    <div style="height:50%;width:46%;display: inline-block;">发生病例数</div>
+                    <div style="height:50%;width:46%;display: inline-block;">发生概率</div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-if="badTable.length>0">
+        <tr ng-repeat="entity in badTable">
+            <td>{{entity.dept}}</td>
+            <td>{{entity.allNum}}</td>
+            <td>
+                <div style="height:50%;width:46%;display: inline-block;">{{entity.size}}</div>
+                <div style="height:50%;width:46%;display: inline-block;">{{entity.rate}}</div>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="(badTable.length==0) || (badTable.length==null)">
+        <tr>
+            <td colspan="3" class="bg-danger" style="line-height: 50px;">
+                暂无数据
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
